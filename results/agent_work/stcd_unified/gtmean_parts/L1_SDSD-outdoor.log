@@ -1,0 +1,12 @@
+/cache/zihaohe/conda_envs/vjepa2-pip/lib/python3.11/site-packages/timm/models/layers/__init__.py:49: FutureWarning: Importing from timm.models.layers is deprecated, please import via timm.layers
+  warnings.warn(f"Importing from {__name__} is deprecated, please import via timm.layers", FutureWarning)
+[STCD] loaded /temp/zihaohe/cache/stcd_repro/LLVE_STCD/pretrained_model/SDSD_indoor_model/indoor_G.pth strict=True (50 tensors, 1.81M params)
+[load] missing=0 unexpected=0
+[load] missing=0 unexpected=0
+[SDSD] layout=A/C (static_np or original) subset=direct split=test -> 25 sequences, 620 frames total.
+Loading pretrained model LPIPS from /home/ma-user/.cache/torch/hub/pyiqa/LPIPS_v0.1_alex-df73285e.pth
+Loading pretrained model DISTS from /home/ma-user/.cache/torch/hub/pyiqa/DISTS_weights-f5e65c96.pth
+/home/ma-user/workspace/zihaohe/baselines/DarkIR/archs/arch_model.py:48: UserWarning: Specified kernel cache directory could not be created! This disables kernel caching. Specified directory is /home/ma-user/.cache/torch/kernels. This warning will appear only once per process. (Triggered internally at ../aten/src/ATen/native/cuda/jit_utils.cpp:1442.)
+  mag = torch.abs(x_freq)
+== L1_SDSD-outdoor done (942s)
+[PART] /cache/zihaohe/stcd_unified/gtmean_parts/L1_SDSD-outdoor.json

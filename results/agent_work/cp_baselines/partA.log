@@ -1,0 +1,52 @@
+/cache/zihaohe/conda_envs/vjepa2-pip/lib/python3.11/site-packages/timm/models/layers/__init__.py:49: FutureWarning: Importing from timm.models.layers is deprecated, please import via timm.layers
+  warnings.warn(f"Importing from {__name__} is deprecated, please import via timm.layers", FutureWarning)
+[SDSD] layout=A/C (static_np or original) subset=direct split=train -> 59 sequences, 1671 frames total.
+[SDSD] layout=A/C (static_np or original) subset=direct split=train -> 101 sequences, 2530 frames total.
+[CP-src] Retinexformer  alpha raw=[0.1123, -0.8736, 0.1355] clipped=[0.1123, 0.0, 0.1355] (78s)
+[CP-src] URCSA          alpha raw=[0.9131, -0.9534, -0.3639] clipped=[0.9131, 0.0, 0.0] (108s)
+[SDSD] layout=A/C (static_np or original) subset=direct split=test -> 15 sequences, 1037 frames total.
+Loading pretrained model LPIPS from /home/ma-user/.cache/torch/hub/pyiqa/LPIPS_v0.1_alex-df73285e.pth
+Loading pretrained model DISTS from /home/ma-user/.cache/torch/hub/pyiqa/DISTS_weights-f5e65c96.pth
+  L0_SDSD-indoor   Retinexformer  PSNR 26.525 -> 26.656 -> 26.564 | LPIPS 0.1806 -> 0.1793 -> 0.1881 | xfit a0=[0.147, 0.0, 0.524] a1=[0.48, 0.308, 0.223] | chk dPSNR=0.0 dLPIPS=0.0 ok=True (162s)
+  L0_SDSD-indoor   URCSA          PSNR 24.189 -> 24.315 -> 24.052 | LPIPS 0.2651 -> 0.2965 -> 0.3183 | xfit a0=[0.045, 0.0, 1.0] a1=[0.528, 1.0, 0.632] | chk dPSNR=0.0 dLPIPS=0.0 ok=True (125s)
+[SDSD] layout=A/C (static_np or original) subset=direct split=test -> 25 sequences, 620 frames total.
+  L1_SDSD-outdoor  Retinexformer  PSNR 22.000 -> 22.166 -> 22.760 | LPIPS 0.2219 -> 0.2189 -> 0.2299 | xfit a0=[0.0, 0.0, 0.96] a1=[0.0, 0.0, 1.0] | chk dPSNR=0.0 dLPIPS=0.0 ok=True (258s)
+  L1_SDSD-outdoor  URCSA          PSNR 19.603 -> 19.264 -> 20.010 | LPIPS 0.2585 -> 0.3092 -> 0.2966 | xfit a0=[0.186, 1.0, 0.333] a1=[0.049, 1.0, 1.0] | chk dPSNR=0.0 dLPIPS=0.0 ok=True (209s)
+[BVI-RLV] test: 16 sequences (8 scenes × ≤2 fps), 6240 frames total
+  L2_BVI-RLV       Retinexformer  PSNR 17.891 -> 17.941 -> 17.883 | LPIPS 0.2179 -> 0.2134 -> 0.2266 | xfit a0=[0.0, 1.0, 0.153] a1=[0.45, 1.0, 0.033] | chk dPSNR=0.0 dLPIPS=0.0 ok=True (163s)
+  L2_BVI-RLV       URCSA          PSNR 18.383 -> 18.350 -> 18.313 | LPIPS 0.2212 -> 0.2504 -> 0.2366 | xfit a0=[0.0, 1.0, 0.0] a1=[0.688, 0.525, 0.0] | chk dPSNR=0.0 dLPIPS=0.0 ok=True (114s)
+  L3_LOL-v1        Retinexformer  PSNR 17.234 -> 17.314 -> 17.139 | LPIPS 0.2406 -> 0.2311 -> 0.2442 | xfit a0=[0.0, 1.0, 0.061] a1=[0.0, 0.0, 0.562] | chk dPSNR=0.0 dLPIPS=0.0 ok=True (8s)
+  L3_LOL-v1        URCSA          PSNR 21.877 -> 20.989 -> 21.903 | LPIPS 0.1104 -> 0.2711 -> 0.1301 | xfit a0=[0.133, 0.442, 0.051] a1=[0.376, 0.131, 0.0] | chk dPSNR=0.0 dLPIPS=0.0 ok=True (7s)
+  L4_LOLv2-Syn     Retinexformer  PSNR 15.229 -> 15.304 -> 15.444 | LPIPS 0.3034 -> 0.2946 -> 0.2711 | xfit a0=[0.077, 1.0, 0.856] a1=[0.74, 0.0, 0.567] | chk dPSNR=0.0 dLPIPS=0.0 ok=True (44s)
+  L4_LOLv2-Syn     URCSA          PSNR 16.085 -> 16.250 -> 16.630 | LPIPS 0.2302 -> 0.2108 -> 0.1953 | xfit a0=[0.16, 1.0, 0.799] a1=[0.374, 0.656, 0.614] | chk dPSNR=0.0 dLPIPS=0.0 ok=True (36s)
+  L5_LOLv2-Real    Retinexformer  PSNR 18.815 -> 18.819 -> 18.778 | LPIPS 0.2428 -> 0.2340 -> 0.2318 | xfit a0=[0.0, 0.336, 0.404] a1=[0.0, 0.035, 0.403] | chk dPSNR=0.0 dLPIPS=0.0 ok=True (47s)
+  L5_LOLv2-Real    URCSA          PSNR 24.843 -> 22.012 -> 24.886 | LPIPS 0.0809 -> 0.2734 -> 0.0844 | xfit a0=[0.096, 0.0, 0.047] a1=[0.115, 0.0, 0.08] | chk dPSNR=0.0 dLPIPS=0.0 ok=True (35s)
+[SAVE] /cache/zihaohe/cp_baselines/partA.json  consistency_ok=True  wall=1384s
+
+== L0_SDSD-indoor   PSNR raw -> CP-src -> CP-tgt   |   LPIPS raw -> CP-src -> CP-tgt
+  Retinexformer  26.525 -> 26.656 -> 26.564   |   0.1806 -> 0.1793 -> 0.1881   n=15
+  URCSA          24.189 -> 24.315 -> 24.052   |   0.2651 -> 0.2965 -> 0.3183   n=15
+
+== L1_SDSD-outdoor   PSNR raw -> CP-src -> CP-tgt   |   LPIPS raw -> CP-src -> CP-tgt
+  Retinexformer  22.000 -> 22.166 -> 22.760   |   0.2219 -> 0.2189 -> 0.2299   n=25
+  URCSA          19.603 -> 19.264 -> 20.010   |   0.2585 -> 0.3092 -> 0.2966   n=25
+
+== L2_BVI-RLV   PSNR raw -> CP-src -> CP-tgt   |   LPIPS raw -> CP-src -> CP-tgt
+  Retinexformer  17.891 -> 17.941 -> 17.883   |   0.2179 -> 0.2134 -> 0.2266   n=16
+  URCSA          18.383 -> 18.350 -> 18.313   |   0.2212 -> 0.2504 -> 0.2366   n=16
+
+== L3_LOL-v1   PSNR raw -> CP-src -> CP-tgt   |   LPIPS raw -> CP-src -> CP-tgt
+  Retinexformer  17.234 -> 17.314 -> 17.139   |   0.2406 -> 0.2311 -> 0.2442   n=15
+  URCSA          21.877 -> 20.989 -> 21.903   |   0.1104 -> 0.2711 -> 0.1301   n=15
+
+== L4_LOLv2-Syn   PSNR raw -> CP-src -> CP-tgt   |   LPIPS raw -> CP-src -> CP-tgt
+  Retinexformer  15.229 -> 15.304 -> 15.444   |   0.3034 -> 0.2946 -> 0.2711   n=100
+  URCSA          16.085 -> 16.250 -> 16.630   |   0.2302 -> 0.2108 -> 0.1953   n=100
+
+== L5_LOLv2-Real   PSNR raw -> CP-src -> CP-tgt   |   LPIPS raw -> CP-src -> CP-tgt
+  Retinexformer  18.815 -> 18.819 -> 18.778   |   0.2428 -> 0.2340 -> 0.2318   n=100
+  URCSA          24.843 -> 22.012 -> 24.886   |   0.0809 -> 0.2734 -> 0.0844   n=100
+
+CP-src alpha (clipped / raw):
+  Retinexformer  [0.1123, 0.0, 0.1355]  raw=[0.1123, -0.8736, 0.1355]
+  URCSA          [0.9131, 0.0, 0.0]  raw=[0.9131, -0.9534, -0.3639]

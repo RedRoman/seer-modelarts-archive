@@ -1,0 +1,232 @@
+train pid 3398070 start Fri Sep 25 18:20:55 CST 2026
+Disable distributed.
+iter (20260925_182058),psnr
+2026-09-25 18:20:58,719 INFO: 
+                ____                _       _____  ____
+               / __ ) ____ _ _____ (_)_____/ ___/ / __ \
+              / __  |/ __ `// ___// // ___/\__ \ / /_/ /
+             / /_/ // /_/ /(__  )/ // /__ ___/ // _, _/
+            /_____/ \__,_//____//_/ \___//____//_/ |_|
+     ______                   __   __                 __      __
+    / ____/____   ____   ____/ /  / /   __  __ _____ / /__   / /
+   / / __ / __ \ / __ \ / __  /  / /   / / / // ___// //_/  / /
+  / /_/ // /_/ // /_/ // /_/ /  / /___/ /_/ // /__ / /<    /_/
+  \____/ \____/ \____/ \____/  /_____/\____/ \___//_/|_|  (_)
+    
+Version Information: 
+	BasicSR: 1.2.0+cc63400
+	PyTorch: 2.3.1+cu121
+	TorchVision: 0.18.1+cu121
+2026-09-25 18:20:58,719 INFO: 
+  name: RetinexFormer_SDSD_union_seersplit
+  model_type: ImageCleanModel
+  scale: 1
+  num_gpu: 1
+  manual_seed: 100
+  datasets:[
+    train:[
+      name: TrainSetUnion
+      type: Dataset_SDSDUnionImage
+      random_reverse: False
+      border_mode: False
+      dataroot_gt: ['/home/ma-user/workspace/zihaohe/datasets/SDSD_indoor/indoor_static_np/GT', '/home/ma-user/workspace/zihaohe/datasets/SDSD_outdoor/outdoor_static_np/GT']
+      dataroot_lq: ['/home/ma-user/workspace/zihaohe/datasets/SDSD_indoor/indoor_static_np/input', '/home/ma-user/workspace/zihaohe/datasets/SDSD_outdoor/outdoor_static_np/input']
+      train_size: [960, 512]
+      cache_keys: None
+      cache_data: True
+      padding: new_info
+      testing_dir: ['pair50,pair52,pair58,pair5,pair6,pair60,pair68,pair7,pair70,pair8,pair9', 'MVI_1007,MVI_1009,MVI_1011,MVI_1013,MVI_1015,MVI_1017,MVI_1019,MVI_1021,MVI_1024,MVI_1026,MVI_1028,MVI_1030,MVI_1032']
+      filename_tmpl: {}
+      io_backend:[
+        type: disk
+      ]
+      N_frames: 5
+      use_flip: True
+      use_rot: True
+      color: RGB
+      use_shuffle: True
+      num_worker_per_gpu: 4
+      batch_size_per_gpu: 8
+      mini_batch_sizes: [8]
+      iters: [160000]
+      gt_size: 512
+      gt_sizes: [256]
+      dataset_enlarge_ratio: 1
+      prefetch_mode: None
+      phase: train
+      scale: 1
+    ]
+    val:[
+      name: ValSetUnion
+      type: Dataset_SDSDUnionImage
+      dataroot_gt: ['/home/ma-user/workspace/zihaohe/datasets/SDSD_indoor/indoor_static_np/GT', '/home/ma-user/workspace/zihaohe/datasets/SDSD_outdoor/outdoor_static_np/GT']
+      dataroot_lq: ['/home/ma-user/workspace/zihaohe/datasets/SDSD_indoor/indoor_static_np/input', '/home/ma-user/workspace/zihaohe/datasets/SDSD_outdoor/outdoor_static_np/input']
+      cache_data: True
+      N_frames: 5
+      padding: new_info
+      train_size: [960, 512]
+      testing_dir: ['pair50,pair52,pair58,pair5,pair6,pair60,pair68,pair7,pair70,pair8,pair9', 'MVI_1007,MVI_1009,MVI_1011,MVI_1013,MVI_1015,MVI_1017,MVI_1019,MVI_1021,MVI_1024,MVI_1026,MVI_1028,MVI_1030,MVI_1032']
+      io_backend:[
+        type: disk
+      ]
+      phase: val
+      scale: 1
+    ]
+  ]
+  network_g:[
+    type: RetinexFormer
+    in_channels: 3
+    out_channels: 3
+    n_feat: 40
+    stage: 1
+    num_blocks: [1, 2, 2]
+  ]
+  path:[
+    pretrain_network_g: None
+    strict_load_g: True
+    resume_state: None
+    root: /cache/zihaohe/runs/seer_iclr/rf_seersplit/Retinexformer
+    experiments_root: /cache/zihaohe/runs/seer_iclr/rf_seersplit/Retinexformer/experiments/RetinexFormer_SDSD_union_seersplit
+    models: /cache/zihaohe/runs/seer_iclr/rf_seersplit/Retinexformer/experiments/RetinexFormer_SDSD_union_seersplit/models
+    training_states: /cache/zihaohe/runs/seer_iclr/rf_seersplit/Retinexformer/experiments/RetinexFormer_SDSD_union_seersplit/training_states
+    log: /cache/zihaohe/runs/seer_iclr/rf_seersplit/Retinexformer/experiments/RetinexFormer_SDSD_union_seersplit
+    visualization: /cache/zihaohe/runs/seer_iclr/rf_seersplit/Retinexformer/experiments/RetinexFormer_SDSD_union_seersplit/visualization
+  ]
+  train:[
+    total_iter: 24000
+    warmup_iter: -1
+    use_grad_clip: True
+    scheduler:[
+      type: CosineAnnealingRestartCyclicLR
+      periods: [50000, 110000]
+      restart_weights: [1, 1]
+      eta_mins: [2e-05, 1e-06]
+    ]
+    mixing_augs:[
+      mixup: False
+      mixup_beta: 1.2
+      use_identity: True
+    ]
+    optim_g:[
+      type: AdamW
+      lr: 2e-05
+      weight_decay: 0.0001
+      betas: [0.9, 0.99]
+    ]
+    pixel_opt:[
+      type: L1Loss
+      loss_weight: 1
+      reduction: mean
+    ]
+  ]
+  val:[
+    window_size: 4
+    val_freq: 1000000000.0
+    save_img: False
+    rgb2bgr: True
+    use_image: False
+    max_minibatch: 8
+    metrics:[
+      psnr:[
+        type: calculate_psnr
+        crop_border: 0
+        test_y_channel: False
+      ]
+    ]
+  ]
+  logger:[
+    print_freq: 500
+    save_checkpoint_freq: 8000.0
+    use_tb_logger: True
+    wandb:[
+      project: low_light
+      resume_id: None
+    ]
+  ]
+  dist_params:[
+    backend: nccl
+    port: 29511
+  ]
+  is_train: True
+  dist: False
+  rank: 0
+  world_size: 1
+  rename_flag: False
+
+2026-09-25 18:21:00,751 INFO: Dataset Dataset_SDSDUnionImage - TrainSetUnion is created.
+2026-09-25 18:21:00,751 INFO: Training statistics:
+	Number of train images: 4131
+	Dataset enlarge ratio: 1
+	Batch size per gpu: 8
+	World size (gpu number): 1
+	Require iter number per epoch: 517
+	Total epochs: 47; iters: 24000.
+2026-09-25 18:21:01,651 INFO: Dataset Dataset_SDSDUnionImage - ValSetUnion is created.
+2026-09-25 18:21:01,651 INFO: Number of val images/folders in ValSetUnion: 1727
+2026-09-25 18:21:02,356 INFO: Model [ImageCleanModel] is created.
+[SDSDUnion] root_gt=/home/ma-user/workspace/zihaohe/datasets/SDSD_indoor/indoor_static_np/GT testing_dir=['pair50', 'pair52', 'pair58', 'pair5', 'pair6', 'pair60', 'pair68', 'pair7', 'pair70', 'pair8', 'pair9']
+[SDSDUnion] root_gt=/home/ma-user/workspace/zihaohe/datasets/SDSD_outdoor/outdoor_static_np/GT testing_dir=['MVI_1007', 'MVI_1009', 'MVI_1011', 'MVI_1013', 'MVI_1015', 'MVI_1017', 'MVI_1019', 'MVI_1021', 'MVI_1024', 'MVI_1026', 'MVI_1028', 'MVI_1030', 'MVI_1032']
+[SDSDUnion] total samples: 4131 in 158 sequences.
+[SDSDUnion] root_gt=/home/ma-user/workspace/zihaohe/datasets/SDSD_indoor/indoor_static_np/GT testing_dir=['pair50', 'pair52', 'pair58', 'pair5', 'pair6', 'pair60', 'pair68', 'pair7', 'pair70', 'pair8', 'pair9']
+[SDSDUnion] root_gt=/home/ma-user/workspace/zihaohe/datasets/SDSD_outdoor/outdoor_static_np/GT testing_dir=['MVI_1007', 'MVI_1009', 'MVI_1011', 'MVI_1013', 'MVI_1015', 'MVI_1017', 'MVI_1019', 'MVI_1021', 'MVI_1024', 'MVI_1026', 'MVI_1028', 'MVI_1030', 'MVI_1032']
+[SDSDUnion] total samples: 1727 in 42 sequences.
+Not using Automatic Mixed Precision
+2026-09-25 18:21:02,398 INFO: Start training from epoch: 0, iter: 0
+2026-09-25 18:21:02,940 INFO: 
+ Updating Patch_Size to 256 and Batch_Size to 8 
+
+2026-09-25 18:23:18,084 INFO: [Retin..][epoch:  0, iter:     500, lr:(2.000e-05,)] [eta: 1:46:06, time (data): 0.254 (0.001)] l_pix: 6.4698e-02 
+2026-09-25 18:25:25,558 INFO: [Retin..][epoch:  1, iter:   1,000, lr:(2.000e-05,)] [eta: 1:40:47, time (data): 0.253 (0.001)] l_pix: 6.7636e-02 
+2026-09-25 18:27:33,112 INFO: [Retin..][epoch:  2, iter:   1,500, lr:(2.000e-05,)] [eta: 1:37:37, time (data): 0.253 (0.001)] l_pix: 6.5542e-02 
+2026-09-25 18:29:40,397 INFO: [Retin..][epoch:  3, iter:   2,000, lr:(2.000e-05,)] [eta: 1:34:55, time (data): 0.253 (0.001)] l_pix: 6.7340e-02 
+2026-09-25 18:31:48,102 INFO: [Retin..][epoch:  4, iter:   2,500, lr:(2.000e-05,)] [eta: 1:32:30, time (data): 0.253 (0.001)] l_pix: 5.7749e-02 
+2026-09-25 18:33:55,372 INFO: [Retin..][epoch:  5, iter:   3,000, lr:(2.000e-05,)] [eta: 1:30:09, time (data): 0.253 (0.001)] l_pix: 4.7414e-02 
+2026-09-25 18:36:02,968 INFO: [Retin..][epoch:  6, iter:   3,500, lr:(2.000e-05,)] [eta: 1:27:53, time (data): 0.253 (0.001)] l_pix: 4.4047e-02 
+2026-09-25 18:38:10,160 INFO: [Retin..][epoch:  7, iter:   4,000, lr:(2.000e-05,)] [eta: 1:25:37, time (data): 0.257 (0.001)] l_pix: 5.2071e-02 
+2026-09-25 18:40:17,382 INFO: [Retin..][epoch:  8, iter:   4,500, lr:(2.000e-05,)] [eta: 1:23:23, time (data): 0.254 (0.001)] l_pix: 5.7196e-02 
+2026-09-25 18:42:25,304 INFO: [Retin..][epoch:  9, iter:   5,000, lr:(2.000e-05,)] [eta: 1:21:13, time (data): 0.254 (0.001)] l_pix: 7.6027e-02 
+2026-09-25 18:44:59,122 INFO: [Retin..][epoch: 10, iter:   5,500, lr:(2.000e-05,)] [eta: 1:20:31, time (data): 0.540 (0.001)] l_pix: 5.8993e-02 
+2026-09-25 18:49:28,143 INFO: [Retin..][epoch: 11, iter:   6,000, lr:(2.000e-05,)] [eta: 1:25:16, time (data): 0.544 (0.001)] l_pix: 4.5099e-02 
+2026-09-25 18:53:56,863 INFO: [Retin..][epoch: 12, iter:   6,500, lr:(2.000e-05,)] [eta: 1:28:34, time (data): 0.548 (0.001)] l_pix: 3.2817e-02 
+2026-09-25 18:58:26,379 INFO: [Retin..][epoch: 13, iter:   7,000, lr:(2.000e-05,)] [eta: 1:30:48, time (data): 0.539 (0.001)] l_pix: 4.3834e-02 
+2026-09-25 19:02:54,642 INFO: [Retin..][epoch: 14, iter:   7,500, lr:(2.000e-05,)] [eta: 1:32:05, time (data): 0.539 (0.001)] l_pix: 5.4761e-02 
+2026-09-25 19:07:23,856 INFO: [Retin..][epoch: 15, iter:   8,000, lr:(2.000e-05,)] [eta: 1:32:41, time (data): 0.539 (0.001)] l_pix: 5.2115e-02 
+2026-09-25 19:07:23,856 INFO: Saving models and training states.
+2026-09-25 19:11:52,384 INFO: [Retin..][epoch: 16, iter:   8,500, lr:(2.000e-05,)] [eta: 1:32:40, time (data): 0.539 (0.001)] l_pix: 4.2611e-02 
+2026-09-25 19:16:21,313 INFO: [Retin..][epoch: 17, iter:   9,000, lr:(2.000e-05,)] [eta: 1:32:10, time (data): 0.539 (0.001)] l_pix: 4.7194e-02 
+2026-09-25 19:20:50,248 INFO: [Retin..][epoch: 18, iter:   9,500, lr:(2.000e-05,)] [eta: 1:31:15, time (data): 0.540 (0.001)] l_pix: 5.2304e-02 
+2026-09-25 19:25:19,166 INFO: [Retin..][epoch: 19, iter:  10,000, lr:(2.000e-05,)] [eta: 1:29:58, time (data): 0.542 (0.001)] l_pix: 2.8110e-02 
+2026-09-25 19:29:48,708 INFO: [Retin..][epoch: 20, iter:  10,500, lr:(2.000e-05,)] [eta: 1:28:24, time (data): 0.539 (0.001)] l_pix: 4.6046e-02 
+2026-09-25 19:34:18,204 INFO: [Retin..][epoch: 21, iter:  11,000, lr:(2.000e-05,)] [eta: 1:26:34, time (data): 0.536 (0.001)] l_pix: 4.6295e-02 
+2026-09-25 19:38:48,658 INFO: [Retin..][epoch: 22, iter:  11,500, lr:(2.000e-05,)] [eta: 1:24:31, time (data): 0.541 (0.001)] l_pix: 2.6212e-02 
+2026-09-25 19:43:17,697 INFO: [Retin..][epoch: 23, iter:  12,000, lr:(2.000e-05,)] [eta: 1:22:14, time (data): 0.541 (0.001)] l_pix: 4.7904e-02 
+2026-09-25 19:47:47,567 INFO: [Retin..][epoch: 24, iter:  12,500, lr:(2.000e-05,)] [eta: 1:19:47, time (data): 0.539 (0.001)] l_pix: 2.9461e-02 
+2026-09-25 19:52:16,451 INFO: [Retin..][epoch: 25, iter:  13,000, lr:(2.000e-05,)] [eta: 1:17:11, time (data): 0.539 (0.001)] l_pix: 3.5104e-02 
+2026-09-25 19:56:46,441 INFO: [Retin..][epoch: 26, iter:  13,500, lr:(2.000e-05,)] [eta: 1:14:26, time (data): 0.545 (0.001)] l_pix: 2.8024e-02 
+2026-09-25 20:01:15,517 INFO: [Retin..][epoch: 27, iter:  14,000, lr:(2.000e-05,)] [eta: 1:11:34, time (data): 0.541 (0.001)] l_pix: 4.2441e-02 
+2026-09-25 20:05:45,051 INFO: [Retin..][epoch: 28, iter:  14,500, lr:(2.000e-05,)] [eta: 1:08:35, time (data): 0.536 (0.001)] l_pix: 2.8277e-02 
+2026-09-25 20:10:13,860 INFO: [Retin..][epoch: 29, iter:  15,000, lr:(2.000e-05,)] [eta: 1:05:30, time (data): 0.280 (0.001)] l_pix: 2.8136e-02 
+2026-09-25 20:14:42,536 INFO: [Retin..][epoch: 30, iter:  15,500, lr:(2.000e-05,)] [eta: 1:02:19, time (data): 0.539 (0.001)] l_pix: 4.0939e-02 
+2026-09-25 20:19:12,033 INFO: [Retin..][epoch: 31, iter:  16,000, lr:(2.000e-05,)] [eta: 0:59:04, time (data): 0.539 (0.000)] l_pix: 3.3541e-02 
+2026-09-25 20:19:12,034 INFO: Saving models and training states.
+2026-09-25 20:23:40,553 INFO: [Retin..][epoch: 31, iter:  16,500, lr:(2.000e-05,)] [eta: 0:55:43, time (data): 0.544 (0.001)] l_pix: 2.7732e-02 
+2026-09-25 20:28:10,029 INFO: [Retin..][epoch: 32, iter:  17,000, lr:(2.000e-05,)] [eta: 0:52:20, time (data): 0.539 (0.001)] l_pix: 2.6665e-02 
+2026-09-25 20:32:38,875 INFO: [Retin..][epoch: 33, iter:  17,500, lr:(2.000e-05,)] [eta: 0:48:52, time (data): 0.537 (0.001)] l_pix: 3.6909e-02 
+2026-09-25 20:37:07,593 INFO: [Retin..][epoch: 34, iter:  18,000, lr:(2.000e-05,)] [eta: 0:45:21, time (data): 0.541 (0.001)] l_pix: 3.2837e-02 
+2026-09-25 20:41:36,121 INFO: [Retin..][epoch: 35, iter:  18,500, lr:(2.000e-05,)] [eta: 0:41:46, time (data): 0.540 (0.001)] l_pix: 3.9240e-02 
+2026-09-25 20:46:05,917 INFO: [Retin..][epoch: 36, iter:  19,000, lr:(2.000e-05,)] [eta: 0:38:09, time (data): 0.539 (0.001)] l_pix: 4.3999e-02 
+2026-09-25 20:50:34,515 INFO: [Retin..][epoch: 37, iter:  19,500, lr:(2.000e-05,)] [eta: 0:34:29, time (data): 0.565 (0.001)] l_pix: 2.6514e-02 
+2026-09-25 20:55:05,101 INFO: [Retin..][epoch: 38, iter:  20,000, lr:(2.000e-05,)] [eta: 0:30:47, time (data): 0.539 (0.001)] l_pix: 2.4694e-02 
+2026-09-25 20:59:35,207 INFO: [Retin..][epoch: 39, iter:  20,500, lr:(2.000e-05,)] [eta: 0:27:03, time (data): 0.522 (0.001)] l_pix: 3.1960e-02 
+2026-09-25 21:04:04,740 INFO: [Retin..][epoch: 40, iter:  21,000, lr:(2.000e-05,)] [eta: 0:23:16, time (data): 0.540 (0.001)] l_pix: 3.1012e-02 
+2026-09-25 21:08:34,540 INFO: [Retin..][epoch: 41, iter:  21,500, lr:(2.000e-05,)] [eta: 0:19:28, time (data): 0.542 (0.001)] l_pix: 4.5848e-02 
+2026-09-25 21:13:03,182 INFO: [Retin..][epoch: 42, iter:  22,000, lr:(2.000e-05,)] [eta: 0:15:37, time (data): 0.541 (0.001)] l_pix: 2.8541e-02 
+2026-09-25 21:17:31,946 INFO: [Retin..][epoch: 43, iter:  22,500, lr:(2.000e-05,)] [eta: 0:11:45, time (data): 0.537 (0.001)] l_pix: 2.3437e-02 
+2026-09-25 21:22:00,927 INFO: [Retin..][epoch: 44, iter:  23,000, lr:(2.000e-05,)] [eta: 0:07:51, time (data): 0.539 (0.001)] l_pix: 3.4347e-02 
+2026-09-25 21:26:29,998 INFO: [Retin..][epoch: 45, iter:  23,500, lr:(2.000e-05,)] [eta: 0:03:56, time (data): 0.539 (0.001)] l_pix: 4.1779e-02 
+2026-09-25 21:30:57,776 INFO: [Retin..][epoch: 46, iter:  24,000, lr:(2.000e-05,)] [eta: 0:00:00, time (data): 0.539 (0.001)] l_pix: 2.7791e-02 
+2026-09-25 21:30:57,777 INFO: Saving models and training states.
+2026-09-25 21:30:57,816 INFO: End of training. Time consumed: 3:09:55
+2026-09-25 21:30:57,816 INFO: Save the latest model.
+2026-09-25 21:44:27,405 INFO: Validation ValSetUnion,		 # psnr: 26.2671
+TRAIN EXIT 0 Fri Sep 25 21:50:56 CST 2026

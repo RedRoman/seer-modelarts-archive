@@ -1,0 +1,30 @@
+[main] measuring 6 baselines on NVIDIA A100-SXM4-80GB
+
+===== Retinexformer  input=1x3x512x512 (1 frame) =====
+  params=1.61M  GFLOPs=66.86  mem=626.3MB  time=73.92ms
+
+===== HVI-CIDNet  input=1x3x512x512 (1 frame) =====
+  params=1.98M  GFLOPs=31.65  mem=386.2MB  time=80.56ms
+
+===== DarkIR  input=1x3x512x512 (1 frame) =====
+  params=3.32M  GFLOPs=28.37  mem=441.8MB  time=16.56ms
+
+===== URCSA  input=1x3x512x512 (1 frame; single-image variant) =====
+/cache/zihaohe/conda_envs/vjepa2-pip/lib/python3.11/site-packages/timm/models/layers/__init__.py:49: FutureWarning: Importing from timm.models.layers is deprecated, please import via timm.layers
+  warnings.warn(f"Importing from {__name__} is deprecated, please import via timm.layers", FutureWarning)
+  params=3.11M  GFLOPs=436.92  mem=1353.5MB  time=32.21ms
+
+===== MambaLLIE  input=1x3x512x512 (1 frame; no weights on host) =====
+  params=2.29M  GFLOPs=89.56  mem=2448.3MB  time=131.12ms
+
+===== BVI-Mamba  input=1x5x3x512x512 (5-frame clip, native BVI-Mamba stride; no weights on host) =====
+import deform_conv_ext
+Import error
+['/home/ma-user/workspace/zihaohe/baselines/BVI-Mamba/arch', '/home/ma-user/workspace/zihaohe/baselines/BVI-Mamba', '/home/ma-user/workspace/zihaohe/baselines/MambaLLIE/basicsr', '/home/ma-user/workspace/zihaohe/baselines/MambaLLIE', '/home/ma-user/workspace/zihaohe/baselines/URCSA/sdsd', '/home/ma-user/workspace/zihaohe/baselines/DarkIR', '/home/ma-user/workspace/zihaohe/baselines/HVI-CIDNet', '/cache/zihaohe/ext_methods/Retinexformer/basicsr/models/archs', '/home/ma-user/workspace/zihaohe/baselines', '/home/ma-user/workspace/zihaohe/vjepa_llve', '/home/ma-user/workspace/zihaohe/quick_ablations', '/usr/local/seccomponent/lib', '/home/ma-user/infer/model/1', '/cache/zihaohe/conda_envs/vjepa2-pip/lib/python311.zip', '/cache/zihaohe/conda_envs/vjepa2-pip/lib/python3.11', '/cache/zihaohe/conda_envs/vjepa2-pip/lib/python3.11/lib-dynload', '/cache/zihaohe/conda_envs/vjepa2-pip/lib/python3.11/site-packages', '/home/ma-user/workspace/zihaohe/baselines/MambaLLIE/basicsr/archs', '/cache/zihaohe/conda_envs/vjepa2-pip/lib/python3.11/site-packages/setuptools/_vendor', '/home/ma-user/workspace/zihaohe/baselines/MambaLLIE']
+norm layer: <class 'torch.nn.modules.normalization.LayerNorm'>
+  params=10.00M  GFLOPs=188.24  mem=964.6MB  time=182.30ms
+
+===== Seer (params only) =====
+  total=697.45M  (frozen=304.68M + trainable=392.77M)
+
+[SAVE] /home/ma-user/workspace/zihaohe/quick_ablations/model_complexity.json

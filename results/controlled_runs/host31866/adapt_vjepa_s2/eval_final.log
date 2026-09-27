@@ -1,0 +1,28 @@
+[Seer] variant from ckpt args: {'no_vjepa': False, 'random_vjepa': False, 'disable_igab': False, 'disable_lic': False, 'disable_bottleneck': False}
+[Seer] pixel_branch missing=0 unexpected=0
+/cache/zihaohe/conda_envs/vjepa2-pip/lib/python3.11/site-packages/timm/models/layers/__init__.py:49: FutureWarning: Importing from timm.models.layers is deprecated, please import via timm.layers
+  warnings.warn(f"Importing from {__name__} is deprecated, please import via timm.layers", FutureWarning)
+[VJepaBackboneLocal21] loaded /home/ma-user/workspace/zihaohe/checkpoint/vjepa2_1_vitl_dist_vitG_384.pt | missing=0 unexpected=2
+  unexpected (first 5): ['patch_embed_img.proj.weight', 'patch_embed_img.proj.bias']
+[CounterfactualRefiner] loaded predictor from /home/ma-user/workspace/zihaohe/checkpoint/vjepa2_1_vitl_dist_vitG_384.pt | missing=0 unexpected=4
+[Seer] cf_refiner missing=0 unexpected=0 gate=-0.023079
+[SDSD] layout=A/C (static_np or original) subset=direct split=train -> 59 sequences, 1671 frames total.
+/cache/zihaohe/conda_envs/vjepa2-pip/lib/python3.11/site-packages/torch/backends/cuda/__init__.py:342: FutureWarning: torch.backends.cuda.sdp_kernel() is deprecated. In the future, this context manager will be removed. Please see, torch.nn.attention.sdpa_kernel() for the new context manager, with updated signature.
+  warnings.warn(
+[SDSD] layout=A/C (static_np or original) subset=direct split=train -> 101 sequences, 2530 frames total.
+[CP] closed-form alpha on 15 SDSD train clips: raw=[0.7095141040697874, -1.7337264517971809, 1.3314974295096618] clipped=[0.7095140814781189, 0.0, 1.0]
+[BVI-RLV] test: 16 sequences (8 scenes × ≤2 fps), 6240 frames total
+Loading pretrained model LPIPS from /home/ma-user/.cache/torch/hub/pyiqa/LPIPS_v0.1_alex-df73285e.pth
+Loading pretrained model DISTS from /home/ma-user/.cache/torch/hub/pyiqa/DISTS_weights-f5e65c96.pth
+/cache/zihaohe/conda_envs/vjepa2-pip/lib/python3.11/site-packages/torch/backends/cuda/__init__.py:342: FutureWarning: torch.backends.cuda.sdp_kernel() is deprecated. In the future, this context manager will be removed. Please see, torch.nn.attention.sdpa_kernel() for the new context manager, with updated signature.
+  warnings.warn(
+L2_BVI-RLV       HMP-raw  PSNR=22.127 LPIPS=0.1736 DISTS=0.1129 CLIPIQA=0.3164 n=16 tlp=0.0743 mabd=0.0044 flicker=0.0867 warp_err=0.0104 (129s)
+L2_BVI-RLV       HMP+CP   PSNR=22.306 LPIPS=0.1755 DISTS=0.1117 CLIPIQA=0.2787 n=16 tlp=0.0841 mabd=0.0044 flicker=0.0868 warp_err=0.0127 (129s)
+L2_BVI-RLV       HMP+CPfit PSNR=21.912 LPIPS=0.1828 DISTS=0.1181 CLIPIQA=0.2642 n=16 tlp=0.0871 mabd=0.0045 flicker=0.0869 warp_err=0.0135 (129s)
+L2_BVI-RLV       HMP+CPxfit PSNR=22.126 LPIPS=0.1726 DISTS=0.1136 CLIPIQA=0.2888 n=16 tlp=0.0826 mabd=0.0044 flicker=0.0868 warp_err=0.0126 (129s)
+[SDSD] layout=A/C (static_np or original) subset=direct split=test -> 15 sequences, 1037 frames total.
+L0_SDSD-indoor   HMP-raw  PSNR=20.021 LPIPS=0.2074 DISTS=0.1659 CLIPIQA=0.1686 n=15 tlp=0.0609 mabd=0.0037 flicker=0.0279 warp_err=0.0121 (84s)
+L0_SDSD-indoor   HMP+CP   PSNR=20.561 LPIPS=0.2227 DISTS=0.1583 CLIPIQA=0.1509 n=15 tlp=0.0997 mabd=0.0037 flicker=0.0284 warp_err=0.0157 (84s)
+L0_SDSD-indoor   HMP+CPfit PSNR=20.646 LPIPS=0.2487 DISTS=0.1727 CLIPIQA=0.1534 n=15 tlp=0.1107 mabd=0.0038 flicker=0.0287 warp_err=0.0171 (84s)
+L0_SDSD-indoor   HMP+CPxfit PSNR=20.619 LPIPS=0.2470 DISTS=0.1710 CLIPIQA=0.1546 n=15 tlp=0.1097 mabd=0.0038 flicker=0.0287 warp_err=0.0169 (84s)
+[SAVE] /cache/zihaohe/runs/seer_iclr/adapt_vjepa_s2/eval_final.json

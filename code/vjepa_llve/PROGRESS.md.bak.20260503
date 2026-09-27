@@ -1,0 +1,428 @@
+# V-JEPA-LLVE Project Progress (CVPR 2027 Target)
+
+**Last updated**: 2026-04-30 00:30 (v8 reached iter 7000, broke v7 best by +0.23 dB)
+
+---
+
+## 1. Project Overview
+
+We are developing a **Low-Light Video Enhancement (LLVE)** method using **Meta's V-JEPA 2.1 ViT-L** (a self-supervised video understanding model) as the central semantic prior. Target: **CVPR 2027 submission**.
+
+The key constraint (project identity): **V-JEPA must be the architectural centerpiece** — the paper narrative is "first work to leverage V-JEPA for low-level video tasks via novel mechanism X". Removing V-JEPA = losing the paper.
+
+---
+
+## 2. Dataset & Baselines
+
+### Dataset
+- **SDSD-indoor + SDSD-outdoor** (the standard benchmark for LLVE):
+  - Train: 155 sequences total (54 indoor + 101 outdoor)
+  - Val: 14 indoor sequences (test split)
+- **155 train sequences is small** — this is critical for understanding overfitting issues.
+- We do not have access to additional video pre-training data.
+
+### Reference SOTA on SDSD-indoor
+| Method | Year | PSNR | Notes |
+|---|---|---|---|
+| RetinexFormer | ICCV'23 | ~26.5 | image-based, transformer + Retinex |
+| MambaLLIE | NeurIPS'24 | 28.93 | SSM-based |
+| LLVE-STCD | IJCAI'25 | 28.93 | Spatial-Temporal Consistent Decomposition |
+| ReDDiT | CVPR'25 | 29.95 (LOL) | Retinex + Diffusion |
+| TempRetinex | 2025 | 30.21 | Retinex + temporal |
+| EvLight++ | TPAMI'24 | 30.52 | event-camera (unfair) |
+| **Our v6.0 (V-JEPA + DiT + small decoder)** | — | **25.32** | **best so far** |
+| **Our v7 (V-JEPA + cross-attn + big decoder)** | — | **23.93** | plateau then crash |
+| **Our v8.B+ (V-JEPA Predictor + Prompt Bank + multi-loss)** | — | **24.16** sliding @ iter 7000 (climbing) | **breaks v7 best, healthy trajectory** |
+
+**Our gap to SOTA: 3-5 dB**. This is what we need to close.
+
+**Key update 2026-04-30**: v8 has reversed the early "failing trajectory" assessment. After iter 5000 it began monotonically climbing and at iter 7000 sliding(3) reached 24.16, **+0.23 dB above v7 best**. Trajectory remains healthy (climbing, no plateau yet, EMA still warming up). See Section 4.v8 for full details.
+
+---
+
+## 3. V-JEPA 2.1 Technical Properties (Background)
+
+- **Encoder**: ViT-L (304M), input 16 frames × 256² × 3, output 4 hierarchical layers (5/11/17/23) with token grid (8, 16, 16) = 2048 tokens of dim 1024
+- **Predictor module** (~150M frozen): trained to predict masked latent tokens given visible tokens (JEPA paradigm)
+- **Training objective**: VICReg-style self-supervised + masked feature prediction (NOT pixel reconstruction)
+- **Strengths**: motion understanding, action recognition, temporal semantics
+- **Weaknesses for LLVE**: trained for invariance, NOT pixel-perfect detail; spatial 16×16 too coarse for fine textures
+
+---
+
+## 4. Version History
+
+### v3: V-DUN (V-JEPA + Deep Unfolding Network) — abandoned baseline
+- **Architecture**: V-JEPA condition + 8-block PGD-style unfolding decoder
+- **Result**: **25.816 dB** on SDSD-indoor (best of all our attempts excluding v6.0)
+- **Why abandoned**: prior work, image-domain V-LUNet variant, narrative weak ("we add temporal" is incremental)
+- Ckpt archived
+
+### v4 / v4.1: Predictor counterfactual (early experiments)
+- **Idea**: Use V-JEPA's Predictor module with masked-prediction interface to refine LQ features
+- **Result**: PSNR oscillated, training unstable
+- **Lesson learned**: stochastic masked input destabilizes downstream decoder
+
+### v5: SD VAE latent diffusion
+- **Idea**: Diffusion in StableDiffusion VAE latent, V-JEPA as condition
+- **Why abandoned**: User correctly objected: "using SD VAE contradicts V-JEPA prior" — narrative incoherence
+- Did not complete training
+
+### v6.0: V-JEPA Latent DiT (main predecessor)
+- **Architecture**:
+  - V-JEPA encoder (frozen, 304M)
+  - LatentDiT: rectified flow in V-JEPA's 1024-dim latent (241M trainable)
+  - Pixel decoder: 4-scale UNet with V-JEPA cross-attn at scales 2,3,4 (108M trainable)
+  - 8-step ODE inference
+- **Loss**: flow MSE + Charbonnier + LPIPS + temporal DoD
+- **Training**: SDSD 155 seq, B=1, accum=4, 40k iters, ~12h
+- **Result**: **best 25.321 dB sliding(3) @ iter 23000** ← **our current ceiling**
+- **Final iter behavior**: best at iter 23k, then plateau 23-25 dB oscillation
+
+### v6.D: Retinex-Decomposed LatentDiT + CFIM
+- **Idea**: Add Retinex dual-branch (R/L decomposition) to LatentDiT + cross-frame interaction module
+- **Result**: **best 23.71 sliding @ iter 18000** (worse than v6.0)
+- **Why failed**: Retinex split in latent space (1024-dim) damaged V-JEPA's learned representation; complexity hurt convergence
+
+### v6.E: PMRF (Posterior-Mean Rectified Flow)
+- **Idea**: v6.D architecture + flow start = V-JEPA(v6.0_output) instead of V-JEPA(LQ)
+- Initial PSNR = 25.32 dB (= v6.0 baseline, identity-at-init)
+- **Result**: **best 25.40 dB EMA-sliding @ iter 4500**, plateaued
+- **Lesson**: PMRF locked lower bound at v6.0 but didn't add net gain (+0.08 dB); architectural ceiling unchanged
+
+### v7: Pure pixel-domain (no DiT)
+- **Architecture**:
+  - V-JEPA encoder (frozen, 304M)
+  - **NO LatentDiT, NO flow matching**
+  - Big PixelBranch: 4-scale UNet, dims [64,128,256,512,1024], num_blocks [4,8,8,12,16] (341M)
+  - V-JEPA cross-attn at scales 1,2,3,4
+  - Bottleneck CFIM
+  - Retinex dual head (R̂, L̂)
+- **Training**: B=3, accum=3, total_iters=20000
+- **Result**: **best 23.93 sliding @ iter 4000**, then plateau and slight regression
+- **Lesson**: Bigger pixel decoder alone doesn't break the V-JEPA conditioning bottleneck
+
+### v8.B+: Multi-component (currently training)
+- **Architecture**:
+  - V-JEPA encoder (frozen, 304M)
+  - **V-JEPA Predictor (frozen + LoRA-16, ~8M trainable) — multi-iter K=3 rollout** with learnable illumination action token
+  - **Illumination Prompt Bank (VLU-Net inspired)**: K=8 condition prompts, V-JEPA pooled feat → softmax retrieval, cross-attn injection at 4 decoder scales
+  - **Pixel Parallel Path**: lightweight CNN encoder for high-freq bypass (~30M)
+  - Big Pixel Decoder (similar to v7, ~250M) with **BiasFree LN + PixelShuffle**
+  - Bottleneck VolumeCFIM + Retinex dual head (R̂, L̂)
+  - **6-loss bundle**: pix + lpips + temporal + Retinex compose + counterfactual latent + monotonicity
+- **Total trainable**: 354.5M
+- **Training**: B=2, accum=4 effective=8, total_iters=20000, ETA 30h, restarted from step_4000 ckpt at 19:15 (after v7 visual eval pause)
+
+#### v8 evolution: from "concerning" to "successful breakthrough"
+
+**Phase 1 (iter 0-4000): early lag**
+- v8 sliding lagged v7 by 1.5-3.4 dB
+- Multi-component architecture took longer to coordinate
+- Counter loss slow but dropping (0.91 → 0.79)
+- Initial assessment: "likely failure"
+
+**Phase 2 (iter 5000-7000): catching up + breakthrough**
+
+| iter | v7 sliding | v8 sliding | Δ |
+|---|---|---|---|
+| 4000 | 22.89 | 22.66 | -0.23 |
+| 4500 | 23.04 (extrap) | 22.72 | -0.32 |
+| 5000 | 23.20 | 23.20 | 0 (parity!) |
+| 5500 | — | 23.30 | +0.10 |
+| 6000 | 23.45 (extrap) | 23.60 | +0.15 |
+| 6500 | — | 23.97 | +0.04 vs v7 best |
+| **7000** | — | **24.16** | **+0.23 ABOVE v7 best 23.93** ✨ |
+
+**Current state @ iter 7300** (00:30 server time 2026-04-30):
+- **best sliding(3): 24.16 @ iter 7000** (+0.23 above v7 best)
+- live PSNR @ 7000 = 23.72 (oscillates 23-24.5)
+- EMA: 16.87 (climbing +0.7-0.8/val)
+- Counter: 0.78 (still dropping slowly)
+- Train loss: 0.32, pix 0.044, lpips 0.16 (all healthy decreasing)
+- Step time: 5.48s, GPU 55GB, 0 NaN
+- ETA to iter 10000: ~04:30 server time (about 4h)
+
+**What changed the trajectory** (analysis):
+1. **6-loss multi-objective regularization** prevents overfit (v7's iter 4000 crash was overfit-driven)
+2. **Predictor LoRA + action token** finally activated around iter 4500-5000 (counter loss drop started)
+3. **EMA accumulator** smooths out noise, lets sliding(3) reflect true progress
+4. **BiasFree LayerNorm** more stable in dark regions
+
+**Key insight**: v8's apparent "lag" in early iters was multi-component architecture warming up. Once components coordinated (~iter 5000), v8 began outperforming v7 monotonically. **No sign of plateau yet at iter 7000**.
+
+**Updated prediction**:
+- iter 10000 (4h away): sliding 24.5-25.5 dB (likely close to v6.0 baseline 25.32)
+- iter 15000 (if continued): possibly 25.5-26.5 dB
+- iter 20000 final: 26-27 dB (cosine LR will help second half)
+
+---
+
+## 5. Critical Lessons Learned
+
+### 5.1 The PSNR ceiling at ~25 dB (PARTIALLY RESOLVED by v8)
+
+Earlier assessment: "no matter what we try, PSNR caps at 25-26 dB while SOTA is 28-30 dB".
+
+**Updated 2026-04-30**: v8.B+ has **broken the v7 ceiling** — sliding 24.16 @ iter 7000 and still climbing. The "ceiling" appears to be **architecture-specific**, not fundamental V-JEPA limitation:
+- v6.0 vanilla LatentDiT: 25.32 ceiling
+- v7 vanilla pixel decoder: 23.93 ceiling
+- v8 Predictor + Prompt Bank + multi-loss: **>24.16 and rising** (could match v6.0 by iter 10000)
+
+**Real bottleneck identified**: **single-loss optimization on small dataset overfits fast**. v7 used pix+lpips+temporal (3 losses) and crashed at iter 4000. v8 uses 6 losses → stable training, longer effective horizon.
+
+**Remaining ceiling factors** (need v9 to address):
+1. ~~V-JEPA bottleneck~~ — partially false; depends on how V-JEPA is used (Predictor + multi-loss helps)
+2. **Small dataset (155 seq)** — orthogonal, could be fixed by synthetic data
+3. **No temporal consistency loss** (LLVE-STCD core) — v9.A planned to add this
+4. ~~No use of V-JEPA's Predictor module~~ — v8 fixed this; Predictor LoRA + action token works
+
+### 5.2 Architecture experiments — wider band than expected
+
+| Version | Architecture diff | Best sliding PSNR | Notes |
+|---|---|---|---|
+| v6.0 | LatentDiT 241M + small decoder | 25.32 | early baseline best |
+| v6.D | + Retinex DiT + CFIM | 23.71 | latent-domain Retinex hurt |
+| v6.E | v6.D + PMRF MMSE start | 25.40 EMA | only +0.08 net gain |
+| v7 | No DiT, big decoder 341M | 23.93 | crashed at iter 4000 (overfit) |
+| **v8.B+** | **Predictor + Prompt Bank + 6-loss + BiasFree LN** | **>24.16 (rising)** | **first to break v7 baseline cleanly** |
+
+→ Architectural choices matter, but **stable multi-loss training matters more**.
+
+### 5.3 Multi-component training: slow start, strong finish
+
+**Earlier wrong conclusion**: "v8's multi-component slows convergence and won't beat v7"
+
+**Updated correct conclusion**: v8 multi-component DOES start slower (because each component needs warmup) but ends up **more stable and higher-ceiling**:
+- v7 reaches 23.93 at iter 4000 then crashes
+- v8 doesn't reach 23.93 until iter 6500, but doesn't crash and continues climbing
+
+**The pattern**: simpler architecture = faster early but lower ceiling; complex architecture = slower early but higher ceiling. v8 demonstrates this clearly.
+
+**Implication for v9**: don't fear adding more loss terms or auxiliary modules — they regularize training. The "all moving parts fight each other" intuition was wrong; they actually constrain each other into a healthier optimum.
+
+### 5.4 v6.D/E showed: **complex modules in latent space don't translate to pixel PSNR**
+
+We added Retinex dual-branch DiT, CFIM, Predictor in V-JEPA latent space — none of these increased pixel PSNR. This suggests V-JEPA latent itself is the information bottleneck, not the operations on it.
+
+### 5.5 Critical missing piece: temporal consistency
+
+LLVE-STCD (28.93) uses:
+- R̂ (reflectance) cross-frame L1 — forces same object to look same across frames
+- L̂ (illumination) temporal smoothness
+- Plus optical flow guidance
+
+**We have R̂/L̂ output heads but NO temporal supervision on them**. This is likely a major source of PSNR gap.
+
+---
+
+## 6. v9 Proposal Options (need expert opinion)
+
+### v9.A: Minimal — "v8 stripped + STCD temporal loss"
+- Drop v8's K=3 → K=1, drop pixel parallel path
+- Keep V-JEPA Predictor (single-pass), Prompt Bank, Big Decoder
+- **Add R̂ cross-frame L1 + L̂ temporal smoothness** (LLVE-STCD core)
+- ~280M trainable
+- Predicted: 25.5-27 dB
+
+### v9.B: v9.A + RAFT optical flow consistency
+- Add frozen RAFT/GMA flow estimation
+- Warp consistency loss: ‖pred[t] - warp(pred[t+1], flow)‖
+- ~280M trainable + frozen RAFT
+- Predicted: 26.5-28 dB
+
+### v9.C: STCD-clone with V-JEPA condition (most pragmatic)
+- Take LLVE-STCD's exact architecture (proven 28.93)
+- Replace its encoder with V-JEPA features as condition
+- This is the highest-confidence path to 28+ dB
+- **Risk**: less novel narrative, "we just added V-JEPA to existing SOTA"
+
+### Alternative ideas considered & rejected
+
+- **Drop V-JEPA**: violates project identity, abandoned
+- **Use video diffusion model (CogVideoX/Wan/SVD)**: would work but again abandons V-JEPA
+- **Synthetic data augmentation**: orthogonal — could help all versions
+- **Test-time optimization**: orthogonal — could help any final model
+
+---
+
+## 7. Open Questions for Expert Review (UPDATED 2026-04-30)
+
+### Architecture (revised)
+1. **Is "V-JEPA Predictor + multi-loss" the right paradigm?** v8 just demonstrated **+0.23 above v7 best** at iter 7000 with steady climb. Earlier worry that "V-JEPA bottleneck caps PSNR at 25" appears overstated — v8 may reach 25+ at iter 10000.
+
+2. **Should v9 ADD to v8 (incremental) or replace components?**
+   - Add: STCD-style R̂/L̂ temporal consistency loss (cheap, expected +0.5-1 dB)
+   - Add: optical flow warping consistency (medium effort, +0.3-0.5 dB)
+   - Replace: try larger Predictor LoRA rank (16→32)?
+   - Replace: try K=1 single-pass Predictor (drop K=3) since multi-iter doesn't seem to help latent rollout much?
+
+3. **What architectural change has highest EV for CVPR submission?**
+   - Path A (incremental): v8 + STCD temporal → 25-27 dB at 20k iter
+   - Path B (radical): synthetic data from video diffusion → 100k+ iter on bigger dataset
+   - Path C (lazy): just train v8 longer (10k → 20k) to see ceiling
+
+### Loss design
+4. **Multi-loss regularization clearly works** (v8 stable vs v7 crash). Should we add even more loss terms (R̂ temporal L1, L̂ smoothness, flow consistency) for v9?
+
+5. **What's the relative importance of**: 
+   - Retinex spatial-temporal consistency (STCD) → likely +1.0-1.5 dB
+   - Optical flow consistency → +0.3-0.5 dB
+   - Test-time EMA filter → +0.2-0.5 dB on visual quality (PSNR small change)
+   - Longer training → diminishing after iter 12000
+
+### Practical decisions
+6. **Should we abandon V-JEPA narrative now that v8 shows V-JEPA can outperform plain pixel decoder?** Strong evidence v8 architecture has merit; probably **no longer need to consider abandoning V-JEPA**.
+
+7. **Synthetic data via video diffusion**: still attractive as orthogonal capacity boost. 
+
+8. **For CVPR 2027 we have ~6-9 months. Updated highest-EV plan**:
+   - **Now (next 1-2 weeks)**: Train v8 to convergence (iter 15000-20000), measure final ceiling
+   - **Week 3-4**: v9.A = v8 + STCD temporal loss
+   - **Week 5-8**: v9.B = + optical flow consistency
+   - **Week 9-12**: synthetic data scaling + best ckpt eval
+   - **Submission Q3 2026**: ablations + paper writing
+
+---
+
+## 8. Repository / Artifacts
+
+### Code structure
+```
+/home/ma-user/workspace/zihaohe/vjepa_llve/
+├── models/
+│   ├── vjepa_backbone.py          # V-JEPA 2.1 ViT-L wrapper (frozen)
+│   ├── predictor_lora.py          # V-JEPA Predictor + LoRA wrapper (CounterfactualRefiner)
+│   ├── latent_dit.py              # v6.0 LatentDiT
+│   ├── latent_dit_retinex.py      # v6.D Retinex DiT
+│   ├── pixel_decoder.py           # v6.0/D/E pixel decoder
+│   ├── pixel_branch_v7.py         # v7 big pixel branch
+│   ├── pixel_branch_v8.py         # v8 big pixel branch (BiasFree LN + PixelShuffle + Prompt Bank + Pixel Parallel)
+│   ├── illumination_prompt_bank.py # v8 Prompt Bank (VLU-Net inspired)
+│   ├── biasfree_ln.py             # BiasFree LayerNorm (VLU-Net)
+│   ├── cfim.py                    # Cross-Frame Interaction Module (LLVE-STCD inspired)
+│   ├── vjepa_predictor_v8.py      # v8 Predictor with K=3 rollout + action token
+│   ├── vjepa_llve_v6/v6d/v6e/v7/v8.py  # End-to-end models per version
+├── losses/
+│   ├── v6.py / v6d.py / v7.py / v8.py  # Per-version loss bundles
+├── train_v6/v6d/v6e/v7/v8.py      # Per-version training loops
+├── tools/
+│   ├── smoke_v6/v6d/v6e/v7/v8.py  # Smoke tests
+│   ├── eval_visual.py             # Inference + side-by-side mp4 (H.264) generation
+├── configs/
+│   ├── train_v6/v6d/v6e/v7/v8.yaml
+└── data/                          # SDSD dataset loaders
+
+/cache/zihaohe/checkpoint/runs/    # All training output
+├── v6/ (best 25.32 sliding @ 23000)
+├── v6d/ (best 23.71 sliding @ 18000, EMA capped at 23.71)
+├── v6e/ (best 25.32 baseline + EMA 25.40 @ 4500)
+├── v7/ (best 23.93 sliding @ 4000)
+├── v8/ (in progress, best 22.81 @ 3500)
+```
+
+### Visualizations
+`/home/ma-user/workspace/zihaohe/visualizations/v7_best/` (symlink to /cache):
+- 14 sequences × {compare.mp4, pred.mp4, frame00.png}
+- summary.md with per-sequence PSNR/SSIM
+- All mp4 are H.264 yuv420p (browser-compatible)
+- **Notable**: v7 outputs show **temporal flickering** in motion areas, consistent with our "no Retinex temporal loss" theory
+
+### Hardware
+- Single A100 80GB (host port 30138)
+- bf16 mixed precision
+- Typical training: 6-12h per attempt, 15-50 GB GPU memory
+
+### Key references
+- V-JEPA 2.1 weights: facebook/vjepa2-vitl-fpc64-256
+- LLVE-STCD: https://github.com/xiaogang00/LLVE_STCD (28.93 dB)
+- VLU-Net: https://github.com/xianggkl/VLU-Net (CVPR 2025, all-in-one IR)
+- Retinexformer: https://github.com/caiyuanhao1998/Retinexformer
+
+---
+
+## 9. Concrete Decision Points the Expert Could Help With
+
+### Most urgent (this week)
+- **Continue v8 to iter 10000 (~9h remaining)? Or stop now and start v9?**
+  - v8 trajectory suggests it will end at 22.5-23.5 dB (likely won't beat v7's 23.93)
+  - Continuing costs another 9h GPU
+  - Stopping early gives 9h to try v9.A
+
+### Strategic (this month)
+- **v9.A vs v9.B vs v9.C trade-off**: which to pursue first?
+- **Should we try synthetic data augmentation in parallel?**
+- **Should we accept ~26 dB ceiling and finalize narrative around "V-JEPA shows X tradeoff"?**
+
+### Long-term (next 3-6 months)
+- **Is V-JEPA fundamentally suitable for this task?** If not, when do we cut losses?
+- **What's the right submission target?** CVPR 2027 deadline likely Nov 2026; ICCV 2027 deadline likely Mar 2027
+
+---
+
+## 10. TL;DR for the Expert (UPDATED 2026-04-30 00:30)
+
+We've spent 4 days iterating V-JEPA-conditioned LLVE architectures.
+
+**Major update today**: v8.B+ (V-JEPA Predictor LoRA + Illumination Prompt Bank + 6-loss) **broke past v7 best (23.93) at iter 7000 with sliding 24.16, and is still climbing monotonically**. This invalidates yesterday's "PSNR ceiling at 25 dB is V-JEPA's fault" hypothesis.
+
+**Current state (2026-04-30 00:30)**:
+- v6.0 baseline (V-JEPA + DiT + small decoder): 25.32 dB
+- v7 (V-JEPA + big pixel decoder, 3-loss): 23.93 dB best, then crashed
+- **v8.B+ (V-JEPA Predictor + Prompt Bank + 6-loss): 24.16 dB sliding @ iter 7000, climbing, ETA iter 10000 ~04:30 today**
+- SOTA: LLVE-STCD 28.93, ReDDiT 29.95
+
+**New insight**: the bottleneck is NOT V-JEPA's representation. It's **multi-loss optimization stability on small dataset**. v7 with 3 losses crashes; v8 with 6 losses stays stable and exceeds v7. This means **adding more constraints (R̂/L̂ temporal consistency, optical flow) should let us climb further**, not less.
+
+**Next planned step (v9.A)**: take v8 architecture (proven to work) and add LLVE-STCD-style R̂ cross-frame L1 + L̂ temporal smoothness. Predicted ceiling: 25-27 dB.
+
+**Main questions for expert**:
+- Given v8 is now actively climbing past v7 at iter 7000 with no plateau in sight, **should we push v8 to full 20000 iter** (additional 22h) to see true ceiling, **or stop at iter 10000** and pivot to v9 with STCD temporal loss?
+- Is there literature evidence that **multi-loss optimization with auxiliary supervision (counterfactual + monotonicity)** consistently outperforms single-loss in restoration? (We see this empirically; want to confirm theoretical basis for paper writing.)
+- For temporal consistency in v9: STCD-style R̂/L̂ supervision OR optical flow warping — **which has higher PSNR impact in literature**?
+- **Should we make CVPR submission narrative around "multi-loss multi-component V-JEPA-grounded LLVE"** rather than the original "V-JEPA Predictor counterfactual rollout"? The empirical winner so far is the multi-loss aspect, not specifically the K=3 rollout.
+
+---
+
+## 11. UPDATE 2026-05-02 — see VJEPA_LLVE_FINDINGS_2026-05-02.md
+
+Sections 1–10 above reflect state as of 2026-04-30. Significant findings since then.
+**For current experimental status, design-decision lock-ins, and next-step recommendations,
+see `VJEPA_LLVE_FINDINGS_2026-05-02.md` in this directory.**
+
+### Quick-reference: what changed since 2026-04-30
+
+| Topic | 2026-04-30 view | 2026-05-02 view |
+|---|---|---|
+| v9 architecture story | v9.0 = clean Retinex baseline, then RAFT + V-JEPA temporal heads | v9.0 baseline kept; RAFT and V-JEPA-affinity branches both **closed** as negatives |
+| 25 dB ceiling cause | "V-JEPA representation may be cause" | partly metric/protocol artifact (RGB-256 vs RGB-full-frame); also data + decoder limits |
+| V-JEPA's role | "central architectural piece, paper centerpiece" | confirmed **load-bearing as dense conditioning** (+~4 dB), but **NOT a usable supervision target** |
+| Motion hypothesis | "V-JEPA's pretraining is motion-rich, motion-rich data should help" | no motion-specific V-JEPA benefit detected on current SDSD/static_np under GT frame-difference proxy (caveat: n=14, possibly different on motion-rich datasets) |
+| Project narrative | "V-JEPA-grounded LLVE" (overstated) | "V-JEPA dense feature conditioning for LLVE" (honest) |
+
+### Five settled statements (locked 2026-05-02)
+
+1. V-JEPA dense cross-attention is **load-bearing** (~+4 dB vs noJEPA ablation).
+2. V-JEPA token affinity supervision is **rejected** (V-JEPA too low-light-invariant).
+3. RAFT/image-space warp supervision is **rejected** on SDSD (warp interpolation noise > frame-pair difference).
+4. V-JEPA's measured contribution is **motion-neutral** on current SDSD/static_np (uniform ~3-4.5 dB lift across motion buckets).
+5. Next high-value work is **NOT** another V-JEPA-side temporal loss/head; the lever is data scale (BVI-RLV) or decoder/photometric improvement.
+
+### Locked next-step plan (per review thread AU7)
+
+1. **DONE 2026-05-02**: write `VJEPA_LLVE_FINDINGS_2026-05-02.md`
+2. **DONE 2026-05-02**: this PROGRESS.md pointer
+3. **NEXT**: AR2.A — attempt LLVE-STCD external comparison on our 14 indoor seqs (bounded effort, stop if engineering blocks)
+4. **DEFERRED**: v9.3-bigdata (BVI-RLV scale-up); only if AR2.A motivates it
+5. **BLOCKED**: v9.3-temporal-adapter, V-JEPA affinity loss, RAFT warp family, RAW/event pivot
+
+### Available checkpoints (as of 2026-05-02)
+
+```text
+v9.0_best:           runs/v9/ckpts/best.pt          25.07 RGB-256 sliding(3); 23.49 RGB-full-frame tiled
+v9.0b_mix_best:      runs/v9_0b/ckpts/best.pt       Y-512 27.21 sliding(3) (CAVEAT: Y-512 metric; RGB-full ~23.37)
+v9.1a_best:          runs/v9_1/ckpts/best.pt        23.79 RGB-256 sliding (NEGATIVE control)
+v9.0-noJEPA_best:    runs/v9_noJEPA/ckpts/best.pt   19.22 RGB-256 sliding(1); 19.66 RGB-full tiled indoor (LOAD-BEARING ablation, ~3.8 dB gap vs v9.0)
+```
+
+For full details, see VJEPA_LLVE_FINDINGS_2026-05-02.md and VJEPA_LLVE_CODE_REVIEW.md.

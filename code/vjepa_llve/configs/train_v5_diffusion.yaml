@@ -1,0 +1,57 @@
+_base_: base_21.yaml
+
+# v5 main training: V-JEPA-conditioned latent flow matching on SDSD.
+# Architecture:
+#   - SD VAE-ft-mse (frozen, 84M): pixels (256x256) ↔ 4-ch 32x32 latent
+#   - V-JEPA 2.1 ViT-L (frozen, 304M): video → 4-layer features
+#   - V-JEPA 2.1 Predictor body + LoRA (~5M trainable): counterfactual refiner
+#   - DiT velocity field (~800M trainable): operates in latent space
+# Training: rectified flow z_LQ → z_HQ; predict velocity v(z_t, t, c)
+
+output_dir: /cache/zihaohe/checkpoint/runs/v5_diffusion
+
+train:
+  batch_size: 8
+  clip_len: 16
+  crop_size: 256
+  log_every: 50
+  val_every: 1000
+  save_every: 2000
+  keep_n_step_ckpts: 2
+
+optim:
+  lr: 1.0e-4
+  min_lr: 1.0e-5
+  weight_decay: 1.0e-4
+  betas: [0.9, 0.99]
+  total_iters: 30000
+  warmup_iters: 500
+  scheduler: cosine
+  grad_clip: 1.0
+  accum_steps: 1
+  resume_from: null
+
+data:
+  train:
+    datasets:
+      - kind: sdsd
+        root: /home/ma-user/workspace/zihaohe/datasets/SDSD_indoor
+        subset: direct
+        split: train
+        weight: 1.0
+      - kind: sdsd
+        root: /home/ma-user/workspace/zihaohe/datasets/SDSD_outdoor
+        subset: direct
+        split: train
+        weight: 1.0
+  val:
+    kind: sdsd
+    root: /home/ma-user/workspace/zihaohe/datasets/SDSD_indoor
+    subset: direct
+    split: test
+
+loss:
+  flow_weight: 1.0
+  counterfactual_weight: 0.1
+  lpips_weight: 0.0
+  temporal_weight: 0.0

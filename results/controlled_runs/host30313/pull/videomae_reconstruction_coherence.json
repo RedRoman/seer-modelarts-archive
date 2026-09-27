@@ -1,0 +1,565 @@
+{
+  "meta": {
+    "test": "VideoMAE future-tubelet masked reconstruction coherence (analog to V-JEPA's future-tubelet feature-prediction coherence test)",
+    "IMPORTANT_CAVEAT": "This is NOT numerically comparable to V-JEPA's predictor-vs-naive cosine scores in vjepa2_base_predictive_coherence.json. V-JEPA's predictor operates in LEARNED FEATURE space (predicting the encoder's own 1024-d representation of the target tubelet). VideoMAE's decoder operates in NORMALIZED PIXEL-PATCH space (predicting per-patch mean/var-normalized RGB values, its native MSE pretraining target). The two 'predictor_score' numbers below are on different scales measuring different things and must not be reported as a single unified predictive-coherence ranking. This test is reported as a separate, video-native reconstruction- coherence result, addressing the reviewer's point that a genuine video-native self-supervised objective exists for VideoMAE even though it is not the same objective as V-JEPA's.",
+    "sequences": [
+      "pair50",
+      "pair52",
+      "pair58",
+      "pair5_2",
+      "pair6",
+      "pair60",
+      "pair68",
+      "pair6_2",
+      "pair7",
+      "pair70",
+      "pair7_2",
+      "pair8",
+      "pair8_2",
+      "pair9",
+      "pair9_2"
+    ],
+    "n_pairs": 15,
+    "crop": 512,
+    "clip_len": 16,
+    "img_size": 224,
+    "tubelet_size": 2,
+    "patch_size": 16,
+    "token_grid_Tp_Hp_Wp": [
+      8,
+      14,
+      14
+    ],
+    "target_tubelets_0indexed": [
+      4,
+      5,
+      6,
+      7
+    ],
+    "context_tubelets_0indexed": [
+      0,
+      1,
+      2,
+      3
+    ],
+    "masking_scheme": "entire future tubelets (all spatial patches at t in target_tubelets) masked; all earlier tubelets fully visible as context. Uses VideoMAEForPreTraining's own decoder + mask_token + position_embeddings.",
+    "predictor_metric": "mean per-patch cosine(decoder_logit, true_normalized_pixel_patch) over masked future-tubelet tokens",
+    "naive_metric": "mean per-patch cosine(true_normalized_patch[t-1], true_normalized_patch[t]) -- copy-last-visible-tubelet baseline, same normalized-pixel space"
+  },
+  "per_seq": {
+    "pair50": {
+      "LQ_predictor_score": 0.2953433245420456,
+      "LQ_naive_score": 0.40819425135850906,
+      "HQ_predictor_score": 0.46871257573366165,
+      "HQ_naive_score": 0.7084711790084839,
+      "LQ_per_target_tubelet_predictor": {
+        "4": 0.3361836075782776,
+        "5": 0.2960817813873291,
+        "6": 0.2654445767402649,
+        "7": 0.2836633324623108
+      },
+      "LQ_per_target_tubelet_naive": {
+        "4": 0.40827056765556335,
+        "5": 0.4075896441936493,
+        "6": 0.4079495668411255,
+        "7": 0.4089672267436981
+      },
+      "HQ_per_target_tubelet_predictor": {
+        "4": 0.5050191283226013,
+        "5": 0.4604915976524353,
+        "6": 0.44485974311828613,
+        "7": 0.46447983384132385
+      },
+      "HQ_per_target_tubelet_naive": {
+        "4": 0.7184654474258423,
+        "5": 0.6991013288497925,
+        "6": 0.7150887846946716,
+        "7": 0.7012291550636292
+      }
+    },
+    "pair52": {
+      "LQ_predictor_score": 0.42350421100854874,
+      "LQ_naive_score": 0.5972673743963242,
+      "HQ_predictor_score": 0.5192148759961128,
+      "HQ_naive_score": 0.7525020092725754,
+      "LQ_per_target_tubelet_predictor": {
+        "4": 0.4846746325492859,
+        "5": 0.4313622713088989,
+        "6": 0.4073045551776886,
+        "7": 0.37067538499832153
+      },
+      "LQ_per_target_tubelet_naive": {
+        "4": 0.5938584208488464,
+        "5": 0.6000099778175354,
+        "6": 0.605511486530304,
+        "7": 0.5896896123886108
+      },
+      "HQ_per_target_tubelet_predictor": {
+        "4": 0.5541539192199707,
+        "5": 0.5263544321060181,
+        "6": 0.5232195258140564,
+        "7": 0.47313162684440613
+      },
+      "HQ_per_target_tubelet_naive": {
+        "4": 0.7502948641777039,
+        "5": 0.7564564943313599,
+        "6": 0.76031094789505,
+        "7": 0.7429457306861877
+      }
+    },
+    "pair58": {
+      "LQ_predictor_score": 0.46750403195619583,
+      "LQ_naive_score": 0.4704506993293762,
+      "HQ_predictor_score": 0.6560739427804947,
+      "HQ_naive_score": 0.6926668137311935,
+      "LQ_per_target_tubelet_predictor": {
+        "4": 0.5165832042694092,
+        "5": 0.5032072067260742,
+        "6": 0.46121519804000854,
+        "7": 0.3890105187892914
+      },
+      "LQ_per_target_tubelet_naive": {
+        "4": 0.4804551303386688,
+        "5": 0.4795088469982147,
+        "6": 0.4655153155326843,
+        "7": 0.456323504447937
+      },
+      "HQ_per_target_tubelet_predictor": {
+        "4": 0.7520150542259216,
+        "5": 0.7348374128341675,
+        "6": 0.617106020450592,
+        "7": 0.5203372836112976
+      },
+      "HQ_per_target_tubelet_naive": {
+        "4": 0.6966702342033386,
+        "5": 0.7026858925819397,
+        "6": 0.6918297410011292,
+        "7": 0.6794813871383667
+      }
+    },
+    "pair5_2": {
+      "LQ_predictor_score": 0.5498908162117004,
+      "LQ_naive_score": 0.7825518995523453,
+      "HQ_predictor_score": 0.6539321094751358,
+      "HQ_naive_score": 0.9583192318677902,
+      "LQ_per_target_tubelet_predictor": {
+        "4": 0.6402069926261902,
+        "5": 0.5870424509048462,
+        "6": 0.5074282884597778,
+        "7": 0.46488553285598755
+      },
+      "LQ_per_target_tubelet_naive": {
+        "4": 0.7836456894874573,
+        "5": 0.7755143642425537,
+        "6": 0.7869036793708801,
+        "7": 0.78414386510849
+      },
+      "HQ_per_target_tubelet_predictor": {
+        "4": 0.7482655644416809,
+        "5": 0.704391360282898,
+        "6": 0.6082388162612915,
+        "7": 0.5548326969146729
+      },
+      "HQ_per_target_tubelet_naive": {
+        "4": 0.9600532650947571,
+        "5": 0.9597896337509155,
+        "6": 0.9570318460464478,
+        "7": 0.9564021825790405
+      }
+    },
+    "pair6": {
+      "LQ_predictor_score": 0.26004890352487564,
+      "LQ_naive_score": 0.5262278765439987,
+      "HQ_predictor_score": 0.48915570229291916,
+      "HQ_naive_score": 0.8853034228086472,
+      "LQ_per_target_tubelet_predictor": {
+        "4": 0.31513455510139465,
+        "5": 0.2326126992702484,
+        "6": 0.2357337474822998,
+        "7": 0.2567146122455597
+      },
+      "LQ_per_target_tubelet_naive": {
+        "4": 0.5116667151451111,
+        "5": 0.5283282399177551,
+        "6": 0.5297836065292358,
+        "7": 0.5351329445838928
+      },
+      "HQ_per_target_tubelet_predictor": {
+        "4": 0.5560197234153748,
+        "5": 0.4794524610042572,
+        "6": 0.46310922503471375,
+        "7": 0.45804139971733093
+      },
+      "HQ_per_target_tubelet_naive": {
+        "4": 0.8747539520263672,
+        "5": 0.8879914283752441,
+        "6": 0.8885840177536011,
+        "7": 0.8898842930793762
+      }
+    },
+    "pair60": {
+      "LQ_predictor_score": 0.2562963180243969,
+      "LQ_naive_score": 0.5410932004451752,
+      "HQ_predictor_score": 0.38935139775276184,
+      "HQ_naive_score": 0.8264824450016022,
+      "LQ_per_target_tubelet_predictor": {
+        "4": 0.3172086775302887,
+        "5": 0.23706556856632233,
+        "6": 0.23000182211399078,
+        "7": 0.24090920388698578
+      },
+      "LQ_per_target_tubelet_naive": {
+        "4": 0.5221623778343201,
+        "5": 0.5371302962303162,
+        "6": 0.5465235710144043,
+        "7": 0.5585565567016602
+      },
+      "HQ_per_target_tubelet_predictor": {
+        "4": 0.4592925012111664,
+        "5": 0.3741289973258972,
+        "6": 0.35570934414863586,
+        "7": 0.3682747483253479
+      },
+      "HQ_per_target_tubelet_naive": {
+        "4": 0.8132368326187134,
+        "5": 0.8308734893798828,
+        "6": 0.8220110535621643,
+        "7": 0.8398084044456482
+      }
+    },
+    "pair68": {
+      "LQ_predictor_score": 0.17260632291436195,
+      "LQ_naive_score": 0.2610647603869438,
+      "HQ_predictor_score": 0.23172808438539505,
+      "HQ_naive_score": 0.3376814275979996,
+      "LQ_per_target_tubelet_predictor": {
+        "4": 0.3680955469608307,
+        "5": 0.15760469436645508,
+        "6": 0.09825729578733444,
+        "7": 0.0664677545428276
+      },
+      "LQ_per_target_tubelet_naive": {
+        "4": 0.294994056224823,
+        "5": 0.1883220672607422,
+        "6": 0.27909576892852783,
+        "7": 0.28184714913368225
+      },
+      "HQ_per_target_tubelet_predictor": {
+        "4": 0.40922558307647705,
+        "5": 0.2013760805130005,
+        "6": 0.17602556943893433,
+        "7": 0.14028510451316833
+      },
+      "HQ_per_target_tubelet_naive": {
+        "4": 0.373516321182251,
+        "5": 0.2502167820930481,
+        "6": 0.3777678310871124,
+        "7": 0.3492247760295868
+      }
+    },
+    "pair6_2": {
+      "LQ_predictor_score": 0.5288666486740112,
+      "LQ_naive_score": 0.6961053907871246,
+      "HQ_predictor_score": 0.6561281681060791,
+      "HQ_naive_score": 0.8938860148191452,
+      "LQ_per_target_tubelet_predictor": {
+        "4": 0.6112103462219238,
+        "5": 0.5247318148612976,
+        "6": 0.5048486590385437,
+        "7": 0.4746757745742798
+      },
+      "LQ_per_target_tubelet_naive": {
+        "4": 0.7011852264404297,
+        "5": 0.7029819488525391,
+        "6": 0.7042168378829956,
+        "7": 0.6760375499725342
+      },
+      "HQ_per_target_tubelet_predictor": {
+        "4": 0.7355225086212158,
+        "5": 0.6772764325141907,
+        "6": 0.6315394043922424,
+        "7": 0.5801743268966675
+      },
+      "HQ_per_target_tubelet_naive": {
+        "4": 0.8876033425331116,
+        "5": 0.8889597654342651,
+        "6": 0.9034231901168823,
+        "7": 0.8955577611923218
+      }
+    },
+    "pair7": {
+      "LQ_predictor_score": 0.5451699867844582,
+      "LQ_naive_score": 0.8692981153726578,
+      "HQ_predictor_score": 0.6518848836421967,
+      "HQ_naive_score": 0.9541049003601074,
+      "LQ_per_target_tubelet_predictor": {
+        "4": 0.6250305771827698,
+        "5": 0.5628775358200073,
+        "6": 0.5063126683235168,
+        "7": 0.4864591658115387
+      },
+      "LQ_per_target_tubelet_naive": {
+        "4": 0.8685059547424316,
+        "5": 0.8667516708374023,
+        "6": 0.8714160919189453,
+        "7": 0.8705187439918518
+      },
+      "HQ_per_target_tubelet_predictor": {
+        "4": 0.7335711121559143,
+        "5": 0.685390055179596,
+        "6": 0.6124778389930725,
+        "7": 0.5761005282402039
+      },
+      "HQ_per_target_tubelet_naive": {
+        "4": 0.9511632919311523,
+        "5": 0.9517157077789307,
+        "6": 0.9607299566268921,
+        "7": 0.9528106451034546
+      }
+    },
+    "pair70": {
+      "LQ_predictor_score": 0.2770462930202484,
+      "LQ_naive_score": 0.45907459408044815,
+      "HQ_predictor_score": 0.30161888152360916,
+      "HQ_naive_score": 0.5318978726863861,
+      "LQ_per_target_tubelet_predictor": {
+        "4": 0.502758264541626,
+        "5": 0.28874772787094116,
+        "6": 0.18719933927059174,
+        "7": 0.12947984039783478
+      },
+      "LQ_per_target_tubelet_naive": {
+        "4": 0.444562703371048,
+        "5": 0.48709189891815186,
+        "6": 0.44311079382896423,
+        "7": 0.46153298020362854
+      },
+      "HQ_per_target_tubelet_predictor": {
+        "4": 0.5372374057769775,
+        "5": 0.3044094443321228,
+        "6": 0.1997663527727127,
+        "7": 0.1650623232126236
+      },
+      "HQ_per_target_tubelet_naive": {
+        "4": 0.5125406384468079,
+        "5": 0.5638894438743591,
+        "6": 0.5182759761810303,
+        "7": 0.5328854322433472
+      }
+    },
+    "pair7_2": {
+      "LQ_predictor_score": 0.4019685462117195,
+      "LQ_naive_score": 0.45685867220163345,
+      "HQ_predictor_score": 0.6752355992794037,
+      "HQ_naive_score": 0.7768426686525345,
+      "LQ_per_target_tubelet_predictor": {
+        "4": 0.42158252000808716,
+        "5": 0.37495264410972595,
+        "6": 0.404338002204895,
+        "7": 0.4070010185241699
+      },
+      "LQ_per_target_tubelet_naive": {
+        "4": 0.45650309324264526,
+        "5": 0.45431002974510193,
+        "6": 0.46128061413764954,
+        "7": 0.4553409516811371
+      },
+      "HQ_per_target_tubelet_predictor": {
+        "4": 0.7182702422142029,
+        "5": 0.6650072932243347,
+        "6": 0.6665027737617493,
+        "7": 0.6511620879173279
+      },
+      "HQ_per_target_tubelet_naive": {
+        "4": 0.7714052796363831,
+        "5": 0.7714663743972778,
+        "6": 0.7851307988166809,
+        "7": 0.7793682217597961
+      }
+    },
+    "pair8": {
+      "LQ_predictor_score": 0.4634789004921913,
+      "LQ_naive_score": 0.3562946245074272,
+      "HQ_predictor_score": 0.671905443072319,
+      "HQ_naive_score": 0.701007604598999,
+      "LQ_per_target_tubelet_predictor": {
+        "4": 0.4847526550292969,
+        "5": 0.4584186375141144,
+        "6": 0.4565880298614502,
+        "7": 0.4541562795639038
+      },
+      "LQ_per_target_tubelet_naive": {
+        "4": 0.3597617447376251,
+        "5": 0.35380733013153076,
+        "6": 0.359878271818161,
+        "7": 0.35173115134239197
+      },
+      "HQ_per_target_tubelet_predictor": {
+        "4": 0.694811224937439,
+        "5": 0.6734274625778198,
+        "6": 0.6640534400939941,
+        "7": 0.6553296446800232
+      },
+      "HQ_per_target_tubelet_naive": {
+        "4": 0.7067528963088989,
+        "5": 0.6946114301681519,
+        "6": 0.7059970498085022,
+        "7": 0.6966690421104431
+      }
+    },
+    "pair8_2": {
+      "LQ_predictor_score": 0.51832115650177,
+      "LQ_naive_score": 0.5641733556985855,
+      "HQ_predictor_score": 0.6133404970169067,
+      "HQ_naive_score": 0.7586112469434738,
+      "LQ_per_target_tubelet_predictor": {
+        "4": 0.5505635738372803,
+        "5": 0.529420793056488,
+        "6": 0.5105768442153931,
+        "7": 0.4827234148979187
+      },
+      "LQ_per_target_tubelet_naive": {
+        "4": 0.5645500421524048,
+        "5": 0.5696026682853699,
+        "6": 0.5679954290390015,
+        "7": 0.5545452833175659
+      },
+      "HQ_per_target_tubelet_predictor": {
+        "4": 0.6529666781425476,
+        "5": 0.617363452911377,
+        "6": 0.5960432291030884,
+        "7": 0.586988627910614
+      },
+      "HQ_per_target_tubelet_naive": {
+        "4": 0.8114045262336731,
+        "5": 0.7575222849845886,
+        "6": 0.711011528968811,
+        "7": 0.7545066475868225
+      }
+    },
+    "pair9": {
+      "LQ_predictor_score": 0.41416165977716446,
+      "LQ_naive_score": 0.5422440469264984,
+      "HQ_predictor_score": 0.6389600038528442,
+      "HQ_naive_score": 0.8311319053173065,
+      "LQ_per_target_tubelet_predictor": {
+        "4": 0.46405690908432007,
+        "5": 0.40360507369041443,
+        "6": 0.3969117999076843,
+        "7": 0.392072856426239
+      },
+      "LQ_per_target_tubelet_naive": {
+        "4": 0.5445502400398254,
+        "5": 0.5342257022857666,
+        "6": 0.5496946573257446,
+        "7": 0.540505588054657
+      },
+      "HQ_per_target_tubelet_predictor": {
+        "4": 0.698754072189331,
+        "5": 0.6323303580284119,
+        "6": 0.6182145476341248,
+        "7": 0.6065410375595093
+      },
+      "HQ_per_target_tubelet_naive": {
+        "4": 0.8315314054489136,
+        "5": 0.8264440894126892,
+        "6": 0.8346377611160278,
+        "7": 0.8319143652915955
+      }
+    },
+    "pair9_2": {
+      "LQ_predictor_score": 0.5130181089043617,
+      "LQ_naive_score": 0.8349333852529526,
+      "HQ_predictor_score": 0.6026620119810104,
+      "HQ_naive_score": 0.9465653747320175,
+      "LQ_per_target_tubelet_predictor": {
+        "4": 0.5865229964256287,
+        "5": 0.539847731590271,
+        "6": 0.4772251546382904,
+        "7": 0.44847655296325684
+      },
+      "LQ_per_target_tubelet_naive": {
+        "4": 0.8436002731323242,
+        "5": 0.8382070660591125,
+        "6": 0.8319638967514038,
+        "7": 0.8259623050689697
+      },
+      "HQ_per_target_tubelet_predictor": {
+        "4": 0.6611537933349609,
+        "5": 0.6239339113235474,
+        "6": 0.5827667117118835,
+        "7": 0.5427936315536499
+      },
+      "HQ_per_target_tubelet_naive": {
+        "4": 0.9477875232696533,
+        "5": 0.9496481418609619,
+        "6": 0.9451746940612793,
+        "7": 0.9436511397361755
+      }
+    }
+  },
+  "summary": {
+    "LQ_predictor": {
+      "label": "VideoMAE reconstruction cosine, future tubelets, LQ input",
+      "mean": 0.4058150152365367,
+      "std": 0.12356975606651754,
+      "ci95_lo": 0.34274755193541445,
+      "ci95_hi": 0.46449792635316645,
+      "n": 15
+    },
+    "LQ_naive": {
+      "label": "Naive copy-last-tubelet baseline, LQ input",
+      "mean": 0.5577221497893333,
+      "std": 0.17427313319365215,
+      "ci95_lo": 0.47372655328363183,
+      "ci95_hi": 0.6452446871375044,
+      "n": 15
+    },
+    "HQ_predictor": {
+      "label": "VideoMAE reconstruction cosine, future tubelets, HQ (GT) input",
+      "mean": 0.5479936117927233,
+      "std": 0.14366044852354368,
+      "ci95_lo": 0.4724822579945127,
+      "ci95_hi": 0.6144910487780968,
+      "n": 15
+    },
+    "HQ_naive": {
+      "label": "Naive copy-last-tubelet baseline, HQ (GT) input",
+      "mean": 0.7703649411598842,
+      "std": 0.1679079097879096,
+      "ci95_lo": 0.6816276555756728,
+      "ci95_hi": 0.8468456927438577,
+      "n": 15
+    },
+    "LQ_predictor_vs_naive": {
+      "wilcoxon_p_greater": 0.999786376953125,
+      "wilcoxon_stat": 5.0,
+      "wilcoxon_error": null,
+      "cohens_d_paired": -1.230055941968604,
+      "delta_mean_predictor_minus_naive": -0.15190713455279667,
+      "delta_ci95_lo": -0.20939795859778923,
+      "delta_ci95_hi": -0.09044930541887881
+    },
+    "HQ_predictor_vs_naive": {
+      "wilcoxon_p_greater": 1.0,
+      "wilcoxon_stat": 0.0,
+      "wilcoxon_error": null,
+      "cohens_d_paired": -1.8080360370386277,
+      "delta_mean_predictor_minus_naive": -0.2223713293671608,
+      "delta_ci95_lo": -0.2808296133950353,
+      "delta_ci95_hi": -0.16266445440550648
+    },
+    "HQ_predictor_vs_LQ_predictor": {
+      "note": "Tests whether VideoMAE's own future-tubelet reconstruction is more coherent (higher cosine to true normalized pixel patches) on clean GT clips than on real low-light LQ clips. H1: HQ > LQ.",
+      "wilcoxon_p_hq_greater": 3.0517578125e-05,
+      "wilcoxon_stat": 120.0,
+      "wilcoxon_error": null,
+      "cohens_d_paired_hq_minus_lq": 2.01112312063451,
+      "delta_mean_hq_minus_lq": 0.14217859655618667,
+      "delta_ci95_lo": 0.108078936530898,
+      "delta_ci95_hi": 0.1773595078475773,
+      "n_sequences_hq_greater": 15,
+      "n_sequences_total": 15
+    }
+  }
+}

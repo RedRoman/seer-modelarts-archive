@@ -1,0 +1,282 @@
+{
+  "method": "Retinexformer_SeerProtocol",
+  "notes": "Retinexformer retrained on SDSD-indoor+outdoor union under Seer protocol; ckpt=/temp/zihaohe/cache/checkpoint/runs/retinexformer_seer_protocol/experiments/RetinexFormer_SDSD_union_seer_protocol/models/net_g_24000.pth",
+  "protocol": "video: center T=16, 512x512 center-crop; images: full-image. PSNR uint8 RGB, LPIPS+DISTS+CLIPIQA pyiqa.",
+  "per_seq": {
+    "SDSD_indoor__pair13": {
+      "psnr_rgb": 26.642901194625168,
+      "lpips": 0.38188157603144646,
+      "dists": 0.2845924124121666,
+      "clipiqa": 0.18635651096701622,
+      "n_frames": 16
+    },
+    "SDSD_indoor__pair15": {
+      "psnr_rgb": 23.802739657128473,
+      "lpips": 0.2168424567207694,
+      "dists": 0.15731436014175415,
+      "clipiqa": 0.35256514698266983,
+      "n_frames": 16
+    },
+    "SDSD_indoor__pair21": {
+      "psnr_rgb": 30.535301722031893,
+      "lpips": 0.16583460848778486,
+      "dists": 0.13735570386052132,
+      "clipiqa": 0.24878130480647087,
+      "n_frames": 16
+    },
+    "SDSD_indoor__pair23": {
+      "psnr_rgb": 21.662651251350546,
+      "lpips": 0.3148972671478987,
+      "dists": 0.23010572791099548,
+      "clipiqa": 0.360394187271595,
+      "n_frames": 16
+    },
+    "SDSD_indoor__pair31": {
+      "psnr_rgb": 21.903927018664852,
+      "lpips": 0.17936872877180576,
+      "dists": 0.2872227616608143,
+      "clipiqa": 0.3241325356066227,
+      "n_frames": 16
+    },
+    "SDSD_indoor__pair33": {
+      "psnr_rgb": 25.893248834072683,
+      "lpips": 0.37863919883966446,
+      "dists": 0.3525686115026474,
+      "clipiqa": 0.2805689852684736,
+      "n_frames": 16
+    },
+    "SDSD_indoor__pair50": {
+      "psnr_rgb": 23.56333066132072,
+      "lpips": 0.34216273576021194,
+      "dists": 0.17201672494411469,
+      "clipiqa": 0.27730568777769804,
+      "n_frames": 16
+    },
+    "SDSD_indoor__pair52": {
+      "psnr_rgb": 15.716820688095225,
+      "lpips": 0.36963949352502823,
+      "dists": 0.21180586516857147,
+      "clipiqa": 0.14096761448308825,
+      "n_frames": 16
+    },
+    "SDSD_indoor__pair58": {
+      "psnr_rgb": 15.39626874727023,
+      "lpips": 0.460848405957222,
+      "dists": 0.21985330432653427,
+      "clipiqa": 0.15281945653259754,
+      "n_frames": 16
+    },
+    "SDSD_indoor__pair60": {
+      "psnr_rgb": 18.500558538041204,
+      "lpips": 0.47789473086595535,
+      "dists": 0.21467497944831848,
+      "clipiqa": 0.1430611778050661,
+      "n_frames": 16
+    },
+    "SDSD_indoor__pair68": {
+      "psnr_rgb": 8.010081572757162,
+      "lpips": 0.6062599420547485,
+      "dists": 0.271971195936203,
+      "clipiqa": 0.245751129463315,
+      "n_frames": 16
+    },
+    "SDSD_indoor__pair70": {
+      "psnr_rgb": 18.35612461035202,
+      "lpips": 0.252445787191391,
+      "dists": 0.14870838075876236,
+      "clipiqa": 0.13317458145320415,
+      "n_frames": 16
+    },
+    "SDSD_outdoor__MVI_1007_2": {
+      "psnr_rgb": 17.989121685171497,
+      "lpips": 0.378111369907856,
+      "dists": 0.20686103776097298,
+      "clipiqa": 0.22442737873643637,
+      "n_frames": 16
+    },
+    "SDSD_outdoor__MVI_1009": {
+      "psnr_rgb": 21.590167800900744,
+      "lpips": 0.2503520753234625,
+      "dists": 0.1519831158220768,
+      "clipiqa": 0.17311255540698767,
+      "n_frames": 16
+    },
+    "SDSD_outdoor__MVI_1009_2": {
+      "psnr_rgb": 19.154165464997646,
+      "lpips": 0.25077388156205416,
+      "dists": 0.147921871393919,
+      "clipiqa": 0.3048845622688532,
+      "n_frames": 16
+    },
+    "SDSD_outdoor__MVI_1011": {
+      "psnr_rgb": 19.994991463261435,
+      "lpips": 0.21870736218988895,
+      "dists": 0.1268274337053299,
+      "clipiqa": 0.18250594194978476,
+      "n_frames": 16
+    },
+    "SDSD_outdoor__MVI_1011_2": {
+      "psnr_rgb": 19.43336636756189,
+      "lpips": 0.23225551843643188,
+      "dists": 0.12267190590500832,
+      "clipiqa": 0.20117263309657574,
+      "n_frames": 16
+    },
+    "SDSD_outdoor__MVI_1013": {
+      "psnr_rgb": 27.070184875173098,
+      "lpips": 0.17182437982410192,
+      "dists": 0.12044591829180717,
+      "clipiqa": 0.20129412971436977,
+      "n_frames": 16
+    },
+    "SDSD_outdoor__MVI_1013_2": {
+      "psnr_rgb": 22.168071253110334,
+      "lpips": 0.22095946036279202,
+      "dists": 0.11609616875648499,
+      "clipiqa": 0.17692389152944088,
+      "n_frames": 16
+    },
+    "SDSD_outdoor__MVI_1015": {
+      "psnr_rgb": 27.40183899954191,
+      "lpips": 0.1761014610528946,
+      "dists": 0.0897703766822815,
+      "clipiqa": 0.20253752823919058,
+      "n_frames": 16
+    },
+    "SDSD_outdoor__MVI_1015_2": {
+      "psnr_rgb": 22.769479436560054,
+      "lpips": 0.229421716183424,
+      "dists": 0.10898063331842422,
+      "clipiqa": 0.2075688522309065,
+      "n_frames": 16
+    },
+    "SDSD_outdoor__MVI_1017": {
+      "psnr_rgb": 26.52609572269151,
+      "lpips": 0.18430927116423845,
+      "dists": 0.10730068013072014,
+      "clipiqa": 0.20536542125046253,
+      "n_frames": 16
+    },
+    "SDSD_outdoor__MVI_1017_2": {
+      "psnr_rgb": 17.60320846553428,
+      "lpips": 0.22555623017251492,
+      "dists": 0.12728097662329674,
+      "clipiqa": 0.22280863393098116,
+      "n_frames": 16
+    },
+    "SDSD_outdoor__MVI_1019": {
+      "psnr_rgb": 11.804780122476725,
+      "lpips": 0.2388724498450756,
+      "dists": 0.1411290429532528,
+      "clipiqa": 0.17514662444591522,
+      "n_frames": 16
+    },
+    "SDSD_outdoor__MVI_1019_2": {
+      "psnr_rgb": 11.616147104605666,
+      "lpips": 0.31271175295114517,
+      "dists": 0.1659504733979702,
+      "clipiqa": 0.15766147803515196,
+      "n_frames": 16
+    },
+    "SDSD_outdoor__MVI_1021": {
+      "psnr_rgb": 20.51543626209574,
+      "lpips": 0.20369671285152435,
+      "dists": 0.1253117322921753,
+      "clipiqa": 0.27327021956443787,
+      "n_frames": 16
+    },
+    "SDSD_outdoor__MVI_1021_2": {
+      "psnr_rgb": 20.02326880568051,
+      "lpips": 0.25448846351355314,
+      "dists": 0.15918496996164322,
+      "clipiqa": 0.21888392511755228,
+      "n_frames": 16
+    },
+    "SDSD_outdoor__MVI_1024": {
+      "psnr_rgb": 22.118103933819572,
+      "lpips": 0.2297826660797,
+      "dists": 0.15149002149701118,
+      "clipiqa": 0.20534358639270067,
+      "n_frames": 16
+    },
+    "SDSD_outdoor__MVI_1024_2": {
+      "psnr_rgb": 22.448595703607072,
+      "lpips": 0.19433969259262085,
+      "dists": 0.1150667555630207,
+      "clipiqa": 0.15259106364101171,
+      "n_frames": 16
+    },
+    "SDSD_outdoor__MVI_1026": {
+      "psnr_rgb": 15.308622894327215,
+      "lpips": 0.289724363014102,
+      "dists": 0.16323833912611008,
+      "clipiqa": 0.176665504463017,
+      "n_frames": 16
+    },
+    "SDSD_outdoor__MVI_1026_2": {
+      "psnr_rgb": 15.28518998292062,
+      "lpips": 0.30682046338915825,
+      "dists": 0.16652808710932732,
+      "clipiqa": 0.1686093509197235,
+      "n_frames": 16
+    },
+    "SDSD_outdoor__MVI_1028": {
+      "psnr_rgb": 20.850799020057202,
+      "lpips": 0.2083562919870019,
+      "dists": 0.1281205751001835,
+      "clipiqa": 0.17105618864297867,
+      "n_frames": 16
+    },
+    "SDSD_outdoor__MVI_1028_2": {
+      "psnr_rgb": 19.273454555374922,
+      "lpips": 0.24321305751800537,
+      "dists": 0.1383892223238945,
+      "clipiqa": 0.1736336462199688,
+      "n_frames": 16
+    },
+    "SDSD_outdoor__MVI_1030": {
+      "psnr_rgb": 15.986353358257793,
+      "lpips": 0.2511753784492612,
+      "dists": 0.14928876236081123,
+      "clipiqa": 0.15582123957574368,
+      "n_frames": 16
+    },
+    "SDSD_outdoor__MVI_1030_2": {
+      "psnr_rgb": 14.039242301147835,
+      "lpips": 0.278993284329772,
+      "dists": 0.17303120717406273,
+      "clipiqa": 0.1696737613528967,
+      "n_frames": 16
+    },
+    "SDSD_outdoor__MVI_1032": {
+      "psnr_rgb": 12.193548919728723,
+      "lpips": 0.41968866623938084,
+      "dists": 0.20352686941623688,
+      "clipiqa": 0.1976415403187275,
+      "n_frames": 16
+    },
+    "SDSD_outdoor__MVI_1032_2": {
+      "psnr_rgb": 12.203651370633853,
+      "lpips": 0.4239645581692457,
+      "dists": 0.21237564086914062,
+      "clipiqa": 0.1924538230523467,
+      "n_frames": 16
+    }
+  },
+  "summary": {
+    "SDSD_indoor": {
+      "psnr_rgb": 20.831996207975852,
+      "lpips": 0.34555957761282724,
+      "dists": 0.22401583567261696,
+      "clipiqa": 0.2371565265348181,
+      "n_seqs": 12
+    },
+    "SDSD_outdoor": {
+      "psnr_rgb": 19.014715434769514,
+      "lpips": 0.25576802108436825,
+      "dists": 0.1447508727014065,
+      "clipiqa": 0.19564213920384646,
+      "n_seqs": 25
+    }
+  }
+}

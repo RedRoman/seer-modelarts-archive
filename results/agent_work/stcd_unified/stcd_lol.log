@@ -1,0 +1,8 @@
+[BACKUP] /temp/zihaohe/cache/checkpoint/runs/seer_iclr_evals/STCD_unified_eval.json -> /temp/zihaohe/cache/checkpoint/runs/seer_iclr_evals/STCD_unified_eval.bak_before_LOL.json
+[STCD] loaded /temp/zihaohe/cache/stcd_repro/LLVE_STCD/pretrained_model/SDSD_indoor_model/indoor_G.pth strict=True (50 tensors, 1.81M params)
+Loading pretrained model LPIPS from /home/ma-user/.cache/torch/hub/pyiqa/LPIPS_v0.1_alex-df73285e.pth
+Loading pretrained model DISTS from /home/ma-user/.cache/torch/hub/pyiqa/DISTS_weights-f5e65c96.pth
+== L3_LOL-v1      PSNR=17.444 LPIPS=0.3981 DISTS=0.2561 CLIPIQA=0.2170 n=15 padded=0 (11s)
+== L4_LOLv2-Syn   PSNR=15.094 LPIPS=0.4545 DISTS=0.2809 CLIPIQA=0.2388 n=100 padded=0 (10s)
+== L5_LOLv2-Real  PSNR=16.500 LPIPS=0.4594 DISTS=0.2840 CLIPIQA=0.1943 n=100 padded=0 (11s)
+[SAVE] /temp/zihaohe/cache/checkpoint/runs/seer_iclr_evals/STCD_unified_eval.json

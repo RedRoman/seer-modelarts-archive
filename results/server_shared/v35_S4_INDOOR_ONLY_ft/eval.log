@@ -1,0 +1,100 @@
+Loading HMP-Net (M3 router) from /cache/zihaohe/checkpoint/runs/v35_S4_INDOOR_ONLY_ft/best_y512.pt
+/cache/zihaohe/conda_envs/vjepa2-pip/lib/python3.11/site-packages/timm/models/layers/__init__.py:49: FutureWarning: Importing from timm.models.layers is deprecated, please import via timm.layers
+  warnings.warn(f"Importing from {__name__} is deprecated, please import via timm.layers", FutureWarning)
+[VJepaBackboneLocal21] loaded /home/ma-user/workspace/zihaohe/checkpoint/vjepa2_1_vitl_dist_vitG_384.pt | missing=0 unexpected=2
+  unexpected (first 5): ['patch_embed_img.proj.weight', 'patch_embed_img.proj.bias']
+[CounterfactualRefiner] loaded predictor from /home/ma-user/workspace/zihaohe/checkpoint/vjepa2_1_vitl_dist_vitG_384.pt | missing=0 unexpected=4
+  [dtype] backbone → bf16
+[SDSD] layout=A/C (static_np or original) subset=direct split=test -> 15 sequences, 1037 frames total.
+
+=== L0 SDSD-indoor: 15 seqs ===
+/cache/zihaohe/conda_envs/vjepa2-pip/lib/python3.11/site-packages/torch/backends/cuda/__init__.py:342: FutureWarning: torch.backends.cuda.sdp_kernel() is deprecated. In the future, this context manager will be removed. Please see, torch.nn.attention.sdpa_kernel() for the new context manager, with updated signature.
+  warnings.warn(
+Loading pretrained model LPIPS from /home/ma-user/.cache/torch/hub/pyiqa/LPIPS_v0.1_alex-df73285e.pth
+  [pair50] raw 28.01/0.113 cp 27.81/0.201 (12.5s)
+/cache/zihaohe/conda_envs/vjepa2-pip/lib/python3.11/site-packages/torch/backends/cuda/__init__.py:342: FutureWarning: torch.backends.cuda.sdp_kernel() is deprecated. In the future, this context manager will be removed. Please see, torch.nn.attention.sdpa_kernel() for the new context manager, with updated signature.
+  warnings.warn(
+  [pair52] raw 24.36/0.187 cp 24.32/0.217 (9.7s)
+  [pair58] raw 26.01/0.126 cp 28.49/0.172 (10.0s)
+  [pair5_2] raw 25.70/0.158 cp 26.08/0.162 (9.8s)
+  [pair6] raw 30.12/0.217 cp 29.79/0.272 (9.7s)
+  [pair60] raw 32.30/0.146 cp 31.88/0.217 (9.7s)
+  [pair68] raw 28.00/0.117 cp 27.42/0.234 (9.0s)
+  [pair6_2] raw 27.61/0.080 cp 27.64/0.106 (8.7s)
+  [pair7] raw 17.76/0.142 cp 17.97/0.138 (8.8s)
+  [pair70] raw 24.95/0.126 cp 24.95/0.168 (10.1s)
+  [pair7_2] raw 16.64/0.146 cp 16.78/0.282 (8.8s)
+  [pair8] raw 30.73/0.091 cp 30.09/0.186 (8.8s)
+  [pair8_2] raw 30.79/0.083 cp 30.33/0.124 (9.1s)
+  [pair9] raw 26.62/0.105 cp 28.86/0.179 (9.1s)
+  [pair9_2] raw 28.04/0.094 cp 27.57/0.100 (9.0s)
+[SDSD] layout=A/C (static_np or original) subset=direct split=test -> 25 sequences, 620 frames total.
+
+=== L1 SDSD-outdoor: 25 seqs ===
+  [MVI_1007_2] raw 24.00/0.239 cp 23.91/0.259 (8.5s)
+  [MVI_1009] raw 23.10/0.208 cp 21.01/0.252 (9.1s)
+  [MVI_1009_2] raw 19.65/0.202 cp 19.80/0.248 (9.2s)
+  [MVI_1011] raw 23.29/0.172 cp 23.25/0.202 (8.8s)
+  [MVI_1011_2] raw 21.04/0.187 cp 21.07/0.222 (10.6s)
+  [MVI_1013] raw 28.63/0.130 cp 27.55/0.177 (9.0s)
+  [MVI_1013_2] raw 21.97/0.193 cp 21.86/0.252 (8.8s)
+  [MVI_1015] raw 29.27/0.163 cp 29.71/0.176 (8.6s)
+  [MVI_1015_2] raw 18.79/0.251 cp 18.85/0.262 (9.3s)
+  [MVI_1017] raw 27.43/0.164 cp 27.55/0.177 (8.6s)
+  [MVI_1017_2] raw 23.05/0.163 cp 23.28/0.185 (8.7s)
+  [MVI_1019] raw 12.46/0.204 cp 12.45/0.234 (8.7s)
+  [MVI_1019_2] raw 12.02/0.271 cp 12.02/0.301 (9.1s)
+  [MVI_1021] raw 20.83/0.164 cp 20.26/0.179 (9.6s)
+  [MVI_1021_2] raw 20.20/0.178 cp 20.17/0.205 (8.9s)
+  [MVI_1024] raw 23.60/0.142 cp 23.47/0.185 (9.1s)
+  [MVI_1024_2] raw 23.47/0.134 cp 23.57/0.154 (8.9s)
+  [MVI_1026] raw 27.07/0.152 cp 27.08/0.187 (8.8s)
+  [MVI_1026_2] raw 19.87/0.210 cp 19.80/0.252 (9.0s)
+  [MVI_1028] raw 21.61/0.158 cp 22.22/0.180 (8.5s)
+  [MVI_1028_2] raw 19.78/0.209 cp 19.94/0.216 (9.1s)
+  [MVI_1030] raw 14.50/0.260 cp 14.48/0.262 (9.1s)
+  [MVI_1030_2] raw 12.95/0.281 cp 12.91/0.296 (9.2s)
+  [MVI_1032] raw 14.28/0.334 cp 14.26/0.360 (9.3s)
+  [MVI_1032_2] raw 15.04/0.333 cp 14.99/0.358 (8.9s)
+[BVI-RLV] test: 16 sequences (8 scenes × ≤2 fps), 6240 frames total
+
+=== L2 BVI-RLV: 16 seqs ===
+  [S33_mix5__10fps] raw 22.17/0.209 cp 22.32/0.261 (8.9s)
+  [S33_mix5__20fps] raw 12.28/0.319 cp 12.12/0.310 (9.2s)
+  [S34_mix6__10fps] raw 18.79/0.251 cp 20.80/0.157 (9.3s)
+  [S34_mix6__20fps] raw 10.11/0.371 cp 10.59/0.246 (9.1s)
+  [S35_Bunny__10fps] raw 18.95/0.294 cp 22.14/0.215 (8.8s)
+  [S35_Bunny__20fps] raw 11.55/0.337 cp 12.91/0.240 (8.7s)
+  [S36_Eeyore__10fps] raw 21.57/0.250 cp 23.38/0.219 (9.0s)
+  [S36_Eeyore__20fps] raw 12.50/0.267 cp 13.11/0.203 (9.1s)
+  [S37_Mario3__10fps] raw 20.96/0.246 cp 22.55/0.199 (11.2s)
+  [S37_Mario3__20fps] raw 10.69/0.374 cp 11.12/0.299 (9.5s)
+  [S38_Mario4__10fps] raw 21.07/0.264 cp 22.86/0.237 (10.5s)
+  [S38_Mario4__20fps] raw 10.08/0.369 cp 10.26/0.302 (9.2s)
+  [S39_Books4__10fps] raw 18.29/0.285 cp 24.83/0.193 (9.9s)
+  [S39_Books4__20fps] raw 10.81/0.417 cp 12.56/0.293 (9.8s)
+  [S40_Books5__10fps] raw 25.67/0.314 cp 25.81/0.324 (9.8s)
+  [S40_Books5__20fps] raw 16.14/0.492 cp 16.66/0.454 (10.0s)
+
+=== L3 LOL-v1: 15 files ===
+  MEAN HMP-raw psnr=16.474 lpips=0.356 n=15
+  MEAN HMP+CP  psnr=16.897 lpips=0.284 n=15
+
+=== L4 LOLv2-Syn: 100 files ===
+  MEAN HMP-raw psnr=15.375 lpips=0.446 n=100
+  MEAN HMP+CP  psnr=16.296 lpips=0.362 n=100
+
+=== L5 LOLv2-Real: 100 files ===
+  MEAN HMP-raw psnr=18.251 lpips=0.398 n=100
+  MEAN HMP+CP  psnr=18.132 lpips=0.329 n=100
+
+================================================================================
+=== SUMMARY (ckpt=/cache/zihaohe/checkpoint/runs/v35_S4_INDOOR_ONLY_ft/best_y512.pt) ===
+  L0_SDSD-indoor      : raw PSNR-RGB=26.509 LPIPS=0.129  |  +CP PSNR-RGB=26.665 LPIPS=0.184  (n=15)
+  L1_SDSD-outdoor     : raw PSNR-RGB=20.717 LPIPS=0.204  |  +CP PSNR-RGB=20.618 LPIPS=0.231  (n=25)
+  L2_BVI-RLV          : raw PSNR-RGB=16.352 LPIPS=0.316  |  +CP PSNR-RGB=17.752 LPIPS=0.260  (n=16)
+  L3_LOL-v1           : raw PSNR-RGB=16.474 LPIPS=0.356  |  +CP PSNR-RGB=16.897 LPIPS=0.284  (n=15)
+  L4_LOLv2-Syn        : raw PSNR-RGB=15.375 LPIPS=0.446  |  +CP PSNR-RGB=16.296 LPIPS=0.362  (n=100)
+  L5_LOLv2-Real       : raw PSNR-RGB=18.251 LPIPS=0.398  |  +CP PSNR-RGB=18.132 LPIPS=0.329  (n=100)
+
+[saved] /cache/zihaohe/checkpoint/runs/v35_S4_INDOOR_ONLY_ft/eval_6splits.json

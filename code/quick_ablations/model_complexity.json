@@ -1,0 +1,93 @@
+{
+  "Retinexformer": {
+    "params": 1605701,
+    "params_M": 1.605701,
+    "gflops": 66.86244864,
+    "peak_mem_bytes": 656692224,
+    "peak_mem_MB": 626.2705078125,
+    "time_ms_mean": 73.9237543741862,
+    "time_ms_min": 73.90617370605469,
+    "time_ms_max": 74.06489562988281,
+    "iters": 20,
+    "input": "1x3x512x512 (1 frame)"
+  },
+  "HVI-CIDNet": {
+    "params": 1975569,
+    "params_M": 1.975569,
+    "gflops": 31.64995584,
+    "peak_mem_bytes": 404973056,
+    "peak_mem_MB": 386.21240234375,
+    "time_ms_mean": 80.5614070892334,
+    "time_ms_min": 80.43724822998047,
+    "time_ms_max": 80.80076599121094,
+    "iters": 20,
+    "input": "1x3x512x512 (1 frame)"
+  },
+  "DarkIR": {
+    "params": 3321638,
+    "params_M": 3.321638,
+    "gflops": 28.368549888,
+    "peak_mem_bytes": 463277568,
+    "peak_mem_MB": 441.81591796875,
+    "time_ms_mean": 16.564309279123943,
+    "time_ms_min": 16.452608108520508,
+    "time_ms_max": 19.23072052001953,
+    "iters": 20,
+    "input": "1x3x512x512 (1 frame)"
+  },
+  "URCSA": {
+    "params": 3108973,
+    "params_M": 3.108973,
+    "gflops": 436.91933696,
+    "peak_mem_bytes": 1419258368,
+    "peak_mem_MB": 1353.51025390625,
+    "time_ms_mean": 32.213333447774254,
+    "time_ms_min": 32.18124771118164,
+    "time_ms_max": 32.60723114013672,
+    "iters": 20,
+    "input": "1x3x512x512 (1 frame; single-image variant)"
+  },
+  "MambaLLIE": {
+    "params": 2285529,
+    "params_M": 2.285529,
+    "gflops": 89.563773824,
+    "peak_mem_bytes": 2567270400,
+    "peak_mem_MB": 2448.33984375,
+    "time_ms_mean": 131.11603291829428,
+    "time_ms_min": 130.9818878173828,
+    "time_ms_max": 131.3228759765625,
+    "iters": 20,
+    "input": "1x3x512x512 (1 frame; no weights on host)"
+  },
+  "BVI-Mamba": {
+    "params": 10003707,
+    "params_M": 10.003707,
+    "gflops": 188.239958912,
+    "peak_mem_bytes": 1011508736,
+    "peak_mem_MB": 964.64990234375,
+    "time_ms_mean": 182.30092748006186,
+    "time_ms_min": 141.87930297851562,
+    "time_ms_max": 280.0312194824219,
+    "iters": 20,
+    "input": "1x5x3x512x512 (5-frame clip, native BVI-Mamba stride; no weights on host)"
+  },
+  "Seer": {
+    "params": 696661643,
+    "params_M": 696.661643,
+    "trainable_params_M": 370.436491,
+    "frozen_params_M": 326.225152,
+    "gflops": 12493.623689936,
+    "peak_mem_bytes": 9385085952,
+    "peak_mem_MB": 8950.3154296875,
+    "time_ms_mean": 1339.5241292317708,
+    "time_ms_min": 1338.0997314453125,
+    "time_ms_max": 1341.9888916015625,
+    "iters": 10,
+    "input": "1x3x8x512x512 (8-frame chunk, matches inference chunk_T=8)",
+    "gflops_source": "fvcore FlopCountAnalysis",
+    "gflops_16frame_extrapolated": 24987.247379872,
+    "time_ms_16frame": 2436.955851236979,
+    "peak_mem_MB_16frame": 15036.8720703125,
+    "note": "Seer = V-JEPA-2.1 ViT-L (frozen backbone) + CounterfactualRefiner + VJepaPixelBranch_v35_M3. Inference uses chunk_T=8; the 16-frame metrics correspond to a single full forward without chunking."
+  }
+}

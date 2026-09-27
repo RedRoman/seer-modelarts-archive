@@ -1,0 +1,14 @@
+2026-09-26 11:02:13 INFO: === abl_noigab_s1: v35 Stage 4 (retrainer) gate_init=0.0 router_c=4.0 ===
+2026-09-26 11:02:13 INFO: init_ckpt: /cache/zihaohe/checkpoint/runs/v35_stage3/final.pt
+2026-09-26 11:02:13 INFO: out_dir:   /cache/zihaohe/runs/seer_iclr/abl_noigab_s1
+2026-09-26 11:02:13 INFO: log:       /cache/zihaohe/runs/seer_iclr/abl_noigab_s1/train_20260926-110213.log
+2026-09-26 11:02:36 INFO:   pixel_branch load: missing=1 unexpected=0
+2026-09-26 11:02:36 INFO:   cf_refiner   load: missing=0 unexpected=0
+2026-09-26 11:02:36 INFO:     pb-missing (first 5): ['router_logits']
+2026-09-26 11:02:36 INFO:   variant: random_vjepa=False disable_igab=True disable_lic=False disable_bottleneck=False w=(1.5,0.15,0.02,0.05)
+2026-09-26 11:02:36 INFO:   gate (post-override)   = +0.0000
+2026-09-26 11:02:36 INFO:   router[0] softmax post = ['0.9479', '0.0174', '0.0174', '0.0174']
+2026-09-26 11:02:36 INFO:   no_vjepa=False  save_at=[]  seed=1
+2026-09-26 11:02:36 INFO:   trainable: 361.97M (pixel_branch + cf_refiner LoRA/gate/new_proj)
+2026-09-26 11:02:39 INFO:   audit sequences (SDSD-indoor test): 15
+2026-09-26 11:03:22 INFO: Zero-iter audit (43.1s): RGB-512=25.203  Y-512=26.152

@@ -1,0 +1,97 @@
+[SDSD] layout=A/C (static_np or original) subset=direct split=test -> 15 sequences, 1037 frames total.
+[data] L0_SDSD-indoor: ['pair60', 'pair70'] (13s)
+[SDSD] layout=A/C (static_np or original) subset=direct split=test -> 25 sequences, 620 frames total.
+[data] L1_SDSD-outdoor: ['MVI_1030'] (46s)
+[BVI-RLV] test: 16 sequences (8 scenes × ≤2 fps), 6240 frames total
+[data] L2_BVI-RLV: ['S35_Bunny__10fps', 'S37_Mario3__10fps'] (112s)
+Loading pretrained model LPIPS from /home/ma-user/.cache/torch/hub/pyiqa/LPIPS_v0.1_alex-df73285e.pth
+  pair60               LQ                       frame8: PSNR=14.086 LPIPS=0.5885 | clip16 PSNR=14.084 ref=14.084 (d=+0.0000)
+  pair60               GT                       frame8: PSNR=inf LPIPS=0.0000 | clip16 PSNR=inf
+  pair70               LQ                       frame8: PSNR=7.809 LPIPS=0.4751 | clip16 PSNR=7.860 ref=7.860 (d=+0.0000)
+  pair70               GT                       frame8: PSNR=inf LPIPS=0.0000 | clip16 PSNR=inf
+  MVI_1030             LQ                       frame8: PSNR=19.420 LPIPS=0.2192 | clip16 PSNR=19.423 ref=19.423 (d=+0.0000)
+  MVI_1030             GT                       frame8: PSNR=inf LPIPS=0.0000 | clip16 PSNR=inf
+  S35_Bunny__10fps     LQ                       frame8: PSNR=9.742 LPIPS=0.3935 | clip16 PSNR=9.708 ref=9.708 (d=+0.0000)
+  S35_Bunny__10fps     GT                       frame8: PSNR=inf LPIPS=0.0000 | clip16 PSNR=inf
+  S37_Mario3__10fps    LQ                       frame8: PSNR=7.881 LPIPS=0.3934 | clip16 PSNR=7.858 ref=7.858 (d=+0.0000)
+  S37_Mario3__10fps    GT                       frame8: PSNR=inf LPIPS=0.0000 | clip16 PSNR=inf
+/cache/zihaohe/conda_envs/vjepa2-pip/lib/python3.11/site-packages/timm/models/layers/__init__.py:49: FutureWarning: Importing from timm.models.layers is deprecated, please import via timm.layers
+  warnings.warn(f"Importing from {__name__} is deprecated, please import via timm.layers", FutureWarning)
+/cache/zihaohe/conda_envs/vjepa2-pip/lib/python3.11/site-packages/torch/backends/cuda/__init__.py:342: FutureWarning: torch.backends.cuda.sdp_kernel() is deprecated. In the future, this context manager will be removed. Please see, torch.nn.attention.sdpa_kernel() for the new context manager, with updated signature.
+  warnings.warn(
+[Seer] variant from ckpt args: {'no_vjepa': False, 'random_vjepa': False, 'disable_igab': False, 'disable_lic': False, 'disable_bottleneck': False}
+[Seer] pixel_branch missing=0 unexpected=0
+[VJepaBackboneLocal21] loaded /home/ma-user/workspace/zihaohe/checkpoint/vjepa2_1_vitl_dist_vitG_384.pt | missing=0 unexpected=2
+  unexpected (first 5): ['patch_embed_img.proj.weight', 'patch_embed_img.proj.bias']
+[CounterfactualRefiner] loaded predictor from /home/ma-user/workspace/zihaohe/checkpoint/vjepa2_1_vitl_dist_vitG_384.pt | missing=0 unexpected=4
+[Seer] cf_refiner missing=0 unexpected=0 gate=-0.019470
+[SDSD] layout=A/C (static_np or original) subset=direct split=train -> 59 sequences, 1671 frames total.
+[SDSD] layout=A/C (static_np or original) subset=direct split=train -> 101 sequences, 2530 frames total.
+[Seer] CP-src alpha (fit on 15 SDSD train clips) = [0.10042460262775421, 0.0, 0.0]
+  pair60               Seer                     frame8: PSNR=34.048 LPIPS=0.1896 | clip16 PSNR=34.519
+  pair60               Seer+CP-src              frame8: PSNR=34.024 LPIPS=0.1899 | clip16 PSNR=34.469
+  pair70               Seer                     frame8: PSNR=28.737 LPIPS=0.1038 | clip16 PSNR=28.516
+  pair70               Seer+CP-src              frame8: PSNR=28.735 LPIPS=0.1066 | clip16 PSNR=28.518
+  MVI_1030             Seer                     frame8: PSNR=18.526 LPIPS=0.1957 | clip16 PSNR=18.867
+  MVI_1030             Seer+CP-src              frame8: PSNR=18.531 LPIPS=0.1960 | clip16 PSNR=18.870
+  S35_Bunny__10fps     Seer                     frame8: PSNR=21.903 LPIPS=0.2399 | clip16 PSNR=21.859
+  S35_Bunny__10fps     Seer+CP-src              frame8: PSNR=22.042 LPIPS=0.2381 | clip16 PSNR=22.003
+  S37_Mario3__10fps    Seer                     frame8: PSNR=22.760 LPIPS=0.2246 | clip16 PSNR=22.668
+  S37_Mario3__10fps    Seer+CP-src              frame8: PSNR=22.813 LPIPS=0.2224 | clip16 PSNR=22.724
+[Seer] peak reserved 17.2 GB
+[Seer] variant from ckpt args: {'no_vjepa': True, 'random_vjepa': False, 'disable_igab': False, 'disable_lic': False, 'disable_bottleneck': False}
+[Seer] pixel_branch missing=0 unexpected=0
+[SDSD] layout=A/C (static_np or original) subset=direct split=train -> 59 sequences, 1671 frames total.
+[SDSD] layout=A/C (static_np or original) subset=direct split=train -> 101 sequences, 2530 frames total.
+[Seer w/o V-JEPA] CP-src alpha (fit on 15 SDSD train clips) = [0.09783513098955154, 0.0, 0.0]
+  pair60               Seer w/o V-JEPA          frame8: PSNR=24.090 LPIPS=0.2133 | clip16 PSNR=24.559
+  pair60               Seer w/o V-JEPA+CP-src   frame8: PSNR=24.138 LPIPS=0.2140 | clip16 PSNR=24.608
+  pair70               Seer w/o V-JEPA          frame8: PSNR=27.453 LPIPS=0.1065 | clip16 PSNR=27.159
+  pair70               Seer w/o V-JEPA+CP-src   frame8: PSNR=27.458 LPIPS=0.1098 | clip16 PSNR=27.168
+  MVI_1030             Seer w/o V-JEPA          frame8: PSNR=26.792 LPIPS=0.1471 | clip16 PSNR=26.844
+  MVI_1030             Seer w/o V-JEPA+CP-src   frame8: PSNR=26.791 LPIPS=0.1466 | clip16 PSNR=26.843
+  S35_Bunny__10fps     Seer w/o V-JEPA          frame8: PSNR=22.203 LPIPS=0.2291 | clip16 PSNR=22.207
+  S35_Bunny__10fps     Seer w/o V-JEPA+CP-src   frame8: PSNR=22.319 LPIPS=0.2278 | clip16 PSNR=22.326
+  S37_Mario3__10fps    Seer w/o V-JEPA          frame8: PSNR=21.704 LPIPS=0.2219 | clip16 PSNR=21.648
+  S37_Mario3__10fps    Seer w/o V-JEPA+CP-src   frame8: PSNR=21.722 LPIPS=0.2196 | clip16 PSNR=21.667
+[Seer w/o V-JEPA] peak reserved 16.0 GB
+[STCD] loaded /temp/zihaohe/cache/stcd_repro/LLVE_STCD/pretrained_model/SDSD_indoor_model/indoor_G.pth strict=True (50 tensors, 1.81M params)
+  pair60               Retinexformer            frame8: PSNR=33.404 LPIPS=0.1830 | clip16 PSNR=33.314 ref=33.314 (d=+0.0000)
+  pair60               URCSA                    frame8: PSNR=32.066 LPIPS=0.2728 | clip16 PSNR=32.446 ref=32.446 (d=+0.0000)
+/home/ma-user/workspace/zihaohe/baselines/DarkIR/archs/arch_model.py:48: UserWarning: Specified kernel cache directory could not be created! This disables kernel caching. Specified directory is /home/ma-user/.cache/torch/kernels. This warning will appear only once per process. (Triggered internally at ../aten/src/ATen/native/cuda/jit_utils.cpp:1442.)
+  mag = torch.abs(x_freq)
+  pair60               DarkIR                   frame8: PSNR=19.207 LPIPS=0.3173 | clip16 PSNR=19.049 ref=19.049 (d=+0.0000)
+  pair60               HVI-CIDNet               frame8: PSNR=28.105 LPIPS=0.4226 | clip16 PSNR=27.687 ref=27.687 (d=+0.0000)
+  pair60               STCD                     frame8: PSNR=28.082 LPIPS=0.3102 | clip16 PSNR=27.831 ref=27.831 (d=+0.0000)
+  pair60               Zero-DCE                 frame8: PSNR=27.930 LPIPS=0.4818 | clip16 PSNR=27.988 ref=27.988 (d=+0.0000)
+  pair60               SCI                      frame8: PSNR=26.076 LPIPS=0.4410 | clip16 PSNR=25.854 ref=25.854 (d=+0.0000)
+  pair70               Retinexformer            frame8: PSNR=27.503 LPIPS=0.0996 | clip16 PSNR=27.382 ref=27.382 (d=+0.0000)
+  pair70               URCSA                    frame8: PSNR=26.439 LPIPS=0.1434 | clip16 PSNR=26.104 ref=26.104 (d=+0.0000)
+  pair70               DarkIR                   frame8: PSNR=17.303 LPIPS=0.1748 | clip16 PSNR=17.419 ref=17.419 (d=+0.0000)
+  pair70               HVI-CIDNet               frame8: PSNR=22.838 LPIPS=0.2451 | clip16 PSNR=24.610 ref=24.610 (d=+0.0000)
+  pair70               STCD                     frame8: PSNR=27.975 LPIPS=0.1057 | clip16 PSNR=27.814 ref=27.814 (d=+0.0000)
+  pair70               Zero-DCE                 frame8: PSNR=16.953 LPIPS=0.3244 | clip16 PSNR=17.027 ref=17.027 (d=+0.0000)
+  pair70               SCI                      frame8: PSNR=24.563 LPIPS=0.2980 | clip16 PSNR=24.646 ref=24.646 (d=+0.0000)
+  MVI_1030             Retinexformer            frame8: PSNR=26.417 LPIPS=0.2251 | clip16 PSNR=26.282 ref=26.282 (d=+0.0000)
+  MVI_1030             URCSA                    frame8: PSNR=16.054 LPIPS=0.2433 | clip16 PSNR=16.094 ref=16.094 (d=+0.0000)
+  MVI_1030             DarkIR                   frame8: PSNR=17.828 LPIPS=0.3047 | clip16 PSNR=18.050 ref=18.050 (d=+0.0000)
+  MVI_1030             HVI-CIDNet               frame8: PSNR=15.175 LPIPS=0.3291 | clip16 PSNR=16.912 ref=16.912 (d=+0.0000)
+  MVI_1030             STCD                     frame8: PSNR=11.810 LPIPS=0.3697 | clip16 PSNR=11.859 ref=11.859 (d=+0.0000)
+  MVI_1030             Zero-DCE                 frame8: PSNR=15.632 LPIPS=0.3286 | clip16 PSNR=15.646 ref=15.646 (d=+0.0000)
+  MVI_1030             SCI                      frame8: PSNR=14.004 LPIPS=0.3096 | clip16 PSNR=13.985 ref=13.985 (d=+0.0000)
+  S35_Bunny__10fps     Retinexformer            frame8: PSNR=24.127 LPIPS=0.1422 | clip16 PSNR=24.043 ref=24.043 (d=+0.0000)
+  S35_Bunny__10fps     URCSA                    frame8: PSNR=22.889 LPIPS=0.1535 | clip16 PSNR=22.728 ref=22.728 (d=+0.0000)
+  S35_Bunny__10fps     DarkIR                   frame8: PSNR=19.711 LPIPS=0.1043 | clip16 PSNR=19.563 ref=19.563 (d=+0.0000)
+  S35_Bunny__10fps     HVI-CIDNet               frame8: PSNR=18.201 LPIPS=0.1942 | clip16 PSNR=17.316 ref=17.316 (d=+0.0000)
+  S35_Bunny__10fps     STCD                     frame8: PSNR=19.949 LPIPS=0.3039 | clip16 PSNR=19.898 ref=19.898 (d=+0.0000)
+  S35_Bunny__10fps     Zero-DCE                 frame8: PSNR=18.340 LPIPS=0.2467 | clip16 PSNR=18.275 ref=18.275 (d=+0.0000)
+  S35_Bunny__10fps     SCI                      frame8: PSNR=21.043 LPIPS=0.2061 | clip16 PSNR=20.967 ref=20.967 (d=+0.0000)
+  S37_Mario3__10fps    Retinexformer            frame8: PSNR=21.952 LPIPS=0.1767 | clip16 PSNR=21.804 ref=21.804 (d=+0.0000)
+  S37_Mario3__10fps    URCSA                    frame8: PSNR=20.180 LPIPS=0.2004 | clip16 PSNR=20.166 ref=20.166 (d=+0.0000)
+  S37_Mario3__10fps    DarkIR                   frame8: PSNR=15.170 LPIPS=0.1752 | clip16 PSNR=15.220 ref=15.220 (d=+0.0000)
+  S37_Mario3__10fps    HVI-CIDNet               frame8: PSNR=14.559 LPIPS=0.2127 | clip16 PSNR=13.862 ref=13.862 (d=+0.0000)
+  S37_Mario3__10fps    STCD                     frame8: PSNR=18.480 LPIPS=0.2573 | clip16 PSNR=18.538 ref=18.538 (d=+0.0000)
+  S37_Mario3__10fps    Zero-DCE                 frame8: PSNR=15.706 LPIPS=0.2728 | clip16 PSNR=15.659 ref=15.659 (d=+0.0000)
+  S37_Mario3__10fps    SCI                      frame8: PSNR=22.524 LPIPS=0.2261 | clip16 PSNR=22.377 ref=22.377 (d=+0.0000)
+[SAVE] /temp/zihaohe/cache/checkpoint/runs/seer_iclr_evals/qualitative_final/qualitative.json  max|clip PSNR - ref| = 0.0000 (pair70/Zero-DCE)  wall 1031s
+DUMP_EXIT=0

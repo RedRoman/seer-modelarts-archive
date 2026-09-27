@@ -1,0 +1,155 @@
+# [seersplit 2026-09-25] Copy of RetinexFormer_SDSD_union_seer_protocol.yml with ONLY:
+#   - testing_dir = Seer's SDSD test split (sdsd_dataset.py sorted 80/20), base names; listing
+#     pair5 / MVI_1007 also excludes pair5 / MVI_1007 (Seer-train) -> no leakage, slightly less train data
+#   - total_iter 160000 -> 24000 (LR is constant 2e-5 for the first 50k iters anyway)
+#   - val_freq 8e3 -> 1e9 (single validation after training)
+# Launched from a local code copy so experiments/ lands in /cache/zihaohe/runs/seer_iclr/rf_seersplit.
+# Retinexformer retrained on SDSD-indoor + SDSD-outdoor union under Seer's protocol.
+# Purpose: controlled architectural comparison against Seer (AAAI 2027 rebuttal).
+# The ONLY protocol changes vs. Retinexformer's original SDSD configs:
+#   - Optimizer: Adam -> AdamW, betas (0.9, 0.999) -> (0.9, 0.99), wd 0 -> 1e-4
+#   - LR: 2e-4 -> 2e-5 (Seer's lr)
+#   - Crop: 128/256 (varies by orig config) -> 256x256 (Seer's crop)
+#   - Effective batch: 8 (kept same as Retinexformer original outdoor cfg)
+#   - Data: SDSD-indoor only OR outdoor only -> union of both
+#   - Iters: 300k -> 288k (matches Seer's total frames seen: 18k steps * bs8 * T=16 = 2.30M frames)
+#   - Mixup: on -> off (Seer does not use mixup; keep only L1 loss for fairness)
+# Architecture, pixel loss, augmentation (flip/rot), scheduler family all unchanged.
+
+name: RetinexFormer_SDSD_union_seersplit
+model_type: ImageCleanModel
+scale: 1
+num_gpu: 1
+manual_seed: 100
+
+datasets:
+  train:
+    name: TrainSetUnion
+    type: Dataset_SDSDUnionImage
+    random_reverse: false
+    border_mode: false
+    dataroot_gt:
+      - /home/ma-user/workspace/zihaohe/datasets/SDSD_indoor/indoor_static_np/GT
+      - /home/ma-user/workspace/zihaohe/datasets/SDSD_outdoor/outdoor_static_np/GT
+    dataroot_lq:
+      - /home/ma-user/workspace/zihaohe/datasets/SDSD_indoor/indoor_static_np/input
+      - /home/ma-user/workspace/zihaohe/datasets/SDSD_outdoor/outdoor_static_np/input
+    train_size: [960, 512]
+    cache_keys: ~
+    cache_data: true
+    padding: new_info
+    testing_dir:
+      - pair50,pair52,pair58,pair5,pair6,pair60,pair68,pair7,pair70,pair8,pair9
+      - MVI_1007,MVI_1009,MVI_1011,MVI_1013,MVI_1015,MVI_1017,MVI_1019,MVI_1021,MVI_1024,MVI_1026,MVI_1028,MVI_1030,MVI_1032
+
+    filename_tmpl: '{}'
+    io_backend:
+      type: disk
+
+    N_frames: 5     # loader reads 1 frame per __getitem__; N_frames only used for border flag
+    use_flip: true
+    use_rot: true
+    color: RGB
+
+    use_shuffle: true
+    num_worker_per_gpu: 4
+    batch_size_per_gpu: 8
+
+    # Fixed patch 256x256 to match Seer.
+    mini_batch_sizes: [8]
+    iters: [160000]
+    gt_size: 512      # gt_size > gt_sizes[0] means crop patches of gt_sizes[0]
+    gt_sizes: [256]
+
+    dataset_enlarge_ratio: 1
+    prefetch_mode: ~
+
+  val:
+    name: ValSetUnion
+    type: Dataset_SDSDUnionImage
+    dataroot_gt:
+      - /home/ma-user/workspace/zihaohe/datasets/SDSD_indoor/indoor_static_np/GT
+      - /home/ma-user/workspace/zihaohe/datasets/SDSD_outdoor/outdoor_static_np/GT
+    dataroot_lq:
+      - /home/ma-user/workspace/zihaohe/datasets/SDSD_indoor/indoor_static_np/input
+      - /home/ma-user/workspace/zihaohe/datasets/SDSD_outdoor/outdoor_static_np/input
+    cache_data: true
+    N_frames: 5
+    padding: new_info
+    train_size: [960, 512]
+    testing_dir:
+      - pair50,pair52,pair58,pair5,pair6,pair60,pair68,pair7,pair70,pair8,pair9
+      - MVI_1007,MVI_1009,MVI_1011,MVI_1013,MVI_1015,MVI_1017,MVI_1019,MVI_1021,MVI_1024,MVI_1026,MVI_1028,MVI_1030,MVI_1032
+
+    io_backend:
+      type: disk
+
+network_g:
+  type: RetinexFormer
+  in_channels: 3
+  out_channels: 3
+  n_feat: 40
+  stage: 1
+  num_blocks: [1, 2, 2]
+
+path:
+  pretrain_network_g: ~
+  strict_load_g: true
+  resume_state: ~
+
+train:
+  total_iter: 24000
+  warmup_iter: -1
+  use_grad_clip: true
+
+  # Cosine schedule spanning all iters (Seer uses plain cosine with min_lr=1e-6).
+  scheduler:
+    type: CosineAnnealingRestartCyclicLR
+    periods: [50000, 110000]
+    restart_weights: [1, 1]
+    eta_mins: [0.00002, 0.000001]
+
+  # Seer does not use mixup; disable it here for a controlled comparison
+  # (loss = pure L1 pixel loss, same as Seer's pix_weight branch).
+  mixing_augs:
+    mixup: false
+    mixup_beta: 1.2
+    use_identity: true
+
+  # Seer's protocol: AdamW lr=2e-5 betas=(0.9,0.99) wd=1e-4
+  optim_g:
+    type: AdamW
+    lr: !!float 2e-5
+    weight_decay: !!float 1e-4
+    betas: [0.9, 0.99]
+
+  pixel_opt:
+    type: L1Loss
+    loss_weight: 1
+    reduction: mean
+
+val:
+  window_size: 4
+  val_freq: !!float 1e9   # never inside the loop; basicsr runs one validation after training ends
+  save_img: false
+  rgb2bgr: true
+  use_image: false
+  max_minibatch: 8
+
+  metrics:
+    psnr:
+      type: calculate_psnr
+      crop_border: 0
+      test_y_channel: false
+
+logger:
+  print_freq: 500
+  save_checkpoint_freq: !!float 8e3
+  use_tb_logger: true
+  wandb:
+    project: low_light
+    resume_id: ~
+
+dist_params:
+  backend: nccl
+  port: 29511

@@ -1,0 +1,59 @@
+/cache/zihaohe/conda_envs/vjepa2-pip/lib/python3.11/site-packages/timm/models/layers/__init__.py:49: FutureWarning: Importing from timm.models.layers is deprecated, please import via timm.layers
+  warnings.warn(f"Importing from {__name__} is deprecated, please import via timm.layers", FutureWarning)
+[STCD] loaded /temp/zihaohe/cache/stcd_repro/LLVE_STCD/pretrained_model/SDSD_indoor_model/indoor_G.pth strict=True (50 tensors, 1.81M params)
+[SDSD] layout=A/C (static_np or original) subset=direct split=train -> 59 sequences, 1671 frames total.
+[SDSD] layout=A/C (static_np or original) subset=direct split=train -> 101 sequences, 2530 frames total.
+[CP-src] Retinexformer  alpha raw=[0.1123, -0.8736, 0.1355] clipped=[0.1123, 0.0, 0.1355] (80s)
+[CP-src] URCSA          alpha raw=[0.9131, -0.9534, -0.3639] clipped=[0.9131, 0.0, 0.0] (106s)
+/home/ma-user/workspace/zihaohe/baselines/DarkIR/archs/arch_model.py:48: UserWarning: Specified kernel cache directory could not be created! This disables kernel caching. Specified directory is /home/ma-user/.cache/torch/kernels. This warning will appear only once per process. (Triggered internally at ../aten/src/ATen/native/cuda/jit_utils.cpp:1442.)
+  mag = torch.abs(x_freq)
+[CP-src] DarkIR         alpha raw=[-0.2629, 1.6064, -0.0464] clipped=[0.0, 1.0, 0.0] (120s)
+[CP-src] HVI-CIDNet     alpha raw=[1.4313, -0.7893, -0.2934] clipped=[1.0, 0.0, 0.0] (217s)
+[CP-src] Zero-DCE       alpha raw=[2.405, -1.8284, -2.2613] clipped=[1.0, 0.0, 0.0] (224s)
+[CP-src] SCI            alpha raw=[0.692, -1.2397, 0.3612] clipped=[0.692, 0.0, 0.3612] (229s)
+[CP-src] STCD           alpha raw=[0.7439, 0.1881, -0.496] clipped=[0.7439, 0.1881, 0.0] (239s)
+[SDSD] layout=A/C (static_np or original) subset=direct split=test -> 15 sequences, 1037 frames total.
+Loading pretrained model LPIPS from /home/ma-user/.cache/torch/hub/pyiqa/LPIPS_v0.1_alex-df73285e.pth
+Loading pretrained model DISTS from /home/ma-user/.cache/torch/hub/pyiqa/DISTS_weights-f5e65c96.pth
+  L0_SDSD-indoor   Retinexformer  PSNR 26.836 -> 26.811 -> 26.836 | LPIPS 0.2559 -> 0.2562 -> 0.2557 | xfit a0=[0.026, 0.0, 0.0] a1=[0.076, 0.0, 0.0] | chk dPSNR=0.0 dLPIPS=0.0 ok=True (24s)
+  L0_SDSD-indoor   URCSA          PSNR 23.644 -> 23.691 -> 23.628 | LPIPS 0.2957 -> 0.3504 -> 0.2919 | xfit a0=[0.334, 0.0, 0.0] a1=[0.885, 1.0, 0.338] | chk dPSNR=0.0 dLPIPS=0.0 ok=True (13s)
+  L0_SDSD-indoor   DarkIR         PSNR 22.133 -> 22.075 -> 22.043 | LPIPS 0.3569 -> 0.3458 -> 0.3483 | xfit a0=[0.442, 0.719, 0.151] a1=[0.0, 0.0, 0.0] | chk dPSNR=0.0 dLPIPS=0.0 ok=True (9s)
+  L0_SDSD-indoor   HVI-CIDNet     PSNR 17.285 -> 17.425 -> 17.423 | LPIPS 0.5150 -> 0.5053 -> 0.5074 | xfit a0=[1.0, 1.0, 1.0] a1=[0.0, 0.0, 1.0] | chk dPSNR=0.0 dLPIPS=0.0 ok=True (17s)
+  L0_SDSD-indoor   Zero-DCE       PSNR 19.576 -> 19.754 -> 19.633 | LPIPS 0.4581 -> 0.4666 -> 0.4664 | xfit a0=[1.0, 1.0, 0.0] a1=[1.0, 0.0, 0.0] | chk dPSNR=0.0 dLPIPS=0.0 ok=True (9s)
+  L0_SDSD-indoor   SCI            PSNR 23.478 -> 23.469 -> 23.528 | LPIPS 0.4462 -> 0.4468 -> 0.4483 | xfit a0=[0.74, 0.0, 0.239] a1=[1.0, 0.0, 0.0] | chk dPSNR=0.0 dLPIPS=0.0 ok=True (8s)
+  L0_SDSD-indoor   STCD           PSNR 26.667 -> 26.504 -> 26.703 | LPIPS 0.1909 -> 0.2149 -> 0.1751 | xfit a0=[0.0, 0.0, 0.322] a1=[0.0, 0.319, 0.309] | chk dPSNR=0.0 dLPIPS=0.0 ok=True (9s)
+  L3_LOL-v1        Retinexformer  PSNR 16.290 -> 16.382 -> 16.895 | LPIPS 0.1639 -> 0.1555 -> 0.2187 | xfit a0=[0.0, 0.0, 1.0] a1=[0.0, 1.0, 1.0] | chk dPSNR=0.0 dLPIPS=0.0 ok=True (1s)
+  L3_LOL-v1        URCSA          PSNR 24.468 -> 23.249 -> 24.421 | LPIPS 0.0712 -> 0.1937 -> 0.0925 | xfit a0=[0.0, 0.0, 0.281] a1=[0.45, 0.0, 0.14] | chk dPSNR=0.0 dLPIPS=0.0 ok=True (1s)
+  L3_LOL-v1        DarkIR         PSNR 13.217 -> 13.160 -> 13.214 | LPIPS 0.1587 -> 0.1572 -> 0.1553 | xfit a0=[0.0, 0.0, 0.0] a1=[0.0, 0.0, 0.198] | chk dPSNR=0.0 dLPIPS=0.0 ok=True (1s)
+  L3_LOL-v1        HVI-CIDNet     PSNR 20.628 -> 19.463 -> 20.743 | LPIPS 0.0759 -> 0.1807 -> 0.0801 | xfit a0=[0.0, 0.0, 0.548] a1=[0.061, 0.281, 0.166] | chk dPSNR=0.0 dLPIPS=0.0 ok=True (1s)
+  L3_LOL-v1        Zero-DCE       PSNR 13.158 -> 13.061 -> 13.152 | LPIPS 0.2656 -> 0.2765 -> 0.2630 | xfit a0=[1.0, 0.0, 1.0] a1=[0.0, 0.484, 1.0] | chk dPSNR=0.0 dLPIPS=0.0 ok=True (1s)
+  L3_LOL-v1        SCI            PSNR 15.069 -> 14.861 -> 14.762 | LPIPS 0.2618 -> 0.2654 -> 0.2684 | xfit a0=[1.0, 0.0, 0.0] a1=[0.0, 0.0, 0.147] | chk dPSNR=0.0 dLPIPS=0.0 ok=True (1s)
+  L3_LOL-v1        STCD           PSNR 22.092 -> 21.643 -> 22.264 | LPIPS 0.2561 -> 0.2591 -> 0.2268 | xfit a0=[0.15, 0.0, 0.176] a1=[0.176, 0.678, 0.429] | chk dPSNR=0.0 dLPIPS=0.0 ok=True (1s)
+[SAVE] /cache/zihaohe/cp_baselines/smoke.json  consistency_ok=True  wall=339s
+
+== L0_SDSD-indoor   PSNR raw -> CP-src -> CP-tgt   |   LPIPS raw -> CP-src -> CP-tgt
+  Retinexformer  26.836 -> 26.811 -> 26.836   |   0.2559 -> 0.2562 -> 0.2557   n=2
+  URCSA          23.644 -> 23.691 -> 23.628   |   0.2957 -> 0.3504 -> 0.2919   n=2
+  DarkIR         22.133 -> 22.075 -> 22.043   |   0.3569 -> 0.3458 -> 0.3483   n=2
+  HVI-CIDNet     17.285 -> 17.425 -> 17.423   |   0.5150 -> 0.5053 -> 0.5074   n=2
+  Zero-DCE       19.576 -> 19.754 -> 19.633   |   0.4581 -> 0.4666 -> 0.4664   n=2
+  SCI            23.478 -> 23.469 -> 23.528   |   0.4462 -> 0.4468 -> 0.4483   n=2
+  STCD           26.667 -> 26.504 -> 26.703   |   0.1909 -> 0.2149 -> 0.1751   n=2
+
+== L3_LOL-v1   PSNR raw -> CP-src -> CP-tgt   |   LPIPS raw -> CP-src -> CP-tgt
+  Retinexformer  16.290 -> 16.382 -> 16.895   |   0.1639 -> 0.1555 -> 0.2187   n=2
+  URCSA          24.468 -> 23.249 -> 24.421   |   0.0712 -> 0.1937 -> 0.0925   n=2
+  DarkIR         13.217 -> 13.160 -> 13.214   |   0.1587 -> 0.1572 -> 0.1553   n=2
+  HVI-CIDNet     20.628 -> 19.463 -> 20.743   |   0.0759 -> 0.1807 -> 0.0801   n=2
+  Zero-DCE       13.158 -> 13.061 -> 13.152   |   0.2656 -> 0.2765 -> 0.2630   n=2
+  SCI            15.069 -> 14.861 -> 14.762   |   0.2618 -> 0.2654 -> 0.2684   n=2
+  STCD           22.092 -> 21.643 -> 22.264   |   0.2561 -> 0.2591 -> 0.2268   n=2
+
+CP-src alpha (clipped / raw):
+  Retinexformer  [0.1123, 0.0, 0.1355]  raw=[0.1123, -0.8736, 0.1355]
+  URCSA          [0.9131, 0.0, 0.0]  raw=[0.9131, -0.9534, -0.3639]
+  DarkIR         [0.0, 1.0, 0.0]  raw=[-0.2629, 1.6064, -0.0464]
+  HVI-CIDNet     [1.0, 0.0, 0.0]  raw=[1.4313, -0.7893, -0.2934]
+  Zero-DCE       [1.0, 0.0, 0.0]  raw=[2.405, -1.8284, -2.2613]
+  SCI            [0.692, 0.0, 0.3612]  raw=[0.692, -1.2397, 0.3612]
+  STCD           [0.7439, 0.1881, 0.0]  raw=[0.7439, 0.1881, -0.496]

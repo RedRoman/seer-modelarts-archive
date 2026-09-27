@@ -1,0 +1,101 @@
+loaded 5 seqs
+
+=== [1/7] v9.0b ===
+/cache/zihaohe/conda_envs/vjepa2-pip/lib/python3.11/site-packages/timm/models/layers/__init__.py:49: FutureWarning: Importing from timm.models.layers is deprecated, please import via timm.layers
+  warnings.warn(f"Importing from {__name__} is deprecated, please import via timm.layers", FutureWarning)
+[VJepaBackboneLocal21] loaded /home/ma-user/workspace/zihaohe/checkpoint/vjepa2_1_vitl_dist_vitG_384.pt | missing=0 unexpected=2
+  unexpected (first 5): ['patch_embed_img.proj.weight', 'patch_embed_img.proj.bias']
+  [dtype] backbone → bf16
+  ckpt loaded
+/cache/zihaohe/conda_envs/vjepa2-pip/lib/python3.11/site-packages/torch/backends/cuda/__init__.py:342: FutureWarning: torch.backends.cuda.sdp_kernel() is deprecated. In the future, this context manager will be removed. Please see, torch.nn.attention.sdpa_kernel() for the new context manager, with updated signature.
+  warnings.warn(
+  [pair13] 6.2s
+  [pair31] 5.0s
+  [pair33] 4.6s
+  [pair50] 4.4s
+  [pair70] 4.8s
+  total: 50.9s
+
+=== [2/7] v34-a ===
+[VJepaBackboneLocal21] loaded /home/ma-user/workspace/zihaohe/checkpoint/vjepa2_1_vitl_dist_vitG_384.pt | missing=0 unexpected=2
+  unexpected (first 5): ['patch_embed_img.proj.weight', 'patch_embed_img.proj.bias']
+  [dtype] backbone → bf16
+  ckpt loaded
+  [pair13] 5.1s
+  [pair31] 6.3s
+  [pair33] 5.3s
+  [pair50] 5.0s
+  [pair70] 5.0s
+  total: 40.6s
+
+=== [3/7] v35-S1 ===
+[VJepaBackboneLocal21] loaded /home/ma-user/workspace/zihaohe/checkpoint/vjepa2_1_vitl_dist_vitG_384.pt | missing=0 unexpected=2
+  unexpected (first 5): ['patch_embed_img.proj.weight', 'patch_embed_img.proj.bias']
+  [dtype] backbone → bf16
+  ckpt loaded
+  [pair13] 5.0s
+  [pair31] 4.9s
+  [pair33] 5.7s
+  [pair50] 5.2s
+  [pair70] 5.7s
+  total: 39.9s
+
+=== [4/7] v35-S2 ===
+[VJepaBackboneLocal21] loaded /home/ma-user/workspace/zihaohe/checkpoint/vjepa2_1_vitl_dist_vitG_384.pt | missing=0 unexpected=2
+  unexpected (first 5): ['patch_embed_img.proj.weight', 'patch_embed_img.proj.bias']
+  [dtype] backbone → bf16
+  ckpt loaded
+  [pair13] 5.0s
+  [pair31] 5.4s
+  [pair33] 5.3s
+  [pair50] 7.1s
+  [pair70] 5.2s
+  total: 46.1s
+
+=== [5/7] v35-S3 ===
+[VJepaBackboneLocal21] loaded /home/ma-user/workspace/zihaohe/checkpoint/vjepa2_1_vitl_dist_vitG_384.pt | missing=0 unexpected=2
+  unexpected (first 5): ['patch_embed_img.proj.weight', 'patch_embed_img.proj.bias']
+[CounterfactualRefiner] loaded predictor from /home/ma-user/workspace/zihaohe/checkpoint/vjepa2_1_vitl_dist_vitG_384.pt | missing=0 unexpected=4
+  [dtype] backbone → bf16
+  ckpt loaded
+  [pair13] 5.9s
+  [pair31] 5.1s
+  [pair33] 5.6s
+  [pair50] 5.3s
+  [pair70] 5.2s
+  total: 43.7s
+
+=== [6/7] v35-S4 ===
+[VJepaBackboneLocal21] loaded /home/ma-user/workspace/zihaohe/checkpoint/vjepa2_1_vitl_dist_vitG_384.pt | missing=0 unexpected=2
+  unexpected (first 5): ['patch_embed_img.proj.weight', 'patch_embed_img.proj.bias']
+[CounterfactualRefiner] loaded predictor from /home/ma-user/workspace/zihaohe/checkpoint/vjepa2_1_vitl_dist_vitG_384.pt | missing=0 unexpected=4
+  [dtype] backbone → bf16
+  ckpt loaded
+  [pair13] 5.1s
+  [pair31] 5.6s
+  [pair33] 5.4s
+  [pair50] 5.1s
+  [pair70] 5.3s
+  total: 44.1s
+
+=== [7/7] STCD ===
+  [pair13] 0.6s
+  [pair31] 0.3s
+  [pair33] 0.3s
+  [pair50] 0.3s
+  [pair70] 0.3s
+  total: 1.9s
+[pair13] viz done -> /home/ma-user/workspace/zihaohe/visualizations/v35_stages_comparison/pair13
+[pair31] viz done -> /home/ma-user/workspace/zihaohe/visualizations/v35_stages_comparison/pair31
+[pair33] viz done -> /home/ma-user/workspace/zihaohe/visualizations/v35_stages_comparison/pair33
+[pair50] viz done -> /home/ma-user/workspace/zihaohe/visualizations/v35_stages_comparison/pair50
+[pair70] viz done -> /home/ma-user/workspace/zihaohe/visualizations/v35_stages_comparison/pair70
+
+seq               v9.0b      v34-a     v35-S1     v35-S2     v35-S3     v35-S4       STCD 
+pair13           21.244     21.936     21.137     21.225     20.684     20.807     22.108 
+pair31           18.003     17.543     18.164     17.592     18.347     18.001     24.484 
+pair33           19.608     20.213     18.770     18.845     18.084     18.320     20.226 
+pair50           28.443     28.325     28.470     28.556     27.769     28.513     29.302 
+pair70           27.586     27.257     27.775     27.632     26.724     27.537     31.304 
+
+DONE -> /home/ma-user/workspace/zihaohe/visualizations/v35_stages_comparison

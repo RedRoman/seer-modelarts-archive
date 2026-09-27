@@ -1,0 +1,459 @@
+{
+  "meta": {
+    "gate_passed": true,
+    "checkpoint": "/cache/zihaohe/checkpoint/vitl.pt",
+    "checkpoint_source_url": "https://dl.fbaipublicfiles.com/vjepa2/vitl.pt",
+    "checkpoint_top_level_keys": [
+      "encoder",
+      "predictor",
+      "opt",
+      "scaler",
+      "target_encoder",
+      "epoch",
+      "loss",
+      "batch_size",
+      "world_size",
+      "lr"
+    ],
+    "predictor_proj_out_dim": 1024,
+    "encoder_embed_dim": 1024,
+    "encoder_missing_keys_count": 0,
+    "encoder_unexpected_keys_count": 0,
+    "predictor_missing_keys_count": 0,
+    "predictor_unexpected_keys_count": 0,
+    "vjepa2_repo": "/home/ma-user/workspace/zihaohe/modelzoo/vjepa2-main",
+    "model_name": "vit_large",
+    "img_size": 256,
+    "clip_len_frames": 16,
+    "tubelet_size": 2,
+    "patch_size": 16,
+    "token_grid_Tp_Hp_Wp_D": [
+      8,
+      16,
+      16,
+      1024
+    ],
+    "target_tubelets_0indexed": [
+      4,
+      5,
+      6,
+      7
+    ],
+    "n_seqs": 11,
+    "sequences": [
+      "S33_mix5__10fps",
+      "S35_Bunny__10fps",
+      "S37_Mario3__10fps",
+      "S39_Books4__10fps",
+      "S40_Books5__10fps",
+      "S40_Books5__20fps",
+      "MVI_1007",
+      "MVI_1007_2",
+      "MVI_1009",
+      "MVI_1011",
+      "MVI_1011_2"
+    ],
+    "metric_predictor": "mean per-patch cosine(predicted, true) at target tubelet, predictor sees ALL earlier tubelets as context (masks_x=flat idx of tubelets [0..t-1], masks_y=flat idx of tubelet t)",
+    "metric_naive": "mean per-patch cosine(true[t-1], true[t]) -- no predictor, adjacent-tubelet identity baseline",
+    "dinov3_reference_source": "/home/ma-user/workspace/zihaohe/quick_ablations/temporal_artifact_diagnosis.json"
+  },
+  "per_seq": {
+    "S33_mix5__10fps": {
+      "dataset": "BVI",
+      "T": 200,
+      "idx": [
+        0,
+        9,
+        18,
+        27,
+        37,
+        46,
+        55,
+        65
+      ],
+      "delta": 4,
+      "predictor_score": 0.5587963461875916,
+      "naive_baseline_score": 0.4634149596095085,
+      "per_target_tubelet_predictor": {
+        "4": 0.5537892580032349,
+        "5": 0.574201762676239,
+        "6": 0.5603951811790466,
+        "7": 0.5467991828918457
+      },
+      "per_target_tubelet_naive": {
+        "4": 0.4628487825393677,
+        "5": 0.47232329845428467,
+        "6": 0.4559076130390167,
+        "7": 0.462580144405365
+      }
+    },
+    "S35_Bunny__10fps": {
+      "dataset": "BVI",
+      "T": 480,
+      "idx": [
+        0,
+        22,
+        45,
+        68,
+        90,
+        113,
+        136,
+        159
+      ],
+      "delta": 11,
+      "predictor_score": 0.4646855443716049,
+      "naive_baseline_score": 0.4160642996430397,
+      "per_target_tubelet_predictor": {
+        "4": 0.5019817352294922,
+        "5": 0.48157262802124023,
+        "6": 0.44265568256378174,
+        "7": 0.4325321316719055
+      },
+      "per_target_tubelet_naive": {
+        "4": 0.3850651979446411,
+        "5": 0.4064195156097412,
+        "6": 0.4207955002784729,
+        "7": 0.4519769847393036
+      }
+    },
+    "S37_Mario3__10fps": {
+      "dataset": "BVI",
+      "T": 370,
+      "idx": [
+        0,
+        17,
+        34,
+        52,
+        69,
+        87,
+        104,
+        122
+      ],
+      "delta": 8,
+      "predictor_score": 0.5140092447400093,
+      "naive_baseline_score": 0.4406774714589119,
+      "per_target_tubelet_predictor": {
+        "4": 0.5773311853408813,
+        "5": 0.5479844808578491,
+        "6": 0.48134636878967285,
+        "7": 0.4493749439716339
+      },
+      "per_target_tubelet_naive": {
+        "4": 0.4384791851043701,
+        "5": 0.4353797733783722,
+        "6": 0.4387827515602112,
+        "7": 0.4500681757926941
+      }
+    },
+    "S39_Books4__10fps": {
+      "dataset": "BVI",
+      "T": 400,
+      "idx": [
+        0,
+        18,
+        37,
+        56,
+        75,
+        94,
+        113,
+        132
+      ],
+      "delta": 9,
+      "predictor_score": 0.49446816742420197,
+      "naive_baseline_score": 0.48037875443696976,
+      "per_target_tubelet_predictor": {
+        "4": 0.5212281346321106,
+        "5": 0.5163111686706543,
+        "6": 0.4835911989212036,
+        "7": 0.45674216747283936
+      },
+      "per_target_tubelet_naive": {
+        "4": 0.46428030729293823,
+        "5": 0.5007719993591309,
+        "6": 0.4848294258117676,
+        "7": 0.47163328528404236
+      }
+    },
+    "S40_Books5__10fps": {
+      "dataset": "BVI",
+      "T": 660,
+      "idx": [
+        0,
+        31,
+        62,
+        93,
+        125,
+        156,
+        187,
+        219
+      ],
+      "delta": 15,
+      "predictor_score": 0.4365745410323143,
+      "naive_baseline_score": 0.4195809066295624,
+      "per_target_tubelet_predictor": {
+        "4": 0.4233446717262268,
+        "5": 0.4340352416038513,
+        "6": 0.43952664732933044,
+        "7": 0.44939160346984863
+      },
+      "per_target_tubelet_naive": {
+        "4": 0.3915748596191406,
+        "5": 0.4447697401046753,
+        "6": 0.4284355640411377,
+        "7": 0.4135434627532959
+      }
+    },
+    "S40_Books5__20fps": {
+      "dataset": "BVI",
+      "T": 660,
+      "idx": [
+        0,
+        31,
+        62,
+        93,
+        125,
+        156,
+        187,
+        219
+      ],
+      "delta": 15,
+      "predictor_score": 0.4307228550314903,
+      "naive_baseline_score": 0.4227757453918457,
+      "per_target_tubelet_predictor": {
+        "4": 0.41951656341552734,
+        "5": 0.43400585651397705,
+        "6": 0.43000251054763794,
+        "7": 0.43936648964881897
+      },
+      "per_target_tubelet_naive": {
+        "4": 0.404336154460907,
+        "5": 0.42799508571624756,
+        "6": 0.4408714771270752,
+        "7": 0.4179002642631531
+      }
+    },
+    "MVI_1007": {
+      "dataset": "SDSD_outdoor",
+      "T": 30,
+      "idx": [
+        0,
+        1,
+        2,
+        3,
+        5,
+        6,
+        7,
+        9
+      ],
+      "delta": 1,
+      "predictor_score": 0.6340662389993668,
+      "naive_baseline_score": 0.47734878212213516,
+      "per_target_tubelet_predictor": {
+        "4": 0.6367810964584351,
+        "5": 0.6227079033851624,
+        "6": 0.646775484085083,
+        "7": 0.6300004720687866
+      },
+      "per_target_tubelet_naive": {
+        "4": 0.4774128794670105,
+        "5": 0.490184485912323,
+        "6": 0.4718864858150482,
+        "7": 0.46991127729415894
+      }
+    },
+    "MVI_1007_2": {
+      "dataset": "SDSD_outdoor",
+      "T": 20,
+      "idx": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7
+      ],
+      "delta": 1,
+      "predictor_score": 0.6343010067939758,
+      "naive_baseline_score": 0.47964175045490265,
+      "per_target_tubelet_predictor": {
+        "4": 0.6497427821159363,
+        "5": 0.6151705980300903,
+        "6": 0.6379163265228271,
+        "7": 0.6343743205070496
+      },
+      "per_target_tubelet_naive": {
+        "4": 0.4719783365726471,
+        "5": 0.48410701751708984,
+        "6": 0.4693407416343689,
+        "7": 0.49314090609550476
+      }
+    },
+    "MVI_1009": {
+      "dataset": "SDSD_outdoor",
+      "T": 30,
+      "idx": [
+        0,
+        1,
+        2,
+        3,
+        5,
+        6,
+        7,
+        9
+      ],
+      "delta": 1,
+      "predictor_score": 0.6414104253053665,
+      "naive_baseline_score": 0.48551880568265915,
+      "per_target_tubelet_predictor": {
+        "4": 0.6526697278022766,
+        "5": 0.6465967893600464,
+        "6": 0.6455081701278687,
+        "7": 0.6208670139312744
+      },
+      "per_target_tubelet_naive": {
+        "4": 0.46331456303596497,
+        "5": 0.5063672065734863,
+        "6": 0.48211491107940674,
+        "7": 0.49027854204177856
+      }
+    },
+    "MVI_1011": {
+      "dataset": "SDSD_outdoor",
+      "T": 30,
+      "idx": [
+        0,
+        1,
+        2,
+        3,
+        5,
+        6,
+        7,
+        9
+      ],
+      "delta": 1,
+      "predictor_score": 0.640056774020195,
+      "naive_baseline_score": 0.48700062185525894,
+      "per_target_tubelet_predictor": {
+        "4": 0.652884840965271,
+        "5": 0.6283432245254517,
+        "6": 0.6563888192176819,
+        "7": 0.6226102113723755
+      },
+      "per_target_tubelet_naive": {
+        "4": 0.4859606623649597,
+        "5": 0.49761152267456055,
+        "6": 0.4805236756801605,
+        "7": 0.483906626701355
+      }
+    },
+    "MVI_1011_2": {
+      "dataset": "SDSD_outdoor",
+      "T": 20,
+      "idx": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7
+      ],
+      "delta": 1,
+      "predictor_score": 0.6216976642608643,
+      "naive_baseline_score": 0.4621493071317673,
+      "per_target_tubelet_predictor": {
+        "4": 0.6365757584571838,
+        "5": 0.6011939644813538,
+        "6": 0.6385444402694702,
+        "7": 0.6104764938354492
+      },
+      "per_target_tubelet_naive": {
+        "4": 0.4947916269302368,
+        "5": 0.4517568349838257,
+        "6": 0.457418292760849,
+        "7": 0.4446304738521576
+      }
+    }
+  },
+  "summary": {
+    "vjepa2_base_predictor": {
+      "label": "V-JEPA2 (base, genuine predictor)",
+      "mean": 0.5518898916515437,
+      "std": 0.08635309499118937,
+      "ci95_lo": 0.5035617677494884,
+      "ci95_hi": 0.6000162687491287,
+      "n": 11,
+      "per_seq_values": {
+        "S33_mix5__10fps": 0.5587963461875916,
+        "S35_Bunny__10fps": 0.4646855443716049,
+        "S37_Mario3__10fps": 0.5140092447400093,
+        "S39_Books4__10fps": 0.49446816742420197,
+        "S40_Books5__10fps": 0.4365745410323143,
+        "S40_Books5__20fps": 0.4307228550314903,
+        "MVI_1007": 0.6340662389993668,
+        "MVI_1007_2": 0.6343010067939758,
+        "MVI_1009": 0.6414104253053665,
+        "MVI_1011": 0.640056774020195,
+        "MVI_1011_2": 0.6216976642608643
+      }
+    },
+    "vjepa2_base_naive": {
+      "label": "V-JEPA2 (base) naive-identity baseline",
+      "mean": 0.45768649131059647,
+      "std": 0.02786175747662153,
+      "ci95_lo": 0.4416368482634425,
+      "ci95_hi": 0.47299282286654815,
+      "n": 11,
+      "per_seq_values": {
+        "S33_mix5__10fps": 0.4634149596095085,
+        "S35_Bunny__10fps": 0.4160642996430397,
+        "S37_Mario3__10fps": 0.4406774714589119,
+        "S39_Books4__10fps": 0.48037875443696976,
+        "S40_Books5__10fps": 0.4195809066295624,
+        "S40_Books5__20fps": 0.4227757453918457,
+        "MVI_1007": 0.47734878212213516,
+        "MVI_1007_2": 0.47964175045490265,
+        "MVI_1009": 0.48551880568265915,
+        "MVI_1011": 0.48700062185525894,
+        "MVI_1011_2": 0.4621493071317673
+      }
+    },
+    "predictor_vs_naive": {
+      "wilcoxon_p_greater": 0.00048828125,
+      "wilcoxon_stat": 66.0,
+      "wilcoxon_error": null,
+      "cohens_d_paired": 1.4634412005016326,
+      "delta_mean_predictor_minus_naive": 0.09420340034094724,
+      "delta_ci95_lo": 0.05749315296045759,
+      "delta_ci95_hi": 0.1300406992774118
+    },
+    "dinov3_naive_reference": {
+      "label": "DINOv3 adjacent-frame content-cosine (reference only, no predictor)",
+      "available": true,
+      "note": "Reused verbatim from temporal_artifact_diagnosis.json content_cosine_metric.full.dinov3 (adjacent-frame content cosine, same 11 sequences, same crop/loading protocol). DINOv3 has no predictor; this is a same-axis reference only, not a predictor-vs-predictor comparison.",
+      "mean": 0.8174414599870707,
+      "std": 0.15028689706303047,
+      "ci95": [
+        0.7289889355178002,
+        0.8979956820994227
+      ],
+      "n": 11,
+      "per_seq_values": {
+        "S33_mix5__10fps": 0.6513681156294686,
+        "S35_Bunny__10fps": 0.8128367236682347,
+        "S37_Mario3__10fps": 0.8271471261978149,
+        "S39_Books4__10fps": 0.8296803321157183,
+        "S40_Books5__10fps": 0.5804502665996552,
+        "S40_Books5__20fps": 0.5699879271643502,
+        "MVI_1007": 0.9545108931405204,
+        "MVI_1007_2": 0.9381588612283979,
+        "MVI_1009": 0.9442205088479179,
+        "MVI_1011": 0.9299116560391018,
+        "MVI_1011_2": 0.9535836492265973
+      }
+    }
+  }
+}

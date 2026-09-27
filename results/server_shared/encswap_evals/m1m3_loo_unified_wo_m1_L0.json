@@ -1,0 +1,31 @@
+{
+  "meta": {
+    "ckpt": "/cache/zihaohe/checkpoint/runs/v35_S4_indoor_ft/best_y512.pt",
+    "protocol": "unified_6splits",
+    "date": "2026-07-17T13:22:59.882804Z",
+    "splits": [
+      "L0"
+    ],
+    "variants": [
+      "wo_m1"
+    ]
+  },
+  "variants": {
+    "wo_m1": {
+      "L0": {
+        "psnr_rgb": NaN,
+        "psnr_y": NaN,
+        "lpips": NaN,
+        "n": 0
+      }
+    }
+  },
+  "per_seq": {
+    "wo_m1": {
+      "L0_SDSD-indoor": {
+        "HMP-raw": {},
+        "HMP+CP": {}
+      }
+    }
+  }
+}

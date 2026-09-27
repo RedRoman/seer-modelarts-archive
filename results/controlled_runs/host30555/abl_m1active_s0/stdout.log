@@ -1,0 +1,45 @@
+2026-09-25 22:33:04 INFO: === abl_m1active_s0: v35 Stage 4 (retrainer) gate_init=0.5 router_c=4.0 ===
+2026-09-25 22:33:04 INFO: init_ckpt: /cache/zihaohe/checkpoint/runs/v35_stage3/final.pt
+2026-09-25 22:33:04 INFO: out_dir:   /cache/zihaohe/runs/seer_iclr/abl_m1active_s0
+2026-09-25 22:33:04 INFO: log:       /cache/zihaohe/runs/seer_iclr/abl_m1active_s0/train_20260925-223304.log
+/cache/zihaohe/conda_envs/vjepa2-pip/lib/python3.11/site-packages/timm/models/layers/__init__.py:49: FutureWarning: Importing from timm.models.layers is deprecated, please import via timm.layers
+  warnings.warn(f"Importing from {__name__} is deprecated, please import via timm.layers", FutureWarning)
+[VJepaBackboneLocal21] loaded /home/ma-user/workspace/zihaohe/checkpoint/vjepa2_1_vitl_dist_vitG_384.pt | missing=0 unexpected=2
+  unexpected (first 5): ['patch_embed_img.proj.weight', 'patch_embed_img.proj.bias']
+[CounterfactualRefiner] loaded predictor from /home/ma-user/workspace/zihaohe/checkpoint/vjepa2_1_vitl_dist_vitG_384.pt | missing=0 unexpected=4
+2026-09-25 22:33:24 INFO:   pixel_branch load: missing=1 unexpected=0
+2026-09-25 22:33:24 INFO:   cf_refiner   load: missing=0 unexpected=0
+2026-09-25 22:33:24 INFO:     pb-missing (first 5): ['router_logits']
+2026-09-25 22:33:24 INFO:   variant: random_vjepa=False disable_igab=False disable_lic=False disable_bottleneck=False w=(1.5,0.15,0.02,0.05)
+2026-09-25 22:33:24 INFO:   gate (post-override)   = +0.5000
+2026-09-25 22:33:24 INFO:   router[0] softmax post = ['0.9479', '0.0174', '0.0174', '0.0174']
+2026-09-25 22:33:24 INFO:   no_vjepa=False  save_at=[]  seed=0
+2026-09-25 22:33:24 INFO:   trainable: 370.44M (pixel_branch + cf_refiner LoRA/gate/new_proj)
+[SDSD] layout=A/C (static_np or original) subset=direct split=train -> 59 sequences, 1671 frames total.
+[SDSD] layout=A/C (static_np or original) subset=direct split=train -> 101 sequences, 2530 frames total.
+[SDSD] layout=A/C (static_np or original) subset=direct split=test -> 15 sequences, 1037 frames total.
+2026-09-25 22:33:32 INFO:   audit sequences (SDSD-indoor test): 15
+/cache/zihaohe/conda_envs/vjepa2-pip/lib/python3.11/site-packages/torch/backends/cuda/__init__.py:342: FutureWarning: torch.backends.cuda.sdp_kernel() is deprecated. In the future, this context manager will be removed. Please see, torch.nn.attention.sdpa_kernel() for the new context manager, with updated signature.
+  warnings.warn(
+2026-09-25 22:34:21 INFO: Zero-iter audit (48.9s): RGB-512=24.027  Y-512=24.527
+2026-09-25 22:54:05 INFO: it    50/750 total=0.1095 pix=0.0383 jepa=0.9275 gate=+0.4991 router_max_per_scale=['0.947915', '0.947919', '0.947921', '0.947919', '0.947917'] step=23.67s
+2026-09-25 23:13:47 INFO: it   100/750 total=0.1093 pix=0.0381 jepa=0.9272 gate=+0.4983 router_max_per_scale=['0.947915', '0.947928', '0.947928', '0.947916', '0.947928'] step=23.64s
+2026-09-25 23:33:28 INFO: it   150/750 total=0.1034 pix=0.0345 jepa=0.9289 gate=+0.4974 router_max_per_scale=['0.947915', '0.947932', '0.947923', '0.947922', '0.947931'] step=23.63s
+2026-09-25 23:53:09 INFO: it   200/750 total=0.1058 pix=0.0359 jepa=0.9286 gate=+0.4966 router_max_per_scale=['0.947915', '0.947943', '0.947921', '0.947917', '0.947940'] step=23.62s
+2026-09-26 00:12:51 INFO: it   250/750 total=0.1038 pix=0.0350 jepa=0.9181 gate=+0.4957 router_max_per_scale=['0.947915', '0.947945', '0.947926', '0.947921', '0.947954'] step=23.63s
+2026-09-26 00:13:41 INFO: [audit @ 250] (50.4s) RGB-512=27.176  Y-512=28.616
+2026-09-26 00:13:42 INFO:   -> best Y-512 = 28.616 saved
+2026-09-26 00:13:44 INFO:   -> best RGB-512 = 27.176 saved
+2026-09-26 00:33:26 INFO: it   300/750 total=0.1045 pix=0.0353 jepa=0.9257 gate=+0.4950 router_max_per_scale=['0.947915', '0.947945', '0.947929', '0.947917', '0.947964'] step=24.70s
+2026-09-26 00:53:09 INFO: it   350/750 total=0.1050 pix=0.0356 jepa=0.9230 gate=+0.4942 router_max_per_scale=['0.947915', '0.947950', '0.947931', '0.947926', '0.947973'] step=23.67s
+2026-09-26 01:12:51 INFO: it   400/750 total=0.1019 pix=0.0338 jepa=0.9221 gate=+0.4935 router_max_per_scale=['0.947915', '0.947954', '0.947939', '0.947922', '0.947980'] step=23.64s
+2026-09-26 01:32:36 INFO: it   450/750 total=0.1026 pix=0.0342 jepa=0.9209 gate=+0.4928 router_max_per_scale=['0.947915', '0.947960', '0.947943', '0.947922', '0.947992'] step=23.69s
+2026-09-26 01:52:18 INFO: it   500/750 total=0.0999 pix=0.0328 jepa=0.9138 gate=+0.4921 router_max_per_scale=['0.947915', '0.947977', '0.947942', '0.947925', '0.948007'] step=23.65s
+2026-09-26 01:53:06 INFO: [audit @ 500] (48.1s) RGB-512=26.468  Y-512=27.671
+2026-09-26 02:12:49 INFO: it   550/750 total=0.1021 pix=0.0340 jepa=0.9166 gate=+0.4914 router_max_per_scale=['0.947915', '0.947971', '0.947944', '0.947924', '0.948008'] step=24.61s
+2026-09-26 02:32:30 INFO: it   600/750 total=0.0988 pix=0.0320 jepa=0.9186 gate=+0.4908 router_max_per_scale=['0.947915', '0.947973', '0.947944', '0.947923', '0.948001'] step=23.62s
+2026-09-26 02:52:11 INFO: it   650/750 total=0.1022 pix=0.0340 jepa=0.9191 gate=+0.4901 router_max_per_scale=['0.947915', '0.947980', '0.947953', '0.947918', '0.948005'] step=23.63s
+2026-09-26 03:11:53 INFO: it   700/750 total=0.1015 pix=0.0335 jepa=0.9212 gate=+0.4896 router_max_per_scale=['0.947915', '0.947986', '0.947962', '0.947915', '0.948010'] step=23.64s
+2026-09-26 03:31:36 INFO: it   750/750 total=0.1047 pix=0.0355 jepa=0.9215 gate=+0.4892 router_max_per_scale=['0.947915', '0.947992', '0.947964', '0.947918', '0.948034'] step=23.64s
+2026-09-26 03:32:24 INFO: [audit @ 750] (48.0s) RGB-512=26.877  Y-512=28.292
+2026-09-26 03:32:25 INFO: === abl_m1active_s0 done: best Y-512 = 28.616  best RGB-512 = 27.176 ===

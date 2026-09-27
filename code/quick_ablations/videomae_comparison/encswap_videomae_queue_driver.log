@@ -1,0 +1,159 @@
+==========================================
+[Wed Jul 22 21:27:26 CST 2026] START encoder=videomae out=/cache/zihaohe/checkpoint/runs/v35_S4_ENCSWAP_videomae_ft
+==========================================
+[gate] GPU free (3316MB < 30000MB), proceeding at Wed Jul 22 21:27:26 CST 2026
+[Wed Jul 22 21:27:26 CST 2026] launching training...
+2026-07-22 21:27:27 INFO: === v35 Stage 4 encoder-swap: videomae ===
+/cache/zihaohe/conda_envs/vjepa2-pip/lib/python3.11/site-packages/timm/models/layers/__init__.py:49: FutureWarning: Importing from timm.models.layers is deprecated, please import via timm.layers
+  warnings.warn(f"Importing from {__name__} is deprecated, please import via timm.layers", FutureWarning)
+[VJepaBackboneLocal21] loaded /home/ma-user/workspace/zihaohe/checkpoint/vjepa2_1_vitl_dist_vitG_384.pt | missing=0 unexpected=2
+  unexpected (first 5): ['patch_embed_img.proj.weight', 'patch_embed_img.proj.bias']
+[CounterfactualRefiner] loaded predictor from /home/ma-user/workspace/zihaohe/checkpoint/vjepa2_1_vitl_dist_vitG_384.pt | missing=0 unexpected=4
+2026-07-22 21:28:02 INFO: Building swap encoder: videomae
+2026-07-22 21:28:07 INFO:   swap encoder params: 303.9M (frozen)
+2026-07-22 21:28:10 INFO:   pixel_branch init: missing=1 unexpected=0
+2026-07-22 21:28:10 INFO:   cf_refiner init: missing=0 unexpected=0
+[SDSD] layout=A/C (static_np or original) subset=direct split=test -> 15 sequences, 1037 frames total.
+/cache/zihaohe/conda_envs/vjepa2-pip/lib/python3.11/site-packages/torch/backends/cuda/__init__.py:342: FutureWarning: torch.backends.cuda.sdp_kernel() is deprecated. In the future, this context manager will be removed. Please see, torch.nn.attention.sdpa_kernel() for the new context manager, with updated signature.
+  warnings.warn(
+2026-07-22 21:29:33 INFO: Zero-iter audit (82.8s): RGB-512=16.907  Y-512=16.887
+[SDSD] layout=A/C (static_np or original) subset=direct split=train -> 59 sequences, 1671 frames total.
+[SDSD] layout=A/C (static_np or original) subset=direct split=train -> 101 sequences, 2530 frames total.
+Setting up [LPIPS] perceptual loss: trunk [alex], v[0.1], spatial [off]
+/cache/zihaohe/conda_envs/vjepa2-pip/lib/python3.11/site-packages/torchvision/models/_utils.py:208: UserWarning: The parameter 'pretrained' is deprecated since 0.13 and may be removed in the future, please use 'weights' instead.
+  warnings.warn(
+/cache/zihaohe/conda_envs/vjepa2-pip/lib/python3.11/site-packages/torchvision/models/_utils.py:223: UserWarning: Arguments other than a weight enum or `None` for 'weights' are deprecated since 0.13 and may be removed in the future. The current behavior is equivalent to passing `weights=AlexNet_Weights.IMAGENET1K_V1`. You can also use `weights=AlexNet_Weights.DEFAULT` to get the most up-to-date weights.
+  warnings.warn(msg)
+Loading model from: /cache/zihaohe/conda_envs/vjepa2-pip/lib/python3.11/site-packages/lpips/weights/v0.1/alex.pth
+2026-07-22 21:35:32 INFO: it    50/1500 total=0.2539 pix=0.1212 enc_cons=0.4293 router_max_per_scale=[0.947915   0.9479078  0.94791853 0.94790655 0.94792   ] step=7.18s
+2026-07-22 21:40:49 INFO: it   100/1500 total=0.1899 pix=0.0875 enc_cons=0.3825 router_max_per_scale=[0.947915   0.94790506 0.9479134  0.9479119  0.94791555] step=6.76s
+2026-07-22 21:46:03 INFO: it   150/1500 total=0.1916 pix=0.0888 enc_cons=0.3862 router_max_per_scale=[0.947915   0.94790184 0.94791096 0.94792026 0.947916  ] step=6.60s
+2026-07-22 21:51:21 INFO: it   200/1500 total=0.1521 pix=0.0670 enc_cons=0.3677 router_max_per_scale=[0.947915   0.94790024 0.9479071  0.9479165  0.9479251 ] step=6.54s
+2026-07-22 21:56:39 INFO: it   250/1500 total=0.1537 pix=0.0689 enc_cons=0.3410 router_max_per_scale=[0.947915   0.94789904 0.947906   0.9479179  0.94792944] step=6.50s
+2026-07-22 22:01:53 INFO: it   300/1500 total=0.1408 pix=0.0611 enc_cons=0.3508 router_max_per_scale=[0.947915   0.9478986  0.94790494 0.94792324 0.94793075] step=6.47s
+2026-07-22 22:07:11 INFO: it   350/1500 total=0.1466 pix=0.0644 enc_cons=0.3510 router_max_per_scale=[0.947915   0.94789433 0.9479056  0.94792163 0.9479278 ] step=6.45s
+2026-07-22 22:13:08 INFO: it   400/1500 total=0.1445 pix=0.0640 enc_cons=0.3388 router_max_per_scale=[0.947915   0.9478953  0.9479044  0.94792163 0.9479268 ] step=6.54s
+2026-07-22 22:18:32 INFO: it   450/1500 total=0.1484 pix=0.0653 enc_cons=0.3530 router_max_per_scale=[0.947915   0.9478923  0.94789594 0.9479195  0.9479297 ] step=6.53s
+2026-07-22 22:24:26 INFO: it   500/1500 total=0.1331 pix=0.0594 enc_cons=0.3158 router_max_per_scale=[0.947915   0.94789165 0.9478856  0.9479212  0.9479361 ] step=6.59s
+2026-07-22 22:25:14 INFO: [audit @ 500] (47.8s) RGB-512=25.711  Y-512=27.150
+2026-07-22 22:25:15 INFO:   -> best Y-512 = 27.150 saved
+2026-07-22 22:25:17 INFO:   -> best RGB-512 = 25.711 saved
+2026-07-22 22:30:31 INFO: it   550/1500 total=0.1295 pix=0.0563 enc_cons=0.3290 router_max_per_scale=[0.947915   0.94789153 0.94788307 0.9479267  0.9479407 ] step=6.65s
+2026-07-22 22:35:48 INFO: it   600/1500 total=0.1284 pix=0.0558 enc_cons=0.3275 router_max_per_scale=[0.947915  0.9478915 0.9478816 0.9479294 0.9479438] step=6.63s
+2026-07-22 22:41:05 INFO: it   650/1500 total=0.1400 pix=0.0631 enc_cons=0.3268 router_max_per_scale=[0.947915   0.94788706 0.9478805  0.9479287  0.9479478 ] step=6.60s
+2026-07-22 22:46:20 INFO: it   700/1500 total=0.1442 pix=0.0646 enc_cons=0.3354 router_max_per_scale=[0.947915   0.9478821  0.9478762  0.94792145 0.9479453 ] step=6.58s
+2026-07-22 22:51:37 INFO: it   750/1500 total=0.1303 pix=0.0570 enc_cons=0.3167 router_max_per_scale=[0.947915   0.94788355 0.947879   0.94792604 0.94794744] step=6.56s
+2026-07-22 22:56:51 INFO: it   800/1500 total=0.1471 pix=0.0656 enc_cons=0.3310 router_max_per_scale=[0.947915   0.94788253 0.94787925 0.94792914 0.9479447 ] step=6.55s
+2026-07-22 23:02:08 INFO: it   850/1500 total=0.1476 pix=0.0660 enc_cons=0.3216 router_max_per_scale=[0.947915  0.9478788 0.9478751 0.9479258 0.9479388] step=6.54s
+2026-07-22 23:07:26 INFO: it   900/1500 total=0.1534 pix=0.0705 enc_cons=0.3187 router_max_per_scale=[0.947915  0.9478844 0.9478774 0.947931  0.9479419] step=6.52s
+2026-07-22 23:12:40 INFO: it   950/1500 total=0.1312 pix=0.0575 enc_cons=0.3206 router_max_per_scale=[0.947915   0.9478821  0.9478738  0.94792914 0.94793975] step=6.51s
+2026-07-22 23:17:57 INFO: it  1000/1500 total=0.1296 pix=0.0574 enc_cons=0.3114 router_max_per_scale=[0.947915   0.9478813  0.94787097 0.94792926 0.94794   ] step=6.50s
+2026-07-22 23:18:45 INFO: [audit @ 1000] (47.3s) RGB-512=26.297  Y-512=27.860
+2026-07-22 23:18:47 INFO:   -> best Y-512 = 27.860 saved
+2026-07-22 23:18:49 INFO:   -> best RGB-512 = 26.297 saved
+2026-07-22 23:24:07 INFO: it  1050/1500 total=0.1343 pix=0.0594 enc_cons=0.3238 router_max_per_scale=[0.947915   0.94787985 0.94787294 0.94793355 0.9479453 ] step=6.55s
+2026-07-22 23:29:21 INFO: it  1100/1500 total=0.1317 pix=0.0591 enc_cons=0.3094 router_max_per_scale=[0.947915   0.947879   0.9478688  0.94793224 0.9479479 ] step=6.53s
+2026-07-22 23:34:38 INFO: it  1150/1500 total=0.1221 pix=0.0528 enc_cons=0.3234 router_max_per_scale=[0.947915   0.9478834  0.94786775 0.9479371  0.94794744] step=6.53s
+2026-07-22 23:39:53 INFO: it  1200/1500 total=0.1247 pix=0.0541 enc_cons=0.3093 router_max_per_scale=[0.947915   0.947882   0.9478637  0.9479328  0.94794756] step=6.52s
+2026-07-22 23:45:09 INFO: it  1250/1500 total=0.1329 pix=0.0597 enc_cons=0.3143 router_max_per_scale=[0.947915   0.9478836  0.9478666  0.94793504 0.94795305] step=6.51s
+2026-07-22 23:50:27 INFO: it  1300/1500 total=0.1160 pix=0.0504 enc_cons=0.2958 router_max_per_scale=[0.947915  0.9478852 0.9478637 0.9479325 0.9479512] step=6.50s
+2026-07-22 23:55:41 INFO: it  1350/1500 total=0.1264 pix=0.0550 enc_cons=0.3144 router_max_per_scale=[0.947915   0.9478841  0.94786465 0.9479357  0.9479497 ] step=6.49s
+2026-07-23 00:00:58 INFO: it  1400/1500 total=0.1205 pix=0.0529 enc_cons=0.3120 router_max_per_scale=[0.947915   0.94788265 0.9478634  0.9479345  0.947951  ] step=6.49s
+2026-07-23 00:06:17 INFO: it  1450/1500 total=0.1284 pix=0.0565 enc_cons=0.3195 router_max_per_scale=[0.947915   0.94787806 0.9478668  0.94793385 0.9479527 ] step=6.49s
+2026-07-23 00:11:31 INFO: it  1500/1500 total=0.1276 pix=0.0556 enc_cons=0.3205 router_max_per_scale=[0.947915   0.94788104 0.94787204 0.9479375  0.9479551 ] step=6.48s
+2026-07-23 00:12:19 INFO: [audit @ 1500] (48.2s) RGB-512=25.439  Y-512=26.679
+2026-07-23 00:12:21 INFO: === v35 Stage 4 encoder-swap videomae done: best Y-512 = 27.860  best RGB-512 = 26.297 ===
+[gate] GPU free (0MB < 30000MB), proceeding at Thu Jul 23 00:12:23 CST 2026
+[Thu Jul 23 00:12:23 CST 2026] launching eval L0,L1,L2 on /cache/zihaohe/checkpoint/runs/v35_S4_ENCSWAP_videomae_ft/best_y512.pt...
+/cache/zihaohe/conda_envs/vjepa2-pip/lib/python3.11/site-packages/timm/models/layers/__init__.py:49: FutureWarning: Importing from timm.models.layers is deprecated, please import via timm.layers
+  warnings.warn(f"Importing from {__name__} is deprecated, please import via timm.layers", FutureWarning)
+[VJepaBackboneLocal21] loaded /home/ma-user/workspace/zihaohe/checkpoint/vjepa2_1_vitl_dist_vitG_384.pt | missing=0 unexpected=2
+  unexpected (first 5): ['patch_embed_img.proj.weight', 'patch_embed_img.proj.bias']
+[CounterfactualRefiner] loaded predictor from /home/ma-user/workspace/zihaohe/checkpoint/vjepa2_1_vitl_dist_vitG_384.pt | missing=0 unexpected=4
+Loading encoder-swap (videomae) HMP-Net from /cache/zihaohe/checkpoint/runs/v35_S4_ENCSWAP_videomae_ft/best_y512.pt
+[SDSD] layout=A/C (static_np or original) subset=direct split=test -> 15 sequences, 1037 frames total.
+
+=== L0 SDSD-indoor: 15 seqs ===
+/cache/zihaohe/conda_envs/vjepa2-pip/lib/python3.11/site-packages/torch/backends/cuda/__init__.py:342: FutureWarning: torch.backends.cuda.sdp_kernel() is deprecated. In the future, this context manager will be removed. Please see, torch.nn.attention.sdpa_kernel() for the new context manager, with updated signature.
+  warnings.warn(
+Loading pretrained model LPIPS from /home/ma-user/.cache/torch/hub/pyiqa/LPIPS_v0.1_alex-df73285e.pth
+  [pair50] raw 28.07/0.116 cp 27.86/0.204 (5.7s)
+/cache/zihaohe/conda_envs/vjepa2-pip/lib/python3.11/site-packages/torch/backends/cuda/__init__.py:342: FutureWarning: torch.backends.cuda.sdp_kernel() is deprecated. In the future, this context manager will be removed. Please see, torch.nn.attention.sdpa_kernel() for the new context manager, with updated signature.
+  warnings.warn(
+  [pair52] raw 23.91/0.208 cp 23.83/0.235 (3.4s)
+  [pair58] raw 25.59/0.123 cp 28.10/0.177 (3.4s)
+  [pair5_2] raw 25.16/0.177 cp 25.41/0.183 (3.5s)
+  [pair6] raw 29.26/0.234 cp 29.01/0.282 (3.3s)
+  [pair60] raw 27.26/0.176 cp 27.05/0.243 (3.4s)
+  [pair68] raw 28.02/0.104 cp 27.76/0.168 (3.5s)
+  [pair6_2] raw 26.68/0.085 cp 27.09/0.105 (3.4s)
+  [pair7] raw 18.13/0.140 cp 18.49/0.141 (3.5s)
+  [pair70] raw 24.75/0.130 cp 24.91/0.171 (3.7s)
+  [pair7_2] raw 17.71/0.131 cp 17.90/0.288 (3.8s)
+  [pair8] raw 28.86/0.100 cp 28.78/0.171 (3.2s)
+  [pair8_2] raw 29.18/0.090 cp 29.09/0.120 (4.1s)
+  [pair9] raw 26.69/0.107 cp 28.79/0.186 (3.7s)
+  [pair9_2] raw 27.07/0.103 cp 27.79/0.105 (3.2s)
+[SDSD] layout=A/C (static_np or original) subset=direct split=test -> 25 sequences, 620 frames total.
+
+=== L1 SDSD-outdoor: 25 seqs ===
+  [MVI_1007_2] raw 18.80/0.287 cp 18.62/0.316 (3.5s)
+  [MVI_1009] raw 25.39/0.159 cp 21.81/0.245 (3.4s)
+  [MVI_1009_2] raw 20.64/0.177 cp 20.68/0.247 (3.3s)
+  [MVI_1011] raw 22.45/0.138 cp 22.33/0.204 (3.5s)
+  [MVI_1011_2] raw 20.94/0.166 cp 20.84/0.226 (3.5s)
+  [MVI_1013] raw 28.55/0.110 cp 27.09/0.172 (3.6s)
+  [MVI_1013_2] raw 22.22/0.161 cp 22.09/0.235 (4.0s)
+  [MVI_1015] raw 15.52/0.217 cp 15.50/0.259 (3.6s)
+  [MVI_1015_2] raw 14.45/0.246 cp 14.34/0.283 (3.7s)
+  [MVI_1017] raw 19.64/0.172 cp 19.41/0.219 (3.7s)
+  [MVI_1017_2] raw 19.40/0.150 cp 19.35/0.206 (3.5s)
+  [MVI_1019] raw 12.21/0.198 cp 12.29/0.235 (4.3s)
+  [MVI_1019_2] raw 12.06/0.267 cp 12.14/0.301 (3.2s)
+  [MVI_1021] raw 21.79/0.146 cp 21.24/0.178 (3.5s)
+  [MVI_1021_2] raw 22.35/0.160 cp 22.12/0.208 (3.3s)
+  [MVI_1024] raw 22.94/0.134 cp 22.53/0.199 (3.3s)
+  [MVI_1024_2] raw 22.24/0.128 cp 21.93/0.168 (3.3s)
+  [MVI_1026] raw 14.96/0.215 cp 14.76/0.281 (3.5s)
+  [MVI_1026_2] raw 14.83/0.252 cp 14.65/0.313 (3.5s)
+  [MVI_1028] raw 21.99/0.131 cp 22.74/0.169 (3.7s)
+  [MVI_1028_2] raw 20.12/0.191 cp 20.54/0.207 (3.4s)
+  [MVI_1030] raw 13.66/0.260 cp 13.59/0.273 (3.5s)
+  [MVI_1030_2] raw 12.53/0.272 cp 12.44/0.297 (3.8s)
+  [MVI_1032] raw 16.74/0.275 cp 16.47/0.293 (3.4s)
+  [MVI_1032_2] raw 21.38/0.224 cp 21.00/0.237 (3.6s)
+[BVI-RLV] test: 16 sequences (8 scenes × ≤2 fps), 6240 frames total
+
+=== L2 BVI-RLV: 16 seqs ===
+  [S33_mix5__10fps] raw 22.36/0.205 cp 22.76/0.258 (3.6s)
+  [S33_mix5__20fps] raw 12.98/0.277 cp 12.74/0.273 (3.6s)
+  [S34_mix6__10fps] raw 19.44/0.237 cp 21.92/0.152 (5.5s)
+  [S34_mix6__20fps] raw 10.64/0.326 cp 11.05/0.218 (3.5s)
+  [S35_Bunny__10fps] raw 19.16/0.288 cp 22.31/0.211 (3.5s)
+  [S35_Bunny__20fps] raw 12.29/0.300 cp 13.56/0.213 (3.7s)
+  [S36_Eeyore__10fps] raw 21.66/0.248 cp 23.83/0.214 (4.9s)
+  [S36_Eeyore__20fps] raw 13.21/0.240 cp 13.70/0.183 (3.6s)
+  [S37_Mario3__10fps] raw 21.12/0.239 cp 22.63/0.200 (3.3s)
+  [S37_Mario3__20fps] raw 11.45/0.332 cp 11.85/0.267 (3.5s)
+  [S38_Mario4__10fps] raw 21.04/0.259 cp 22.65/0.242 (3.4s)
+  [S38_Mario4__20fps] raw 10.71/0.332 cp 10.87/0.281 (3.6s)
+  [S39_Books4__10fps] raw 19.27/0.253 cp 24.96/0.192 (3.6s)
+  [S39_Books4__20fps] raw 11.33/0.372 cp 13.07/0.268 (3.7s)
+  [S40_Books5__10fps] raw 25.40/0.315 cp 25.72/0.321 (3.6s)
+  [S40_Books5__20fps] raw 16.00/0.474 cp 16.47/0.439 (3.4s)
+
+================================================================================
+=== SUMMARY encoder=videomae (ckpt=/cache/zihaohe/checkpoint/runs/v35_S4_ENCSWAP_videomae_ft/best_y512.pt) ===
+  L0_SDSD-indoor      : raw PSNR-RGB=25.756 LPIPS=0.135  |  +CP PSNR-RGB=26.124 LPIPS=0.185  (n=15)
+  L1_SDSD-outdoor     : raw PSNR-RGB=19.112 LPIPS=0.193  |  +CP PSNR-RGB=18.818 LPIPS=0.239  (n=25)
+  L2_BVI-RLV          : raw PSNR-RGB=16.754 LPIPS=0.294  |  +CP PSNR-RGB=18.130 LPIPS=0.246  (n=16)
+
+[saved] /cache/zihaohe/checkpoint/runs/encswap_evals/encswap_videomae_L012.json
+[Thu Jul 23 00:17:31 CST 2026] DONE encoder=videomae
+====================================
+[Thu Jul 23 00:17:31 CST 2026] QUEUE COMPLETE (videomae)
+====================================
+--- videomae ---
+  L0_SDSD-indoor: raw 25.76/0.135  +CP 26.12/0.185
+  L1_SDSD-outdoor: raw 19.11/0.193  +CP 18.82/0.239
+  L2_BVI-RLV: raw 16.75/0.294  +CP 18.13/0.246

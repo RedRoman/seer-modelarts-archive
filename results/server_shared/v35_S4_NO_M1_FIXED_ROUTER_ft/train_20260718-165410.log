@@ -1,0 +1,51 @@
+2026-07-18 16:54:10 INFO: === v35S4_NO_M1_FIXED_ROUTER ablation ===
+2026-07-18 16:54:10 INFO:   disable_m1=True  freeze_m3_router=True
+2026-07-18 16:54:35 INFO:   pixel_branch init: missing=1 unexpected=0
+2026-07-18 16:54:35 INFO:   cf_refiner init: missing=0 unexpected=0
+2026-07-18 16:54:35 INFO: [disable_m1] cf_refiner: 27 params frozen, gate.zero_ applied, forward monkey-patched to identity.
+2026-07-18 16:54:35 INFO: [freeze_m3_router] router_logits reset to identity (l_star from vjepa_layer_per_scale=(0, 0, 1, 2, 3)) and frozen.
+2026-07-18 16:54:35 INFO: [freeze_m3_router] softmax @ init:
+[[0.947915   0.01736167 0.01736167 0.01736167]
+ [0.947915   0.01736167 0.01736167 0.01736167]
+ [0.01736167 0.947915   0.01736167 0.01736167]
+ [0.01736167 0.01736167 0.947915   0.01736167]
+ [0.01736167 0.01736167 0.01736167 0.947915  ]]
+2026-07-18 16:54:35 INFO:   trainable params after ablation hooks: 369.747M (369747318 scalars)
+2026-07-18 16:55:19 INFO: Zero-iter audit (44.0s): RGB-512=27.078  Y-512=28.827
+2026-07-18 17:00:44 INFO: it    50/1500 total=0.0892 pix=0.0356 jepa=0.3117 router_max_per_scale=[0.947915 0.947915 0.947915 0.947915 0.947915] m1_gate=+0.0000e+00 step=6.49s
+2026-07-18 17:06:06 INFO: it   100/1500 total=0.0898 pix=0.0364 jepa=0.2997 router_max_per_scale=[0.947915 0.947915 0.947915 0.947915 0.947915] m1_gate=+0.0000e+00 step=6.47s
+2026-07-18 17:11:26 INFO: it   150/1500 total=0.1002 pix=0.0410 jepa=0.3194 router_max_per_scale=[0.947915 0.947915 0.947915 0.947915 0.947915] m1_gate=+0.0000e+00 step=6.44s
+2026-07-18 17:16:49 INFO: it   200/1500 total=0.0867 pix=0.0342 jepa=0.3083 router_max_per_scale=[0.947915 0.947915 0.947915 0.947915 0.947915] m1_gate=+0.0000e+00 step=6.45s
+2026-07-18 17:22:11 INFO: it   250/1500 total=0.0795 pix=0.0302 jepa=0.3024 router_max_per_scale=[0.947915 0.947915 0.947915 0.947915 0.947915] m1_gate=+0.0000e+00 step=6.45s
+2026-07-18 17:27:31 INFO: it   300/1500 total=0.0849 pix=0.0339 jepa=0.3039 router_max_per_scale=[0.947915 0.947915 0.947915 0.947915 0.947915] m1_gate=+0.0000e+00 step=6.44s
+2026-07-18 17:32:54 INFO: it   350/1500 total=0.0922 pix=0.0371 jepa=0.3068 router_max_per_scale=[0.947915 0.947915 0.947915 0.947915 0.947915] m1_gate=+0.0000e+00 step=6.44s
+2026-07-18 17:38:13 INFO: it   400/1500 total=0.0915 pix=0.0370 jepa=0.3051 router_max_per_scale=[0.947915 0.947915 0.947915 0.947915 0.947915] m1_gate=+0.0000e+00 step=6.43s
+2026-07-18 17:43:36 INFO: it   450/1500 total=0.0882 pix=0.0346 jepa=0.3130 router_max_per_scale=[0.947915 0.947915 0.947915 0.947915 0.947915] m1_gate=+0.0000e+00 step=6.44s
+2026-07-18 17:48:59 INFO: it   500/1500 total=0.0784 pix=0.0298 jepa=0.3017 router_max_per_scale=[0.947915 0.947915 0.947915 0.947915 0.947915] m1_gate=+0.0000e+00 step=6.44s
+2026-07-18 17:49:45 INFO: [audit @ 500] (46.6s) RGB-512=27.120  Y-512=28.801
+2026-07-18 17:49:47 INFO:   -> best RGB-512 = 27.120 saved
+2026-07-18 17:55:06 INFO: it   550/1500 total=0.0859 pix=0.0341 jepa=0.3076 router_max_per_scale=[0.947915 0.947915 0.947915 0.947915 0.947915] m1_gate=+0.0000e+00 step=6.52s
+2026-07-18 18:00:29 INFO: it   600/1500 total=0.0921 pix=0.0371 jepa=0.3083 router_max_per_scale=[0.947915 0.947915 0.947915 0.947915 0.947915] m1_gate=+0.0000e+00 step=6.52s
+2026-07-18 18:05:52 INFO: it   650/1500 total=0.0825 pix=0.0320 jepa=0.3019 router_max_per_scale=[0.947915 0.947915 0.947915 0.947915 0.947915] m1_gate=+0.0000e+00 step=6.51s
+2026-07-18 18:11:12 INFO: it   700/1500 total=0.0957 pix=0.0387 jepa=0.3157 router_max_per_scale=[0.947915 0.947915 0.947915 0.947915 0.947915] m1_gate=+0.0000e+00 step=6.50s
+2026-07-18 18:16:34 INFO: it   750/1500 total=0.0765 pix=0.0291 jepa=0.2941 router_max_per_scale=[0.947915 0.947915 0.947915 0.947915 0.947915] m1_gate=+0.0000e+00 step=6.50s
+2026-07-18 18:21:54 INFO: it   800/1500 total=0.0865 pix=0.0334 jepa=0.3088 router_max_per_scale=[0.947915 0.947915 0.947915 0.947915 0.947915] m1_gate=+0.0000e+00 step=6.49s
+2026-07-18 18:27:17 INFO: it   850/1500 total=0.0899 pix=0.0358 jepa=0.3094 router_max_per_scale=[0.947915 0.947915 0.947915 0.947915 0.947915] m1_gate=+0.0000e+00 step=6.49s
+2026-07-18 18:32:40 INFO: it   900/1500 total=0.0853 pix=0.0334 jepa=0.3059 router_max_per_scale=[0.947915 0.947915 0.947915 0.947915 0.947915] m1_gate=+0.0000e+00 step=6.49s
+2026-07-18 18:38:00 INFO: it   950/1500 total=0.0910 pix=0.0368 jepa=0.3026 router_max_per_scale=[0.947915 0.947915 0.947915 0.947915 0.947915] m1_gate=+0.0000e+00 step=6.48s
+2026-07-18 18:43:23 INFO: it  1000/1500 total=0.0792 pix=0.0304 jepa=0.3009 router_max_per_scale=[0.947915 0.947915 0.947915 0.947915 0.947915] m1_gate=+0.0000e+00 step=6.48s
+2026-07-18 18:44:10 INFO: [audit @ 1000] (47.0s) RGB-512=27.300  Y-512=29.004
+2026-07-18 18:44:11 INFO:   -> best Y-512 = 29.004 saved
+2026-07-18 18:44:13 INFO:   -> best RGB-512 = 27.300 saved
+2026-07-18 18:49:36 INFO: it  1050/1500 total=0.0905 pix=0.0360 jepa=0.3146 router_max_per_scale=[0.947915 0.947915 0.947915 0.947915 0.947915] m1_gate=+0.0000e+00 step=6.53s
+2026-07-18 18:54:56 INFO: it  1100/1500 total=0.0814 pix=0.0313 jepa=0.3041 router_max_per_scale=[0.947915 0.947915 0.947915 0.947915 0.947915] m1_gate=+0.0000e+00 step=6.52s
+2026-07-18 19:00:19 INFO: it  1150/1500 total=0.0877 pix=0.0352 jepa=0.3054 router_max_per_scale=[0.947915 0.947915 0.947915 0.947915 0.947915] m1_gate=+0.0000e+00 step=6.52s
+2026-07-18 19:05:39 INFO: it  1200/1500 total=0.0864 pix=0.0345 jepa=0.3022 router_max_per_scale=[0.947915 0.947915 0.947915 0.947915 0.947915] m1_gate=+0.0000e+00 step=6.52s
+2026-07-18 19:11:02 INFO: it  1250/1500 total=0.0891 pix=0.0353 jepa=0.3150 router_max_per_scale=[0.947915 0.947915 0.947915 0.947915 0.947915] m1_gate=+0.0000e+00 step=6.51s
+2026-07-18 19:16:26 INFO: it  1300/1500 total=0.0833 pix=0.0326 jepa=0.2956 router_max_per_scale=[0.947915 0.947915 0.947915 0.947915 0.947915] m1_gate=+0.0000e+00 step=6.51s
+2026-07-18 19:21:46 INFO: it  1350/1500 total=0.0840 pix=0.0334 jepa=0.3023 router_max_per_scale=[0.947915 0.947915 0.947915 0.947915 0.947915] m1_gate=+0.0000e+00 step=6.51s
+2026-07-18 19:27:09 INFO: it  1400/1500 total=0.0822 pix=0.0321 jepa=0.3078 router_max_per_scale=[0.947915 0.947915 0.947915 0.947915 0.947915] m1_gate=+0.0000e+00 step=6.51s
+2026-07-18 19:32:32 INFO: it  1450/1500 total=0.0878 pix=0.0345 jepa=0.3095 router_max_per_scale=[0.947915 0.947915 0.947915 0.947915 0.947915] m1_gate=+0.0000e+00 step=6.51s
+2026-07-18 19:37:52 INFO: it  1500/1500 total=0.0806 pix=0.0307 jepa=0.3046 router_max_per_scale=[0.947915 0.947915 0.947915 0.947915 0.947915] m1_gate=+0.0000e+00 step=6.50s
+2026-07-18 19:38:41 INFO: [audit @ 1500] (48.7s) RGB-512=27.184  Y-512=28.935
+2026-07-18 19:38:42 INFO: === v35S4_NO_M1_FIXED_ROUTER done: best Y-512 = 29.004  best RGB-512 = 27.300 ===

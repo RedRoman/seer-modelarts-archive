@@ -1,0 +1,95 @@
+_base_: base_21.yaml
+
+# v6.D: Architectural changes vs v6.0:
+#   - LatentDiT -> RetinexLatentDiT (dual-branch R/L decomposition in latent)
+#   - PixelDecoder bottleneck adds VolumeCFIM (parallel to TemporalMixer3D)
+#   - Loss: + latent illumination smoothness (L) + reflectance temporal stability (R)
+# Eval changes:
+#   - val_every 1000 -> 500 (catch trends faster)
+#   - sliding-mean-of-3 PSNR for best criterion (suppress single-eval noise)
+#   - EMA shadow eval'd separately, best_ema.pt saved
+# Data changes:
+#   - batch_size kept at 1 (B=2 OOM'd at smoke); accum_steps 4 -> 8 instead.
+#     Effective batch 4 -> 8 (matches v6.0-equivalent if it had spare memory),
+#     peak GPU memory same as v6.0.
+
+output_dir: /cache/zihaohe/checkpoint/runs/v6d
+
+precision: bf16
+
+model:
+  inference_steps: 8
+
+  latent_dit:
+    dim: 768                  # split as 384 R + 384 L
+    depth: 16
+    num_heads: 12             # split as 6 per branch
+    ffn_mult: 4.0
+    cfim_every: 4             # TokenCFIM after blocks 4, 8, 12 (on R branch)
+    cfim_heads: 8
+    use_gradient_checkpoint: true
+
+  pixel_decoder:
+    base_dim: 48
+    num_blocks: [2, 4, 4, 6, 8]
+    heads: [2, 4, 8, 8, 8]
+    ffn_exp: 2.66
+    vjepa_layer_per_scale: [0, 0, 1, 2, 3]
+    cross_attn_at_scales: [2, 3, 4]
+    use_gradient_checkpoint: true
+    use_cfim_bottleneck: true
+
+  predictor:
+    enabled: false
+
+train:
+  batch_size: 1               # B=2 OOM'd; keep B=1, scale via accum_steps
+  clip_len: 16
+  crop_size: 256
+  log_every: 50
+  val_every: 500              # 1000 -> 500 (more frequent eval)
+  save_every: 2000
+  keep_n_step_ckpts: 2
+  ema_decay: 0.999
+  ema_start: 1000             # warmup before EMA tracking begins
+  val_window: 3               # sliding-mean window for best criterion
+
+optim:
+  lr: 2.0e-4
+  min_lr: 1.0e-5
+  weight_decay: 1.0e-4
+  betas: [0.9, 0.99]
+  total_iters: 80000          # 40k -> 80k: compensates accum=8 cutting optim updates in half
+  warmup_iters: 500
+  scheduler: cosine            # cosine schedule auto-stretches over 80k now
+  grad_clip: 1.0
+  accum_steps: 8              # effective batch = 1 * 8 = 8 (2x v6.0)
+  resume_from: /cache/zihaohe/checkpoint/runs/v6d/ckpts/step_8000.pt
+  resume_reset_optim: false   # keep optim state + scheduler step count
+
+data:
+  train:
+    datasets:
+      - kind: sdsd
+        root: /home/ma-user/workspace/zihaohe/datasets/SDSD_indoor
+        subset: direct
+        split: train
+        weight: 1.0
+      - kind: sdsd
+        root: /home/ma-user/workspace/zihaohe/datasets/SDSD_outdoor
+        subset: direct
+        split: train
+        weight: 1.0
+  val:
+    kind: sdsd
+    root: /home/ma-user/workspace/zihaohe/datasets/SDSD_indoor
+    subset: direct
+    split: test
+
+loss:
+  flow_weight: 1.0
+  pix_weight: 1.0
+  lpips_weight: 0.1
+  temporal_weight: 0.1
+  smooth_L_weight: 0.01       # illumination latent spatial-TV
+  temp_R_weight: 0.01         # reflectance latent frame-to-frame L1

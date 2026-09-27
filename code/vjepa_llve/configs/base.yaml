@@ -1,0 +1,89 @@
+# V-JEPA-LLVE v5 base config.
+# All other configs inherit via `_base_:` and override only what they need.
+
+seed: 42
+device: cuda
+num_workers: 4
+
+# bf16 default. fp16 is known to NaN on LLVE activations (low-light pixel
+# values exhaust fp16's exponent range). bf16 has fp32 exponent range and is
+# A100-native, no GradScaler needed.
+precision: bf16
+
+data_root: /home/ma-user/workspace/zihaohe/datasets
+
+# ---------------------------------------------------------------------------
+# Model: V-JEPA 2.1 ViT-L (frozen) + SD VAE (frozen) + DiT velocity (trainable)
+# ---------------------------------------------------------------------------
+model:
+  backbone:
+    source: hf                  # "hf" for V-JEPA 2 HuggingFace, override to "local_21" for V-JEPA 2.1
+    hf_repo: facebook/vjepa2-vitl-fpc64-256
+    feature_layers: [5, 11, 17, 23]
+    image_size: 256
+    frames_per_clip: 16
+    freeze: true
+
+  vae:
+    repo: stabilityai/sd-vae-ft-mse
+    deterministic_encode: false  # stochastic encode regularizes training
+
+  inference_steps: 8             # Euler ODE steps at val/inference
+
+  predictor:
+    enabled: true                # use V-JEPA 2.1 predictor as counterfactual refiner
+    target_layer_idx: 3          # refine deepest V-JEPA layer (l23)
+    predictor_embed_dim: 384
+    depth: 12
+    num_heads: 12
+    lora_rank: 16
+    freeze_body: true
+
+  dit:
+    patch: 2                     # latent 32x32 / patch 2 = 16x16 spatial tokens
+    dim: 1024
+    depth: 28
+    num_heads: 16
+    ffn_mult: 4.0
+    cross_attn_blocks: [3, 7, 11, 15, 19, 23, 27]
+    cross_attn_layer_map: [0, 1, 2, 3, 2, 3, 3]
+    use_gradient_checkpoint: true
+
+# ---------------------------------------------------------------------------
+# Loss
+# ---------------------------------------------------------------------------
+loss:
+  flow_weight: 1.0
+  counterfactual_weight: 0.1     # ||refined_features - E(HQ).detach()||_1
+  lpips_weight: 0.0              # optional, off by default (decode is expensive)
+  temporal_weight: 0.0           # optional
+
+# ---------------------------------------------------------------------------
+# Optim
+# ---------------------------------------------------------------------------
+optim:
+  lr: 1.0e-4
+  min_lr: 1.0e-5
+  weight_decay: 1.0e-4
+  betas: [0.9, 0.99]
+  total_iters: 30000
+  warmup_iters: 500
+  scheduler: cosine
+  grad_clip: 1.0
+  accum_steps: 1
+  resume_from: null
+  resume_reset_optim: false
+
+# ---------------------------------------------------------------------------
+# Train
+# ---------------------------------------------------------------------------
+train:
+  batch_size: 8
+  clip_len: 16
+  crop_size: 256
+  log_every: 50
+  val_every: 1000
+  save_every: 2000
+  # ckpt retention: only keep this many step_*.pt files per run dir.
+  # Together with best.pt and final.pt, this caps run dir size.
+  keep_n_step_ckpts: 2

@@ -1,0 +1,32 @@
+2026-07-18 12:34:28 INFO: === v35S4_FIXED_ROUTER ablation ===
+2026-07-18 12:34:28 INFO:   disable_m1=False  freeze_m3_router=True
+/cache/zihaohe/conda_envs/vjepa2-pip/lib/python3.11/site-packages/timm/models/layers/__init__.py:49: FutureWarning: Importing from timm.models.layers is deprecated, please import via timm.layers
+  warnings.warn(f"Importing from {__name__} is deprecated, please import via timm.layers", FutureWarning)
+[VJepaBackboneLocal21] loaded /home/ma-user/workspace/zihaohe/checkpoint/vjepa2_1_vitl_dist_vitG_384.pt | missing=0 unexpected=2
+  unexpected (first 5): ['patch_embed_img.proj.weight', 'patch_embed_img.proj.bias']
+[CounterfactualRefiner] loaded predictor from /home/ma-user/workspace/zihaohe/checkpoint/vjepa2_1_vitl_dist_vitG_384.pt | missing=0 unexpected=4
+2026-07-18 12:35:03 INFO:   pixel_branch init: missing=1 unexpected=0
+2026-07-18 12:35:03 INFO:   cf_refiner init: missing=0 unexpected=0
+2026-07-18 12:35:03 INFO: [freeze_m3_router] router_logits reset to identity (l_star from vjepa_layer_per_scale=(0, 0, 1, 2, 3)) and frozen.
+2026-07-18 12:35:03 INFO: [freeze_m3_router] softmax @ init:
+[[0.947915   0.01736167 0.01736167 0.01736167]
+ [0.947915   0.01736167 0.01736167 0.01736167]
+ [0.01736167 0.947915   0.01736167 0.01736167]
+ [0.01736167 0.01736167 0.947915   0.01736167]
+ [0.01736167 0.01736167 0.01736167 0.947915  ]]
+2026-07-18 12:35:03 INFO:   trainable params after ablation hooks: 370.436M (370436471 scalars)
+[SDSD] layout=A/C (static_np or original) subset=direct split=test -> 15 sequences, 1037 frames total.
+/cache/zihaohe/conda_envs/vjepa2-pip/lib/python3.11/site-packages/torch/backends/cuda/__init__.py:342: FutureWarning: torch.backends.cuda.sdp_kernel() is deprecated. In the future, this context manager will be removed. Please see, torch.nn.attention.sdpa_kernel() for the new context manager, with updated signature.
+  warnings.warn(
+2026-07-18 12:35:53 INFO: Zero-iter audit (49.2s): RGB-512=27.078  Y-512=28.827
+[SDSD] layout=A/C (static_np or original) subset=direct split=train -> 59 sequences, 1671 frames total.
+[SDSD] layout=A/C (static_np or original) subset=direct split=train -> 101 sequences, 2530 frames total.
+Setting up [LPIPS] perceptual loss: trunk [alex], v[0.1], spatial [off]
+/cache/zihaohe/conda_envs/vjepa2-pip/lib/python3.11/site-packages/torchvision/models/_utils.py:208: UserWarning: The parameter 'pretrained' is deprecated since 0.13 and may be removed in the future, please use 'weights' instead.
+  warnings.warn(
+/cache/zihaohe/conda_envs/vjepa2-pip/lib/python3.11/site-packages/torchvision/models/_utils.py:223: UserWarning: Arguments other than a weight enum or `None` for 'weights' are deprecated since 0.13 and may be removed in the future. The current behavior is equivalent to passing `weights=AlexNet_Weights.IMAGENET1K_V1`. You can also use `weights=AlexNet_Weights.DEFAULT` to get the most up-to-date weights.
+  warnings.warn(msg)
+Loading model from: /cache/zihaohe/conda_envs/vjepa2-pip/lib/python3.11/site-packages/lpips/weights/v0.1/alex.pth
+/cache/zihaohe/conda_envs/vjepa2-pip/lib/python3.11/site-packages/torch/backends/cuda/__init__.py:342: FutureWarning: torch.backends.cuda.sdp_kernel() is deprecated. In the future, this context manager will be removed. Please see, torch.nn.attention.sdpa_kernel() for the new context manager, with updated signature.
+  warnings.warn(
+2026-07-18 12:37:07 INFO: === v35S4_FIXED_ROUTER done: best Y-512 = 28.827  best RGB-512 = 27.078 ===

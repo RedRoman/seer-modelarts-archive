@@ -1,0 +1,35 @@
+[Seer] variant from ckpt args: {'no_vjepa': True, 'random_vjepa': False, 'disable_igab': False, 'disable_lic': False, 'disable_bottleneck': False}
+[Seer] pixel_branch missing=0 unexpected=0
+[SDSD] layout=A/C (static_np or original) subset=direct split=train -> 59 sequences, 1671 frames total.
+[SDSD] layout=A/C (static_np or original) subset=direct split=train -> 101 sequences, 2530 frames total.
+[CP] closed-form alpha on 15 SDSD train clips: raw=[0.4073134731198725, -0.8744958792246421, -0.26127441448779276] clipped=[0.4073134660720825, 0.0, 0.0]
+[SDSD] layout=A/C (static_np or original) subset=direct split=test -> 15 sequences, 1037 frames total.
+Loading pretrained model LPIPS from /home/ma-user/.cache/torch/hub/pyiqa/LPIPS_v0.1_alex-df73285e.pth
+Loading pretrained model DISTS from /home/ma-user/.cache/torch/hub/pyiqa/DISTS_weights-f5e65c96.pth
+L0_SDSD-indoor   HMP-raw  PSNR=24.989 LPIPS=0.1356 DISTS=0.1420 CLIPIQA=0.1874 n=15 tlp=0.0519 mabd=0.0019 flicker=0.0274 warp_err=0.0104 (93s)
+L0_SDSD-indoor   HMP+CP   PSNR=24.836 LPIPS=0.1820 DISTS=0.1441 CLIPIQA=0.1593 n=15 tlp=0.0888 mabd=0.0019 flicker=0.0277 warp_err=0.0143 (93s)
+L0_SDSD-indoor   HMP+CPfit PSNR=25.054 LPIPS=0.1414 DISTS=0.1434 CLIPIQA=0.1586 n=15 tlp=0.0617 mabd=0.0019 flicker=0.0277 warp_err=0.0113 (93s)
+L0_SDSD-indoor   HMP+CPxfit PSNR=25.148 LPIPS=0.1656 DISTS=0.1486 CLIPIQA=0.1585 n=15 tlp=0.0768 mabd=0.0019 flicker=0.0280 warp_err=0.0128 (93s)
+[SDSD] layout=A/C (static_np or original) subset=direct split=test -> 25 sequences, 620 frames total.
+L1_SDSD-outdoor  HMP-raw  PSNR=21.934 LPIPS=0.2039 DISTS=0.1303 CLIPIQA=0.1724 n=25 tlp=0.0540 mabd=0.0030 flicker=0.0125 warp_err=0.0131 (140s)
+L1_SDSD-outdoor  HMP+CP   PSNR=21.735 LPIPS=0.2371 DISTS=0.1443 CLIPIQA=0.1600 n=25 tlp=0.0724 mabd=0.0030 flicker=0.0125 warp_err=0.0162 (140s)
+L1_SDSD-outdoor  HMP+CPfit PSNR=21.847 LPIPS=0.2093 DISTS=0.1331 CLIPIQA=0.1637 n=25 tlp=0.0604 mabd=0.0030 flicker=0.0127 warp_err=0.0138 (140s)
+L1_SDSD-outdoor  HMP+CPxfit PSNR=21.909 LPIPS=0.2059 DISTS=0.1313 CLIPIQA=0.1748 n=25 tlp=0.0553 mabd=0.0030 flicker=0.0124 warp_err=0.0133 (140s)
+[BVI-RLV] test: 16 sequences (8 scenes × ≤2 fps), 6240 frames total
+L2_BVI-RLV       HMP-raw  PSNR=18.245 LPIPS=0.2398 DISTS=0.1586 CLIPIQA=0.3149 n=16 tlp=0.0731 mabd=0.0030 flicker=0.0888 warp_err=0.0092 (125s)
+L2_BVI-RLV       HMP+CP   PSNR=18.918 LPIPS=0.2311 DISTS=0.1524 CLIPIQA=0.2606 n=16 tlp=0.0835 mabd=0.0030 flicker=0.0888 warp_err=0.0122 (125s)
+L2_BVI-RLV       HMP+CPfit PSNR=18.350 LPIPS=0.2423 DISTS=0.1590 CLIPIQA=0.2749 n=16 tlp=0.0775 mabd=0.0030 flicker=0.0892 warp_err=0.0101 (125s)
+L2_BVI-RLV       HMP+CPxfit PSNR=18.733 LPIPS=0.2273 DISTS=0.1481 CLIPIQA=0.3389 n=16 tlp=0.0825 mabd=0.0030 flicker=0.0890 warp_err=0.0119 (125s)
+L3_LOL-v1        HMP-raw  PSNR=15.816 LPIPS=0.3339 DISTS=0.2223 CLIPIQA=0.2980 n=15  (35s)
+L3_LOL-v1        HMP+CP   PSNR=15.885 LPIPS=0.2902 DISTS=0.2084 CLIPIQA=0.2306 n=15  (35s)
+L3_LOL-v1        HMP+CPfit PSNR=15.864 LPIPS=0.3168 DISTS=0.2234 CLIPIQA=0.2529 n=15  (35s)
+L3_LOL-v1        HMP+CPxfit PSNR=15.721 LPIPS=0.3401 DISTS=0.2347 CLIPIQA=0.2802 n=15  (35s)
+L4_LOLv2-Syn     HMP-raw  PSNR=16.444 LPIPS=0.3239 DISTS=0.2295 CLIPIQA=0.3975 n=100  (145s)
+L4_LOLv2-Syn     HMP+CP   PSNR=16.858 LPIPS=0.2855 DISTS=0.2086 CLIPIQA=0.3865 n=100  (145s)
+L4_LOLv2-Syn     HMP+CPfit PSNR=16.486 LPIPS=0.3170 DISTS=0.2246 CLIPIQA=0.3843 n=100  (145s)
+L4_LOLv2-Syn     HMP+CPxfit PSNR=16.912 LPIPS=0.2839 DISTS=0.2083 CLIPIQA=0.4024 n=100  (145s)
+L5_LOLv2-Real    HMP-raw  PSNR=17.657 LPIPS=0.3279 DISTS=0.2284 CLIPIQA=0.2822 n=100  (235s)
+L5_LOLv2-Real    HMP+CP   PSNR=17.356 LPIPS=0.3060 DISTS=0.2211 CLIPIQA=0.2509 n=100  (235s)
+L5_LOLv2-Real    HMP+CPfit PSNR=17.618 LPIPS=0.3135 DISTS=0.2279 CLIPIQA=0.2594 n=100  (235s)
+L5_LOLv2-Real    HMP+CPxfit PSNR=17.711 LPIPS=0.3279 DISTS=0.2284 CLIPIQA=0.2821 n=100  (235s)
+[SAVE] /cache/zihaohe/runs/seer_iclr/ctrl_novjepa_s1/eval_unified.json

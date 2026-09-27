@@ -1,0 +1,36 @@
+/cache/zihaohe/conda_envs/vjepa2-pip/lib/python3.11/site-packages/transformers/utils/hub.py:106: FutureWarning: Using `TRANSFORMERS_CACHE` is deprecated and will be removed in v5 of Transformers. Use `HF_HOME` instead.
+  warnings.warn(
+[*] loading VideoMAEForPreTraining (MCG-NJU/videomae-large) ...
+    Tp=8, target future tubelets (0-indexed): [4, 5, 6, 7]
+[*] loading frames for all 15 pairs ...
+    loaded in 13.3s
+       pair50  LQ: pred=0.2953 naive=0.4082 (gap=-0.1129)   HQ: pred=0.4687 naive=0.7085 (gap=-0.2398)
+       pair52  LQ: pred=0.4235 naive=0.5973 (gap=-0.1738)   HQ: pred=0.5192 naive=0.7525 (gap=-0.2333)
+       pair58  LQ: pred=0.4675 naive=0.4705 (gap=-0.0029)   HQ: pred=0.6561 naive=0.6927 (gap=-0.0366)
+      pair5_2  LQ: pred=0.5499 naive=0.7826 (gap=-0.2327)   HQ: pred=0.6539 naive=0.9583 (gap=-0.3044)
+        pair6  LQ: pred=0.2600 naive=0.5262 (gap=-0.2662)   HQ: pred=0.4892 naive=0.8853 (gap=-0.3961)
+       pair60  LQ: pred=0.2563 naive=0.5411 (gap=-0.2848)   HQ: pred=0.3894 naive=0.8265 (gap=-0.4371)
+       pair68  LQ: pred=0.1726 naive=0.2611 (gap=-0.0885)   HQ: pred=0.2317 naive=0.3377 (gap=-0.1060)
+      pair6_2  LQ: pred=0.5289 naive=0.6961 (gap=-0.1672)   HQ: pred=0.6561 naive=0.8939 (gap=-0.2378)
+        pair7  LQ: pred=0.5452 naive=0.8693 (gap=-0.3241)   HQ: pred=0.6519 naive=0.9541 (gap=-0.3022)
+       pair70  LQ: pred=0.2770 naive=0.4591 (gap=-0.1820)   HQ: pred=0.3016 naive=0.5319 (gap=-0.2303)
+      pair7_2  LQ: pred=0.4020 naive=0.4569 (gap=-0.0549)   HQ: pred=0.6752 naive=0.7768 (gap=-0.1016)
+        pair8  LQ: pred=0.4635 naive=0.3563 (gap=+0.1072)   HQ: pred=0.6719 naive=0.7010 (gap=-0.0291)
+      pair8_2  LQ: pred=0.5183 naive=0.5642 (gap=-0.0459)   HQ: pred=0.6133 naive=0.7586 (gap=-0.1453)
+        pair9  LQ: pred=0.4142 naive=0.5422 (gap=-0.1281)   HQ: pred=0.6390 naive=0.8311 (gap=-0.1922)
+      pair9_2  LQ: pred=0.5130 naive=0.8349 (gap=-0.3219)   HQ: pred=0.6027 naive=0.9466 (gap=-0.3439)
+
+====================================================================================================
+metric                                              mean                 95% CI
+----------------------------------------------------------------------------------------------------
+VideoMAE reconstruction cosine, future tubelets, LQ input    0.40582 [0.3427,0.4645]
+Naive copy-last-tubelet baseline, LQ input       0.55772 [0.4737,0.6452]
+VideoMAE reconstruction cosine, future tubelets, HQ (GT) input    0.54799 [0.4725,0.6145]
+Naive copy-last-tubelet baseline, HQ (GT) input    0.77036 [0.6816,0.8468]
+----------------------------------------------------------------------------------------------------
+LQ predictor>naive: wilcoxon p=0.999786376953125  cohens_d=-1.2301  delta=-0.15191
+HQ predictor>naive: wilcoxon p=1.0  cohens_d=-1.8080  delta=-0.22237
+HQ predictor > LQ predictor: wilcoxon p=3.0517578125e-05  cohens_d=+2.0111  delta=+0.14218  HQ wins 15/15
+====================================================================================================
+[SAVE] /home/ma-user/workspace/zihaohe/quick_ablations/videomae_comparison/videomae_reconstruction_coherence.json
+[DONE] 18.2s

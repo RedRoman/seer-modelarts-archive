@@ -1,0 +1,222 @@
+==========================================
+[Sat Jul 18 16:50:48 CST 2026] START combined ablation TAG=no_m1_fixed_router
+  flags: --disable_m1 --freeze_m3_router
+  out_dir: /cache/zihaohe/checkpoint/runs/v35_S4_NO_M1_FIXED_ROUTER_ft
+  eval_json: /cache/zihaohe/checkpoint/runs/encswap_evals/no_m1_fixed_router_L012_all.json
+==========================================
+[gate] GPU free (16830MB < 30000MB) at Sat Jul 18 16:50:48 CST 2026
+[Sat Jul 18 16:50:48 CST 2026] SMOKE (10 iters)...
+2026-07-18 16:50:49 INFO: === v35S4_NO_M1_FIXED_ROUTER ablation ===
+2026-07-18 16:50:49 INFO:   disable_m1=True  freeze_m3_router=True
+/cache/zihaohe/conda_envs/vjepa2-pip/lib/python3.11/site-packages/timm/models/layers/__init__.py:49: FutureWarning: Importing from timm.models.layers is deprecated, please import via timm.layers
+  warnings.warn(f"Importing from {__name__} is deprecated, please import via timm.layers", FutureWarning)
+[VJepaBackboneLocal21] loaded /home/ma-user/workspace/zihaohe/checkpoint/vjepa2_1_vitl_dist_vitG_384.pt | missing=0 unexpected=2
+  unexpected (first 5): ['patch_embed_img.proj.weight', 'patch_embed_img.proj.bias']
+[CounterfactualRefiner] loaded predictor from /home/ma-user/workspace/zihaohe/checkpoint/vjepa2_1_vitl_dist_vitG_384.pt | missing=0 unexpected=4
+2026-07-18 16:51:18 INFO:   pixel_branch init: missing=1 unexpected=0
+2026-07-18 16:51:18 INFO:   cf_refiner init: missing=0 unexpected=0
+2026-07-18 16:51:18 INFO: [disable_m1] cf_refiner: 27 params frozen, gate.zero_ applied, forward monkey-patched to identity.
+2026-07-18 16:51:18 INFO: [freeze_m3_router] router_logits reset to identity (l_star from vjepa_layer_per_scale=(0, 0, 1, 2, 3)) and frozen.
+2026-07-18 16:51:18 INFO: [freeze_m3_router] softmax @ init:
+[[0.947915   0.01736167 0.01736167 0.01736167]
+ [0.947915   0.01736167 0.01736167 0.01736167]
+ [0.01736167 0.947915   0.01736167 0.01736167]
+ [0.01736167 0.01736167 0.947915   0.01736167]
+ [0.01736167 0.01736167 0.01736167 0.947915  ]]
+2026-07-18 16:51:18 INFO:   trainable params after ablation hooks: 369.747M (369747318 scalars)
+[SDSD] layout=A/C (static_np or original) subset=direct split=test -> 15 sequences, 1037 frames total.
+/cache/zihaohe/conda_envs/vjepa2-pip/lib/python3.11/site-packages/torch/backends/cuda/__init__.py:342: FutureWarning: torch.backends.cuda.sdp_kernel() is deprecated. In the future, this context manager will be removed. Please see, torch.nn.attention.sdpa_kernel() for the new context manager, with updated signature.
+  warnings.warn(
+2026-07-18 16:52:29 INFO: Zero-iter audit (70.2s): RGB-512=27.078  Y-512=28.827
+[SDSD] layout=A/C (static_np or original) subset=direct split=train -> 59 sequences, 1671 frames total.
+[SDSD] layout=A/C (static_np or original) subset=direct split=train -> 101 sequences, 2530 frames total.
+Setting up [LPIPS] perceptual loss: trunk [alex], v[0.1], spatial [off]
+/cache/zihaohe/conda_envs/vjepa2-pip/lib/python3.11/site-packages/torchvision/models/_utils.py:208: UserWarning: The parameter 'pretrained' is deprecated since 0.13 and may be removed in the future, please use 'weights' instead.
+  warnings.warn(
+/cache/zihaohe/conda_envs/vjepa2-pip/lib/python3.11/site-packages/torchvision/models/_utils.py:223: UserWarning: Arguments other than a weight enum or `None` for 'weights' are deprecated since 0.13 and may be removed in the future. The current behavior is equivalent to passing `weights=AlexNet_Weights.IMAGENET1K_V1`. You can also use `weights=AlexNet_Weights.DEFAULT` to get the most up-to-date weights.
+  warnings.warn(msg)
+Loading model from: /cache/zihaohe/conda_envs/vjepa2-pip/lib/python3.11/site-packages/lpips/weights/v0.1/alex.pth
+/cache/zihaohe/conda_envs/vjepa2-pip/lib/python3.11/site-packages/torch/backends/cuda/__init__.py:342: FutureWarning: torch.backends.cuda.sdp_kernel() is deprecated. In the future, this context manager will be removed. Please see, torch.nn.attention.sdpa_kernel() for the new context manager, with updated signature.
+  warnings.warn(
+2026-07-18 16:54:05 INFO: === v35S4_NO_M1_FIXED_ROUTER done: best Y-512 = 28.827  best RGB-512 = 27.078 ===
+[SMOKE-CHECK combined] gate=+0.0000e+00  router_logits.shape=(5, 4)
+[SMOKE-CHECK combined] router_logits=
+[[4. 0. 0. 0.]
+ [4. 0. 0. 0.]
+ [0. 4. 0. 0.]
+ [0. 0. 4. 0.]
+ [0. 0. 0. 4.]]
+[SMOKE-CHECK combined] PASS: gate==0 AND router_logits==identity(4.0)
+[SMOKE-LOSSES] []
+[Sat Jul 18 16:54:09 CST 2026] launching full 1500-iter training...
+2026-07-18 16:54:10 INFO: === v35S4_NO_M1_FIXED_ROUTER ablation ===
+2026-07-18 16:54:10 INFO:   disable_m1=True  freeze_m3_router=True
+/cache/zihaohe/conda_envs/vjepa2-pip/lib/python3.11/site-packages/timm/models/layers/__init__.py:49: FutureWarning: Importing from timm.models.layers is deprecated, please import via timm.layers
+  warnings.warn(f"Importing from {__name__} is deprecated, please import via timm.layers", FutureWarning)
+[VJepaBackboneLocal21] loaded /home/ma-user/workspace/zihaohe/checkpoint/vjepa2_1_vitl_dist_vitG_384.pt | missing=0 unexpected=2
+  unexpected (first 5): ['patch_embed_img.proj.weight', 'patch_embed_img.proj.bias']
+[CounterfactualRefiner] loaded predictor from /home/ma-user/workspace/zihaohe/checkpoint/vjepa2_1_vitl_dist_vitG_384.pt | missing=0 unexpected=4
+2026-07-18 16:54:35 INFO:   pixel_branch init: missing=1 unexpected=0
+2026-07-18 16:54:35 INFO:   cf_refiner init: missing=0 unexpected=0
+2026-07-18 16:54:35 INFO: [disable_m1] cf_refiner: 27 params frozen, gate.zero_ applied, forward monkey-patched to identity.
+2026-07-18 16:54:35 INFO: [freeze_m3_router] router_logits reset to identity (l_star from vjepa_layer_per_scale=(0, 0, 1, 2, 3)) and frozen.
+2026-07-18 16:54:35 INFO: [freeze_m3_router] softmax @ init:
+[[0.947915   0.01736167 0.01736167 0.01736167]
+ [0.947915   0.01736167 0.01736167 0.01736167]
+ [0.01736167 0.947915   0.01736167 0.01736167]
+ [0.01736167 0.01736167 0.947915   0.01736167]
+ [0.01736167 0.01736167 0.01736167 0.947915  ]]
+2026-07-18 16:54:35 INFO:   trainable params after ablation hooks: 369.747M (369747318 scalars)
+[SDSD] layout=A/C (static_np or original) subset=direct split=test -> 15 sequences, 1037 frames total.
+/cache/zihaohe/conda_envs/vjepa2-pip/lib/python3.11/site-packages/torch/backends/cuda/__init__.py:342: FutureWarning: torch.backends.cuda.sdp_kernel() is deprecated. In the future, this context manager will be removed. Please see, torch.nn.attention.sdpa_kernel() for the new context manager, with updated signature.
+  warnings.warn(
+2026-07-18 16:55:19 INFO: Zero-iter audit (44.0s): RGB-512=27.078  Y-512=28.827
+[SDSD] layout=A/C (static_np or original) subset=direct split=train -> 59 sequences, 1671 frames total.
+[SDSD] layout=A/C (static_np or original) subset=direct split=train -> 101 sequences, 2530 frames total.
+Setting up [LPIPS] perceptual loss: trunk [alex], v[0.1], spatial [off]
+/cache/zihaohe/conda_envs/vjepa2-pip/lib/python3.11/site-packages/torchvision/models/_utils.py:208: UserWarning: The parameter 'pretrained' is deprecated since 0.13 and may be removed in the future, please use 'weights' instead.
+  warnings.warn(
+/cache/zihaohe/conda_envs/vjepa2-pip/lib/python3.11/site-packages/torchvision/models/_utils.py:223: UserWarning: Arguments other than a weight enum or `None` for 'weights' are deprecated since 0.13 and may be removed in the future. The current behavior is equivalent to passing `weights=AlexNet_Weights.IMAGENET1K_V1`. You can also use `weights=AlexNet_Weights.DEFAULT` to get the most up-to-date weights.
+  warnings.warn(msg)
+Loading model from: /cache/zihaohe/conda_envs/vjepa2-pip/lib/python3.11/site-packages/lpips/weights/v0.1/alex.pth
+/cache/zihaohe/conda_envs/vjepa2-pip/lib/python3.11/site-packages/torch/backends/cuda/__init__.py:342: FutureWarning: torch.backends.cuda.sdp_kernel() is deprecated. In the future, this context manager will be removed. Please see, torch.nn.attention.sdpa_kernel() for the new context manager, with updated signature.
+  warnings.warn(
+2026-07-18 17:00:44 INFO: it    50/1500 total=0.0892 pix=0.0356 jepa=0.3117 router_max_per_scale=[0.947915 0.947915 0.947915 0.947915 0.947915] m1_gate=+0.0000e+00 step=6.49s
+2026-07-18 17:06:06 INFO: it   100/1500 total=0.0898 pix=0.0364 jepa=0.2997 router_max_per_scale=[0.947915 0.947915 0.947915 0.947915 0.947915] m1_gate=+0.0000e+00 step=6.47s
+2026-07-18 17:11:26 INFO: it   150/1500 total=0.1002 pix=0.0410 jepa=0.3194 router_max_per_scale=[0.947915 0.947915 0.947915 0.947915 0.947915] m1_gate=+0.0000e+00 step=6.44s
+2026-07-18 17:16:49 INFO: it   200/1500 total=0.0867 pix=0.0342 jepa=0.3083 router_max_per_scale=[0.947915 0.947915 0.947915 0.947915 0.947915] m1_gate=+0.0000e+00 step=6.45s
+2026-07-18 17:22:11 INFO: it   250/1500 total=0.0795 pix=0.0302 jepa=0.3024 router_max_per_scale=[0.947915 0.947915 0.947915 0.947915 0.947915] m1_gate=+0.0000e+00 step=6.45s
+2026-07-18 17:27:31 INFO: it   300/1500 total=0.0849 pix=0.0339 jepa=0.3039 router_max_per_scale=[0.947915 0.947915 0.947915 0.947915 0.947915] m1_gate=+0.0000e+00 step=6.44s
+2026-07-18 17:32:54 INFO: it   350/1500 total=0.0922 pix=0.0371 jepa=0.3068 router_max_per_scale=[0.947915 0.947915 0.947915 0.947915 0.947915] m1_gate=+0.0000e+00 step=6.44s
+2026-07-18 17:38:13 INFO: it   400/1500 total=0.0915 pix=0.0370 jepa=0.3051 router_max_per_scale=[0.947915 0.947915 0.947915 0.947915 0.947915] m1_gate=+0.0000e+00 step=6.43s
+2026-07-18 17:43:36 INFO: it   450/1500 total=0.0882 pix=0.0346 jepa=0.3130 router_max_per_scale=[0.947915 0.947915 0.947915 0.947915 0.947915] m1_gate=+0.0000e+00 step=6.44s
+2026-07-18 17:48:59 INFO: it   500/1500 total=0.0784 pix=0.0298 jepa=0.3017 router_max_per_scale=[0.947915 0.947915 0.947915 0.947915 0.947915] m1_gate=+0.0000e+00 step=6.44s
+2026-07-18 17:49:45 INFO: [audit @ 500] (46.6s) RGB-512=27.120  Y-512=28.801
+2026-07-18 17:49:47 INFO:   -> best RGB-512 = 27.120 saved
+2026-07-18 17:55:06 INFO: it   550/1500 total=0.0859 pix=0.0341 jepa=0.3076 router_max_per_scale=[0.947915 0.947915 0.947915 0.947915 0.947915] m1_gate=+0.0000e+00 step=6.52s
+2026-07-18 18:00:29 INFO: it   600/1500 total=0.0921 pix=0.0371 jepa=0.3083 router_max_per_scale=[0.947915 0.947915 0.947915 0.947915 0.947915] m1_gate=+0.0000e+00 step=6.52s
+2026-07-18 18:05:52 INFO: it   650/1500 total=0.0825 pix=0.0320 jepa=0.3019 router_max_per_scale=[0.947915 0.947915 0.947915 0.947915 0.947915] m1_gate=+0.0000e+00 step=6.51s
+2026-07-18 18:11:12 INFO: it   700/1500 total=0.0957 pix=0.0387 jepa=0.3157 router_max_per_scale=[0.947915 0.947915 0.947915 0.947915 0.947915] m1_gate=+0.0000e+00 step=6.50s
+2026-07-18 18:16:34 INFO: it   750/1500 total=0.0765 pix=0.0291 jepa=0.2941 router_max_per_scale=[0.947915 0.947915 0.947915 0.947915 0.947915] m1_gate=+0.0000e+00 step=6.50s
+2026-07-18 18:21:54 INFO: it   800/1500 total=0.0865 pix=0.0334 jepa=0.3088 router_max_per_scale=[0.947915 0.947915 0.947915 0.947915 0.947915] m1_gate=+0.0000e+00 step=6.49s
+2026-07-18 18:27:17 INFO: it   850/1500 total=0.0899 pix=0.0358 jepa=0.3094 router_max_per_scale=[0.947915 0.947915 0.947915 0.947915 0.947915] m1_gate=+0.0000e+00 step=6.49s
+2026-07-18 18:32:40 INFO: it   900/1500 total=0.0853 pix=0.0334 jepa=0.3059 router_max_per_scale=[0.947915 0.947915 0.947915 0.947915 0.947915] m1_gate=+0.0000e+00 step=6.49s
+2026-07-18 18:38:00 INFO: it   950/1500 total=0.0910 pix=0.0368 jepa=0.3026 router_max_per_scale=[0.947915 0.947915 0.947915 0.947915 0.947915] m1_gate=+0.0000e+00 step=6.48s
+2026-07-18 18:43:23 INFO: it  1000/1500 total=0.0792 pix=0.0304 jepa=0.3009 router_max_per_scale=[0.947915 0.947915 0.947915 0.947915 0.947915] m1_gate=+0.0000e+00 step=6.48s
+2026-07-18 18:44:10 INFO: [audit @ 1000] (47.0s) RGB-512=27.300  Y-512=29.004
+2026-07-18 18:44:11 INFO:   -> best Y-512 = 29.004 saved
+2026-07-18 18:44:13 INFO:   -> best RGB-512 = 27.300 saved
+2026-07-18 18:49:36 INFO: it  1050/1500 total=0.0905 pix=0.0360 jepa=0.3146 router_max_per_scale=[0.947915 0.947915 0.947915 0.947915 0.947915] m1_gate=+0.0000e+00 step=6.53s
+2026-07-18 18:54:56 INFO: it  1100/1500 total=0.0814 pix=0.0313 jepa=0.3041 router_max_per_scale=[0.947915 0.947915 0.947915 0.947915 0.947915] m1_gate=+0.0000e+00 step=6.52s
+2026-07-18 19:00:19 INFO: it  1150/1500 total=0.0877 pix=0.0352 jepa=0.3054 router_max_per_scale=[0.947915 0.947915 0.947915 0.947915 0.947915] m1_gate=+0.0000e+00 step=6.52s
+2026-07-18 19:05:39 INFO: it  1200/1500 total=0.0864 pix=0.0345 jepa=0.3022 router_max_per_scale=[0.947915 0.947915 0.947915 0.947915 0.947915] m1_gate=+0.0000e+00 step=6.52s
+2026-07-18 19:11:02 INFO: it  1250/1500 total=0.0891 pix=0.0353 jepa=0.3150 router_max_per_scale=[0.947915 0.947915 0.947915 0.947915 0.947915] m1_gate=+0.0000e+00 step=6.51s
+2026-07-18 19:16:26 INFO: it  1300/1500 total=0.0833 pix=0.0326 jepa=0.2956 router_max_per_scale=[0.947915 0.947915 0.947915 0.947915 0.947915] m1_gate=+0.0000e+00 step=6.51s
+2026-07-18 19:21:46 INFO: it  1350/1500 total=0.0840 pix=0.0334 jepa=0.3023 router_max_per_scale=[0.947915 0.947915 0.947915 0.947915 0.947915] m1_gate=+0.0000e+00 step=6.51s
+2026-07-18 19:27:09 INFO: it  1400/1500 total=0.0822 pix=0.0321 jepa=0.3078 router_max_per_scale=[0.947915 0.947915 0.947915 0.947915 0.947915] m1_gate=+0.0000e+00 step=6.51s
+2026-07-18 19:32:32 INFO: it  1450/1500 total=0.0878 pix=0.0345 jepa=0.3095 router_max_per_scale=[0.947915 0.947915 0.947915 0.947915 0.947915] m1_gate=+0.0000e+00 step=6.51s
+2026-07-18 19:37:52 INFO: it  1500/1500 total=0.0806 pix=0.0307 jepa=0.3046 router_max_per_scale=[0.947915 0.947915 0.947915 0.947915 0.947915] m1_gate=+0.0000e+00 step=6.50s
+2026-07-18 19:38:41 INFO: [audit @ 1500] (48.7s) RGB-512=27.184  Y-512=28.935
+2026-07-18 19:38:42 INFO: === v35S4_NO_M1_FIXED_ROUTER done: best Y-512 = 29.004  best RGB-512 = 27.300 ===
+[gate] GPU free (0MB < 30000MB) at Sat Jul 18 19:38:44 CST 2026
+[Sat Jul 18 19:38:44 CST 2026] launching 6-split eval on /cache/zihaohe/checkpoint/runs/v35_S4_NO_M1_FIXED_ROUTER_ft/best_y512.pt ...
+Loading HMP-Net (M3 router) from /cache/zihaohe/checkpoint/runs/v35_S4_NO_M1_FIXED_ROUTER_ft/best_y512.pt
+/cache/zihaohe/conda_envs/vjepa2-pip/lib/python3.11/site-packages/timm/models/layers/__init__.py:49: FutureWarning: Importing from timm.models.layers is deprecated, please import via timm.layers
+  warnings.warn(f"Importing from {__name__} is deprecated, please import via timm.layers", FutureWarning)
+[VJepaBackboneLocal21] loaded /home/ma-user/workspace/zihaohe/checkpoint/vjepa2_1_vitl_dist_vitG_384.pt | missing=0 unexpected=2
+  unexpected (first 5): ['patch_embed_img.proj.weight', 'patch_embed_img.proj.bias']
+[CounterfactualRefiner] loaded predictor from /home/ma-user/workspace/zihaohe/checkpoint/vjepa2_1_vitl_dist_vitG_384.pt | missing=0 unexpected=4
+  [dtype] backbone → bf16
+[SDSD] layout=A/C (static_np or original) subset=direct split=test -> 15 sequences, 1037 frames total.
+
+=== L0 SDSD-indoor: 15 seqs ===
+/cache/zihaohe/conda_envs/vjepa2-pip/lib/python3.11/site-packages/torch/backends/cuda/__init__.py:342: FutureWarning: torch.backends.cuda.sdp_kernel() is deprecated. In the future, this context manager will be removed. Please see, torch.nn.attention.sdpa_kernel() for the new context manager, with updated signature.
+  warnings.warn(
+Loading pretrained model LPIPS from /home/ma-user/.cache/torch/hub/pyiqa/LPIPS_v0.1_alex-df73285e.pth
+  [pair50] raw 27.62/0.122 cp 27.42/0.208 (6.8s)
+/cache/zihaohe/conda_envs/vjepa2-pip/lib/python3.11/site-packages/torch/backends/cuda/__init__.py:342: FutureWarning: torch.backends.cuda.sdp_kernel() is deprecated. In the future, this context manager will be removed. Please see, torch.nn.attention.sdpa_kernel() for the new context manager, with updated signature.
+  warnings.warn(
+  [pair52] raw 24.28/0.185 cp 24.27/0.212 (4.0s)
+  [pair58] raw 26.18/0.130 cp 28.48/0.177 (4.9s)
+  [pair5_2] raw 25.53/0.150 cp 25.89/0.157 (3.6s)
+  [pair6] raw 30.42/0.201 cp 29.98/0.260 (3.8s)
+  [pair60] raw 32.49/0.145 cp 32.01/0.213 (3.7s)
+  [pair68] raw 28.07/0.108 cp 27.40/0.220 (3.5s)
+  [pair6_2] raw 27.65/0.076 cp 27.60/0.102 (3.4s)
+  [pair7] raw 17.98/0.147 cp 18.14/0.139 (3.4s)
+  [pair70] raw 25.14/0.129 cp 25.16/0.170 (3.6s)
+  [pair7_2] raw 16.48/0.156 cp 16.60/0.287 (4.5s)
+  [pair8] raw 30.74/0.085 cp 30.12/0.182 (3.5s)
+  [pair8_2] raw 31.64/0.080 cp 30.53/0.120 (3.4s)
+  [pair9] raw 27.12/0.104 cp 28.84/0.182 (3.2s)
+  [pair9_2] raw 28.13/0.096 cp 26.93/0.098 (3.3s)
+[SDSD] layout=A/C (static_np or original) subset=direct split=test -> 25 sequences, 620 frames total.
+
+=== L1 SDSD-outdoor: 25 seqs ===
+  [MVI_1007_2] raw 22.15/0.217 cp 22.12/0.240 (3.5s)
+  [MVI_1009] raw 24.01/0.145 cp 20.10/0.249 (3.7s)
+  [MVI_1009_2] raw 24.19/0.143 cp 22.43/0.232 (3.3s)
+  [MVI_1011] raw 21.48/0.143 cp 21.45/0.194 (3.4s)
+  [MVI_1011_2] raw 19.39/0.165 cp 19.38/0.226 (5.6s)
+  [MVI_1013] raw 25.14/0.106 cp 24.31/0.179 (3.2s)
+  [MVI_1013_2] raw 20.90/0.165 cp 20.57/0.251 (3.4s)
+  [MVI_1015] raw 24.74/0.134 cp 25.27/0.157 (3.5s)
+  [MVI_1015_2] raw 20.73/0.189 cp 20.82/0.207 (3.8s)
+  [MVI_1017] raw 23.75/0.142 cp 24.12/0.167 (5.3s)
+  [MVI_1017_2] raw 19.06/0.147 cp 19.32/0.188 (3.7s)
+  [MVI_1019] raw 13.59/0.171 cp 13.58/0.216 (3.4s)
+  [MVI_1019_2] raw 13.18/0.229 cp 13.18/0.282 (3.6s)
+  [MVI_1021] raw 28.10/0.101 cp 24.65/0.163 (3.5s)
+  [MVI_1021_2] raw 27.93/0.114 cp 25.09/0.190 (3.9s)
+  [MVI_1024] raw 19.68/0.135 cp 19.50/0.196 (3.6s)
+  [MVI_1024_2] raw 19.49/0.133 cp 19.25/0.174 (3.6s)
+  [MVI_1026] raw 25.24/0.124 cp 25.37/0.163 (3.5s)
+  [MVI_1026_2] raw 23.33/0.148 cp 23.24/0.196 (3.4s)
+  [MVI_1028] raw 23.66/0.130 cp 25.11/0.164 (3.6s)
+  [MVI_1028_2] raw 21.00/0.182 cp 21.63/0.202 (3.3s)
+  [MVI_1030] raw 17.15/0.200 cp 17.18/0.202 (3.3s)
+  [MVI_1030_2] raw 16.88/0.210 cp 16.88/0.218 (4.0s)
+  [MVI_1032] raw 18.25/0.222 cp 18.44/0.246 (3.6s)
+  [MVI_1032_2] raw 18.63/0.223 cp 18.76/0.245 (3.8s)
+[BVI-RLV] test: 16 sequences (8 scenes × ≤2 fps), 6240 frames total
+
+=== L2 BVI-RLV: 16 seqs ===
+  [S33_mix5__10fps] raw 22.22/0.210 cp 22.25/0.258 (3.5s)
+  [S33_mix5__20fps] raw 12.20/0.309 cp 12.07/0.303 (3.6s)
+  [S34_mix6__10fps] raw 18.89/0.235 cp 20.64/0.155 (3.9s)
+  [S34_mix6__20fps] raw 9.77/0.351 cp 10.24/0.245 (3.8s)
+  [S35_Bunny__10fps] raw 19.36/0.269 cp 22.51/0.201 (3.7s)
+  [S35_Bunny__20fps] raw 11.52/0.310 cp 12.79/0.225 (3.4s)
+  [S36_Eeyore__10fps] raw 21.83/0.240 cp 23.63/0.211 (3.3s)
+  [S36_Eeyore__20fps] raw 12.41/0.249 cp 12.98/0.194 (3.8s)
+  [S37_Mario3__10fps] raw 21.15/0.234 cp 22.47/0.197 (3.8s)
+  [S37_Mario3__20fps] raw 10.55/0.349 cp 10.98/0.288 (3.7s)
+  [S38_Mario4__10fps] raw 21.36/0.252 cp 22.88/0.233 (3.6s)
+  [S38_Mario4__20fps] raw 9.83/0.349 cp 10.02/0.299 (3.6s)
+  [S39_Books4__10fps] raw 18.76/0.260 cp 24.72/0.190 (3.5s)
+  [S39_Books4__20fps] raw 10.56/0.394 cp 12.30/0.287 (3.8s)
+  [S40_Books5__10fps] raw 27.10/0.310 cp 27.34/0.326 (3.3s)
+  [S40_Books5__20fps] raw 15.86/0.483 cp 16.35/0.444 (3.4s)
+
+=== L3 LOL-v1: 15 files ===
+  MEAN HMP-raw psnr=16.652 lpips=0.349 n=15
+  MEAN HMP+CP  psnr=17.022 lpips=0.281 n=15
+
+=== L4 LOLv2-Syn: 100 files ===
+  MEAN HMP-raw psnr=15.329 lpips=0.419 n=100
+  MEAN HMP+CP  psnr=16.270 lpips=0.339 n=100
+
+=== L5 LOLv2-Real: 100 files ===
+  MEAN HMP-raw psnr=18.353 lpips=0.376 n=100
+  MEAN HMP+CP  psnr=18.056 lpips=0.319 n=100
+
+================================================================================
+=== SUMMARY (ckpt=/cache/zihaohe/checkpoint/runs/v35_S4_NO_M1_FIXED_ROUTER_ft/best_y512.pt) ===
+  L0_SDSD-indoor      : raw PSNR-RGB=26.632 LPIPS=0.128  |  +CP PSNR-RGB=26.625 LPIPS=0.182  (n=15)
+  L1_SDSD-outdoor     : raw PSNR-RGB=21.266 LPIPS=0.161  |  +CP PSNR-RGB=20.870 LPIPS=0.206  (n=25)
+  L2_BVI-RLV          : raw PSNR-RGB=16.461 LPIPS=0.300  |  +CP PSNR-RGB=17.760 LPIPS=0.254  (n=16)
+  L3_LOL-v1           : raw PSNR-RGB=16.652 LPIPS=0.349  |  +CP PSNR-RGB=17.022 LPIPS=0.281  (n=15)
+  L4_LOLv2-Syn        : raw PSNR-RGB=15.329 LPIPS=0.419  |  +CP PSNR-RGB=16.270 LPIPS=0.339  (n=100)
+  L5_LOLv2-Real       : raw PSNR-RGB=18.353 LPIPS=0.376  |  +CP PSNR-RGB=18.056 LPIPS=0.319  (n=100)
+
+[saved] /cache/zihaohe/checkpoint/runs/encswap_evals/no_m1_fixed_router_L012_all.json

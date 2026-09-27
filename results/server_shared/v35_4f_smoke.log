@@ -1,0 +1,15 @@
+2026-06-21 02:33:36 INFO: === v35-4frame (n_stack=4, supervise center frame) ===
+2026-06-21 02:33:36 INFO: init: /cache/zihaohe/checkpoint/runs/v9_0b/ckpts/best.pt
+/cache/zihaohe/conda_envs/vjepa2-pip/lib/python3.11/site-packages/timm/models/layers/__init__.py:49: FutureWarning: Importing from timm.models.layers is deprecated, please import via timm.layers
+  warnings.warn(f"Importing from {__name__} is deprecated, please import via timm.layers", FutureWarning)
+[VJepaBackboneLocal21] loaded /home/ma-user/workspace/zihaohe/checkpoint/vjepa2_1_vitl_dist_vitG_384.pt | missing=0 unexpected=2
+  unexpected (first 5): ['patch_embed_img.proj.weight', 'patch_embed_img.proj.bias']
+2026-06-21 02:34:06 INFO:   init: loaded=788/847 shape-skipped=59 missing=118 unexpected=0
+2026-06-21 02:34:06 INFO:   shape-skipped keys (first 8): ['stem.weight', 'enc_illum.0.proj.0.weight', 'enc_illum.0.proj.0.bias', 'enc_illum.0.proj.2.weight', 'enc_illum.0.proj.2.bias', 'enc_illum.1.proj.0.weight', 'enc_illum.1.proj.0.bias', 'enc_illum.1.proj.2.weight']
+[SDSD] layout=A/C (static_np or original) subset=direct split=test -> 15 sequences, 1037 frames total.
+/cache/zihaohe/conda_envs/vjepa2-pip/lib/python3.11/site-packages/torch/backends/cuda/__init__.py:342: FutureWarning: torch.backends.cuda.sdp_kernel() is deprecated. In the future, this context manager will be removed. Please see, torch.nn.attention.sdpa_kernel() for the new context manager, with updated signature.
+  warnings.warn(
+2026-06-21 02:34:27 INFO: Zero-iter audit (21.7s): RGB-512=8.965  Y-512=8.998
+[SDSD] layout=A/C (static_np or original) subset=direct split=train -> 59 sequences, 1671 frames total.
+[SDSD] layout=A/C (static_np or original) subset=direct split=train -> 101 sequences, 2530 frames total.
+2026-06-21 02:34:47 INFO: === v35-4frame done: best Y-512 = 8.998  best RGB-512 = 8.965 ===

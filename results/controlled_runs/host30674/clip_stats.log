@@ -1,0 +1,10 @@
+[SDSD] layout=A/C (static_np or original) subset=direct split=test -> 15 sequences, 1037 frames total.
+L0_SDSD-indoor 15
+[SDSD] layout=A/C (static_np or original) subset=direct split=test -> 25 sequences, 620 frames total.
+L1_SDSD-outdoor 25
+[BVI-RLV] test: 16 sequences (8 scenes × ≤2 fps), 6240 frames total
+L2_BVI-RLV 16
+L3_LOL-v1 15
+L4_LOLv2-Syn 100
+L5_LOLv2-Real 100
+[SAVE] /temp/zihaohe/cache/checkpoint/runs/seer_iclr_evals/clip_stats.json

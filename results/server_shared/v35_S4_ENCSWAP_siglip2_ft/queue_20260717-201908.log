@@ -1,0 +1,151 @@
+==========================================
+[Fri Jul 17 20:19:08 CST 2026] START encoder=siglip2 out=/cache/zihaohe/checkpoint/runs/v35_S4_ENCSWAP_siglip2_ft
+==========================================
+[gate] GPU free (14220MB < 30000MB), proceeding at Fri Jul 17 20:19:08 CST 2026
+[Fri Jul 17 20:19:08 CST 2026] launching training...
+2026-07-17 20:19:09 INFO: === v35 Stage 4 encoder-swap: siglip2 ===
+/cache/zihaohe/conda_envs/vjepa2-pip/lib/python3.11/site-packages/timm/models/layers/__init__.py:49: FutureWarning: Importing from timm.models.layers is deprecated, please import via timm.layers
+  warnings.warn(f"Importing from {__name__} is deprecated, please import via timm.layers", FutureWarning)
+[VJepaBackboneLocal21] loaded /home/ma-user/workspace/zihaohe/checkpoint/vjepa2_1_vitl_dist_vitG_384.pt | missing=0 unexpected=2
+  unexpected (first 5): ['patch_embed_img.proj.weight', 'patch_embed_img.proj.bias']
+[CounterfactualRefiner] loaded predictor from /home/ma-user/workspace/zihaohe/checkpoint/vjepa2_1_vitl_dist_vitG_384.pt | missing=0 unexpected=4
+2026-07-17 20:19:32 INFO: Building swap encoder: siglip2
+2026-07-17 20:19:35 INFO:   swap encoder params: 316.0M (frozen)
+2026-07-17 20:19:38 INFO:   pixel_branch init: missing=1 unexpected=0
+2026-07-17 20:19:38 INFO:   cf_refiner init: missing=0 unexpected=0
+[SDSD] layout=A/C (static_np or original) subset=direct split=test -> 15 sequences, 1037 frames total.
+/cache/zihaohe/conda_envs/vjepa2-pip/lib/python3.11/site-packages/torch/backends/cuda/__init__.py:342: FutureWarning: torch.backends.cuda.sdp_kernel() is deprecated. In the future, this context manager will be removed. Please see, torch.nn.attention.sdpa_kernel() for the new context manager, with updated signature.
+  warnings.warn(
+2026-07-17 20:21:13 INFO: Zero-iter audit (95.1s): RGB-512=14.970  Y-512=15.498
+[SDSD] layout=A/C (static_np or original) subset=direct split=train -> 59 sequences, 1671 frames total.
+[SDSD] layout=A/C (static_np or original) subset=direct split=train -> 101 sequences, 2530 frames total.
+Setting up [LPIPS] perceptual loss: trunk [alex], v[0.1], spatial [off]
+/cache/zihaohe/conda_envs/vjepa2-pip/lib/python3.11/site-packages/torchvision/models/_utils.py:208: UserWarning: The parameter 'pretrained' is deprecated since 0.13 and may be removed in the future, please use 'weights' instead.
+  warnings.warn(
+/cache/zihaohe/conda_envs/vjepa2-pip/lib/python3.11/site-packages/torchvision/models/_utils.py:223: UserWarning: Arguments other than a weight enum or `None` for 'weights' are deprecated since 0.13 and may be removed in the future. The current behavior is equivalent to passing `weights=AlexNet_Weights.IMAGENET1K_V1`. You can also use `weights=AlexNet_Weights.DEFAULT` to get the most up-to-date weights.
+  warnings.warn(msg)
+Loading model from: /cache/zihaohe/conda_envs/vjepa2-pip/lib/python3.11/site-packages/lpips/weights/v0.1/alex.pth
+2026-07-17 20:34:00 INFO: it    50/1500 total=0.2654 pix=0.1086 enc_cons=1.0771 router_max_per_scale=[0.947915   0.9479297  0.94791317 0.9479152  0.94790727] step=15.31s
+2026-07-17 20:46:45 INFO: it   100/1500 total=0.2521 pix=0.1003 enc_cons=1.1027 router_max_per_scale=[0.947915   0.94794106 0.9479134  0.94791204 0.94790095] step=15.31s
+2026-07-17 20:59:28 INFO: it   150/1500 total=0.2467 pix=0.0988 enc_cons=1.0882 router_max_per_scale=[0.947915   0.94794863 0.9479152  0.9479078  0.94789207] step=15.29s
+2026-07-17 21:11:32 INFO: it   200/1500 total=0.2411 pix=0.0957 enc_cons=1.0970 router_max_per_scale=[0.947915   0.9479544  0.9479148  0.9479072  0.94788265] step=15.09s
+2026-07-17 21:25:39 INFO: it   250/1500 total=0.2322 pix=0.0935 enc_cons=1.0201 router_max_per_scale=[0.947915   0.9479619  0.94791555 0.947907   0.94788086] step=15.46s
+2026-07-17 21:38:20 INFO: it   300/1500 total=0.2217 pix=0.0871 enc_cons=1.0155 router_max_per_scale=[0.947915   0.9479658  0.9479164  0.9479067  0.94787675] step=15.42s
+2026-07-17 21:51:04 INFO: it   350/1500 total=0.2137 pix=0.0842 enc_cons=0.9641 router_max_per_scale=[0.947915   0.9479719  0.94792014 0.9479075  0.9478667 ] step=15.40s
+2026-07-17 22:03:45 INFO: it   400/1500 total=0.2063 pix=0.0786 enc_cons=1.0126 router_max_per_scale=[0.947915   0.94797486 0.9479212  0.9479087  0.9478617 ] step=15.38s
+2026-07-17 22:16:29 INFO: it   450/1500 total=0.1970 pix=0.0756 enc_cons=0.9351 router_max_per_scale=[0.947915   0.9479778  0.9479227  0.94790995 0.94786006] step=15.37s
+2026-07-17 22:27:54 INFO: it   500/1500 total=0.1963 pix=0.0725 enc_cons=1.0175 router_max_per_scale=[0.947915   0.9479783  0.94792646 0.9479115  0.9478555 ] step=15.20s
+2026-07-17 22:29:18 INFO: [audit @ 500] (83.6s) RGB-512=21.664  Y-512=22.350
+2026-07-17 22:29:19 INFO:   -> best Y-512 = 22.350 saved
+2026-07-17 22:29:20 INFO:   -> best RGB-512 = 21.664 saved
+2026-07-17 22:42:11 INFO: it   550/1500 total=0.2080 pix=0.0811 enc_cons=0.9794 router_max_per_scale=[0.947915   0.9479799  0.9479274  0.94791263 0.9478455 ] step=15.38s
+2026-07-17 22:55:00 INFO: it   600/1500 total=0.1935 pix=0.0710 enc_cons=1.0420 router_max_per_scale=[0.947915   0.9479781  0.9479299  0.94791275 0.94783664] step=15.38s
+2026-07-17 23:07:44 INFO: it   650/1500 total=0.1795 pix=0.0654 enc_cons=0.9625 router_max_per_scale=[0.947915  0.9479779 0.9479344 0.9479129 0.9478293] step=15.37s
+2026-07-17 23:20:27 INFO: it   700/1500 total=0.1982 pix=0.0751 enc_cons=1.0061 router_max_per_scale=[0.947915   0.9479781  0.94794214 0.94791424 0.94782513] step=15.36s
+2026-07-17 23:33:13 INFO: it   750/1500 total=0.1873 pix=0.0708 enc_cons=0.9662 router_max_per_scale=[0.947915   0.9479754  0.94794565 0.9479152  0.947825  ] step=15.36s
+2026-07-17 23:45:32 INFO: it   800/1500 total=0.1927 pix=0.0739 enc_cons=0.9622 router_max_per_scale=[0.947915   0.9479798  0.9479467  0.9479169  0.94782406] step=15.32s
+2026-07-17 23:56:47 INFO: it   850/1500 total=0.2020 pix=0.0757 enc_cons=1.0448 router_max_per_scale=[0.947915   0.947986   0.94794565 0.94791716 0.9478195 ] step=15.22s
+2026-07-18 00:09:31 INFO: it   900/1500 total=0.1891 pix=0.0720 enc_cons=0.9719 router_max_per_scale=[0.947915   0.94798815 0.9479494  0.947918   0.94781476] step=15.22s
+2026-07-18 00:22:12 INFO: it   950/1500 total=0.1936 pix=0.0748 enc_cons=0.9540 router_max_per_scale=[0.947915   0.9479901  0.9479512  0.9479196  0.94780874] step=15.22s
+2026-07-18 00:34:54 INFO: it  1000/1500 total=0.1845 pix=0.0704 enc_cons=0.9113 router_max_per_scale=[0.947915   0.9479934  0.9479527  0.94791985 0.9478016 ] step=15.22s
+2026-07-18 00:36:31 INFO: [audit @ 1000] (97.2s) RGB-512=25.316  Y-512=26.938
+2026-07-18 00:36:34 INFO:   -> best Y-512 = 26.938 saved
+2026-07-18 00:36:36 INFO:   -> best RGB-512 = 25.316 saved
+2026-07-18 00:49:20 INFO: it  1050/1500 total=0.1907 pix=0.0735 enc_cons=0.9321 router_max_per_scale=[0.947915   0.9479916  0.9479579  0.94792056 0.94780266] step=15.32s
+2026-07-18 01:01:59 INFO: it  1100/1500 total=0.1937 pix=0.0730 enc_cons=0.9850 router_max_per_scale=[0.947915  0.9479911 0.947959  0.947921  0.9478021] step=15.31s
+2026-07-18 01:12:53 INFO: it  1150/1500 total=0.1916 pix=0.0745 enc_cons=0.9442 router_max_per_scale=[0.947915   0.9479973  0.94796056 0.9479227  0.9478019 ] step=15.22s
+2026-07-18 01:25:32 INFO: it  1200/1500 total=0.1773 pix=0.0665 enc_cons=0.9056 router_max_per_scale=[0.947915   0.9480006  0.9479617  0.94792414 0.9477984 ] step=15.22s
+2026-07-18 01:38:13 INFO: it  1250/1500 total=0.1712 pix=0.0629 enc_cons=0.9229 router_max_per_scale=[0.947915   0.9480022  0.94796485 0.9479252  0.9477969 ] step=15.22s
+2026-07-18 01:50:55 INFO: it  1300/1500 total=0.1888 pix=0.0716 enc_cons=0.9659 router_max_per_scale=[0.947915   0.94800466 0.9479701  0.9479258  0.94779396] step=15.22s
+2026-07-18 02:03:34 INFO: it  1350/1500 total=0.1880 pix=0.0712 enc_cons=0.9524 router_max_per_scale=[0.947915   0.94801044 0.94797146 0.9479266  0.9477943 ] step=15.21s
+2026-07-18 02:16:09 INFO: it  1400/1500 total=0.1728 pix=0.0629 enc_cons=0.9379 router_max_per_scale=[0.947915   0.9480096  0.9479703  0.94792795 0.9477926 ] step=15.21s
+2026-07-18 02:27:26 INFO: it  1450/1500 total=0.1803 pix=0.0674 enc_cons=0.9339 router_max_per_scale=[0.947915   0.9480128  0.9479688  0.9479286  0.94779235] step=15.15s
+2026-07-18 02:37:52 INFO: it  1500/1500 total=0.1854 pix=0.0710 enc_cons=0.9134 router_max_per_scale=[0.947915   0.94801635 0.9479669  0.9479318  0.9477953 ] step=15.07s
+2026-07-18 02:39:26 INFO: [audit @ 1500] (94.5s) RGB-512=24.367  Y-512=25.758
+2026-07-18 02:39:28 INFO: === v35 Stage 4 encoder-swap siglip2 done: best Y-512 = 26.938  best RGB-512 = 25.316 ===
+[Sat Jul 18 02:39:31 CST 2026] launching eval L0,L1,L2 on /cache/zihaohe/checkpoint/runs/v35_S4_ENCSWAP_siglip2_ft/best_y512.pt...
+/cache/zihaohe/conda_envs/vjepa2-pip/lib/python3.11/site-packages/timm/models/layers/__init__.py:49: FutureWarning: Importing from timm.models.layers is deprecated, please import via timm.layers
+  warnings.warn(f"Importing from {__name__} is deprecated, please import via timm.layers", FutureWarning)
+[VJepaBackboneLocal21] loaded /home/ma-user/workspace/zihaohe/checkpoint/vjepa2_1_vitl_dist_vitG_384.pt | missing=0 unexpected=2
+  unexpected (first 5): ['patch_embed_img.proj.weight', 'patch_embed_img.proj.bias']
+[CounterfactualRefiner] loaded predictor from /home/ma-user/workspace/zihaohe/checkpoint/vjepa2_1_vitl_dist_vitG_384.pt | missing=0 unexpected=4
+Loading encoder-swap (siglip2) HMP-Net from /cache/zihaohe/checkpoint/runs/v35_S4_ENCSWAP_siglip2_ft/best_y512.pt
+[SDSD] layout=A/C (static_np or original) subset=direct split=test -> 15 sequences, 1037 frames total.
+
+=== L0 SDSD-indoor: 15 seqs ===
+/cache/zihaohe/conda_envs/vjepa2-pip/lib/python3.11/site-packages/torch/backends/cuda/__init__.py:342: FutureWarning: torch.backends.cuda.sdp_kernel() is deprecated. In the future, this context manager will be removed. Please see, torch.nn.attention.sdpa_kernel() for the new context manager, with updated signature.
+  warnings.warn(
+Loading pretrained model LPIPS from /home/ma-user/.cache/torch/hub/pyiqa/LPIPS_v0.1_alex-df73285e.pth
+  [pair50] raw 24.60/0.131 cp 24.70/0.211 (11.3s)
+/cache/zihaohe/conda_envs/vjepa2-pip/lib/python3.11/site-packages/torch/backends/cuda/__init__.py:342: FutureWarning: torch.backends.cuda.sdp_kernel() is deprecated. In the future, this context manager will be removed. Please see, torch.nn.attention.sdpa_kernel() for the new context manager, with updated signature.
+  warnings.warn(
+  [pair52] raw 23.66/0.172 cp 23.66/0.197 (6.6s)
+  [pair58] raw 25.21/0.153 cp 27.64/0.174 (6.5s)
+  [pair5_2] raw 21.86/0.161 cp 22.10/0.163 (6.9s)
+  [pair6] raw 29.05/0.210 cp 29.02/0.261 (9.3s)
+  [pair60] raw 28.77/0.205 cp 28.46/0.255 (6.8s)
+  [pair68] raw 27.09/0.126 cp 27.35/0.192 (6.6s)
+  [pair6_2] raw 26.72/0.069 cp 27.10/0.095 (8.3s)
+  [pair7] raw 14.09/0.193 cp 14.24/0.184 (6.5s)
+  [pair70] raw 24.47/0.150 cp 24.63/0.183 (6.6s)
+  [pair7_2] raw 18.39/0.157 cp 18.59/0.276 (6.7s)
+  [pair8] raw 29.74/0.109 cp 29.94/0.186 (6.5s)
+  [pair8_2] raw 29.73/0.096 cp 30.49/0.125 (6.6s)
+  [pair9] raw 25.51/0.138 cp 27.63/0.186 (6.6s)
+  [pair9_2] raw 23.98/0.118 cp 25.04/0.116 (7.8s)
+[SDSD] layout=A/C (static_np or original) subset=direct split=test -> 25 sequences, 620 frames total.
+
+=== L1 SDSD-outdoor: 25 seqs ===
+  [MVI_1007_2] raw 25.42/0.195 cp 25.39/0.214 (6.7s)
+  [MVI_1009] raw 17.36/0.236 cp 17.85/0.270 (7.0s)
+  [MVI_1009_2] raw 14.68/0.278 cp 15.13/0.317 (7.9s)
+  [MVI_1011] raw 20.60/0.173 cp 20.39/0.202 (6.5s)
+  [MVI_1011_2] raw 20.48/0.188 cp 20.13/0.222 (6.7s)
+  [MVI_1013] raw 16.48/0.189 cp 16.69/0.218 (6.5s)
+  [MVI_1013_2] raw 17.90/0.206 cp 18.14/0.245 (6.6s)
+  [MVI_1015] raw 26.43/0.143 cp 26.50/0.156 (6.9s)
+  [MVI_1015_2] raw 22.87/0.182 cp 22.82/0.196 (7.5s)
+  [MVI_1017] raw 27.43/0.150 cp 27.57/0.176 (6.8s)
+  [MVI_1017_2] raw 21.65/0.180 cp 21.68/0.202 (6.6s)
+  [MVI_1019] raw 8.17/0.350 cp 8.23/0.352 (6.7s)
+  [MVI_1019_2] raw 8.04/0.438 cp 8.12/0.440 (6.9s)
+  [MVI_1021] raw 16.32/0.211 cp 16.45/0.234 (6.8s)
+  [MVI_1021_2] raw 13.31/0.279 cp 13.63/0.292 (6.9s)
+  [MVI_1024] raw 19.66/0.168 cp 19.56/0.199 (7.7s)
+  [MVI_1024_2] raw 19.71/0.161 cp 19.84/0.176 (6.4s)
+  [MVI_1026] raw 25.35/0.155 cp 25.16/0.190 (6.8s)
+  [MVI_1026_2] raw 17.67/0.215 cp 17.45/0.273 (7.1s)
+  [MVI_1028] raw 11.61/0.353 cp 11.68/0.363 (6.6s)
+  [MVI_1028_2] raw 12.41/0.388 cp 12.52/0.381 (6.8s)
+  [MVI_1030] raw 24.06/0.140 cp 24.15/0.134 (6.8s)
+  [MVI_1030_2] raw 22.32/0.156 cp 22.31/0.157 (7.0s)
+  [MVI_1032] raw 22.22/0.206 cp 21.92/0.214 (6.9s)
+  [MVI_1032_2] raw 22.61/0.206 cp 22.24/0.215 (6.9s)
+[BVI-RLV] test: 16 sequences (8 scenes × ≤2 fps), 6240 frames total
+
+=== L2 BVI-RLV: 16 seqs ===
+  [S33_mix5__10fps] raw 21.82/0.245 cp 22.05/0.280 (6.8s)
+  [S33_mix5__20fps] raw 13.14/0.287 cp 12.95/0.277 (6.6s)
+  [S34_mix6__10fps] raw 17.88/0.244 cp 19.19/0.160 (9.5s)
+  [S34_mix6__20fps] raw 13.80/0.276 cp 14.45/0.168 (6.6s)
+  [S35_Bunny__10fps] raw 18.19/0.303 cp 20.27/0.219 (7.5s)
+  [S35_Bunny__20fps] raw 15.38/0.259 cp 17.33/0.169 (6.9s)
+  [S36_Eeyore__10fps] raw 20.55/0.266 cp 22.21/0.224 (6.7s)
+  [S36_Eeyore__20fps] raw 14.93/0.223 cp 15.64/0.165 (6.5s)
+  [S37_Mario3__10fps] raw 20.76/0.267 cp 22.36/0.218 (6.5s)
+  [S37_Mario3__20fps] raw 11.87/0.322 cp 12.25/0.259 (7.4s)
+  [S38_Mario4__10fps] raw 20.79/0.299 cp 22.75/0.261 (7.5s)
+  [S38_Mario4__20fps] raw 11.22/0.346 cp 11.39/0.285 (6.5s)
+  [S39_Books4__10fps] raw 18.92/0.283 cp 24.18/0.209 (6.5s)
+  [S39_Books4__20fps] raw 12.19/0.354 cp 14.18/0.246 (7.0s)
+  [S40_Books5__10fps] raw 26.27/0.407 cp 26.86/0.389 (7.0s)
+  [S40_Books5__20fps] raw 17.04/0.478 cp 17.67/0.440 (7.1s)
+
+================================================================================
+=== SUMMARY encoder=siglip2 (ckpt=/cache/zihaohe/checkpoint/runs/v35_S4_ENCSWAP_siglip2_ft/best_y512.pt) ===
+  L0_SDSD-indoor      : raw PSNR-RGB=24.858 LPIPS=0.146  |  +CP PSNR-RGB=25.374 LPIPS=0.187  (n=15)
+  L1_SDSD-outdoor     : raw PSNR-RGB=18.992 LPIPS=0.222  |  +CP PSNR-RGB=19.023 LPIPS=0.242  (n=25)
+  L2_BVI-RLV          : raw PSNR-RGB=17.171 LPIPS=0.304  |  +CP PSNR-RGB=18.484 LPIPS=0.248  (n=16)
+
+[saved] /cache/zihaohe/checkpoint/runs/encswap_evals/encswap_siglip2_L012.json
+[Sat Jul 18 02:48:21 CST 2026] DONE encoder=siglip2

@@ -1,0 +1,241 @@
+[STCD] loaded /temp/zihaohe/cache/stcd_repro/LLVE_STCD/pretrained_model/SDSD_indoor_model/indoor_G.pth strict=True (50 tensors, 1.81M params)
+[SDSD] layout=A/C (static_np or original) subset=direct split=test -> 15 sequences, 1037 frames total.
+Loading pretrained model LPIPS from /home/ma-user/.cache/torch/hub/pyiqa/LPIPS_v0.1_alex-df73285e.pth
+  mag = torch.abs(x_freq)
+  L0_SDSD-indoor       pair50                   GT warp=0.0056 | Retinexformer:27.96/0.0120 URCSA:23.38/0.0103 DarkIR:21.37/0.0165 HVI-CIDNet:16.41/0.0292 Zero-DCE:20.92/0.0198 SCI:23.15/0.0245 STCD:26.38/0.0087
+  L0_SDSD-indoor       pair52                   GT warp=0.0111 | Retinexformer:25.71/0.0261 URCSA:23.91/0.0310 DarkIR:22.89/0.0398 HVI-CIDNet:18.16/0.0801 Zero-DCE:18.23/0.0420 SCI:23.81/0.0355 STCD:26.96/0.0182
+  L0_SDSD-indoor       pair58                   GT warp=0.0058 | Retinexformer:19.34/0.0137 URCSA:25.54/0.0138 DarkIR:25.98/0.0173 HVI-CIDNet:24.95/0.0370 Zero-DCE:22.26/0.0223 SCI:24.36/0.0230 STCD:15.57/0.0111
+  L0_SDSD-indoor       pair5_2                  GT warp=0.0084 | Retinexformer:25.74/0.0241 URCSA:23.96/0.0282 DarkIR:19.05/0.0241 HVI-CIDNet:21.04/0.0629 Zero-DCE:18.26/0.0346 SCI:23.31/0.0325 STCD:26.07/0.0179
+  L0_SDSD-indoor       pair6                    GT warp=0.0088 | Retinexformer:28.46/0.0268 URCSA:26.93/0.0304 DarkIR:24.60/0.0397 HVI-CIDNet:15.96/0.0968 Zero-DCE:23.94/0.0466 SCI:25.44/0.0360 STCD:22.33/0.0166
+  L0_SDSD-indoor       pair60                   GT warp=0.0056 | Retinexformer:33.31/0.0130 URCSA:32.45/0.0144 DarkIR:19.05/0.0185 HVI-CIDNet:27.69/0.0349 Zero-DCE:27.99/0.0277 SCI:25.85/0.0234 STCD:27.83/0.0090
+  L0_SDSD-indoor       pair68                   GT warp=0.0056 | Retinexformer:30.95/0.0107 URCSA:27.29/0.0124 DarkIR:21.46/0.0126 HVI-CIDNet:21.97/0.0275 Zero-DCE:15.24/0.0188 SCI:28.51/0.0182 STCD:20.35/0.0114
+  L0_SDSD-indoor       pair6_2                  GT warp=0.0053 | Retinexformer:29.06/0.0122 URCSA:24.93/0.0158 DarkIR:16.28/0.0195 HVI-CIDNet:18.77/0.0291 Zero-DCE:13.24/0.0196 SCI:25.28/0.0198 STCD:22.83/0.0185
+  L0_SDSD-indoor       pair7                    GT warp=0.0060 | Retinexformer:18.47/0.0132 URCSA:17.97/0.0146 DarkIR:14.04/0.0133 HVI-CIDNet:12.09/0.0255 Zero-DCE:13.59/0.0202 SCI:15.45/0.0199 STCD:22.65/0.0104
+  L0_SDSD-indoor       pair70                   GT warp=0.0092 | Retinexformer:27.38/0.0126 URCSA:26.10/0.0121 DarkIR:17.42/0.0114 HVI-CIDNet:24.61/0.0498 Zero-DCE:17.03/0.0187 SCI:24.65/0.0219 STCD:27.81/0.0100
+  L0_SDSD-indoor       pair7_2                  GT warp=0.0052 | Retinexformer:19.47/0.0141 URCSA:19.64/0.0115 DarkIR:18.67/0.0137 HVI-CIDNet:18.74/0.0422 Zero-DCE:14.13/0.0211 SCI:14.13/0.0229 STCD:24.13/0.0078
+  L0_SDSD-indoor       pair8                    GT warp=0.0052 | Retinexformer:29.08/0.0102 URCSA:27.36/0.0164 DarkIR:24.31/0.0120 HVI-CIDNet:19.17/0.0221 Zero-DCE:14.07/0.0229 SCI:25.07/0.0192 STCD:19.06/0.0102
+  L0_SDSD-indoor       pair8_2                  GT warp=0.0051 | Retinexformer:30.05/0.0109 URCSA:19.39/0.0144 DarkIR:17.22/0.0093 HVI-CIDNet:13.26/0.0194 Zero-DCE:13.11/0.0188 SCI:25.63/0.0174 STCD:28.21/0.0079
+  L0_SDSD-indoor       pair9                    GT warp=0.0052 | Retinexformer:27.57/0.0106 URCSA:25.32/0.0144 DarkIR:28.53/0.0142 HVI-CIDNet:26.13/0.0320 Zero-DCE:22.95/0.0231 SCI:23.54/0.0226 STCD:16.91/0.0090
+  L0_SDSD-indoor       pair9_2                  GT warp=0.0050 | Retinexformer:25.33/0.0124 URCSA:18.67/0.0140 DarkIR:18.92/0.0121 HVI-CIDNet:14.17/0.0200 Zero-DCE:17.86/0.0192 SCI:24.04/0.0190 STCD:25.11/0.0088
+== L0_SDSD-indoor done (93s)
+   GT             tlp=0.0297 mabd=0.0012 flicker=0.0268 warp_err=0.0065 n=15
+   LQ             psnr_rgb=8.9693 lpips=0.5054 tlp=0.0393 mabd=0.0005 flicker=0.0107 warp_err=0.0062 n=15
+   Retinexformer  psnr_rgb=26.5254 lpips=0.1806 tlp=0.0948 mabd=0.0024 flicker=0.0321 warp_err=0.0148 n=15
+   URCSA          psnr_rgb=24.1891 lpips=0.2651 tlp=0.1182 mabd=0.0026 flicker=0.0317 warp_err=0.0169 n=15
+   DarkIR         psnr_rgb=20.6537 lpips=0.2787 tlp=0.1319 mabd=0.0061 flicker=0.0326 warp_err=0.0183 n=15
+   HVI-CIDNet     psnr_rgb=19.5420 lpips=0.4046 tlp=0.1797 mabd=0.0246 flicker=0.0510 warp_err=0.0406 n=15
+   Zero-DCE       psnr_rgb=18.1872 lpips=0.4292 tlp=0.1484 mabd=0.0023 flicker=0.0336 warp_err=0.0250 n=15
+   SCI            psnr_rgb=23.4815 lpips=0.3902 tlp=0.1263 mabd=0.0019 flicker=0.0375 warp_err=0.0237 n=15
+   STCD           psnr_rgb=23.4797 lpips=0.1959 tlp=0.0508 mabd=0.0024 flicker=0.0306 warp_err=0.0117 n=15
+  STCD-12_SDSD-indoor  pair13                   GT warp=0.0087 | Retinexformer:27.41/0.0207 URCSA:24.82/0.0224 DarkIR:17.87/0.0502 HVI-CIDNet:11.25/0.0942 Zero-DCE:24.13/0.0369 SCI:23.39/0.0268 STCD:27.10/0.0111
+  STCD-12_SDSD-indoor  pair15                   GT warp=0.0047 | Retinexformer:19.46/0.0137 URCSA:13.31/0.0131 DarkIR:12.57/0.0095 HVI-CIDNet:16.43/0.0230 Zero-DCE:14.80/0.0186 SCI:21.43/0.0193 STCD:22.23/0.0087
+  STCD-12_SDSD-indoor  pair21                   GT warp=0.0045 | Retinexformer:30.47/0.0091 URCSA:26.97/0.0102 DarkIR:18.84/0.0098 HVI-CIDNet:26.54/0.0407 Zero-DCE:19.31/0.0168 SCI:25.00/0.0175 STCD:30.30/0.0072
+  STCD-12_SDSD-indoor  pair23                   GT warp=0.0037 | Retinexformer:21.52/0.0104 URCSA:20.62/0.0144 DarkIR:19.31/0.0248 HVI-CIDNet:16.71/0.0489 Zero-DCE:14.81/0.0229 SCI:19.40/0.0217 STCD:24.47/0.0084
+  STCD-12_SDSD-indoor  pair31                   GT warp=0.0028 | Retinexformer:20.51/0.0104 URCSA:27.90/0.0037 DarkIR:26.21/0.0078 HVI-CIDNet:23.66/0.0483 Zero-DCE:20.64/0.0081 SCI:16.48/0.0100 STCD:25.59/0.0122
+  STCD-12_SDSD-indoor  pair33                   GT warp=0.0036 | Retinexformer:24.42/0.0155 URCSA:26.30/0.0120 DarkIR:11.42/0.0113 HVI-CIDNet:12.67/0.0343 Zero-DCE:15.98/0.0174 SCI:18.69/0.0244 STCD:26.35/0.0073
+  STCD-12_SDSD-indoor  pair50                   GT warp=0.0057 | Retinexformer:23.47/0.0122 URCSA:22.04/0.0104 DarkIR:20.41/0.0150 HVI-CIDNet:15.57/0.0264 Zero-DCE:19.82/0.0199 SCI:21.00/0.0246 STCD:24.04/0.0088
+  STCD-12_SDSD-indoor  pair52                   GT warp=0.0108 | Retinexformer:15.61/0.0273 URCSA:16.05/0.0323 DarkIR:15.89/0.0398 HVI-CIDNet:14.00/0.0818 Zero-DCE:15.13/0.0429 SCI:15.50/0.0367 STCD:15.78/0.0196
+  STCD-12_SDSD-indoor  pair58                   GT warp=0.0058 | Retinexformer:13.75/0.0139 URCSA:15.37/0.0140 DarkIR:15.42/0.0167 HVI-CIDNet:15.39/0.0450 Zero-DCE:15.40/0.0225 SCI:15.19/0.0231 STCD:11.81/0.0107
+  STCD-12_SDSD-indoor  pair60                   GT warp=0.0055 | Retinexformer:19.14/0.0132 URCSA:19.68/0.0146 DarkIR:15.92/0.0178 HVI-CIDNet:19.22/0.0370 Zero-DCE:19.82/0.0276 SCI:19.10/0.0237 STCD:18.72/0.0084
+  STCD-12_SDSD-indoor  pair68                   GT warp=0.0053 | Retinexformer:8.00/0.0134 URCSA:8.17/0.0186 DarkIR:7.94/0.0165 HVI-CIDNet:8.58/0.0361 Zero-DCE:7.84/0.0269 SCI:7.97/0.0244 STCD:8.05/0.0130
+  STCD-12_SDSD-indoor  pair70                   GT warp=0.0091 | Retinexformer:18.43/0.0137 URCSA:18.47/0.0130 DarkIR:15.59/0.0124 HVI-CIDNet:17.56/0.0498 Zero-DCE:15.46/0.0194 SCI:17.61/0.0230 STCD:18.32/0.0112
+== STCD-12_SDSD-indoor done (72s)
+   GT             tlp=0.0320 mabd=0.0015 flicker=0.0314 warp_err=0.0059 n=12
+   LQ             psnr_rgb=9.1319 lpips=0.5272 tlp=0.0407 mabd=0.0006 flicker=0.0118 warp_err=0.0060 n=12
+   Retinexformer  psnr_rgb=20.1833 lpips=0.3120 tlp=0.1008 mabd=0.0039 flicker=0.0368 warp_err=0.0145 n=12
+   URCSA          psnr_rgb=19.9762 lpips=0.3339 tlp=0.1093 mabd=0.0033 flicker=0.0342 warp_err=0.0149 n=12
+   DarkIR         psnr_rgb=16.4492 lpips=0.4018 tlp=0.1424 mabd=0.0076 flicker=0.0378 warp_err=0.0193 n=12
+   HVI-CIDNet     psnr_rgb=16.4653 lpips=0.4913 tlp=0.1977 mabd=0.0294 flicker=0.0594 warp_err=0.0471 n=12
+   Zero-DCE       psnr_rgb=16.9280 lpips=0.4828 tlp=0.1531 mabd=0.0022 flicker=0.0353 warp_err=0.0233 n=12
+   SCI            psnr_rgb=18.3978 lpips=0.4826 tlp=0.1345 mabd=0.0020 flicker=0.0411 warp_err=0.0229 n=12
+   STCD           psnr_rgb=21.0627 lpips=0.3419 tlp=0.0514 mabd=0.0023 flicker=0.0344 warp_err=0.0106 n=12
+[SDSD] layout=A/C (static_np or original) subset=direct split=test -> 25 sequences, 620 frames total.
+  L1_SDSD-outdoor      MVI_1007_2               GT warp=0.0100 | Retinexformer:25.48/0.0128 URCSA:14.43/0.0335 DarkIR:15.98/0.0343 HVI-CIDNet:14.41/0.0442 Zero-DCE:17.01/0.0387 SCI:17.68/0.0356 STCD:14.82/0.0276
+  L1_SDSD-outdoor      MVI_1009                 GT warp=0.0100 | Retinexformer:22.57/0.0160 URCSA:23.54/0.0190 DarkIR:19.38/0.0159 HVI-CIDNet:22.73/0.0258 Zero-DCE:20.78/0.0278 SCI:21.44/0.0250 STCD:19.03/0.0191
+  L1_SDSD-outdoor      MVI_1009_2               GT warp=0.0094 | Retinexformer:17.54/0.0132 URCSA:19.55/0.0149 DarkIR:15.21/0.0127 HVI-CIDNet:16.87/0.0254 Zero-DCE:16.90/0.0234 SCI:17.53/0.0208 STCD:19.47/0.0160
+  L1_SDSD-outdoor      MVI_1011                 GT warp=0.0103 | Retinexformer:21.40/0.0174 URCSA:21.59/0.0135 DarkIR:21.30/0.0172 HVI-CIDNet:24.11/0.0367 Zero-DCE:22.80/0.0241 SCI:25.79/0.0236 STCD:15.16/0.0161
+  L1_SDSD-outdoor      MVI_1011_2               GT warp=0.0099 | Retinexformer:19.17/0.0159 URCSA:18.31/0.0120 DarkIR:18.90/0.0165 HVI-CIDNet:18.13/0.0186 Zero-DCE:20.73/0.0236 SCI:21.86/0.0237 STCD:16.01/0.0173
+  L1_SDSD-outdoor      MVI_1013                 GT warp=0.0083 | Retinexformer:23.12/0.0125 URCSA:23.14/0.0146 DarkIR:21.84/0.0156 HVI-CIDNet:19.78/0.0304 Zero-DCE:22.24/0.0234 SCI:26.16/0.0219 STCD:22.70/0.0133
+  L1_SDSD-outdoor      MVI_1013_2               GT warp=0.0091 | Retinexformer:20.50/0.0136 URCSA:21.29/0.0159 DarkIR:20.42/0.0169 HVI-CIDNet:19.25/0.0456 Zero-DCE:20.48/0.0263 SCI:21.27/0.0233 STCD:19.38/0.0129
+  L1_SDSD-outdoor      MVI_1015                 GT warp=0.0101 | Retinexformer:25.53/0.0121 URCSA:26.48/0.0187 DarkIR:30.08/0.0207 HVI-CIDNet:22.86/0.0305 Zero-DCE:16.78/0.0292 SCI:15.67/0.0335 STCD:9.45/0.0284
+  L1_SDSD-outdoor      MVI_1015_2               GT warp=0.0097 | Retinexformer:21.42/0.0113 URCSA:21.90/0.0169 DarkIR:18.24/0.0266 HVI-CIDNet:17.69/0.0313 Zero-DCE:16.47/0.0239 SCI:13.42/0.0296 STCD:9.55/0.0249
+  L1_SDSD-outdoor      MVI_1017                 GT warp=0.0096 | Retinexformer:24.77/0.0204 URCSA:28.79/0.0162 DarkIR:24.58/0.0244 HVI-CIDNet:22.47/0.0343 Zero-DCE:19.04/0.0254 SCI:16.75/0.0283 STCD:10.27/0.0193
+  L1_SDSD-outdoor      MVI_1017_2               GT warp=0.0089 | Retinexformer:25.35/0.0260 URCSA:24.81/0.0140 DarkIR:24.82/0.0232 HVI-CIDNet:22.78/0.0268 Zero-DCE:22.23/0.0198 SCI:18.41/0.0241 STCD:10.86/0.0165
+  L1_SDSD-outdoor      MVI_1019                 GT warp=0.0065 | Retinexformer:10.46/0.0106 URCSA:11.14/0.0122 DarkIR:10.45/0.0124 HVI-CIDNet:24.90/0.0162 Zero-DCE:10.98/0.0181 SCI:10.81/0.0183 STCD:12.34/0.0095
+  L1_SDSD-outdoor      MVI_1019_2               GT warp=0.0074 | Retinexformer:10.70/0.0105 URCSA:11.57/0.0129 DarkIR:9.54/0.0107 HVI-CIDNet:19.92/0.0183 Zero-DCE:11.17/0.0201 SCI:10.83/0.0193 STCD:12.60/0.0095
+  L1_SDSD-outdoor      MVI_1021                 GT warp=0.0094 | Retinexformer:17.05/0.0110 URCSA:19.54/0.0138 DarkIR:18.18/0.0153 HVI-CIDNet:14.30/0.0246 Zero-DCE:17.32/0.0185 SCI:19.45/0.0202 STCD:20.20/0.0108
+  L1_SDSD-outdoor      MVI_1021_2               GT warp=0.0090 | Retinexformer:16.14/0.0116 URCSA:21.26/0.0149 DarkIR:19.10/0.0172 HVI-CIDNet:15.97/0.0300 Zero-DCE:19.19/0.0216 SCI:18.93/0.0231 STCD:19.36/0.0144
+  L1_SDSD-outdoor      MVI_1024                 GT warp=0.0084 | Retinexformer:26.40/0.0182 URCSA:22.41/0.0130 DarkIR:20.24/0.0141 HVI-CIDNet:19.19/0.0180 Zero-DCE:21.80/0.0202 SCI:21.91/0.0216 STCD:18.87/0.0122
+  L1_SDSD-outdoor      MVI_1024_2               GT warp=0.0102 | Retinexformer:24.08/0.0199 URCSA:23.75/0.0151 DarkIR:21.73/0.0158 HVI-CIDNet:22.27/0.0220 Zero-DCE:22.36/0.0233 SCI:22.20/0.0234 STCD:18.96/0.0142
+  L1_SDSD-outdoor      MVI_1026                 GT warp=0.0103 | Retinexformer:26.22/0.0155 URCSA:16.88/0.0247 DarkIR:20.75/0.0265 HVI-CIDNet:14.89/0.0545 Zero-DCE:18.15/0.0315 SCI:17.12/0.0319 STCD:10.18/0.0213
+  L1_SDSD-outdoor      MVI_1026_2               GT warp=0.0099 | Retinexformer:24.76/0.0143 URCSA:16.32/0.0251 DarkIR:19.50/0.0276 HVI-CIDNet:11.03/0.0544 Zero-DCE:18.54/0.0321 SCI:16.89/0.0312 STCD:14.49/0.0177
+  L1_SDSD-outdoor      MVI_1028                 GT warp=0.0095 | Retinexformer:18.26/0.0128 URCSA:18.82/0.0154 DarkIR:18.56/0.0183 HVI-CIDNet:19.98/0.0225 Zero-DCE:17.84/0.0213 SCI:20.07/0.0212 STCD:22.08/0.0142
+  L1_SDSD-outdoor      MVI_1028_2               GT warp=0.0100 | Retinexformer:17.52/0.0129 URCSA:19.19/0.0173 DarkIR:19.12/0.0205 HVI-CIDNet:16.20/0.0317 Zero-DCE:17.73/0.0235 SCI:18.60/0.0215 STCD:19.78/0.0130
+  L1_SDSD-outdoor      MVI_1030                 GT warp=0.0114 | Retinexformer:26.28/0.0124 URCSA:16.09/0.0194 DarkIR:18.05/0.0226 HVI-CIDNet:16.91/0.0499 Zero-DCE:15.65/0.0260 SCI:13.99/0.0268 STCD:11.86/0.0175
+  L1_SDSD-outdoor      MVI_1030_2               GT warp=0.0113 | Retinexformer:22.97/0.0104 URCSA:15.77/0.0188 DarkIR:17.02/0.0240 HVI-CIDNet:13.46/0.0479 Zero-DCE:15.01/0.0255 SCI:13.18/0.0273 STCD:10.18/0.0173
+  L1_SDSD-outdoor      MVI_1032                 GT warp=0.0098 | Retinexformer:31.21/0.0089 URCSA:16.26/0.0190 DarkIR:12.64/0.0252 HVI-CIDNet:16.55/0.0383 Zero-DCE:14.06/0.0276 SCI:13.17/0.0302 STCD:11.79/0.0156
+  L1_SDSD-outdoor      MVI_1032_2               GT warp=0.0101 | Retinexformer:31.12/0.0092 URCSA:17.23/0.0188 DarkIR:13.20/0.0257 HVI-CIDNet:16.00/0.0503 Zero-DCE:14.26/0.0277 SCI:12.93/0.0299 STCD:11.69/0.0162
+== L1_SDSD-outdoor done (153s)
+   GT             tlp=0.0374 mabd=0.0003 flicker=0.0107 warp_err=0.0095 n=25
+   LQ             psnr_rgb=12.8382 lpips=0.4617 tlp=0.0356 mabd=0.0003 flicker=0.0056 warp_err=0.0061 n=25
+   Retinexformer  psnr_rgb=22.0001 lpips=0.2219 tlp=0.0522 mabd=0.0073 flicker=0.0147 warp_err=0.0140 n=25
+   URCSA          psnr_rgb=19.6028 lpips=0.2585 tlp=0.0945 mabd=0.0015 flicker=0.0159 warp_err=0.0172 n=25
+   DarkIR         psnr_rgb=18.7533 lpips=0.3117 tlp=0.1122 mabd=0.0042 flicker=0.0179 warp_err=0.0200 n=25
+   HVI-CIDNet     psnr_rgb=18.5052 lpips=0.3062 tlp=0.1325 mabd=0.0190 flicker=0.0313 warp_err=0.0331 n=25
+   Zero-DCE       psnr_rgb=17.9797 lpips=0.3567 tlp=0.1261 mabd=0.0021 flicker=0.0221 warp_err=0.0249 n=25
+   SCI            psnr_rgb=17.8421 lpips=0.3427 tlp=0.1137 mabd=0.0014 flicker=0.0228 warp_err=0.0254 n=25
+   STCD           psnr_rgb=15.2429 lpips=0.3553 tlp=0.0670 mabd=0.0023 flicker=0.0163 warp_err=0.0166 n=25
+[BVI-RLV] test: 16 sequences (8 scenes × ≤2 fps), 6240 frames total
+  L2_BVI-RLV           S33_mix5__10fps          GT warp=0.0055 | Retinexformer:25.41/0.0101 URCSA:25.15/0.0114 DarkIR:25.20/0.0110 HVI-CIDNet:24.59/0.0310 Zero-DCE:17.42/0.0201 SCI:23.16/0.0201 STCD:24.65/0.0085
+  L2_BVI-RLV           S33_mix5__20fps          GT warp=0.0056 | Retinexformer:14.70/0.0132 URCSA:13.89/0.0100 DarkIR:17.46/0.0075 HVI-CIDNet:24.55/0.0130 Zero-DCE:17.76/0.0146 SCI:12.42/0.0154 STCD:12.00/0.0109
+  L2_BVI-RLV           S34_mix6__10fps          GT warp=0.0075 | Retinexformer:20.98/0.0162 URCSA:21.02/0.0157 DarkIR:18.95/0.0122 HVI-CIDNet:20.46/0.0246 Zero-DCE:19.74/0.0195 SCI:22.56/0.0228 STCD:19.06/0.0152
+  L2_BVI-RLV           S34_mix6__20fps          GT warp=0.0075 | Retinexformer:13.49/0.0158 URCSA:13.26/0.0110 DarkIR:21.27/0.0106 HVI-CIDNet:21.34/0.0108 Zero-DCE:18.98/0.0139 SCI:10.87/0.0183 STCD:12.11/0.0184
+  L2_BVI-RLV           S35_Bunny__10fps         GT warp=0.0080 | Retinexformer:24.04/0.0138 URCSA:22.73/0.0153 DarkIR:19.56/0.0126 HVI-CIDNet:17.32/0.0220 Zero-DCE:18.27/0.0223 SCI:20.97/0.0213 STCD:19.90/0.0154
+  L2_BVI-RLV           S35_Bunny__20fps         GT warp=0.0080 | Retinexformer:14.28/0.0144 URCSA:15.39/0.0127 DarkIR:25.42/0.0103 HVI-CIDNet:18.88/0.0123 Zero-DCE:19.79/0.0184 SCI:13.43/0.0198 STCD:12.93/0.0148
+  L2_BVI-RLV           S36_Eeyore__10fps        GT warp=0.0072 | Retinexformer:24.57/0.0126 URCSA:22.92/0.0136 DarkIR:24.61/0.0138 HVI-CIDNet:25.70/0.0286 Zero-DCE:20.22/0.0223 SCI:21.60/0.0199 STCD:18.04/0.0149
+  L2_BVI-RLV           S36_Eeyore__20fps        GT warp=0.0072 | Retinexformer:14.36/0.0130 URCSA:15.47/0.0126 DarkIR:25.01/0.0093 HVI-CIDNet:25.26/0.0133 Zero-DCE:20.33/0.0185 SCI:13.81/0.0188 STCD:13.33/0.0134
+  L2_BVI-RLV           S37_Mario3__10fps        GT warp=0.0056 | Retinexformer:21.80/0.0110 URCSA:20.17/0.0112 DarkIR:15.22/0.0079 HVI-CIDNet:13.86/0.0144 Zero-DCE:15.66/0.0172 SCI:22.38/0.0180 STCD:18.54/0.0115
+  L2_BVI-RLV           S37_Mario3__20fps        GT warp=0.0056 | Retinexformer:12.49/0.0094 URCSA:14.19/0.0081 DarkIR:21.20/0.0072 HVI-CIDNet:17.31/0.0101 Zero-DCE:16.28/0.0119 SCI:11.12/0.0125 STCD:12.57/0.0106
+  L2_BVI-RLV           S38_Mario4__10fps        GT warp=0.0051 | Retinexformer:19.61/0.0125 URCSA:20.65/0.0122 DarkIR:17.59/0.0078 HVI-CIDNet:16.31/0.0166 Zero-DCE:18.06/0.0189 SCI:23.63/0.0194 STCD:15.19/0.0149
+  L2_BVI-RLV           S38_Mario4__20fps        GT warp=0.0051 | Retinexformer:11.27/0.0097 URCSA:12.62/0.0086 DarkIR:21.17/0.0069 HVI-CIDNet:20.40/0.0093 Zero-DCE:15.83/0.0131 SCI:10.47/0.0150 STCD:13.70/0.0122
+  L2_BVI-RLV           S39_Books4__10fps        GT warp=0.0047 | Retinexformer:21.08/0.0107 URCSA:20.44/0.0086 DarkIR:13.62/0.0068 HVI-CIDNet:13.94/0.0139 Zero-DCE:14.42/0.0141 SCI:25.73/0.0161 STCD:22.97/0.0081
+  L2_BVI-RLV           S39_Books4__20fps        GT warp=0.0046 | Retinexformer:13.84/0.0087 URCSA:15.76/0.0062 DarkIR:22.13/0.0068 HVI-CIDNet:17.89/0.0087 Zero-DCE:17.07/0.0090 SCI:11.93/0.0094 STCD:12.24/0.0071
+  L2_BVI-RLV           S40_Books5__10fps        GT warp=0.0023 | Retinexformer:18.56/0.0047 URCSA:15.36/0.0027 DarkIR:17.19/0.0079 HVI-CIDNet:7.60/0.0179 Zero-DCE:11.71/0.0067 SCI:25.91/0.0076 STCD:13.51/0.0077
+  L2_BVI-RLV           S40_Books5__20fps        GT warp=0.0023 | Retinexformer:15.76/0.0019 URCSA:25.11/0.0024 DarkIR:21.74/0.0026 HVI-CIDNet:17.39/0.0083 Zero-DCE:16.34/0.0041 SCI:14.72/0.0009 STCD:14.97/0.0007
+== L2_BVI-RLV done (135s)
+   GT             tlp=0.0690 mabd=0.0023 flicker=0.0892 warp_err=0.0057 n=16
+   LQ             psnr_rgb=10.9174 lpips=0.2988 tlp=0.0614 mabd=0.0012 flicker=0.0419 warp_err=0.0056 n=16
+   Retinexformer  psnr_rgb=17.8909 lpips=0.2179 tlp=0.0785 mabd=0.0029 flicker=0.0926 warp_err=0.0111 n=16
+   URCSA          psnr_rgb=18.3834 lpips=0.2212 tlp=0.0844 mabd=0.0030 flicker=0.0805 warp_err=0.0101 n=16
+   DarkIR         psnr_rgb=20.4600 lpips=0.1500 tlp=0.0812 mabd=0.0026 flicker=0.0856 warp_err=0.0088 n=16
+   HVI-CIDNet     psnr_rgb=18.9245 lpips=0.1902 tlp=0.0951 mabd=0.0094 flicker=0.0799 warp_err=0.0159 n=16
+   Zero-DCE       psnr_rgb=17.3675 lpips=0.2594 tlp=0.1006 mabd=0.0019 flicker=0.0705 warp_err=0.0153 n=16
+   SCI            psnr_rgb=17.7943 lpips=0.2819 tlp=0.0940 mabd=0.0028 flicker=0.1019 warp_err=0.0160 n=16
+   STCD           psnr_rgb=15.9808 lpips=0.3109 tlp=0.0732 mabd=0.0032 flicker=0.0938 warp_err=0.0115 n=16
+[SAVE] /temp/zihaohe/cache/checkpoint/runs/seer_iclr_evals/baselines_temporal_unified.json
+consistency: {
+ "Retinexformer": {
+  "STCD-12_SDSD-indoor": {
+   "n": 12,
+   "max_abs_dpsnr": 0.0,
+   "max_abs_dlpips": 0.0
+  },
+  "L1_SDSD-outdoor": {
+   "n": 25,
+   "max_abs_dpsnr": 0.0,
+   "max_abs_dlpips": 0.0
+  },
+  "L2_BVI-RLV": {
+   "n": 16,
+   "max_abs_dpsnr": 0.0,
+   "max_abs_dlpips": 0.0
+  }
+ },
+ "URCSA": {
+  "STCD-12_SDSD-indoor": {
+   "n": 12,
+   "max_abs_dpsnr": 0.0,
+   "max_abs_dlpips": 0.0
+  },
+  "L1_SDSD-outdoor": {
+   "n": 25,
+   "max_abs_dpsnr": 0.0,
+   "max_abs_dlpips": 0.0
+  },
+  "L2_BVI-RLV": {
+   "n": 16,
+   "max_abs_dpsnr": 0.0,
+   "max_abs_dlpips": 0.0
+  }
+ },
+ "DarkIR": {
+  "STCD-12_SDSD-indoor": {
+   "n": 12,
+   "max_abs_dpsnr": 0.0,
+   "max_abs_dlpips": 0.0
+  },
+  "L1_SDSD-outdoor": {
+   "n": 25,
+   "max_abs_dpsnr": 0.0,
+   "max_abs_dlpips": 0.0
+  },
+  "L2_BVI-RLV": {
+   "n": 16,
+   "max_abs_dpsnr": 0.0,
+   "max_abs_dlpips": 0.0
+  }
+ },
+ "HVI-CIDNet": {
+  "STCD-12_SDSD-indoor": {
+   "n": 12,
+   "max_abs_dpsnr": 0.0,
+   "max_abs_dlpips": 0.0
+  },
+  "L1_SDSD-outdoor": {
+   "n": 25,
+   "max_abs_dpsnr": 0.0,
+   "max_abs_dlpips": 0.0
+  },
+  "L2_BVI-RLV": {
+   "n": 16,
+   "max_abs_dpsnr": 0.0,
+   "max_abs_dlpips": 0.0
+  }
+ },
+ "Zero-DCE": {
+  "STCD-12_SDSD-indoor": {
+   "n": 12,
+   "max_abs_dpsnr": 0.0,
+   "max_abs_dlpips": 0.0
+  },
+  "L1_SDSD-outdoor": {
+   "n": 25,
+   "max_abs_dpsnr": 0.0,
+   "max_abs_dlpips": 0.0
+  },
+  "L2_BVI-RLV": {
+   "n": 16,
+   "max_abs_dpsnr": 0.0,
+   "max_abs_dlpips": 0.0
+  }
+ },
+ "SCI": {
+  "STCD-12_SDSD-indoor": {
+   "n": 12,
+   "max_abs_dpsnr": 0.0,
+   "max_abs_dlpips": 0.0
+  },
+  "L1_SDSD-outdoor": {
+   "n": 25,
+   "max_abs_dpsnr": 0.0,
+   "max_abs_dlpips": 0.0
+  },
+  "L2_BVI-RLV": {
+   "n": 16,
+   "max_abs_dpsnr": 0.0,
+   "max_abs_dlpips": 0.0
+  }
+ },
+ "STCD": {
+  "L0_SDSD-indoor": {
+   "n": 15,
+   "max_abs_dpsnr": 0.0,
+   "max_abs_dlpips": 0.0
+  },
+  "STCD-12_SDSD-indoor": {
+   "n": 12,
+   "max_abs_dpsnr": 0.0,
+   "max_abs_dlpips": 0.0
+  },
+  "L1_SDSD-outdoor": {
+   "n": 25,
+   "max_abs_dpsnr": 0.0,
+   "max_abs_dlpips": 0.0
+  },
+  "L2_BVI-RLV": {
+   "n": 16,
+   "max_abs_dpsnr": 0.0,
+   "max_abs_dlpips": 0.0
+  }
+ }
+}

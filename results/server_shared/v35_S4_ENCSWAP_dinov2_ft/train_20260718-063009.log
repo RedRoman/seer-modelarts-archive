@@ -1,0 +1,42 @@
+2026-07-18 06:30:09 INFO: === v35 Stage 4 encoder-swap: dinov2 ===
+2026-07-18 06:30:46 INFO: Building swap encoder: dinov2
+2026-07-18 06:30:50 INFO:   swap encoder params: 304.4M (frozen)
+2026-07-18 06:30:53 INFO:   pixel_branch init: missing=1 unexpected=0
+2026-07-18 06:30:53 INFO:   cf_refiner init: missing=0 unexpected=0
+2026-07-18 06:31:45 INFO: Zero-iter audit (52.8s): RGB-512=25.220  Y-512=26.840
+2026-07-18 06:37:38 INFO: it    50/1500 total=0.2449 pix=0.1005 enc_cons=1.0342 router_max_per_scale=[0.947915   0.9479136  0.947918   0.9479235  0.94791317] step=7.03s
+2026-07-18 06:43:28 INFO: it   100/1500 total=0.2258 pix=0.0902 enc_cons=1.0262 router_max_per_scale=[0.947915   0.94791234 0.9479149  0.94793034 0.9479161 ] step=7.02s
+2026-07-18 06:49:14 INFO: it   150/1500 total=0.2170 pix=0.0843 enc_cons=1.0609 router_max_per_scale=[0.947915   0.9479104  0.94791555 0.94793534 0.947921  ] step=6.99s
+2026-07-18 06:55:04 INFO: it   200/1500 total=0.2122 pix=0.0818 enc_cons=1.0540 router_max_per_scale=[0.947915   0.94791204 0.9479149  0.94793963 0.94792056] step=6.99s
+2026-07-18 07:00:53 INFO: it   250/1500 total=0.2137 pix=0.0834 enc_cons=1.0521 router_max_per_scale=[0.947915   0.9479153  0.94791836 0.947945   0.94792026] step=6.99s
+2026-07-18 07:06:39 INFO: it   300/1500 total=0.2033 pix=0.0777 enc_cons=1.0445 router_max_per_scale=[0.947915   0.94791746 0.9479177  0.94794637 0.9479238 ] step=6.98s
+2026-07-18 07:12:28 INFO: it   350/1500 total=0.2107 pix=0.0833 enc_cons=1.0034 router_max_per_scale=[0.947915   0.94792175 0.947918   0.94794565 0.94792634] step=6.98s
+2026-07-18 07:18:14 INFO: it   400/1500 total=0.1946 pix=0.0735 enc_cons=1.0041 router_max_per_scale=[0.947915   0.94792724 0.9479165  0.9479505  0.9479238 ] step=6.97s
+2026-07-18 07:24:03 INFO: it   450/1500 total=0.2056 pix=0.0796 enc_cons=1.0160 router_max_per_scale=[0.947915   0.94793105 0.94792014 0.9479571  0.9479223 ] step=6.97s
+2026-07-18 07:29:53 INFO: it   500/1500 total=0.1899 pix=0.0704 enc_cons=1.0336 router_max_per_scale=[0.947915   0.947931   0.94792163 0.9479641  0.94793046] step=6.97s
+2026-07-18 07:30:44 INFO: [audit @ 500] (50.8s) RGB-512=25.004  Y-512=26.260
+2026-07-18 07:36:30 INFO: it   550/1500 total=0.1886 pix=0.0700 enc_cons=1.0168 router_max_per_scale=[0.947915  0.947933  0.947922  0.9479692 0.9479314] step=7.06s
+2026-07-18 07:42:19 INFO: it   600/1500 total=0.1919 pix=0.0726 enc_cons=1.0020 router_max_per_scale=[0.947915   0.9479344  0.9479242  0.94797117 0.9479284 ] step=7.06s
+2026-07-18 07:48:08 INFO: it   650/1500 total=0.1772 pix=0.0652 enc_cons=0.9923 router_max_per_scale=[0.947915   0.9479358  0.9479263  0.9479735  0.94792604] step=7.05s
+2026-07-18 07:53:55 INFO: it   700/1500 total=0.2013 pix=0.0776 enc_cons=1.0263 router_max_per_scale=[0.947915   0.9479356  0.9479271  0.94797593 0.9479294 ] step=7.04s
+2026-07-18 07:59:44 INFO: it   750/1500 total=0.1775 pix=0.0656 enc_cons=0.9597 router_max_per_scale=[0.947915   0.94793844 0.9479321  0.94797647 0.9479317 ] step=7.04s
+2026-07-18 08:05:30 INFO: it   800/1500 total=0.1734 pix=0.0624 enc_cons=1.0065 router_max_per_scale=[0.947915   0.94793963 0.9479333  0.94798076 0.94793546] step=7.03s
+2026-07-18 08:11:20 INFO: it   850/1500 total=0.1822 pix=0.0674 enc_cons=0.9981 router_max_per_scale=[0.947915   0.9479416  0.94793075 0.9479823  0.9479376 ] step=7.03s
+2026-07-18 08:17:09 INFO: it   900/1500 total=0.1583 pix=0.0541 enc_cons=0.9746 router_max_per_scale=[0.947915  0.9479437 0.94793   0.9479822 0.9479363] step=7.03s
+2026-07-18 08:22:56 INFO: it   950/1500 total=0.1784 pix=0.0648 enc_cons=1.0194 router_max_per_scale=[0.947915   0.94794285 0.94793236 0.9479833  0.94793946] step=7.02s
+2026-07-18 08:28:45 INFO: it  1000/1500 total=0.1575 pix=0.0540 enc_cons=0.9733 router_max_per_scale=[0.947915   0.94794637 0.94793653 0.9479883  0.94794   ] step=7.02s
+2026-07-18 08:29:35 INFO: [audit @ 1000] (50.0s) RGB-512=26.345  Y-512=28.050
+2026-07-18 08:29:36 INFO:   -> best Y-512 = 28.050 saved
+2026-07-18 08:29:38 INFO:   -> best RGB-512 = 26.345 saved
+2026-07-18 08:35:27 INFO: it  1050/1500 total=0.1697 pix=0.0602 enc_cons=0.9905 router_max_per_scale=[0.947915   0.9479467  0.94793814 0.94799    0.94794095] step=7.07s
+2026-07-18 08:41:13 INFO: it  1100/1500 total=0.1611 pix=0.0563 enc_cons=0.9707 router_max_per_scale=[0.947915   0.94795066 0.9479389  0.94798815 0.9479404 ] step=7.06s
+2026-07-18 08:47:03 INFO: it  1150/1500 total=0.1787 pix=0.0672 enc_cons=0.9355 router_max_per_scale=[0.947915   0.9479482  0.9479379  0.94799054 0.9479416 ] step=7.06s
+2026-07-18 08:52:49 INFO: it  1200/1500 total=0.1776 pix=0.0649 enc_cons=0.9953 router_max_per_scale=[0.947915   0.94794834 0.9479368  0.9479917  0.9479442 ] step=7.05s
+2026-07-18 08:58:39 INFO: it  1250/1500 total=0.1622 pix=0.0584 enc_cons=0.9411 router_max_per_scale=[0.947915   0.9479506  0.9479357  0.9479915  0.94794744] step=7.05s
+2026-07-18 09:04:28 INFO: it  1300/1500 total=0.1722 pix=0.0620 enc_cons=0.9780 router_max_per_scale=[0.947915   0.94795036 0.94793844 0.94799685 0.94795316] step=7.05s
+2026-07-18 09:10:14 INFO: it  1350/1500 total=0.1722 pix=0.0627 enc_cons=0.9829 router_max_per_scale=[0.947915   0.9479528  0.94794685 0.9479977  0.9479539 ] step=7.04s
+2026-07-18 09:16:04 INFO: it  1400/1500 total=0.1749 pix=0.0638 enc_cons=0.9653 router_max_per_scale=[0.947915   0.94795966 0.94795424 0.9480021  0.9479553 ] step=7.04s
+2026-07-18 09:21:54 INFO: it  1450/1500 total=0.1688 pix=0.0613 enc_cons=0.9568 router_max_per_scale=[0.947915   0.9479611  0.9479559  0.948006   0.94795966] step=7.04s
+2026-07-18 09:27:40 INFO: it  1500/1500 total=0.1657 pix=0.0594 enc_cons=0.9578 router_max_per_scale=[0.947915   0.9479616  0.94795334 0.9480127  0.9479644 ] step=7.04s
+2026-07-18 09:28:30 INFO: [audit @ 1500] (50.2s) RGB-512=25.947  Y-512=27.396
+2026-07-18 09:28:32 INFO: === v35 Stage 4 encoder-swap dinov2 done: best Y-512 = 28.050  best RGB-512 = 26.345 ===

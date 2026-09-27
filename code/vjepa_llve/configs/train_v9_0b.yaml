@@ -1,0 +1,79 @@
+_base_: base_21.yaml
+
+# v9.0b: PSNR-targeted finetune from v9.0/best.pt.
+# Per reviewer R5/R8 lock spec (2026-05-01).
+# Goal: push Y-PSNR @ 512 from 26.843 toward 27.5+ without RAFT supervision.
+
+output_dir: /cache/zihaohe/checkpoint/runs/v9_0b
+
+precision: bf16
+
+model:
+  pixel_branch:
+    dims: [64, 128, 256, 512, 1024]
+    num_blocks: [4, 8, 8, 12, 16]
+    heads: [4, 8, 8, 16, 16]
+    ffn_exp: 2.66
+    vjepa_layer_per_scale: [0, 0, 1, 2, 3]
+    cross_attn_at_scales: [1, 2, 3, 4]
+    use_cfim_bottleneck: true
+    use_illumination_cues: true
+    use_gradient_checkpoint: true
+
+train:
+  batch_size: 2
+  clip_len: 16
+  crop_size: 256
+  log_every: 50
+  val_every: 500           # cheap RGB-256 every 500 iters
+  audit_every: 1000        # slow Y-512 audit every 1000 iters AND on candidate-best
+  save_every: 1000
+  keep_n_step_ckpts: 2
+  ema_decay: 0.999
+  ema_start: 500           # EMA starts earlier since we're finetuning
+  val_window: 3
+  sanity_y512_target: 26.843
+  sanity_y512_tol: 0.05    # abort if zero-iter Y-512 differs by more than this
+
+optim:
+  lr: 2.0e-5
+  min_lr: 1.0e-6
+  weight_decay: 1.0e-4
+  betas: [0.9, 0.99]
+  total_iters: 3000        # no auto-extend per Q1
+  warmup_iters: 0          # finetune from converged ckpt — no warmup
+  scheduler: cosine
+  grad_clip: 1.0
+  accum_steps: 4
+  resume_from: /cache/zihaohe/checkpoint/runs/v9/ckpts/best.pt
+  resume_reset_optim: true   # fresh AdamW state for finetune
+
+data:
+  train:
+    datasets:
+      - kind: sdsd
+        root: /home/ma-user/workspace/zihaohe/datasets/SDSD_indoor
+        subset: direct
+        split: train
+        weight: 1.0
+      - kind: sdsd
+        root: /home/ma-user/workspace/zihaohe/datasets/SDSD_outdoor
+        subset: direct
+        split: train
+        weight: 1.0
+  val:
+    kind: sdsd
+    root: /home/ma-user/workspace/zihaohe/datasets/SDSD_indoor
+    subset: direct
+    split: test
+
+# Loss weights — locked per R5/Q1. PSNR-targeted, no RAFT, no temporal.
+loss:
+  pix_weight: 1.5                  # ★ raised
+  lpips_weight: 0.0                # ★ disabled (R5: pure PSNR)
+  retinex_compose_weight: 0.15     # ★ mid-range per Q4
+  L_smooth_spatial_weight: 0.02    # ★ lowered
+  L_smooth_temporal_weight: 0.0    # ★ disabled
+  R_adjacent_weight: 0.0           # ★ disabled
+  R_adjacent_scale: 2
+  pred_dod_weight: 0.0             # ★ disabled (P5: temporal warp useless on indoor)

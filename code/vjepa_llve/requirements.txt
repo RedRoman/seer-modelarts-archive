@@ -1,0 +1,38 @@
+# V-JEPA-LLVE v5 dependencies.
+# Install order matters: torch first (with proper CUDA), then the rest.
+#
+# Recommended:
+#   pip install torch==2.3.1 torchvision==0.18.1 --index-url https://download.pytorch.org/whl/cu121
+#   pip install -r requirements.txt
+
+# Core
+numpy>=1.24
+pyyaml>=6.0
+pillow>=10.0
+opencv-python>=4.9
+tqdm>=4.65
+einops>=0.7
+
+# V-JEPA 2.1 (matches facebookresearch/vjepa2 requirements)
+timm
+transformers
+peft
+decord
+scikit-image
+ftfy
+beartype
+psutil
+h5py
+fire
+python-box
+braceexpand
+webdataset
+
+# Latent diffusion
+diffusers>=0.27
+safetensors>=0.4
+huggingface-hub>=0.24
+
+# Losses / metrics
+lpips>=0.1.4
+scipy>=1.11

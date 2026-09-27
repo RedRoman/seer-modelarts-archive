@@ -1,0 +1,21 @@
+2026-09-26 11:22:58 INFO: === adapt_novjepa_s0: v35 Stage 4 (retrainer) gate_init=0.0 router_c=4.0 ===
+2026-09-26 11:22:58 INFO: init_ckpt: /temp/zihaohe/cache/checkpoint/runs/seer_iclr_ckpts/ctrl_novjepa_s0_final.pt
+2026-09-26 11:22:58 INFO: out_dir:   /cache/zihaohe/runs/seer_iclr/adapt_novjepa_s0
+2026-09-26 11:22:58 INFO: log:       /cache/zihaohe/runs/seer_iclr/adapt_novjepa_s0/train_20260926-112258.log
+2026-09-26 11:23:02 INFO:   pixel_branch load: missing=0 unexpected=0
+2026-09-26 11:23:02 INFO:   cf_refiner   load: missing=0 unexpected=0
+2026-09-26 11:23:02 INFO:   variant: random_vjepa=False disable_igab=False disable_lic=False disable_bottleneck=False w=(1.5,0.15,0.02,0.05)
+2026-09-26 11:23:02 INFO:   gate (post-override)   = +nan
+2026-09-26 11:23:02 INFO:   router[0] softmax post = ['0.9479', '0.0174', '0.0174', '0.0174']
+2026-09-26 11:23:02 INFO:   no_vjepa=True  save_at=[100]  seed=0
+2026-09-26 11:23:02 INFO:   trainable: 369.75M (pixel_branch + cf_refiner LoRA/gate/new_proj)
+2026-09-26 11:24:31 INFO:   audit sequences (SDSD-indoor test): 15
+2026-09-26 11:25:22 INFO: Zero-iter audit (51.3s): RGB-512=26.167  Y-512=27.189
+2026-09-26 11:46:18 INFO: it    50/200 total=0.1067 pix=0.0642 jepa=0.0000 gate=+nan router_max_per_scale=['0.947915', '0.947915', '0.947915', '0.947915', '0.947915'] step=25.11s
+2026-09-26 12:07:12 INFO: it   100/200 total=0.0731 pix=0.0439 jepa=0.0000 gate=+nan router_max_per_scale=['0.947915', '0.947915', '0.947915', '0.947915', '0.947915'] step=25.08s
+2026-09-26 12:07:13 INFO:   -> saved step_100.pt
+2026-09-26 12:08:08 INFO: [audit @ 100] (55.1s) RGB-512=18.584  Y-512=19.584
+2026-09-26 12:29:03 INFO: it   150/200 total=0.0626 pix=0.0375 jepa=0.0000 gate=+nan router_max_per_scale=['0.947915', '0.947915', '0.947915', '0.947915', '0.947915'] step=26.21s
+2026-09-26 12:49:57 INFO: it   200/200 total=0.0523 pix=0.0312 jepa=0.0000 gate=+nan router_max_per_scale=['0.947915', '0.947915', '0.947915', '0.947915', '0.947915'] step=25.09s
+2026-09-26 12:50:53 INFO: [audit @ 200] (55.4s) RGB-512=19.924  Y-512=20.702
+2026-09-26 12:50:54 INFO: === adapt_novjepa_s0 done: best Y-512 = 27.189  best RGB-512 = 26.167 ===

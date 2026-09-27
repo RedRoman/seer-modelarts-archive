@@ -1,0 +1,51 @@
+[STCD] loaded /temp/zihaohe/cache/stcd_repro/LLVE_STCD/pretrained_model/SDSD_indoor_model/indoor_G.pth strict=True (50 tensors, 1.81M params)
+[SDSD] layout=A/C (static_np or original) subset=direct split=train -> 59 sequences, 1671 frames total.
+[SDSD] layout=A/C (static_np or original) subset=direct split=train -> 101 sequences, 2530 frames total.
+[CP-src] SCI            alpha raw=[0.692, -1.2397, 0.3612] clipped=[0.692, 0.0, 0.3612] (13s)
+[CP-src] STCD           alpha raw=[0.7439, 0.1881, -0.496] clipped=[0.7439, 0.1881, 0.0] (23s)
+[SDSD] layout=A/C (static_np or original) subset=direct split=test -> 15 sequences, 1037 frames total.
+Loading pretrained model LPIPS from /home/ma-user/.cache/torch/hub/pyiqa/LPIPS_v0.1_alex-df73285e.pth
+Loading pretrained model DISTS from /home/ma-user/.cache/torch/hub/pyiqa/DISTS_weights-f5e65c96.pth
+  L0_SDSD-indoor   SCI            PSNR 23.482 -> 23.427 -> 23.483 | LPIPS 0.3902 -> 0.3911 -> 0.3919 | xfit a0=[1.0, 0.0, 0.0] a1=[0.374, 0.0, 0.0] | chk dPSNR=0.0 dLPIPS=0.0 ok=True (121s)
+  L0_SDSD-indoor   STCD           PSNR 23.480 -> 23.354 -> 23.335 | LPIPS 0.1959 -> 0.2127 -> 0.1975 | xfit a0=[0.278, 0.335, 0.674] a1=[0.483, 0.219, 0.049] | chk dPSNR=0.0 dLPIPS=0.0 ok=True (114s)
+[SDSD] layout=A/C (static_np or original) subset=direct split=test -> 25 sequences, 620 frames total.
+  L1_SDSD-outdoor  SCI            PSNR 17.842 -> 17.787 -> 17.881 | LPIPS 0.3427 -> 0.3448 -> 0.3442 | xfit a0=[0.0, 1.0, 0.726] a1=[0.0, 0.0, 1.0] | chk dPSNR=0.0 dLPIPS=0.0 ok=True (175s)
+  L1_SDSD-outdoor  STCD           PSNR 15.243 -> 15.340 -> 15.363 | LPIPS 0.3553 -> 0.3564 -> 0.3591 | xfit a0=[0.677, 0.161, 0.0] a1=[0.514, 0.445, 0.09] | chk dPSNR=0.0 dLPIPS=0.0 ok=True (191s)
+[BVI-RLV] test: 16 sequences (8 scenes × ≤2 fps), 6240 frames total
+  L2_BVI-RLV       SCI            PSNR 17.794 -> 18.028 -> 18.134 | LPIPS 0.2819 -> 0.2744 -> 0.2623 | xfit a0=[0.0, 1.0, 1.0] a1=[0.0, 0.731, 0.976] | chk dPSNR=0.0 dLPIPS=0.0 ok=True (120s)
+  L2_BVI-RLV       STCD           PSNR 15.981 -> 15.829 -> 16.318 | LPIPS 0.3109 -> 0.3076 -> 0.2853 | xfit a0=[0.0, 1.0, 0.696] a1=[0.07, 1.0, 0.538] | chk dPSNR=0.0 dLPIPS=0.0 ok=True (104s)
+  L3_LOL-v1        SCI            PSNR 14.784 -> 14.713 -> 14.771 | LPIPS 0.3388 -> 0.3385 -> 0.3412 | xfit a0=[0.589, 0.0, 0.0] a1=[1.0, 0.0, 0.0] | chk dPSNR=0.0 dLPIPS=0.0 ok=True (6s)
+  L3_LOL-v1        STCD           PSNR 17.444 -> 17.404 -> 17.596 | LPIPS 0.3981 -> 0.3694 -> 0.3656 | xfit a0=[0.073, 1.0, 0.144] a1=[0.243, 0.502, 0.161] | chk dPSNR=0.0 dLPIPS=0.0 ok=True (8s)
+  L4_LOLv2-Syn     SCI            PSNR 15.428 -> 15.689 -> 15.895 | LPIPS 0.2326 -> 0.2163 -> 0.2162 | xfit a0=[0.0, 1.0, 0.888] a1=[0.042, 0.521, 0.767] | chk dPSNR=0.0 dLPIPS=0.0 ok=True (40s)
+  L4_LOLv2-Syn     STCD           PSNR 15.094 -> 15.252 -> 15.837 | LPIPS 0.4545 -> 0.4231 -> 0.3686 | xfit a0=[0.756, 0.68, 0.906] a1=[0.778, 0.115, 0.884] | chk dPSNR=0.0 dLPIPS=0.0 ok=True (42s)
+  L5_LOLv2-Real    SCI            PSNR 17.304 -> 17.243 -> 17.304 | LPIPS 0.3074 -> 0.3089 -> 0.3074 | xfit a0=[0.0, 0.0, 0.0] a1=[0.0, 0.0, 0.0] | chk dPSNR=0.0 dLPIPS=0.0 ok=True (45s)
+  L5_LOLv2-Real    STCD           PSNR 16.500 -> 16.278 -> 16.513 | LPIPS 0.4594 -> 0.4178 -> 0.4218 | xfit a0=[0.0, 0.654, 0.21] a1=[0.0, 0.54, 0.18] | chk dPSNR=0.0 dLPIPS=0.0 ok=True (48s)
+[SAVE] /cache/zihaohe/cp_baselines/partC.json  consistency_ok=True  wall=1116s
+
+== L0_SDSD-indoor   PSNR raw -> CP-src -> CP-tgt   |   LPIPS raw -> CP-src -> CP-tgt
+  SCI            23.482 -> 23.427 -> 23.483   |   0.3902 -> 0.3911 -> 0.3919   n=15
+  STCD           23.480 -> 23.354 -> 23.335   |   0.1959 -> 0.2127 -> 0.1975   n=15
+
+== L1_SDSD-outdoor   PSNR raw -> CP-src -> CP-tgt   |   LPIPS raw -> CP-src -> CP-tgt
+  SCI            17.842 -> 17.787 -> 17.881   |   0.3427 -> 0.3448 -> 0.3442   n=25
+  STCD           15.243 -> 15.340 -> 15.363   |   0.3553 -> 0.3564 -> 0.3591   n=25
+
+== L2_BVI-RLV   PSNR raw -> CP-src -> CP-tgt   |   LPIPS raw -> CP-src -> CP-tgt
+  SCI            17.794 -> 18.028 -> 18.134   |   0.2819 -> 0.2744 -> 0.2623   n=16
+  STCD           15.981 -> 15.829 -> 16.318   |   0.3109 -> 0.3076 -> 0.2853   n=16
+
+== L3_LOL-v1   PSNR raw -> CP-src -> CP-tgt   |   LPIPS raw -> CP-src -> CP-tgt
+  SCI            14.784 -> 14.713 -> 14.771   |   0.3388 -> 0.3385 -> 0.3412   n=15
+  STCD           17.444 -> 17.404 -> 17.596   |   0.3981 -> 0.3694 -> 0.3656   n=15
+
+== L4_LOLv2-Syn   PSNR raw -> CP-src -> CP-tgt   |   LPIPS raw -> CP-src -> CP-tgt
+  SCI            15.428 -> 15.689 -> 15.895   |   0.2326 -> 0.2163 -> 0.2162   n=100
+  STCD           15.094 -> 15.252 -> 15.837   |   0.4545 -> 0.4231 -> 0.3686   n=100
+
+== L5_LOLv2-Real   PSNR raw -> CP-src -> CP-tgt   |   LPIPS raw -> CP-src -> CP-tgt
+  SCI            17.304 -> 17.243 -> 17.304   |   0.3074 -> 0.3089 -> 0.3074   n=100
+  STCD           16.500 -> 16.278 -> 16.513   |   0.4594 -> 0.4178 -> 0.4218   n=100
+
+CP-src alpha (clipped / raw):
+  SCI            [0.692, 0.0, 0.3612]  raw=[0.692, -1.2397, 0.3612]
+  STCD           [0.7439, 0.1881, 0.0]  raw=[0.7439, 0.1881, -0.496]

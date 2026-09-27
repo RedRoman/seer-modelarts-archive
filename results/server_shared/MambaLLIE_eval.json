@@ -1,0 +1,38 @@
+{
+  "method": "MambaLLIE",
+  "notes": "Pretrained weights only released on Google Drive / Baidu Pan. Both are unreachable from host 30138 (drive.google.com resolves to a non-google IP; Baidu Pan requires auth + is behind captcha). Github repo cloned successfully via ghfast.top proxy, arch imports cleanly with mamba_ssm/pyiqa already installed, but no weights available on Huggingface, ModelScope, Zenodo, GitCode, or in the paper's OpenReview supplementary (behind auth). Training from scratch on all 6 datasets exceeds 12h budget.",
+  "protocol": "N/A (method could not be run)",
+  "per_seq": {},
+  "summary": {
+    "SDSD_indoor": {
+      "psnr_rgb": null,
+      "lpips": null,
+      "n_seqs": 0
+    },
+    "SDSD_outdoor": {
+      "psnr_rgb": null,
+      "lpips": null,
+      "n_seqs": 0
+    },
+    "BVI_RLV": {
+      "psnr_rgb": null,
+      "lpips": null,
+      "n_seqs": 0
+    },
+    "LOL_v1": {
+      "psnr_rgb": null,
+      "lpips": null,
+      "n_seqs": 0
+    },
+    "LOLv2_Syn": {
+      "psnr_rgb": null,
+      "lpips": null,
+      "n_seqs": 0
+    },
+    "LOLv2_Real": {
+      "psnr_rgb": null,
+      "lpips": null,
+      "n_seqs": 0
+    }
+  }
+}

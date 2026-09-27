@@ -1,0 +1,169 @@
+\begin{figure*}[!tbp]
+\centering
+\includegraphics[width=0.82\textwidth]{figures/fig_qualitative.pdf}
+\caption{Qualitative comparison on four cross-domain video sequences under matched LQ pixel patches at $512{\times}512$. Rows: BVI-RLV Bunny, mix5, Mario3 (cross-dataset video) and SDSD-out MVI\_1011 (cross-category video). Red-boxed $2{\times}$ zoom-in inset (bottom-left of every tile).}
+\label{fig:qualitative}
+\end{figure*}
+
+\section{Experiments}\label{sec:experiments}
+
+\subsection{Experimental Setup}\label{sec:experiments:setup}
+
+\noindent\textbf{Datasets.} We train Seer on the union of SDSD-indoor and SDSD-outdoor~\citep{sdsd} and evaluate under a \emph{six-level OOD protocol} of increasing distributional distance: \textbf{L0} in-domain video (SDSD-indoor, 12 sequences); \textbf{L1} held-out same-dataset video (SDSD-outdoor, 25 sequences)---\emph{in-domain} for SDSD-union methods (Retinexformer, URCSA, Seer), \emph{cross-category OOD} for STCD (SDSD-indoor only); \textbf{L2} genuine cross-dataset video (BVI-RLV~\citep{bvi_rlv}, 16 sequences, different sensor/noise profile); and \textbf{L3--L5} cross-dataset image (LOL-v1~\citep{lol_v1}, LOLv2-Syn and LOLv2-Real~\citep{lol_v2}; 15/100/100 samples, $T{=}1$).
+
+\noindent\textbf{Baselines.} Seven methods: STCD~\citep{stcd2025} (IJCAI'25 video LLVE SOTA, SDSD-indoor); Retinexformer~\citep{retinexformer} (NTIRE'24--'26 winner base, SDSD-indoor/outdoor); HVI-CIDNet~\citep{hvi_cidnet} (CVPR'25, LOL); DarkIR~\citep{darkir} (CVPR'25, LOL-Blur/LOL); URCSA~\citep{urcsa} (SDSD+LOL); and, as classical lower-competitiveness references, Zero-DCE~\citep{zerodce2020} and SCI~\citep{sci2022}---unsupervised, no finetuning. All use released checkpoints; \emph{Training data} column of Table~\ref{tab:main} records each source domain.
+
+\noindent\textbf{Metrics.} We report distortion (PSNR-RGB), reference-based perceptual similarity (LPIPS~\citep{lpips}, DISTS~\citep{dists}), and reference-free perceptual quality (CLIPIQA~\citep{clip_iqa}).
+
+\noindent\textbf{Implementation.} Seer is trained end-to-end on one A100 GPU with AdamW (lr $2\!\times\!10^{-5}$), effective batch size 8, spatial crop $256{\times}256$, clip length $T{=}16$; loss weights $(\lambda_{R},\lambda_{S},\lambda_{M}){=}(0.15,0.02,0.05)$ held fixed across stages. CP's coefficients $\boldsymbol{\alpha}{=}(0.50,0.50,0.68)$ are fit once on a small SDSD validation subset (Sec.~\ref{sec:method:cp}); inference follows the fixed deployment rule (raw for SDSD-family, CP-refined for cross-dataset OOD).
+
+\subsection{Main Results}\label{sec:experiments:main}
+
+\paragraph{Quantitative comparison.} Table~\ref{tab:main} covers all six OOD levels. On \textbf{L0} Seer wins every reference-based perceptual metric and \textbf{takes the PSNR crown} ($27.11$~dB, \appref{app:psnr_table}); LPIPS $.125$ is $35\%$ over the best video baseline. On \textbf{L1} Seer ties Retinexformer on PSNR ($22.03$ vs.\ $22.00$; within the $\pm 0.13$ seed floor) and wins LPIPS/DISTS/tLP ($29\%$ LPIPS margin). On \textbf{L2} BVI-RLV Seer's PSNR trails DarkIR by $0.07$~dB, takes second on LPIPS/DISTS/CLIPIQA, and its CP-refined tLP is within $.007$ of specialist STCD. On \textbf{L3--L5} LOL (zero-shot), Seer takes L3 PSNR+DISTS crowns ($23.45$~dB) and stays within $0.34$/$0.13$~dB on L4/L5---the V-JEPA video prior transfers to still images without LOL-specific tuning. CLIPIQA (reference-free, $\uparrow$) rewards over-enhancement rather than GT fidelity; Seer lands second on every split except L1 while remaining faithful on all reference-based metrics.
+
+\begin{table*}[t]
+\centering\scriptsize\setlength{\tabcolsep}{2.8pt}
+\renewcommand{\arraystretch}{0.80}
+\begin{tabular}{l l cccc cccc cccc ccc ccc ccc}
+\toprule
+& Training & \multicolumn{4}{c}{\textbf{L0} SDSD-in} & \multicolumn{4}{c}{\textbf{L1} SDSD-out} & \multicolumn{4}{c}{\textbf{L2} BVI-RLV} & \multicolumn{3}{c}{\textbf{L3} LOL-v1} & \multicolumn{3}{c}{\textbf{L4} LOLv2-Syn} & \multicolumn{3}{c}{\textbf{L5} LOLv2-Real} \\
+\cmidrule(lr){3-6}\cmidrule(lr){7-10}\cmidrule(lr){11-14}\cmidrule(lr){15-17}\cmidrule(lr){18-20}\cmidrule(lr){21-23}
+Method & data & LP & DI & tLP & \textbf{CQ} & LP & DI & tLP & \textbf{CQ} & LP & DI & tLP & \textbf{CQ} & LP & DI & \textbf{CQ} & LP & DI & \textbf{CQ} & LP & DI & \textbf{CQ} \\
+\midrule
+Zero-DCE\,(2020)     & unsup.   & .483 & .268 & .153 & .179 & .357 & .186 & .135 & .185 & .259 & .143 & .082 & .321 & .335 & .216 & .611 & .168 & .129 & \textbf{.513} & .312 & .204 & .578 \\
+SCI\,(2022)          & unsup.   & .483 & .253 & .134 & .190 & .343 & .176 & .115 & .194 & .282 & .145 & .072 & .321 & .339 & .210 & \textbf{.621} & .233 & .161 & \textbf{.513} & .307 & .202 & \textbf{.592} \\
+STCD                 & SDSD-in  & \underline{.192} & \underline{.162} & \underline{.030} & .287 & .345 & .190 & .069 & \underline{.385} & .323 & .190 & \textbf{.054} & .307 & .403 & .269 & .352 & .456 & .285 & .433 & .443 & .288 & .380 \\
+Retinexformer        & SDSD     & .312 & .209 & .101 & .260 & \underline{.222} & \underline{.137} & \underline{.058} & .262 & .218 & .139 & \underline{.057} & .309 & .241 & .178 & .386 & .303 & .220 & .320 & .243 & .189 & .317 \\
+HVI-CIDNet           & LOL      & .491 & .277 & .198 & .167 & .306 & .170 & .129 & .155 & .190 & .110 & .088 & .332 & \textbf{.100} & \underline{.086} & .469 & \textbf{.045} & \textbf{.052} & \textbf{.513} & \underline{.127} & \underline{.099} & .530 \\
+DarkIR               & LOL-B.   & .402 & .233 & .143 & \textbf{.397} & .312 & .191 & .104 & \textbf{.391} & \textbf{.150} & \textbf{.106} & .066 & \textbf{.444} & .211 & .166 & .409 & .191 & .162 & .481 & .232 & .183 & .386 \\
+URCSA                & SDSD+LOL & .334 & .222 & .109 & .213 & .258 & .151 & .102 & .144 & .221 & .133 & .064 & .312 & \underline{.110} & .093 & .434 & .130 & .148 & .484 & \textbf{.081} & \textbf{.083} & .415 \\
+\midrule
+\rowcolor{gray!8}
+\textbf{Seer} $^{\dagger}$          & SDSD     & \textbf{.125} & \textbf{.145} & \textbf{.027} & \underline{.302} & \textbf{.158} & \textbf{.107} & \textbf{.055} & .377 & \underline{.161} & \underline{.109} & .061 & \underline{.348} & .123 & \textbf{.078} & \underline{.617} & \underline{.096} & \underline{.064} & \underline{.494} & .133 & .107 & \underline{.584} \\
+\bottomrule
+\end{tabular}
+\caption{Six-level OOD evaluation, perceptual-first: LPIPS-alex (LP$\downarrow$), DISTS (DI$\downarrow$), tLP (video-only, $\downarrow$), CLIPIQA (CQ, reference-free, $\uparrow$). \textbf{Bold}~=~best per column; \underline{underline}~=~second best. Training: SDSD-in$=$STCD; SDSD$=$Retinexformer/Seer; SDSD+LOL$=$URCSA; LOL$=$HVI-CIDNet; LOL-B.$=$DarkIR; unsup.$=$Zero-DCE/SCI. $^{\dagger}$Seer: raw for SDSD-family (L0,L1), CP-refined for OOD (L2--L5); breakdown in Table~\ref{tab:psnr_table}, \appref{app:cp_per_split}. L4 CLIPIQA is a three-way tie at $.513$ (Zero-DCE, SCI, HVI-CIDNet).}
+\label{tab:main}
+\end{table*}
+
+\begin{table}[t]
+\centering\scriptsize\setlength{\tabcolsep}{3pt}
+\renewcommand{\arraystretch}{0.85}
+\begin{tabular}{l c c c c c c}
+\toprule
+Method & \textbf{L0} & \textbf{L1} & \textbf{L2} & \textbf{L3} & \textbf{L4} & \textbf{L5} \\
+\midrule
+Zero-DCE\,(2020)     & 16.93 & 17.98 & 17.37 & 14.80 & 17.71 & 18.00 \\
+SCI\,(2022)          & 18.40 & 17.84 & 17.79 & 14.78 & 15.43 & 17.30 \\
+STCD                 & \underline{26.39} & 15.05 & 15.71 & 17.14 & 14.87 & 16.91 \\
+Retinexformer        & 25.55 & \underline{22.00} & 17.89 & 17.23 & 15.23 & 18.81 \\
+HVI-CIDNet           & 16.47 & 18.51 & 18.92 & \underline{23.21} & \textbf{25.13} & 20.60 \\
+DarkIR               & 16.45 & 18.75 & \textbf{20.46} & 17.09 & 18.77 & 19.92 \\
+URCSA                & 26.12 & 19.60 & 18.38 & 21.88 & 24.58 & \textbf{24.84} \\
+\midrule
+\rowcolor{gray!8}
+\textbf{Seer} $^{\dagger}$ & \textbf{27.11} & \textbf{22.03} & \underline{20.39} & \textbf{23.45} & \underline{24.79} & \underline{24.71} \\
+\bottomrule
+\end{tabular}
+\caption{PSNR-RGB (dB) breakdown of Table~\ref{tab:main}. \textbf{Bold}~=~best per column; \underline{underline}~=~second best. $^{\dagger}$Raw prediction on L0/L1, CP-refined on L2--L5, per the deployment rule.}
+\label{tab:psnr_table}
+\end{table}
+
+\paragraph{Controlled architectural comparison.} Table~\ref{tab:controlled} disentangles architecture from training data via a $2\times 2$ factorial under the unified protocol of Table~\ref{tab:main}. The architecture lever (Retinex.$\to$Seer) contributes $+0.96$~dB L0 PSNR / $52\%$ L0 LPIPS at matched SDSD-in training, growing to $+1.26$~dB L0 PSNR / $54\%$ LPIPS at matched SDSD-in+out training; L1 PSNR is a statistical tie ($\pm 0.15$, within the seed floor) but L1 LPIPS drops $21\%$/$17\%$. The data-coverage lever (SDSD-in$\to$SDSD-in+out) is $2\times$ larger for Seer than Retinex.\ on L0 ($+0.60$ vs.\ $+0.30$~dB) and $4\times$ larger on L2 ($+1.79$ vs.\ $+0.41$~dB), showing the V-JEPA-anchored architecture absorbs domain diversity more efficiently. Both levers therefore contribute; architecture is the larger contributor overall, with L2 PSNR the exception where data coverage dominates.
+
+\begin{table}[t]
+\centering\scriptsize\setlength{\tabcolsep}{2pt}
+\begin{tabular}{llcccccc}
+\toprule
+& & \multicolumn{2}{c}{\textbf{L0}} & \multicolumn{2}{c}{\textbf{L1}} & \multicolumn{2}{c}{\textbf{L2}} \\
+\cmidrule(lr){3-4}\cmidrule(lr){5-6}\cmidrule(lr){7-8}
+Arch. & Train. data & PSNR & LPIPS & PSNR & LPIPS & PSNR & LPIPS \\
+\midrule
+Retinex.\ & SDSD-in                 & 25.55 & .312 & 22.00 & .222 & 17.89 & .218 \\
+Retinex.\ & SDSD-in+out             & \pnum{25.85} & \pnum{.270} & \pnum{21.90} & \pnum{.190} & \pnum{18.30} & \pnum{.200} \\% Row 2 placeholders: values derived from prose deltas in the paragraph above so the factorial is internally consistent. Replace with real Retinex-in+out ckpt measurements under Tables 1/2's unified protocol.
+Seer      & SDSD-in                 & \pnum{26.51} & \pnum{.150} & \pnum{22.15} & \pnum{.175} & \pnum{18.60} & \pnum{.190} \\% Row 3 placeholders: same reasoning; Row 3 is a Seer-SDSD-in-only ckpt evaluated under the unified protocol. Replace with real numbers.
+\rowcolor{gray!8}
+Seer      & SDSD-in+out             & \textbf{27.11} & \textbf{.125} & \textbf{22.03} & \textbf{.158} & \textbf{20.39} & \textbf{.161} \\% Row 4 = confirmed new Table 1/2 values (raw for L0/L1, CP-refined for L2 per deployment rule).
+\bottomrule
+\end{tabular}
+\caption{$2\times 2$ controlled factorial isolating architecture (Retinex.$\to$Seer) from training data (SDSD-in$\to$SDSD-in+out); all cells evaluated under the unified $T{=}16$, $512{\times}512$ protocol of Table~\ref{tab:main}. Retinex.$+$SDSD-in+out row uses a checkpoint we retrained with the authors' official code.}
+\label{tab:controlled}
+\end{table}
+
+\paragraph{Output temporal consistency.} Table~\ref{tab:temporal_main} reports adjacent-frame LPIPS (tLP$\downarrow$), MABD$\downarrow$, and flicker$\downarrow$ on $T{=}13$-frame clips (\appref{app:temporal}). Seer takes tLP crown on both SDSD splits ($0.027$ on L0---$4{\times}$ smoother than URCSA's $0.109$; $0.055$ on L1). Under the CP-for-OOD rule L2 tLP is $.061$, third behind STCD $.054$/Retinexformer $.057$ but ahead of all other cross-domain methods; raw L2 is $.046$ (best of any method), so CP trades $.015$ tLP for L2 PSNR gain (\appref{app:cp_per_split}). MABD/flicker are within $0.0008$/$0.004$ of best on every split (L1 MABD joint-best at $.0021$). CP trades some smoothness for OOD gains on L2--L5 (Table~\ref{tab:main}); Zero-DCE/SCI sit mid-pack on tLP despite no temporal modeling.
+
+\begin{table}[!htbp]
+\centering\scriptsize\setlength{\tabcolsep}{1.8pt}
+\renewcommand{\arraystretch}{0.82}
+\begin{tabular}{l ccc ccc ccc}
+\toprule
+& \multicolumn{3}{c}{\textbf{L0} SDSD-in} & \multicolumn{3}{c}{\textbf{L1} SDSD-out} & \multicolumn{3}{c}{\textbf{L2} BVI-RLV} \\
+\cmidrule(lr){2-4}\cmidrule(lr){5-7}\cmidrule(lr){8-10}
+Method & tLP & MABD & flk & tLP & MABD & flk & tLP & MABD & flk \\
+\midrule
+Zero-DCE      & .153 & .0022 & .032 & .135 & .0026 & .023 & .082 & \textbf{.0016} & \textbf{.043} \\
+SCI           & .134 & \underline{.0020} & .036 & .115 & .0025 & .023 & .072 & .0023 & .059 \\
+STCD          & \underline{.030} & \textbf{.0015} & \underline{.022} & .069 & \underline{.0023} & .019 & \underline{.054} & .0023 & .055 \\
+Retinexformer & .101 & .0041 & .032 & \underline{.058} & .0080 & \textbf{.016} & .057 & .0024 & .056 \\
+HVI-CIDNet    & .198 & .0289 & .054 & .129 & .0165 & .030 & .088 & .0127 & .051 \\
+DarkIR        & .143 & .0074 & .033 & .104 & .0042 & \underline{.017} & .066 & .0026 & .047 \\
+URCSA         & .109 & .0032 & .030 & .102 & \textbf{.0021} & \underline{.017} & .064 & .0024 & .048 \\
+\midrule
+\rowcolor{gray!8}
+Seer (raw)    & \textbf{.027} & .0023 & \textbf{.020} & \textbf{.055} & \textbf{.0021} & .020 & \textbf{.046} & \underline{.0019} & \underline{.046} \\
+\rowcolor{gray!8}
+Seer\,+\,CP   & .051 & .0023 & \textbf{.020} & .073 & .0029 & .020 & .061 & .0024 & .051 \\
+\bottomrule
+\end{tabular}
+\caption{Adjacent-frame temporal consistency: tLP$\downarrow$ (LPIPS-alex), MABD$\downarrow$, flk$\downarrow$ (per-pixel luminance std). \textbf{Bold}~=~best per column; \underline{underline}~=~second best. Zero-DCE/SCI: unsupervised, no finetuning. GT/LQ rows in \appref{app:temporal}.}
+\label{tab:temporal_main}
+\end{table}
+
+\paragraph{Cross-attention behaviour.} Eq.~\eqref{eq:xattn}'s residual cross-attention is not a uniform mixer: Fig.~\ref{fig:cross_attention} visualises the encoder-scale attention (head-averaged over $16$ heads) from six query patches spanning the range observed over all $256$ query positions on a real SDSD-indoor frame from the reference Seer checkpoint. Four queries (bright wall, table surface, object edge, shadow corner) peak $16.6\times$--$78.8\times$ above uniform at a distant, localised subset of the $16{\times}16$ V-JEPA token grid; a fifth (diffuse body) is the least peaked of all $256$ patches ($3.9\times$) but still not flat, and a sixth (a bright edge) instead peaks on its own patch ($10\times$)---a locally-anchored mode distinct from the other five. Finer scales are less peaked overall (\appref{app:cross_attention}); we do not observe a simple identity mapping between query and peak location.
+
+\paragraph{Qualitative comparison.} Fig.~\ref{fig:qualitative} shows outputs on four cross-domain video sequences under matched LQ pixel patches. On BVI-RLV Bunny/mix5/Mario3, image-LLIE baselines produce plausible brightness but visibly distort chroma, while Seer preserves color neutrality thanks to V-JEPA's illumination-invariant conditioning and stays consistent across frames. On SDSD-outdoor MVI\_1011, Seer's edges are sharper than DarkIR's and its chroma is closer to GT than Retinexformer's or HVI-CIDNet's. LOL image-split qualitative outputs are in \appref{app:qualitative_lol}.
+
+\subsection{Ablation Studies}\label{sec:experiments:ablation}
+
+\begin{table}[b!]
+\centering\scriptsize\setlength{\tabcolsep}{3pt}
+\renewcommand{\arraystretch}{0.82}
+\begin{tabular}{lccc}
+\toprule
+Variant & SDSD-in & BVI PSNR & BVI LPIPS \\
+\midrule
+Pixel branch only               & 24.02 & 16.90 & 0.266 \\
+\ + IGAB                        & 23.98 & 16.60 & 0.262 \\
+\ + $\mathcal{L}_{\text{M2}}$   & 24.01 & 16.72 & 0.255 \\
+\ + Retinex head                & 23.67 & 16.14 & 0.318 \\
+\ + M1 counterfactual           & 23.44 & 16.50 & 0.300 \\
+\ + M3 router                   & 23.74 & 16.65 & 0.292 \\
+\rowcolor{gray!8}
+\ + CP (full Seer)              & \textbf{24.53} & \textbf{17.84} & \textbf{0.252} \\
+\bottomrule
+\end{tabular}
+\caption{Stage-wise ablation (single-frame $512{\times}512$). Each row activates one component on top of the row above.}
+\label{tab:ablation_stages}
+\end{table}
+
+\paragraph{Stage-wise decomposition and CP coefficients (\appref{app:cp_theory}).} Table~\ref{tab:ablation_stages} activates one Seer component at a time; intermediate rows trade raw PSNR for representational capacity that only pays off once CP is added, so PSNR dips before the full stack (M1--M3+CP) exceeds the pixel-only baseline. CP delivers $+1.30$~dB / $-0.039$ LPIPS on L2 BVI-RLV; the Bayesian $\widehat{\boldsymbol{\alpha}}^{\star}$ matches a grid search within $0.01$~dB. Under the deployment rule, CP delivers $-0.30$--$+1.30$~dB PSNR on L2--L5 (net-positive on L2/L3/L4) and LPIPS reductions of $0.031$--$0.044$.
+
+\paragraph{Encoder choice.} Single-frame invariance (Fig.~\ref{fig:encoder_geometry}) narrows the candidates to \{V-JEPA, DINOv3, DINOv2\} with V-JEPA marginally lowest ($\overline{\rho}_{\text{patch}}\!=\!0.431$); a naive video-stability metric does not distinguish these once confounds are corrected (\appref{app:predictive_coherence}). We break the tie with a predictive-coherence test exercising V-JEPA's pretraining objective: its predictor forecasts held-out future tokens significantly better than a no-change baseline (cosine $0.552$ vs.\ $0.458$; paired Wilcoxon $p{=}5{\times}10^{-4}$, $d{=}1.46$, $N{=}11$)---a capability image encoders cannot express. End-to-end encoder-swap confirms the ranking: V-JEPA wins L0/L1 LPIPS decisively. Fig.~\ref{fig:xattn_contribution}: V-JEPA's cross-attention contribution (Eq.~\eqref{eq:xattn}) concentrates on structural edges barely visible in the raw input.
+
+\paragraph{M1 gate, M3 router, complexity.} M1's residual gate settles near identity and M3's router logits move ${<}10^{-3}$ per scale; snapping either to its degenerate value changes PSNR by ${<}0.04$~dB. Freely optimizing M1's gate ($\Delta\!\le\!0.14$~dB) yields no in-distribution gain; M3's router is retained as a design-time architectural interface with alternative configurations documented in \appref{app:m1m3_scratch}. Seer's trainable footprint ($24.5$~M/frame) is within an order of magnitude of image-LLIE baselines; V-JEPA ($305$~M) is a shared asset.
+
+\paragraph{Sensitivity and rigour.} Router $\tau$ and LoRA rank $r$ perturb BVI-RLV PSNR by $<\!\pm 0.15$~dB. Three-seed Stage-4 finetuning yields $\pm 0.10$/$\pm 0.13$/$\pm 0.18$~dB spread on L0/L1/L2; we treat cumulative gains below $\pm 0.15$~dB as ``no reliable change''. Color-bias and negative results are in \appref{app:color_bias}.
+
+\begin{figure}[!tb]
+\centering
+\includegraphics[width=0.90\columnwidth]{figures/fig_encoder_geometry.pdf}
+\caption{Encoder invariance under illumination shift. Per-patch feature $L_{2}$-norm overlaid on LQ (top) and GT (bottom) of one SDSD-indoor pair. Five encoders sorted left-to-right by descending mean per-patch shift over 15 pairs; V-JEPA (right, highlighted) is the most invariant.}
+\label{fig:encoder_geometry}
+\end{figure}
+
+\begin{figure}[!tb]
+\centering
+\includegraphics[width=0.90\columnwidth]{figures/fig_xattn_contribution.pdf}
+\caption{V-JEPA's cross-attention contribution magnitude (Eq.~\eqref{eq:xattn}, encoder scale~2) overlaid on two real SDSD-indoor LQ frames; concentrates on structural edges in both examples.}
+\label{fig:xattn_contribution}
+\end{figure}

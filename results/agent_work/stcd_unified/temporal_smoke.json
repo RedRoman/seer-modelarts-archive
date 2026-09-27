@@ -1,0 +1,528 @@
+{
+ "protocol": "unified clips: center T=16, 512x512 center crop (same iterators as the ICLR evals); per-frame inference as eval_lib_v2 (STCD: clip-level 2-frame); temporal metrics from vjepa_llve/tools/temporal_metrics.py on float [0,1] outputs; GT RAFT-small flows computed once per clip and shared by all rows",
+ "methods": {
+  "Retinexformer": "SDSD_indoor.pth (indoor, BVI) / SDSD_outdoor.pth (outdoor)",
+  "URCSA": "RCSAindoor.pth (indoor, BVI) / RCSAoutdoor.pth (outdoor), deline patch",
+  "DarkIR": "DarkIR_384.pt (all)",
+  "HVI-CIDNet": "Generalization.bin (all video)",
+  "Zero-DCE": "Epoch99.pth (all)",
+  "SCI": "SCI medium.pt (all)",
+  "STCD": "indoor_G.pth (all); 2-frame (t, t+1) with replicate pad at clip end; BGR in/out"
+ },
+ "clean6_definition": [
+  "pair50",
+  "pair52",
+  "pair58",
+  "pair60",
+  "pair68",
+  "pair70"
+ ],
+ "notes": [
+  "Use L0_SDSD-indoor (index-paired, Seer's split) for Seer comparisons; its clean6 = the 6 seqs held out for both STCD and Seer.",
+  "STCD-12_SDSD-indoor uses eval_lib.iter_sdsd_indoor_stcd, which pairs LQ/GT by basename; for pair50/52/58/60/68/70 filenames are offset and the GT is temporally misaligned (content is aligned by sorted index). Its PSNR/LPIPS/warp_err for those seqs are not meaningful; kept only for consistency with the existing *_eval_v2.json."
+ ],
+ "consistency_vs_existing_json": {
+  "Retinexformer": {
+   "STCD-12_SDSD-indoor": {
+    "n": 1,
+    "max_abs_dpsnr": 0.0,
+    "max_abs_dlpips": 0.0
+   },
+   "L2_BVI-RLV": {
+    "n": 1,
+    "max_abs_dpsnr": 0.0,
+    "max_abs_dlpips": 0.0
+   }
+  },
+  "URCSA": {
+   "STCD-12_SDSD-indoor": {
+    "n": 1,
+    "max_abs_dpsnr": 0.0,
+    "max_abs_dlpips": 0.0
+   },
+   "L2_BVI-RLV": {
+    "n": 1,
+    "max_abs_dpsnr": 0.0,
+    "max_abs_dlpips": 0.0
+   }
+  },
+  "DarkIR": {
+   "STCD-12_SDSD-indoor": {
+    "n": 1,
+    "max_abs_dpsnr": 0.0,
+    "max_abs_dlpips": 0.0
+   },
+   "L2_BVI-RLV": {
+    "n": 1,
+    "max_abs_dpsnr": 0.0,
+    "max_abs_dlpips": 0.0
+   }
+  },
+  "HVI-CIDNet": {
+   "STCD-12_SDSD-indoor": {
+    "n": 1,
+    "max_abs_dpsnr": 0.0,
+    "max_abs_dlpips": 0.0
+   },
+   "L2_BVI-RLV": {
+    "n": 1,
+    "max_abs_dpsnr": 0.0,
+    "max_abs_dlpips": 0.0
+   }
+  },
+  "Zero-DCE": {
+   "STCD-12_SDSD-indoor": {
+    "n": 1,
+    "max_abs_dpsnr": 0.0,
+    "max_abs_dlpips": 0.0
+   },
+   "L2_BVI-RLV": {
+    "n": 1,
+    "max_abs_dpsnr": 0.0,
+    "max_abs_dlpips": 0.0
+   }
+  },
+  "SCI": {
+   "STCD-12_SDSD-indoor": {
+    "n": 1,
+    "max_abs_dpsnr": 0.0,
+    "max_abs_dlpips": 0.0
+   },
+   "L2_BVI-RLV": {
+    "n": 1,
+    "max_abs_dpsnr": 0.0,
+    "max_abs_dlpips": 0.0
+   }
+  },
+  "STCD": {
+   "STCD-12_SDSD-indoor": {
+    "n": 1,
+    "max_abs_dpsnr": 0.0,
+    "max_abs_dlpips": 0.0
+   },
+   "L2_BVI-RLV": {
+    "n": 1,
+    "max_abs_dpsnr": 0.0,
+    "max_abs_dlpips": 0.0
+   }
+  }
+ },
+ "per_seq": {
+  "STCD-12_SDSD-indoor": {
+   "GT": {
+    "pair13": {
+     "tlp": 0.031060874089598657,
+     "mabd": 0.0002877503866329789,
+     "flicker": 0.007867849431931973,
+     "warp_err": 0.008740079589188099
+    }
+   },
+   "LQ": {
+    "pair13": {
+     "psnr_rgb": 18.170790994738553,
+     "lpips": 0.46634251810610294,
+     "n_frames": 16,
+     "tlp": 0.029984641696015994,
+     "mabd": 0.00015349723980762064,
+     "flicker": 0.005221791565418243,
+     "warp_err": 0.0052406033501029015
+    }
+   },
+   "Retinexformer": {
+    "pair13": {
+     "psnr_rgb": 27.41373030503459,
+     "lpips": 0.4193206150084734,
+     "n_frames": 16,
+     "tlp": 0.19981474578380584,
+     "mabd": 0.005370348691940308,
+     "flicker": 0.01929061859846115,
+     "warp_err": 0.02068467065691948,
+     "old_psnr_rgb": 27.41373030503459,
+     "old_lpips": 0.4193206150084734
+    }
+   },
+   "URCSA": {
+    "pair13": {
+     "psnr_rgb": 24.822310310751142,
+     "lpips": 0.4425119422376156,
+     "n_frames": 16,
+     "tlp": 0.19817403058211008,
+     "mabd": 0.001626804587431252,
+     "flicker": 0.02301076054573059,
+     "warp_err": 0.022405458614230156,
+     "old_psnr_rgb": 24.822310310751142,
+     "old_lpips": 0.4425119422376156
+    }
+   },
+   "DarkIR": {
+    "pair13": {
+     "psnr_rgb": 17.870720275037762,
+     "lpips": 0.6244070529937744,
+     "n_frames": 16,
+     "tlp": 0.2878410836060842,
+     "mabd": 0.00878237746655941,
+     "flicker": 0.04967932775616646,
+     "warp_err": 0.050158243626356125,
+     "old_psnr_rgb": 17.870720275037762,
+     "old_lpips": 0.6244070529937744
+    }
+   },
+   "HVI-CIDNet": {
+    "pair13": {
+     "psnr_rgb": 11.250627293019921,
+     "lpips": 0.8114585429430008,
+     "n_frames": 16,
+     "tlp": 0.42208123405774434,
+     "mabd": 0.01754375547170639,
+     "flicker": 0.08986275643110275,
+     "warp_err": 0.0941590890288353,
+     "old_psnr_rgb": 11.250627293019921,
+     "old_lpips": 0.8114585429430008
+    }
+   },
+   "Zero-DCE": {
+    "pair13": {
+     "psnr_rgb": 24.128453305174904,
+     "lpips": 0.5614192560315132,
+     "n_frames": 16,
+     "tlp": 0.2454109013080597,
+     "mabd": 0.0019985437393188477,
+     "flicker": 0.03786887228488922,
+     "warp_err": 0.03693518042564392,
+     "old_psnr_rgb": 24.128453305174904,
+     "old_lpips": 0.5614192560315132
+    }
+   },
+   "SCI": {
+    "pair13": {
+     "psnr_rgb": 23.38888937743165,
+     "lpips": 0.48511151410639286,
+     "n_frames": 16,
+     "tlp": 0.189083664615949,
+     "mabd": 0.000770079146604985,
+     "flicker": 0.026325015351176262,
+     "warp_err": 0.026840901002287865,
+     "old_psnr_rgb": 23.38888937743165,
+     "old_lpips": 0.48511151410639286
+    }
+   },
+   "STCD": {
+    "pair13": {
+     "psnr_rgb": 27.10364492830545,
+     "lpips": 0.41659420169889927,
+     "n_frames": 16,
+     "tlp": 0.07832533369461696,
+     "mabd": 0.0010663623688742518,
+     "flicker": 0.01236138679087162,
+     "warp_err": 0.011078264564275742,
+     "old_psnr_rgb": 27.10364492830545,
+     "old_lpips": 0.41659420169889927
+    }
+   }
+  },
+  "L2_BVI-RLV": {
+   "GT": {
+    "S33_mix5__10fps": {
+     "tlp": 0.10680003017187119,
+     "mabd": 0.005375210661441088,
+     "flicker": 0.11989737302064896,
+     "warp_err": 0.005488543305546045
+    }
+   },
+   "LQ": {
+    "S33_mix5__10fps": {
+     "psnr_rgb": 8.599381777388032,
+     "lpips": 0.42606826685369015,
+     "n_frames": 16,
+     "tlp": 0.07150775988896688,
+     "mabd": 0.001397727057337761,
+     "flicker": 0.03532296046614647,
+     "warp_err": 0.005186712834984064
+    }
+   },
+   "Retinexformer": {
+    "S33_mix5__10fps": {
+     "psnr_rgb": 25.410144841487252,
+     "lpips": 0.14881696924567223,
+     "n_frames": 16,
+     "tlp": 0.12148691266775132,
+     "mabd": 0.005994367878884077,
+     "flicker": 0.12320119142532349,
+     "warp_err": 0.010067598894238472,
+     "old_psnr_rgb": 25.410144841487252,
+     "old_lpips": 0.14881696924567223
+    }
+   },
+   "URCSA": {
+    "S33_mix5__10fps": {
+     "psnr_rgb": 25.149339012636062,
+     "lpips": 0.2057493356987834,
+     "n_frames": 16,
+     "tlp": 0.14427589178085326,
+     "mabd": 0.007293929811567068,
+     "flicker": 0.11767694354057312,
+     "warp_err": 0.011363341473042965,
+     "old_psnr_rgb": 25.149339012636062,
+     "old_lpips": 0.2057493356987834
+    }
+   },
+   "DarkIR": {
+    "S33_mix5__10fps": {
+     "psnr_rgb": 25.201062494398478,
+     "lpips": 0.16858545690774918,
+     "n_frames": 16,
+     "tlp": 0.1382965162396431,
+     "mabd": 0.004697361029684544,
+     "flicker": 0.11363629996776581,
+     "warp_err": 0.010951840318739414,
+     "old_psnr_rgb": 25.201062494398478,
+     "old_lpips": 0.16858545690774918
+    }
+   },
+   "HVI-CIDNet": {
+    "S33_mix5__10fps": {
+     "psnr_rgb": 24.586810812606245,
+     "lpips": 0.33525629714131355,
+     "n_frames": 16,
+     "tlp": 0.17785053451855978,
+     "mabd": 0.022317687049508095,
+     "flicker": 0.12496307492256165,
+     "warp_err": 0.03102933056652546,
+     "old_psnr_rgb": 24.586810812606245,
+     "old_lpips": 0.33525629714131355
+    }
+   },
+   "Zero-DCE": {
+    "S33_mix5__10fps": {
+     "psnr_rgb": 17.417807267934872,
+     "lpips": 0.43144659139215946,
+     "n_frames": 16,
+     "tlp": 0.16222663819789887,
+     "mabd": 0.004045592155307531,
+     "flicker": 0.09279626607894897,
+     "warp_err": 0.02014889381825924,
+     "old_psnr_rgb": 17.417807267934872,
+     "old_lpips": 0.43144659139215946
+    }
+   },
+   "SCI": {
+    "S33_mix5__10fps": {
+     "psnr_rgb": 23.15571173756451,
+     "lpips": 0.38686491176486015,
+     "n_frames": 16,
+     "tlp": 0.14616973499457042,
+     "mabd": 0.005254646297544241,
+     "flicker": 0.12535005807876587,
+     "warp_err": 0.020108819007873535,
+     "old_psnr_rgb": 23.15571173756451,
+     "old_lpips": 0.38686491176486015
+    }
+   },
+   "STCD": {
+    "S33_mix5__10fps": {
+     "psnr_rgb": 24.652001859504445,
+     "lpips": 0.1832320485264063,
+     "n_frames": 16,
+     "tlp": 0.10862711568673451,
+     "mabd": 0.006211066618561745,
+     "flicker": 0.12547914683818817,
+     "warp_err": 0.00850264448672533,
+     "old_psnr_rgb": 24.652001859504445,
+     "old_lpips": 0.1832320485264063
+    }
+   }
+  }
+ },
+ "summary": {
+  "STCD-12_SDSD-indoor": {
+   "GT": {
+    "tlp": 0.031060874089598657,
+    "mabd": 0.0002877503866329789,
+    "flicker": 0.007867849431931973,
+    "warp_err": 0.008740079589188099,
+    "n": 1,
+    "clean6": {
+     "n": 0
+    }
+   },
+   "LQ": {
+    "psnr_rgb": 18.170790994738553,
+    "lpips": 0.46634251810610294,
+    "tlp": 0.029984641696015994,
+    "mabd": 0.00015349723980762064,
+    "flicker": 0.005221791565418243,
+    "warp_err": 0.0052406033501029015,
+    "n": 1,
+    "clean6": {
+     "n": 0
+    }
+   },
+   "Retinexformer": {
+    "psnr_rgb": 27.41373030503459,
+    "lpips": 0.4193206150084734,
+    "tlp": 0.19981474578380584,
+    "mabd": 0.005370348691940308,
+    "flicker": 0.01929061859846115,
+    "warp_err": 0.02068467065691948,
+    "n": 1,
+    "clean6": {
+     "n": 0
+    }
+   },
+   "URCSA": {
+    "psnr_rgb": 24.822310310751142,
+    "lpips": 0.4425119422376156,
+    "tlp": 0.19817403058211008,
+    "mabd": 0.001626804587431252,
+    "flicker": 0.02301076054573059,
+    "warp_err": 0.022405458614230156,
+    "n": 1,
+    "clean6": {
+     "n": 0
+    }
+   },
+   "DarkIR": {
+    "psnr_rgb": 17.870720275037762,
+    "lpips": 0.6244070529937744,
+    "tlp": 0.2878410836060842,
+    "mabd": 0.00878237746655941,
+    "flicker": 0.04967932775616646,
+    "warp_err": 0.050158243626356125,
+    "n": 1,
+    "clean6": {
+     "n": 0
+    }
+   },
+   "HVI-CIDNet": {
+    "psnr_rgb": 11.250627293019921,
+    "lpips": 0.8114585429430008,
+    "tlp": 0.42208123405774434,
+    "mabd": 0.01754375547170639,
+    "flicker": 0.08986275643110275,
+    "warp_err": 0.0941590890288353,
+    "n": 1,
+    "clean6": {
+     "n": 0
+    }
+   },
+   "Zero-DCE": {
+    "psnr_rgb": 24.128453305174904,
+    "lpips": 0.5614192560315132,
+    "tlp": 0.2454109013080597,
+    "mabd": 0.0019985437393188477,
+    "flicker": 0.03786887228488922,
+    "warp_err": 0.03693518042564392,
+    "n": 1,
+    "clean6": {
+     "n": 0
+    }
+   },
+   "SCI": {
+    "psnr_rgb": 23.38888937743165,
+    "lpips": 0.48511151410639286,
+    "tlp": 0.189083664615949,
+    "mabd": 0.000770079146604985,
+    "flicker": 0.026325015351176262,
+    "warp_err": 0.026840901002287865,
+    "n": 1,
+    "clean6": {
+     "n": 0
+    }
+   },
+   "STCD": {
+    "psnr_rgb": 27.10364492830545,
+    "lpips": 0.41659420169889927,
+    "tlp": 0.07832533369461696,
+    "mabd": 0.0010663623688742518,
+    "flicker": 0.01236138679087162,
+    "warp_err": 0.011078264564275742,
+    "n": 1,
+    "clean6": {
+     "n": 0
+    }
+   }
+  },
+  "L2_BVI-RLV": {
+   "GT": {
+    "tlp": 0.10680003017187119,
+    "mabd": 0.005375210661441088,
+    "flicker": 0.11989737302064896,
+    "warp_err": 0.005488543305546045,
+    "n": 1
+   },
+   "LQ": {
+    "psnr_rgb": 8.599381777388032,
+    "lpips": 0.42606826685369015,
+    "tlp": 0.07150775988896688,
+    "mabd": 0.001397727057337761,
+    "flicker": 0.03532296046614647,
+    "warp_err": 0.005186712834984064,
+    "n": 1
+   },
+   "Retinexformer": {
+    "psnr_rgb": 25.410144841487252,
+    "lpips": 0.14881696924567223,
+    "tlp": 0.12148691266775132,
+    "mabd": 0.005994367878884077,
+    "flicker": 0.12320119142532349,
+    "warp_err": 0.010067598894238472,
+    "n": 1
+   },
+   "URCSA": {
+    "psnr_rgb": 25.149339012636062,
+    "lpips": 0.2057493356987834,
+    "tlp": 0.14427589178085326,
+    "mabd": 0.007293929811567068,
+    "flicker": 0.11767694354057312,
+    "warp_err": 0.011363341473042965,
+    "n": 1
+   },
+   "DarkIR": {
+    "psnr_rgb": 25.201062494398478,
+    "lpips": 0.16858545690774918,
+    "tlp": 0.1382965162396431,
+    "mabd": 0.004697361029684544,
+    "flicker": 0.11363629996776581,
+    "warp_err": 0.010951840318739414,
+    "n": 1
+   },
+   "HVI-CIDNet": {
+    "psnr_rgb": 24.586810812606245,
+    "lpips": 0.33525629714131355,
+    "tlp": 0.17785053451855978,
+    "mabd": 0.022317687049508095,
+    "flicker": 0.12496307492256165,
+    "warp_err": 0.03102933056652546,
+    "n": 1
+   },
+   "Zero-DCE": {
+    "psnr_rgb": 17.417807267934872,
+    "lpips": 0.43144659139215946,
+    "tlp": 0.16222663819789887,
+    "mabd": 0.004045592155307531,
+    "flicker": 0.09279626607894897,
+    "warp_err": 0.02014889381825924,
+    "n": 1
+   },
+   "SCI": {
+    "psnr_rgb": 23.15571173756451,
+    "lpips": 0.38686491176486015,
+    "tlp": 0.14616973499457042,
+    "mabd": 0.005254646297544241,
+    "flicker": 0.12535005807876587,
+    "warp_err": 0.020108819007873535,
+    "n": 1
+   },
+   "STCD": {
+    "psnr_rgb": 24.652001859504445,
+    "lpips": 0.1832320485264063,
+    "tlp": 0.10862711568673451,
+    "mabd": 0.006211066618561745,
+    "flicker": 0.12547914683818817,
+    "warp_err": 0.00850264448672533,
+    "n": 1
+   }
+  }
+ },
+ "wall_s": 32.8
+}

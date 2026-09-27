@@ -1,0 +1,8 @@
+2026-07-18 09:40:47 INFO: === v35S4_NO_M1 ablation ===
+2026-07-18 09:40:47 INFO:   disable_m1=True  freeze_m3_router=False
+2026-07-18 09:41:31 INFO:   pixel_branch init: missing=1 unexpected=0
+2026-07-18 09:41:31 INFO:   cf_refiner init: missing=0 unexpected=0
+2026-07-18 09:41:31 INFO: [disable_m1] cf_refiner: 27 params frozen, gate.zero_ applied, forward monkey-patched to identity.
+2026-07-18 09:41:31 INFO:   trainable params after ablation hooks: 369.747M (369747338 scalars)
+2026-07-18 09:42:22 INFO: Zero-iter audit (50.9s): RGB-512=27.078  Y-512=28.827
+2026-07-18 09:43:34 INFO: === v35S4_NO_M1 done: best Y-512 = 28.827  best RGB-512 = 27.078 ===

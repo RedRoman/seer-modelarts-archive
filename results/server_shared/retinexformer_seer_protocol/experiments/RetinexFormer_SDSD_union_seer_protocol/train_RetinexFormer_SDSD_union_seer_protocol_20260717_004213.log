@@ -1,0 +1,530 @@
+2026-07-17 00:42:13,738 INFO: 
+                ____                _       _____  ____
+               / __ ) ____ _ _____ (_)_____/ ___/ / __ \
+              / __  |/ __ `// ___// // ___/\__ \ / /_/ /
+             / /_/ // /_/ /(__  )/ // /__ ___/ // _, _/
+            /_____/ \__,_//____//_/ \___//____//_/ |_|
+     ______                   __   __                 __      __
+    / ____/____   ____   ____/ /  / /   __  __ _____ / /__   / /
+   / / __ / __ \ / __ \ / __  /  / /   / / / // ___// //_/  / /
+  / /_/ // /_/ // /_/ // /_/ /  / /___/ /_/ // /__ / /<    /_/
+  \____/ \____/ \____/ \____/  /_____/\____/ \___//_/|_|  (_)
+    
+Version Information: 
+	BasicSR: 1.2.0+cc63400
+	PyTorch: 2.3.1+cu121
+	TorchVision: 0.18.1+cu121
+2026-07-17 00:42:13,738 INFO: 
+  name: RetinexFormer_SDSD_union_seer_protocol
+  model_type: ImageCleanModel
+  scale: 1
+  num_gpu: 1
+  manual_seed: 100
+  datasets:[
+    train:[
+      name: TrainSetUnion
+      type: Dataset_SDSDUnionImage
+      random_reverse: False
+      border_mode: False
+      dataroot_gt: ['/home/ma-user/workspace/zihaohe/datasets/SDSD_indoor/indoor_static_np/GT', '/home/ma-user/workspace/zihaohe/datasets/SDSD_outdoor/outdoor_static_np/GT']
+      dataroot_lq: ['/home/ma-user/workspace/zihaohe/datasets/SDSD_indoor/indoor_static_np/input', '/home/ma-user/workspace/zihaohe/datasets/SDSD_outdoor/outdoor_static_np/input']
+      train_size: [960, 512]
+      cache_keys: None
+      cache_data: True
+      padding: new_info
+      testing_dir: ['pair11,pair21,pair1,pair19,pair4,pair9', 'MVI_0898,MVI_0928,MVI_0906,MVI_0975,MVI_1001,MVI_0997,MVI_1003,MVI_1026,MVI_1030,MVI_1032']
+      filename_tmpl: {}
+      io_backend:[
+        type: disk
+      ]
+      N_frames: 5
+      use_flip: True
+      use_rot: True
+      color: RGB
+      use_shuffle: True
+      num_worker_per_gpu: 4
+      batch_size_per_gpu: 8
+      mini_batch_sizes: [8]
+      iters: [160000]
+      gt_size: 512
+      gt_sizes: [256]
+      dataset_enlarge_ratio: 1
+      prefetch_mode: None
+      phase: train
+      scale: 1
+    ]
+    val:[
+      name: ValSetUnion
+      type: Dataset_SDSDUnionImage
+      dataroot_gt: ['/home/ma-user/workspace/zihaohe/datasets/SDSD_indoor/indoor_static_np/GT', '/home/ma-user/workspace/zihaohe/datasets/SDSD_outdoor/outdoor_static_np/GT']
+      dataroot_lq: ['/home/ma-user/workspace/zihaohe/datasets/SDSD_indoor/indoor_static_np/input', '/home/ma-user/workspace/zihaohe/datasets/SDSD_outdoor/outdoor_static_np/input']
+      cache_data: True
+      N_frames: 5
+      padding: new_info
+      train_size: [960, 512]
+      testing_dir: ['pair11,pair21,pair1,pair19,pair4,pair9', 'MVI_0898,MVI_0928,MVI_0906,MVI_0975,MVI_1001,MVI_0997,MVI_1003,MVI_1026,MVI_1030,MVI_1032']
+      io_backend:[
+        type: disk
+      ]
+      phase: val
+      scale: 1
+    ]
+  ]
+  network_g:[
+    type: RetinexFormer
+    in_channels: 3
+    out_channels: 3
+    n_feat: 40
+    stage: 1
+    num_blocks: [1, 2, 2]
+  ]
+  path:[
+    pretrain_network_g: None
+    strict_load_g: True
+    resume_state: None
+    root: /cache/zihaohe/ext_methods/Retinexformer
+    experiments_root: /cache/zihaohe/ext_methods/Retinexformer/experiments/RetinexFormer_SDSD_union_seer_protocol
+    models: /cache/zihaohe/ext_methods/Retinexformer/experiments/RetinexFormer_SDSD_union_seer_protocol/models
+    training_states: /cache/zihaohe/ext_methods/Retinexformer/experiments/RetinexFormer_SDSD_union_seer_protocol/training_states
+    log: /cache/zihaohe/ext_methods/Retinexformer/experiments/RetinexFormer_SDSD_union_seer_protocol
+    visualization: /cache/zihaohe/ext_methods/Retinexformer/experiments/RetinexFormer_SDSD_union_seer_protocol/visualization
+  ]
+  train:[
+    total_iter: 160000
+    warmup_iter: -1
+    use_grad_clip: True
+    scheduler:[
+      type: CosineAnnealingRestartCyclicLR
+      periods: [50000, 110000]
+      restart_weights: [1, 1]
+      eta_mins: [2e-05, 1e-06]
+    ]
+    mixing_augs:[
+      mixup: False
+      mixup_beta: 1.2
+      use_identity: True
+    ]
+    optim_g:[
+      type: AdamW
+      lr: 2e-05
+      weight_decay: 0.0001
+      betas: [0.9, 0.99]
+    ]
+    pixel_opt:[
+      type: L1Loss
+      loss_weight: 1
+      reduction: mean
+    ]
+  ]
+  val:[
+    window_size: 4
+    val_freq: 8000.0
+    save_img: False
+    rgb2bgr: True
+    use_image: False
+    max_minibatch: 8
+    metrics:[
+      psnr:[
+        type: calculate_psnr
+        crop_border: 0
+        test_y_channel: False
+      ]
+    ]
+  ]
+  logger:[
+    print_freq: 500
+    save_checkpoint_freq: 8000.0
+    use_tb_logger: True
+    wandb:[
+      project: low_light
+      resume_id: None
+    ]
+  ]
+  dist_params:[
+    backend: nccl
+    port: 29511
+  ]
+  is_train: True
+  dist: False
+  rank: 0
+  world_size: 1
+  rename_flag: False
+
+2026-07-17 00:42:13,839 INFO: Dataset Dataset_SDSDUnionImage - TrainSetUnion is created.
+2026-07-17 00:42:13,839 INFO: Training statistics:
+	Number of train images: 5050
+	Dataset enlarge ratio: 1
+	Batch size per gpu: 8
+	World size (gpu number): 1
+	Require iter number per epoch: 632
+	Total epochs: 254; iters: 160000.
+2026-07-17 00:42:13,843 INFO: Dataset Dataset_SDSDUnionImage - ValSetUnion is created.
+2026-07-17 00:42:13,843 INFO: Number of val images/folders in ValSetUnion: 808
+2026-07-17 00:42:14,569 INFO: Model [ImageCleanModel] is created.
+2026-07-17 00:42:14,597 INFO: Start training from epoch: 0, iter: 0
+2026-07-17 00:42:15,164 INFO: 
+ Updating Patch_Size to 256 and Batch_Size to 8 
+
+2026-07-17 00:47:00,970 INFO: [Retin..][epoch:  0, iter:     500, lr:(2.000e-05,)] [eta: 1 day, 1:19:38, time (data): 0.556 (0.001)] l_pix: 1.0359e-01 
+2026-07-17 00:51:35,805 INFO: [Retin..][epoch:  1, iter:   1,000, lr:(2.000e-05,)] [eta: 1 day, 0:45:46, time (data): 0.558 (0.001)] l_pix: 4.5296e-02 
+2026-07-17 00:56:11,833 INFO: [Retin..][epoch:  2, iter:   1,500, lr:(2.000e-05,)] [eta: 1 day, 0:33:31, time (data): 0.565 (0.001)] l_pix: 8.3285e-02 
+2026-07-17 01:00:50,462 INFO: [Retin..][epoch:  3, iter:   2,000, lr:(2.000e-05,)] [eta: 1 day, 0:28:30, time (data): 0.556 (0.001)] l_pix: 6.1228e-02 
+2026-07-17 01:05:25,228 INFO: [Retin..][epoch:  3, iter:   2,500, lr:(2.000e-05,)] [eta: 1 day, 0:19:35, time (data): 0.557 (0.001)] l_pix: 5.6864e-02 
+2026-07-17 01:10:00,762 INFO: [Retin..][epoch:  4, iter:   3,000, lr:(2.000e-05,)] [eta: 1 day, 0:12:47, time (data): 0.548 (0.001)] l_pix: 4.3731e-02 
+2026-07-17 01:14:39,487 INFO: [Retin..][epoch:  5, iter:   3,500, lr:(2.000e-05,)] [eta: 1 day, 0:09:00, time (data): 0.555 (0.001)] l_pix: 3.6169e-02 
+2026-07-17 01:19:15,905 INFO: [Retin..][epoch:  6, iter:   4,000, lr:(2.000e-05,)] [eta: 1 day, 0:03:29, time (data): 0.555 (0.001)] l_pix: 4.7327e-02 
+2026-07-17 01:23:47,466 INFO: [Retin..][epoch:  7, iter:   4,500, lr:(2.000e-05,)] [eta: 23:55:23, time (data): 0.554 (0.001)] l_pix: 4.2241e-02 
+2026-07-17 01:28:18,685 INFO: [Retin..][epoch:  7, iter:   5,000, lr:(2.000e-05,)] [eta: 23:47:49, time (data): 0.545 (0.001)] l_pix: 3.7714e-02 
+2026-07-17 01:32:53,312 INFO: [Retin..][epoch:  8, iter:   5,500, lr:(2.000e-05,)] [eta: 23:42:24, time (data): 0.563 (0.001)] l_pix: 6.9212e-02 
+2026-07-17 01:37:28,019 INFO: [Retin..][epoch:  9, iter:   6,000, lr:(2.000e-05,)] [eta: 23:37:10, time (data): 0.554 (0.001)] l_pix: 3.6297e-02 
+2026-07-17 01:42:05,984 INFO: [Retin..][epoch: 10, iter:   6,500, lr:(2.000e-05,)] [eta: 23:33:19, time (data): 0.549 (0.001)] l_pix: 5.3138e-02 
+2026-07-17 01:46:41,978 INFO: [Retin..][epoch: 11, iter:   7,000, lr:(2.000e-05,)] [eta: 23:28:37, time (data): 0.557 (0.001)] l_pix: 2.9914e-02 
+2026-07-17 01:51:17,542 INFO: [Retin..][epoch: 11, iter:   7,500, lr:(2.000e-05,)] [eta: 23:23:48, time (data): 0.557 (0.001)] l_pix: 5.4274e-02 
+2026-07-17 01:55:56,532 INFO: [Retin..][epoch: 12, iter:   8,000, lr:(2.000e-05,)] [eta: 23:20:06, time (data): 0.556 (0.001)] l_pix: 2.6569e-02 
+2026-07-17 01:55:56,533 INFO: Saving models and training states.
+2026-07-17 02:01:47,031 INFO: Validation ValSetUnion,		 # psnr: 26.8163
+2026-07-17 02:06:21,777 INFO: [Retin..][epoch: 13, iter:   8,500, lr:(2.000e-05,)] [eta: 1 day, 0:59:07, time (data): 0.559 (0.001)] l_pix: 5.1608e-02 
+2026-07-17 02:10:57,025 INFO: [Retin..][epoch: 14, iter:   9,000, lr:(2.000e-05,)] [eta: 1 day, 0:48:08, time (data): 0.556 (0.001)] l_pix: 4.1882e-02 
+2026-07-17 02:15:35,474 INFO: [Retin..][epoch: 15, iter:   9,500, lr:(2.000e-05,)] [eta: 1 day, 0:38:40, time (data): 0.557 (0.001)] l_pix: 4.4568e-02 
+2026-07-17 02:20:09,481 INFO: [Retin..][epoch: 15, iter:  10,000, lr:(2.000e-05,)] [eta: 1 day, 0:28:34, time (data): 0.563 (0.001)] l_pix: 6.6513e-02 
+2026-07-17 02:24:44,872 INFO: [Retin..][epoch: 16, iter:  10,500, lr:(2.000e-05,)] [eta: 1 day, 0:19:19, time (data): 0.554 (0.001)] l_pix: 3.5817e-02 
+2026-07-17 02:29:23,388 INFO: [Retin..][epoch: 17, iter:  11,000, lr:(2.000e-05,)] [eta: 1 day, 0:11:12, time (data): 0.554 (0.001)] l_pix: 2.9047e-02 
+2026-07-17 02:33:58,332 INFO: [Retin..][epoch: 18, iter:  11,500, lr:(2.000e-05,)] [eta: 1 day, 0:02:37, time (data): 0.557 (0.001)] l_pix: 3.5523e-02 
+2026-07-17 02:38:34,021 INFO: [Retin..][epoch: 19, iter:  12,000, lr:(2.000e-05,)] [eta: 23:54:32, time (data): 0.553 (0.001)] l_pix: 3.6023e-02 
+2026-07-17 02:43:12,649 INFO: [Retin..][epoch: 19, iter:  12,500, lr:(2.000e-05,)] [eta: 23:47:17, time (data): 0.555 (0.001)] l_pix: 2.5040e-02 
+2026-07-17 02:47:48,712 INFO: [Retin..][epoch: 20, iter:  13,000, lr:(2.000e-05,)] [eta: 23:39:46, time (data): 0.568 (0.001)] l_pix: 2.6084e-02 
+2026-07-17 02:52:25,152 INFO: [Retin..][epoch: 21, iter:  13,500, lr:(2.000e-05,)] [eta: 23:32:32, time (data): 0.568 (0.001)] l_pix: 3.3249e-02 
+2026-07-17 02:57:04,325 INFO: [Retin..][epoch: 22, iter:  14,000, lr:(2.000e-05,)] [eta: 23:25:57, time (data): 0.558 (0.001)] l_pix: 6.6887e-02 
+2026-07-17 03:01:39,403 INFO: [Retin..][epoch: 22, iter:  14,500, lr:(2.000e-05,)] [eta: 23:18:50, time (data): 0.557 (0.001)] l_pix: 6.7843e-02 
+2026-07-17 03:06:15,468 INFO: [Retin..][epoch: 23, iter:  15,000, lr:(2.000e-05,)] [eta: 23:12:02, time (data): 0.555 (0.001)] l_pix: 4.2494e-02 
+2026-07-17 03:10:54,660 INFO: [Retin..][epoch: 24, iter:  15,500, lr:(2.000e-05,)] [eta: 23:05:52, time (data): 0.557 (0.001)] l_pix: 3.2553e-02 
+2026-07-17 03:15:29,440 INFO: [Retin..][epoch: 25, iter:  16,000, lr:(2.000e-05,)] [eta: 22:59:08, time (data): 0.557 (0.001)] l_pix: 3.7730e-02 
+2026-07-17 03:15:29,441 INFO: Saving models and training states.
+2026-07-17 03:21:16,163 INFO: Validation ValSetUnion,		 # psnr: 25.9736
+2026-07-17 03:25:52,163 INFO: [Retin..][epoch: 26, iter:  16,500, lr:(2.000e-05,)] [eta: 23:42:57, time (data): 0.561 (0.001)] l_pix: 7.0929e-02 
+2026-07-17 03:30:30,425 INFO: [Retin..][epoch: 26, iter:  17,000, lr:(2.000e-05,)] [eta: 23:35:18, time (data): 0.556 (0.001)] l_pix: 2.9076e-02 
+2026-07-17 03:35:05,341 INFO: [Retin..][epoch: 27, iter:  17,500, lr:(2.000e-05,)] [eta: 23:27:22, time (data): 0.556 (0.001)] l_pix: 2.4742e-02 
+2026-07-17 03:39:42,000 INFO: [Retin..][epoch: 28, iter:  18,000, lr:(2.000e-05,)] [eta: 23:19:51, time (data): 0.554 (0.001)] l_pix: 3.8240e-02 
+2026-07-17 03:44:21,631 INFO: [Retin..][epoch: 29, iter:  18,500, lr:(2.000e-05,)] [eta: 23:12:52, time (data): 0.560 (0.001)] l_pix: 3.1388e-02 
+2026-07-17 03:48:56,880 INFO: [Retin..][epoch: 30, iter:  19,000, lr:(2.000e-05,)] [eta: 23:05:27, time (data): 0.555 (0.001)] l_pix: 3.1571e-02 
+2026-07-17 03:53:33,110 INFO: [Retin..][epoch: 30, iter:  19,500, lr:(2.000e-05,)] [eta: 22:58:19, time (data): 0.556 (0.001)] l_pix: 4.0093e-02 
+2026-07-17 03:58:12,479 INFO: [Retin..][epoch: 31, iter:  20,000, lr:(2.000e-05,)] [eta: 22:51:40, time (data): 0.558 (0.001)] l_pix: 3.8845e-02 
+2026-07-17 04:02:49,259 INFO: [Retin..][epoch: 32, iter:  20,500, lr:(2.000e-05,)] [eta: 22:44:50, time (data): 0.563 (0.001)] l_pix: 2.9130e-02 
+2026-07-17 04:07:24,762 INFO: [Retin..][epoch: 33, iter:  21,000, lr:(2.000e-05,)] [eta: 22:37:57, time (data): 0.558 (0.001)] l_pix: 2.5259e-02 
+2026-07-17 04:12:03,394 INFO: [Retin..][epoch: 34, iter:  21,500, lr:(2.000e-05,)] [eta: 22:31:31, time (data): 0.557 (0.001)] l_pix: 3.3944e-02 
+2026-07-17 04:16:38,438 INFO: [Retin..][epoch: 34, iter:  22,000, lr:(2.000e-05,)] [eta: 22:24:47, time (data): 0.558 (0.001)] l_pix: 2.7708e-02 
+2026-07-17 04:21:14,116 INFO: [Retin..][epoch: 35, iter:  22,500, lr:(2.000e-05,)] [eta: 22:18:13, time (data): 0.554 (0.001)] l_pix: 3.1366e-02 
+2026-07-17 04:25:52,472 INFO: [Retin..][epoch: 36, iter:  23,000, lr:(2.000e-05,)] [eta: 22:11:59, time (data): 0.570 (0.001)] l_pix: 3.0860e-02 
+2026-07-17 04:30:27,616 INFO: [Retin..][epoch: 37, iter:  23,500, lr:(2.000e-05,)] [eta: 22:05:32, time (data): 0.557 (0.001)] l_pix: 2.8436e-02 
+2026-07-17 04:35:03,227 INFO: [Retin..][epoch: 38, iter:  24,000, lr:(2.000e-05,)] [eta: 21:59:11, time (data): 0.556 (0.001)] l_pix: 3.6992e-02 
+2026-07-17 04:35:03,228 INFO: Saving models and training states.
+2026-07-17 04:40:49,935 INFO: Validation ValSetUnion,		 # psnr: 26.8938
+2026-07-17 04:45:24,601 INFO: [Retin..][epoch: 38, iter:  24,500, lr:(2.000e-05,)] [eta: 22:24:47, time (data): 0.254 (0.001)] l_pix: 2.2405e-02 
+2026-07-17 04:50:02,279 INFO: [Retin..][epoch: 39, iter:  25,000, lr:(2.000e-05,)] [eta: 22:18:01, time (data): 0.566 (0.001)] l_pix: 3.5941e-02 
+2026-07-17 04:54:38,173 INFO: [Retin..][epoch: 40, iter:  25,500, lr:(2.000e-05,)] [eta: 22:11:11, time (data): 0.557 (0.001)] l_pix: 6.6024e-02 
+2026-07-17 04:59:13,135 INFO: [Retin..][epoch: 41, iter:  26,000, lr:(2.000e-05,)] [eta: 22:04:21, time (data): 0.558 (0.001)] l_pix: 2.2691e-02 
+2026-07-17 05:03:50,745 INFO: [Retin..][epoch: 41, iter:  26,500, lr:(2.000e-05,)] [eta: 21:57:49, time (data): 0.553 (0.001)] l_pix: 3.6694e-02 
+2026-07-17 05:08:25,849 INFO: [Retin..][epoch: 42, iter:  27,000, lr:(2.000e-05,)] [eta: 21:51:09, time (data): 0.554 (0.001)] l_pix: 3.6371e-02 
+2026-07-17 05:13:01,143 INFO: [Retin..][epoch: 43, iter:  27,500, lr:(2.000e-05,)] [eta: 21:44:35, time (data): 0.547 (0.001)] l_pix: 2.5324e-02 
+2026-07-17 05:17:39,742 INFO: [Retin..][epoch: 44, iter:  28,000, lr:(2.000e-05,)] [eta: 21:38:21, time (data): 0.556 (0.001)] l_pix: 2.1745e-02 
+2026-07-17 05:22:03,718 INFO: [Retin..][epoch: 45, iter:  28,500, lr:(2.000e-05,)] [eta: 21:31:02, time (data): 0.558 (0.001)] l_pix: 2.6615e-02 
+2026-07-17 05:26:41,382 INFO: [Retin..][epoch: 45, iter:  29,000, lr:(2.000e-05,)] [eta: 21:24:51, time (data): 0.556 (0.001)] l_pix: 3.6682e-02 
+2026-07-17 05:31:15,838 INFO: [Retin..][epoch: 46, iter:  29,500, lr:(2.000e-05,)] [eta: 21:18:29, time (data): 0.557 (0.001)] l_pix: 4.1555e-02 
+2026-07-17 05:35:49,756 INFO: [Retin..][epoch: 47, iter:  30,000, lr:(2.000e-05,)] [eta: 21:12:09, time (data): 0.556 (0.001)] l_pix: 2.6422e-02 
+2026-07-17 05:40:27,840 INFO: [Retin..][epoch: 48, iter:  30,500, lr:(2.000e-05,)] [eta: 21:06:09, time (data): 0.557 (0.001)] l_pix: 2.2325e-02 
+2026-07-17 05:45:02,984 INFO: [Retin..][epoch: 49, iter:  31,000, lr:(2.000e-05,)] [eta: 21:00:01, time (data): 0.558 (0.001)] l_pix: 1.9810e-02 
+2026-07-17 05:49:37,918 INFO: [Retin..][epoch: 49, iter:  31,500, lr:(2.000e-05,)] [eta: 20:53:54, time (data): 0.555 (0.001)] l_pix: 2.0075e-02 
+2026-07-17 05:54:15,898 INFO: [Retin..][epoch: 50, iter:  32,000, lr:(2.000e-05,)] [eta: 20:48:02, time (data): 0.556 (0.001)] l_pix: 3.3335e-02 
+2026-07-17 05:54:15,899 INFO: Saving models and training states.
+2026-07-17 05:59:58,715 INFO: Validation ValSetUnion,		 # psnr: 26.0241
+2026-07-17 06:04:33,534 INFO: [Retin..][epoch: 51, iter:  32,500, lr:(2.000e-05,)] [eta: 21:04:25, time (data): 0.554 (0.001)] l_pix: 2.6035e-02 
+2026-07-17 06:09:08,593 INFO: [Retin..][epoch: 52, iter:  33,000, lr:(2.000e-05,)] [eta: 20:58:01, time (data): 0.555 (0.001)] l_pix: 2.1938e-02 
+2026-07-17 06:13:46,799 INFO: [Retin..][epoch: 53, iter:  33,500, lr:(2.000e-05,)] [eta: 20:51:52, time (data): 0.549 (0.001)] l_pix: 2.8311e-02 
+2026-07-17 06:18:21,378 INFO: [Retin..][epoch: 53, iter:  34,000, lr:(2.000e-05,)] [eta: 20:45:33, time (data): 0.557 (0.001)] l_pix: 2.0070e-02 
+2026-07-17 06:22:56,077 INFO: [Retin..][epoch: 54, iter:  34,500, lr:(2.000e-05,)] [eta: 20:39:16, time (data): 0.554 (0.001)] l_pix: 3.1448e-02 
+2026-07-17 06:27:34,247 INFO: [Retin..][epoch: 55, iter:  35,000, lr:(2.000e-05,)] [eta: 20:33:16, time (data): 0.556 (0.001)] l_pix: 3.3500e-02 
+2026-07-17 06:32:09,356 INFO: [Retin..][epoch: 56, iter:  35,500, lr:(2.000e-05,)] [eta: 20:27:06, time (data): 0.557 (0.001)] l_pix: 2.7113e-02 
+2026-07-17 06:36:44,636 INFO: [Retin..][epoch: 57, iter:  36,000, lr:(2.000e-05,)] [eta: 20:21:00, time (data): 0.556 (0.001)] l_pix: 2.8852e-02 
+2026-07-17 06:41:22,781 INFO: [Retin..][epoch: 57, iter:  36,500, lr:(2.000e-05,)] [eta: 20:15:07, time (data): 0.557 (0.001)] l_pix: 2.1994e-02 
+2026-07-17 06:45:58,688 INFO: [Retin..][epoch: 58, iter:  37,000, lr:(2.000e-05,)] [eta: 20:09:07, time (data): 0.555 (0.001)] l_pix: 2.3169e-02 
+2026-07-17 06:50:34,583 INFO: [Retin..][epoch: 59, iter:  37,500, lr:(2.000e-05,)] [eta: 20:03:10, time (data): 0.555 (0.001)] l_pix: 2.4315e-02 
+2026-07-17 06:55:12,614 INFO: [Retin..][epoch: 60, iter:  38,000, lr:(2.000e-05,)] [eta: 19:57:22, time (data): 0.561 (0.001)] l_pix: 2.7300e-02 
+2026-07-17 06:59:47,491 INFO: [Retin..][epoch: 61, iter:  38,500, lr:(2.000e-05,)] [eta: 19:51:26, time (data): 0.560 (0.001)] l_pix: 2.1014e-02 
+2026-07-17 07:04:22,601 INFO: [Retin..][epoch: 61, iter:  39,000, lr:(2.000e-05,)] [eta: 19:45:33, time (data): 0.558 (0.002)] l_pix: 2.2433e-02 
+2026-07-17 07:09:01,606 INFO: [Retin..][epoch: 62, iter:  39,500, lr:(2.000e-05,)] [eta: 19:39:53, time (data): 0.557 (0.001)] l_pix: 2.6691e-02 
+2026-07-17 07:13:36,671 INFO: [Retin..][epoch: 63, iter:  40,000, lr:(2.000e-05,)] [eta: 19:34:03, time (data): 0.561 (0.001)] l_pix: 2.7397e-02 
+2026-07-17 07:13:36,671 INFO: Saving models and training states.
+2026-07-17 07:18:54,161 INFO: Validation ValSetUnion,		 # psnr: 26.1320
+2026-07-17 07:23:33,431 INFO: [Retin..][epoch: 64, iter:  40,500, lr:(2.000e-05,)] [eta: 19:44:05, time (data): 0.556 (0.001)] l_pix: 2.8492e-02 
+2026-07-17 07:28:07,305 INFO: [Retin..][epoch: 64, iter:  41,000, lr:(2.000e-05,)] [eta: 19:38:00, time (data): 0.555 (0.001)] l_pix: 2.7334e-02 
+2026-07-17 07:32:43,057 INFO: [Retin..][epoch: 65, iter:  41,500, lr:(2.000e-05,)] [eta: 19:32:02, time (data): 0.546 (0.001)] l_pix: 2.1724e-02 
+2026-07-17 07:37:21,581 INFO: [Retin..][epoch: 66, iter:  42,000, lr:(2.000e-05,)] [eta: 19:26:14, time (data): 0.558 (0.001)] l_pix: 2.6961e-02 
+2026-07-17 07:41:57,151 INFO: [Retin..][epoch: 67, iter:  42,500, lr:(2.000e-05,)] [eta: 19:20:20, time (data): 0.554 (0.001)] l_pix: 2.0695e-02 
+2026-07-17 07:46:32,191 INFO: [Retin..][epoch: 68, iter:  43,000, lr:(2.000e-05,)] [eta: 19:14:26, time (data): 0.557 (0.001)] l_pix: 3.1332e-02 
+2026-07-17 07:51:10,226 INFO: [Retin..][epoch: 68, iter:  43,500, lr:(2.000e-05,)] [eta: 19:08:42, time (data): 0.568 (0.001)] l_pix: 2.6606e-02 
+2026-07-17 07:55:45,338 INFO: [Retin..][epoch: 69, iter:  44,000, lr:(2.000e-05,)] [eta: 19:02:51, time (data): 0.561 (0.001)] l_pix: 1.7237e-02 
+2026-07-17 08:00:21,066 INFO: [Retin..][epoch: 70, iter:  44,500, lr:(2.000e-05,)] [eta: 18:57:04, time (data): 0.557 (0.001)] l_pix: 1.5948e-02 
+2026-07-17 08:04:59,614 INFO: [Retin..][epoch: 71, iter:  45,000, lr:(2.000e-05,)] [eta: 18:51:26, time (data): 0.564 (0.001)] l_pix: 1.9106e-02 
+2026-07-17 08:09:34,731 INFO: [Retin..][epoch: 72, iter:  45,500, lr:(2.000e-05,)] [eta: 18:45:40, time (data): 0.563 (0.001)] l_pix: 2.4661e-02 
+2026-07-17 08:14:10,056 INFO: [Retin..][epoch: 72, iter:  46,000, lr:(2.000e-05,)] [eta: 18:39:57, time (data): 0.554 (0.001)] l_pix: 2.3868e-02 
+2026-07-17 08:18:48,621 INFO: [Retin..][epoch: 73, iter:  46,500, lr:(2.000e-05,)] [eta: 18:34:23, time (data): 0.555 (0.001)] l_pix: 2.6087e-02 
+2026-07-17 08:23:24,520 INFO: [Retin..][epoch: 74, iter:  47,000, lr:(2.000e-05,)] [eta: 18:28:43, time (data): 0.559 (0.002)] l_pix: 2.2142e-02 
+2026-07-17 08:27:59,760 INFO: [Retin..][epoch: 75, iter:  47,500, lr:(2.000e-05,)] [eta: 18:23:03, time (data): 0.554 (0.001)] l_pix: 1.7491e-02 
+2026-07-17 08:32:38,266 INFO: [Retin..][epoch: 76, iter:  48,000, lr:(2.000e-05,)] [eta: 18:17:33, time (data): 0.559 (0.001)] l_pix: 2.6029e-02 
+2026-07-17 08:32:38,267 INFO: Saving models and training states.
+2026-07-17 08:38:24,366 INFO: Validation ValSetUnion,		 # psnr: 27.7230
+2026-07-17 08:42:59,556 INFO: [Retin..][epoch: 76, iter:  48,500, lr:(2.000e-05,)] [eta: 18:25:11, time (data): 0.555 (0.001)] l_pix: 3.0009e-02 
+2026-07-17 08:47:34,611 INFO: [Retin..][epoch: 77, iter:  49,000, lr:(2.000e-05,)] [eta: 18:19:23, time (data): 0.557 (0.001)] l_pix: 2.6295e-02 
+2026-07-17 08:52:12,838 INFO: [Retin..][epoch: 78, iter:  49,500, lr:(2.000e-05,)] [eta: 18:13:44, time (data): 0.550 (0.001)] l_pix: 2.3626e-02 
+2026-07-17 08:56:48,159 INFO: [Retin..][epoch: 79, iter:  50,000, lr:(2.000e-05,)] [eta: 18:07:59, time (data): 0.556 (0.001)] l_pix: 2.8291e-02 
+2026-07-17 09:01:23,222 INFO: [Retin..][epoch: 80, iter:  50,500, lr:(2.000e-05,)] [eta: 18:02:16, time (data): 0.556 (0.001)] l_pix: 2.2031e-02 
+2026-07-17 09:06:01,151 INFO: [Retin..][epoch: 80, iter:  51,000, lr:(2.000e-05,)] [eta: 17:56:40, time (data): 0.550 (0.001)] l_pix: 3.0637e-02 
+2026-07-17 09:10:36,620 INFO: [Retin..][epoch: 81, iter:  51,500, lr:(1.999e-05,)] [eta: 17:50:59, time (data): 0.557 (0.001)] l_pix: 2.6977e-02 
+2026-07-17 09:15:12,051 INFO: [Retin..][epoch: 82, iter:  52,000, lr:(1.998e-05,)] [eta: 17:45:20, time (data): 0.563 (0.001)] l_pix: 2.2433e-02 
+2026-07-17 09:19:37,380 INFO: [Retin..][epoch: 83, iter:  52,500, lr:(1.998e-05,)] [eta: 17:39:22, time (data): 0.559 (0.001)] l_pix: 2.2626e-02 
+2026-07-17 09:24:11,667 INFO: [Retin..][epoch: 83, iter:  53,000, lr:(1.997e-05,)] [eta: 17:33:43, time (data): 0.552 (0.001)] l_pix: 2.5916e-02 
+2026-07-17 09:28:50,390 INFO: [Retin..][epoch: 84, iter:  53,500, lr:(1.995e-05,)] [eta: 17:28:14, time (data): 0.556 (0.001)] l_pix: 2.8665e-02 
+2026-07-17 09:33:26,546 INFO: [Retin..][epoch: 85, iter:  54,000, lr:(1.994e-05,)] [eta: 17:22:41, time (data): 0.557 (0.001)] l_pix: 2.7532e-02 
+2026-07-17 09:38:02,636 INFO: [Retin..][epoch: 86, iter:  54,500, lr:(1.992e-05,)] [eta: 17:17:09, time (data): 0.555 (0.001)] l_pix: 2.3067e-02 
+2026-07-17 09:42:42,258 INFO: [Retin..][epoch: 87, iter:  55,000, lr:(1.990e-05,)] [eta: 17:11:45, time (data): 0.555 (0.001)] l_pix: 1.8428e-02 
+2026-07-17 09:47:17,851 INFO: [Retin..][epoch: 87, iter:  55,500, lr:(1.988e-05,)] [eta: 17:06:14, time (data): 0.567 (0.001)] l_pix: 2.0130e-02 
+2026-07-17 09:51:53,040 INFO: [Retin..][epoch: 88, iter:  56,000, lr:(1.986e-05,)] [eta: 17:00:44, time (data): 0.554 (0.001)] l_pix: 2.5496e-02 
+2026-07-17 09:51:53,041 INFO: Saving models and training states.
+2026-07-17 09:57:35,872 INFO: Validation ValSetUnion,		 # psnr: 26.3230
+2026-07-17 10:02:10,712 INFO: [Retin..][epoch: 89, iter:  56,500, lr:(1.984e-05,)] [eta: 17:05:41, time (data): 0.554 (0.001)] l_pix: 2.3487e-02 
+2026-07-17 10:06:48,938 INFO: [Retin..][epoch: 90, iter:  57,000, lr:(1.981e-05,)] [eta: 17:00:09, time (data): 0.555 (0.001)] l_pix: 2.6592e-02 
+2026-07-17 10:11:24,602 INFO: [Retin..][epoch: 91, iter:  57,500, lr:(1.978e-05,)] [eta: 16:54:34, time (data): 0.553 (0.001)] l_pix: 2.0164e-02 
+2026-07-17 10:15:59,215 INFO: [Retin..][epoch: 91, iter:  58,000, lr:(1.975e-05,)] [eta: 16:48:58, time (data): 0.556 (0.001)] l_pix: 2.2777e-02 
+2026-07-17 10:20:37,748 INFO: [Retin..][epoch: 92, iter:  58,500, lr:(1.972e-05,)] [eta: 16:43:29, time (data): 0.557 (0.001)] l_pix: 3.1398e-02 
+2026-07-17 10:25:12,922 INFO: [Retin..][epoch: 93, iter:  59,000, lr:(1.969e-05,)] [eta: 16:37:56, time (data): 0.558 (0.001)] l_pix: 2.0394e-02 
+2026-07-17 10:29:48,165 INFO: [Retin..][epoch: 94, iter:  59,500, lr:(1.965e-05,)] [eta: 16:32:24, time (data): 0.554 (0.001)] l_pix: 2.2549e-02 
+2026-07-17 10:34:26,536 INFO: [Retin..][epoch: 95, iter:  60,000, lr:(1.962e-05,)] [eta: 16:26:58, time (data): 0.556 (0.001)] l_pix: 2.1113e-02 
+2026-07-17 10:39:01,130 INFO: [Retin..][epoch: 95, iter:  60,500, lr:(1.958e-05,)] [eta: 16:21:26, time (data): 0.557 (0.001)] l_pix: 2.4308e-02 
+2026-07-17 10:43:36,984 INFO: [Retin..][epoch: 96, iter:  61,000, lr:(1.954e-05,)] [eta: 16:15:58, time (data): 0.556 (0.001)] l_pix: 2.0953e-02 
+2026-07-17 10:48:15,911 INFO: [Retin..][epoch: 97, iter:  61,500, lr:(1.949e-05,)] [eta: 16:10:35, time (data): 0.569 (0.001)] l_pix: 3.0346e-02 
+2026-07-17 10:52:50,668 INFO: [Retin..][epoch: 98, iter:  62,000, lr:(1.945e-05,)] [eta: 16:05:07, time (data): 0.551 (0.001)] l_pix: 2.2790e-02 
+2026-07-17 10:57:25,876 INFO: [Retin..][epoch: 99, iter:  62,500, lr:(1.940e-05,)] [eta: 15:59:40, time (data): 0.555 (0.001)] l_pix: 2.3639e-02 
+2026-07-17 11:02:03,253 INFO: [Retin..][epoch: 99, iter:  63,000, lr:(1.935e-05,)] [eta: 15:54:17, time (data): 0.554 (0.001)] l_pix: 2.3462e-02 
+2026-07-17 11:06:39,155 INFO: [Retin..][epoch:100, iter:  63,500, lr:(1.930e-05,)] [eta: 15:48:52, time (data): 0.556 (0.001)] l_pix: 2.5224e-02 
+2026-07-17 11:11:15,111 INFO: [Retin..][epoch:101, iter:  64,000, lr:(1.925e-05,)] [eta: 15:43:29, time (data): 0.557 (0.001)] l_pix: 2.4079e-02 
+2026-07-17 11:11:15,112 INFO: Saving models and training states.
+2026-07-17 11:16:53,834 INFO: Validation ValSetUnion,		 # psnr: 26.7572
+2026-07-17 11:21:29,572 INFO: [Retin..][epoch:102, iter:  64,500, lr:(1.920e-05,)] [eta: 15:46:27, time (data): 0.554 (0.001)] l_pix: 1.6827e-02 
+2026-07-17 11:26:05,178 INFO: [Retin..][epoch:103, iter:  65,000, lr:(1.914e-05,)] [eta: 15:40:58, time (data): 0.603 (0.000)] l_pix: 3.1745e-02 
+2026-07-17 11:30:45,000 INFO: [Retin..][epoch:103, iter:  65,500, lr:(1.908e-05,)] [eta: 15:35:36, time (data): 0.558 (0.001)] l_pix: 1.9519e-02 
+2026-07-17 11:35:31,108 INFO: [Retin..][epoch:104, iter:  66,000, lr:(1.903e-05,)] [eta: 15:30:23, time (data): 0.573 (0.001)] l_pix: 2.1467e-02 
+2026-07-17 11:40:16,147 INFO: [Retin..][epoch:105, iter:  66,500, lr:(1.896e-05,)] [eta: 15:25:10, time (data): 0.556 (0.001)] l_pix: 2.1517e-02 
+2026-07-17 11:44:54,931 INFO: [Retin..][epoch:106, iter:  67,000, lr:(1.890e-05,)] [eta: 15:19:48, time (data): 0.566 (0.001)] l_pix: 2.0708e-02 
+2026-07-17 11:49:31,123 INFO: [Retin..][epoch:106, iter:  67,500, lr:(1.884e-05,)] [eta: 15:14:23, time (data): 0.640 (0.041)] l_pix: 2.3423e-02 
+2026-07-17 11:54:25,093 INFO: [Retin..][epoch:107, iter:  68,000, lr:(1.877e-05,)] [eta: 15:09:23, time (data): 0.574 (0.001)] l_pix: 2.7347e-02 
+2026-07-17 12:00:45,883 INFO: [Retin..][epoch:108, iter:  68,500, lr:(1.870e-05,)] [eta: 15:06:19, time (data): 0.811 (0.001)] l_pix: 2.3603e-02 
+2026-07-17 12:06:35,166 INFO: [Retin..][epoch:109, iter:  69,000, lr:(1.864e-05,)] [eta: 15:02:31, time (data): 0.836 (0.001)] l_pix: 2.9118e-02 
+2026-07-17 12:12:47,973 INFO: [Retin..][epoch:110, iter:  69,500, lr:(1.856e-05,)] [eta: 14:59:11, time (data): 0.554 (0.001)] l_pix: 1.7475e-02 
+2026-07-17 12:17:51,642 INFO: [Retin..][epoch:110, iter:  70,000, lr:(1.849e-05,)] [eta: 14:54:20, time (data): 0.836 (0.001)] l_pix: 2.4979e-02 
+2026-07-17 12:22:55,322 INFO: [Retin..][epoch:111, iter:  70,500, lr:(1.842e-05,)] [eta: 14:49:29, time (data): 0.600 (0.001)] l_pix: 2.2102e-02 
+2026-07-17 12:27:59,918 INFO: [Retin..][epoch:112, iter:  71,000, lr:(1.834e-05,)] [eta: 14:44:39, time (data): 0.557 (0.001)] l_pix: 3.2928e-02 
+2026-07-17 12:33:57,453 INFO: [Retin..][epoch:113, iter:  71,500, lr:(1.826e-05,)] [eta: 14:40:54, time (data): 0.828 (0.001)] l_pix: 1.8815e-02 
+2026-07-17 12:39:59,756 INFO: [Retin..][epoch:114, iter:  72,000, lr:(1.819e-05,)] [eta: 14:37:13, time (data): 0.809 (0.001)] l_pix: 2.5677e-02 
+2026-07-17 12:39:59,757 INFO: Saving models and training states.
+2026-07-17 12:48:05,846 INFO: Validation ValSetUnion,		 # psnr: 26.6891
+2026-07-17 12:54:11,997 INFO: [Retin..][epoch:114, iter:  72,500, lr:(1.811e-05,)] [eta: 14:43:22, time (data): 0.807 (0.001)] l_pix: 2.7137e-02 
+2026-07-17 12:59:59,186 INFO: [Retin..][epoch:115, iter:  73,000, lr:(1.802e-05,)] [eta: 14:39:12, time (data): 0.821 (0.001)] l_pix: 2.0370e-02 
+2026-07-17 13:05:59,674 INFO: [Retin..][epoch:116, iter:  73,500, lr:(1.794e-05,)] [eta: 14:35:16, time (data): 0.653 (0.001)] l_pix: 3.2183e-02 
+2026-07-17 13:12:46,207 INFO: [Retin..][epoch:117, iter:  74,000, lr:(1.785e-05,)] [eta: 14:32:12, time (data): 0.805 (0.001)] l_pix: 1.6689e-02 
+2026-07-17 13:18:53,267 INFO: [Retin..][epoch:118, iter:  74,500, lr:(1.777e-05,)] [eta: 14:28:20, time (data): 0.825 (0.001)] l_pix: 3.7522e-02 
+2026-07-17 13:25:09,421 INFO: [Retin..][epoch:118, iter:  75,000, lr:(1.768e-05,)] [eta: 14:24:36, time (data): 0.750 (0.001)] l_pix: 2.0614e-02 
+2026-07-17 13:31:52,836 INFO: [Retin..][epoch:119, iter:  75,500, lr:(1.759e-05,)] [eta: 14:21:21, time (data): 0.564 (0.001)] l_pix: 2.0488e-02 
+2026-07-17 13:35:31,773 INFO: [Retin..][epoch:120, iter:  76,000, lr:(1.750e-05,)] [eta: 14:14:39, time (data): 0.570 (0.001)] l_pix: 1.8488e-02 
+2026-07-17 13:40:02,401 INFO: [Retin..][epoch:121, iter:  76,500, lr:(1.741e-05,)] [eta: 14:08:56, time (data): 0.284 (0.001)] l_pix: 2.3798e-02 
+2026-07-17 13:43:34,810 INFO: [Retin..][epoch:122, iter:  77,000, lr:(1.731e-05,)] [eta: 14:02:11, time (data): 0.831 (0.002)] l_pix: 2.2191e-02 
+2026-07-17 13:50:03,265 INFO: [Retin..][epoch:122, iter:  77,500, lr:(1.722e-05,)] [eta: 13:58:37, time (data): 0.554 (0.001)] l_pix: 2.4082e-02 
+2026-07-17 13:54:42,603 INFO: [Retin..][epoch:123, iter:  78,000, lr:(1.712e-05,)] [eta: 13:53:05, time (data): 0.556 (0.001)] l_pix: 1.9419e-02 
+2026-07-17 13:59:22,495 INFO: [Retin..][epoch:124, iter:  78,500, lr:(1.702e-05,)] [eta: 13:47:34, time (data): 0.542 (0.001)] l_pix: 3.4698e-02 
+2026-07-17 14:04:02,854 INFO: [Retin..][epoch:125, iter:  79,000, lr:(1.692e-05,)] [eta: 13:42:04, time (data): 0.554 (0.001)] l_pix: 2.1148e-02 
+2026-07-17 14:08:38,141 INFO: [Retin..][epoch:125, iter:  79,500, lr:(1.682e-05,)] [eta: 13:36:30, time (data): 0.554 (0.001)] l_pix: 1.8048e-02 
+2026-07-17 14:13:17,706 INFO: [Retin..][epoch:126, iter:  80,000, lr:(1.672e-05,)] [eta: 13:31:01, time (data): 0.557 (0.001)] l_pix: 1.7846e-02 
+2026-07-17 14:13:17,707 INFO: Saving models and training states.
+2026-07-17 14:19:14,035 INFO: Validation ValSetUnion,		 # psnr: 27.1719
+2026-07-17 14:23:53,539 INFO: [Retin..][epoch:127, iter:  80,500, lr:(1.662e-05,)] [eta: 13:31:25, time (data): 0.549 (0.001)] l_pix: 2.2965e-02 
+2026-07-17 14:28:29,611 INFO: [Retin..][epoch:128, iter:  81,000, lr:(1.651e-05,)] [eta: 13:25:49, time (data): 0.553 (0.001)] l_pix: 2.8767e-02 
+2026-07-17 14:33:09,250 INFO: [Retin..][epoch:129, iter:  81,500, lr:(1.641e-05,)] [eta: 13:20:18, time (data): 0.553 (0.002)] l_pix: 1.7966e-02 
+2026-07-17 14:37:48,634 INFO: [Retin..][epoch:129, iter:  82,000, lr:(1.630e-05,)] [eta: 13:14:47, time (data): 0.555 (0.001)] l_pix: 2.3534e-02 
+2026-07-17 14:42:29,224 INFO: [Retin..][epoch:130, iter:  82,500, lr:(1.619e-05,)] [eta: 13:09:18, time (data): 0.559 (0.001)] l_pix: 1.8472e-02 
+2026-07-17 14:47:05,118 INFO: [Retin..][epoch:131, iter:  83,000, lr:(1.608e-05,)] [eta: 13:03:44, time (data): 0.563 (0.001)] l_pix: 2.4385e-02 
+2026-07-17 14:51:45,004 INFO: [Retin..][epoch:132, iter:  83,500, lr:(1.597e-05,)] [eta: 12:58:16, time (data): 0.557 (0.001)] l_pix: 1.5992e-02 
+2026-07-17 14:56:24,730 INFO: [Retin..][epoch:133, iter:  84,000, lr:(1.586e-05,)] [eta: 12:52:48, time (data): 0.555 (0.001)] l_pix: 2.4710e-02 
+2026-07-17 15:01:04,033 INFO: [Retin..][epoch:133, iter:  84,500, lr:(1.575e-05,)] [eta: 12:47:19, time (data): 0.557 (0.001)] l_pix: 1.8573e-02 
+2026-07-17 15:05:44,258 INFO: [Retin..][epoch:134, iter:  85,000, lr:(1.564e-05,)] [eta: 12:41:53, time (data): 0.566 (0.001)] l_pix: 2.7956e-02 
+2026-07-17 15:10:20,133 INFO: [Retin..][epoch:135, iter:  85,500, lr:(1.552e-05,)] [eta: 12:36:23, time (data): 0.551 (0.001)] l_pix: 2.2208e-02 
+2026-07-17 15:15:00,158 INFO: [Retin..][epoch:136, iter:  86,000, lr:(1.541e-05,)] [eta: 12:30:57, time (data): 0.555 (0.001)] l_pix: 2.4722e-02 
+2026-07-17 15:19:40,446 INFO: [Retin..][epoch:137, iter:  86,500, lr:(1.529e-05,)] [eta: 12:25:32, time (data): 0.557 (0.001)] l_pix: 2.1221e-02 
+2026-07-17 15:24:19,649 INFO: [Retin..][epoch:137, iter:  87,000, lr:(1.517e-05,)] [eta: 12:20:07, time (data): 0.554 (0.001)] l_pix: 2.0590e-02 
+2026-07-17 15:28:55,708 INFO: [Retin..][epoch:138, iter:  87,500, lr:(1.505e-05,)] [eta: 12:14:39, time (data): 0.557 (0.001)] l_pix: 2.4750e-02 
+2026-07-17 15:33:54,679 INFO: [Retin..][epoch:139, iter:  88,000, lr:(1.493e-05,)] [eta: 12:09:31, time (data): 0.835 (0.001)] l_pix: 2.2462e-02 
+2026-07-17 15:33:54,680 INFO: Saving models and training states.
+2026-07-17 15:41:43,406 INFO: Validation ValSetUnion,		 # psnr: 26.2231
+2026-07-17 15:48:18,063 INFO: [Retin..][epoch:140, iter:  88,500, lr:(1.481e-05,)] [eta: 12:11:59, time (data): 0.700 (0.001)] l_pix: 2.2536e-02 
+2026-07-17 15:54:56,079 INFO: [Retin..][epoch:141, iter:  89,000, lr:(1.469e-05,)] [eta: 12:08:05, time (data): 0.820 (0.001)] l_pix: 1.8303e-02 
+2026-07-17 16:01:23,781 INFO: [Retin..][epoch:141, iter:  89,500, lr:(1.457e-05,)] [eta: 12:04:00, time (data): 0.778 (0.001)] l_pix: 1.8727e-02 
+2026-07-17 16:06:20,483 INFO: [Retin..][epoch:142, iter:  90,000, lr:(1.445e-05,)] [eta: 11:58:43, time (data): 0.562 (0.001)] l_pix: 1.8318e-02 
+2026-07-17 16:11:00,233 INFO: [Retin..][epoch:143, iter:  90,500, lr:(1.432e-05,)] [eta: 11:53:13, time (data): 0.557 (0.001)] l_pix: 1.9358e-02 
+2026-07-17 16:15:40,444 INFO: [Retin..][epoch:144, iter:  91,000, lr:(1.420e-05,)] [eta: 11:47:44, time (data): 0.559 (0.001)] l_pix: 1.7296e-02 
+2026-07-17 16:20:17,858 INFO: [Retin..][epoch:145, iter:  91,500, lr:(1.407e-05,)] [eta: 11:42:14, time (data): 0.562 (0.002)] l_pix: 1.7432e-02 
+2026-07-17 16:24:58,243 INFO: [Retin..][epoch:145, iter:  92,000, lr:(1.395e-05,)] [eta: 11:36:46, time (data): 0.557 (0.001)] l_pix: 1.5175e-02 
+2026-07-17 16:29:39,713 INFO: [Retin..][epoch:146, iter:  92,500, lr:(1.382e-05,)] [eta: 11:31:20, time (data): 0.564 (0.001)] l_pix: 2.2487e-02 
+2026-07-17 16:34:22,081 INFO: [Retin..][epoch:147, iter:  93,000, lr:(1.369e-05,)] [eta: 11:25:55, time (data): 0.561 (0.001)] l_pix: 1.6734e-02 
+2026-07-17 16:38:59,703 INFO: [Retin..][epoch:148, iter:  93,500, lr:(1.356e-05,)] [eta: 11:20:27, time (data): 0.566 (0.001)] l_pix: 2.9474e-02 
+2026-07-17 16:43:40,293 INFO: [Retin..][epoch:148, iter:  94,000, lr:(1.344e-05,)] [eta: 11:15:01, time (data): 0.577 (0.001)] l_pix: 2.5298e-02 
+2026-07-17 16:48:21,486 INFO: [Retin..][epoch:149, iter:  94,500, lr:(1.331e-05,)] [eta: 11:09:37, time (data): 0.572 (0.001)] l_pix: 2.0596e-02 
+2026-07-17 16:53:02,312 INFO: [Retin..][epoch:150, iter:  95,000, lr:(1.318e-05,)] [eta: 11:04:12, time (data): 0.557 (0.001)] l_pix: 2.4543e-02 
+2026-07-17 16:57:42,267 INFO: [Retin..][epoch:151, iter:  95,500, lr:(1.305e-05,)] [eta: 10:58:48, time (data): 0.557 (0.001)] l_pix: 1.8272e-02 
+2026-07-17 17:02:17,815 INFO: [Retin..][epoch:152, iter:  96,000, lr:(1.292e-05,)] [eta: 10:53:21, time (data): 0.555 (0.001)] l_pix: 2.6850e-02 
+2026-07-17 17:02:17,816 INFO: Saving models and training states.
+2026-07-17 17:08:14,160 INFO: Validation ValSetUnion,		 # psnr: 26.4635
+2026-07-17 17:12:53,327 INFO: [Retin..][epoch:152, iter:  96,500, lr:(1.278e-05,)] [eta: 10:51:51, time (data): 0.558 (0.001)] l_pix: 2.6414e-02 
+2026-07-17 17:17:28,841 INFO: [Retin..][epoch:153, iter:  97,000, lr:(1.265e-05,)] [eta: 10:46:22, time (data): 0.544 (0.001)] l_pix: 1.7452e-02 
+2026-07-17 17:22:07,719 INFO: [Retin..][epoch:154, iter:  97,500, lr:(1.252e-05,)] [eta: 10:40:56, time (data): 0.554 (0.001)] l_pix: 2.1663e-02 
+2026-07-17 17:26:47,993 INFO: [Retin..][epoch:155, iter:  98,000, lr:(1.239e-05,)] [eta: 10:35:31, time (data): 0.557 (0.001)] l_pix: 1.6658e-02 
+2026-07-17 17:31:57,277 INFO: [Retin..][epoch:156, iter:  98,500, lr:(1.225e-05,)] [eta: 10:30:24, time (data): 0.557 (0.001)] l_pix: 1.9262e-02 
+2026-07-17 17:37:34,132 INFO: [Retin..][epoch:156, iter:  99,000, lr:(1.212e-05,)] [eta: 10:25:35, time (data): 0.556 (0.001)] l_pix: 1.6195e-02 
+2026-07-17 17:42:23,078 INFO: [Retin..][epoch:157, iter:  99,500, lr:(1.199e-05,)] [eta: 10:20:16, time (data): 0.556 (0.001)] l_pix: 1.7314e-02 
+2026-07-17 17:47:03,226 INFO: [Retin..][epoch:158, iter: 100,000, lr:(1.185e-05,)] [eta: 10:14:52, time (data): 0.556 (0.001)] l_pix: 2.4793e-02 
+2026-07-17 17:51:43,338 INFO: [Retin..][epoch:159, iter: 100,500, lr:(1.172e-05,)] [eta: 10:09:28, time (data): 0.551 (0.001)] l_pix: 2.5809e-02 
+2026-07-17 17:56:23,675 INFO: [Retin..][epoch:160, iter: 101,000, lr:(1.158e-05,)] [eta: 10:04:05, time (data): 0.557 (0.001)] l_pix: 2.3484e-02 
+2026-07-17 18:00:59,511 INFO: [Retin..][epoch:160, iter: 101,500, lr:(1.145e-05,)] [eta: 9:58:40, time (data): 0.572 (0.001)] l_pix: 2.9413e-02 
+2026-07-17 18:05:39,172 INFO: [Retin..][epoch:161, iter: 102,000, lr:(1.131e-05,)] [eta: 9:53:17, time (data): 0.564 (0.001)] l_pix: 2.1032e-02 
+2026-07-17 18:10:14,836 INFO: [Retin..][epoch:162, iter: 102,500, lr:(1.118e-05,)] [eta: 9:47:53, time (data): 0.477 (0.001)] l_pix: 1.9882e-02 
+2026-07-17 18:14:38,101 INFO: [Retin..][epoch:163, iter: 103,000, lr:(1.104e-05,)] [eta: 9:42:22, time (data): 0.556 (0.001)] l_pix: 2.5911e-02 
+2026-07-17 18:19:16,819 INFO: [Retin..][epoch:164, iter: 103,500, lr:(1.091e-05,)] [eta: 9:37:00, time (data): 0.556 (0.001)] l_pix: 1.8835e-02 
+2026-07-17 18:23:51,810 INFO: [Retin..][epoch:164, iter: 104,000, lr:(1.077e-05,)] [eta: 9:31:37, time (data): 0.556 (0.001)] l_pix: 1.6617e-02 
+2026-07-17 18:23:51,811 INFO: Saving models and training states.
+2026-07-17 18:29:46,648 INFO: Validation ValSetUnion,		 # psnr: 26.1881
+2026-07-17 18:34:26,186 INFO: [Retin..][epoch:165, iter: 104,500, lr:(1.064e-05,)] [eta: 9:29:25, time (data): 0.555 (0.001)] l_pix: 3.3887e-02 
+2026-07-17 18:39:05,533 INFO: [Retin..][epoch:166, iter: 105,000, lr:(1.050e-05,)] [eta: 9:24:02, time (data): 0.554 (0.001)] l_pix: 1.8824e-02 
+2026-07-17 18:43:41,091 INFO: [Retin..][epoch:167, iter: 105,500, lr:(1.036e-05,)] [eta: 9:18:38, time (data): 0.556 (0.001)] l_pix: 2.1224e-02 
+2026-07-17 18:48:19,555 INFO: [Retin..][epoch:167, iter: 106,000, lr:(1.023e-05,)] [eta: 9:13:16, time (data): 0.557 (0.002)] l_pix: 1.9716e-02 
+2026-07-17 18:52:59,266 INFO: [Retin..][epoch:168, iter: 106,500, lr:(1.009e-05,)] [eta: 9:07:55, time (data): 0.562 (0.001)] l_pix: 1.6276e-02 
+2026-07-17 18:57:38,695 INFO: [Retin..][epoch:169, iter: 107,000, lr:(9.958e-06,)] [eta: 9:02:34, time (data): 0.561 (0.001)] l_pix: 2.3934e-02 
+2026-07-17 19:02:13,925 INFO: [Retin..][epoch:170, iter: 107,500, lr:(9.823e-06,)] [eta: 8:57:11, time (data): 0.554 (0.001)] l_pix: 2.3745e-02 
+2026-07-17 19:06:52,748 INFO: [Retin..][epoch:171, iter: 108,000, lr:(9.687e-06,)] [eta: 8:51:50, time (data): 0.556 (0.001)] l_pix: 2.0290e-02 
+2026-07-17 19:11:32,210 INFO: [Retin..][epoch:171, iter: 108,500, lr:(9.552e-06,)] [eta: 8:46:30, time (data): 0.568 (0.001)] l_pix: 2.1590e-02 
+2026-07-17 19:16:12,668 INFO: [Retin..][epoch:172, iter: 109,000, lr:(9.417e-06,)] [eta: 8:41:11, time (data): 0.570 (0.001)] l_pix: 2.5448e-02 
+2026-07-17 19:20:51,649 INFO: [Retin..][epoch:173, iter: 109,500, lr:(9.283e-06,)] [eta: 8:35:52, time (data): 0.556 (0.001)] l_pix: 2.2166e-02 
+2026-07-17 19:25:27,489 INFO: [Retin..][epoch:174, iter: 110,000, lr:(9.148e-06,)] [eta: 8:30:32, time (data): 0.558 (0.001)] l_pix: 2.1343e-02 
+2026-07-17 19:30:06,860 INFO: [Retin..][epoch:175, iter: 110,500, lr:(9.014e-06,)] [eta: 8:25:13, time (data): 0.558 (0.001)] l_pix: 1.8699e-02 
+2026-07-17 19:34:45,736 INFO: [Retin..][epoch:175, iter: 111,000, lr:(8.880e-06,)] [eta: 8:19:55, time (data): 0.569 (0.001)] l_pix: 1.6499e-02 
+2026-07-17 19:39:25,665 INFO: [Retin..][epoch:176, iter: 111,500, lr:(8.747e-06,)] [eta: 8:14:38, time (data): 0.557 (0.001)] l_pix: 3.0081e-02 
+2026-07-17 19:44:01,354 INFO: [Retin..][epoch:177, iter: 112,000, lr:(8.614e-06,)] [eta: 8:09:19, time (data): 0.562 (0.001)] l_pix: 2.7752e-02 
+2026-07-17 19:44:01,354 INFO: Saving models and training states.
+2026-07-17 19:50:01,801 INFO: Validation ValSetUnion,		 # psnr: 26.4088
+2026-07-17 19:54:41,075 INFO: [Retin..][epoch:178, iter: 112,500, lr:(8.481e-06,)] [eta: 8:06:34, time (data): 0.560 (0.001)] l_pix: 2.4285e-02 
+2026-07-17 19:59:21,635 INFO: [Retin..][epoch:179, iter: 113,000, lr:(8.349e-06,)] [eta: 8:01:15, time (data): 0.557 (0.001)] l_pix: 2.4202e-02 
+2026-07-17 20:03:59,107 INFO: [Retin..][epoch:179, iter: 113,500, lr:(8.217e-06,)] [eta: 7:55:56, time (data): 0.571 (0.001)] l_pix: 2.1748e-02 
+2026-07-17 20:08:41,210 INFO: [Retin..][epoch:180, iter: 114,000, lr:(8.085e-06,)] [eta: 7:50:39, time (data): 0.554 (0.002)] l_pix: 2.3605e-02 
+2026-07-17 20:13:23,368 INFO: [Retin..][epoch:181, iter: 114,500, lr:(7.954e-06,)] [eta: 7:45:22, time (data): 0.555 (0.001)] l_pix: 2.9758e-02 
+2026-07-17 20:17:34,589 INFO: [Retin..][epoch:182, iter: 115,000, lr:(7.824e-06,)] [eta: 7:39:53, time (data): 0.255 (0.001)] l_pix: 2.2183e-02 
+2026-07-17 20:19:56,426 INFO: [Retin..][epoch:183, iter: 115,500, lr:(7.694e-06,)] [eta: 7:33:43, time (data): 0.557 (0.001)] l_pix: 1.8835e-02 
+2026-07-17 20:24:21,109 INFO: [Retin..][epoch:183, iter: 116,000, lr:(7.565e-06,)] [eta: 7:28:22, time (data): 0.535 (0.001)] l_pix: 1.7329e-02 
+2026-07-17 20:28:59,757 INFO: [Retin..][epoch:184, iter: 116,500, lr:(7.436e-06,)] [eta: 7:23:06, time (data): 0.552 (0.001)] l_pix: 2.1443e-02 
+2026-07-17 20:33:39,030 INFO: [Retin..][epoch:185, iter: 117,000, lr:(7.308e-06,)] [eta: 7:17:51, time (data): 0.555 (0.001)] l_pix: 2.0712e-02 
+2026-07-17 20:38:20,917 INFO: [Retin..][epoch:186, iter: 117,500, lr:(7.180e-06,)] [eta: 7:12:37, time (data): 0.557 (0.001)] l_pix: 1.6191e-02 
+2026-07-17 20:42:56,867 INFO: [Retin..][epoch:187, iter: 118,000, lr:(7.054e-06,)] [eta: 7:07:21, time (data): 0.545 (0.000)] l_pix: 2.0814e-02 
+2026-07-17 20:47:35,265 INFO: [Retin..][epoch:187, iter: 118,500, lr:(6.928e-06,)] [eta: 7:02:06, time (data): 0.553 (0.001)] l_pix: 1.8940e-02 
+2026-07-17 20:52:14,067 INFO: [Retin..][epoch:188, iter: 119,000, lr:(6.802e-06,)] [eta: 6:56:52, time (data): 0.561 (0.001)] l_pix: 2.9497e-02 
+2026-07-17 20:56:53,065 INFO: [Retin..][epoch:189, iter: 119,500, lr:(6.678e-06,)] [eta: 6:51:38, time (data): 0.562 (0.001)] l_pix: 2.2439e-02 
+2026-07-17 21:01:32,805 INFO: [Retin..][epoch:190, iter: 120,000, lr:(6.554e-06,)] [eta: 6:46:25, time (data): 0.559 (0.001)] l_pix: 1.3863e-02 
+2026-07-17 21:01:32,805 INFO: Saving models and training states.
+2026-07-17 21:07:56,212 INFO: Validation ValSetUnion,		 # psnr: 26.4420
+2026-07-17 21:12:46,977 INFO: [Retin..][epoch:190, iter: 120,500, lr:(6.431e-06,)] [eta: 6:43:21, time (data): 0.747 (0.002)] l_pix: 1.6005e-02 
+2026-07-17 21:17:57,035 INFO: [Retin..][epoch:191, iter: 121,000, lr:(6.309e-06,)] [eta: 6:38:16, time (data): 0.557 (0.001)] l_pix: 2.2097e-02 
+2026-07-17 21:23:06,625 INFO: [Retin..][epoch:192, iter: 121,500, lr:(6.187e-06,)] [eta: 6:33:10, time (data): 0.556 (0.001)] l_pix: 2.5891e-02 
+2026-07-17 21:28:03,478 INFO: [Retin..][epoch:193, iter: 122,000, lr:(6.067e-06,)] [eta: 6:28:01, time (data): 0.557 (0.001)] l_pix: 2.1039e-02 
+2026-07-17 21:32:42,879 INFO: [Retin..][epoch:194, iter: 122,500, lr:(5.947e-06,)] [eta: 6:22:47, time (data): 0.557 (0.001)] l_pix: 2.0080e-02 
+2026-07-17 21:37:21,143 INFO: [Retin..][epoch:194, iter: 123,000, lr:(5.829e-06,)] [eta: 6:17:32, time (data): 0.557 (0.001)] l_pix: 1.4560e-02 
+2026-07-17 21:42:00,115 INFO: [Retin..][epoch:195, iter: 123,500, lr:(5.711e-06,)] [eta: 6:12:18, time (data): 0.561 (0.003)] l_pix: 2.0192e-02 
+2026-07-17 21:46:36,366 INFO: [Retin..][epoch:196, iter: 124,000, lr:(5.594e-06,)] [eta: 6:07:03, time (data): 0.560 (0.001)] l_pix: 1.8976e-02 
+2026-07-17 21:51:15,898 INFO: [Retin..][epoch:197, iter: 124,500, lr:(5.479e-06,)] [eta: 6:01:50, time (data): 0.557 (0.001)] l_pix: 2.0056e-02 
+2026-07-17 21:55:55,408 INFO: [Retin..][epoch:198, iter: 125,000, lr:(5.364e-06,)] [eta: 5:56:37, time (data): 0.556 (0.001)] l_pix: 2.3646e-02 
+2026-07-17 22:00:33,877 INFO: [Retin..][epoch:198, iter: 125,500, lr:(5.251e-06,)] [eta: 5:51:23, time (data): 0.553 (0.001)] l_pix: 2.3659e-02 
+2026-07-17 22:05:10,236 INFO: [Retin..][epoch:199, iter: 126,000, lr:(5.138e-06,)] [eta: 5:46:10, time (data): 0.560 (0.001)] l_pix: 1.9173e-02 
+2026-07-17 22:09:49,504 INFO: [Retin..][epoch:200, iter: 126,500, lr:(5.027e-06,)] [eta: 5:40:58, time (data): 0.556 (0.001)] l_pix: 1.7758e-02 
+2026-07-17 22:14:34,498 INFO: [Retin..][epoch:201, iter: 127,000, lr:(4.916e-06,)] [eta: 5:35:47, time (data): 0.557 (0.001)] l_pix: 2.3320e-02 
+2026-07-17 22:19:13,935 INFO: [Retin..][epoch:202, iter: 127,500, lr:(4.807e-06,)] [eta: 5:30:35, time (data): 0.557 (0.001)] l_pix: 2.2972e-02 
+2026-07-17 22:23:52,848 INFO: [Retin..][epoch:202, iter: 128,000, lr:(4.699e-06,)] [eta: 5:25:23, time (data): 0.562 (0.008)] l_pix: 2.0882e-02 
+2026-07-17 22:23:52,848 INFO: Saving models and training states.
+2026-07-17 22:29:45,542 INFO: Validation ValSetUnion,		 # psnr: 26.2658
+2026-07-17 22:34:29,283 INFO: [Retin..][epoch:203, iter: 128,500, lr:(4.592e-06,)] [eta: 5:21:39, time (data): 0.557 (0.001)] l_pix: 2.3869e-02 
+2026-07-17 22:39:13,709 INFO: [Retin..][epoch:204, iter: 129,000, lr:(4.487e-06,)] [eta: 5:16:28, time (data): 0.558 (0.001)] l_pix: 1.9661e-02 
+2026-07-17 22:43:58,861 INFO: [Retin..][epoch:205, iter: 129,500, lr:(4.382e-06,)] [eta: 5:11:17, time (data): 0.553 (0.001)] l_pix: 2.0643e-02 
+2026-07-17 22:48:43,492 INFO: [Retin..][epoch:206, iter: 130,000, lr:(4.279e-06,)] [eta: 5:06:05, time (data): 0.568 (0.001)] l_pix: 1.7053e-02 
+2026-07-17 22:53:24,664 INFO: [Retin..][epoch:206, iter: 130,500, lr:(4.177e-06,)] [eta: 5:00:54, time (data): 0.558 (0.001)] l_pix: 1.8277e-02 
+2026-07-17 22:58:05,123 INFO: [Retin..][epoch:207, iter: 131,000, lr:(4.077e-06,)] [eta: 4:55:42, time (data): 0.564 (0.001)] l_pix: 1.4776e-02 
+2026-07-17 23:02:44,600 INFO: [Retin..][epoch:208, iter: 131,500, lr:(3.977e-06,)] [eta: 4:50:30, time (data): 0.554 (0.001)] l_pix: 1.8722e-02 
+2026-07-17 23:07:20,127 INFO: [Retin..][epoch:209, iter: 132,000, lr:(3.879e-06,)] [eta: 4:45:18, time (data): 0.556 (0.001)] l_pix: 1.8949e-02 
+2026-07-17 23:11:58,442 INFO: [Retin..][epoch:209, iter: 132,500, lr:(3.783e-06,)] [eta: 4:40:07, time (data): 0.555 (0.001)] l_pix: 1.4818e-02 
+2026-07-17 23:16:37,442 INFO: [Retin..][epoch:210, iter: 133,000, lr:(3.687e-06,)] [eta: 4:34:56, time (data): 0.557 (0.001)] l_pix: 2.5888e-02 
+2026-07-17 23:21:16,213 INFO: [Retin..][epoch:211, iter: 133,500, lr:(3.594e-06,)] [eta: 4:29:45, time (data): 0.562 (0.001)] l_pix: 1.7987e-02 
+2026-07-17 23:25:50,812 INFO: [Retin..][epoch:212, iter: 134,000, lr:(3.501e-06,)] [eta: 4:24:34, time (data): 0.557 (0.001)] l_pix: 1.5783e-02 
+2026-07-17 23:30:29,971 INFO: [Retin..][epoch:213, iter: 134,500, lr:(3.410e-06,)] [eta: 4:19:23, time (data): 0.556 (0.001)] l_pix: 1.7833e-02 
+2026-07-17 23:35:08,898 INFO: [Retin..][epoch:213, iter: 135,000, lr:(3.321e-06,)] [eta: 4:14:13, time (data): 0.559 (0.001)] l_pix: 2.0360e-02 
+2026-07-17 23:39:48,982 INFO: [Retin..][epoch:214, iter: 135,500, lr:(3.232e-06,)] [eta: 4:09:04, time (data): 0.554 (0.001)] l_pix: 1.5789e-02 
+2026-07-17 23:44:28,403 INFO: [Retin..][epoch:215, iter: 136,000, lr:(3.146e-06,)] [eta: 4:03:54, time (data): 0.555 (0.001)] l_pix: 1.9671e-02 
+2026-07-17 23:44:28,404 INFO: Saving models and training states.
+2026-07-17 23:50:15,602 INFO: Validation ValSetUnion,		 # psnr: 26.2350
+2026-07-17 23:54:54,737 INFO: [Retin..][epoch:216, iter: 136,500, lr:(3.061e-06,)] [eta: 3:59:45, time (data): 0.557 (0.001)] l_pix: 1.9619e-02 
+2026-07-17 23:59:34,043 INFO: [Retin..][epoch:217, iter: 137,000, lr:(2.977e-06,)] [eta: 3:54:34, time (data): 0.556 (0.001)] l_pix: 1.6835e-02 
+2026-07-18 00:04:13,040 INFO: [Retin..][epoch:217, iter: 137,500, lr:(2.895e-06,)] [eta: 3:49:24, time (data): 0.553 (0.001)] l_pix: 1.9393e-02 
+2026-07-18 00:08:49,040 INFO: [Retin..][epoch:218, iter: 138,000, lr:(2.814e-06,)] [eta: 3:44:13, time (data): 0.556 (0.001)] l_pix: 2.1304e-02 
+2026-07-18 00:13:28,407 INFO: [Retin..][epoch:219, iter: 138,500, lr:(2.736e-06,)] [eta: 3:39:03, time (data): 0.555 (0.001)] l_pix: 2.2600e-02 
+2026-07-18 00:18:07,682 INFO: [Retin..][epoch:220, iter: 139,000, lr:(2.658e-06,)] [eta: 3:33:53, time (data): 0.561 (0.001)] l_pix: 1.6642e-02 
+2026-07-18 00:22:46,826 INFO: [Retin..][epoch:221, iter: 139,500, lr:(2.582e-06,)] [eta: 3:28:44, time (data): 0.552 (0.001)] l_pix: 1.9933e-02 
+2026-07-18 00:27:23,043 INFO: [Retin..][epoch:221, iter: 140,000, lr:(2.508e-06,)] [eta: 3:23:34, time (data): 0.552 (0.001)] l_pix: 2.4166e-02 
+2026-07-18 00:32:03,140 INFO: [Retin..][epoch:222, iter: 140,500, lr:(2.436e-06,)] [eta: 3:18:25, time (data): 0.563 (0.001)] l_pix: 2.4143e-02 
+2026-07-18 00:36:28,037 INFO: [Retin..][epoch:223, iter: 141,000, lr:(2.365e-06,)] [eta: 3:13:15, time (data): 0.557 (0.001)] l_pix: 1.6133e-02 
+2026-07-18 00:41:02,060 INFO: [Retin..][epoch:224, iter: 141,500, lr:(2.296e-06,)] [eta: 3:08:05, time (data): 0.557 (0.001)] l_pix: 1.2567e-02 
+2026-07-18 00:45:41,632 INFO: [Retin..][epoch:225, iter: 142,000, lr:(2.228e-06,)] [eta: 3:02:57, time (data): 0.556 (0.001)] l_pix: 1.3797e-02 
+2026-07-18 00:50:15,620 INFO: [Retin..][epoch:225, iter: 142,500, lr:(2.162e-06,)] [eta: 2:57:48, time (data): 0.559 (0.001)] l_pix: 2.6422e-02 
+2026-07-18 00:54:55,375 INFO: [Retin..][epoch:226, iter: 143,000, lr:(2.098e-06,)] [eta: 2:52:41, time (data): 0.536 (0.001)] l_pix: 1.9382e-02 
+2026-07-18 00:59:35,477 INFO: [Retin..][epoch:227, iter: 143,500, lr:(2.036e-06,)] [eta: 2:47:33, time (data): 0.554 (0.001)] l_pix: 1.8439e-02 
+2026-07-18 01:04:14,987 INFO: [Retin..][epoch:228, iter: 144,000, lr:(1.975e-06,)] [eta: 2:42:26, time (data): 0.555 (0.001)] l_pix: 2.5642e-02 
+2026-07-18 01:04:14,987 INFO: Saving models and training states.
+2026-07-18 01:10:03,710 INFO: Validation ValSetUnion,		 # psnr: 26.6078
+2026-07-18 01:14:42,203 INFO: [Retin..][epoch:229, iter: 144,500, lr:(1.916e-06,)] [eta: 2:37:56, time (data): 0.963 (0.403)] l_pix: 1.5056e-02 
+2026-07-18 01:19:21,613 INFO: [Retin..][epoch:229, iter: 145,000, lr:(1.859e-06,)] [eta: 2:32:47, time (data): 0.554 (0.001)] l_pix: 2.0463e-02 
+2026-07-18 01:24:01,479 INFO: [Retin..][epoch:230, iter: 145,500, lr:(1.803e-06,)] [eta: 2:27:39, time (data): 0.555 (0.001)] l_pix: 1.5743e-02 
+2026-07-18 01:28:38,366 INFO: [Retin..][epoch:231, iter: 146,000, lr:(1.749e-06,)] [eta: 2:22:31, time (data): 0.544 (0.001)] l_pix: 1.9191e-02 
+2026-07-18 01:33:18,962 INFO: [Retin..][epoch:232, iter: 146,500, lr:(1.698e-06,)] [eta: 2:17:23, time (data): 0.557 (0.001)] l_pix: 1.9612e-02 
+2026-07-18 01:37:58,748 INFO: [Retin..][epoch:232, iter: 147,000, lr:(1.647e-06,)] [eta: 2:12:15, time (data): 0.551 (0.001)] l_pix: 2.1867e-02 
+2026-07-18 01:42:39,040 INFO: [Retin..][epoch:233, iter: 147,500, lr:(1.599e-06,)] [eta: 2:07:08, time (data): 0.552 (0.001)] l_pix: 1.6562e-02 
+2026-07-18 01:47:15,097 INFO: [Retin..][epoch:234, iter: 148,000, lr:(1.553e-06,)] [eta: 2:02:01, time (data): 0.557 (0.001)] l_pix: 2.1394e-02 
+2026-07-18 01:51:54,806 INFO: [Retin..][epoch:235, iter: 148,500, lr:(1.508e-06,)] [eta: 1:56:53, time (data): 0.557 (0.001)] l_pix: 1.4935e-02 
+2026-07-18 01:56:34,944 INFO: [Retin..][epoch:236, iter: 149,000, lr:(1.465e-06,)] [eta: 1:51:47, time (data): 0.556 (0.001)] l_pix: 1.7723e-02 
+2026-07-18 02:01:14,967 INFO: [Retin..][epoch:236, iter: 149,500, lr:(1.424e-06,)] [eta: 1:46:40, time (data): 0.557 (0.001)] l_pix: 1.6456e-02 
+2026-07-18 02:05:55,247 INFO: [Retin..][epoch:237, iter: 150,000, lr:(1.385e-06,)] [eta: 1:41:34, time (data): 0.570 (0.001)] l_pix: 1.4196e-02 
+2026-07-18 02:10:33,560 INFO: [Retin..][epoch:238, iter: 150,500, lr:(1.348e-06,)] [eta: 1:36:27, time (data): 0.572 (0.001)] l_pix: 2.2592e-02 
+2026-07-18 02:15:16,118 INFO: [Retin..][epoch:239, iter: 151,000, lr:(1.312e-06,)] [eta: 1:31:21, time (data): 0.557 (0.001)] l_pix: 2.1953e-02 
+2026-07-18 02:19:58,364 INFO: [Retin..][epoch:240, iter: 151,500, lr:(1.279e-06,)] [eta: 1:26:15, time (data): 0.570 (0.001)] l_pix: 1.6875e-02 
+2026-07-18 02:24:40,888 INFO: [Retin..][epoch:240, iter: 152,000, lr:(1.247e-06,)] [eta: 1:21:10, time (data): 0.572 (0.001)] l_pix: 2.1475e-02 
+2026-07-18 02:24:40,888 INFO: Saving models and training states.
+2026-07-18 02:31:57,735 INFO: Validation ValSetUnion,		 # psnr: 26.3650
+2026-07-18 02:36:41,173 INFO: [Retin..][epoch:241, iter: 152,500, lr:(1.217e-06,)] [eta: 1:16:26, time (data): 0.554 (0.002)] l_pix: 1.7592e-02 
+2026-07-18 02:40:20,394 INFO: [Retin..][epoch:242, iter: 153,000, lr:(1.189e-06,)] [eta: 1:11:16, time (data): 0.268 (0.001)] l_pix: 2.2936e-02 
+2026-07-18 02:43:55,970 INFO: [Retin..][epoch:243, iter: 153,500, lr:(1.163e-06,)] [eta: 1:06:07, time (data): 0.271 (0.001)] l_pix: 1.6834e-02 
+2026-07-18 02:47:27,742 INFO: [Retin..][epoch:244, iter: 154,000, lr:(1.139e-06,)] [eta: 1:00:58, time (data): 0.467 (0.001)] l_pix: 1.6112e-02 
+2026-07-18 02:51:08,443 INFO: [Retin..][epoch:244, iter: 154,500, lr:(1.117e-06,)] [eta: 0:55:50, time (data): 0.850 (0.001)] l_pix: 2.1486e-02 
+2026-07-18 02:57:29,447 INFO: [Retin..][epoch:245, iter: 155,000, lr:(1.097e-06,)] [eta: 0:50:48, time (data): 0.557 (0.001)] l_pix: 2.2119e-02 
+2026-07-18 03:03:04,029 INFO: [Retin..][epoch:246, iter: 155,500, lr:(1.078e-06,)] [eta: 0:45:44, time (data): 0.572 (0.001)] l_pix: 2.1251e-02 
+2026-07-18 03:07:47,613 INFO: [Retin..][epoch:247, iter: 156,000, lr:(1.062e-06,)] [eta: 0:40:38, time (data): 0.557 (0.001)] l_pix: 1.8591e-02 
+2026-07-18 03:12:30,692 INFO: [Retin..][epoch:248, iter: 156,500, lr:(1.047e-06,)] [eta: 0:35:33, time (data): 0.563 (0.002)] l_pix: 1.4246e-02 
+2026-07-18 03:17:09,220 INFO: [Retin..][epoch:248, iter: 157,000, lr:(1.035e-06,)] [eta: 0:30:27, time (data): 0.553 (0.001)] l_pix: 1.7139e-02 
+2026-07-18 03:21:53,119 INFO: [Retin..][epoch:249, iter: 157,500, lr:(1.024e-06,)] [eta: 0:25:22, time (data): 0.567 (0.001)] l_pix: 1.8207e-02 
+2026-07-18 03:26:37,047 INFO: [Retin..][epoch:250, iter: 158,000, lr:(1.016e-06,)] [eta: 0:20:17, time (data): 0.572 (0.001)] l_pix: 1.9743e-02 
+2026-07-18 03:31:20,350 INFO: [Retin..][epoch:251, iter: 158,500, lr:(1.009e-06,)] [eta: 0:15:13, time (data): 0.565 (0.001)] l_pix: 2.7125e-02 
+2026-07-18 03:35:59,341 INFO: [Retin..][epoch:251, iter: 159,000, lr:(1.004e-06,)] [eta: 0:10:08, time (data): 0.562 (0.002)] l_pix: 2.0145e-02 
+2026-07-18 03:40:42,624 INFO: [Retin..][epoch:252, iter: 159,500, lr:(1.001e-06,)] [eta: 0:05:03, time (data): 0.557 (0.001)] l_pix: 1.7286e-02 
+2026-07-18 03:45:25,634 INFO: [Retin..][epoch:253, iter: 160,000, lr:(1.000e-06,)] [eta: 0:00:00, time (data): 0.559 (0.001)] l_pix: 2.2405e-02 
+2026-07-18 03:45:25,635 INFO: Saving models and training states.
+2026-07-18 03:52:27,187 INFO: Validation ValSetUnion,		 # psnr: 26.4271
+2026-07-18 03:52:27,191 INFO: End of training. Time consumed: 1 day, 3:10:12
+2026-07-18 03:52:27,191 INFO: Save the latest model.
+2026-07-18 03:59:26,527 INFO: Validation ValSetUnion,		 # psnr: 26.4230

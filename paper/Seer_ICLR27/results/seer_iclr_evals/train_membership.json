@@ -1,0 +1,969 @@
+{
+ "doc": "Training-set membership of the evaluation sequences for every checkpoint used in the ICLR tables.\n\nStatus values per sequence:\n  \"train\"            in the checkpoint's training set (by its official split rule + data release)\n  \"train_if_present\" the split rule would put it in training; whether the authors' data copy\n                     contains this folder cannot be verified on disk (counted as seen in n_seen_upper)\n  \"held_out\"         excluded by the official split rule (test / val list)\n  \"not_in_release\"   folder not in the data release the checkpoint was trained on\n  \"none_sdsd\"        checkpoint trained on non-SDSD data only\n  \"unknown\"          cannot be determined\nScene-level: pairX and pairX_2 (MVI_x and MVI_x_2) are two recordings of the SAME physical scene\n(checked visually, /cache/zihaohe/stcd_unified/chk/x_vs_x2.png). \"scene_seen\" lists test seqs whose\nsibling (X <-> X_2) is in training although the seq itself is not.\n",
+ "test_splits": {
+  "L0 (Seer SDSD-indoor test, 15)": [
+   "pair50",
+   "pair52",
+   "pair58",
+   "pair5_2",
+   "pair6",
+   "pair60",
+   "pair68",
+   "pair6_2",
+   "pair7",
+   "pair70",
+   "pair7_2",
+   "pair8",
+   "pair8_2",
+   "pair9",
+   "pair9_2"
+  ],
+  "STCD12": [
+   "pair13",
+   "pair15",
+   "pair21",
+   "pair23",
+   "pair31",
+   "pair33",
+   "pair50",
+   "pair52",
+   "pair58",
+   "pair60",
+   "pair68",
+   "pair70"
+  ],
+  "L1 (Seer SDSD-outdoor test, 25)": [
+   "MVI_1007_2",
+   "MVI_1009",
+   "MVI_1009_2",
+   "MVI_1011",
+   "MVI_1011_2",
+   "MVI_1013",
+   "MVI_1013_2",
+   "MVI_1015",
+   "MVI_1015_2",
+   "MVI_1017",
+   "MVI_1017_2",
+   "MVI_1019",
+   "MVI_1019_2",
+   "MVI_1021",
+   "MVI_1021_2",
+   "MVI_1024",
+   "MVI_1024_2",
+   "MVI_1026",
+   "MVI_1026_2",
+   "MVI_1028",
+   "MVI_1028_2",
+   "MVI_1030",
+   "MVI_1030_2",
+   "MVI_1032",
+   "MVI_1032_2"
+  ]
+ },
+ "local_release_info": {
+  "snr_static_np_indoor_folders": 68,
+  "indoor_folders_added_2026_05_03": [
+   "pair50",
+   "pair52",
+   "pair58",
+   "pair60",
+   "pair68",
+   "pair70"
+  ],
+  "outdoor_folders": 126
+ },
+ "methods": {
+  "Retinexformer": {
+   "checkpoints": {
+    "L0": "baseline_ckpts/Retinexformer/SDSD_indoor.pth",
+    "STCD12": "baseline_ckpts/Retinexformer/SDSD_indoor.pth",
+    "L1": "baseline_ckpts/Retinexformer/SDSD_outdoor.pth"
+   },
+   "sources": [
+    "/temp/zihaohe/cache/ext_methods/Retinexformer/Options/RetinexFormer_SDSD_indoor.yml (datasets.train.testing_dir: pair11,pair21,pair1,pair19,pair4,pair9)",
+    "/temp/zihaohe/cache/ext_methods/Retinexformer/Options/RetinexFormer_SDSD_outdoor.yml (datasets.train.testing_dir: MVI_0898,MVI_0928,MVI_0906,MVI_0975,MVI_1001,MVI_0997,MVI_1003,MVI_1026,MVI_1030,MVI_1032)",
+    "/temp/zihaohe/cache/ext_methods/Retinexformer/basicsr/data/SDSD_image_dataset.py L44-49: phase=train skips folder if name or name.split('_2')[0] in testing_dir; all other folders of dataroot are trained on",
+    "/temp/zihaohe/cache/ext_methods/Retinexformer/README.md: SDSD indoor_static_np/outdoor_static_np from the SNR-Aware release",
+    "release contents: local SNR-Aware copy (indoor_static_np/output, dated 2022-03-22, 68 folders pair1..pair34 + _2); pair50/52/58/60/68/70 are NOT in it (added locally 2026-05-03 from original SDSD indoor_png, VJEPA_LLVE_CODE_REVIEW.md BX0); outdoor_static_np local copy (126 folders) assumed identical to the release"
+   ],
+   "assumption": "local 2022-03-22 static_np copies == the release Retinexformer was trained on",
+   "splits": {
+    "L0": {
+     "n": 15,
+     "n_seen": 7,
+     "n_seen_upper": 7,
+     "n_unknown": 0,
+     "seen": [
+      "pair5_2",
+      "pair6",
+      "pair6_2",
+      "pair7",
+      "pair7_2",
+      "pair8",
+      "pair8_2"
+     ],
+     "seen_if_present": [],
+     "scene_seen_via_sibling": [],
+     "scene_seen_via_sibling_if_present": [],
+     "per_seq": {
+      "pair50": "not_in_release",
+      "pair52": "not_in_release",
+      "pair58": "not_in_release",
+      "pair5_2": "train",
+      "pair6": "train",
+      "pair60": "not_in_release",
+      "pair68": "not_in_release",
+      "pair6_2": "train",
+      "pair7": "train",
+      "pair70": "not_in_release",
+      "pair7_2": "train",
+      "pair8": "train",
+      "pair8_2": "train",
+      "pair9": "held_out",
+      "pair9_2": "held_out"
+     }
+    },
+    "STCD12": {
+     "n": 12,
+     "n_seen": 5,
+     "n_seen_upper": 5,
+     "n_unknown": 0,
+     "seen": [
+      "pair13",
+      "pair15",
+      "pair23",
+      "pair31",
+      "pair33"
+     ],
+     "seen_if_present": [],
+     "scene_seen_via_sibling": [],
+     "scene_seen_via_sibling_if_present": [],
+     "per_seq": {
+      "pair13": "train",
+      "pair15": "train",
+      "pair21": "held_out",
+      "pair23": "train",
+      "pair31": "train",
+      "pair33": "train",
+      "pair50": "not_in_release",
+      "pair52": "not_in_release",
+      "pair58": "not_in_release",
+      "pair60": "not_in_release",
+      "pair68": "not_in_release",
+      "pair70": "not_in_release"
+     }
+    },
+    "L1": {
+     "n": 25,
+     "n_seen": 19,
+     "n_seen_upper": 19,
+     "n_unknown": 0,
+     "seen": [
+      "MVI_1007_2",
+      "MVI_1009",
+      "MVI_1009_2",
+      "MVI_1011",
+      "MVI_1011_2",
+      "MVI_1013",
+      "MVI_1013_2",
+      "MVI_1015",
+      "MVI_1015_2",
+      "MVI_1017",
+      "MVI_1017_2",
+      "MVI_1019",
+      "MVI_1019_2",
+      "MVI_1021",
+      "MVI_1021_2",
+      "MVI_1024",
+      "MVI_1024_2",
+      "MVI_1028",
+      "MVI_1028_2"
+     ],
+     "seen_if_present": [],
+     "scene_seen_via_sibling": [],
+     "scene_seen_via_sibling_if_present": [],
+     "per_seq": {
+      "MVI_1007_2": "train",
+      "MVI_1009": "train",
+      "MVI_1009_2": "train",
+      "MVI_1011": "train",
+      "MVI_1011_2": "train",
+      "MVI_1013": "train",
+      "MVI_1013_2": "train",
+      "MVI_1015": "train",
+      "MVI_1015_2": "train",
+      "MVI_1017": "train",
+      "MVI_1017_2": "train",
+      "MVI_1019": "train",
+      "MVI_1019_2": "train",
+      "MVI_1021": "train",
+      "MVI_1021_2": "train",
+      "MVI_1024": "train",
+      "MVI_1024_2": "train",
+      "MVI_1026": "held_out",
+      "MVI_1026_2": "held_out",
+      "MVI_1028": "train",
+      "MVI_1028_2": "train",
+      "MVI_1030": "held_out",
+      "MVI_1030_2": "held_out",
+      "MVI_1032": "held_out",
+      "MVI_1032_2": "held_out"
+     }
+    }
+   }
+  },
+  "STCD": {
+   "checkpoints": {
+    "L0": "stcd_repro/LLVE_STCD/pretrained_model/SDSD_indoor_model/indoor_G.pth",
+    "STCD12": "same",
+    "L1": "same (indoor-only checkpoint, cross-domain on outdoor)"
+   },
+   "sources": [
+    "/temp/zihaohe/cache/stcd_repro/LLVE_STCD/options/train/SDSD_indoor.yml (testing_dir: pair13,pair15,pair21,pair23,pair31,pair33,pair50,pair52,pair58,pair60,pair68,pair70; dataroot .../indoor_np)",
+    "/temp/zihaohe/cache/stcd_repro/LLVE_STCD/data/dataset_SDSD_train.py L41: skips folder only if its exact name is in testing_dir (no _2 handling)",
+    "/temp/zihaohe/cache/stcd_repro/LLVE_STCD/README.md: data = SDSD indoor_np (original SDSD release, baidu/google link); training on SDSD-indoor only"
+   ],
+   "assumption": "authors' indoor_np contents not on disk (the 12 GB indoor_np download was rejected/deleted); every non-test folder present there is trained on",
+   "splits": {
+    "L0": {
+     "n": 15,
+     "n_seen": 0,
+     "n_seen_upper": 9,
+     "n_unknown": 0,
+     "seen": [],
+     "seen_if_present": [
+      "pair5_2",
+      "pair6",
+      "pair6_2",
+      "pair7",
+      "pair7_2",
+      "pair8",
+      "pair8_2",
+      "pair9",
+      "pair9_2"
+     ],
+     "scene_seen_via_sibling": [],
+     "scene_seen_via_sibling_if_present": [],
+     "per_seq": {
+      "pair50": "held_out",
+      "pair52": "held_out",
+      "pair58": "held_out",
+      "pair5_2": "train_if_present",
+      "pair6": "train_if_present",
+      "pair60": "held_out",
+      "pair68": "held_out",
+      "pair6_2": "train_if_present",
+      "pair7": "train_if_present",
+      "pair70": "held_out",
+      "pair7_2": "train_if_present",
+      "pair8": "train_if_present",
+      "pair8_2": "train_if_present",
+      "pair9": "train_if_present",
+      "pair9_2": "train_if_present"
+     }
+    },
+    "STCD12": {
+     "n": 12,
+     "n_seen": 0,
+     "n_seen_upper": 0,
+     "n_unknown": 0,
+     "seen": [],
+     "seen_if_present": [],
+     "scene_seen_via_sibling": [],
+     "scene_seen_via_sibling_if_present": [
+      "pair13",
+      "pair15",
+      "pair21",
+      "pair23",
+      "pair31",
+      "pair33"
+     ],
+     "per_seq": {
+      "pair13": "held_out",
+      "pair15": "held_out",
+      "pair21": "held_out",
+      "pair23": "held_out",
+      "pair31": "held_out",
+      "pair33": "held_out",
+      "pair50": "held_out",
+      "pair52": "held_out",
+      "pair58": "held_out",
+      "pair60": "held_out",
+      "pair68": "held_out",
+      "pair70": "held_out"
+     }
+    },
+    "L1": {
+     "n": 25,
+     "n_seen": 0,
+     "n_seen_upper": 0,
+     "n_unknown": 0,
+     "seen": [],
+     "seen_if_present": [],
+     "scene_seen_via_sibling": [],
+     "scene_seen_via_sibling_if_present": [],
+     "per_seq": {
+      "MVI_1007_2": "none_sdsd_outdoor",
+      "MVI_1009": "none_sdsd_outdoor",
+      "MVI_1009_2": "none_sdsd_outdoor",
+      "MVI_1011": "none_sdsd_outdoor",
+      "MVI_1011_2": "none_sdsd_outdoor",
+      "MVI_1013": "none_sdsd_outdoor",
+      "MVI_1013_2": "none_sdsd_outdoor",
+      "MVI_1015": "none_sdsd_outdoor",
+      "MVI_1015_2": "none_sdsd_outdoor",
+      "MVI_1017": "none_sdsd_outdoor",
+      "MVI_1017_2": "none_sdsd_outdoor",
+      "MVI_1019": "none_sdsd_outdoor",
+      "MVI_1019_2": "none_sdsd_outdoor",
+      "MVI_1021": "none_sdsd_outdoor",
+      "MVI_1021_2": "none_sdsd_outdoor",
+      "MVI_1024": "none_sdsd_outdoor",
+      "MVI_1024_2": "none_sdsd_outdoor",
+      "MVI_1026": "none_sdsd_outdoor",
+      "MVI_1026_2": "none_sdsd_outdoor",
+      "MVI_1028": "none_sdsd_outdoor",
+      "MVI_1028_2": "none_sdsd_outdoor",
+      "MVI_1030": "none_sdsd_outdoor",
+      "MVI_1030_2": "none_sdsd_outdoor",
+      "MVI_1032": "none_sdsd_outdoor",
+      "MVI_1032_2": "none_sdsd_outdoor"
+     },
+     "note": "indoor_G.pth trained on SDSD-indoor only -> 0 outdoor seqs seen"
+    }
+   }
+  },
+  "URCSA": {
+   "checkpoints": {
+    "L0": "URCSA/sdsd/RCSAindoor.pth",
+    "STCD12": "URCSA/sdsd/RCSAindoor.pth",
+    "L1": "URCSA/sdsd/RCSAoutdoor.pth"
+   },
+   "sources": [
+    "/temp/zihaohe/workspace/baselines/URCSA/sdsd/train_sdsd_model_begin_newloss.py all_list() L84-102 (and _continue_ variant): train = every folder of --trainset (default /root/autodl-tmp/SDSD_224/indoor/) whose exact name is not in new_test = STCD-12; test_list() uses the same 12",
+    "/temp/zihaohe/workspace/baselines/URCSA/README.md + released code: no outdoor split / list anywhere -> RCSAoutdoor.pth membership unknown"
+   ],
+   "assumption": "authors' SDSD_224/indoor copy not on disk",
+   "splits": {
+    "L0": {
+     "n": 15,
+     "n_seen": 0,
+     "n_seen_upper": 9,
+     "n_unknown": 0,
+     "seen": [],
+     "seen_if_present": [
+      "pair5_2",
+      "pair6",
+      "pair6_2",
+      "pair7",
+      "pair7_2",
+      "pair8",
+      "pair8_2",
+      "pair9",
+      "pair9_2"
+     ],
+     "scene_seen_via_sibling": [],
+     "scene_seen_via_sibling_if_present": [],
+     "per_seq": {
+      "pair50": "held_out",
+      "pair52": "held_out",
+      "pair58": "held_out",
+      "pair5_2": "train_if_present",
+      "pair6": "train_if_present",
+      "pair60": "held_out",
+      "pair68": "held_out",
+      "pair6_2": "train_if_present",
+      "pair7": "train_if_present",
+      "pair70": "held_out",
+      "pair7_2": "train_if_present",
+      "pair8": "train_if_present",
+      "pair8_2": "train_if_present",
+      "pair9": "train_if_present",
+      "pair9_2": "train_if_present"
+     }
+    },
+    "STCD12": {
+     "n": 12,
+     "n_seen": 0,
+     "n_seen_upper": 0,
+     "n_unknown": 0,
+     "seen": [],
+     "seen_if_present": [],
+     "scene_seen_via_sibling": [],
+     "scene_seen_via_sibling_if_present": [
+      "pair13",
+      "pair15",
+      "pair21",
+      "pair23",
+      "pair31",
+      "pair33"
+     ],
+     "per_seq": {
+      "pair13": "held_out",
+      "pair15": "held_out",
+      "pair21": "held_out",
+      "pair23": "held_out",
+      "pair31": "held_out",
+      "pair33": "held_out",
+      "pair50": "held_out",
+      "pair52": "held_out",
+      "pair58": "held_out",
+      "pair60": "held_out",
+      "pair68": "held_out",
+      "pair70": "held_out"
+     }
+    },
+    "L1": {
+     "n": 25,
+     "n_seen": 0,
+     "n_seen_upper": 0,
+     "n_unknown": 25,
+     "seen": [],
+     "seen_if_present": [],
+     "scene_seen_via_sibling": [],
+     "scene_seen_via_sibling_if_present": [],
+     "per_seq": {
+      "MVI_1007_2": "unknown",
+      "MVI_1009": "unknown",
+      "MVI_1009_2": "unknown",
+      "MVI_1011": "unknown",
+      "MVI_1011_2": "unknown",
+      "MVI_1013": "unknown",
+      "MVI_1013_2": "unknown",
+      "MVI_1015": "unknown",
+      "MVI_1015_2": "unknown",
+      "MVI_1017": "unknown",
+      "MVI_1017_2": "unknown",
+      "MVI_1019": "unknown",
+      "MVI_1019_2": "unknown",
+      "MVI_1021": "unknown",
+      "MVI_1021_2": "unknown",
+      "MVI_1024": "unknown",
+      "MVI_1024_2": "unknown",
+      "MVI_1026": "unknown",
+      "MVI_1026_2": "unknown",
+      "MVI_1028": "unknown",
+      "MVI_1028_2": "unknown",
+      "MVI_1030": "unknown",
+      "MVI_1030_2": "unknown",
+      "MVI_1032": "unknown",
+      "MVI_1032_2": "unknown"
+     }
+    }
+   }
+  },
+  "DarkIR": {
+   "checkpoints": {
+    "L0": "baseline_ckpts/DarkIR/DarkIR_384.pt",
+    "STCD12": "baseline_ckpts/DarkIR/DarkIR_384.pt",
+    "L1": "baseline_ckpts/DarkIR/DarkIR_384.pt"
+   },
+   "sources": [
+    "/temp/zihaohe/workspace/baselines/DarkIR/README.md L58-69, L96: LOL-Blur-only training for the LOLBlur model; datasets list has no SDSD",
+    "/temp/zihaohe/workspace/baselines/run_darkir_v2.py note: DarkIR_384.pt = LOL-Blur trained"
+   ],
+   "splits": {
+    "L0": {
+     "n": 15,
+     "n_seen": 0,
+     "n_seen_upper": 0,
+     "n_unknown": 0,
+     "seen": [],
+     "seen_if_present": [],
+     "scene_seen_via_sibling": [],
+     "scene_seen_via_sibling_if_present": [],
+     "per_seq": {
+      "pair50": "none_sdsd",
+      "pair52": "none_sdsd",
+      "pair58": "none_sdsd",
+      "pair5_2": "none_sdsd",
+      "pair6": "none_sdsd",
+      "pair60": "none_sdsd",
+      "pair68": "none_sdsd",
+      "pair6_2": "none_sdsd",
+      "pair7": "none_sdsd",
+      "pair70": "none_sdsd",
+      "pair7_2": "none_sdsd",
+      "pair8": "none_sdsd",
+      "pair8_2": "none_sdsd",
+      "pair9": "none_sdsd",
+      "pair9_2": "none_sdsd"
+     }
+    },
+    "STCD12": {
+     "n": 12,
+     "n_seen": 0,
+     "n_seen_upper": 0,
+     "n_unknown": 0,
+     "seen": [],
+     "seen_if_present": [],
+     "scene_seen_via_sibling": [],
+     "scene_seen_via_sibling_if_present": [],
+     "per_seq": {
+      "pair13": "none_sdsd",
+      "pair15": "none_sdsd",
+      "pair21": "none_sdsd",
+      "pair23": "none_sdsd",
+      "pair31": "none_sdsd",
+      "pair33": "none_sdsd",
+      "pair50": "none_sdsd",
+      "pair52": "none_sdsd",
+      "pair58": "none_sdsd",
+      "pair60": "none_sdsd",
+      "pair68": "none_sdsd",
+      "pair70": "none_sdsd"
+     }
+    },
+    "L1": {
+     "n": 25,
+     "n_seen": 0,
+     "n_seen_upper": 0,
+     "n_unknown": 0,
+     "seen": [],
+     "seen_if_present": [],
+     "scene_seen_via_sibling": [],
+     "scene_seen_via_sibling_if_present": [],
+     "per_seq": {
+      "MVI_1007_2": "none_sdsd",
+      "MVI_1009": "none_sdsd",
+      "MVI_1009_2": "none_sdsd",
+      "MVI_1011": "none_sdsd",
+      "MVI_1011_2": "none_sdsd",
+      "MVI_1013": "none_sdsd",
+      "MVI_1013_2": "none_sdsd",
+      "MVI_1015": "none_sdsd",
+      "MVI_1015_2": "none_sdsd",
+      "MVI_1017": "none_sdsd",
+      "MVI_1017_2": "none_sdsd",
+      "MVI_1019": "none_sdsd",
+      "MVI_1019_2": "none_sdsd",
+      "MVI_1021": "none_sdsd",
+      "MVI_1021_2": "none_sdsd",
+      "MVI_1024": "none_sdsd",
+      "MVI_1024_2": "none_sdsd",
+      "MVI_1026": "none_sdsd",
+      "MVI_1026_2": "none_sdsd",
+      "MVI_1028": "none_sdsd",
+      "MVI_1028_2": "none_sdsd",
+      "MVI_1030": "none_sdsd",
+      "MVI_1030_2": "none_sdsd",
+      "MVI_1032": "none_sdsd",
+      "MVI_1032_2": "none_sdsd"
+     }
+    }
+   }
+  },
+  "HVI-CIDNet": {
+   "checkpoints": {
+    "L0": "baseline_ckpts/HVI-CIDNet/Generalization/pytorch_model.bin",
+    "STCD12": "baseline_ckpts/HVI-CIDNet/Generalization/pytorch_model.bin",
+    "L1": "baseline_ckpts/HVI-CIDNet/Generalization/pytorch_model.bin"
+   },
+   "sources": [
+    "/temp/zihaohe/workspace/baselines/HVI-CIDNet/Readme.md L144-153: generalization weights trained on LOLv2-Syn with random gamma; HF-demo 'Generalization' weights' exact training data not fully documented (no SDSD mentioned)"
+   ],
+   "splits": {
+    "L0": {
+     "n": 15,
+     "n_seen": 0,
+     "n_seen_upper": 0,
+     "n_unknown": 0,
+     "seen": [],
+     "seen_if_present": [],
+     "scene_seen_via_sibling": [],
+     "scene_seen_via_sibling_if_present": [],
+     "per_seq": {
+      "pair50": "none_sdsd",
+      "pair52": "none_sdsd",
+      "pair58": "none_sdsd",
+      "pair5_2": "none_sdsd",
+      "pair6": "none_sdsd",
+      "pair60": "none_sdsd",
+      "pair68": "none_sdsd",
+      "pair6_2": "none_sdsd",
+      "pair7": "none_sdsd",
+      "pair70": "none_sdsd",
+      "pair7_2": "none_sdsd",
+      "pair8": "none_sdsd",
+      "pair8_2": "none_sdsd",
+      "pair9": "none_sdsd",
+      "pair9_2": "none_sdsd"
+     }
+    },
+    "STCD12": {
+     "n": 12,
+     "n_seen": 0,
+     "n_seen_upper": 0,
+     "n_unknown": 0,
+     "seen": [],
+     "seen_if_present": [],
+     "scene_seen_via_sibling": [],
+     "scene_seen_via_sibling_if_present": [],
+     "per_seq": {
+      "pair13": "none_sdsd",
+      "pair15": "none_sdsd",
+      "pair21": "none_sdsd",
+      "pair23": "none_sdsd",
+      "pair31": "none_sdsd",
+      "pair33": "none_sdsd",
+      "pair50": "none_sdsd",
+      "pair52": "none_sdsd",
+      "pair58": "none_sdsd",
+      "pair60": "none_sdsd",
+      "pair68": "none_sdsd",
+      "pair70": "none_sdsd"
+     }
+    },
+    "L1": {
+     "n": 25,
+     "n_seen": 0,
+     "n_seen_upper": 0,
+     "n_unknown": 0,
+     "seen": [],
+     "seen_if_present": [],
+     "scene_seen_via_sibling": [],
+     "scene_seen_via_sibling_if_present": [],
+     "per_seq": {
+      "MVI_1007_2": "none_sdsd",
+      "MVI_1009": "none_sdsd",
+      "MVI_1009_2": "none_sdsd",
+      "MVI_1011": "none_sdsd",
+      "MVI_1011_2": "none_sdsd",
+      "MVI_1013": "none_sdsd",
+      "MVI_1013_2": "none_sdsd",
+      "MVI_1015": "none_sdsd",
+      "MVI_1015_2": "none_sdsd",
+      "MVI_1017": "none_sdsd",
+      "MVI_1017_2": "none_sdsd",
+      "MVI_1019": "none_sdsd",
+      "MVI_1019_2": "none_sdsd",
+      "MVI_1021": "none_sdsd",
+      "MVI_1021_2": "none_sdsd",
+      "MVI_1024": "none_sdsd",
+      "MVI_1024_2": "none_sdsd",
+      "MVI_1026": "none_sdsd",
+      "MVI_1026_2": "none_sdsd",
+      "MVI_1028": "none_sdsd",
+      "MVI_1028_2": "none_sdsd",
+      "MVI_1030": "none_sdsd",
+      "MVI_1030_2": "none_sdsd",
+      "MVI_1032": "none_sdsd",
+      "MVI_1032_2": "none_sdsd"
+     }
+    }
+   }
+  },
+  "Zero-DCE": {
+   "checkpoints": {
+    "L0": "ext_methods/Zero-DCE/Zero-DCE_code/snapshots/Epoch99.pth",
+    "STCD12": "ext_methods/Zero-DCE/Zero-DCE_code/snapshots/Epoch99.pth",
+    "L1": "ext_methods/Zero-DCE/Zero-DCE_code/snapshots/Epoch99.pth"
+   },
+   "sources": [
+    "/temp/zihaohe/cache/ext_methods/Zero-DCE/README.md L50-55: zero-reference training on the released train_data (SICE Part1), no SDSD"
+   ],
+   "splits": {
+    "L0": {
+     "n": 15,
+     "n_seen": 0,
+     "n_seen_upper": 0,
+     "n_unknown": 0,
+     "seen": [],
+     "seen_if_present": [],
+     "scene_seen_via_sibling": [],
+     "scene_seen_via_sibling_if_present": [],
+     "per_seq": {
+      "pair50": "none_sdsd",
+      "pair52": "none_sdsd",
+      "pair58": "none_sdsd",
+      "pair5_2": "none_sdsd",
+      "pair6": "none_sdsd",
+      "pair60": "none_sdsd",
+      "pair68": "none_sdsd",
+      "pair6_2": "none_sdsd",
+      "pair7": "none_sdsd",
+      "pair70": "none_sdsd",
+      "pair7_2": "none_sdsd",
+      "pair8": "none_sdsd",
+      "pair8_2": "none_sdsd",
+      "pair9": "none_sdsd",
+      "pair9_2": "none_sdsd"
+     }
+    },
+    "STCD12": {
+     "n": 12,
+     "n_seen": 0,
+     "n_seen_upper": 0,
+     "n_unknown": 0,
+     "seen": [],
+     "seen_if_present": [],
+     "scene_seen_via_sibling": [],
+     "scene_seen_via_sibling_if_present": [],
+     "per_seq": {
+      "pair13": "none_sdsd",
+      "pair15": "none_sdsd",
+      "pair21": "none_sdsd",
+      "pair23": "none_sdsd",
+      "pair31": "none_sdsd",
+      "pair33": "none_sdsd",
+      "pair50": "none_sdsd",
+      "pair52": "none_sdsd",
+      "pair58": "none_sdsd",
+      "pair60": "none_sdsd",
+      "pair68": "none_sdsd",
+      "pair70": "none_sdsd"
+     }
+    },
+    "L1": {
+     "n": 25,
+     "n_seen": 0,
+     "n_seen_upper": 0,
+     "n_unknown": 0,
+     "seen": [],
+     "seen_if_present": [],
+     "scene_seen_via_sibling": [],
+     "scene_seen_via_sibling_if_present": [],
+     "per_seq": {
+      "MVI_1007_2": "none_sdsd",
+      "MVI_1009": "none_sdsd",
+      "MVI_1009_2": "none_sdsd",
+      "MVI_1011": "none_sdsd",
+      "MVI_1011_2": "none_sdsd",
+      "MVI_1013": "none_sdsd",
+      "MVI_1013_2": "none_sdsd",
+      "MVI_1015": "none_sdsd",
+      "MVI_1015_2": "none_sdsd",
+      "MVI_1017": "none_sdsd",
+      "MVI_1017_2": "none_sdsd",
+      "MVI_1019": "none_sdsd",
+      "MVI_1019_2": "none_sdsd",
+      "MVI_1021": "none_sdsd",
+      "MVI_1021_2": "none_sdsd",
+      "MVI_1024": "none_sdsd",
+      "MVI_1024_2": "none_sdsd",
+      "MVI_1026": "none_sdsd",
+      "MVI_1026_2": "none_sdsd",
+      "MVI_1028": "none_sdsd",
+      "MVI_1028_2": "none_sdsd",
+      "MVI_1030": "none_sdsd",
+      "MVI_1030_2": "none_sdsd",
+      "MVI_1032": "none_sdsd",
+      "MVI_1032_2": "none_sdsd"
+     }
+    }
+   }
+  },
+  "SCI": {
+   "checkpoints": {
+    "L0": "ext_methods/SCI/CVPR/weights/medium.pt",
+    "STCD12": "ext_methods/SCI/CVPR/weights/medium.pt",
+    "L1": "ext_methods/SCI/CVPR/weights/medium.pt"
+   },
+   "sources": [
+    "/temp/zihaohe/cache/ext_methods/SCI/CVPR/README.md L27-33: medium.pt mainly trained on LOL and LSRW (unsupervised); no SDSD"
+   ],
+   "splits": {
+    "L0": {
+     "n": 15,
+     "n_seen": 0,
+     "n_seen_upper": 0,
+     "n_unknown": 0,
+     "seen": [],
+     "seen_if_present": [],
+     "scene_seen_via_sibling": [],
+     "scene_seen_via_sibling_if_present": [],
+     "per_seq": {
+      "pair50": "none_sdsd",
+      "pair52": "none_sdsd",
+      "pair58": "none_sdsd",
+      "pair5_2": "none_sdsd",
+      "pair6": "none_sdsd",
+      "pair60": "none_sdsd",
+      "pair68": "none_sdsd",
+      "pair6_2": "none_sdsd",
+      "pair7": "none_sdsd",
+      "pair70": "none_sdsd",
+      "pair7_2": "none_sdsd",
+      "pair8": "none_sdsd",
+      "pair8_2": "none_sdsd",
+      "pair9": "none_sdsd",
+      "pair9_2": "none_sdsd"
+     }
+    },
+    "STCD12": {
+     "n": 12,
+     "n_seen": 0,
+     "n_seen_upper": 0,
+     "n_unknown": 0,
+     "seen": [],
+     "seen_if_present": [],
+     "scene_seen_via_sibling": [],
+     "scene_seen_via_sibling_if_present": [],
+     "per_seq": {
+      "pair13": "none_sdsd",
+      "pair15": "none_sdsd",
+      "pair21": "none_sdsd",
+      "pair23": "none_sdsd",
+      "pair31": "none_sdsd",
+      "pair33": "none_sdsd",
+      "pair50": "none_sdsd",
+      "pair52": "none_sdsd",
+      "pair58": "none_sdsd",
+      "pair60": "none_sdsd",
+      "pair68": "none_sdsd",
+      "pair70": "none_sdsd"
+     }
+    },
+    "L1": {
+     "n": 25,
+     "n_seen": 0,
+     "n_seen_upper": 0,
+     "n_unknown": 0,
+     "seen": [],
+     "seen_if_present": [],
+     "scene_seen_via_sibling": [],
+     "scene_seen_via_sibling_if_present": [],
+     "per_seq": {
+      "MVI_1007_2": "none_sdsd",
+      "MVI_1009": "none_sdsd",
+      "MVI_1009_2": "none_sdsd",
+      "MVI_1011": "none_sdsd",
+      "MVI_1011_2": "none_sdsd",
+      "MVI_1013": "none_sdsd",
+      "MVI_1013_2": "none_sdsd",
+      "MVI_1015": "none_sdsd",
+      "MVI_1015_2": "none_sdsd",
+      "MVI_1017": "none_sdsd",
+      "MVI_1017_2": "none_sdsd",
+      "MVI_1019": "none_sdsd",
+      "MVI_1019_2": "none_sdsd",
+      "MVI_1021": "none_sdsd",
+      "MVI_1021_2": "none_sdsd",
+      "MVI_1024": "none_sdsd",
+      "MVI_1024_2": "none_sdsd",
+      "MVI_1026": "none_sdsd",
+      "MVI_1026_2": "none_sdsd",
+      "MVI_1028": "none_sdsd",
+      "MVI_1028_2": "none_sdsd",
+      "MVI_1030": "none_sdsd",
+      "MVI_1030_2": "none_sdsd",
+      "MVI_1032": "none_sdsd",
+      "MVI_1032_2": "none_sdsd"
+     }
+    }
+   }
+  },
+  "Seer (v35 stage4, reference)": {
+   "checkpoints": {
+    "L0": "runs/v35_stage4/final.pt",
+    "STCD12": "same",
+    "L1": "same"
+   },
+   "sources": [
+    "/temp/zihaohe/workspace/vjepa_llve/tools/v35_stage4_train.py L155-160: SDSDDataset(split='train') on SDSD_indoor and SDSD_outdoor",
+    "/temp/zihaohe/workspace/vjepa_llve/data/sdsd_dataset.py L155-163: sorted-name 80/20 split (computed here from the local folders)"
+   ],
+   "splits": {
+    "L0": {
+     "n": 15,
+     "n_seen": 0,
+     "n_seen_upper": 0,
+     "n_unknown": 0,
+     "seen": [],
+     "seen_if_present": [],
+     "scene_seen_via_sibling": [
+      "pair5_2"
+     ],
+     "scene_seen_via_sibling_if_present": [],
+     "per_seq": {
+      "pair50": "held_out",
+      "pair52": "held_out",
+      "pair58": "held_out",
+      "pair5_2": "held_out",
+      "pair6": "held_out",
+      "pair60": "held_out",
+      "pair68": "held_out",
+      "pair6_2": "held_out",
+      "pair7": "held_out",
+      "pair70": "held_out",
+      "pair7_2": "held_out",
+      "pair8": "held_out",
+      "pair8_2": "held_out",
+      "pair9": "held_out",
+      "pair9_2": "held_out"
+     }
+    },
+    "STCD12": {
+     "n": 12,
+     "n_seen": 6,
+     "n_seen_upper": 6,
+     "n_unknown": 0,
+     "seen": [
+      "pair13",
+      "pair15",
+      "pair21",
+      "pair23",
+      "pair31",
+      "pair33"
+     ],
+     "seen_if_present": [],
+     "scene_seen_via_sibling": [],
+     "scene_seen_via_sibling_if_present": [],
+     "per_seq": {
+      "pair13": "train",
+      "pair15": "train",
+      "pair21": "train",
+      "pair23": "train",
+      "pair31": "train",
+      "pair33": "train",
+      "pair50": "held_out",
+      "pair52": "held_out",
+      "pair58": "held_out",
+      "pair60": "held_out",
+      "pair68": "held_out",
+      "pair70": "held_out"
+     }
+    },
+    "L1": {
+     "n": 25,
+     "n_seen": 0,
+     "n_seen_upper": 0,
+     "n_unknown": 0,
+     "seen": [],
+     "seen_if_present": [],
+     "scene_seen_via_sibling": [
+      "MVI_1007_2"
+     ],
+     "scene_seen_via_sibling_if_present": [],
+     "per_seq": {
+      "MVI_1007_2": "held_out",
+      "MVI_1009": "held_out",
+      "MVI_1009_2": "held_out",
+      "MVI_1011": "held_out",
+      "MVI_1011_2": "held_out",
+      "MVI_1013": "held_out",
+      "MVI_1013_2": "held_out",
+      "MVI_1015": "held_out",
+      "MVI_1015_2": "held_out",
+      "MVI_1017": "held_out",
+      "MVI_1017_2": "held_out",
+      "MVI_1019": "held_out",
+      "MVI_1019_2": "held_out",
+      "MVI_1021": "held_out",
+      "MVI_1021_2": "held_out",
+      "MVI_1024": "held_out",
+      "MVI_1024_2": "held_out",
+      "MVI_1026": "held_out",
+      "MVI_1026_2": "held_out",
+      "MVI_1028": "held_out",
+      "MVI_1028_2": "held_out",
+      "MVI_1030": "held_out",
+      "MVI_1030_2": "held_out",
+      "MVI_1032": "held_out",
+      "MVI_1032_2": "held_out"
+     }
+    }
+   }
+  }
+ }
+}

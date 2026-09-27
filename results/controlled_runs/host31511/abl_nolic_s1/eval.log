@@ -1,0 +1,45 @@
+[Seer] variant from ckpt args: {'no_vjepa': False, 'random_vjepa': False, 'disable_igab': False, 'disable_lic': True, 'disable_bottleneck': False}
+[Seer] pixel_branch missing=0 unexpected=0
+/cache/zihaohe/conda_envs/vjepa2-pip/lib/python3.11/site-packages/timm/models/layers/__init__.py:49: FutureWarning: Importing from timm.models.layers is deprecated, please import via timm.layers
+  warnings.warn(f"Importing from {__name__} is deprecated, please import via timm.layers", FutureWarning)
+[VJepaBackboneLocal21] loaded /home/ma-user/workspace/zihaohe/checkpoint/vjepa2_1_vitl_dist_vitG_384.pt | missing=0 unexpected=2
+  unexpected (first 5): ['patch_embed_img.proj.weight', 'patch_embed_img.proj.bias']
+[CounterfactualRefiner] loaded predictor from /home/ma-user/workspace/zihaohe/checkpoint/vjepa2_1_vitl_dist_vitG_384.pt | missing=0 unexpected=4
+[Seer] cf_refiner missing=0 unexpected=0 gate=-0.001505
+[SDSD] layout=A/C (static_np or original) subset=direct split=train -> 59 sequences, 1671 frames total.
+/cache/zihaohe/conda_envs/vjepa2-pip/lib/python3.11/site-packages/torch/backends/cuda/__init__.py:342: FutureWarning: torch.backends.cuda.sdp_kernel() is deprecated. In the future, this context manager will be removed. Please see, torch.nn.attention.sdpa_kernel() for the new context manager, with updated signature.
+  warnings.warn(
+[SDSD] layout=A/C (static_np or original) subset=direct split=train -> 101 sequences, 2530 frames total.
+[CP] closed-form alpha on 15 SDSD train clips: raw=[0.07255322192712385, -0.2681641365868082, -0.1180255433946567] clipped=[0.07255322486162186, 0.0, 0.0]
+[SDSD] layout=A/C (static_np or original) subset=direct split=test -> 15 sequences, 1037 frames total.
+Loading pretrained model LPIPS from /home/ma-user/.cache/torch/hub/pyiqa/LPIPS_v0.1_alex-df73285e.pth
+Loading pretrained model DISTS from /home/ma-user/.cache/torch/hub/pyiqa/DISTS_weights-f5e65c96.pth
+/cache/zihaohe/conda_envs/vjepa2-pip/lib/python3.11/site-packages/torch/backends/cuda/__init__.py:342: FutureWarning: torch.backends.cuda.sdp_kernel() is deprecated. In the future, this context manager will be removed. Please see, torch.nn.attention.sdpa_kernel() for the new context manager, with updated signature.
+  warnings.warn(
+L0_SDSD-indoor   HMP-raw  PSNR=27.428 LPIPS=0.1219 DISTS=0.1429 CLIPIQA=0.1812 n=15 tlp=0.0505 mabd=0.0020 flicker=0.0284 warp_err=0.0101 (93s)
+L0_SDSD-indoor   HMP+CP   PSNR=27.019 LPIPS=0.1799 DISTS=0.1490 CLIPIQA=0.1554 n=15 tlp=0.0921 mabd=0.0020 flicker=0.0288 warp_err=0.0146 (93s)
+L0_SDSD-indoor   HMP+CPfit PSNR=27.416 LPIPS=0.1225 DISTS=0.1431 CLIPIQA=0.1726 n=15 tlp=0.0521 mabd=0.0020 flicker=0.0284 warp_err=0.0103 (93s)
+L0_SDSD-indoor   HMP+CPxfit PSNR=27.547 LPIPS=0.1273 DISTS=0.1413 CLIPIQA=0.1753 n=15 tlp=0.0607 mabd=0.0020 flicker=0.0284 warp_err=0.0112 (93s)
+[SDSD] layout=A/C (static_np or original) subset=direct split=test -> 25 sequences, 620 frames total.
+L1_SDSD-outdoor  HMP-raw  PSNR=22.986 LPIPS=0.1680 DISTS=0.1084 CLIPIQA=0.1794 n=25 tlp=0.0528 mabd=0.0033 flicker=0.0135 warp_err=0.0133 (146s)
+L1_SDSD-outdoor  HMP+CP   PSNR=22.708 LPIPS=0.2112 DISTS=0.1246 CLIPIQA=0.1650 n=25 tlp=0.0738 mabd=0.0032 flicker=0.0136 warp_err=0.0171 (146s)
+L1_SDSD-outdoor  HMP+CPfit PSNR=22.967 LPIPS=0.1692 DISTS=0.1089 CLIPIQA=0.1791 n=25 tlp=0.0539 mabd=0.0032 flicker=0.0135 warp_err=0.0134 (146s)
+L1_SDSD-outdoor  HMP+CPxfit PSNR=22.775 LPIPS=0.1815 DISTS=0.1142 CLIPIQA=0.1884 n=25 tlp=0.0606 mabd=0.0033 flicker=0.0137 warp_err=0.0145 (146s)
+[BVI-RLV] test: 16 sequences (8 scenes × ≤2 fps), 6240 frames total
+L2_BVI-RLV       HMP-raw  PSNR=17.876 LPIPS=0.2430 DISTS=0.1446 CLIPIQA=0.3060 n=16 tlp=0.0731 mabd=0.0030 flicker=0.0948 warp_err=0.0092 (127s)
+L2_BVI-RLV       HMP+CP   PSNR=18.834 LPIPS=0.2335 DISTS=0.1418 CLIPIQA=0.2598 n=16 tlp=0.0850 mabd=0.0030 flicker=0.0946 warp_err=0.0127 (127s)
+L2_BVI-RLV       HMP+CPfit PSNR=17.893 LPIPS=0.2433 DISTS=0.1449 CLIPIQA=0.2996 n=16 tlp=0.0738 mabd=0.0030 flicker=0.0948 warp_err=0.0094 (127s)
+L2_BVI-RLV       HMP+CPxfit PSNR=18.710 LPIPS=0.2260 DISTS=0.1372 CLIPIQA=0.3312 n=16 tlp=0.0816 mabd=0.0030 flicker=0.0947 warp_err=0.0117 (127s)
+L3_LOL-v1        HMP-raw  PSNR=16.511 LPIPS=0.3254 DISTS=0.2182 CLIPIQA=0.2792 n=15  (36s)
+L3_LOL-v1        HMP+CP   PSNR=16.536 LPIPS=0.2829 DISTS=0.2007 CLIPIQA=0.2296 n=15  (36s)
+L3_LOL-v1        HMP+CPfit PSNR=16.509 LPIPS=0.3217 DISTS=0.2176 CLIPIQA=0.2650 n=15  (36s)
+L3_LOL-v1        HMP+CPxfit PSNR=16.634 LPIPS=0.3185 DISTS=0.2175 CLIPIQA=0.2851 n=15  (36s)
+L4_LOLv2-Syn     HMP-raw  PSNR=16.023 LPIPS=0.3407 DISTS=0.2303 CLIPIQA=0.3641 n=100  (156s)
+L4_LOLv2-Syn     HMP+CP   PSNR=16.549 LPIPS=0.2954 DISTS=0.2067 CLIPIQA=0.3656 n=100  (156s)
+L4_LOLv2-Syn     HMP+CPfit PSNR=16.028 LPIPS=0.3394 DISTS=0.2294 CLIPIQA=0.3622 n=100  (156s)
+L4_LOLv2-Syn     HMP+CPxfit PSNR=16.711 LPIPS=0.2887 DISTS=0.2043 CLIPIQA=0.3937 n=100  (156s)
+L5_LOLv2-Real    HMP-raw  PSNR=18.327 LPIPS=0.3351 DISTS=0.2210 CLIPIQA=0.2612 n=100  (245s)
+L5_LOLv2-Real    HMP+CP   PSNR=17.947 LPIPS=0.3064 DISTS=0.2123 CLIPIQA=0.2520 n=100  (245s)
+L5_LOLv2-Real    HMP+CPfit PSNR=18.322 LPIPS=0.3309 DISTS=0.2202 CLIPIQA=0.2556 n=100  (245s)
+L5_LOLv2-Real    HMP+CPxfit PSNR=18.388 LPIPS=0.3295 DISTS=0.2180 CLIPIQA=0.2735 n=100  (245s)
+[SAVE] /cache/zihaohe/runs/seer_iclr/abl_nolic_s1/eval_unified.json

@@ -1,0 +1,457 @@
+# V-JEPA-LLVE Project Findings (2026-05-02)
+
+Consolidated technical note covering experiments and analysis through 2026-05-02.
+Purpose: durable record decoupled from the long review thread (`VJEPA_LLVE_CODE_REVIEW.md`).
+
+---
+
+## 1. Executive conclusion
+
+V-JEPA 2.1 dense feature conditioning is **load-bearing** for our low-light video
+enhancement (LLVE) pipeline, providing roughly **+3-4.5 dB** RGB-PSNR uniformly
+across motion levels measured by GT frame difference. Several attempts to add
+*supervision* on top of V-JEPA — affinity-consistency loss, RAFT optical-flow
+warp loss — produced negative or null results that match V-JEPA 2.1's documented
+design intent (encoder for downstream conditioning, not as a target).
+
+The current local performance ceiling on our SDSD-indoor static_np test split is
+approximately **23.5 RGB-PSNR (full-frame tiled inference)**. The gap to LLVE-STCD's
+reported 28.93 dB is real but cannot be cleanly compared without external
+methodology validation (different test sequences, possibly different metric protocol).
+
+**Next-direction recommendation:** consolidate findings → external SOTA comparison
+on our pipeline (AR2.A) → only then decide whether to scale data (BVI-RLV) or
+improve the pixel decoder.
+
+---
+
+## 2. Current v9.0 architecture and protocol caveats
+
+### 2.1. Architecture
+
+```text
+v9.0 model:
+  Frozen V-JEPA 2.1 ViT-L encoder (304M frozen)
+  Multi-scale dense token cross-attention into pixel decoder (4 scales)
+  Pixel branch: BiasFree LN + PixelShuffle + Restormer blocks (361M trainable)
+  Local illumination cue injection (5-channel concat at all scales)
+  Volume-CFIM bottleneck for cross-frame interaction
+  Retinex dual aux head (R̂, L̂) supervised by R̂⊙L̂≈HQ + temporal smoothness
+
+Loss bundle:
+  Charbonnier (pix), LPIPS, Retinex compose, L spatial smoothness,
+  L temporal smoothness, R adjacent low-res, pred DoD
+```
+
+### 2.2. Protocol caveats
+
+The internal training-time validation uses RGB-PSNR at 256×256 center crop, evaluated
+as sliding(3) over a 14-sequence SDSD-indoor static_np test split. This **differs**
+from LLVE-STCD's published protocol in three ways:
+
+```text
+1. PSNR metric:
+   ours during training: RGB-256 sliding(3)
+   ours under audit:     RGB-PSNR uint8 [0,255], full-frame, tiled inference
+   LLVE-STCD:            RGB-PSNR uint8 [0,255], full-frame, direct inference
+
+2. Test sequence list:
+   ours:       pair3_2..pair9_2 (14 sequences from static_np release)
+   LLVE-STCD:  pair13/15/21/23/31/33/50/52/58/60/68/70 (12 sequences)
+   intersection: EMPTY  ← different SDSD release
+   
+3. Frame protocol:
+   ours: first 16 frames per sequence
+   LLVE-STCD: N_frames=5 input window, evaluates over more frames per video
+```
+
+These differences mean our internal numbers are NOT directly comparable to
+LLVE-STCD's published 28.93 even on the same nominal dataset.
+
+### 2.3. Tile-inference variant
+
+Full-frame inference does not fit (1080×1920 model would need ~440 GB VRAM at
+our scale). We use 256×256 tiles with 64-pixel cosine-tapered overlap blending.
+A direct-vs-tiled sanity check on 512×512 crops shows mean abs difference ≈0.014
+and PSNR(direct, tiled) ≈ 34.6 dB — **below** the ≥45 dB acceptance threshold.
+All audit numbers in this note are therefore tiled-inference variants, not
+faithful proxies for direct full-frame inference.
+
+---
+
+## 3. Positive result: V-JEPA dense conditioning is load-bearing
+
+### 3.1. v9.0-noJEPA ablation
+
+We removed the V-JEPA backbone forward and all cross-attention modules; kept
+pixel branch + illumination cues + Retinex heads + losses unchanged. Same data
+(SDSD-indoor + SDSD-outdoor mix), same loss balance, same optimizer schedule.
+
+```text
+Per RGB-256 sliding(3) on internal val (14 indoor seqs):
+  v9.0:        peak 25.07 sliding @ iter 7500
+  v9.0-noJEPA: peak 19.22 sliding(1) @ iter 500
+              monotonically declining 17.91 → 17.45 → 17.24 thereafter
+              stopped at iter 2000 (collapse confirmed)
+```
+
+```text
+Per RGB-PSNR full-frame tiled audit:
+  v9.0:        23.49 mean across 14 indoor seqs
+  v9.0-noJEPA: 19.66 mean
+  delta:       3.83 dB
+```
+
+Without V-JEPA conditioning, pixel branch alone cannot recover scene structure
+under our same-recipe training schedule. **V-JEPA cross-attention is structural,
+not cosmetic.**
+
+### 3.2. Cost vs benefit
+
+```text
+                   v9.0    v9.0-noJEPA    delta
+Trainable params:  361.1M  351.9M         -9.2M (cross-attn modules)
+Frozen V-JEPA:     304M    0              -304M
+GPU peak:          41 GB   29.4 GB        -11.6 GB (V-JEPA backbone fwd)
+Step time:         5.13s   4.94s          -4%
+Quality (RGB-tile): 23.49   19.66          -3.83 dB
+```
+
+12 GB extra VRAM and 4% step time costs us ~3.8 dB on full-frame indoor audit (~4.15 dB on same-schedule RGB-256 sliding). Strong cost-justification to
+keep V-JEPA conditioning.
+
+### 3.3. Alignment with V-JEPA 2.1's design
+
+V-JEPA 2.1's "Dense Predictive Loss" specifically optimizes ALL spatial tokens
+(visible + masked) to be useful, not just masked tokens. This produces dense,
+spatially-localized features at every position — exactly what cross-attention KV
+needs. Our v9.0 design pattern matches Meta's downstream-task adaptation pattern
+(use the dense features, don't add new objectives on top of them).
+
+---
+
+## 4. Negative result: RAFT/optical-flow warp supervision (v9.1a)
+
+### 4.1. Hypothesis tested
+
+Add a RAFT-small estimated bidirectional optical flow + forward-backward
+occlusion mask + warped self-consistency loss on pred and R_hat:
+- `pred_warp_weight: 0.05`: ‖pred_t − warp(pred_{t+1}, flow_back)‖ × mask
+- `R_warp_weight:    0.10`: ‖R_t − warp(R_{t+1}, flow_back)‖ × mask
+- `R_adjacent_weight: 0.01` (lowered from 0.05)
+
+Trained 7500 iters under same v9.0 schedule, all other losses unchanged.
+
+### 4.2. Result
+
+```text
+v9.1a peak sliding(3) RGB-256: 23.785 @ iter 7500
+v9.0  peak sliding(3) RGB-256: 25.070 @ iter 7500
+delta: -1.29 dB (statistically significant given trajectory)
+```
+
+Live PSNR diverged early (iter 4000), gap widened over training. Stop/debug rule
+triggered (Y-512 < 25.0 by iter 8000).
+
+### 4.3. Diagnostic: P5 RAFT real-flow audit
+
+We ran the warp loss on ground-truth HQ frames using HQ-derived oracle flow.
+Even oracle-flow-on-HQ-frames produced **−32%** masked-L1 reduction (i.e. warp
+made it WORSE). Bilinear-warp interpolation noise on SDSD-indoor exceeds the
+actual frame-to-frame difference, because indoor scenes are mostly static
+(GT frame-pair L1 ≈ 0.0056, warp interpolation noise ≈ 0.007).
+
+### 4.4. Conclusion
+
+```text
+Image-space RAFT-warp supervision is structurally negative on SDSD-indoor.
+This holds for any flow source (LQ-flow, pred-flow, HQ-oracle-flow).
+The dataset is too static for warp loss to provide useful supervision.
+```
+
+Expected to also be negative on most dataset that has a mix of static + motion
+content, because static frames dominate the loss budget. Could be revisited only
+for genuinely motion-rich data (BVI-RLV/DID territory).
+
+---
+
+## 5. Negative result: V-JEPA token affinity supervision
+
+### 5.1. Hypothesis tested
+
+We thought V-JEPA tokens carry temporal correspondence information that could
+be used as a self-supervision signal: enforce affinity(pred_t, pred_{t+1}) to
+be close to affinity(HQ_t, HQ_{t+1}) in token space.
+
+### 5.2. Diagnostic before training
+
+`tools/affinity_diag_v9.py` ran cosine token-affinity at the deepest V-JEPA
+layer on 9 clips × 3 frame pairs across LQ / pred(v9.0_best) / HQ:
+
+```text
+Mean top-1 cosine:    LQ 0.888  pred 0.869  HQ 0.879
+Median displacement:  LQ 1.11   pred 1.15   HQ 0.77 (token units)
+closer-to-HQ score (pred vs LQ): −0.0066 (negative — pred slightly farther from HQ)
+```
+
+V-JEPA tokens are nearly identical across modalities — the encoder is too
+**low-light invariant** to discriminate enhancement quality. A token-affinity
+matching loss would have negligible gradient signal at init, and could even
+penalize the enhancement direction (since pred is slightly farther from HQ than
+LQ is in V-JEPA token space).
+
+### 5.3. Why this is consistent with V-JEPA's design
+
+V-JEPA was trained for masked-feature prediction with the explicit goal of
+illumination-invariant, high-level scene representation. The same property that
+makes it a good encoder for action recognition makes it a poor signal source
+for pixel-level photometric supervision: it doesn't change much when the input
+changes only in low-frequency illumination/exposure.
+
+### 5.4. Conclusion
+
+```text
+V-JEPA token affinity is mismatched as a supervision target for LLVE.
+This is a property of V-JEPA's invariance objective, not a bug in our diagnostic.
+Should not be revisited unless using a different encoder family.
+```
+
+---
+
+## 6. Motion audit correction (Section 5 of AU4)
+
+### 6.1. Initial result (AQ.A) and its flaw
+
+We bucketed our 14 indoor sequences into static / mild / dynamic by adjacent-frame
+mean abs difference of LQ frames (motion_lq) and computed RGB-PSNR per bucket.
+Result appeared to show V-JEPA's contribution **decreased** with motion:
+
+```text
+Δ(v9.0 − noJEPA) by motion_lq bucket:  6.39 / 4.00 / 1.12 dB
+```
+
+This was misinterpreted as evidence against a "V-JEPA helps motion" hypothesis.
+
+### 6.2. The bucketing artifact
+
+Reviewer noted that `motion_lq` is a poor motion proxy on low-light video
+because it conflates real motion with low-light noise/flicker. We re-bucketed
+using `motion_hq` (GT frame difference). 5 of 14 sequences ended up in different
+buckets:
+
+```text
+seq         motion_hq  motion_lq  bucket_by_hq  bucket_by_lq
+pair34_2    0.004      0.008      static        dynamic     ← OPPOSITE
+pair6_2     0.005      0.008      static        dynamic     ← OPPOSITE
+pair4       0.005      0.008      mild          dynamic
+pair7       0.006      0.005      mild          static
+pair3_2     0.009      0.007      dynamic       mild
+```
+
+The "dynamic by motion_lq" bucket was contaminated by sequences with high LQ
+noise but low GT motion.
+
+### 6.3. Corrected result (AT)
+
+Per-bucket lift over LQ baseline (bucket by motion_hq, RGB-PSNR full-frame tiled):
+
+```text
+Bucket    n   lift_v9.0   lift_v9.0b_mix   lift_v9.1a   lift_noJEPA
+static    5   14.77       14.93            14.12        11.64
+mild      5   14.13       14.45            14.25         9.57
+dynamic   4   15.20       14.20            14.88        11.44
+
+Δ(v9.0 − noJEPA) by motion_hq bucket:  3.13 / 4.57 / 3.76 dB
+v9.0 lift across buckets:              14.77 → 14.13 → 15.20 (roughly flat)
+```
+
+### 6.4. Correlation analysis
+
+Pearson r over 14 sequences:
+
+```text
+                  r(lift, motion_hq)   r(lift, motion_lq)
+v9.0_best:        +0.165               −0.341
+v9.0b_mix_best:   −0.006               −0.428
+v9.1a_best:       +0.219               −0.276
+v9.0-noJEPA:      +0.143               +0.334  ← OPPOSITE sign on motion_lq
+```
+
+All V-JEPA-conditioned models correlate negatively with motion_lq; noJEPA
+correlates positively. This sign-flip cleanly confirms motion_lq is measuring
+**low-light noise**, not motion: V-JEPA-conditioned models lose lift on noisy
+clips (V-JEPA's invariance anchors prediction toward a "clean" estimate that
+mismatches noisy LQ); noJEPA gains lift on noisy clips because there's more
+LQ→HQ gradient signal to chase.
+
+Caveat (per reviewer AU2/AU3.4): n=14 is small, "GT frame-difference proxy" is
+RGB diff not luma. The bucket table itself is the most defensible evidence;
+correlation numbers should be read as directional only.
+
+### 6.5. Conclusion
+
+```text
+On current SDSD/static_np indoor audit:
+  V-JEPA's contribution is approximately motion-neutral when measured by
+  GT frame-difference proxy.
+  
+  No motion-specific behavior is detectable on this split.
+  
+  motion_lq is a noise/flicker proxy on low-light video and should not be
+  used as motion proxy.
+```
+
+This does NOT prove V-JEPA can never help motion-rich data on different
+benchmarks (BVI-RLV/DID). It says: a temporal V-JEPA adapter is not the next
+best engineering branch given current evidence.
+
+---
+
+## 7. Dataset and protocol status
+
+### 7.1. SDSD/static_np ↔ LLVE-STCD test split mismatch
+
+```text
+Our static_np test set (14 sequences):
+  pair3_2, pair34_2, pair4, pair4_2, pair5, pair5_2,
+  pair6, pair6_2, pair7, pair7_2, pair8, pair8_2, pair9, pair9_2
+
+LLVE-STCD published test set (12 sequences):
+  pair13, pair15, pair21, pair23, pair31, pair33,
+  pair50, pair52, pair58, pair60, pair68, pair70
+
+Intersection: EMPTY
+```
+
+Likely from different SDSD release versions or different split files. Until
+this is resolved, our local PSNR numbers cannot be directly compared to
+LLVE-STCD's published 28.93 dB.
+
+### 7.2. Tiled-inference caveat
+
+All RGB-full-frame audit numbers in this document are tiled-inference
+variants, not direct full-frame inference. Per Section 2.3, tile-vs-direct
+sanity check shows ~34.6 dB PSNR — meaningful tile-boundary artifacts.
+
+### 7.3. BVI-RLV / DID feasibility
+
+Two motion-rich paired LLVE benchmarks are available:
+
+```text
+BVI-RLV (Lin et al. 2024):
+  40 scenes (32 train / 8 test)
+  31,800 paired frames
+  1920×1080 sRGB consumer cam (NOT RAW)
+  Two low-light levels (10% and 20% of normal)
+  IEEE DataPort open access
+  Reported SOTA: BVI-Mamba 31.22 PSNR
+  Disk: ~80 GB compressed
+  
+DID (Fu et al. ICCV 2023):
+  Motion-rich dancing scenes
+  Strict spatial alignment, multiple exposures
+  Available via Baidu Pan
+  Less mature codebase, less documented
+```
+
+BVI-RLV is the strongly preferred dataset upgrade if/when scaling experiments
+become justified.
+
+---
+
+## 8. Next recommended experiments
+
+### 8.1. AR2.A — external SOTA comparison (priority 1)
+
+```text
+Goal: how far is v9.0_best from a published LLVE method on our local pipeline?
+
+Method: download LLVE-STCD pretrained ckpt, run on our 14 SDSD/static_np test
+seqs with the same RGB-PSNR uint8 + (matched) inference protocol.
+
+Acceptance:
+  - same 14 sequences
+  - same frame count and PSNR computation
+  - record full-frame vs tiled vs padded inference
+  - per-sequence table
+  - do NOT claim comparability to LLVE-STCD's 28.93 unless their split is used
+
+Cost: 3-5 h engineering. Bounded effort: stop if env conflicts dominate.
+```
+
+### 8.2. v9.3-bigdata — BVI-RLV scale-up (priority 2, deferred)
+
+```text
+Goal: does larger paired sRGB video data improve the pixel branch ceiling?
+
+Method: download BVI-RLV, train v9.0 on SDSD + BVI-RLV mix, evaluate on both
+test sets and on LLVE-STCD's split if reachable.
+
+Cost: ~1.5 day total (download + dataset code + 7500 iter training).
+
+NOT justified by motion hypothesis (closed by Section 6).
+JUSTIFIED by data scale and stronger published baselines.
+
+Defer until note + AR2.A done.
+```
+
+### 8.3. Decoder/photometric improvements (priority 3, conditional)
+
+If AR2.A shows we're 3+ dB below external SOTA on the same pipeline, the
+remaining lever is the pixel decoder side:
+
+```text
+- larger / different pixel decoder backbone (Restormer-XL, ConvNeXt-V2, etc.)
+- better photometric loss family
+- stronger data augmentation
+- try removing some of the auxiliary losses (Retinex compose, L_smooth, dod)
+```
+
+These are open exploration only after AR2.A and BVI-RLV are decided.
+
+### 8.4. Explicitly blocked
+
+```text
+v9.3-temporal-adapter:    closed by Section 6 (no motion correlation)
+v9.3-affinity-loss:       closed by Section 5 (V-JEPA invariance)
+v9.3-RAFT-warp-revival:   closed by Section 4 (structural negative)
+RAW/event-camera pivot:   v10/v11 territory, not v9
+v9.0c (mixed indoor+outdoor as separate from v9.0_mix): already done de facto;
+                          v9.0 was always mixed-data, not indoor-only
+```
+
+---
+
+## 9. Appendix: file pointers
+
+```text
+review thread:                /home/ma-user/workspace/zihaohe/vjepa_llve/VJEPA_LLVE_CODE_REVIEW.md
+                              (full discussion, ~8500 lines as of 2026-05-02)
+
+tools:
+  audit_protocol_v9.py         internal-metric audit (RGB/Y, 256/512 crop)
+  audit_llvestcd.py            RGB-PSNR uint8 full-frame tiled (LLVE-STCD-style)
+  raft_diag_v9.py              RAFT real-flow diagnostic (v9.1a postmortem)
+  affinity_diag_v9.py          V-JEPA token affinity diagnostic (v9.2-affd)
+  motion_audit_v3.py           motion-bucket + outdoor audit (AP6)
+  reaggregate_ar2b.py          motion_hq re-bucketing (AT, this note's Section 6)
+
+key checkpoints:
+  /cache/zihaohe/checkpoint/runs/v9/ckpts/best.pt           v9.0_best, sliding 25.07
+  /cache/zihaohe/checkpoint/runs/v9_0b/ckpts/best.pt        v9.0b_mix_best, Y-512 27.21 sliding (caveat: Y-512 metric)
+  /cache/zihaohe/checkpoint/runs/v9_1/ckpts/best.pt         v9.1a_best, sliding 23.79
+  /cache/zihaohe/checkpoint/runs/v9_noJEPA/ckpts/best.pt    v9.0-noJEPA_best, sliding 19.22
+
+audit outputs:
+  /cache/zihaohe/checkpoint/audit_v9/                       internal Y-512 protocol audit
+  /cache/zihaohe/checkpoint/audit_llvestcd/                 RGB-full-frame tiled audit
+  /cache/zihaohe/checkpoint/motion_audit_v3/                motion bucket + outdoor
+  /cache/zihaohe/checkpoint/ar2b_reagg/                     motion_hq re-aggregation (AT)
+  /cache/zihaohe/visualizations/raft_diag_v9_1a/            RAFT real-flow diagnostic
+  /cache/zihaohe/visualizations/affinity_diag_v9/           V-JEPA affinity diagnostic
+```
+
+---
+
+End of note. Authored by current development thread; reviewed and locked per
+review thread sections AU0–AU7 (2026-05-02).

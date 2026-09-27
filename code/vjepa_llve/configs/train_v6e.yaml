@@ -1,0 +1,113 @@
+_base_: base_21.yaml
+
+# v6.E: PMRF (Posterior-Mean Rectified Flow) on top of v6.D architecture.
+# Same Retinex DiT + CFIM as v6.D; only flow trajectory changes:
+#   v6.D: from V-JEPA(LQ) to V-JEPA(HQ)
+#   v6.E: from V-JEPA(v6.0(LQ)) to V-JEPA(HQ)  ← MMSE start
+#
+# Identity-at-init ⇒ initial val PSNR = v6.0 baseline (~25.3 dB).
+# Lower bound is locked at v6.0; flow only learns the residual to HQ.
+
+output_dir: /cache/zihaohe/checkpoint/runs/v6e
+
+precision: bf16
+
+model:
+  inference_steps: 8
+
+  # Frozen MMSE predictor: v6.0 best.pt. Loaded once at construction.
+  mmse:
+    ckpt_path: /cache/zihaohe/checkpoint/runs/v6/ckpts/best.pt
+    inference_steps: 8
+    # v6.0 architecture spec (must match the ckpt). Copied from train_v6.yaml.
+    latent_dit:
+      dim: 768
+      depth: 16
+      num_heads: 12
+      ffn_mult: 4.0
+      use_gradient_checkpoint: true
+    pixel_decoder:
+      base_dim: 48
+      num_blocks: [2, 4, 4, 6, 8]
+      heads: [2, 4, 8, 8, 8]
+      ffn_exp: 2.66
+      vjepa_layer_per_scale: [0, 0, 1, 2, 3]
+      cross_attn_at_scales: [2, 3, 4]
+      use_gradient_checkpoint: true
+    predictor:
+      enabled: false
+
+  # Trainable v6.D-style architecture
+  latent_dit:
+    dim: 768                  # split as 384 R + 384 L
+    depth: 16
+    num_heads: 12
+    ffn_mult: 4.0
+    cfim_every: 4
+    cfim_heads: 8
+    use_gradient_checkpoint: true
+
+  pixel_decoder:
+    base_dim: 48
+    num_blocks: [2, 4, 4, 6, 8]
+    heads: [2, 4, 8, 8, 8]
+    ffn_exp: 2.66
+    vjepa_layer_per_scale: [0, 0, 1, 2, 3]
+    cross_attn_at_scales: [2, 3, 4]
+    use_gradient_checkpoint: true
+    use_cfim_bottleneck: true
+
+  predictor:
+    enabled: false
+
+train:
+  batch_size: 1
+  clip_len: 16
+  crop_size: 256
+  log_every: 50
+  val_every: 500
+  save_every: 2000
+  keep_n_step_ckpts: 2
+  ema_decay: 0.999
+  ema_start: 1000
+  val_window: 3
+
+optim:
+  lr: 1.0e-4                  # smaller LR than v6.D since flow trajectory is shorter
+  min_lr: 1.0e-5
+  weight_decay: 1.0e-4
+  betas: [0.9, 0.99]
+  total_iters: 40000          # short residual flow doesn't need 80k
+  warmup_iters: 500
+  scheduler: cosine
+  grad_clip: 1.0
+  accum_steps: 4              # effective batch = 4 (matches v6.0 exactly)
+  resume_from: null
+  resume_reset_optim: false
+
+data:
+  train:
+    datasets:
+      - kind: sdsd
+        root: /home/ma-user/workspace/zihaohe/datasets/SDSD_indoor
+        subset: direct
+        split: train
+        weight: 1.0
+      - kind: sdsd
+        root: /home/ma-user/workspace/zihaohe/datasets/SDSD_outdoor
+        subset: direct
+        split: train
+        weight: 1.0
+  val:
+    kind: sdsd
+    root: /home/ma-user/workspace/zihaohe/datasets/SDSD_indoor
+    subset: direct
+    split: test
+
+loss:
+  flow_weight: 1.0
+  pix_weight: 1.0
+  lpips_weight: 0.1
+  temporal_weight: 0.1
+  smooth_L_weight: 0.01
+  temp_R_weight: 0.01

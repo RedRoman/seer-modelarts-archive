@@ -1,0 +1,22 @@
+{
+  "checkpoint": "/cache/zihaohe/checkpoint/runs/v35_stage4/final.pt",
+  "ckpt_step": 6000,
+  "input_shape": [
+    1,
+    3,
+    16,
+    512,
+    512
+  ],
+  "image_size_backbone": 512,
+  "torch_cuda_peak_allocated_MB": 39062.62841796875,
+  "torch_cuda_peak_reserved_MB": 48348.0,
+  "nvidia_smi_used_before_build_MB": 3.0,
+  "nvidia_smi_used_after_build_MB": 3122.0,
+  "nvidia_smi_used_before_fwd_MB": 3880.0,
+  "nvidia_smi_used_after_fwd_MB": 48876.0,
+  "nvidia_smi_delta_fwd_MB": 44996.0,
+  "fwd_time_s": 2.640145778656006,
+  "autocast": "bfloat16",
+  "note": "Single full forward, no chunking (T=16 all at once), matching the appendix runtime protocol (16-frame 512x512 clip). torch.cuda peak_allocated is the authoritative number; nvidia-smi numbers are a cross-check and include CUDA context + cudnn workspace overhead beyond torch's allocator."
+}

@@ -1,0 +1,38 @@
+{
+  "method": "BVI-Mamba",
+  "notes": "No pretrained weights released. arxiv 2604.23655 / github edhuang1/BVI-Mamba only publishes training code (`train.py`), which requires 20 epochs \u00d7 ~1h/epoch on BVI-RLV + DCN CUDA extensions. Would consume the entire budget for just one dataset.",
+  "protocol": "N/A (method could not be run)",
+  "per_seq": {},
+  "summary": {
+    "SDSD_indoor": {
+      "psnr_rgb": null,
+      "lpips": null,
+      "n_seqs": 0
+    },
+    "SDSD_outdoor": {
+      "psnr_rgb": null,
+      "lpips": null,
+      "n_seqs": 0
+    },
+    "BVI_RLV": {
+      "psnr_rgb": null,
+      "lpips": null,
+      "n_seqs": 0
+    },
+    "LOL_v1": {
+      "psnr_rgb": null,
+      "lpips": null,
+      "n_seqs": 0
+    },
+    "LOLv2_Syn": {
+      "psnr_rgb": null,
+      "lpips": null,
+      "n_seqs": 0
+    },
+    "LOLv2_Real": {
+      "psnr_rgb": null,
+      "lpips": null,
+      "n_seqs": 0
+    }
+  }
+}

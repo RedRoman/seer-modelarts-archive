@@ -1,0 +1,14 @@
+[Seer] variant from ckpt args: {'no_vjepa': True, 'random_vjepa': False, 'disable_igab': False, 'disable_lic': False, 'disable_bottleneck': False}
+[Seer] pixel_branch missing=0 unexpected=0
+[SDSD] layout=A/C (static_np or original) subset=direct split=test -> 15 sequences, 1037 frames total.
+Loading pretrained model LPIPS from /home/ma-user/.cache/torch/hub/pyiqa/LPIPS_v0.1_alex-df73285e.pth
+Loading pretrained model DISTS from /home/ma-user/.cache/torch/hub/pyiqa/DISTS_weights-f5e65c96.pth
+L0_SDSD-indoor   raw 24.989/0.1356  gtmean 27.594/0.1293 (134s)
+[SDSD] layout=A/C (static_np or original) subset=direct split=test -> 25 sequences, 620 frames total.
+L1_SDSD-outdoor  raw 21.934/0.2039  gtmean 25.900/0.1927 (211s)
+[BVI-RLV] test: 16 sequences (8 scenes × ≤2 fps), 6240 frames total
+L2_BVI-RLV       raw 18.245/0.2398  gtmean 21.212/0.2331 (172s)
+L3_LOL-v1        raw 15.816/0.3339  gtmean 20.085/0.3053 (79s)
+L4_LOLv2-Syn     raw 16.444/0.3239  gtmean 19.080/0.3106 (319s)
+L5_LOLv2-Real    raw 17.657/0.3279  gtmean 21.265/0.3067 (525s)
+[SAVE] /cache/zihaohe/runs/seer_iclr/gtmean/ctrl_novjepa_s1_gtmean.json

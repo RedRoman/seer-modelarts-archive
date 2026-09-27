@@ -1,0 +1,71 @@
+% Seer architecture, drawn to match the code (tools/server/, models/pixel_branch_v10.py):
+%  - M1 acts on the block-23 tap only; M2 compares Psi(Phi23(X)) with Phi23(Y)
+%  - cross-attention at stages 2-5 (encoder E2-E4, bottleneck B5, decoder D4-D2), not at full resolution
+%  - LIC at every stage, IGAB after every decoder stage, temporal mixing only at the bottleneck
+%  - output = X + residual; Retinex heads are training-only
+\begin{tikzpicture}[
+  font=\sffamily\scriptsize, >=latex, x=1cm, y=1cm,
+  blk/.style={draw, rounded corners=1.5pt, minimum height=6.5mm, minimum width=6.6mm, inner sep=1pt, fill=orange!8, align=center},
+  bott/.style={blk, fill=orange!22, minimum width=9.5mm},
+  tok/.style={draw, rounded corners=1.5pt, fill=blue!7, minimum height=5mm, minimum width=8mm, inner sep=1pt, font=\sffamily\tiny},
+  frozen/.style={draw, rounded corners=1.5pt, fill=blue!13, minimum height=7mm, inner sep=2pt, align=center},
+  trn/.style={draw, rounded corners=1.5pt, fill=green!10, minimum height=6mm, inner sep=2pt, align=center},
+  aux/.style={draw, dashed, rounded corners=1.5pt, fill=red!4, inner sep=2pt, align=center},
+  xa/.style={circle, draw, fill=white, inner sep=0.4pt, minimum size=3.2mm, font=\sffamily\tiny},
+  tag/.style={font=\sffamily\tiny, inner sep=0.5pt},
+  arr/.style={->, thick},
+  tarr/.style={->, blue!55!black},
+  darr/.style={->, dashed},
+]
+% ---------------- pixel branch (y = 0) ----------------
+\node[align=center] (X) at (0,0) {LQ clip $\mathbf{X}$\\\tiny $16$ frames};
+\foreach \n/\x in {E1/1.25,E2/2.15,E3/3.05,E4/3.95}
+  \node[blk] (\n) at (\x,0) {\n};
+\foreach \n/\x in {D4/6.05,D3/6.95,D2/7.85,D1/8.75}
+  \node[blk] (\n) at (\x,0) {\n\\[-2pt]\tiny IGAB};
+\node[bott] (B5) at (5.0,0) {B5\\[-1pt]\tiny 3-D mix\\[-1pt]\tiny + CFIM};
+\node[circle, draw, inner sep=0.3pt] (plus) at (9.65,0) {$+$};
+\node (Yh) at (10.3,0) {$\hat{\mathbf{Y}}$};
+\node[aux, fill=gray!7] (cp) at (11.45,0) {CP\\[-1pt]\tiny (optional)};
+\draw[arr] (X) -- (E1);
+\foreach \a/\b in {E1/E2,E2/E3,E3/E4,E4/B5,B5/D4,D4/D3,D3/D2,D2/D1} \draw[arr] (\a) -- (\b);
+\draw[arr] (D1) -- (plus);
+\draw[arr] (plus) -- (Yh);
+\draw[darr] (Yh) -- (cp);
+\draw[->, thin] (X.south) -- ++(0,-0.55) -| (plus.south);
+\foreach \a/\b/\d in {E1/D1/0.14,E2/D2/0.22,E3/D3/0.30,E4/D4/0.38}
+  \draw[gray, thin] (\a.south) -- ++(0,-\d) -| (\b.south);
+% cross-attention entries (stages 2-5)
+\foreach \n in {E2,E3,E4,B5,D4,D3,D2} {
+  \node[xa] (xa\n) at ($(\n.north)+(0,0.32)$) {$\times$};
+  \draw[->, thin] (xa\n) -- (\n);
+}
+% Retinex heads, training only
+\node[aux, font=\sffamily\tiny] (ret) at (8.75,0.78) {$\hat{\mathbf R},\hat{\mathbf L}$\\[-1pt]train only};
+\draw[darr] (D1) -- (ret);
+% pixel-branch frame
+\coordinate (pbl) at ($(E1.south)+(0,-0.42)$);
+\begin{scope}[on background layer]
+\node[draw=orange!70, rounded corners=3pt, fit=(E1)(D1)(ret)(xaE2)(pbl), inner sep=1.6mm] (pbox) {};
+\end{scope}
+\node[font=\sffamily\tiny\bfseries, text=orange!55!black, anchor=north west] at ($(pbox.south west)+(0,-0.02)$)
+  {Pixel branch $\mathcal{P}_\theta$ (trainable): frame-wise Restormer U-Net, LIC at every stage, cross-frame mixing only at B5};
+% ---------------- router (y = 1.45) ----------------
+\node[trn, minimum width=6.35cm, minimum height=5mm] (m3) at (4.998,1.5) {\textbf{M3} router: per-stage softmax over the four taps $\;\rightarrow\;\tilde\Phi_s$ (keys / values)};
+\foreach \n in {E2,E3,E4,B5,D4,D3,D2} \draw[tarr] (m3.south -| xa\n) -- (xa\n.north);
+% ---------------- V-JEPA path (y = 2.5) ----------------
+\node[frozen] (enc) at (1.2,2.55) {Frozen V-JEPA 2.1\\[-1pt]ViT-L $\Phi$ \tiny($256^2$ in)};
+\draw[arr] (X.north) |- (enc.west);
+\foreach \t/\x in {5/2.95,11/3.75,17/4.55} {
+  \node[tok] (t\t) at (\x,2.55) {$\Phi^{(\t)}$};
+  \draw[tarr] (t\t.south) -- (t\t.south |- m3.north);
+}
+\node[tok] (t23) at (5.35,2.55) {$\Phi^{(23)}$};
+\draw[arr] (enc.east) -- (t5.west);
+\draw[thin] (t5.east) -- (t11.west); \draw[thin] (t11.east) -- (t17.west); \draw[thin] (t17.east) -- (t23.west);
+\node[trn] (m1) at (7.3,2.55) {\textbf{M1} $\Psi$: frozen V-JEPA\\[-1pt]predictor + LoRA, gate $g$};
+\draw[arr] (t23) -- (m1);
+\draw[tarr] (m1.south) -- (m1.south |- m3.north);
+\node[aux] (m2) at (10.55,2.55) {\textbf{M2} (training only)\\[-1pt]$\lVert\Psi(\Phi^{(23)}(\mathbf X))-\Phi^{(23)}(\mathbf Y)\rVert_1$};
+\draw[darr] (m1) -- (m2);
+\end{tikzpicture}

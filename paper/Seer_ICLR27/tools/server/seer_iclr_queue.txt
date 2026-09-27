@@ -1,0 +1,9 @@
+# TAG ITERS FLAGS   -- claimed top-down by queue_runner.sh; compare against ctrl_*_s0/step_750.pt
+abl_randvjepa_s0 750 --random_vjepa
+abl_m1active_s0 750 --gate_init 0.5
+abl_noretinex_s0 750 --w_retinex 0 --w_smooth 0
+abl_noigab_s0 750 --disable_igab
+abl_nolic_s0 750 --disable_lic
+abl_m3soft_s0 750 --router_c 1.0
+abl_nobottleneck_s0 750 --disable_bottleneck
+abl_randvjepa_s1 750 --random_vjepa

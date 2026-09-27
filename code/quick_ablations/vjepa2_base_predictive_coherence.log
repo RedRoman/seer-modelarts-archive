@@ -1,0 +1,52 @@
+[*] Building V-JEPA2 (base) ViT-L encoder+predictor ...
+/cache/zihaohe/conda_envs/vjepa2-pip/lib/python3.11/site-packages/timm/models/layers/__init__.py:49: FutureWarning: Importing from timm.models.layers is deprecated, please import via timm.layers
+  warnings.warn(f"Importing from {__name__} is deprecated, please import via timm.layers", FutureWarning)
+    loaded +16.4s
+    checkpoint top-level keys: ['encoder', 'predictor', 'opt', 'scaler', 'target_encoder', 'epoch', 'loss', 'batch_size', 'world_size', 'lr']
+    encoder load_state_dict missing_keys=0 unexpected_keys=0
+    predictor load_state_dict missing_keys=0 unexpected_keys=0
+[GATE] predictor.predictor_proj.weight.shape = (1024, 384)
+[GATE] predictor.predictor_embed.in_features (encoder->predictor in) = 1024
+[GATE] encoder.embed_dim = 1024
+[GATE PASS] predictor output dim matches own encoder embed_dim (1024). Proceeding.
+[LOAD] S33_mix5__10fps        T=200 idx=[0, 9, 18, 27, 37, 46, 55, 65] delta=4
+[LOAD] S35_Bunny__10fps       T=480 idx=[0, 22, 45, 68, 90, 113, 136, 159] delta=11
+[LOAD] S37_Mario3__10fps      T=370 idx=[0, 17, 34, 52, 69, 87, 104, 122] delta=8
+[LOAD] S39_Books4__10fps      T=400 idx=[0, 18, 37, 56, 75, 94, 113, 132] delta=9
+[LOAD] S40_Books5__10fps      T=660 idx=[0, 31, 62, 93, 125, 156, 187, 219] delta=15
+[LOAD] S40_Books5__20fps      T=660 idx=[0, 31, 62, 93, 125, 156, 187, 219] delta=15
+[LOAD] MVI_1007               T=30 idx=[0, 1, 2, 3, 5, 6, 7, 9] delta=1
+[LOAD] MVI_1007_2             T=20 idx=[0, 1, 2, 3, 4, 5, 6, 7] delta=1
+[LOAD] MVI_1009               T=30 idx=[0, 1, 2, 3, 5, 6, 7, 9] delta=1
+[LOAD] MVI_1011               T=30 idx=[0, 1, 2, 3, 5, 6, 7, 9] delta=1
+[LOAD] MVI_1011_2             T=20 idx=[0, 1, 2, 3, 4, 5, 6, 7] delta=1
+
+[*] 11 sequences prepared
+
+[*] target tubelets (0-indexed): [4, 5, 6, 7] (Tp=8)
+/cache/zihaohe/conda_envs/vjepa2-pip/lib/python3.11/site-packages/torch/backends/cuda/__init__.py:342: FutureWarning: torch.backends.cuda.sdp_kernel() is deprecated. In the future, this context manager will be removed. Please see, torch.nn.attention.sdpa_kernel() for the new context manager, with updated signature.
+  warnings.warn(
+    S33_mix5__10fps        predictor=0.55880  naive=0.46341  delta=+0.09538
+    S35_Bunny__10fps       predictor=0.46469  naive=0.41606  delta=+0.04862
+    S37_Mario3__10fps      predictor=0.51401  naive=0.44068  delta=+0.07333
+    S39_Books4__10fps      predictor=0.49447  naive=0.48038  delta=+0.01409
+    S40_Books5__10fps      predictor=0.43657  naive=0.41958  delta=+0.01699
+    S40_Books5__20fps      predictor=0.43072  naive=0.42278  delta=+0.00795
+    MVI_1007               predictor=0.63407  naive=0.47735  delta=+0.15672
+    MVI_1007_2             predictor=0.63430  naive=0.47964  delta=+0.15466
+    MVI_1009               predictor=0.64141  naive=0.48552  delta=+0.15589
+    MVI_1011               predictor=0.64006  naive=0.48700  delta=+0.15306
+    MVI_1011_2             predictor=0.62170  naive=0.46215  delta=+0.15955
+
+==========================================================================================
+metric                                         mean                 95% CI
+------------------------------------------------------------------------------------------
+V-JEPA2(base) predictor score               0.55189 [0.5036,0.6000]
+V-JEPA2(base) naive baseline                0.45769 [0.4416,0.4730]
+DINOv3 naive baseline (reference)           0.81744 [0.7290,0.8980]
+------------------------------------------------------------------------------------------
+Wilcoxon predictor>naive: p=0.00048828125  stat=66.0  cohens_d=+1.4634  delta_mean=+0.09420
+==========================================================================================
+[SAVE] /home/ma-user/workspace/zihaohe/quick_ablations/vjepa2_base_predictive_coherence.json
+[DONE] 24.3s
+DONE_EXIT_CODE_0

@@ -1,0 +1,19 @@
+[Seer] variant from ckpt args: {'no_vjepa': False, 'random_vjepa': False, 'disable_igab': False, 'disable_lic': False, 'disable_bottleneck': False}
+[Seer] pixel_branch missing=0 unexpected=0
+[VJepaBackboneLocal21] loaded /home/ma-user/workspace/zihaohe/checkpoint/vjepa2_1_vitl_dist_vitG_384.pt | missing=0 unexpected=2
+  unexpected (first 5): ['patch_embed_img.proj.weight', 'patch_embed_img.proj.bias']
+[CounterfactualRefiner] loaded predictor from /home/ma-user/workspace/zihaohe/checkpoint/vjepa2_1_vitl_dist_vitG_384.pt | missing=0 unexpected=4
+[Seer] cf_refiner missing=0 unexpected=0 gate=+0.000090
+[SDSD] layout=A/C (static_np or original) subset=direct split=train -> 59 sequences, 1671 frames total.
+  warnings.warn(
+[SDSD] layout=A/C (static_np or original) subset=direct split=train -> 101 sequences, 2530 frames total.
+[CP] closed-form alpha on 15 SDSD train clips: raw=[0.17051106960250523, -0.623542950264678, -0.24610474047820363] clipped=[0.17051106691360474, 0.0, 0.0]
+[SDSD] layout=A/C (static_np or original) subset=direct split=test -> 15 sequences, 1037 frames total.
+Loading pretrained model LPIPS from /home/ma-user/.cache/torch/hub/pyiqa/LPIPS_v0.1_alex-df73285e.pth
+Loading pretrained model DISTS from /home/ma-user/.cache/torch/hub/pyiqa/DISTS_weights-f5e65c96.pth
+  warnings.warn(
+L0_SDSD-indoor   HMP-raw  PSNR=23.499 LPIPS=0.1687 DISTS=0.1796 CLIPIQA=0.2077 n=10 tlp=0.0705 mabd=0.0019 flicker=0.0348 warp_err=0.0116 (180s)
+L0_SDSD-indoor   HMP+CP   PSNR=23.314 LPIPS=0.2319 DISTS=0.1738 CLIPIQA=0.1452 n=10 tlp=0.1201 mabd=0.0020 flicker=0.0360 warp_err=0.0163 (180s)
+L0_SDSD-indoor   HMP+CPfit PSNR=23.501 LPIPS=0.1725 DISTS=0.1813 CLIPIQA=0.1656 n=10 tlp=0.0757 mabd=0.0019 flicker=0.0350 warp_err=0.0120 (180s)
+L0_SDSD-indoor   HMP+CPxfit PSNR=23.550 LPIPS=0.1714 DISTS=0.1762 CLIPIQA=0.1951 n=10 tlp=0.0760 mabd=0.0019 flicker=0.0349 warp_err=0.0121 (180s)
+[SAVE] /temp/zihaohe/cache/checkpoint/runs/seer_iclr_evals/qualitative_test/_check_seer_eval_unified_L0first10.json

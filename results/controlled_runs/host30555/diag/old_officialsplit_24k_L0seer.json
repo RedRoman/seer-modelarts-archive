@@ -1,0 +1,138 @@
+{
+  "method": "Retinexformer_SeerSplit",
+  "notes": "Retinexformer (SDSD union, Seer split) on Seer's SDSD-indoor test split (15 seqs); ckpt=/temp/zihaohe/cache/checkpoint/runs/retinexformer_seer_protocol/experiments/RetinexFormer_SDSD_union_seer_protocol/models/net_g_24000.pth",
+  "protocol": "video: center T=16, 512x512 center-crop; images: full-image. PSNR uint8 RGB, LPIPS/DISTS/CLIPIQA pyiqa.",
+  "per_seq": {
+    "SDSD_indoor_seer__pair50": {
+      "psnr_rgb": 27.66802228336256,
+      "lpips": 0.2912019994109869,
+      "dists": 0.16168628633022308,
+      "clipiqa": 0.2733470518141985,
+      "n_frames": 16
+    },
+    "SDSD_indoor_seer__pair52": {
+      "psnr_rgb": 24.444026994664956,
+      "lpips": 0.25837048795074224,
+      "dists": 0.19801563769578934,
+      "clipiqa": 0.14199191750958562,
+      "n_frames": 16
+    },
+    "SDSD_indoor_seer__pair58": {
+      "psnr_rgb": 31.77797551966259,
+      "lpips": 0.1983407260850072,
+      "dists": 0.17839117720723152,
+      "clipiqa": 0.15043506119400263,
+      "n_frames": 16
+    },
+    "SDSD_indoor_seer__pair5_2": {
+      "psnr_rgb": 25.740064544450924,
+      "lpips": 0.23800106812268496,
+      "dists": 0.17633871361613274,
+      "clipiqa": 0.3182363882660866,
+      "n_frames": 16
+    },
+    "SDSD_indoor_seer__pair6": {
+      "psnr_rgb": 26.936988588588417,
+      "lpips": 0.3283345103263855,
+      "dists": 0.22801383212208748,
+      "clipiqa": 0.20505141373723745,
+      "n_frames": 16
+    },
+    "SDSD_indoor_seer__pair60": {
+      "psnr_rgb": 27.936800882430042,
+      "lpips": 0.25669884216040373,
+      "dists": 0.1855948492884636,
+      "clipiqa": 0.1412514573894441,
+      "n_frames": 16
+    },
+    "SDSD_indoor_seer__pair68": {
+      "psnr_rgb": 32.263951192743576,
+      "lpips": 0.20740784984081984,
+      "dists": 0.1874978505074978,
+      "clipiqa": 0.23045526817440987,
+      "n_frames": 16
+    },
+    "SDSD_indoor_seer__pair6_2": {
+      "psnr_rgb": 27.964141307433863,
+      "lpips": 0.20632300153374672,
+      "dists": 0.1421329267323017,
+      "clipiqa": 0.3246942516416311,
+      "n_frames": 16
+    },
+    "SDSD_indoor_seer__pair7": {
+      "psnr_rgb": 18.066380592717184,
+      "lpips": 0.16884156502783298,
+      "dists": 0.15167028084397316,
+      "clipiqa": 0.21551203075796366,
+      "n_frames": 16
+    },
+    "SDSD_indoor_seer__pair70": {
+      "psnr_rgb": 28.891422885516203,
+      "lpips": 0.1472797179594636,
+      "dists": 0.13666753098368645,
+      "clipiqa": 0.13370612217113376,
+      "n_frames": 16
+    },
+    "SDSD_indoor_seer__pair7_2": {
+      "psnr_rgb": 16.52688190744741,
+      "lpips": 0.36305617168545723,
+      "dists": 0.22176570817828178,
+      "clipiqa": 0.22132229153066874,
+      "n_frames": 16
+    },
+    "SDSD_indoor_seer__pair8": {
+      "psnr_rgb": 26.874471095616272,
+      "lpips": 0.30346537195146084,
+      "dists": 0.2591976746916771,
+      "clipiqa": 0.2561869276687503,
+      "n_frames": 16
+    },
+    "SDSD_indoor_seer__pair8_2": {
+      "psnr_rgb": 30.33545190196819,
+      "lpips": 0.18893412314355373,
+      "dists": 0.16284099966287613,
+      "clipiqa": 0.3687439654022455,
+      "n_frames": 16
+    },
+    "SDSD_indoor_seer__pair9": {
+      "psnr_rgb": 31.605009610368736,
+      "lpips": 0.22308400366455317,
+      "dists": 0.1847739964723587,
+      "clipiqa": 0.14697219245135784,
+      "n_frames": 16
+    },
+    "SDSD_indoor_seer__pair9_2": {
+      "psnr_rgb": 30.233372747048136,
+      "lpips": 0.1441434510052204,
+      "dists": 0.12856264412403107,
+      "clipiqa": 0.19968572817742825,
+      "n_frames": 16
+    }
+  },
+  "summary": {
+    "SDSD_indoor_seer": {
+      "psnr_rgb": 27.15099747026794,
+      "lpips": 0.2348988593245546,
+      "dists": 0.18021000723044078,
+      "clipiqa": 0.2218394711924096,
+      "n_seqs": 15
+    }
+  },
+  "subset_summary": {
+    "SDSD_indoor_seer&STCD12": {
+      "psnr_rgb": 28.830366626396653,
+      "lpips": 0.2265499372345706,
+      "dists": 0.17464222200214863,
+      "clipiqa": 0.1785311463754624,
+      "n_seqs": 6,
+      "seqs": [
+        "pair50",
+        "pair52",
+        "pair58",
+        "pair60",
+        "pair68",
+        "pair70"
+      ]
+    }
+  }
+}

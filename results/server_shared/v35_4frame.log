@@ -1,0 +1,235 @@
+2026-06-21 02:38:28 INFO: === v35-4frame (n_stack=4, supervise center frame) ===
+2026-06-21 02:38:28 INFO: init: /cache/zihaohe/checkpoint/runs/v34a_igmsa_from_v9/best_y512.pt
+/cache/zihaohe/conda_envs/vjepa2-pip/lib/python3.11/site-packages/timm/models/layers/__init__.py:49: FutureWarning: Importing from timm.models.layers is deprecated, please import via timm.layers
+  warnings.warn(f"Importing from {__name__} is deprecated, please import via timm.layers", FutureWarning)
+[VJepaBackboneLocal21] loaded /home/ma-user/workspace/zihaohe/checkpoint/vjepa2_1_vitl_dist_vitG_384.pt | missing=0 unexpected=2
+  unexpected (first 5): ['patch_embed_img.proj.weight', 'patch_embed_img.proj.bias']
+2026-06-21 02:38:51 INFO:   init: loaded=901/961 shape-skipped=60 missing=5 unexpected=0
+2026-06-21 02:38:51 INFO:   shape-skipped keys (first 8): ['stem.weight', 'enc_illum.0.proj.0.weight', 'enc_illum.0.proj.0.bias', 'enc_illum.0.proj.2.weight', 'enc_illum.0.proj.2.bias', 'enc_illum.1.proj.0.weight', 'enc_illum.1.proj.0.bias', 'enc_illum.1.proj.2.weight']
+[SDSD] layout=A/C (static_np or original) subset=direct split=test -> 15 sequences, 1037 frames total.
+/cache/zihaohe/conda_envs/vjepa2-pip/lib/python3.11/site-packages/torch/backends/cuda/__init__.py:342: FutureWarning: torch.backends.cuda.sdp_kernel() is deprecated. In the future, this context manager will be removed. Please see, torch.nn.attention.sdpa_kernel() for the new context manager, with updated signature.
+  warnings.warn(
+2026-06-21 02:39:13 INFO: Zero-iter audit (22.5s): RGB-512=8.965  Y-512=8.998
+[SDSD] layout=A/C (static_np or original) subset=direct split=train -> 59 sequences, 1671 frames total.
+[SDSD] layout=A/C (static_np or original) subset=direct split=train -> 101 sequences, 2530 frames total.
+2026-06-21 02:39:50 INFO: it    50/10000 pix=0.2042 step=0.73s
+2026-06-21 02:40:25 INFO: it   100/10000 pix=0.1648 step=0.72s
+2026-06-21 02:40:58 INFO: it   150/10000 pix=0.1113 step=0.70s
+2026-06-21 02:41:34 INFO: it   200/10000 pix=0.0917 step=0.70s
+2026-06-21 02:42:09 INFO: it   250/10000 pix=0.0843 step=0.70s
+2026-06-21 02:42:42 INFO: it   300/10000 pix=0.0773 step=0.69s
+2026-06-21 02:43:26 INFO: it   350/10000 pix=0.0870 step=0.72s
+2026-06-21 02:44:15 INFO: it   400/10000 pix=0.0786 step=0.75s
+2026-06-21 02:45:07 INFO: it   450/10000 pix=0.0789 step=0.79s
+2026-06-21 02:45:54 INFO: it   500/10000 pix=0.0746 step=0.80s
+2026-06-21 02:46:37 INFO: it   550/10000 pix=0.0735 step=0.81s
+2026-06-21 02:47:15 INFO: it   600/10000 pix=0.0693 step=0.80s
+2026-06-21 02:47:51 INFO: it   650/10000 pix=0.0658 step=0.80s
+2026-06-21 02:48:23 INFO: it   700/10000 pix=0.0643 step=0.79s
+2026-06-21 02:48:58 INFO: it   750/10000 pix=0.0728 step=0.78s
+2026-06-21 02:49:32 INFO: it   800/10000 pix=0.0666 step=0.77s
+2026-06-21 02:50:08 INFO: it   850/10000 pix=0.0658 step=0.77s
+2026-06-21 02:50:43 INFO: it   900/10000 pix=0.0647 step=0.77s
+2026-06-21 02:51:16 INFO: it   950/10000 pix=0.0650 step=0.76s
+2026-06-21 02:51:51 INFO: it  1000/10000 pix=0.0615 step=0.76s
+2026-06-21 02:52:12 INFO: [audit @ 1000] (21.3s) RGB-512=22.965  Y-512=24.129
+2026-06-21 02:52:14 INFO:   → best Y-512 = 24.129 saved
+2026-06-21 02:52:15 INFO:   → best RGB-512 = 22.965 saved
+2026-06-21 02:52:49 INFO: it  1050/10000 pix=0.0515 step=0.78s
+2026-06-21 02:53:22 INFO: it  1100/10000 pix=0.0653 step=0.77s
+2026-06-21 02:53:57 INFO: it  1150/10000 pix=0.0551 step=0.77s
+2026-06-21 02:54:30 INFO: it  1200/10000 pix=0.0613 step=0.76s
+2026-06-21 02:55:06 INFO: it  1250/10000 pix=0.0529 step=0.76s
+2026-06-21 02:55:41 INFO: it  1300/10000 pix=0.0575 step=0.76s
+2026-06-21 02:56:14 INFO: it  1350/10000 pix=0.0550 step=0.76s
+2026-06-21 02:56:49 INFO: it  1400/10000 pix=0.0592 step=0.75s
+2026-06-21 02:57:24 INFO: it  1450/10000 pix=0.0491 step=0.75s
+2026-06-21 02:57:57 INFO: it  1500/10000 pix=0.0622 step=0.75s
+2026-06-21 02:58:32 INFO: it  1550/10000 pix=0.0472 step=0.75s
+2026-06-21 02:59:05 INFO: it  1600/10000 pix=0.0531 step=0.74s
+2026-06-21 02:59:40 INFO: it  1650/10000 pix=0.0499 step=0.74s
+2026-06-21 03:00:15 INFO: it  1700/10000 pix=0.0661 step=0.74s
+2026-06-21 03:00:47 INFO: it  1750/10000 pix=0.0497 step=0.74s
+2026-06-21 03:01:23 INFO: it  1800/10000 pix=0.0570 step=0.74s
+2026-06-21 03:01:58 INFO: it  1850/10000 pix=0.0599 step=0.74s
+2026-06-21 03:02:30 INFO: it  1900/10000 pix=0.0516 step=0.74s
+2026-06-21 03:03:05 INFO: it  1950/10000 pix=0.0545 step=0.73s
+2026-06-21 03:03:38 INFO: it  2000/10000 pix=0.0521 step=0.73s
+2026-06-21 03:03:59 INFO: [audit @ 2000] (20.5s) RGB-512=24.228  Y-512=25.807
+2026-06-21 03:04:00 INFO:   → best Y-512 = 25.807 saved
+2026-06-21 03:04:02 INFO:   → best RGB-512 = 24.228 saved
+2026-06-21 03:04:37 INFO: it  2050/10000 pix=0.0565 step=0.74s
+2026-06-21 03:05:12 INFO: it  2100/10000 pix=0.0459 step=0.74s
+2026-06-21 03:05:45 INFO: it  2150/10000 pix=0.0479 step=0.74s
+2026-06-21 03:06:21 INFO: it  2200/10000 pix=0.0518 step=0.74s
+2026-06-21 03:06:56 INFO: it  2250/10000 pix=0.0508 step=0.74s
+2026-06-21 03:07:29 INFO: it  2300/10000 pix=0.0487 step=0.74s
+2026-06-21 03:08:04 INFO: it  2350/10000 pix=0.0592 step=0.74s
+2026-06-21 03:08:37 INFO: it  2400/10000 pix=0.0456 step=0.73s
+2026-06-21 03:09:12 INFO: it  2450/10000 pix=0.0553 step=0.73s
+2026-06-21 03:09:47 INFO: it  2500/10000 pix=0.0527 step=0.73s
+2026-06-21 03:10:19 INFO: it  2550/10000 pix=0.0443 step=0.73s
+2026-06-21 03:10:55 INFO: it  2600/10000 pix=0.0569 step=0.73s
+2026-06-21 03:11:31 INFO: it  2650/10000 pix=0.0497 step=0.73s
+2026-06-21 03:12:03 INFO: it  2700/10000 pix=0.0522 step=0.73s
+2026-06-21 03:12:38 INFO: it  2750/10000 pix=0.0487 step=0.73s
+2026-06-21 03:13:10 INFO: it  2800/10000 pix=0.0543 step=0.73s
+2026-06-21 03:13:46 INFO: it  2850/10000 pix=0.0476 step=0.73s
+2026-06-21 03:14:21 INFO: it  2900/10000 pix=0.0500 step=0.73s
+2026-06-21 03:14:53 INFO: it  2950/10000 pix=0.0458 step=0.73s
+2026-06-21 03:15:28 INFO: it  3000/10000 pix=0.0457 step=0.73s
+2026-06-21 03:15:50 INFO: [audit @ 3000] (21.6s) RGB-512=24.543  Y-512=26.469
+2026-06-21 03:15:52 INFO:   → best Y-512 = 26.469 saved
+2026-06-21 03:15:54 INFO:   → best RGB-512 = 24.543 saved
+2026-06-21 03:16:29 INFO: it  3050/10000 pix=0.0498 step=0.73s
+2026-06-21 03:17:02 INFO: it  3100/10000 pix=0.0529 step=0.73s
+2026-06-21 03:17:36 INFO: it  3150/10000 pix=0.0488 step=0.73s
+2026-06-21 03:18:09 INFO: it  3200/10000 pix=0.0533 step=0.73s
+2026-06-21 03:18:44 INFO: it  3250/10000 pix=0.0533 step=0.73s
+2026-06-21 03:19:19 INFO: it  3300/10000 pix=0.0441 step=0.73s
+2026-06-21 03:19:52 INFO: it  3350/10000 pix=0.0541 step=0.73s
+2026-06-21 03:20:26 INFO: it  3400/10000 pix=0.0415 step=0.73s
+2026-06-21 03:21:01 INFO: it  3450/10000 pix=0.0523 step=0.73s
+2026-06-21 03:21:34 INFO: it  3500/10000 pix=0.0545 step=0.73s
+2026-06-21 03:22:09 INFO: it  3550/10000 pix=0.0524 step=0.73s
+2026-06-21 03:22:41 INFO: it  3600/10000 pix=0.0462 step=0.72s
+2026-06-21 03:23:15 INFO: it  3650/10000 pix=0.0516 step=0.72s
+2026-06-21 03:23:50 INFO: it  3700/10000 pix=0.0429 step=0.72s
+2026-06-21 03:24:23 INFO: it  3750/10000 pix=0.0498 step=0.72s
+2026-06-21 03:24:58 INFO: it  3800/10000 pix=0.0532 step=0.72s
+2026-06-21 03:25:33 INFO: it  3850/10000 pix=0.0477 step=0.72s
+2026-06-21 03:26:06 INFO: it  3900/10000 pix=0.0463 step=0.72s
+2026-06-21 03:26:41 INFO: it  3950/10000 pix=0.0454 step=0.72s
+2026-06-21 03:27:13 INFO: it  4000/10000 pix=0.0489 step=0.72s
+2026-06-21 03:27:34 INFO: [audit @ 4000] (20.6s) RGB-512=24.995  Y-512=27.021
+2026-06-21 03:27:36 INFO:   → best Y-512 = 27.021 saved
+2026-06-21 03:27:37 INFO:   → best RGB-512 = 24.995 saved
+2026-06-21 03:28:12 INFO: it  4050/10000 pix=0.0488 step=0.73s
+2026-06-21 03:28:47 INFO: it  4100/10000 pix=0.0503 step=0.73s
+2026-06-21 03:29:19 INFO: it  4150/10000 pix=0.0445 step=0.72s
+2026-06-21 03:29:54 INFO: it  4200/10000 pix=0.0514 step=0.72s
+2026-06-21 03:30:30 INFO: it  4250/10000 pix=0.0504 step=0.72s
+2026-06-21 03:31:04 INFO: it  4300/10000 pix=0.0506 step=0.72s
+2026-06-21 03:31:40 INFO: it  4350/10000 pix=0.0434 step=0.72s
+2026-06-21 03:32:13 INFO: it  4400/10000 pix=0.0511 step=0.72s
+2026-06-21 03:32:49 INFO: it  4450/10000 pix=0.0453 step=0.72s
+2026-06-21 03:33:24 INFO: it  4500/10000 pix=0.0509 step=0.72s
+2026-06-21 03:33:57 INFO: it  4550/10000 pix=0.0506 step=0.72s
+2026-06-21 03:34:33 INFO: it  4600/10000 pix=0.0509 step=0.72s
+2026-06-21 03:35:09 INFO: it  4650/10000 pix=0.0449 step=0.72s
+2026-06-21 03:35:42 INFO: it  4700/10000 pix=0.0458 step=0.72s
+2026-06-21 03:36:18 INFO: it  4750/10000 pix=0.0460 step=0.72s
+2026-06-21 03:36:51 INFO: it  4800/10000 pix=0.0556 step=0.72s
+2026-06-21 03:37:27 INFO: it  4850/10000 pix=0.0539 step=0.72s
+2026-06-21 03:38:03 INFO: it  4900/10000 pix=0.0434 step=0.72s
+2026-06-21 03:38:36 INFO: it  4950/10000 pix=0.0500 step=0.72s
+2026-06-21 03:39:11 INFO: it  5000/10000 pix=0.0478 step=0.72s
+2026-06-21 03:39:31 INFO: [audit @ 5000] (20.3s) RGB-512=24.544  Y-512=26.118
+2026-06-21 03:40:06 INFO: it  5050/10000 pix=0.0435 step=0.72s
+2026-06-21 03:40:39 INFO: it  5100/10000 pix=0.0539 step=0.72s
+2026-06-21 03:41:15 INFO: it  5150/10000 pix=0.0397 step=0.72s
+2026-06-21 03:41:48 INFO: it  5200/10000 pix=0.0448 step=0.72s
+2026-06-21 03:42:23 INFO: it  5250/10000 pix=0.0476 step=0.72s
+2026-06-21 03:42:58 INFO: it  5300/10000 pix=0.0452 step=0.72s
+2026-06-21 03:43:31 INFO: it  5350/10000 pix=0.0489 step=0.72s
+2026-06-21 03:44:07 INFO: it  5400/10000 pix=0.0443 step=0.72s
+2026-06-21 03:44:42 INFO: it  5450/10000 pix=0.0460 step=0.72s
+2026-06-21 03:45:16 INFO: it  5500/10000 pix=0.0452 step=0.72s
+2026-06-21 03:45:52 INFO: it  5550/10000 pix=0.0459 step=0.72s
+2026-06-21 03:46:25 INFO: it  5600/10000 pix=0.0504 step=0.72s
+2026-06-21 03:47:01 INFO: it  5650/10000 pix=0.0479 step=0.72s
+2026-06-21 03:47:37 INFO: it  5700/10000 pix=0.0529 step=0.72s
+2026-06-21 03:48:11 INFO: it  5750/10000 pix=0.0477 step=0.72s
+2026-06-21 03:48:46 INFO: it  5800/10000 pix=0.0447 step=0.72s
+2026-06-21 03:49:21 INFO: it  5850/10000 pix=0.0480 step=0.72s
+2026-06-21 03:49:54 INFO: it  5900/10000 pix=0.0422 step=0.72s
+2026-06-21 03:50:30 INFO: it  5950/10000 pix=0.0489 step=0.72s
+2026-06-21 03:51:04 INFO: it  6000/10000 pix=0.0474 step=0.72s
+2026-06-21 03:51:25 INFO: [audit @ 6000] (20.9s) RGB-512=24.035  Y-512=25.499
+2026-06-21 03:52:00 INFO: it  6050/10000 pix=0.0444 step=0.72s
+2026-06-21 03:52:35 INFO: it  6100/10000 pix=0.0421 step=0.72s
+2026-06-21 03:53:08 INFO: it  6150/10000 pix=0.0482 step=0.72s
+2026-06-21 03:53:43 INFO: it  6200/10000 pix=0.0473 step=0.72s
+2026-06-21 03:54:19 INFO: it  6250/10000 pix=0.0472 step=0.72s
+2026-06-21 03:54:52 INFO: it  6300/10000 pix=0.0490 step=0.72s
+2026-06-21 03:55:28 INFO: it  6350/10000 pix=0.0468 step=0.72s
+2026-06-21 03:56:02 INFO: it  6400/10000 pix=0.0450 step=0.72s
+2026-06-21 03:56:37 INFO: it  6450/10000 pix=0.0432 step=0.72s
+2026-06-21 03:57:12 INFO: it  6500/10000 pix=0.0459 step=0.72s
+2026-06-21 03:57:44 INFO: it  6550/10000 pix=0.0413 step=0.72s
+2026-06-21 03:58:19 INFO: it  6600/10000 pix=0.0482 step=0.72s
+2026-06-21 03:58:53 INFO: it  6650/10000 pix=0.0454 step=0.72s
+2026-06-21 03:59:26 INFO: it  6700/10000 pix=0.0400 step=0.72s
+2026-06-21 04:00:01 INFO: it  6750/10000 pix=0.0438 step=0.72s
+2026-06-21 04:00:33 INFO: it  6800/10000 pix=0.0461 step=0.72s
+2026-06-21 04:01:09 INFO: it  6850/10000 pix=0.0394 step=0.72s
+2026-06-21 04:01:44 INFO: it  6900/10000 pix=0.0467 step=0.72s
+2026-06-21 04:02:17 INFO: it  6950/10000 pix=0.0380 step=0.72s
+2026-06-21 04:02:51 INFO: it  7000/10000 pix=0.0475 step=0.72s
+2026-06-21 04:03:12 INFO: [audit @ 7000] (20.6s) RGB-512=24.464  Y-512=26.001
+2026-06-21 04:03:47 INFO: it  7050/10000 pix=0.0445 step=0.72s
+2026-06-21 04:04:19 INFO: it  7100/10000 pix=0.0426 step=0.72s
+2026-06-21 04:04:54 INFO: it  7150/10000 pix=0.0478 step=0.72s
+2026-06-21 04:05:26 INFO: it  7200/10000 pix=0.0462 step=0.72s
+2026-06-21 04:06:02 INFO: it  7250/10000 pix=0.0396 step=0.72s
+2026-06-21 04:06:37 INFO: it  7300/10000 pix=0.0499 step=0.72s
+2026-06-21 04:07:10 INFO: it  7350/10000 pix=0.0446 step=0.72s
+2026-06-21 04:07:45 INFO: it  7400/10000 pix=0.0461 step=0.72s
+2026-06-21 04:08:19 INFO: it  7450/10000 pix=0.0496 step=0.72s
+2026-06-21 04:08:52 INFO: it  7500/10000 pix=0.0423 step=0.72s
+2026-06-21 04:09:26 INFO: it  7550/10000 pix=0.0456 step=0.72s
+2026-06-21 04:09:59 INFO: it  7600/10000 pix=0.0458 step=0.72s
+2026-06-21 04:10:34 INFO: it  7650/10000 pix=0.0470 step=0.72s
+2026-06-21 04:11:09 INFO: it  7700/10000 pix=0.0379 step=0.72s
+2026-06-21 04:11:41 INFO: it  7750/10000 pix=0.0430 step=0.72s
+2026-06-21 04:12:16 INFO: it  7800/10000 pix=0.0449 step=0.72s
+2026-06-21 04:12:51 INFO: it  7850/10000 pix=0.0436 step=0.72s
+2026-06-21 04:13:24 INFO: it  7900/10000 pix=0.0466 step=0.72s
+2026-06-21 04:13:59 INFO: it  7950/10000 pix=0.0465 step=0.72s
+2026-06-21 04:14:32 INFO: it  8000/10000 pix=0.0425 step=0.71s
+2026-06-21 04:14:53 INFO: [audit @ 8000] (20.6s) RGB-512=21.946  Y-512=22.711
+2026-06-21 04:15:27 INFO: it  8050/10000 pix=0.0412 step=0.72s
+2026-06-21 04:16:03 INFO: it  8100/10000 pix=0.0429 step=0.72s
+2026-06-21 04:16:35 INFO: it  8150/10000 pix=0.0442 step=0.72s
+2026-06-21 04:17:10 INFO: it  8200/10000 pix=0.0386 step=0.72s
+2026-06-21 04:17:45 INFO: it  8250/10000 pix=0.0429 step=0.72s
+2026-06-21 04:18:18 INFO: it  8300/10000 pix=0.0472 step=0.72s
+2026-06-21 04:18:53 INFO: it  8350/10000 pix=0.0471 step=0.72s
+2026-06-21 04:19:25 INFO: it  8400/10000 pix=0.0450 step=0.72s
+2026-06-21 04:20:00 INFO: it  8450/10000 pix=0.0428 step=0.72s
+2026-06-21 04:20:36 INFO: it  8500/10000 pix=0.0402 step=0.72s
+2026-06-21 04:21:09 INFO: it  8550/10000 pix=0.0455 step=0.72s
+2026-06-21 04:21:44 INFO: it  8600/10000 pix=0.0394 step=0.72s
+2026-06-21 04:22:19 INFO: it  8650/10000 pix=0.0448 step=0.72s
+2026-06-21 04:22:51 INFO: it  8700/10000 pix=0.0397 step=0.71s
+2026-06-21 04:23:26 INFO: it  8750/10000 pix=0.0441 step=0.71s
+2026-06-21 04:23:59 INFO: it  8800/10000 pix=0.0468 step=0.71s
+2026-06-21 04:24:34 INFO: it  8850/10000 pix=0.0487 step=0.71s
+2026-06-21 04:25:09 INFO: it  8900/10000 pix=0.0361 step=0.71s
+2026-06-21 04:25:42 INFO: it  8950/10000 pix=0.0452 step=0.71s
+2026-06-21 04:26:17 INFO: it  9000/10000 pix=0.0456 step=0.71s
+2026-06-21 04:26:38 INFO: [audit @ 9000] (20.7s) RGB-512=25.109  Y-512=27.134
+2026-06-21 04:26:40 INFO:   → best Y-512 = 27.134 saved
+2026-06-21 04:26:42 INFO:   → best RGB-512 = 25.109 saved
+2026-06-21 04:27:17 INFO: it  9050/10000 pix=0.0433 step=0.72s
+2026-06-21 04:27:50 INFO: it  9100/10000 pix=0.0447 step=0.72s
+2026-06-21 04:28:25 INFO: it  9150/10000 pix=0.0437 step=0.72s
+2026-06-21 04:28:57 INFO: it  9200/10000 pix=0.0421 step=0.72s
+2026-06-21 04:29:32 INFO: it  9250/10000 pix=0.0405 step=0.72s
+2026-06-21 04:30:08 INFO: it  9300/10000 pix=0.0436 step=0.72s
+2026-06-21 04:30:40 INFO: it  9350/10000 pix=0.0457 step=0.72s
+2026-06-21 04:31:16 INFO: it  9400/10000 pix=0.0399 step=0.72s
+2026-06-21 04:31:51 INFO: it  9450/10000 pix=0.0473 step=0.72s
+2026-06-21 04:32:23 INFO: it  9500/10000 pix=0.0424 step=0.71s
+2026-06-21 04:32:58 INFO: it  9550/10000 pix=0.0422 step=0.71s
+2026-06-21 04:33:31 INFO: it  9600/10000 pix=0.0395 step=0.71s
+2026-06-21 04:34:06 INFO: it  9650/10000 pix=0.0477 step=0.71s
+2026-06-21 04:34:41 INFO: it  9700/10000 pix=0.0427 step=0.71s
+2026-06-21 04:35:13 INFO: it  9750/10000 pix=0.0407 step=0.71s
+2026-06-21 04:35:50 INFO: it  9800/10000 pix=0.0416 step=0.71s
+2026-06-21 04:36:25 INFO: it  9850/10000 pix=0.0368 step=0.71s
+2026-06-21 04:36:58 INFO: it  9900/10000 pix=0.0384 step=0.71s
+2026-06-21 04:37:32 INFO: it  9950/10000 pix=0.0490 step=0.71s
+2026-06-21 04:38:04 INFO: it 10000/10000 pix=0.0382 step=0.71s
+2026-06-21 04:38:25 INFO: [audit @ 10000] (20.7s) RGB-512=23.799  Y-512=25.104
+2026-06-21 04:38:26 INFO: === v35-4frame done: best Y-512 = 27.134  best RGB-512 = 25.109 ===

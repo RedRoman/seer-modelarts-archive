@@ -1,0 +1,761 @@
+{
+ "method": "STCD (LLVE-STCD, IJCAI'25), official SDSD-indoor ckpt indoor_G.pth",
+ "ckpt": "/temp/zihaohe/cache/stcd_repro/LLVE_STCD/pretrained_model/SDSD_indoor_model/indoor_G.pth",
+ "protocol": "unified: video center T=16, 512x512 center crop (eval_lib / seer_eval_unified iterators); uint8 RGB PSNR, LPIPS/DISTS/CLIPIQA pyiqa via score_frames; per-frame -> per-seq mean -> mean over seqs",
+ "stcd_inference": "2-frame model: out_t = netG(x_t, x_{t+1})[2]; neighbour from the same 16-frame 512x512 clip, replicate pad at clip end (t=15 uses x_15); input swapped RGB->BGR (official loader swaps the RGB .npy), output swapped back; fp32; native resolution, no 960x512 resize",
+ "clean6_definition": [
+  "pair50",
+  "pair52",
+  "pair58",
+  "pair60",
+  "pair68",
+  "pair70"
+ ],
+ "membership": {
+  "seer_test_split_L0": [
+   "pair50",
+   "pair52",
+   "pair58",
+   "pair5_2",
+   "pair6",
+   "pair60",
+   "pair68",
+   "pair6_2",
+   "pair7",
+   "pair70",
+   "pair7_2",
+   "pair8",
+   "pair8_2",
+   "pair9",
+   "pair9_2"
+  ],
+  "stcd12": [
+   "pair13",
+   "pair15",
+   "pair21",
+   "pair23",
+   "pair31",
+   "pair33",
+   "pair50",
+   "pair52",
+   "pair58",
+   "pair60",
+   "pair68",
+   "pair70"
+  ],
+  "held_out_for_both": [
+   "pair50",
+   "pair52",
+   "pair58",
+   "pair60",
+   "pair68",
+   "pair70"
+  ],
+  "stcd12_in_seer_train": [
+   "pair13",
+   "pair15",
+   "pair21",
+   "pair23",
+   "pair31",
+   "pair33"
+  ],
+  "seer_test_in_stcd_train": [
+   "pair5_2",
+   "pair6",
+   "pair6_2",
+   "pair7",
+   "pair7_2",
+   "pair8",
+   "pair8_2",
+   "pair9",
+   "pair9_2"
+  ]
+ },
+ "per_seq": {
+  "STCD-12_SDSD-indoor": {
+   "pair13": {
+    "psnr_rgb": 27.10364492830545,
+    "lpips": 0.41659420169889927,
+    "dists": 0.2881729453802109,
+    "clipiqa": 0.20300576277077198,
+    "n_frames": 16,
+    "HxW": "512x512"
+   },
+   "pair15": {
+    "psnr_rgb": 22.225529045025727,
+    "lpips": 0.19047051016241312,
+    "dists": 0.15747665986418724,
+    "clipiqa": 0.2179979719221592,
+    "n_frames": 16,
+    "HxW": "512x512"
+   },
+   "pair21": {
+    "psnr_rgb": 30.304601654396606,
+    "lpips": 0.130601042881608,
+    "dists": 0.12284155935049057,
+    "clipiqa": 0.23838363029062748,
+    "n_frames": 16,
+    "HxW": "512x512"
+   },
+   "pair23": {
+    "psnr_rgb": 24.47439410540774,
+    "lpips": 0.19560610596090555,
+    "dists": 0.2114182710647583,
+    "clipiqa": 0.34487444162368774,
+    "n_frames": 16,
+    "HxW": "512x512"
+   },
+   "pair31": {
+    "psnr_rgb": 25.588501610585723,
+    "lpips": 0.4745878893882036,
+    "dists": 0.38165389373898506,
+    "clipiqa": 0.33236199989914894,
+    "n_frames": 16,
+    "HxW": "512x512"
+   },
+   "pair33": {
+    "psnr_rgb": 26.345532210823876,
+    "lpips": 0.3136825654655695,
+    "dists": 0.3652447275817394,
+    "clipiqa": 0.42967561073601246,
+    "n_frames": 16,
+    "HxW": "512x512"
+   },
+   "pair50": {
+    "psnr_rgb": 24.040338717049536,
+    "lpips": 0.2423494840040803,
+    "dists": 0.1400107778608799,
+    "clipiqa": 0.5885521695017815,
+    "n_frames": 16,
+    "HxW": "512x512"
+   },
+   "pair52": {
+    "psnr_rgb": 15.775858494727888,
+    "lpips": 0.3117665536701679,
+    "dists": 0.20033234357833862,
+    "clipiqa": 0.11566993780434132,
+    "n_frames": 16,
+    "HxW": "512x512"
+   },
+   "pair58": {
+    "psnr_rgb": 11.810505169632794,
+    "lpips": 0.46034818328917027,
+    "dists": 0.20991918817162514,
+    "clipiqa": 0.15489628445357084,
+    "n_frames": 16,
+    "HxW": "512x512"
+   },
+   "pair60": {
+    "psnr_rgb": 18.716839111004006,
+    "lpips": 0.527529414743185,
+    "dists": 0.2466110698878765,
+    "clipiqa": 0.17269469518214464,
+    "n_frames": 16,
+    "HxW": "512x512"
+   },
+   "pair68": {
+    "psnr_rgb": 8.050811112104952,
+    "lpips": 0.6242738552391529,
+    "dists": 0.3019430972635746,
+    "clipiqa": 0.38032249361276627,
+    "n_frames": 16,
+    "HxW": "512x512"
+   },
+   "pair70": {
+    "psnr_rgb": 18.31585776523,
+    "lpips": 0.21505202911794186,
+    "dists": 0.12633225321769714,
+    "clipiqa": 0.15047162864357233,
+    "n_frames": 16,
+    "HxW": "512x512"
+   }
+  },
+  "L0_SDSD-indoor": {
+   "pair50": {
+    "psnr_rgb": 26.377667704737007,
+    "lpips": 0.2033187784254551,
+    "dists": 0.12990516051650047,
+    "clipiqa": 0.5908944606781006,
+    "n_frames": 16,
+    "HxW": "512x512"
+   },
+   "pair52": {
+    "psnr_rgb": 26.95565590888054,
+    "lpips": 0.1785059468820691,
+    "dists": 0.18300795555114746,
+    "clipiqa": 0.11725826282054186,
+    "n_frames": 16,
+    "HxW": "512x512"
+   },
+   "pair58": {
+    "psnr_rgb": 15.565802700183914,
+    "lpips": 0.20244908053427935,
+    "dists": 0.16804582625627518,
+    "clipiqa": 0.1652261046692729,
+    "n_frames": 16,
+    "HxW": "512x512"
+   },
+   "pair5_2": {
+    "psnr_rgb": 26.070140322593858,
+    "lpips": 0.15379858948290348,
+    "dists": 0.15401031449437141,
+    "clipiqa": 0.28738759458065033,
+    "n_frames": 16,
+    "HxW": "512x512"
+   },
+   "pair6": {
+    "psnr_rgb": 22.329194139182956,
+    "lpips": 0.34061285853385925,
+    "dists": 0.2410813681781292,
+    "clipiqa": 0.1623563952744007,
+    "n_frames": 16,
+    "HxW": "512x512"
+   },
+   "pair60": {
+    "psnr_rgb": 27.831030182201786,
+    "lpips": 0.3042882811278105,
+    "dists": 0.21992838755249977,
+    "clipiqa": 0.1733595533296466,
+    "n_frames": 16,
+    "HxW": "512x512"
+   },
+   "pair68": {
+    "psnr_rgb": 20.345678080407602,
+    "lpips": 0.2840027417987585,
+    "dists": 0.24960865080356598,
+    "clipiqa": 0.327579015865922,
+    "n_frames": 16,
+    "HxW": "512x512"
+   },
+   "pair6_2": {
+    "psnr_rgb": 22.82721827550162,
+    "lpips": 0.21560800448060036,
+    "dists": 0.1793222688138485,
+    "clipiqa": 0.24855251610279083,
+    "n_frames": 16,
+    "HxW": "512x512"
+   },
+   "pair7": {
+    "psnr_rgb": 22.649431041932594,
+    "lpips": 0.11078690504655242,
+    "dists": 0.12880102545022964,
+    "clipiqa": 0.22418609354645014,
+    "n_frames": 16,
+    "HxW": "512x512"
+   },
+   "pair70": {
+    "psnr_rgb": 27.813898980311844,
+    "lpips": 0.10833160672336817,
+    "dists": 0.11426640301942825,
+    "clipiqa": 0.15076208114624023,
+    "n_frames": 16,
+    "HxW": "512x512"
+   },
+   "pair7_2": {
+    "psnr_rgb": 24.131134773836607,
+    "lpips": 0.16360330488532782,
+    "dists": 0.19303053990006447,
+    "clipiqa": 0.37751039676368237,
+    "n_frames": 16,
+    "HxW": "512x512"
+   },
+   "pair8": {
+    "psnr_rgb": 19.060988421557916,
+    "lpips": 0.2816839125007391,
+    "dists": 0.2429901771247387,
+    "clipiqa": 0.36848948150873184,
+    "n_frames": 16,
+    "HxW": "512x512"
+   },
+   "pair8_2": {
+    "psnr_rgb": 28.212900960202383,
+    "lpips": 0.09999701380729675,
+    "dists": 0.14085698872804642,
+    "clipiqa": 0.37950832583010197,
+    "n_frames": 16,
+    "HxW": "512x512"
+   },
+   "pair9": {
+    "psnr_rgb": 16.912277205440617,
+    "lpips": 0.17943571414798498,
+    "dists": 0.17712895944714546,
+    "clipiqa": 0.1811007848009467,
+    "n_frames": 16,
+    "HxW": "512x512"
+   },
+   "pair9_2": {
+    "psnr_rgb": 25.11196110298785,
+    "lpips": 0.11176444962620735,
+    "dists": 0.12711889669299126,
+    "clipiqa": 0.1848922735080123,
+    "n_frames": 16,
+    "HxW": "512x512"
+   }
+  },
+  "L1_SDSD-outdoor": {
+   "MVI_1007_2": {
+    "psnr_rgb": 14.819495341297543,
+    "lpips": 0.5007987227290869,
+    "dists": 0.2582467645406723,
+    "clipiqa": 0.1767941489815712,
+    "n_frames": 16,
+    "HxW": "512x512"
+   },
+   "MVI_1009": {
+    "psnr_rgb": 19.030986666235194,
+    "lpips": 0.3706519100815058,
+    "dists": 0.17405850067734718,
+    "clipiqa": 0.13324655825272202,
+    "n_frames": 16,
+    "HxW": "512x512"
+   },
+   "MVI_1009_2": {
+    "psnr_rgb": 19.46686821207465,
+    "lpips": 0.3557691127061844,
+    "dists": 0.1706090085208416,
+    "clipiqa": 0.17793011385947466,
+    "n_frames": 16,
+    "HxW": "512x512"
+   },
+   "MVI_1011": {
+    "psnr_rgb": 15.160599234285069,
+    "lpips": 0.3484562784433365,
+    "dists": 0.16749842837452888,
+    "clipiqa": 0.16618071869015694,
+    "n_frames": 16,
+    "HxW": "512x512"
+   },
+   "MVI_1011_2": {
+    "psnr_rgb": 16.00539863744941,
+    "lpips": 0.4009338691830635,
+    "dists": 0.18735144659876823,
+    "clipiqa": 0.16890328098088503,
+    "n_frames": 16,
+    "HxW": "512x512"
+   },
+   "MVI_1013": {
+    "psnr_rgb": 22.701346459666727,
+    "lpips": 0.271366611123085,
+    "dists": 0.14821453019976616,
+    "clipiqa": 0.18196819070726633,
+    "n_frames": 16,
+    "HxW": "512x512"
+   },
+   "MVI_1013_2": {
+    "psnr_rgb": 19.38292878981575,
+    "lpips": 0.3332480099052191,
+    "dists": 0.17089110985398293,
+    "clipiqa": 0.16418201848864555,
+    "n_frames": 16,
+    "HxW": "512x512"
+   },
+   "MVI_1015": {
+    "psnr_rgb": 9.446977794758391,
+    "lpips": 0.4129289239645004,
+    "dists": 0.2082170471549034,
+    "clipiqa": 0.1589489607140422,
+    "n_frames": 16,
+    "HxW": "512x512"
+   },
+   "MVI_1015_2": {
+    "psnr_rgb": 9.553829921902494,
+    "lpips": 0.4675913490355015,
+    "dists": 0.21922828629612923,
+    "clipiqa": 0.16327994968742132,
+    "n_frames": 16,
+    "HxW": "512x512"
+   },
+   "MVI_1017": {
+    "psnr_rgb": 10.268553655620458,
+    "lpips": 0.381806842982769,
+    "dists": 0.1960289366543293,
+    "clipiqa": 0.12296474352478981,
+    "n_frames": 16,
+    "HxW": "512x512"
+   },
+   "MVI_1017_2": {
+    "psnr_rgb": 10.86405235019741,
+    "lpips": 0.38109448179602623,
+    "dists": 0.17495765537023544,
+    "clipiqa": 0.1527748554944992,
+    "n_frames": 16,
+    "HxW": "512x512"
+   },
+   "MVI_1019": {
+    "psnr_rgb": 12.337152428285588,
+    "lpips": 0.2250400958582759,
+    "dists": 0.13840294256806374,
+    "clipiqa": 0.1436203634366393,
+    "n_frames": 16,
+    "HxW": "512x512"
+   },
+   "MVI_1019_2": {
+    "psnr_rgb": 12.600625397971022,
+    "lpips": 0.2977159842848778,
+    "dists": 0.15005027130246162,
+    "clipiqa": 0.14367300644516945,
+    "n_frames": 16,
+    "HxW": "512x512"
+   },
+   "MVI_1021": {
+    "psnr_rgb": 20.202651984281687,
+    "lpips": 0.29825942404568195,
+    "dists": 0.16701346635818481,
+    "clipiqa": 0.2387222070246935,
+    "n_frames": 16,
+    "HxW": "512x512"
+   },
+   "MVI_1021_2": {
+    "psnr_rgb": 19.363518828488303,
+    "lpips": 0.3835273813456297,
+    "dists": 0.1976778358221054,
+    "clipiqa": 0.2115352638065815,
+    "n_frames": 16,
+    "HxW": "512x512"
+   },
+   "MVI_1024": {
+    "psnr_rgb": 18.87454613655275,
+    "lpips": 0.27313942834734917,
+    "dists": 0.14947709441184998,
+    "clipiqa": 0.15398695599287748,
+    "n_frames": 16,
+    "HxW": "512x512"
+   },
+   "MVI_1024_2": {
+    "psnr_rgb": 18.96079551376621,
+    "lpips": 0.23506753519177437,
+    "dists": 0.12519285082817078,
+    "clipiqa": 0.12539616180583835,
+    "n_frames": 16,
+    "HxW": "512x512"
+   },
+   "MVI_1026": {
+    "psnr_rgb": 10.17907769985087,
+    "lpips": 0.4165610782802105,
+    "dists": 0.2398996539413929,
+    "clipiqa": 0.157324212603271,
+    "n_frames": 16,
+    "HxW": "512x512"
+   },
+   "MVI_1026_2": {
+    "psnr_rgb": 14.488226562163504,
+    "lpips": 0.35116823576390743,
+    "dists": 0.19501876458525658,
+    "clipiqa": 0.1347313760779798,
+    "n_frames": 16,
+    "HxW": "512x512"
+   },
+   "MVI_1028": {
+    "psnr_rgb": 22.076293591203758,
+    "lpips": 0.21916967630386353,
+    "dists": 0.12319676578044891,
+    "clipiqa": 0.18579590506851673,
+    "n_frames": 16,
+    "HxW": "512x512"
+   },
+   "MVI_1028_2": {
+    "psnr_rgb": 19.775625591721468,
+    "lpips": 0.3115766644477844,
+    "dists": 0.16165606305003166,
+    "clipiqa": 0.1706955237314105,
+    "n_frames": 16,
+    "HxW": "512x512"
+   },
+   "MVI_1030": {
+    "psnr_rgb": 11.859023885445174,
+    "lpips": 0.3687309995293617,
+    "dists": 0.22684748843312263,
+    "clipiqa": 0.1163885542191565,
+    "n_frames": 16,
+    "HxW": "512x512"
+   },
+   "MVI_1030_2": {
+    "psnr_rgb": 10.181236884634988,
+    "lpips": 0.41919661685824394,
+    "dists": 0.2551812343299389,
+    "clipiqa": 0.14794066082686186,
+    "n_frames": 16,
+    "HxW": "512x512"
+   },
+   "MVI_1032": {
+    "psnr_rgb": 11.785268362358558,
+    "lpips": 0.42562832683324814,
+    "dists": 0.20948027074337006,
+    "clipiqa": 0.177467024885118,
+    "n_frames": 16,
+    "HxW": "512x512"
+   },
+   "MVI_1032_2": {
+    "psnr_rgb": 11.686713690657832,
+    "lpips": 0.43372297286987305,
+    "dists": 0.2226019650697708,
+    "clipiqa": 0.1586715206503868,
+    "n_frames": 16,
+    "HxW": "512x512"
+   }
+  },
+  "L2_BVI-RLV": {
+   "S33_mix5__10fps": {
+    "psnr_rgb": 24.652001859504445,
+    "lpips": 0.1832320485264063,
+    "dists": 0.12246444076299667,
+    "clipiqa": 0.24497436080127954,
+    "n_frames": 16,
+    "HxW": "512x512"
+   },
+   "S33_mix5__20fps": {
+    "psnr_rgb": 12.002340052081664,
+    "lpips": 0.3086063750088215,
+    "dists": 0.16306061670184135,
+    "clipiqa": 0.2507285112515092,
+    "n_frames": 16,
+    "HxW": "512x512"
+   },
+   "S34_mix6__10fps": {
+    "psnr_rgb": 19.055713068082966,
+    "lpips": 0.18283758964389563,
+    "dists": 0.12120984867215157,
+    "clipiqa": 0.18066179286688566,
+    "n_frames": 16,
+    "HxW": "512x512"
+   },
+   "S34_mix6__20fps": {
+    "psnr_rgb": 12.10768703751243,
+    "lpips": 0.23002816457301378,
+    "dists": 0.13485123962163925,
+    "clipiqa": 0.2081478126347065,
+    "n_frames": 16,
+    "HxW": "512x512"
+   },
+   "S35_Bunny__10fps": {
+    "psnr_rgb": 19.898209122281415,
+    "lpips": 0.3052561283111572,
+    "dists": 0.16891485825181007,
+    "clipiqa": 0.25790510047227144,
+    "n_frames": 16,
+    "HxW": "512x512"
+   },
+   "S35_Bunny__20fps": {
+    "psnr_rgb": 12.925042613511575,
+    "lpips": 0.26687417179346085,
+    "dists": 0.1362723894417286,
+    "clipiqa": 0.2911283057183027,
+    "n_frames": 16,
+    "HxW": "512x512"
+   },
+   "S36_Eeyore__10fps": {
+    "psnr_rgb": 18.040667504075394,
+    "lpips": 0.3264819700270891,
+    "dists": 0.17711689695715904,
+    "clipiqa": 0.2249014414846897,
+    "n_frames": 16,
+    "HxW": "512x512"
+   },
+   "S36_Eeyore__20fps": {
+    "psnr_rgb": 13.332541238652936,
+    "lpips": 0.23829145822674036,
+    "dists": 0.12202620878815651,
+    "clipiqa": 0.30989313311874866,
+    "n_frames": 16,
+    "HxW": "512x512"
+   },
+   "S37_Mario3__10fps": {
+    "psnr_rgb": 18.538300190145005,
+    "lpips": 0.256766171194613,
+    "dists": 0.1654631830751896,
+    "clipiqa": 0.2628053994849324,
+    "n_frames": 16,
+    "HxW": "512x512"
+   },
+   "S37_Mario3__20fps": {
+    "psnr_rgb": 12.565124719751719,
+    "lpips": 0.3161175735294819,
+    "dists": 0.19078946113586426,
+    "clipiqa": 0.2585409041494131,
+    "n_frames": 16,
+    "HxW": "512x512"
+   },
+   "S38_Mario4__10fps": {
+    "psnr_rgb": 15.185387217029557,
+    "lpips": 0.3403437566012144,
+    "dists": 0.19830940663814545,
+    "clipiqa": 0.2151849837973714,
+    "n_frames": 16,
+    "HxW": "512x512"
+   },
+   "S38_Mario4__20fps": {
+    "psnr_rgb": 13.69740897615966,
+    "lpips": 0.36042436957359314,
+    "dists": 0.20263511687517166,
+    "clipiqa": 0.22246665135025978,
+    "n_frames": 16,
+    "HxW": "512x512"
+   },
+   "S39_Books4__10fps": {
+    "psnr_rgb": 22.96862135735411,
+    "lpips": 0.24868184328079224,
+    "dists": 0.15661859884858131,
+    "clipiqa": 0.2590882061049342,
+    "n_frames": 16,
+    "HxW": "512x512"
+   },
+   "S39_Books4__20fps": {
+    "psnr_rgb": 12.242455790034768,
+    "lpips": 0.3311583735048771,
+    "dists": 0.20208626985549927,
+    "clipiqa": 0.2592488890513778,
+    "n_frames": 16,
+    "HxW": "512x512"
+   },
+   "S40_Books5__10fps": {
+    "psnr_rgb": 13.506084332897528,
+    "lpips": 0.569285050034523,
+    "dists": 0.34704626351594925,
+    "clipiqa": 0.31786542758345604,
+    "n_frames": 16,
+    "HxW": "512x512"
+   },
+   "S40_Books5__20fps": {
+    "psnr_rgb": 14.974447955591147,
+    "lpips": 0.510457057505846,
+    "dists": 0.40810975804924965,
+    "clipiqa": 0.4769707825034857,
+    "n_frames": 16,
+    "HxW": "512x512"
+   }
+  }
+ },
+ "summary": {
+  "STCD-12_SDSD-indoor": {
+   "psnr_rgb": 21.062701160357857,
+   "lpips": 0.34190515296844143,
+   "dists": 0.22932973224669695,
+   "clipiqa": 0.2774088855367154,
+   "n": 12,
+   "clean6": {
+    "psnr_rgb": 16.118368394958196,
+    "lpips": 0.39688658667728305,
+    "dists": 0.20419145499666533,
+    "clipiqa": 0.2604345348663628,
+    "n": 6,
+    "seqs": [
+     "pair50",
+     "pair52",
+     "pair58",
+     "pair60",
+     "pair68",
+     "pair70"
+    ]
+   }
+  },
+  "L0_SDSD-indoor": {
+   "psnr_rgb": 23.47966531999727,
+   "lpips": 0.19587914586688082,
+   "dists": 0.17660686150193214,
+   "clipiqa": 0.26260422269503275,
+   "n": 15,
+   "clean6": {
+    "psnr_rgb": 24.148288926120447,
+    "lpips": 0.21348273924862346,
+    "dists": 0.17746039728323618,
+    "clipiqa": 0.254179913084954,
+    "n": 6,
+    "seqs": [
+     "pair50",
+     "pair52",
+     "pair58",
+     "pair60",
+     "pair68",
+     "pair70"
+    ]
+   }
+  },
+  "L1_SDSD-outdoor": {
+   "psnr_rgb": 15.242871744827394,
+   "lpips": 0.3553260212764144,
+   "dists": 0.18547993525862694,
+   "clipiqa": 0.161324891038239,
+   "n": 25
+  },
+  "L2_BVI-RLV": {
+   "psnr_rgb": 15.980752064666644,
+   "lpips": 0.31092763133347034,
+   "dists": 0.18856090982444584,
+   "clipiqa": 0.2650319813983515,
+   "n": 16
+  },
+  "STCD-12_indexpaired_derived": {
+   "psnr_rgb": 25.077661425938985,
+   "lpips": 0.25020322925411165,
+   "dists": 0.21596420338998237,
+   "clipiqa": 0.274281574646011,
+   "n": 12,
+   "seqs": [
+    "pair13",
+    "pair15",
+    "pair21",
+    "pair23",
+    "pair31",
+    "pair33",
+    "pair50",
+    "pair52",
+    "pair58",
+    "pair60",
+    "pair68",
+    "pair70"
+   ],
+   "note": "DERIVED, not an official split: pair13/15/21/23/31/33 from STCD-12 (basename == index pairing for these), pair50..70 from L0 (index pairing)"
+  }
+ },
+ "wall_s": 142.2,
+ "notes": [
+  "USE L0_SDSD-indoor.clean6 for the Seer comparison (same iterator Seer uses; LQ/GT paired by sorted index).",
+  "WARNING: eval_lib.iter_sdsd_indoor_stcd pairs LQ/GT by file basename. For pair50/52/58/60/68/70 the input/ and GT/ filenames are offset (e.g. pair60 LQ 0032.. vs GT 0054..) while content is aligned by sorted index (NCC of 512 centre crop, mid frame: index pairing 0.895/0.912/0.983/0.927/0.984/0.944 vs basename pairing 0.846/0.812/0.700/0.440/0.470/0.860). So STCD-12 numbers for those 6 seqs are scored against misaligned GT (this affects every baseline scored with iter_sdsd_indoor_stcd, e.g. all get ~8 dB on pair68). STCD-12_SDSD-indoor.clean6 is therefore NOT meaningful; STCD-12_indexpaired_derived replaces those 6 by their L0 (index-paired) entries.",
+  "STCD is resolution/crop sensitive: pair50 first-16 index-paired PSNR 30.41 (512 crop) -> 26.24 (640) -> 21.27 (full 1920x1080)."
+ ],
+ "sanity_vs_old": {
+  "old_comprehensive_eval_json": {
+   "pair13": 22.111,
+   "pair50": 29.315
+  },
+  "unified_this_run": {
+   "pair13": 27.10364492830545,
+   "pair50_STCD12_basename": 24.040338717049536,
+   "pair50_L0_index": 26.377667704737007
+  },
+  "old_stcd_repro_STCDexact_first30_960x512": {
+   "pair13": 24.327,
+   "pair50": 22.956
+  },
+  "reproduced_STCDexact_first30_960x512_basename": {
+   "pair13": 24.327,
+   "pair50": 22.956
+  },
+  "first16_fullres_1920x1080": {
+   "pair13": 22.097,
+   "pair50_basename": 19.527,
+   "pair50_index": 21.269
+  },
+  "first16_crop512": {
+   "pair13": 27.076,
+   "pair50_basename": 28.343,
+   "pair50_index": 30.407
+  },
+  "first16_tiled512_ov128_fullframe": {
+   "pair13": 20.942,
+   "pair50_basename": 17.068,
+   "pair50_index": 17.78
+  },
+  "rgb_bgr": {
+   "pair13_bgr_in(official)": 27.104,
+   "pair13_rgb_in": 26.828,
+   "pair50_bgr_in(official)": 24.04,
+   "pair50_rgb_in": 23.848
+  },
+  "logs": [
+   "/cache/zihaohe/stcd_unified/sanity.log",
+   "/cache/zihaohe/stcd_unified/sanity2.log",
+   "/cache/zihaohe/stcd_unified/sanity3.log"
+  ]
+ }
+}

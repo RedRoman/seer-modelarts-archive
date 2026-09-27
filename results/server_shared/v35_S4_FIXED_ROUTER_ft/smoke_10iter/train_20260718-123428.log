@@ -1,0 +1,14 @@
+2026-07-18 12:34:28 INFO: === v35S4_FIXED_ROUTER ablation ===
+2026-07-18 12:34:28 INFO:   disable_m1=False  freeze_m3_router=True
+2026-07-18 12:35:03 INFO:   pixel_branch init: missing=1 unexpected=0
+2026-07-18 12:35:03 INFO:   cf_refiner init: missing=0 unexpected=0
+2026-07-18 12:35:03 INFO: [freeze_m3_router] router_logits reset to identity (l_star from vjepa_layer_per_scale=(0, 0, 1, 2, 3)) and frozen.
+2026-07-18 12:35:03 INFO: [freeze_m3_router] softmax @ init:
+[[0.947915   0.01736167 0.01736167 0.01736167]
+ [0.947915   0.01736167 0.01736167 0.01736167]
+ [0.01736167 0.947915   0.01736167 0.01736167]
+ [0.01736167 0.01736167 0.947915   0.01736167]
+ [0.01736167 0.01736167 0.01736167 0.947915  ]]
+2026-07-18 12:35:03 INFO:   trainable params after ablation hooks: 370.436M (370436471 scalars)
+2026-07-18 12:35:53 INFO: Zero-iter audit (49.2s): RGB-512=27.078  Y-512=28.827
+2026-07-18 12:37:07 INFO: === v35S4_FIXED_ROUTER done: best Y-512 = 28.827  best RGB-512 = 27.078 ===

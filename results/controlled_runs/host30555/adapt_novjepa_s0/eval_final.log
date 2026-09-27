@@ -1,0 +1,18 @@
+[Seer] variant from ckpt args: {'no_vjepa': True, 'random_vjepa': False, 'disable_igab': False, 'disable_lic': False, 'disable_bottleneck': False}
+[Seer] pixel_branch missing=0 unexpected=0
+[SDSD] layout=A/C (static_np or original) subset=direct split=train -> 59 sequences, 1671 frames total.
+[SDSD] layout=A/C (static_np or original) subset=direct split=train -> 101 sequences, 2530 frames total.
+[CP] closed-form alpha on 15 SDSD train clips: raw=[0.5423946436785089, -0.5379681072439622, 0.20129099552119836] clipped=[0.5423946380615234, 0.0, 0.20129099488258362]
+[BVI-RLV] test: 16 sequences (8 scenes × ≤2 fps), 6240 frames total
+Loading pretrained model LPIPS from /home/ma-user/.cache/torch/hub/pyiqa/LPIPS_v0.1_alex-df73285e.pth
+Loading pretrained model DISTS from /home/ma-user/.cache/torch/hub/pyiqa/DISTS_weights-f5e65c96.pth
+L2_BVI-RLV       HMP-raw  PSNR=22.389 LPIPS=0.1647 DISTS=0.1072 CLIPIQA=0.3048 n=16 tlp=0.0728 mabd=0.0023 flicker=0.0818 warp_err=0.0087 (133s)
+L2_BVI-RLV       HMP+CP   PSNR=22.342 LPIPS=0.1663 DISTS=0.1035 CLIPIQA=0.2729 n=16 tlp=0.0803 mabd=0.0023 flicker=0.0819 warp_err=0.0106 (133s)
+L2_BVI-RLV       HMP+CPfit PSNR=22.360 LPIPS=0.1685 DISTS=0.1075 CLIPIQA=0.2707 n=16 tlp=0.0780 mabd=0.0023 flicker=0.0819 warp_err=0.0097 (133s)
+L2_BVI-RLV       HMP+CPxfit PSNR=22.006 LPIPS=0.1633 DISTS=0.1037 CLIPIQA=0.2785 n=16 tlp=0.0794 mabd=0.0023 flicker=0.0818 warp_err=0.0106 (133s)
+[SDSD] layout=A/C (static_np or original) subset=direct split=test -> 15 sequences, 1037 frames total.
+L0_SDSD-indoor   HMP-raw  PSNR=19.922 LPIPS=0.2371 DISTS=0.1711 CLIPIQA=0.1711 n=15 tlp=0.0739 mabd=0.0018 flicker=0.0243 warp_err=0.0121 (81s)
+L0_SDSD-indoor   HMP+CP   PSNR=20.171 LPIPS=0.2558 DISTS=0.1644 CLIPIQA=0.1546 n=15 tlp=0.1009 mabd=0.0018 flicker=0.0246 warp_err=0.0152 (81s)
+L0_SDSD-indoor   HMP+CPfit PSNR=20.002 LPIPS=0.2478 DISTS=0.1745 CLIPIQA=0.1544 n=15 tlp=0.0876 mabd=0.0018 flicker=0.0247 warp_err=0.0135 (81s)
+L0_SDSD-indoor   HMP+CPxfit PSNR=20.050 LPIPS=0.2842 DISTS=0.1796 CLIPIQA=0.1563 n=15 tlp=0.1133 mabd=0.0019 flicker=0.0252 warp_err=0.0169 (81s)
+[SAVE] /cache/zihaohe/runs/seer_iclr/adapt_novjepa_s0/eval_final.json

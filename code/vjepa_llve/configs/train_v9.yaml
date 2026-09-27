@@ -1,0 +1,76 @@
+_base_: base_21.yaml
+
+# v9.0: clean Retinex baseline with V-JEPA cross-attn + local illumination cues.
+# Per locked spec (G4 review): no Predictor, no Prompt Bank, no Pixel Parallel,
+# no RAFT, no V-JEPA affinity. Focus = stability + Retinex temporal grounding.
+
+output_dir: /cache/zihaohe/checkpoint/runs/v9
+
+precision: bf16
+
+model:
+  pixel_branch:
+    dims: [64, 128, 256, 512, 1024]
+    num_blocks: [4, 8, 8, 12, 16]
+    heads: [4, 8, 8, 16, 16]
+    ffn_exp: 2.66
+    vjepa_layer_per_scale: [0, 0, 1, 2, 3]
+    cross_attn_at_scales: [1, 2, 3, 4]
+    use_cfim_bottleneck: true
+    use_illumination_cues: true       # NEW per G2 / F1.4
+    use_gradient_checkpoint: true
+
+train:
+  batch_size: 2
+  clip_len: 16
+  crop_size: 256
+  log_every: 50
+  val_every: 500
+  save_every: 2000
+  keep_n_step_ckpts: 2
+  ema_decay: 0.999
+  ema_start: 1000
+  val_window: 3
+
+optim:
+  lr: 2.0e-4
+  min_lr: 1.0e-5
+  weight_decay: 1.0e-4
+  betas: [0.9, 0.99]
+  total_iters: 15000              # shorter than v8 since simpler arch should converge faster
+  warmup_iters: 250
+  scheduler: cosine
+  grad_clip: 1.0
+  accum_steps: 4                  # effective batch 8
+  resume_from: null
+  resume_reset_optim: false
+
+data:
+  train:
+    datasets:
+      - kind: sdsd
+        root: /home/ma-user/workspace/zihaohe/datasets/SDSD_indoor
+        subset: direct
+        split: train
+        weight: 1.0
+      - kind: sdsd
+        root: /home/ma-user/workspace/zihaohe/datasets/SDSD_outdoor
+        subset: direct
+        split: train
+        weight: 1.0
+  val:
+    kind: sdsd
+    root: /home/ma-user/workspace/zihaohe/datasets/SDSD_indoor
+    subset: direct
+    split: test
+
+# Loss weights — locked per reviewer G2 (see VJEPA_LLVE_CODE_REVIEW.md §G2)
+loss:
+  pix_weight: 1.0
+  lpips_weight: 0.1
+  retinex_compose_weight: 0.5
+  L_smooth_spatial_weight: 0.05
+  L_smooth_temporal_weight: 0.10    # ★ STCD-style temporal Retinex
+  R_adjacent_weight: 0.05           # ★ low weight, no flow alignment yet (v9.1 raises to 0.20 with RAFT)
+  R_adjacent_scale: 2               # downsample factor for motion tolerance
+  pred_dod_weight: 0.05

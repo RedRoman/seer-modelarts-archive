@@ -1,0 +1,32 @@
+2026-09-26 11:35:02 INFO: === adapt_vjepa_s2: v35 Stage 4 (retrainer) gate_init=0.0 router_c=4.0 ===
+2026-09-26 11:35:02 INFO: init_ckpt: /cache/zihaohe/runs/seer_iclr/ctrl_vjepa_s2/final.pt
+2026-09-26 11:35:02 INFO: out_dir:   /cache/zihaohe/runs/seer_iclr/adapt_vjepa_s2
+2026-09-26 11:35:02 INFO: log:       /cache/zihaohe/runs/seer_iclr/adapt_vjepa_s2/train_20260926-113502.log
+/cache/zihaohe/conda_envs/vjepa2-pip/lib/python3.11/site-packages/timm/models/layers/__init__.py:49: FutureWarning: Importing from timm.models.layers is deprecated, please import via timm.layers
+  warnings.warn(f"Importing from {__name__} is deprecated, please import via timm.layers", FutureWarning)
+[VJepaBackboneLocal21] loaded /home/ma-user/workspace/zihaohe/checkpoint/vjepa2_1_vitl_dist_vitG_384.pt | missing=0 unexpected=2
+  unexpected (first 5): ['patch_embed_img.proj.weight', 'patch_embed_img.proj.bias']
+[CounterfactualRefiner] loaded predictor from /home/ma-user/workspace/zihaohe/checkpoint/vjepa2_1_vitl_dist_vitG_384.pt | missing=0 unexpected=4
+2026-09-26 11:35:23 INFO:   pixel_branch load: missing=0 unexpected=0
+2026-09-26 11:35:23 INFO:   cf_refiner   load: missing=0 unexpected=0
+2026-09-26 11:35:23 INFO:   variant: random_vjepa=False disable_igab=False disable_lic=False disable_bottleneck=False w=(1.5,0.15,0.02,0.05)
+2026-09-26 11:35:23 INFO:   gate (post-override)   = -0.0198
+2026-09-26 11:35:23 INFO:   router[0] softmax post = ['0.9479', '0.0174', '0.0174', '0.0174']
+2026-09-26 11:35:23 INFO:   no_vjepa=False  save_at=[100]  seed=0
+2026-09-26 11:35:23 INFO:   trainable: 370.44M (pixel_branch + cf_refiner LoRA/gate/new_proj)
+[BVI-RLV] train: 64 sequences (32 scenes × ≤2 fps), 26746 frames total
+[BVI-RLV] test: 16 sequences (8 scenes × ≤2 fps), 6240 frames total
+[fewshot] 8 BVI train sequences from scenes ['S01_colour_chart', 'S09_kitchen', 'S17_faces2', 'S25_figures2']
+[SDSD] layout=A/C (static_np or original) subset=direct split=test -> 15 sequences, 1037 frames total.
+2026-09-26 11:36:47 INFO:   audit sequences (SDSD-indoor test): 15
+/cache/zihaohe/conda_envs/vjepa2-pip/lib/python3.11/site-packages/torch/backends/cuda/__init__.py:342: FutureWarning: torch.backends.cuda.sdp_kernel() is deprecated. In the future, this context manager will be removed. Please see, torch.nn.attention.sdpa_kernel() for the new context manager, with updated signature.
+  warnings.warn(
+2026-09-26 11:37:35 INFO: Zero-iter audit (48.3s): RGB-512=27.618  Y-512=29.120
+2026-09-26 11:59:08 INFO: it    50/200 total=0.1378 pix=0.0601 jepa=0.7580 gate=-0.0206 router_max_per_scale=['0.947915', '0.948033', '0.948031', '0.947900', '0.948136'] step=25.86s
+2026-09-26 12:20:39 INFO: it   100/200 total=0.1056 pix=0.0409 jepa=0.7481 gate=-0.0215 router_max_per_scale=['0.947915', '0.948021', '0.948033', '0.947886', '0.948130'] step=25.83s
+2026-09-26 12:20:41 INFO:   -> saved step_100.pt
+2026-09-26 12:21:28 INFO: [audit @ 100] (47.6s) RGB-512=18.077  Y-512=18.743
+2026-09-26 12:42:58 INFO: it   150/200 total=0.0920 pix=0.0323 jepa=0.7563 gate=-0.0222 router_max_per_scale=['0.947915', '0.948014', '0.948042', '0.947875', '0.948126'] step=26.76s
+2026-09-26 13:04:35 INFO: it   200/200 total=0.0897 pix=0.0316 jepa=0.7357 gate=-0.0231 router_max_per_scale=['0.947915', '0.948019', '0.948047', '0.947884', '0.948140'] step=25.94s
+2026-09-26 13:05:25 INFO: [audit @ 200] (50.0s) RGB-512=20.064  Y-512=21.134
+2026-09-26 13:05:26 INFO: === adapt_vjepa_s2 done: best Y-512 = 29.120  best RGB-512 = 27.618 ===

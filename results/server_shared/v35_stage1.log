@@ -1,0 +1,193 @@
+2026-06-18 12:53:03 INFO: === v35 Stage 1 (v34a IGMSA base + M2 consistency, λ_jepa=0.05) ===
+2026-06-18 12:53:03 INFO: init: /cache/zihaohe/checkpoint/runs/v34a_igmsa_from_v9/best_y512.pt
+2026-06-18 12:53:03 INFO: jepa_layers: 2,3
+/cache/zihaohe/conda_envs/vjepa2-pip/lib/python3.11/site-packages/timm/models/layers/__init__.py:49: FutureWarning: Importing from timm.models.layers is deprecated, please import via timm.layers
+  warnings.warn(f"Importing from {__name__} is deprecated, please import via timm.layers", FutureWarning)
+[VJepaBackboneLocal21] loaded /home/ma-user/workspace/zihaohe/checkpoint/vjepa2_1_vitl_dist_vitG_384.pt | missing=0 unexpected=2
+  unexpected (first 5): ['patch_embed_img.proj.weight', 'patch_embed_img.proj.bias']
+2026-06-18 12:53:26 INFO:   Loaded v34a: missing=0 unexpected=0
+[SDSD] layout=A/C (static_np or original) subset=direct split=test -> 15 sequences, 1037 frames total.
+/cache/zihaohe/conda_envs/vjepa2-pip/lib/python3.11/site-packages/torch/backends/cuda/__init__.py:342: FutureWarning: torch.backends.cuda.sdp_kernel() is deprecated. In the future, this context manager will be removed. Please see, torch.nn.attention.sdpa_kernel() for the new context manager, with updated signature.
+  warnings.warn(
+2026-06-18 12:54:20 INFO: Zero-iter audit (54.7s): RGB-512=27.114  Y-512=28.872
+[SDSD] layout=A/C (static_np or original) subset=direct split=train -> 59 sequences, 1671 frames total.
+[SDSD] layout=A/C (static_np or original) subset=direct split=train -> 101 sequences, 2530 frames total.
+Setting up [LPIPS] perceptual loss: trunk [alex], v[0.1], spatial [off]
+/cache/zihaohe/conda_envs/vjepa2-pip/lib/python3.11/site-packages/torchvision/models/_utils.py:208: UserWarning: The parameter 'pretrained' is deprecated since 0.13 and may be removed in the future, please use 'weights' instead.
+  warnings.warn(
+/cache/zihaohe/conda_envs/vjepa2-pip/lib/python3.11/site-packages/torchvision/models/_utils.py:223: UserWarning: Arguments other than a weight enum or `None` for 'weights' are deprecated since 0.13 and may be removed in the future. The current behavior is equivalent to passing `weights=AlexNet_Weights.IMAGENET1K_V1`. You can also use `weights=AlexNet_Weights.DEFAULT` to get the most up-to-date weights.
+  warnings.warn(msg)
+Loading model from: /cache/zihaohe/conda_envs/vjepa2-pip/lib/python3.11/site-packages/lpips/weights/v0.1/alex.pth
+/cache/zihaohe/conda_envs/vjepa2-pip/lib/python3.11/site-packages/torch/backends/cuda/__init__.py:342: FutureWarning: torch.backends.cuda.sdp_kernel() is deprecated. In the future, this context manager will be removed. Please see, torch.nn.attention.sdpa_kernel() for the new context manager, with updated signature.
+  warnings.warn(
+2026-06-18 12:59:45 INFO: it    50/8000 total=0.1258 pix=0.0397 jepa=0.3438 step=6.49s
+2026-06-18 13:05:07 INFO: it   100/8000 total=0.1309 pix=0.0426 jepa=0.3361 step=6.47s
+2026-06-18 13:10:27 INFO: it   150/8000 total=0.1293 pix=0.0436 jepa=0.3418 step=6.44s
+2026-06-18 13:15:49 INFO: it   200/8000 total=0.1258 pix=0.0417 jepa=0.3397 step=6.44s
+2026-06-18 13:21:12 INFO: it   250/8000 total=0.1253 pix=0.0416 jepa=0.3337 step=6.45s
+2026-06-18 13:26:32 INFO: it   300/8000 total=0.1238 pix=0.0407 jepa=0.3379 step=6.44s
+2026-06-18 13:31:55 INFO: it   350/8000 total=0.1257 pix=0.0421 jepa=0.3444 step=6.44s
+2026-06-18 13:37:14 INFO: it   400/8000 total=0.1224 pix=0.0398 jepa=0.3434 step=6.43s
+2026-06-18 13:42:37 INFO: it   450/8000 total=0.1185 pix=0.0379 jepa=0.3446 step=6.44s
+2026-06-18 13:48:00 INFO: it   500/8000 total=0.1229 pix=0.0431 jepa=0.3254 step=6.44s
+2026-06-18 13:53:19 INFO: it   550/8000 total=0.1173 pix=0.0389 jepa=0.3327 step=6.43s
+2026-06-18 13:58:42 INFO: it   600/8000 total=0.1119 pix=0.0372 jepa=0.3256 step=6.44s
+2026-06-18 14:04:04 INFO: it   650/8000 total=0.1198 pix=0.0414 jepa=0.3347 step=6.44s
+2026-06-18 14:09:24 INFO: it   700/8000 total=0.1245 pix=0.0450 jepa=0.3339 step=6.43s
+2026-06-18 14:14:47 INFO: it   750/8000 total=0.1202 pix=0.0434 jepa=0.3385 step=6.43s
+2026-06-18 14:20:06 INFO: it   800/8000 total=0.1145 pix=0.0414 jepa=0.3174 step=6.43s
+2026-06-18 14:25:29 INFO: it   850/8000 total=0.1080 pix=0.0377 jepa=0.3290 step=6.43s
+2026-06-18 14:30:51 INFO: it   900/8000 total=0.1210 pix=0.0449 jepa=0.3312 step=6.43s
+2026-06-18 14:36:11 INFO: it   950/8000 total=0.1216 pix=0.0468 jepa=0.3294 step=6.43s
+2026-06-18 14:41:33 INFO: it  1000/8000 total=0.1044 pix=0.0376 jepa=0.3226 step=6.43s
+2026-06-18 14:42:27 INFO: [audit @ 1000] (54.1s) RGB-512=26.322  Y-512=27.598
+2026-06-18 14:47:50 INFO: it  1050/8000 total=0.1170 pix=0.0436 jepa=0.3379 step=6.49s
+2026-06-18 14:53:10 INFO: it  1100/8000 total=0.1100 pix=0.0404 jepa=0.3232 step=6.48s
+2026-06-18 14:58:33 INFO: it  1150/8000 total=0.1082 pix=0.0393 jepa=0.3349 step=6.48s
+2026-06-18 15:03:52 INFO: it  1200/8000 total=0.1112 pix=0.0419 jepa=0.3267 step=6.48s
+2026-06-18 15:09:15 INFO: it  1250/8000 total=0.1074 pix=0.0409 jepa=0.3261 step=6.48s
+2026-06-18 15:14:37 INFO: it  1300/8000 total=0.1118 pix=0.0423 jepa=0.3334 step=6.47s
+2026-06-18 15:19:57 INFO: it  1350/8000 total=0.1101 pix=0.0438 jepa=0.3273 step=6.47s
+2026-06-18 15:25:20 INFO: it  1400/8000 total=0.0909 pix=0.0333 jepa=0.3202 step=6.47s
+2026-06-18 15:30:43 INFO: it  1450/8000 total=0.1101 pix=0.0451 jepa=0.3193 step=6.47s
+2026-06-18 15:36:02 INFO: it  1500/8000 total=0.1044 pix=0.0413 jepa=0.3294 step=6.47s
+2026-06-18 15:41:25 INFO: it  1550/8000 total=0.1134 pix=0.0468 jepa=0.3343 step=6.47s
+2026-06-18 15:46:44 INFO: it  1600/8000 total=0.1067 pix=0.0433 jepa=0.3182 step=6.46s
+2026-06-18 15:52:07 INFO: it  1650/8000 total=0.0998 pix=0.0399 jepa=0.3278 step=6.46s
+2026-06-18 15:57:30 INFO: it  1700/8000 total=0.1144 pix=0.0471 jepa=0.3276 step=6.46s
+2026-06-18 16:02:49 INFO: it  1750/8000 total=0.1013 pix=0.0402 jepa=0.3195 step=6.46s
+2026-06-18 16:08:12 INFO: it  1800/8000 total=0.0961 pix=0.0379 jepa=0.3318 step=6.46s
+2026-06-18 16:13:34 INFO: it  1850/8000 total=0.0989 pix=0.0391 jepa=0.3220 step=6.46s
+2026-06-18 16:18:54 INFO: it  1900/8000 total=0.1126 pix=0.0468 jepa=0.3346 step=6.46s
+2026-06-18 16:24:17 INFO: it  1950/8000 total=0.1056 pix=0.0438 jepa=0.3197 step=6.46s
+2026-06-18 16:29:36 INFO: it  2000/8000 total=0.0996 pix=0.0393 jepa=0.3231 step=6.46s
+2026-06-18 16:30:31 INFO: [audit @ 2000] (54.4s) RGB-512=25.350  Y-512=26.546
+2026-06-18 16:35:53 INFO: it  2050/8000 total=0.0973 pix=0.0391 jepa=0.3219 step=6.48s
+2026-06-18 16:41:16 INFO: it  2100/8000 total=0.1139 pix=0.0474 jepa=0.3278 step=6.48s
+2026-06-18 16:46:36 INFO: it  2150/8000 total=0.1062 pix=0.0442 jepa=0.3208 step=6.48s
+2026-06-18 16:51:58 INFO: it  2200/8000 total=0.1068 pix=0.0433 jepa=0.3294 step=6.48s
+2026-06-18 16:57:21 INFO: it  2250/8000 total=0.0952 pix=0.0379 jepa=0.3181 step=6.48s
+2026-06-18 17:02:40 INFO: it  2300/8000 total=0.1065 pix=0.0440 jepa=0.3189 step=6.48s
+2026-06-18 17:08:03 INFO: it  2350/8000 total=0.1114 pix=0.0462 jepa=0.3248 step=6.48s
+2026-06-18 17:13:22 INFO: it  2400/8000 total=0.0955 pix=0.0389 jepa=0.3215 step=6.48s
+2026-06-18 17:18:45 INFO: it  2450/8000 total=0.0957 pix=0.0380 jepa=0.3196 step=6.48s
+2026-06-18 17:24:08 INFO: it  2500/8000 total=0.0975 pix=0.0391 jepa=0.3320 step=6.47s
+2026-06-18 17:29:27 INFO: it  2550/8000 total=0.0944 pix=0.0378 jepa=0.3051 step=6.47s
+2026-06-18 17:34:50 INFO: it  2600/8000 total=0.1008 pix=0.0410 jepa=0.3241 step=6.47s
+2026-06-18 17:40:13 INFO: it  2650/8000 total=0.1000 pix=0.0408 jepa=0.3220 step=6.47s
+2026-06-18 17:45:32 INFO: it  2700/8000 total=0.1003 pix=0.0412 jepa=0.3169 step=6.47s
+2026-06-18 17:50:55 INFO: it  2750/8000 total=0.0987 pix=0.0403 jepa=0.3225 step=6.47s
+2026-06-18 17:56:15 INFO: it  2800/8000 total=0.1100 pix=0.0461 jepa=0.3274 step=6.47s
+2026-06-18 18:01:37 INFO: it  2850/8000 total=0.0952 pix=0.0382 jepa=0.3155 step=6.47s
+2026-06-18 18:07:00 INFO: it  2900/8000 total=0.1061 pix=0.0436 jepa=0.3336 step=6.47s
+2026-06-18 18:12:19 INFO: it  2950/8000 total=0.0981 pix=0.0403 jepa=0.3053 step=6.47s
+2026-06-18 18:17:42 INFO: it  3000/8000 total=0.0909 pix=0.0357 jepa=0.3177 step=6.47s
+2026-06-18 18:18:36 INFO: [audit @ 3000] (53.9s) RGB-512=26.303  Y-512=27.556
+2026-06-18 18:23:59 INFO: it  3050/8000 total=0.0904 pix=0.0359 jepa=0.3155 step=6.48s
+2026-06-18 18:29:19 INFO: it  3100/8000 total=0.1057 pix=0.0436 jepa=0.3263 step=6.48s
+2026-06-18 18:34:41 INFO: it  3150/8000 total=0.0974 pix=0.0397 jepa=0.3176 step=6.48s
+2026-06-18 18:40:01 INFO: it  3200/8000 total=0.0928 pix=0.0376 jepa=0.3151 step=6.48s
+2026-06-18 18:45:23 INFO: it  3250/8000 total=0.0952 pix=0.0391 jepa=0.3115 step=6.48s
+2026-06-18 18:50:46 INFO: it  3300/8000 total=0.1086 pix=0.0450 jepa=0.3232 step=6.48s
+2026-06-18 18:56:05 INFO: it  3350/8000 total=0.0943 pix=0.0384 jepa=0.3137 step=6.48s
+2026-06-18 19:01:28 INFO: it  3400/8000 total=0.1078 pix=0.0458 jepa=0.3121 step=6.48s
+2026-06-18 19:06:51 INFO: it  3450/8000 total=0.0920 pix=0.0366 jepa=0.3211 step=6.48s
+2026-06-18 19:12:10 INFO: it  3500/8000 total=0.0916 pix=0.0360 jepa=0.3243 step=6.48s
+2026-06-18 19:17:33 INFO: it  3550/8000 total=0.0948 pix=0.0376 jepa=0.3168 step=6.48s
+2026-06-18 19:22:53 INFO: it  3600/8000 total=0.0974 pix=0.0398 jepa=0.3112 step=6.48s
+2026-06-18 19:28:16 INFO: it  3650/8000 total=0.1019 pix=0.0420 jepa=0.3153 step=6.48s
+2026-06-18 19:33:39 INFO: it  3700/8000 total=0.1082 pix=0.0465 jepa=0.3121 step=6.48s
+2026-06-18 19:38:59 INFO: it  3750/8000 total=0.1057 pix=0.0447 jepa=0.3235 step=6.47s
+2026-06-18 19:44:22 INFO: it  3800/8000 total=0.0872 pix=0.0339 jepa=0.3184 step=6.47s
+2026-06-18 19:49:44 INFO: it  3850/8000 total=0.0927 pix=0.0379 jepa=0.3115 step=6.47s
+2026-06-18 19:55:04 INFO: it  3900/8000 total=0.1042 pix=0.0433 jepa=0.3197 step=6.47s
+2026-06-18 20:00:28 INFO: it  3950/8000 total=0.0948 pix=0.0383 jepa=0.3120 step=6.47s
+2026-06-18 20:05:48 INFO: it  4000/8000 total=0.0972 pix=0.0401 jepa=0.3074 step=6.47s
+2026-06-18 20:06:42 INFO: [audit @ 4000] (54.8s) RGB-512=26.563  Y-512=28.148
+2026-06-18 20:12:05 INFO: it  4050/8000 total=0.1012 pix=0.0426 jepa=0.3098 step=6.49s
+2026-06-18 20:17:28 INFO: it  4100/8000 total=0.0990 pix=0.0408 jepa=0.3145 step=6.48s
+2026-06-18 20:22:48 INFO: it  4150/8000 total=0.1186 pix=0.0515 jepa=0.3106 step=6.48s
+2026-06-18 20:28:11 INFO: it  4200/8000 total=0.1026 pix=0.0427 jepa=0.3175 step=6.48s
+2026-06-18 20:33:33 INFO: it  4250/8000 total=0.0916 pix=0.0370 jepa=0.3103 step=6.48s
+2026-06-18 20:38:53 INFO: it  4300/8000 total=0.0918 pix=0.0376 jepa=0.2989 step=6.48s
+2026-06-18 20:44:16 INFO: it  4350/8000 total=0.0968 pix=0.0398 jepa=0.3088 step=6.48s
+2026-06-18 20:49:36 INFO: it  4400/8000 total=0.0999 pix=0.0411 jepa=0.3233 step=6.48s
+2026-06-18 20:54:58 INFO: it  4450/8000 total=0.1004 pix=0.0417 jepa=0.3117 step=6.48s
+2026-06-18 21:00:20 INFO: it  4500/8000 total=0.0976 pix=0.0399 jepa=0.3187 step=6.48s
+2026-06-18 21:05:40 INFO: it  4550/8000 total=0.0969 pix=0.0393 jepa=0.3105 step=6.48s
+2026-06-18 21:11:03 INFO: it  4600/8000 total=0.0984 pix=0.0404 jepa=0.3164 step=6.48s
+2026-06-18 21:16:26 INFO: it  4650/8000 total=0.1002 pix=0.0415 jepa=0.3141 step=6.48s
+2026-06-18 21:21:46 INFO: it  4700/8000 total=0.0960 pix=0.0397 jepa=0.3122 step=6.48s
+2026-06-18 21:27:08 INFO: it  4750/8000 total=0.1017 pix=0.0418 jepa=0.3184 step=6.48s
+2026-06-18 21:32:28 INFO: it  4800/8000 total=0.1037 pix=0.0431 jepa=0.3127 step=6.48s
+2026-06-18 21:37:51 INFO: it  4850/8000 total=0.0922 pix=0.0379 jepa=0.2950 step=6.48s
+2026-06-18 21:43:14 INFO: it  4900/8000 total=0.1006 pix=0.0406 jepa=0.3284 step=6.48s
+2026-06-18 21:48:33 INFO: it  4950/8000 total=0.0931 pix=0.0382 jepa=0.3046 step=6.48s
+2026-06-18 21:53:56 INFO: it  5000/8000 total=0.0990 pix=0.0416 jepa=0.2958 step=6.48s
+2026-06-18 21:54:50 INFO: [audit @ 5000] (53.9s) RGB-512=26.308  Y-512=27.550
+2026-06-18 22:00:12 INFO: it  5050/8000 total=0.0902 pix=0.0363 jepa=0.3189 step=6.49s
+2026-06-18 22:05:32 INFO: it  5100/8000 total=0.1004 pix=0.0412 jepa=0.3173 step=6.48s
+2026-06-18 22:10:54 INFO: it  5150/8000 total=0.0955 pix=0.0391 jepa=0.3059 step=6.48s
+2026-06-18 22:16:14 INFO: it  5200/8000 total=0.1054 pix=0.0443 jepa=0.3145 step=6.48s
+2026-06-18 22:21:37 INFO: it  5250/8000 total=0.1057 pix=0.0447 jepa=0.3175 step=6.48s
+2026-06-18 22:26:59 INFO: it  5300/8000 total=0.1019 pix=0.0427 jepa=0.3099 step=6.48s
+2026-06-18 22:32:18 INFO: it  5350/8000 total=0.0975 pix=0.0399 jepa=0.3128 step=6.48s
+2026-06-18 22:37:41 INFO: it  5400/8000 total=0.0985 pix=0.0402 jepa=0.3151 step=6.48s
+2026-06-18 22:43:04 INFO: it  5450/8000 total=0.0905 pix=0.0363 jepa=0.3069 step=6.48s
+2026-06-18 22:48:23 INFO: it  5500/8000 total=0.0889 pix=0.0347 jepa=0.3143 step=6.48s
+2026-06-18 22:53:46 INFO: it  5550/8000 total=0.1090 pix=0.0461 jepa=0.3151 step=6.48s
+2026-06-18 22:59:06 INFO: it  5600/8000 total=0.0889 pix=0.0350 jepa=0.3112 step=6.48s
+2026-06-18 23:04:28 INFO: it  5650/8000 total=0.0992 pix=0.0408 jepa=0.3095 step=6.48s
+2026-06-18 23:09:51 INFO: it  5700/8000 total=0.0925 pix=0.0370 jepa=0.3146 step=6.48s
+2026-06-18 23:15:11 INFO: it  5750/8000 total=0.0986 pix=0.0403 jepa=0.3159 step=6.48s
+2026-06-18 23:20:33 INFO: it  5800/8000 total=0.0911 pix=0.0367 jepa=0.3088 step=6.48s
+2026-06-18 23:25:56 INFO: it  5850/8000 total=0.0957 pix=0.0388 jepa=0.3184 step=6.48s
+2026-06-18 23:31:16 INFO: it  5900/8000 total=0.0958 pix=0.0386 jepa=0.3177 step=6.48s
+2026-06-18 23:36:38 INFO: it  5950/8000 total=0.1001 pix=0.0415 jepa=0.3083 step=6.48s
+2026-06-18 23:41:58 INFO: it  6000/8000 total=0.1013 pix=0.0427 jepa=0.3096 step=6.48s
+2026-06-18 23:42:52 INFO: [audit @ 6000] (53.6s) RGB-512=27.209  Y-512=28.900
+2026-06-18 23:42:53 INFO:   → best Y-512 = 28.900 saved
+2026-06-18 23:42:54 INFO:   → best RGB-512 = 27.209 saved
+2026-06-18 23:48:17 INFO: it  6050/8000 total=0.0936 pix=0.0375 jepa=0.3201 step=6.49s
+2026-06-18 23:53:40 INFO: it  6100/8000 total=0.0876 pix=0.0350 jepa=0.2951 step=6.49s
+2026-06-18 23:58:59 INFO: it  6150/8000 total=0.0963 pix=0.0390 jepa=0.3119 step=6.48s
+2026-06-19 00:04:22 INFO: it  6200/8000 total=0.0965 pix=0.0393 jepa=0.3085 step=6.48s
+2026-06-19 00:09:45 INFO: it  6250/8000 total=0.0965 pix=0.0391 jepa=0.3183 step=6.48s
+2026-06-19 00:15:05 INFO: it  6300/8000 total=0.0986 pix=0.0410 jepa=0.3016 step=6.48s
+2026-06-19 00:20:28 INFO: it  6350/8000 total=0.0958 pix=0.0391 jepa=0.3102 step=6.48s
+2026-06-19 00:25:47 INFO: it  6400/8000 total=0.0974 pix=0.0404 jepa=0.3028 step=6.48s
+2026-06-19 00:31:10 INFO: it  6450/8000 total=0.0880 pix=0.0354 jepa=0.2998 step=6.48s
+2026-06-19 00:36:33 INFO: it  6500/8000 total=0.1069 pix=0.0457 jepa=0.3215 step=6.48s
+2026-06-19 00:41:52 INFO: it  6550/8000 total=0.1016 pix=0.0427 jepa=0.3072 step=6.48s
+2026-06-19 00:47:15 INFO: it  6600/8000 total=0.0906 pix=0.0357 jepa=0.3151 step=6.48s
+2026-06-19 00:52:38 INFO: it  6650/8000 total=0.0932 pix=0.0379 jepa=0.3063 step=6.48s
+2026-06-19 00:57:58 INFO: it  6700/8000 total=0.0857 pix=0.0333 jepa=0.3067 step=6.48s
+2026-06-19 01:03:21 INFO: it  6750/8000 total=0.0974 pix=0.0400 jepa=0.3025 step=6.48s
+2026-06-19 01:08:40 INFO: it  6800/8000 total=0.1037 pix=0.0439 jepa=0.3140 step=6.48s
+2026-06-19 01:14:03 INFO: it  6850/8000 total=0.0884 pix=0.0350 jepa=0.3036 step=6.48s
+2026-06-19 01:19:25 INFO: it  6900/8000 total=0.0964 pix=0.0388 jepa=0.3092 step=6.48s
+2026-06-19 01:24:45 INFO: it  6950/8000 total=0.0960 pix=0.0391 jepa=0.3095 step=6.48s
+2026-06-19 01:30:08 INFO: it  7000/8000 total=0.1076 pix=0.0461 jepa=0.3107 step=6.48s
+2026-06-19 01:31:03 INFO: [audit @ 7000] (54.7s) RGB-512=26.715  Y-512=28.196
+2026-06-19 01:36:26 INFO: it  7050/8000 total=0.0958 pix=0.0394 jepa=0.3115 step=6.49s
+2026-06-19 01:41:46 INFO: it  7100/8000 total=0.0900 pix=0.0361 jepa=0.2973 step=6.49s
+2026-06-19 01:47:08 INFO: it  7150/8000 total=0.0896 pix=0.0362 jepa=0.3067 step=6.48s
+2026-06-19 01:52:28 INFO: it  7200/8000 total=0.0912 pix=0.0366 jepa=0.3065 step=6.48s
+2026-06-19 01:57:51 INFO: it  7250/8000 total=0.0979 pix=0.0404 jepa=0.3030 step=6.48s
+2026-06-19 02:03:14 INFO: it  7300/8000 total=0.0944 pix=0.0385 jepa=0.3056 step=6.48s
+2026-06-19 02:08:33 INFO: it  7350/8000 total=0.1065 pix=0.0450 jepa=0.3163 step=6.48s
+2026-06-19 02:13:56 INFO: it  7400/8000 total=0.0883 pix=0.0355 jepa=0.3009 step=6.48s
+2026-06-19 02:19:18 INFO: it  7450/8000 total=0.0901 pix=0.0354 jepa=0.3101 step=6.48s
+2026-06-19 02:24:38 INFO: it  7500/8000 total=0.0976 pix=0.0398 jepa=0.3108 step=6.48s
+2026-06-19 02:30:01 INFO: it  7550/8000 total=0.0901 pix=0.0363 jepa=0.3075 step=6.48s
+2026-06-19 02:35:21 INFO: it  7600/8000 total=0.0906 pix=0.0359 jepa=0.3122 step=6.48s
+2026-06-19 02:40:43 INFO: it  7650/8000 total=0.1040 pix=0.0432 jepa=0.3227 step=6.48s
+2026-06-19 02:46:06 INFO: it  7700/8000 total=0.0889 pix=0.0361 jepa=0.2954 step=6.48s
+2026-06-19 02:51:26 INFO: it  7750/8000 total=0.0882 pix=0.0346 jepa=0.3045 step=6.48s
+2026-06-19 02:56:48 INFO: it  7800/8000 total=0.0980 pix=0.0406 jepa=0.3048 step=6.48s
+2026-06-19 03:02:11 INFO: it  7850/8000 total=0.0949 pix=0.0389 jepa=0.2933 step=6.48s
+2026-06-19 03:07:31 INFO: it  7900/8000 total=0.1018 pix=0.0425 jepa=0.3148 step=6.48s
+2026-06-19 03:12:53 INFO: it  7950/8000 total=0.1062 pix=0.0449 jepa=0.3129 step=6.48s
+2026-06-19 03:18:13 INFO: it  8000/8000 total=0.0921 pix=0.0375 jepa=0.3095 step=6.48s
+2026-06-19 03:19:07 INFO: [audit @ 8000] (53.6s) RGB-512=26.922  Y-512=28.520
+2026-06-19 03:19:08 INFO: === v35 Stage 1 done: best Y-512 = 28.900  best RGB-512 = 27.209 ===

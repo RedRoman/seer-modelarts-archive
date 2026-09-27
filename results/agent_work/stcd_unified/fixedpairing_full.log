@@ -1,0 +1,175 @@
+[STCD] loaded /temp/zihaohe/cache/stcd_repro/LLVE_STCD/pretrained_model/SDSD_indoor_model/indoor_G.pth strict=True (50 tensors, 1.81M params)
+[SDSD] layout=A/C (static_np or original) subset=direct split=test -> 15 sequences, 1037 frames total.
+Loading pretrained model LPIPS from /home/ma-user/.cache/torch/hub/pyiqa/LPIPS_v0.1_alex-df73285e.pth
+Loading pretrained model DISTS from /home/ma-user/.cache/torch/hub/pyiqa/DISTS_weights-f5e65c96.pth
+  mag = torch.abs(x_freq)
+  L0_SDSD-indoor         pair50     Retinexformer:27.96 URCSA:23.38 DarkIR:21.37 HVI-CIDNet:16.41 Zero-DCE:20.92 SCI:23.15 STCD:26.38
+  L0_SDSD-indoor         pair52     Retinexformer:25.71 URCSA:23.91 DarkIR:22.89 HVI-CIDNet:18.16 Zero-DCE:18.23 SCI:23.81 STCD:26.96
+  L0_SDSD-indoor         pair58     Retinexformer:19.34 URCSA:25.54 DarkIR:25.98 HVI-CIDNet:24.95 Zero-DCE:22.26 SCI:24.36 STCD:15.57
+  L0_SDSD-indoor         pair5_2    Retinexformer:25.74 URCSA:23.96 DarkIR:19.05 HVI-CIDNet:21.04 Zero-DCE:18.26 SCI:23.31 STCD:26.07
+  L0_SDSD-indoor         pair6      Retinexformer:28.46 URCSA:26.93 DarkIR:24.60 HVI-CIDNet:15.96 Zero-DCE:23.94 SCI:25.44 STCD:22.33
+  L0_SDSD-indoor         pair60     Retinexformer:33.31 URCSA:32.45 DarkIR:19.05 HVI-CIDNet:27.69 Zero-DCE:27.99 SCI:25.85 STCD:27.83
+  L0_SDSD-indoor         pair68     Retinexformer:30.95 URCSA:27.29 DarkIR:21.46 HVI-CIDNet:21.97 Zero-DCE:15.24 SCI:28.51 STCD:20.35
+  L0_SDSD-indoor         pair6_2    Retinexformer:29.06 URCSA:24.93 DarkIR:16.28 HVI-CIDNet:18.77 Zero-DCE:13.24 SCI:25.28 STCD:22.83
+  L0_SDSD-indoor         pair7      Retinexformer:18.47 URCSA:17.97 DarkIR:14.04 HVI-CIDNet:12.09 Zero-DCE:13.59 SCI:15.45 STCD:22.65
+  L0_SDSD-indoor         pair70     Retinexformer:27.38 URCSA:26.10 DarkIR:17.42 HVI-CIDNet:24.61 Zero-DCE:17.03 SCI:24.65 STCD:27.81
+  L0_SDSD-indoor         pair7_2    Retinexformer:19.47 URCSA:19.64 DarkIR:18.67 HVI-CIDNet:18.74 Zero-DCE:14.13 SCI:14.13 STCD:24.13
+  L0_SDSD-indoor         pair8      Retinexformer:29.08 URCSA:27.36 DarkIR:24.31 HVI-CIDNet:19.17 Zero-DCE:14.07 SCI:25.07 STCD:19.06
+  L0_SDSD-indoor         pair8_2    Retinexformer:30.05 URCSA:19.39 DarkIR:17.22 HVI-CIDNet:13.26 Zero-DCE:13.11 SCI:25.63 STCD:28.21
+  L0_SDSD-indoor         pair9      Retinexformer:27.57 URCSA:25.32 DarkIR:28.53 HVI-CIDNet:26.13 Zero-DCE:22.95 SCI:23.54 STCD:16.91
+  L0_SDSD-indoor         pair9_2    Retinexformer:25.33 URCSA:18.67 DarkIR:18.92 HVI-CIDNet:14.17 Zero-DCE:17.86 SCI:24.04 STCD:25.11
+== L0_SDSD-indoor done (265s)
+  STCD-12idx_SDSD-indoor pair13     Retinexformer:27.41 URCSA:24.82 DarkIR:17.87 HVI-CIDNet:11.25 Zero-DCE:24.13 SCI:23.39 STCD:27.10
+  STCD-12idx_SDSD-indoor pair15     Retinexformer:19.46 URCSA:13.31 DarkIR:12.57 HVI-CIDNet:16.43 Zero-DCE:14.80 SCI:21.43 STCD:22.23
+  STCD-12idx_SDSD-indoor pair21     Retinexformer:30.47 URCSA:26.97 DarkIR:18.84 HVI-CIDNet:26.54 Zero-DCE:19.31 SCI:25.00 STCD:30.30
+  STCD-12idx_SDSD-indoor pair23     Retinexformer:21.52 URCSA:20.62 DarkIR:19.31 HVI-CIDNet:16.71 Zero-DCE:14.81 SCI:19.40 STCD:24.47
+  STCD-12idx_SDSD-indoor pair31     Retinexformer:20.51 URCSA:27.90 DarkIR:26.21 HVI-CIDNet:23.66 Zero-DCE:20.64 SCI:16.48 STCD:25.59
+  STCD-12idx_SDSD-indoor pair33     Retinexformer:24.42 URCSA:26.30 DarkIR:11.42 HVI-CIDNet:12.67 Zero-DCE:15.98 SCI:18.69 STCD:26.35
+  STCD-12idx_SDSD-indoor pair50     Retinexformer:27.96 URCSA:23.38 DarkIR:21.37 HVI-CIDNet:16.41 Zero-DCE:20.92 SCI:23.15 STCD:26.38
+  STCD-12idx_SDSD-indoor pair52     Retinexformer:25.71 URCSA:23.91 DarkIR:22.89 HVI-CIDNet:18.16 Zero-DCE:18.23 SCI:23.81 STCD:26.96
+  STCD-12idx_SDSD-indoor pair58     Retinexformer:19.34 URCSA:25.54 DarkIR:25.98 HVI-CIDNet:24.95 Zero-DCE:22.26 SCI:24.36 STCD:15.57
+  STCD-12idx_SDSD-indoor pair60     Retinexformer:33.31 URCSA:32.45 DarkIR:19.05 HVI-CIDNet:27.69 Zero-DCE:27.99 SCI:25.85 STCD:27.83
+  STCD-12idx_SDSD-indoor pair68     Retinexformer:30.95 URCSA:27.29 DarkIR:21.46 HVI-CIDNet:21.97 Zero-DCE:15.24 SCI:28.51 STCD:20.35
+  STCD-12idx_SDSD-indoor pair70     Retinexformer:27.38 URCSA:26.10 DarkIR:17.42 HVI-CIDNet:24.61 Zero-DCE:17.03 SCI:24.65 STCD:27.81
+== STCD-12idx_SDSD-indoor done (261s)
+[SAVE] /temp/zihaohe/cache/checkpoint/runs/seer_iclr_evals/baselines_L0_fixedpairing_eval.json
+[SAVE] /temp/zihaohe/cache/checkpoint/runs/seer_iclr_evals/baselines_temporal_unified_v2.json
+{
+ "Retinexformer": {
+  "L0_vs_temporal_v1": {
+   "n": 15,
+   "max_abs_dpsnr": 0.0,
+   "max_abs_dlpips": 0.0,
+   "max_abs_dwarp": 0.0
+  },
+  "STCD12idx_same6_vs_old_eval_v2": {
+   "n": 6,
+   "max_abs_dpsnr_rgb": 0.0,
+   "max_abs_dlpips": 0.0,
+   "max_abs_ddists": 7.450580596923828e-09,
+   "max_abs_dclipiqa": 0.0
+  },
+  "clean6_STCD12idx_vs_L0_max_abs_dpsnr": 0.0
+ },
+ "URCSA": {
+  "L0_vs_temporal_v1": {
+   "n": 15,
+   "max_abs_dpsnr": 0.0,
+   "max_abs_dlpips": 0.0,
+   "max_abs_dwarp": 0.0
+  },
+  "STCD12idx_same6_vs_old_eval_v2": {
+   "n": 6,
+   "max_abs_dpsnr_rgb": 0.0,
+   "max_abs_dlpips": 0.0,
+   "max_abs_ddists": 1.1175870895385742e-08,
+   "max_abs_dclipiqa": 0.0
+  },
+  "clean6_STCD12idx_vs_L0_max_abs_dpsnr": 0.0
+ },
+ "DarkIR": {
+  "L0_vs_temporal_v1": {
+   "n": 15,
+   "max_abs_dpsnr": 0.0,
+   "max_abs_dlpips": 0.0,
+   "max_abs_dwarp": 0.0
+  },
+  "STCD12idx_same6_vs_old_eval_v2": {
+   "n": 6,
+   "max_abs_dpsnr_rgb": 0.0,
+   "max_abs_dlpips": 0.0,
+   "max_abs_ddists": 1.4901161193847656e-08,
+   "max_abs_dclipiqa": 0.0
+  },
+  "clean6_STCD12idx_vs_L0_max_abs_dpsnr": 0.0
+ },
+ "HVI-CIDNet": {
+  "L0_vs_temporal_v1": {
+   "n": 15,
+   "max_abs_dpsnr": 0.0,
+   "max_abs_dlpips": 0.0,
+   "max_abs_dwarp": 0.0
+  },
+  "STCD12idx_same6_vs_old_eval_v2": {
+   "n": 6,
+   "max_abs_dpsnr_rgb": 0.0,
+   "max_abs_dlpips": 0.0,
+   "max_abs_ddists": 3.725290298461914e-09,
+   "max_abs_dclipiqa": 0.0
+  },
+  "clean6_STCD12idx_vs_L0_max_abs_dpsnr": 0.0
+ },
+ "Zero-DCE": {
+  "L0_vs_temporal_v1": {
+   "n": 15,
+   "max_abs_dpsnr": 0.0,
+   "max_abs_dlpips": 0.0,
+   "max_abs_dwarp": 0.0
+  },
+  "STCD12idx_same6_vs_old_eval_v2": {
+   "n": 6,
+   "max_abs_dpsnr_rgb": 0.0,
+   "max_abs_dlpips": 0.0,
+   "max_abs_ddists": 1.1175870895385742e-08,
+   "max_abs_dclipiqa": 0.0
+  },
+  "clean6_STCD12idx_vs_L0_max_abs_dpsnr": 0.0
+ },
+ "SCI": {
+  "L0_vs_temporal_v1": {
+   "n": 15,
+   "max_abs_dpsnr": 0.0,
+   "max_abs_dlpips": 0.0,
+   "max_abs_dwarp": 0.0
+  },
+  "STCD12idx_same6_vs_old_eval_v2": {
+   "n": 6,
+   "max_abs_dpsnr_rgb": 0.0,
+   "max_abs_dlpips": 0.0,
+   "max_abs_ddists": 1.4901161193847656e-08,
+   "max_abs_dclipiqa": 0.0
+  },
+  "clean6_STCD12idx_vs_L0_max_abs_dpsnr": 0.0
+ },
+ "STCD": {
+  "L0_vs_temporal_v1": {
+   "n": 15,
+   "max_abs_dpsnr": 0.0,
+   "max_abs_dlpips": 0.0,
+   "max_abs_dwarp": 0.0
+  },
+  "STCD12idx_same6_vs_old_eval_v2": {
+   "n": 6,
+   "max_abs_dpsnr_rgb": 0.0,
+   "max_abs_dlpips": 0.0,
+   "max_abs_ddists": 0.0,
+   "max_abs_dclipiqa": 0.0
+  },
+  "clean6_STCD12idx_vs_L0_max_abs_dpsnr": 0.0
+ }
+}
+L0_SDSD-indoor         LQ             psnr_rgb=8.9693 lpips=0.5054 dists=0.3298 clipiqa=0.1861 n=15 | clean6 psnr_rgb=9.7920 lpips=0.4918 dists=0.3292 clipiqa=0.1691
+L0_SDSD-indoor         Retinexformer  psnr_rgb=26.5254 lpips=0.1806 dists=0.1685 clipiqa=0.2477 n=15 | clean6 psnr_rgb=27.4436 lpips=0.1824 dists=0.1600 clipiqa=0.2120
+L0_SDSD-indoor         URCSA          psnr_rgb=24.1891 lpips=0.2651 dists=0.1947 clipiqa=0.1679 n=15 | clean6 psnr_rgb=26.4446 lpips=0.2512 dists=0.1820 clipiqa=0.1586
+L0_SDSD-indoor         DarkIR         psnr_rgb=20.6537 lpips=0.2787 dists=0.1923 clipiqa=0.4191 n=15 | clean6 psnr_rgb=21.3631 lpips=0.2893 dists=0.1916 clipiqa=0.3487
+L0_SDSD-indoor         HVI-CIDNet     psnr_rgb=19.5420 lpips=0.4046 dists=0.2329 clipiqa=0.1428 n=15 | clean6 psnr_rgb=22.2990 lpips=0.4098 dists=0.2347 clipiqa=0.1233
+L0_SDSD-indoor         Zero-DCE       psnr_rgb=18.1872 lpips=0.4292 dists=0.2353 clipiqa=0.1626 n=15 | clean6 psnr_rgb=20.2775 lpips=0.4317 dists=0.2364 clipiqa=0.1587
+L0_SDSD-indoor         SCI            psnr_rgb=23.4815 lpips=0.3902 dists=0.2093 clipiqa=0.1718 n=15 | clean6 psnr_rgb=25.0551 lpips=0.3987 dists=0.2096 clipiqa=0.1586
+L0_SDSD-indoor         STCD           psnr_rgb=23.4797 lpips=0.1959 dists=0.1766 clipiqa=0.2626 n=15 | clean6 psnr_rgb=24.1483 lpips=0.2135 dists=0.1775 clipiqa=0.2542
+STCD-12idx_SDSD-indoor LQ             psnr_rgb=9.3709 lpips=0.4791 dists=0.3424 clipiqa=0.1989 n=12 | clean6 psnr_rgb=9.7920 lpips=0.4918 dists=0.3292 clipiqa=0.1691
+STCD-12idx_SDSD-indoor Retinexformer  psnr_rgb=25.7051 lpips=0.2093 dists=0.1935 clipiqa=0.2587 n=12 | clean6 psnr_rgb=27.4436 lpips=0.1824 dists=0.1600 clipiqa=0.2120
+STCD-12idx_SDSD-indoor URCSA          psnr_rgb=24.8833 lpips=0.2438 dists=0.2061 clipiqa=0.2146 n=12 | clean6 psnr_rgb=26.4446 lpips=0.2512 dists=0.1820 clipiqa=0.1586
+STCD-12idx_SDSD-indoor DarkIR         psnr_rgb=19.5336 lpips=0.3176 dists=0.2179 clipiqa=0.3951 n=12 | clean6 psnr_rgb=21.3631 lpips=0.2893 dists=0.1916 clipiqa=0.3487
+STCD-12idx_SDSD-indoor HVI-CIDNet     psnr_rgb=20.0880 lpips=0.4226 dists=0.2634 clipiqa=0.1678 n=12 | clean6 psnr_rgb=22.2990 lpips=0.4098 dists=0.2347 clipiqa=0.1233
+STCD-12idx_SDSD-indoor Zero-DCE       psnr_rgb=19.2785 lpips=0.4155 dists=0.2539 clipiqa=0.1809 n=12 | clean6 psnr_rgb=20.2775 lpips=0.4317 dists=0.2364 clipiqa=0.1587
+STCD-12idx_SDSD-indoor SCI            psnr_rgb=22.8936 lpips=0.4061 dists=0.2381 clipiqa=0.1891 n=12 | clean6 psnr_rgb=25.0551 lpips=0.3987 dists=0.2096 clipiqa=0.1586
+STCD-12idx_SDSD-indoor STCD           psnr_rgb=25.0777 lpips=0.2502 dists=0.2160 clipiqa=0.2743 n=12 | clean6 psnr_rgb=24.1483 lpips=0.2135 dists=0.1775 clipiqa=0.2542
+T STCD-12idx_SDSD-indoor GT             tlp=0.0320 mabd=0.0014 flicker=0.0317 warp_err=0.0059
+T STCD-12idx_SDSD-indoor LQ             tlp=0.0412 mabd=0.0006 flicker=0.0118 warp_err=0.0058
+T STCD-12idx_SDSD-indoor Retinexformer  tlp=0.0997 mabd=0.0039 flicker=0.0366 warp_err=0.0140
+T STCD-12idx_SDSD-indoor URCSA          tlp=0.1075 mabd=0.0033 flicker=0.0341 warp_err=0.0142
+T STCD-12idx_SDSD-indoor DarkIR         tlp=0.1420 mabd=0.0082 flicker=0.0382 warp_err=0.0191
+T STCD-12idx_SDSD-indoor HVI-CIDNet     tlp=0.1948 mabd=0.0287 flicker=0.0593 warp_err=0.0457
+T STCD-12idx_SDSD-indoor Zero-DCE       tlp=0.1516 mabd=0.0022 flicker=0.0351 warp_err=0.0225
+T STCD-12idx_SDSD-indoor SCI            tlp=0.1337 mabd=0.0021 flicker=0.0410 warp_err=0.0222
+T STCD-12idx_SDSD-indoor STCD           tlp=0.0520 mabd=0.0024 flicker=0.0344 warp_err=0.0103

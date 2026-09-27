@@ -1,0 +1,159 @@
+2026-06-22 02:15:22 INFO: === v35 Stage 4 (+ M3 cross-layer router) ===
+/cache/zihaohe/conda_envs/vjepa2-pip/lib/python3.11/site-packages/timm/models/layers/__init__.py:49: FutureWarning: Importing from timm.models.layers is deprecated, please import via timm.layers
+  warnings.warn(f"Importing from {__name__} is deprecated, please import via timm.layers", FutureWarning)
+[VJepaBackboneLocal21] loaded /home/ma-user/workspace/zihaohe/checkpoint/vjepa2_1_vitl_dist_vitG_384.pt | missing=0 unexpected=2
+  unexpected (first 5): ['patch_embed_img.proj.weight', 'patch_embed_img.proj.bias']
+[CounterfactualRefiner] loaded predictor from /home/ma-user/workspace/zihaohe/checkpoint/vjepa2_1_vitl_dist_vitG_384.pt | missing=0 unexpected=4
+2026-06-22 02:15:49 INFO:   pixel_branch init: missing=1 unexpected=0
+2026-06-22 02:15:49 INFO:   cf_refiner init: missing=0 unexpected=0
+[SDSD] layout=A/C (static_np or original) subset=direct split=test -> 15 sequences, 1037 frames total.
+/cache/zihaohe/conda_envs/vjepa2-pip/lib/python3.11/site-packages/torch/backends/cuda/__init__.py:342: FutureWarning: torch.backends.cuda.sdp_kernel() is deprecated. In the future, this context manager will be removed. Please see, torch.nn.attention.sdpa_kernel() for the new context manager, with updated signature.
+  warnings.warn(
+2026-06-22 02:16:39 INFO: Zero-iter audit (49.2s): RGB-512=27.088  Y-512=28.798
+[SDSD] layout=A/C (static_np or original) subset=direct split=train -> 59 sequences, 1671 frames total.
+Setting up [LPIPS] perceptual loss: trunk [alex], v[0.1], spatial [off]
+/cache/zihaohe/conda_envs/vjepa2-pip/lib/python3.11/site-packages/torchvision/models/_utils.py:208: UserWarning: The parameter 'pretrained' is deprecated since 0.13 and may be removed in the future, please use 'weights' instead.
+  warnings.warn(
+/cache/zihaohe/conda_envs/vjepa2-pip/lib/python3.11/site-packages/torchvision/models/_utils.py:223: UserWarning: Arguments other than a weight enum or `None` for 'weights' are deprecated since 0.13 and may be removed in the future. The current behavior is equivalent to passing `weights=AlexNet_Weights.IMAGENET1K_V1`. You can also use `weights=AlexNet_Weights.DEFAULT` to get the most up-to-date weights.
+  warnings.warn(msg)
+Loading model from: /cache/zihaohe/conda_envs/vjepa2-pip/lib/python3.11/site-packages/lpips/weights/v0.1/alex.pth
+/cache/zihaohe/conda_envs/vjepa2-pip/lib/python3.11/site-packages/torch/backends/cuda/__init__.py:342: FutureWarning: torch.backends.cuda.sdp_kernel() is deprecated. In the future, this context manager will be removed. Please see, torch.nn.attention.sdpa_kernel() for the new context manager, with updated signature.
+  warnings.warn(
+2026-06-22 02:22:11 INFO: it    50/6000 total=0.1104 pix=0.0454 jepa=0.3814 router_max_per_scale=[0.947915   0.94791853 0.94792324 0.94790953 0.94791436] step=6.63s
+2026-06-22 02:27:40 INFO: it   100/6000 total=0.1112 pix=0.0471 jepa=0.3672 router_max_per_scale=[0.947915   0.9479212  0.94792616 0.9479101  0.9479145 ] step=6.61s
+2026-06-22 02:33:07 INFO: it   150/6000 total=0.1159 pix=0.0489 jepa=0.3777 router_max_per_scale=[0.947915   0.94792163 0.94792366 0.94790953 0.9479176 ] step=6.59s
+2026-06-22 02:38:33 INFO: it   200/6000 total=0.1156 pix=0.0498 jepa=0.3729 router_max_per_scale=[0.947915   0.94792295 0.94792414 0.9479086  0.94792634] step=6.57s
+2026-06-22 02:44:01 INFO: it   250/6000 total=0.1186 pix=0.0502 jepa=0.3823 router_max_per_scale=[0.947915   0.9479294  0.9479225  0.9479094  0.94793355] step=6.57s
+2026-06-22 02:49:30 INFO: it   300/6000 total=0.1126 pix=0.0472 jepa=0.3772 router_max_per_scale=[0.947915   0.94792575 0.94791824 0.947909   0.9479422 ] step=6.57s
+2026-06-22 02:54:59 INFO: it   350/6000 total=0.1193 pix=0.0513 jepa=0.3706 router_max_per_scale=[0.947915   0.9479207  0.9479212  0.94790936 0.9479403 ] step=6.57s
+2026-06-22 03:00:24 INFO: it   400/6000 total=0.1128 pix=0.0471 jepa=0.3801 router_max_per_scale=[0.947915   0.94791585 0.9479195  0.9479087  0.9479377 ] step=6.56s
+2026-06-22 03:05:51 INFO: it   450/6000 total=0.1111 pix=0.0467 jepa=0.3695 router_max_per_scale=[0.947915   0.94791204 0.94792163 0.94790953 0.9479423 ] step=6.56s
+2026-06-22 03:11:20 INFO: it   500/6000 total=0.1213 pix=0.0517 jepa=0.3680 router_max_per_scale=[0.947915   0.9479148  0.94792056 0.9479086  0.947942  ] step=6.56s
+2026-06-22 03:12:08 INFO: [audit @ 500] (47.3s) RGB-512=27.295  Y-512=29.166
+2026-06-22 03:12:09 INFO:   → best Y-512 = 29.166 saved
+2026-06-22 03:12:10 INFO:   → best RGB-512 = 27.295 saved
+2026-06-22 03:17:35 INFO: it   550/6000 total=0.1040 pix=0.0430 jepa=0.3693 router_max_per_scale=[0.947915   0.94791716 0.94792    0.9479107  0.947939  ] step=6.65s
+2026-06-22 03:23:03 INFO: it   600/6000 total=0.1019 pix=0.0412 jepa=0.3784 router_max_per_scale=[0.947915   0.9479176  0.94792414 0.9479122  0.9479435 ] step=6.64s
+2026-06-22 03:28:32 INFO: it   650/6000 total=0.1119 pix=0.0466 jepa=0.3736 router_max_per_scale=[0.947915   0.9479161  0.9479247  0.94791627 0.9479496 ] step=6.64s
+2026-06-22 03:34:00 INFO: it   700/6000 total=0.1071 pix=0.0442 jepa=0.3741 router_max_per_scale=[0.947915   0.9479223  0.9479235  0.9479117  0.94795156] step=6.63s
+2026-06-22 03:39:25 INFO: it   750/6000 total=0.1159 pix=0.0496 jepa=0.3701 router_max_per_scale=[0.947915   0.947924   0.9479283  0.94791096 0.94794846] step=6.62s
+2026-06-22 03:44:53 INFO: it   800/6000 total=0.1115 pix=0.0469 jepa=0.3690 router_max_per_scale=[0.947915   0.9479267  0.9479285  0.94791156 0.947947  ] step=6.62s
+2026-06-22 03:50:21 INFO: it   850/6000 total=0.1118 pix=0.0469 jepa=0.3774 router_max_per_scale=[0.947915   0.9479337  0.9479278  0.94791156 0.9479506 ] step=6.61s
+2026-06-22 03:55:49 INFO: it   900/6000 total=0.1048 pix=0.0432 jepa=0.3687 router_max_per_scale=[0.947915   0.94793516 0.94792724 0.9479088  0.9479555 ] step=6.61s
+2026-06-22 04:01:14 INFO: it   950/6000 total=0.1106 pix=0.0473 jepa=0.3682 router_max_per_scale=[0.947915   0.94793373 0.94792444 0.9479089  0.9479543 ] step=6.61s
+2026-06-22 04:06:43 INFO: it  1000/6000 total=0.1083 pix=0.0456 jepa=0.3632 router_max_per_scale=[0.947915   0.94792444 0.9479224  0.94790995 0.9479602 ] step=6.60s
+2026-06-22 04:07:30 INFO: [audit @ 1000] (47.7s) RGB-512=26.513  Y-512=27.827
+2026-06-22 04:12:59 INFO: it  1050/6000 total=0.1078 pix=0.0451 jepa=0.3769 router_max_per_scale=[0.947915   0.9479226  0.94792366 0.9479076  0.94795656] step=6.65s
+2026-06-22 04:18:24 INFO: it  1100/6000 total=0.1138 pix=0.0473 jepa=0.3810 router_max_per_scale=[0.947915   0.94792026 0.94792527 0.947907   0.9479575 ] step=6.64s
+2026-06-22 04:23:53 INFO: it  1150/6000 total=0.1038 pix=0.0428 jepa=0.3728 router_max_per_scale=[0.947915   0.94792145 0.9479235  0.9479067  0.9479654 ] step=6.64s
+2026-06-22 04:29:20 INFO: it  1200/6000 total=0.1126 pix=0.0467 jepa=0.3799 router_max_per_scale=[0.947915   0.9479178  0.94792366 0.9479076  0.94796866] step=6.63s
+2026-06-22 04:34:48 INFO: it  1250/6000 total=0.1069 pix=0.0447 jepa=0.3711 router_max_per_scale=[0.947915   0.94791996 0.94792205 0.9479076  0.94796693] step=6.63s
+2026-06-22 04:40:13 INFO: it  1300/6000 total=0.1189 pix=0.0507 jepa=0.3718 router_max_per_scale=[0.947915   0.947921   0.947921   0.94790816 0.94796354] step=6.63s
+2026-06-22 04:45:41 INFO: it  1350/6000 total=0.1129 pix=0.0475 jepa=0.3767 router_max_per_scale=[0.947915   0.9479236  0.9479212  0.94790804 0.94796383] step=6.62s
+2026-06-22 04:51:10 INFO: it  1400/6000 total=0.1065 pix=0.0442 jepa=0.3693 router_max_per_scale=[0.947915   0.94792914 0.94792414 0.9479071  0.9479688 ] step=6.62s
+2026-06-22 04:56:34 INFO: it  1450/6000 total=0.1014 pix=0.0416 jepa=0.3649 router_max_per_scale=[0.947915   0.94793105 0.9479259  0.9479078  0.9479709 ] step=6.62s
+2026-06-22 05:02:03 INFO: it  1500/6000 total=0.1116 pix=0.0470 jepa=0.3743 router_max_per_scale=[0.947915   0.94793427 0.94792724 0.9479091  0.94797444] step=6.62s
+2026-06-22 05:02:50 INFO: [audit @ 1500] (47.1s) RGB-512=26.736  Y-512=28.160
+2026-06-22 05:08:18 INFO: it  1550/6000 total=0.1050 pix=0.0432 jepa=0.3729 router_max_per_scale=[0.947915   0.9479333  0.9479279  0.94790936 0.9479759 ] step=6.64s
+2026-06-22 05:13:46 INFO: it  1600/6000 total=0.1122 pix=0.0463 jepa=0.3772 router_max_per_scale=[0.947915  0.94793   0.9479317 0.9479105 0.9479734] step=6.64s
+2026-06-22 05:19:11 INFO: it  1650/6000 total=0.1137 pix=0.0483 jepa=0.3693 router_max_per_scale=[0.947915   0.9479317  0.9479341  0.94790936 0.94797844] step=6.64s
+2026-06-22 05:24:39 INFO: it  1700/6000 total=0.1143 pix=0.0489 jepa=0.3688 router_max_per_scale=[0.947915   0.9479282  0.94793534 0.9479107  0.947979  ] step=6.64s
+2026-06-22 05:30:07 INFO: it  1750/6000 total=0.1110 pix=0.0477 jepa=0.3729 router_max_per_scale=[0.947915   0.94792795 0.94793516 0.9479114  0.9479829 ] step=6.63s
+2026-06-22 05:35:35 INFO: it  1800/6000 total=0.1005 pix=0.0405 jepa=0.3756 router_max_per_scale=[0.947915  0.9479268 0.9479399 0.9479103 0.9479919] step=6.63s
+2026-06-22 05:41:00 INFO: it  1850/6000 total=0.1103 pix=0.0454 jepa=0.3782 router_max_per_scale=[0.947915   0.9479314  0.94793975 0.94790775 0.9479943 ] step=6.63s
+2026-06-22 05:46:27 INFO: it  1900/6000 total=0.1026 pix=0.0415 jepa=0.3766 router_max_per_scale=[0.947915   0.9479329  0.947936   0.9479078  0.94799495] step=6.63s
+2026-06-22 05:51:55 INFO: it  1950/6000 total=0.1122 pix=0.0467 jepa=0.3700 router_max_per_scale=[0.947915  0.9479315 0.9479391 0.9479086 0.9479945] step=6.62s
+2026-06-22 05:57:20 INFO: it  2000/6000 total=0.1079 pix=0.0452 jepa=0.3661 router_max_per_scale=[0.947915   0.94793385 0.9479419  0.94790643 0.94798946] step=6.62s
+2026-06-22 05:58:07 INFO: [audit @ 2000] (47.2s) RGB-512=27.132  Y-512=28.928
+2026-06-22 06:03:35 INFO: it  2050/6000 total=0.1036 pix=0.0429 jepa=0.3676 router_max_per_scale=[0.947915   0.9479285  0.94794405 0.9479071  0.9479916 ] step=6.64s
+2026-06-22 06:09:02 INFO: it  2100/6000 total=0.1043 pix=0.0425 jepa=0.3716 router_max_per_scale=[0.947915   0.94792473 0.9479447  0.947907   0.94798595] step=6.64s
+2026-06-22 06:14:30 INFO: it  2150/6000 total=0.1069 pix=0.0439 jepa=0.3670 router_max_per_scale=[0.947915   0.9479207  0.94794524 0.9479059  0.9479881 ] step=6.64s
+2026-06-22 06:19:56 INFO: it  2200/6000 total=0.1083 pix=0.0446 jepa=0.3700 router_max_per_scale=[0.947915 0.947918 0.947942 0.947904 0.947988] step=6.63s
+2026-06-22 06:25:23 INFO: it  2250/6000 total=0.0981 pix=0.0393 jepa=0.3719 router_max_per_scale=[0.947915   0.94791573 0.9479416  0.9479036  0.94799066] step=6.63s
+2026-06-22 06:30:51 INFO: it  2300/6000 total=0.1096 pix=0.0457 jepa=0.3725 router_max_per_scale=[0.947915   0.94791746 0.9479447  0.9479072  0.9479991 ] step=6.63s
+2026-06-22 06:36:20 INFO: it  2350/6000 total=0.1081 pix=0.0445 jepa=0.3724 router_max_per_scale=[0.947915   0.94791436 0.94794583 0.9479118  0.9480069 ] step=6.63s
+2026-06-22 06:41:44 INFO: it  2400/6000 total=0.1007 pix=0.0408 jepa=0.3673 router_max_per_scale=[0.947915   0.94791424 0.9479508  0.94791394 0.9480142 ] step=6.63s
+2026-06-22 06:47:13 INFO: it  2450/6000 total=0.0941 pix=0.0381 jepa=0.3627 router_max_per_scale=[0.947915   0.94791394 0.9479579  0.9479137  0.94801486] step=6.63s
+2026-06-22 06:52:42 INFO: it  2500/6000 total=0.1133 pix=0.0474 jepa=0.3682 router_max_per_scale=[0.947915   0.9479094  0.94795895 0.94791406 0.9480154 ] step=6.63s
+2026-06-22 06:53:29 INFO: [audit @ 2500] (47.2s) RGB-512=27.175  Y-512=29.065
+2026-06-22 06:58:54 INFO: it  2550/6000 total=0.1110 pix=0.0461 jepa=0.3633 router_max_per_scale=[0.947915   0.9479078  0.9479614  0.9479145  0.94801754] step=6.64s
+2026-06-22 07:04:23 INFO: it  2600/6000 total=0.1030 pix=0.0422 jepa=0.3675 router_max_per_scale=[0.947915   0.9479089  0.94796276 0.94791555 0.94802415] step=6.64s
+2026-06-22 07:09:51 INFO: it  2650/6000 total=0.1047 pix=0.0430 jepa=0.3673 router_max_per_scale=[0.947915   0.9479103  0.9479584  0.94791394 0.948026  ] step=6.64s
+2026-06-22 07:15:19 INFO: it  2700/6000 total=0.1057 pix=0.0437 jepa=0.3715 router_max_per_scale=[0.947915   0.9479115  0.94795763 0.94791114 0.948026  ] step=6.64s
+2026-06-22 07:20:44 INFO: it  2750/6000 total=0.1063 pix=0.0439 jepa=0.3686 router_max_per_scale=[0.947915   0.94791406 0.9479616  0.94791126 0.94802064] step=6.63s
+2026-06-22 07:26:12 INFO: it  2800/6000 total=0.0997 pix=0.0400 jepa=0.3634 router_max_per_scale=[0.947915   0.9479117  0.9479654  0.9479135  0.94801754] step=6.63s
+2026-06-22 07:31:40 INFO: it  2850/6000 total=0.1127 pix=0.0470 jepa=0.3832 router_max_per_scale=[0.947915   0.94791394 0.94796795 0.947915   0.94801635] step=6.63s
+2026-06-22 07:37:05 INFO: it  2900/6000 total=0.1086 pix=0.0453 jepa=0.3670 router_max_per_scale=[0.947915   0.9479134  0.9479678  0.94791627 0.9480096 ] step=6.63s
+2026-06-22 07:42:33 INFO: it  2950/6000 total=0.1079 pix=0.0443 jepa=0.3666 router_max_per_scale=[0.947915   0.94791406 0.9479613  0.94791824 0.9480063 ] step=6.63s
+2026-06-22 07:48:01 INFO: it  3000/6000 total=0.1075 pix=0.0455 jepa=0.3651 router_max_per_scale=[0.947915   0.9479083  0.947961   0.9479208  0.94800925] step=6.63s
+2026-06-22 07:48:49 INFO: [audit @ 3000] (47.2s) RGB-512=27.159  Y-512=28.953
+2026-06-22 07:54:17 INFO: it  3050/6000 total=0.1009 pix=0.0412 jepa=0.3697 router_max_per_scale=[0.947915   0.94790214 0.9479643  0.9479196  0.94801325] step=6.64s
+2026-06-22 07:59:42 INFO: it  3100/6000 total=0.1036 pix=0.0425 jepa=0.3722 router_max_per_scale=[0.947915  0.9478967 0.9479629 0.9479197 0.9480142] step=6.64s
+2026-06-22 08:05:10 INFO: it  3150/6000 total=0.1009 pix=0.0419 jepa=0.3640 router_max_per_scale=[0.947915   0.9478998  0.94796634 0.94791585 0.9480097 ] step=6.64s
+2026-06-22 08:10:37 INFO: it  3200/6000 total=0.1026 pix=0.0423 jepa=0.3722 router_max_per_scale=[0.947915   0.9479076  0.9479688  0.94791573 0.9480069 ] step=6.64s
+2026-06-22 08:16:05 INFO: it  3250/6000 total=0.1056 pix=0.0440 jepa=0.3672 router_max_per_scale=[0.947915  0.9479122 0.9479689 0.947915  0.9480091] step=6.64s
+2026-06-22 08:21:30 INFO: it  3300/6000 total=0.1101 pix=0.0452 jepa=0.3663 router_max_per_scale=[0.947915   0.9479105  0.9479665  0.9479146  0.94801563] step=6.63s
+2026-06-22 08:26:59 INFO: it  3350/6000 total=0.1099 pix=0.0461 jepa=0.3723 router_max_per_scale=[0.947915   0.9479121  0.94796634 0.94791466 0.9480125 ] step=6.63s
+2026-06-22 08:32:28 INFO: it  3400/6000 total=0.1005 pix=0.0414 jepa=0.3602 router_max_per_scale=[0.947915   0.9479195  0.94796747 0.947915   0.948013  ] step=6.63s
+2026-06-22 08:37:52 INFO: it  3450/6000 total=0.1134 pix=0.0475 jepa=0.3695 router_max_per_scale=[0.947915   0.9479193  0.94796383 0.9479157  0.9480138 ] step=6.63s
+2026-06-22 08:43:21 INFO: it  3500/6000 total=0.1029 pix=0.0424 jepa=0.3696 router_max_per_scale=[0.947915  0.9479194 0.9479638 0.9479138 0.9480159] step=6.63s
+2026-06-22 08:44:08 INFO: [audit @ 3500] (47.2s) RGB-512=27.279  Y-512=28.965
+2026-06-22 08:49:36 INFO: it  3550/6000 total=0.0978 pix=0.0400 jepa=0.3614 router_max_per_scale=[0.947915   0.9479196  0.9479626  0.9479121  0.94802254] step=6.64s
+2026-06-22 08:55:04 INFO: it  3600/6000 total=0.0998 pix=0.0410 jepa=0.3652 router_max_per_scale=[0.947915   0.9479166  0.94796216 0.9479137  0.9480308 ] step=6.64s
+2026-06-22 09:00:30 INFO: it  3650/6000 total=0.1090 pix=0.0457 jepa=0.3620 router_max_per_scale=[0.947915   0.9479181  0.94796383 0.947916   0.9480322 ] step=6.64s
+2026-06-22 09:05:59 INFO: it  3700/6000 total=0.1035 pix=0.0427 jepa=0.3628 router_max_per_scale=[0.947915   0.9479194  0.9479647  0.9479153  0.94802964] step=6.64s
+2026-06-22 09:11:28 INFO: it  3750/6000 total=0.0995 pix=0.0409 jepa=0.3653 router_max_per_scale=[0.947915   0.94792205 0.9479654  0.9479134  0.94802827] step=6.64s
+2026-06-22 09:16:56 INFO: it  3800/6000 total=0.0930 pix=0.0371 jepa=0.3639 router_max_per_scale=[0.947915   0.9479225  0.9479716  0.94791394 0.9480245 ] step=6.64s
+2026-06-22 09:22:21 INFO: it  3850/6000 total=0.1053 pix=0.0427 jepa=0.3690 router_max_per_scale=[0.947915   0.9479152  0.9479712  0.94791514 0.9480256 ] step=6.63s
+2026-06-22 09:27:49 INFO: it  3900/6000 total=0.0980 pix=0.0397 jepa=0.3650 router_max_per_scale=[0.947915   0.9479148  0.94797254 0.9479161  0.9480232 ] step=6.63s
+2026-06-22 09:33:16 INFO: it  3950/6000 total=0.1083 pix=0.0449 jepa=0.3648 router_max_per_scale=[0.947915   0.9479157  0.9479778  0.9479161  0.94802696] step=6.63s
+2026-06-22 09:38:41 INFO: it  4000/6000 total=0.0958 pix=0.0381 jepa=0.3642 router_max_per_scale=[0.947915   0.94791406 0.9479768  0.9479169  0.9480322 ] step=6.63s
+2026-06-22 09:39:29 INFO: [audit @ 4000] (47.5s) RGB-512=27.393  Y-512=29.017
+2026-06-22 09:39:31 INFO:   → best RGB-512 = 27.393 saved
+2026-06-22 09:44:58 INFO: it  4050/6000 total=0.1061 pix=0.0436 jepa=0.3729 router_max_per_scale=[0.947915   0.94791716 0.9479813  0.9479188  0.9480299 ] step=6.64s
+2026-06-22 09:50:27 INFO: it  4100/6000 total=0.1049 pix=0.0432 jepa=0.3631 router_max_per_scale=[0.947915   0.94791836 0.9479824  0.9479192  0.9480295 ] step=6.64s
+2026-06-22 09:55:55 INFO: it  4150/6000 total=0.1019 pix=0.0412 jepa=0.3674 router_max_per_scale=[0.947915   0.94791466 0.947981   0.94791734 0.94803256] step=6.64s
+2026-06-22 10:01:20 INFO: it  4200/6000 total=0.1064 pix=0.0436 jepa=0.3694 router_max_per_scale=[0.947915   0.94791394 0.9479858  0.94791716 0.9480341 ] step=6.64s
+2026-06-22 10:06:48 INFO: it  4250/6000 total=0.1049 pix=0.0427 jepa=0.3650 router_max_per_scale=[0.947915   0.9479117  0.9479844  0.94791836 0.9480439 ] step=6.64s
+2026-06-22 10:12:17 INFO: it  4300/6000 total=0.0965 pix=0.0387 jepa=0.3607 router_max_per_scale=[0.947915   0.94791555 0.9479881  0.9479179  0.9480381 ] step=6.64s
+2026-06-22 10:17:41 INFO: it  4350/6000 total=0.1119 pix=0.0469 jepa=0.3672 router_max_per_scale=[0.947915   0.94791675 0.94799    0.94791543 0.9480334 ] step=6.64s
+2026-06-22 10:23:10 INFO: it  4400/6000 total=0.1074 pix=0.0444 jepa=0.3709 router_max_per_scale=[0.947915   0.9479107  0.94798595 0.9479165  0.9480349 ] step=6.63s
+2026-06-22 10:28:38 INFO: it  4450/6000 total=0.1021 pix=0.0420 jepa=0.3593 router_max_per_scale=[0.947915   0.9479074  0.9479825  0.9479169  0.94803673] step=6.63s
+2026-06-22 10:34:07 INFO: it  4500/6000 total=0.1042 pix=0.0432 jepa=0.3605 router_max_per_scale=[0.947915  0.9479048 0.9479849 0.9479177 0.9480436] step=6.63s
+2026-06-22 10:34:55 INFO: [audit @ 4500] (48.0s) RGB-512=27.364  Y-512=29.034
+2026-06-22 10:40:20 INFO: it  4550/6000 total=0.1057 pix=0.0436 jepa=0.3656 router_max_per_scale=[0.947915  0.9479047 0.9479806 0.9479181 0.9480531] step=6.64s
+2026-06-22 10:45:48 INFO: it  4600/6000 total=0.0980 pix=0.0402 jepa=0.3639 router_max_per_scale=[0.947915   0.9479076  0.94798166 0.9479192  0.9480562 ] step=6.64s
+2026-06-22 10:51:17 INFO: it  4650/6000 total=0.1005 pix=0.0414 jepa=0.3633 router_max_per_scale=[0.947915   0.94791156 0.9479844  0.94791824 0.9480544 ] step=6.64s
+2026-06-22 10:56:45 INFO: it  4700/6000 total=0.0959 pix=0.0387 jepa=0.3629 router_max_per_scale=[0.947915   0.94790965 0.9479824  0.94791836 0.94805044] step=6.64s
+2026-06-22 11:02:10 INFO: it  4750/6000 total=0.0994 pix=0.0403 jepa=0.3665 router_max_per_scale=[0.947915   0.94790804 0.94798183 0.94791853 0.9480485 ] step=6.64s
+2026-06-22 11:07:38 INFO: it  4800/6000 total=0.1017 pix=0.0410 jepa=0.3654 router_max_per_scale=[0.947915   0.9479079  0.9479841  0.94791824 0.94804686] step=6.64s
+2026-06-22 11:13:06 INFO: it  4850/6000 total=0.1036 pix=0.0427 jepa=0.3681 router_max_per_scale=[0.947915   0.9479024  0.9479871  0.9479197  0.94804955] step=6.64s
+2026-06-22 11:18:32 INFO: it  4900/6000 total=0.0984 pix=0.0405 jepa=0.3609 router_max_per_scale=[0.947915  0.9479071 0.9479917 0.9479192 0.9480548] step=6.64s
+2026-06-22 11:24:00 INFO: it  4950/6000 total=0.0952 pix=0.0378 jepa=0.3714 router_max_per_scale=[0.947915   0.94789934 0.94798976 0.94792306 0.9480616 ] step=6.63s
+2026-06-22 11:29:29 INFO: it  5000/6000 total=0.1143 pix=0.0480 jepa=0.3639 router_max_per_scale=[0.947915   0.9479013  0.9479962  0.94792575 0.9480565 ] step=6.63s
+2026-06-22 11:30:16 INFO: [audit @ 5000] (47.6s) RGB-512=27.451  Y-512=28.980
+2026-06-22 11:30:18 INFO:   → best RGB-512 = 27.451 saved
+2026-06-22 11:35:47 INFO: it  5050/6000 total=0.0936 pix=0.0367 jepa=0.3623 router_max_per_scale=[0.947915   0.9479047  0.94799554 0.94792455 0.9480592 ] step=6.64s
+2026-06-22 11:41:12 INFO: it  5100/6000 total=0.1086 pix=0.0464 jepa=0.3565 router_max_per_scale=[0.947915   0.9479056  0.9479904  0.9479238  0.94806296] step=6.64s
+2026-06-22 11:46:40 INFO: it  5150/6000 total=0.0993 pix=0.0401 jepa=0.3605 router_max_per_scale=[0.947915   0.947913   0.94799715 0.94792205 0.9480654 ] step=6.64s
+2026-06-22 11:52:09 INFO: it  5200/6000 total=0.1129 pix=0.0477 jepa=0.3661 router_max_per_scale=[0.947915   0.94791156 0.9479987  0.9479192  0.94807166] step=6.64s
+2026-06-22 11:57:38 INFO: it  5250/6000 total=0.1041 pix=0.0432 jepa=0.3655 router_max_per_scale=[0.947915   0.9479098  0.94800115 0.9479195  0.9480722 ] step=6.64s
+2026-06-22 12:03:03 INFO: it  5300/6000 total=0.1039 pix=0.0431 jepa=0.3614 router_max_per_scale=[0.947915   0.9479152  0.9480025  0.94791985 0.94807756] step=6.64s
+2026-06-22 12:08:32 INFO: it  5350/6000 total=0.1013 pix=0.0416 jepa=0.3612 router_max_per_scale=[0.947915   0.9479146  0.94800264 0.9479212  0.94808227] step=6.64s
+2026-06-22 12:14:00 INFO: it  5400/6000 total=0.1036 pix=0.0430 jepa=0.3585 router_max_per_scale=[0.947915  0.9479091 0.9480006 0.9479219 0.9480877] step=6.64s
+2026-06-22 12:19:26 INFO: it  5450/6000 total=0.1032 pix=0.0423 jepa=0.3671 router_max_per_scale=[0.947915   0.9479057  0.94800234 0.94792175 0.9480876 ] step=6.64s
+2026-06-22 12:24:54 INFO: it  5500/6000 total=0.1036 pix=0.0425 jepa=0.3627 router_max_per_scale=[0.947915   0.94790226 0.9480009  0.94792056 0.9480882 ] step=6.64s
+2026-06-22 12:25:43 INFO: [audit @ 5500] (49.1s) RGB-512=26.777  Y-512=27.944
+2026-06-22 12:31:10 INFO: it  5550/6000 total=0.0986 pix=0.0403 jepa=0.3634 router_max_per_scale=[0.947915   0.9479036  0.948004   0.9479181  0.94809544] step=6.64s
+2026-06-22 12:36:38 INFO: it  5600/6000 total=0.1043 pix=0.0428 jepa=0.3608 router_max_per_scale=[0.947915   0.9479012  0.94800127 0.9479197  0.9480982 ] step=6.64s
+2026-06-22 12:42:03 INFO: it  5650/6000 total=0.0993 pix=0.0401 jepa=0.3598 router_max_per_scale=[0.947915   0.9478997  0.948002   0.9479196  0.94809896] step=6.64s
+2026-06-22 12:47:32 INFO: it  5700/6000 total=0.0953 pix=0.0378 jepa=0.3616 router_max_per_scale=[0.947915   0.94790363 0.9480037  0.94791853 0.948098  ] step=6.64s
+2026-06-22 12:53:00 INFO: it  5750/6000 total=0.1091 pix=0.0453 jepa=0.3693 router_max_per_scale=[0.947915   0.9479044  0.94800615 0.94792163 0.9480996 ] step=6.64s
+2026-06-22 12:58:26 INFO: it  5800/6000 total=0.0975 pix=0.0398 jepa=0.3604 router_max_per_scale=[0.947915   0.9479079  0.94800544 0.947922   0.94809455] step=6.64s
+2026-06-22 13:03:54 INFO: it  5850/6000 total=0.1046 pix=0.0427 jepa=0.3576 router_max_per_scale=[0.947915   0.94791126 0.94800705 0.9479211  0.9480929 ] step=6.64s
+2026-06-22 13:09:22 INFO: it  5900/6000 total=0.0979 pix=0.0392 jepa=0.3650 router_max_per_scale=[0.947915   0.9479137  0.948011   0.94792366 0.94809383] step=6.64s
+2026-06-22 13:14:49 INFO: it  5950/6000 total=0.1035 pix=0.0415 jepa=0.3743 router_max_per_scale=[0.947915   0.94791317 0.9480114  0.9479271  0.94809455] step=6.64s
+2026-06-22 13:20:14 INFO: it  6000/6000 total=0.0920 pix=0.0369 jepa=0.3690 router_max_per_scale=[0.947915   0.9479141  0.94800884 0.9479281  0.94809544] step=6.64s
+2026-06-22 13:21:01 INFO: [audit @ 6000] (47.2s) RGB-512=27.459  Y-512=29.066
+2026-06-22 13:21:04 INFO:   → best RGB-512 = 27.459 saved
+2026-06-22 13:21:05 INFO: === v35 Stage 4 done: best Y-512 = 29.166  best RGB-512 = 27.459 ===

@@ -1,0 +1,59 @@
+[main] Retinexformer loaded from /cache/zihaohe/baseline_ckpts/Retinexformer/SDSD_indoor.pth
+
+===== Fitting alpha* on 15 SDSD-indoor validation pairs =====
+[fit] pair1: 31 frames processed
+[fit] pair16_2: 20 frames processed
+[fit] pair1_2: 21 frames processed
+[fit] pair2: 36 frames processed
+[fit] pair24: 34 frames processed
+[fit] pair26: 35 frames processed
+[fit] pair27_2: 29 frames processed
+[fit] pair31_2: 20 frames processed
+[fit] pair34: 30 frames processed
+[fit] pair34_2: 20 frames processed
+[fit] pair4_2: 30 frames processed
+[fit] pair5: 40 frames processed
+[fit] pair8: 30 frames processed
+[fit] pair9: 30 frames processed
+[fit] pair9_2: 20 frames processed
+[fit] alpha* = [-0.023693655355736608, -0.010875970703661525, -0.03220895621835892]
+[fit] moments = {'m11': [0.013176007720943931, 0.009778194202182486, 0.010224968851390492], 'm12': [0.009610816228814061, 0.008542584739119407, 0.00861674181927439], 'm22': [0.009528298946373373, 0.008529290870523355, 0.008566558846384499]}
+
+===== L2 BVI-RLV =====
+Loading pretrained model LPIPS from /home/ma-user/.cache/torch/hub/pyiqa/LPIPS_v0.1_alex-df73285e.pth
+[BVI-RLV] test: 16 sequences (8 scenes × ≤2 fps), 6240 frames total
+  [L2_BVI_RLV] S33_mix5__10fps: raw PSNR=25.410 LPIPS=0.1488 | +CP PSNR=25.391 LPIPS=0.1485
+  [L2_BVI_RLV] S33_mix5__20fps: raw PSNR=14.699 LPIPS=0.2866 | +CP PSNR=14.711 LPIPS=0.2873
+  [L2_BVI_RLV] S34_mix6__10fps: raw PSNR=20.983 LPIPS=0.1034 | +CP PSNR=20.953 LPIPS=0.1052
+  [L2_BVI_RLV] S34_mix6__20fps: raw PSNR=13.491 LPIPS=0.1721 | +CP PSNR=13.494 LPIPS=0.1750
+  [L2_BVI_RLV] S35_Bunny__10fps: raw PSNR=24.043 LPIPS=0.1415 | +CP PSNR=23.982 LPIPS=0.1426
+  [L2_BVI_RLV] S35_Bunny__20fps: raw PSNR=14.282 LPIPS=0.1547 | +CP PSNR=14.263 LPIPS=0.1571
+  [L2_BVI_RLV] S36_Eeyore__10fps: raw PSNR=24.570 LPIPS=0.1368 | +CP PSNR=24.542 LPIPS=0.1372
+  [L2_BVI_RLV] S36_Eeyore__20fps: raw PSNR=14.364 LPIPS=0.1423 | +CP PSNR=14.361 LPIPS=0.1439
+  [L2_BVI_RLV] S37_Mario3__10fps: raw PSNR=21.804 LPIPS=0.1778 | +CP PSNR=21.782 LPIPS=0.1785
+  [L2_BVI_RLV] S37_Mario3__20fps: raw PSNR=12.492 LPIPS=0.2697 | +CP PSNR=12.488 LPIPS=0.2722
+  [L2_BVI_RLV] S38_Mario4__10fps: raw PSNR=19.612 LPIPS=0.1937 | +CP PSNR=19.603 LPIPS=0.1941
+  [L2_BVI_RLV] S38_Mario4__20fps: raw PSNR=11.267 LPIPS=0.2844 | +CP PSNR=11.266 LPIPS=0.2871
+  [L2_BVI_RLV] S39_Books4__10fps: raw PSNR=21.078 LPIPS=0.2215 | +CP PSNR=21.015 LPIPS=0.2230
+  [L2_BVI_RLV] S39_Books4__20fps: raw PSNR=13.836 LPIPS=0.3292 | +CP PSNR=13.823 LPIPS=0.3315
+  [L2_BVI_RLV] S40_Books5__10fps: raw PSNR=18.564 LPIPS=0.2573 | +CP PSNR=18.568 LPIPS=0.2579
+  [L2_BVI_RLV] S40_Books5__20fps: raw PSNR=15.760 LPIPS=0.4661 | +CP PSNR=15.751 LPIPS=0.4670
+
+===== L3 LOL-v1 =====
+  [L3_LOL_v1] MEAN: raw PSNR=17.234 LPIPS=0.2406 | +CP PSNR=17.210 LPIPS=0.2424  (n=15)
+
+===== L4 LOLv2-Syn =====
+  [L4_LOLv2_Syn] MEAN: raw PSNR=15.229 LPIPS=0.3034 | +CP PSNR=15.210 LPIPS=0.3057  (n=100)
+
+===== L5 LOLv2-Real =====
+  [L5_LOLv2_Real] MEAN: raw PSNR=18.815 LPIPS=0.2428 | +CP PSNR=18.806 LPIPS=0.2443  (n=100)
+
+[SAVE] /home/ma-user/workspace/zihaohe/quick_ablations/cp_transfer/retinexformer_cp_transfer.json
+
+===== SUMMARY (Retinexformer, own-fit alpha) =====
+  L2_BVI_RLV     raw=17.891/0.2179  +CP=17.874/0.2192  dPSNR=-0.016 dLPIPS=-0.0014  (n=16)
+  L3_LOL_v1      raw=17.234/0.2406  +CP=17.210/0.2424  dPSNR=-0.024 dLPIPS=-0.0018  (n=15)
+  L4_LOLv2_Syn   raw=15.229/0.3034  +CP=15.210/0.3057  dPSNR=-0.019 dLPIPS=-0.0023  (n=100)
+  L5_LOLv2_Real  raw=18.815/0.2428  +CP=18.806/0.2443  dPSNR=-0.009 dLPIPS=-0.0015  (n=100)
+
+Total wall time: 494.3s

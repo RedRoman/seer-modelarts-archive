@@ -1,0 +1,44 @@
+{
+  "params_M_total": 696.661643,
+  "params_M_trainable": 370.436491,
+  "params_M_frozen": 326.225152,
+  "ckpt": "/cache/zihaohe/checkpoint/runs/v35_S4_indoor_ft/best_y512.pt",
+  "train_script": "/tmp/train_v35_stage4_m3.py",
+  "note": "Seer = V-JEPA-2.1 ViT-L (frozen) + CounterfactualRefiner + VJepaPixelBranch_v35_M3 (M1+Retinex+M3 router). Chunked at T=8 during inference (viz_all_variants.infer_v9_family). 16-frame is the pipeline's max forward (matches paper table).",
+  "gflops_8frame": 12493.623689936,
+  "gflops_error": null,
+  "measurements": {
+    "8_frame_chunk": {
+      "input_shape": [
+        1,
+        3,
+        8,
+        512,
+        512
+      ],
+      "tag": "8-frame",
+      "peak_mem_bytes": 9385085952,
+      "peak_mem_MB": 8950.3154296875,
+      "time_ms_mean": 1339.5241292317708,
+      "time_ms_min": 1338.0997314453125,
+      "time_ms_max": 1341.9888916015625,
+      "iters": 10
+    },
+    "16_frame_full": {
+      "input_shape": [
+        1,
+        3,
+        16,
+        512,
+        512
+      ],
+      "tag": "16-frame",
+      "peak_mem_bytes": 15767303168,
+      "peak_mem_MB": 15036.8720703125,
+      "time_ms_mean": 2436.955851236979,
+      "time_ms_min": 2435.157958984375,
+      "time_ms_max": 2441.703369140625,
+      "iters": 10
+    }
+  }
+}

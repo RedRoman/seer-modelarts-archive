@@ -1,0 +1,67 @@
+2026-06-22 15:33:26 INFO: === S4 + L_color (λ_color=20.0) ===
+2026-06-22 15:33:26 INFO: init: /cache/zihaohe/checkpoint/runs/v35_S4_indoor_ft/best_y512.pt
+/cache/zihaohe/conda_envs/vjepa2-pip/lib/python3.11/site-packages/timm/models/layers/__init__.py:49: FutureWarning: Importing from timm.models.layers is deprecated, please import via timm.layers
+  warnings.warn(f"Importing from {__name__} is deprecated, please import via timm.layers", FutureWarning)
+[VJepaBackboneLocal21] loaded /home/ma-user/workspace/zihaohe/checkpoint/vjepa2_1_vitl_dist_vitG_384.pt | missing=0 unexpected=2
+  unexpected (first 5): ['patch_embed_img.proj.weight', 'patch_embed_img.proj.bias']
+[CounterfactualRefiner] loaded predictor from /home/ma-user/workspace/zihaohe/checkpoint/vjepa2_1_vitl_dist_vitG_384.pt | missing=0 unexpected=4
+2026-06-22 15:33:52 INFO:   pixel_branch: missing=0 unexpected=0
+2026-06-22 15:33:52 INFO:   cf_refiner: missing=0 unexpected=0
+[SDSD] layout=A/C (static_np or original) subset=direct split=test -> 15 sequences, 1037 frames total.
+/cache/zihaohe/conda_envs/vjepa2-pip/lib/python3.11/site-packages/torch/backends/cuda/__init__.py:342: FutureWarning: torch.backends.cuda.sdp_kernel() is deprecated. In the future, this context manager will be removed. Please see, torch.nn.attention.sdpa_kernel() for the new context manager, with updated signature.
+  warnings.warn(
+2026-06-22 15:34:39 INFO: Zero-iter audit (47.8s): RGB=27.631 Y=29.176 bias_RGB=(-0.0175, -0.0180, -0.0154)
+[SDSD] layout=A/C (static_np or original) subset=direct split=train -> 59 sequences, 1671 frames total.
+Setting up [LPIPS] perceptual loss: trunk [alex], v[0.1], spatial [off]
+/cache/zihaohe/conda_envs/vjepa2-pip/lib/python3.11/site-packages/torchvision/models/_utils.py:208: UserWarning: The parameter 'pretrained' is deprecated since 0.13 and may be removed in the future, please use 'weights' instead.
+  warnings.warn(
+/cache/zihaohe/conda_envs/vjepa2-pip/lib/python3.11/site-packages/torchvision/models/_utils.py:223: UserWarning: Arguments other than a weight enum or `None` for 'weights' are deprecated since 0.13 and may be removed in the future. The current behavior is equivalent to passing `weights=AlexNet_Weights.IMAGENET1K_V1`. You can also use `weights=AlexNet_Weights.DEFAULT` to get the most up-to-date weights.
+  warnings.warn(msg)
+Loading model from: /cache/zihaohe/conda_envs/vjepa2-pip/lib/python3.11/site-packages/lpips/weights/v0.1/alex.pth
+/cache/zihaohe/conda_envs/vjepa2-pip/lib/python3.11/site-packages/torch/backends/cuda/__init__.py:342: FutureWarning: torch.backends.cuda.sdp_kernel() is deprecated. In the future, this context manager will be removed. Please see, torch.nn.attention.sdpa_kernel() for the new context manager, with updated signature.
+  warnings.warn(
+2026-06-22 15:40:10 INFO: it    50/2000 total=0.1374 pix=0.0429 jepa=0.3571 color=0.001764 step=6.60s
+2026-06-22 15:45:38 INFO: it   100/2000 total=0.1184 pix=0.0391 jepa=0.3607 color=0.001055 step=6.58s
+2026-06-22 15:51:05 INFO: it   150/2000 total=0.1194 pix=0.0388 jepa=0.3488 color=0.001236 step=6.57s
+2026-06-22 15:56:30 INFO: it   200/2000 total=0.1155 pix=0.0399 jepa=0.3481 color=0.000961 step=6.55s
+2026-06-22 16:01:58 INFO: it   250/2000 total=0.1419 pix=0.0441 jepa=0.3634 color=0.001842 step=6.55s
+2026-06-22 16:07:25 INFO: it   300/2000 total=0.1149 pix=0.0400 jepa=0.3661 color=0.000757 step=6.55s
+2026-06-22 16:12:52 INFO: it   350/2000 total=0.1421 pix=0.0452 jepa=0.3521 color=0.001795 step=6.55s
+2026-06-22 16:18:18 INFO: it   400/2000 total=0.1417 pix=0.0434 jepa=0.3558 color=0.001882 step=6.54s
+2026-06-22 16:23:45 INFO: it   450/2000 total=0.1386 pix=0.0441 jepa=0.3682 color=0.001598 step=6.54s
+2026-06-22 16:29:12 INFO: it   500/2000 total=0.1713 pix=0.0460 jepa=0.3581 color=0.003111 step=6.54s
+2026-06-22 16:29:59 INFO: [audit @ 500] (47.0s) RGB=27.460 Y=28.664 bias_RGB=(-0.0080, -0.0090, -0.0115)
+2026-06-22 16:35:24 INFO: it   550/2000 total=0.1239 pix=0.0417 jepa=0.3589 color=0.001076 step=6.63s
+2026-06-22 16:40:51 INFO: it   600/2000 total=0.1167 pix=0.0380 jepa=0.3601 color=0.001145 step=6.62s
+2026-06-22 16:46:19 INFO: it   650/2000 total=0.1100 pix=0.0367 jepa=0.3558 color=0.000866 step=6.61s
+2026-06-22 16:51:47 INFO: it   700/2000 total=0.1293 pix=0.0427 jepa=0.3601 color=0.001326 step=6.61s
+2026-06-22 16:57:13 INFO: it   750/2000 total=0.1202 pix=0.0397 jepa=0.3594 color=0.001086 step=6.60s
+2026-06-22 17:02:40 INFO: it   800/2000 total=0.1184 pix=0.0395 jepa=0.3508 color=0.001065 step=6.60s
+2026-06-22 17:08:08 INFO: it   850/2000 total=0.1286 pix=0.0452 jepa=0.3612 color=0.001005 step=6.60s
+2026-06-22 17:13:36 INFO: it   900/2000 total=0.1334 pix=0.0401 jepa=0.3603 color=0.001657 step=6.60s
+2026-06-22 17:19:01 INFO: it   950/2000 total=0.1332 pix=0.0427 jepa=0.3669 color=0.001432 step=6.59s
+2026-06-22 17:24:28 INFO: it  1000/2000 total=0.1495 pix=0.0470 jepa=0.3583 color=0.001971 step=6.59s
+2026-06-22 17:25:15 INFO: [audit @ 1000] (47.1s) RGB=27.288 Y=28.662 bias_RGB=(-0.0296, -0.0248, -0.0219)
+2026-06-22 17:30:43 INFO: it  1050/2000 total=0.1361 pix=0.0442 jepa=0.3661 color=0.001496 step=6.63s
+2026-06-22 17:36:07 INFO: it  1100/2000 total=0.1321 pix=0.0426 jepa=0.3684 color=0.001402 step=6.62s
+2026-06-22 17:41:34 INFO: it  1150/2000 total=0.1480 pix=0.0454 jepa=0.3597 color=0.001970 step=6.62s
+2026-06-22 17:47:03 INFO: it  1200/2000 total=0.1233 pix=0.0418 jepa=0.3720 color=0.000996 step=6.62s
+2026-06-22 17:52:30 INFO: it  1250/2000 total=0.1131 pix=0.0372 jepa=0.3539 color=0.001015 step=6.62s
+2026-06-22 17:57:55 INFO: it  1300/2000 total=0.1263 pix=0.0428 jepa=0.3653 color=0.001107 step=6.61s
+2026-06-22 18:03:22 INFO: it  1350/2000 total=0.1275 pix=0.0417 jepa=0.3667 color=0.001290 step=6.61s
+2026-06-22 18:08:49 INFO: it  1400/2000 total=0.1376 pix=0.0437 jepa=0.3610 color=0.001651 step=6.61s
+2026-06-22 18:14:14 INFO: it  1450/2000 total=0.1164 pix=0.0395 jepa=0.3573 color=0.000878 step=6.60s
+2026-06-22 18:19:42 INFO: it  1500/2000 total=0.1369 pix=0.0425 jepa=0.3591 color=0.001699 step=6.60s
+2026-06-22 18:20:30 INFO: [audit @ 1500] (47.2s) RGB=27.479 Y=28.921 bias_RGB=(-0.0273, -0.0228, -0.0217)
+2026-06-22 18:25:58 INFO: it  1550/2000 total=0.1148 pix=0.0408 jepa=0.3645 color=0.000726 step=6.63s
+2026-06-22 18:31:26 INFO: it  1600/2000 total=0.1200 pix=0.0398 jepa=0.3620 color=0.001126 step=6.63s
+2026-06-22 18:36:51 INFO: it  1650/2000 total=0.1219 pix=0.0415 jepa=0.3598 color=0.001033 step=6.62s
+2026-06-22 18:42:18 INFO: it  1700/2000 total=0.1193 pix=0.0366 jepa=0.3608 color=0.001364 step=6.62s
+2026-06-22 18:47:46 INFO: it  1750/2000 total=0.1284 pix=0.0429 jepa=0.3589 color=0.001311 step=6.62s
+2026-06-22 18:53:14 INFO: it  1800/2000 total=0.1164 pix=0.0398 jepa=0.3629 color=0.000888 step=6.62s
+2026-06-22 18:58:39 INFO: it  1850/2000 total=0.1186 pix=0.0383 jepa=0.3630 color=0.001122 step=6.62s
+2026-06-22 19:04:06 INFO: it  1900/2000 total=0.1135 pix=0.0394 jepa=0.3596 color=0.000780 step=6.61s
+2026-06-22 19:09:33 INFO: it  1950/2000 total=0.1436 pix=0.0457 jepa=0.3646 color=0.001720 step=6.61s
+2026-06-22 19:14:58 INFO: it  2000/2000 total=0.1260 pix=0.0435 jepa=0.3633 color=0.000987 step=6.61s
+2026-06-22 19:15:45 INFO: [audit @ 2000] (47.0s) RGB=27.086 Y=28.706 bias_RGB=(-0.0143, -0.0291, -0.0314)
+2026-06-22 19:15:47 INFO: === S4 + L_color done: best Y-512 = 29.176 ===

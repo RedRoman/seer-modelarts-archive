@@ -1,0 +1,74 @@
+_base_: base_21.yaml
+
+# v7: V-JEPA grounded BIG pixel branch — no LatentDiT, no flow matching.
+# Architectural break: 100% trainable params on pixel reconstruction,
+# V-JEPA only as multi-scale guidance via cross-attention.
+
+output_dir: /cache/zihaohe/checkpoint/runs/v7
+
+precision: bf16
+
+model:
+  pixel_branch:
+    dims: [64, 128, 256, 512, 1024]
+    num_blocks: [4, 8, 8, 12, 16]
+    heads: [4, 8, 8, 16, 16]
+    ffn_exp: 2.66
+    vjepa_layer_per_scale: [0, 0, 1, 2, 3]
+    cross_attn_at_scales: [1, 2, 3, 4]
+    use_cfim_bottleneck: true
+    use_gradient_checkpoint: true    # required at 256x256 pixel UNet to avoid OOM
+
+  predictor:
+    enabled: false
+
+train:
+  batch_size: 3               # push GPU usage up, accept longer ETA
+  clip_len: 16
+  crop_size: 256
+  log_every: 50
+  val_every: 500
+  save_every: 2000
+  keep_n_step_ckpts: 2
+  ema_decay: 0.999
+  ema_start: 1000
+  val_window: 3
+
+optim:
+  lr: 2.0e-4
+  min_lr: 1.0e-5
+  weight_decay: 1.0e-4
+  betas: [0.9, 0.99]
+  total_iters: 20000          # halved to compensate B=3 step time; gives ~6666 optim steps
+  warmup_iters: 250
+  scheduler: cosine
+  grad_clip: 1.0
+  accum_steps: 3              # B=3 * accum=3 = effective batch 9
+  resume_from: null
+  resume_reset_optim: false
+
+data:
+  train:
+    datasets:
+      - kind: sdsd
+        root: /home/ma-user/workspace/zihaohe/datasets/SDSD_indoor
+        subset: direct
+        split: train
+        weight: 1.0
+      - kind: sdsd
+        root: /home/ma-user/workspace/zihaohe/datasets/SDSD_outdoor
+        subset: direct
+        split: train
+        weight: 1.0
+  val:
+    kind: sdsd
+    root: /home/ma-user/workspace/zihaohe/datasets/SDSD_indoor
+    subset: direct
+    split: test
+
+loss:
+  pix_weight: 1.0
+  lpips_weight: 0.1
+  temporal_weight: 0.1
+  retinex_weight: 0.5         # Retinex composition: ||R̂⊙L̂ - HQ||
+  smooth_L_weight: 0.05       # Illumination smoothness ||∇L̂||

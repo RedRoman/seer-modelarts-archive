@@ -1,0 +1,42 @@
+[STCD] loaded /temp/zihaohe/cache/stcd_repro/LLVE_STCD/pretrained_model/SDSD_indoor_model/indoor_G.pth strict=True (50 tensors, 1.81M params)
+== (a) crop sweep, first 16 frames ==
+pair13 basename crop 512 PSNR=27.076
+pair13 basename crop 640 PSNR=25.115
+pair13 basename crop 768 PSNR=26.873
+pair13 basename crop 896 PSNR=27.228
+pair13 basename crop 1024 PSNR=26.841
+pair13 basename crop None PSNR=22.097
+pair13 index crop 512 PSNR=27.076
+pair13 index crop 640 PSNR=25.115
+pair13 index crop 768 PSNR=26.873
+pair13 index crop 896 PSNR=27.228
+pair13 index crop 1024 PSNR=26.841
+pair13 index crop None PSNR=22.097
+pair50 basename crop 512 PSNR=28.343
+pair50 basename crop 640 PSNR=21.525
+pair50 basename crop 768 PSNR=19.172
+pair50 basename crop 896 PSNR=18.874
+pair50 basename crop 1024 PSNR=19.069
+pair50 basename crop None PSNR=19.527
+pair50 index crop 512 PSNR=30.407
+pair50 index crop 640 PSNR=26.244
+pair50 index crop 768 PSNR=24.114
+pair50 index crop 896 PSNR=22.568
+pair50 index crop 1024 PSNR=22.384
+pair50 index crop None PSNR=21.269
+== (b) window diagnostics, index pairing, crop 512 ==
+pair58 start 0 PSNR=14.085 pred_mean=134.7 gt_mean=88.7 lq_mean=16.3 0087.npy 0072.npy
+pair58 start 16 PSNR=14.179 pred_mean=134.8 gt_mean=89.5 lq_mean=16.5 0103.npy 0088.npy
+pair58 start 32 PSNR=14.540 pred_mean=133.3 gt_mean=90.3 lq_mean=16.8 0119.npy 0104.npy
+pair58 start center PSNR=15.566 pred_mean=131.1 gt_mean=93.2 lq_mean=17.7 0140.npy 0125.npy
+pair58 start 107 PSNR=22.301 pred_mean=104.2 gt_mean=98.9 lq_mean=19.6 0194.npy 0179.npy
+pair68 start 0 PSNR=17.005 pred_mean=157.8 gt_mean=187.3 lq_mean=54.9 0043.npy 0062.npy
+pair68 start 16 PSNR=17.346 pred_mean=161.5 gt_mean=190.8 lq_mean=56.5 0059.npy 0078.npy
+pair68 start 32 PSNR=17.453 pred_mean=138.1 gt_mean=166.1 lq_mean=48.9 0075.npy 0094.npy
+pair68 start center PSNR=20.346 pred_mean=98.9 gt_mean=112.2 lq_mean=32.3 0098.npy 0117.npy
+pair68 start 110 PSNR=31.734 pred_mean=37.9 gt_mean=35.4 lq_mean=7.6 0153.npy 0172.npy
+pair52 start 0 PSNR=26.223 pred_mean=45.7 gt_mean=44.9 lq_mean=10.1 0037.npy 0042.npy
+pair52 start 16 PSNR=28.003 pred_mean=48.9 gt_mean=48.3 lq_mean=11.3 0053.npy 0058.npy
+pair52 start 32 PSNR=29.657 pred_mean=54.9 gt_mean=54.4 lq_mean=13.3 0069.npy 0074.npy
+pair52 start center PSNR=26.956 pred_mean=66.6 gt_mean=66.7 lq_mean=18.3 0092.npy 0097.npy
+pair52 start 110 PSNR=22.670 pred_mean=72.0 gt_mean=74.1 lq_mean=25.2 0147.npy 0152.npy

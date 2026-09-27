@@ -1,0 +1,38 @@
+2026-09-26 04:17:23 INFO: === abl_nolic_s0: v35 Stage 4 (retrainer) gate_init=0.0 router_c=4.0 ===
+2026-09-26 04:17:23 INFO: init_ckpt: /cache/zihaohe/checkpoint/runs/v35_stage3/final.pt
+2026-09-26 04:17:23 INFO: out_dir:   /cache/zihaohe/runs/seer_iclr/abl_nolic_s0
+2026-09-26 04:17:23 INFO: log:       /cache/zihaohe/runs/seer_iclr/abl_nolic_s0/train_20260926-041723.log
+2026-09-26 04:17:44 INFO:   pixel_branch load: missing=1 unexpected=0
+2026-09-26 04:17:44 INFO:   cf_refiner   load: missing=0 unexpected=0
+2026-09-26 04:17:44 INFO:     pb-missing (first 5): ['router_logits']
+2026-09-26 04:17:44 INFO:   variant: random_vjepa=False disable_igab=False disable_lic=True disable_bottleneck=False w=(1.5,0.15,0.02,0.05)
+2026-09-26 04:17:44 INFO:   gate (post-override)   = +0.0000
+2026-09-26 04:17:44 INFO:   router[0] softmax post = ['0.9479', '0.0174', '0.0174', '0.0174']
+2026-09-26 04:17:44 INFO:   no_vjepa=False  save_at=[]  seed=0
+2026-09-26 04:17:44 INFO:   trainable: 370.44M (pixel_branch + cf_refiner LoRA/gate/new_proj)
+2026-09-26 04:17:46 INFO:   audit sequences (SDSD-indoor test): 15
+2026-09-26 04:18:35 INFO: Zero-iter audit (49.2s): RGB-512=18.449  Y-512=18.553
+2026-09-26 04:38:07 INFO: it    50/750 total=0.1244 pix=0.0465 jepa=0.9139 gate=-0.0001 router_max_per_scale=['0.947915', '0.947920', '0.947919', '0.947911', '0.947924'] step=23.43s
+2026-09-26 04:57:34 INFO: it   100/750 total=0.1095 pix=0.0380 jepa=0.9262 gate=-0.0001 router_max_per_scale=['0.947915', '0.947926', '0.947932', '0.947908', '0.947918'] step=23.33s
+2026-09-26 05:17:00 INFO: it   150/750 total=0.1078 pix=0.0372 jepa=0.9214 gate=-0.0000 router_max_per_scale=['0.947915', '0.947925', '0.947938', '0.947920', '0.947922'] step=23.34s
+2026-09-26 05:36:27 INFO: it   200/750 total=0.1051 pix=0.0358 jepa=0.9180 gate=-0.0002 router_max_per_scale=['0.947915', '0.947944', '0.947945', '0.947913', '0.947940'] step=23.33s
+2026-09-26 05:55:54 INFO: it   250/750 total=0.1045 pix=0.0355 jepa=0.9146 gate=-0.0004 router_max_per_scale=['0.947915', '0.947947', '0.947953', '0.947916', '0.947942'] step=23.34s
+2026-09-26 05:56:41 INFO: [audit @ 250] (47.4s) RGB-512=26.254  Y-512=27.150
+2026-09-26 05:56:43 INFO:   -> best Y-512 = 27.150 saved
+2026-09-26 05:56:44 INFO:   -> best RGB-512 = 26.254 saved
+2026-09-26 06:16:10 INFO: it   300/750 total=0.1029 pix=0.0344 jepa=0.9192 gate=-0.0006 router_max_per_scale=['0.947915', '0.947956', '0.947956', '0.947921', '0.947954'] step=24.31s
+2026-09-26 06:35:36 INFO: it   350/750 total=0.1053 pix=0.0360 jepa=0.9133 gate=-0.0009 router_max_per_scale=['0.947915', '0.947953', '0.947957', '0.947934', '0.947958'] step=23.32s
+2026-09-26 06:55:02 INFO: it   400/750 total=0.1045 pix=0.0356 jepa=0.9120 gate=-0.0011 router_max_per_scale=['0.947915', '0.947957', '0.947967', '0.947930', '0.947963'] step=23.32s
+2026-09-26 07:14:28 INFO: it   450/750 total=0.1040 pix=0.0350 jepa=0.9225 gate=-0.0014 router_max_per_scale=['0.947915', '0.947955', '0.947968', '0.947923', '0.947973'] step=23.33s
+2026-09-26 07:33:54 INFO: it   500/750 total=0.1028 pix=0.0343 jepa=0.9204 gate=-0.0017 router_max_per_scale=['0.947915', '0.947965', '0.947968', '0.947923', '0.947976'] step=23.32s
+2026-09-26 07:34:41 INFO: [audit @ 500] (46.8s) RGB-512=26.199  Y-512=27.461
+2026-09-26 07:34:43 INFO:   -> best Y-512 = 27.461 saved
+2026-09-26 07:54:09 INFO: it   550/750 total=0.1038 pix=0.0349 jepa=0.9191 gate=-0.0021 router_max_per_scale=['0.947915', '0.947970', '0.947965', '0.947923', '0.947976'] step=24.30s
+2026-09-26 08:13:36 INFO: it   600/750 total=0.1054 pix=0.0360 jepa=0.9154 gate=-0.0027 router_max_per_scale=['0.947915', '0.947970', '0.947970', '0.947921', '0.947982'] step=23.33s
+2026-09-26 08:33:03 INFO: it   650/750 total=0.1017 pix=0.0337 jepa=0.9179 gate=-0.0034 router_max_per_scale=['0.947915', '0.947973', '0.947969', '0.947922', '0.947990'] step=23.34s
+2026-09-26 08:52:29 INFO: it   700/750 total=0.1030 pix=0.0343 jepa=0.9255 gate=-0.0041 router_max_per_scale=['0.947915', '0.947981', '0.947972', '0.947923', '0.947993'] step=23.33s
+2026-09-26 09:11:56 INFO: it   750/750 total=0.1055 pix=0.0359 jepa=0.9228 gate=-0.0048 router_max_per_scale=['0.947915', '0.947982', '0.947975', '0.947928', '0.948000'] step=23.34s
+2026-09-26 09:12:43 INFO: [audit @ 750] (47.1s) RGB-512=27.517  Y-512=29.021
+2026-09-26 09:12:45 INFO:   -> best Y-512 = 29.021 saved
+2026-09-26 09:12:47 INFO:   -> best RGB-512 = 27.517 saved
+2026-09-26 09:12:49 INFO: === abl_nolic_s0 done: best Y-512 = 29.021  best RGB-512 = 27.517 ===

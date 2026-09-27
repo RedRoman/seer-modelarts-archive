@@ -1,0 +1,60 @@
+/cache/zihaohe/conda_envs/vjepa2-pip/lib/python3.11/site-packages/transformers/utils/hub.py:106: FutureWarning: Using `TRANSFORMERS_CACHE` is deprecated and will be removed in v5 of Transformers. Use `HF_HOME` instead.
+  warnings.warn(
+[*] loading frames for all 15 pairs ...
+    loaded 15 pairs in 2.2s
+[*] loading V-JEPA 2.1 ViT-L ...
+/cache/zihaohe/conda_envs/vjepa2-pip/lib/python3.11/site-packages/timm/models/layers/__init__.py:49: FutureWarning: Importing from timm.models.layers is deprecated, please import via timm.layers
+  warnings.warn(f"Importing from {__name__} is deprecated, please import via timm.layers", FutureWarning)
+/cache/zihaohe/conda_envs/vjepa2-pip/lib/python3.11/site-packages/torch/backends/cuda/__init__.py:342: FutureWarning: torch.backends.cuda.sdp_kernel() is deprecated. In the future, this context manager will be removed. Please see, torch.nn.attention.sdpa_kernel() for the new context manager, with updated signature.
+  warnings.warn(
+[VJepaBackboneLocal21] loaded /cache/zihaohe/checkpoint/vjepa2_1_vitl_dist_vitG_384.pt | missing=0 unexpected=2
+  unexpected (first 5): ['patch_embed_img.proj.weight', 'patch_embed_img.proj.bias']
+    vjepa     pair50  rho_patch=0.4339
+    vjepa     pair52  rho_patch=0.4568
+    vjepa     pair58  rho_patch=0.3970
+    vjepa    pair5_2  rho_patch=0.4430
+    vjepa      pair6  rho_patch=0.5547
+    vjepa     pair60  rho_patch=0.4673
+    vjepa     pair68  rho_patch=0.4095
+    vjepa    pair6_2  rho_patch=0.4306
+    vjepa      pair7  rho_patch=0.4136
+    vjepa     pair70  rho_patch=0.3246
+    vjepa    pair7_2  rho_patch=0.4635
+    vjepa      pair8  rho_patch=0.4565
+    vjepa    pair8_2  rho_patch=0.4102
+    vjepa      pair9  rho_patch=0.4309
+    vjepa    pair9_2  rho_patch=0.3720
+[*] loading VideoMAE-large (MCG-NJU/videomae-large) ...
+    config: num_frames=16 tubelet_size=2 patch_size=16 image_size=224 hidden_size=1024
+    vmae      pair50  rho_patch=0.4436
+    vmae      pair52  rho_patch=0.3782
+    vmae      pair58  rho_patch=0.4005
+    vmae     pair5_2  rho_patch=0.4157
+    vmae       pair6  rho_patch=0.4986
+    vmae      pair60  rho_patch=0.4534
+    vmae      pair68  rho_patch=0.3829
+    vmae     pair6_2  rho_patch=0.4280
+    vmae       pair7  rho_patch=0.3988
+    vmae      pair70  rho_patch=0.3435
+    vmae     pair7_2  rho_patch=0.5151
+    vmae       pair8  rho_patch=0.4404
+    vmae     pair8_2  rho_patch=0.3946
+    vmae       pair9  rho_patch=0.4384
+    vmae     pair9_2  rho_patch=0.3491
+[*] wrote /home/ma-user/workspace/zihaohe/quick_ablations/videomae_comparison/videomae_vjepa_raw.json
+[*] wrote /home/ma-user/workspace/zihaohe/quick_ablations/videomae_comparison/videomae_vjepa_pairwise.json
+
+==========================================================================================
+6-encoder ranking (mean rho_patch, lower = more LQ/HQ invariant)
+------------------------------------------------------------------------------------------
+  VideoMAE-L               0.4187
+  V-JEPA 2 (this run)      0.4309
+  V-JEPA 2                 0.4310
+  DINOv3                   0.4340
+  DINOv2                   0.4620
+  CLIP                     0.5540
+  SigLIP2                  0.6030
+------------------------------------------------------------------------------------------
+V-JEPA vs VideoMAE: delta(V-JEPA - VideoMAE) = +0.01222 [-0.00255,0.02733]  wilcoxon p(V<VMAE)=0.95269775390625  cohens_d=+0.3986  V-JEPA wins 5/15
+==========================================================================================
+[DONE] total wall time: 73.3s

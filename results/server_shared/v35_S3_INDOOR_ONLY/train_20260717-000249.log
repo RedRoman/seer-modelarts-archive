@@ -1,0 +1,50 @@
+2026-07-17 00:02:49 INFO: === v35 Stage 3 (+ M1 counterfactual, λ_jepa=0.05) ===
+2026-07-17 00:02:49 INFO: init: /cache/zihaohe/checkpoint/runs/v35_stage2/best_y512.pt
+2026-07-17 00:03:23 INFO:   pixel_branch from Stage 2: missing=0 unexpected=0
+2026-07-17 00:03:23 INFO:   trainable: 370.44M (pixel_branch + cf_refiner LoRA/gate/new_proj)
+2026-07-17 00:04:11 INFO: Zero-iter audit (47.7s): RGB-512=26.993  Y-512=28.886
+2026-07-17 00:09:41 INFO: it    50/2000 total=0.1281 pix=0.0556 jepa=0.3939 gate=-0.000 step=6.59s
+2026-07-17 00:15:08 INFO: it   100/2000 total=0.1098 pix=0.0456 jepa=0.3844 gate=-0.000 step=6.57s
+2026-07-17 00:20:35 INFO: it   150/2000 total=0.1115 pix=0.0463 jepa=0.3883 gate=-0.000 step=6.56s
+2026-07-17 00:25:59 INFO: it   200/2000 total=0.1186 pix=0.0507 jepa=0.3816 gate=-0.000 step=6.54s
+2026-07-17 00:31:26 INFO: it   250/2000 total=0.1226 pix=0.0516 jepa=0.3938 gate=-0.000 step=6.54s
+2026-07-17 00:38:10 INFO: it   300/2000 total=0.1152 pix=0.0483 jepa=0.3881 gate=-0.000 step=6.80s
+2026-07-17 00:47:55 INFO: it   350/2000 total=0.1146 pix=0.0478 jepa=0.3833 gate=-0.000 step=7.50s
+2026-07-17 00:59:44 INFO: it   400/2000 total=0.1285 pix=0.0555 jepa=0.3948 gate=-0.000 step=8.33s
+2026-07-17 01:11:35 INFO: it   450/2000 total=0.1164 pix=0.0484 jepa=0.3939 gate=-0.000 step=8.99s
+2026-07-17 01:23:26 INFO: it   500/2000 total=0.1190 pix=0.0503 jepa=0.3827 gate=-0.000 step=9.51s
+2026-07-17 01:24:56 INFO: [audit @ 500] (90.0s) RGB-512=26.136  Y-512=27.432
+2026-07-17 01:36:47 INFO: it   550/2000 total=0.1134 pix=0.0470 jepa=0.3912 gate=-0.000 step=10.10s
+2026-07-17 01:48:40 INFO: it   600/2000 total=0.1315 pix=0.0570 jepa=0.3928 gate=-0.000 step=10.45s
+2026-07-17 01:59:26 INFO: it   650/2000 total=0.1286 pix=0.0554 jepa=0.3787 gate=0.000 step=10.64s
+2026-07-17 02:10:31 INFO: it   700/2000 total=0.1196 pix=0.0513 jepa=0.3797 gate=0.000 step=10.83s
+2026-07-17 02:22:21 INFO: it   750/2000 total=0.1218 pix=0.0523 jepa=0.3869 gate=0.000 step=11.05s
+2026-07-17 02:34:13 INFO: it   800/2000 total=0.1134 pix=0.0479 jepa=0.3820 gate=0.000 step=11.25s
+2026-07-17 02:46:04 INFO: it   850/2000 total=0.1241 pix=0.0529 jepa=0.3933 gate=0.000 step=11.43s
+2026-07-17 02:57:54 INFO: it   900/2000 total=0.1081 pix=0.0439 jepa=0.3907 gate=0.000 step=11.58s
+2026-07-17 03:09:42 INFO: it   950/2000 total=0.1124 pix=0.0465 jepa=0.3867 gate=0.000 step=11.72s
+2026-07-17 03:20:04 INFO: it  1000/2000 total=0.1131 pix=0.0470 jepa=0.3765 gate=-0.000 step=11.75s
+2026-07-17 03:21:15 INFO: [audit @ 1000] (71.3s) RGB-512=26.589  Y-512=28.254
+2026-07-17 03:33:06 INFO: it  1050/2000 total=0.1144 pix=0.0478 jepa=0.3883 gate=-0.000 step=11.94s
+2026-07-17 03:44:53 INFO: it  1100/2000 total=0.1193 pix=0.0499 jepa=0.3846 gate=0.000 step=12.04s
+2026-07-17 03:56:43 INFO: it  1150/2000 total=0.1091 pix=0.0443 jepa=0.3822 gate=0.000 step=12.13s
+2026-07-17 04:08:33 INFO: it  1200/2000 total=0.1254 pix=0.0541 jepa=0.3805 gate=-0.000 step=12.22s
+2026-07-17 04:20:24 INFO: it  1250/2000 total=0.1120 pix=0.0461 jepa=0.3795 gate=0.000 step=12.30s
+2026-07-17 04:32:14 INFO: it  1300/2000 total=0.1155 pix=0.0491 jepa=0.3848 gate=0.000 step=12.37s
+2026-07-17 04:42:17 INFO: it  1350/2000 total=0.1140 pix=0.0474 jepa=0.3869 gate=0.000 step=12.36s
+2026-07-17 04:54:11 INFO: it  1400/2000 total=0.1186 pix=0.0499 jepa=0.3845 gate=0.000 step=12.43s
+2026-07-17 05:06:01 INFO: it  1450/2000 total=0.1164 pix=0.0494 jepa=0.3815 gate=0.000 step=12.49s
+2026-07-17 05:17:54 INFO: it  1500/2000 total=0.1194 pix=0.0511 jepa=0.3850 gate=0.000 step=12.55s
+2026-07-17 05:19:24 INFO: [audit @ 1500] (90.5s) RGB-512=26.912  Y-512=28.766
+2026-07-17 05:31:18 INFO: it  1550/2000 total=0.1097 pix=0.0447 jepa=0.3815 gate=0.000 step=12.66s
+2026-07-17 05:43:12 INFO: it  1600/2000 total=0.1108 pix=0.0458 jepa=0.3848 gate=0.000 step=12.71s
+2026-07-17 05:54:52 INFO: it  1650/2000 total=0.1129 pix=0.0471 jepa=0.3848 gate=0.000 step=12.75s
+2026-07-17 06:05:11 INFO: it  1700/2000 total=0.1070 pix=0.0441 jepa=0.3807 gate=0.000 step=12.74s
+2026-07-17 06:17:04 INFO: it  1750/2000 total=0.1143 pix=0.0478 jepa=0.3817 gate=0.000 step=12.78s
+2026-07-17 06:28:57 INFO: it  1800/2000 total=0.1151 pix=0.0483 jepa=0.3804 gate=0.000 step=12.83s
+2026-07-17 06:40:46 INFO: it  1850/2000 total=0.1128 pix=0.0473 jepa=0.3801 gate=0.000 step=12.86s
+2026-07-17 06:52:38 INFO: it  1900/2000 total=0.1091 pix=0.0443 jepa=0.3896 gate=-0.000 step=12.90s
+2026-07-17 07:04:31 INFO: it  1950/2000 total=0.1103 pix=0.0450 jepa=0.3799 gate=-0.000 step=12.93s
+2026-07-17 07:15:43 INFO: it  2000/2000 total=0.1127 pix=0.0465 jepa=0.3883 gate=-0.000 step=12.95s
+2026-07-17 07:16:54 INFO: [audit @ 2000] (70.6s) RGB-512=26.712  Y-512=28.405
+2026-07-17 07:16:55 INFO: === v35 Stage 3 done: best Y-512 = 28.886  best RGB-512 = 26.993 ===

@@ -1,0 +1,71 @@
+{
+  "meta": {
+    "comparison": "V-JEPA 2.1 vs VideoMAE-large, paired per-sequence rho_patch, N=15 SDSD-indoor pairs",
+    "methodology": "identical to dump_encoder_spatial_maps_v2.py / Table tab:encoder_pairwise: paired one-sided Wilcoxon signed-rank test (H1: V-JEPA shift < competitor shift, zero_method='pratt'), bootstrap 95% CI on mean and on difference-of-means (10,000 resamples, seed=0), paired Cohen's d, count of sequences where V-JEPA wins (strictly lower shift).",
+    "n": 15
+  },
+  "V-JEPA 2.1": {
+    "mean": 0.4309479256470998,
+    "std": 0.050912341101089595,
+    "ci95_lo": 0.40652300079663595,
+    "ci95_hi": 0.45680247743924457,
+    "per_seq": {
+      "pair50": 0.43390482664108276,
+      "pair52": 0.45684918761253357,
+      "pair58": 0.3970208466053009,
+      "pair5_2": 0.4429624378681183,
+      "pair6": 0.5546987056732178,
+      "pair60": 0.46730297803878784,
+      "pair68": 0.40950697660446167,
+      "pair6_2": 0.4305729866027832,
+      "pair7": 0.4136238992214203,
+      "pair70": 0.32464712858200073,
+      "pair7_2": 0.4635123610496521,
+      "pair8": 0.456526517868042,
+      "pair8_2": 0.4101598262786865,
+      "pair9": 0.43089985847473145,
+      "pair9_2": 0.3720303475856781
+    }
+  },
+  "VideoMAE-L": {
+    "mean": 0.41872575879096985,
+    "std": 0.04867738186682377,
+    "ci95_lo": 0.39592101112008093,
+    "ci95_hi": 0.44317398225267723,
+    "per_seq": {
+      "pair50": 0.44355860352516174,
+      "pair52": 0.37819892168045044,
+      "pair58": 0.4004906713962555,
+      "pair5_2": 0.4157240092754364,
+      "pair6": 0.4985882639884949,
+      "pair60": 0.453443318605423,
+      "pair68": 0.3828898072242737,
+      "pair6_2": 0.42803075909614563,
+      "pair7": 0.39880484342575073,
+      "pair70": 0.3434998691082001,
+      "pair7_2": 0.5150624513626099,
+      "pair8": 0.440424382686615,
+      "pair8_2": 0.39461082220077515,
+      "pair9": 0.43841490149497986,
+      "pair9_2": 0.34914475679397583
+    }
+  },
+  "pairwise_stats": {
+    "wilcoxon_p_vjepa_less": 0.95269775390625,
+    "wilcoxon_stat": 89.0,
+    "wilcoxon_error": null,
+    "cohens_d_paired_vjepa_minus_videomae": 0.39862135099030344,
+    "delta_mean_vjepa_minus_videomae": 0.012222166856129963,
+    "delta_ci95_lo": -0.0025507092972596483,
+    "delta_ci95_hi": 0.027334333608547846,
+    "n_sequences_vjepa_wins": 5,
+    "n_sequences_total": 15
+  },
+  "existing_5encoder_means_for_context": {
+    "V-JEPA 2": 0.431,
+    "DINOv3": 0.434,
+    "DINOv2": 0.462,
+    "CLIP": 0.554,
+    "SigLIP2": 0.603
+  }
+}
