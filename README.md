@@ -4,6 +4,14 @@ Backup made before the ModelArts hosts (30313, 31279, 31866, 30674, 31511, 30594
 were reclaimed. Private. Nothing here was modified relative to the servers except removing
 `.git`, `__pycache__`, optimizer states and duplicate files.
 
+## CVPR 2027 round (`cvpr2027/`)
+
+Work after the ModelArts hosts were reclaimed. Start with `cvpr2027/STATUS.md`: it records the
+method change (three of the original paper's four contributions measured as ineffective and
+removed), the new exposure-decoupled component and its probe results, the frozen data splits,
+and what is still running. `cvpr2027/notes/CVPR_PREREG.md` is the pre-registration: hypotheses,
+decision rules and the amendment log, all written before the corresponding numbers existed.
+
 ## Layout
 | path | what | server origin |
 |---|---|---|

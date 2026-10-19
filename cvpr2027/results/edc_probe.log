@@ -1,0 +1,10 @@
+[VJepaBackboneLocal21] loaded /temp/zihaohe/seer_cvpr/weights/vjepa2_1_vitl_dist_vitG_384.pt | missing=0 unexpected=2
+  unexpected (first 5): ['patch_embed_img.proj.weight', 'patch_embed_img.proj.bias']
+caching...
+train 136  val 16  bvi-train 16
+target log-gain: SDSD train mean 1.332 val 1.238  BVI 1.512
+
+baseline (predict train mean): SDSD-val 0.405  BVI-train 0.560
+stats only     SDSD-val 0.451  BVI-train 0.534
+V-JEPA only    SDSD-val 0.275  BVI-train 0.717
+stats+V-JEPA   SDSD-val 0.220  BVI-train 0.612
