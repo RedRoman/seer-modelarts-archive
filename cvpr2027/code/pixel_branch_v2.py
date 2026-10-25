@@ -26,6 +26,7 @@ from .cfim import VolumeCFIM
 from .local_illumination_cues import IlluminationCueInjection, extract_illumination_cues
 from .pixel_branch_v8 import (FlexDown, FlexUp, RestormerBlockBF, TemporalMixer3D,
                               VJepaCrossAttnBF, _vjepa_to_kv_at_scale)
+from models.xattn_spatial import VJepaCrossAttnSpatial
 
 
 class SeerV2PixelBranch(nn.Module):
@@ -54,6 +55,8 @@ class SeerV2PixelBranch(nn.Module):
         use_cfim_bottleneck: bool = True,
         use_illumination_cues: bool = True,
         use_gradient_checkpoint: bool = True,
+        xattn: str = "global",
+        kv_mode: str = "per_tubelet",
     ) -> None:
         super().__init__()
         assert len(dims) == 5 and len(num_blocks) == 5 and len(heads) == 5
@@ -64,6 +67,21 @@ class SeerV2PixelBranch(nn.Module):
         self.layer_per_scale = list(layer_per_scale)
         self.use_illumination_cues = use_illumination_cues
         self.use_checkpoint = use_gradient_checkpoint
+        self.kv_mode = str(kv_mode)
+        if self.kv_mode not in ("per_tubelet", "full", "hybrid"):
+            raise ValueError(f"kv_mode must be per_tubelet|full|hybrid, got {kv_mode!r}")
+        self.xattn_kind = str(xattn)
+        if self.xattn_kind not in ("global", "spatial"):
+            raise ValueError(f"xattn must be global|spatial, got {xattn!r}")
+
+        def _mk_xattn(dim_s, heads_s):
+            # E11/H10: the spatial variant adds a shared positional basis so
+            # a query can prefer the token covering its own location; the
+            # global variant is permutation-invariant over tokens.
+            if self.xattn_kind == "spatial":
+                return VJepaCrossAttnSpatial(dim_s, vjepa_dim, num_heads=heads_s,
+                                             grid_hw=(vjepa_grid[1], vjepa_grid[2]))
+            return VJepaCrossAttnBF(dim_s, vjepa_dim, num_heads=heads_s)
 
         self.stem = nn.Conv2d(in_channels, dims[0], 3, padding=1, bias=True)
 
@@ -72,7 +90,7 @@ class SeerV2PixelBranch(nn.Module):
         for s in range(5):
             self.enc_blocks.append(nn.ModuleList(
                 [RestormerBlockBF(dims[s], heads[s], ffn_exp) for _ in range(num_blocks[s])]))
-            self.enc_xattn.append(VJepaCrossAttnBF(dims[s], vjepa_dim, num_heads=heads[s])
+            self.enc_xattn.append(_mk_xattn(dims[s], heads[s])
                                   if s in self.cross_attn_scales else None)
             self.enc_illum.append(IlluminationCueInjection(dims[s])
                                   if use_illumination_cues else None)
@@ -89,7 +107,7 @@ class SeerV2PixelBranch(nn.Module):
             self.dec_reduce.append(nn.Conv2d(2 * dims[s], dims[s], 1, bias=False))
             self.dec_blocks.append(nn.ModuleList(
                 [RestormerBlockBF(dims[s], heads[s], ffn_exp) for _ in range(num_blocks[s])]))
-            self.dec_xattn.append(VJepaCrossAttnBF(dims[s], vjepa_dim, num_heads=heads[s])
+            self.dec_xattn.append(_mk_xattn(dims[s], heads[s])
                                   if s in self.cross_attn_scales else None)
             self.dec_illum.append(IlluminationCueInjection(dims[s])
                                   if use_illumination_cues else None)
@@ -114,11 +132,35 @@ class SeerV2PixelBranch(nn.Module):
         return x.reshape(BT // T, T, C, H, W).permute(0, 2, 1, 3, 4).contiguous()
 
     def _kv(self, vjepa_layers: List[torch.Tensor], s: int, target_T: int):
-        """Fixed layer-to-scale mapping (no learnable router)."""
+        """Fixed layer-to-scale mapping (no learnable router).
+
+        kv_mode decides how much of the clip each query frame may attend to.
+        The default `per_tubelet` gives frame t only its own tubelet's tokens,
+        so cross-frame aggregation can happen only inside V-JEPA. E14 measured
+        that aggregation to be worth 2.22 of the prior's 3.78 dB and found
+        temporal order irrelevant, so `full` and `hybrid` expose the other
+        tubelets as an unordered set, with no temporal positional encoding.
+        """
         if s not in self.cross_attn_scales:
             return None
         li = min(self.layer_per_scale[s], len(vjepa_layers) - 1)
-        return _vjepa_to_kv_at_scale(vjepa_layers[li], self.vjepa_grid, target_T)
+        tok = vjepa_layers[li]
+        if self.kv_mode == "per_tubelet":
+            return _vjepa_to_kv_at_scale(tok, self.vjepa_grid, target_T)
+
+        B, N, D = tok.shape
+        T_v, H_v, W_v = self.vjepa_grid
+        x = tok.reshape(B, T_v, H_v * W_v, D)
+        if self.kv_mode == "full":
+            kv = x.reshape(B, T_v * H_v * W_v, D)
+        else:                                   # hybrid: own tubelet + clip mean
+            own = _vjepa_to_kv_at_scale(tok, self.vjepa_grid, target_T)
+            mean = x.mean(dim=1)                                  # (B, HW, D)
+            mean = mean.unsqueeze(1).expand(B, target_T, H_v * W_v, D)
+            mean = mean.reshape(B * target_T, H_v * W_v, D)
+            return torch.cat([own, mean], dim=1)
+        return kv.unsqueeze(1).expand(B, target_T, kv.shape[1], D).reshape(
+            B * target_T, kv.shape[1], D)
 
     def forward(self, video_lq: torch.Tensor, vjepa_layers: List[torch.Tensor]) -> dict:
         B, _, T, H, W = video_lq.shape

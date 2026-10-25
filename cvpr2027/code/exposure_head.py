@@ -66,8 +66,13 @@ class ExposureHead(nn.Module):
         nn.init.zeros_(self.out[-1].weight)
         nn.init.zeros_(self.out[-1].bias)      # start at log-gain 0 (identity)
 
-    def forward(self, lq: torch.Tensor, vjepa_token: torch.Tensor | None = None) -> torch.Tensor:
-        h = self.stat_mlp(input_exposure_stats(lq))
+    def forward(self, lq: torch.Tensor | None = None,
+                vjepa_token: torch.Tensor | None = None,
+                stats: torch.Tensor | None = None) -> torch.Tensor:
+        # stats lets a caller precompute input_exposure_stats once and keep only
+        # the 8 numbers, instead of holding whole clips in memory; passing lq
+        # alone is unchanged.
+        h = self.stat_mlp(input_exposure_stats(lq) if stats is None else stats)
         if self.use_vjepa and vjepa_token is not None:
             h = h + self.sem_mlp(vjepa_token.mean(dim=1))    # pool over tokens -> (B, D)
         return self.out(h).squeeze(-1)                       # (B,) log-gain

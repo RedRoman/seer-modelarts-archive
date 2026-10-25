@@ -1,0 +1,178 @@
+{
+ "method": "retinexformer",
+ "ckpt": "/cache/zihaohe/seer_cvpr/weights_small/checkpoint/runs/retinexformer_seer_protocol/experiments/RetinexFormer_SDSD_union_seer_protocol/models/net_g_160000.pth",
+ "domain": "sdsd",
+ "split": "val",
+ "crop": 256,
+ "n_frames": 16,
+ "n_sequences": 16,
+ "aggregate": {
+  "psnr_rgb": 19.14783483348507,
+  "psnr_y": 19.588560259267496,
+  "psnr_y_gtmean": 26.23579172305257,
+  "lpips": 0.3105067708529532,
+  "input_psnr_y": 12.977855187319511
+ },
+ "per_sequence": [
+  {
+   "name": "SDSD_indoor/pair1",
+   "kind": "video",
+   "frames": 16,
+   "psnr_rgb": 20.48712613308477,
+   "psnr_y": 20.392075419820472,
+   "psnr_y_gtmean": 29.483138314271628,
+   "lpips": 0.1863888055086136,
+   "input_psnr_y": 7.477802740739781
+  },
+  {
+   "name": "SDSD_indoor/pair19",
+   "kind": "video",
+   "frames": 16,
+   "psnr_rgb": 38.27394272877609,
+   "psnr_y": 40.686746349429505,
+   "psnr_y_gtmean": 41.89032138688668,
+   "lpips": 0.10087047517299652,
+   "input_psnr_y": 5.097164943537029
+  },
+  {
+   "name": "SDSD_indoor/pair19_2",
+   "kind": "video",
+   "frames": 16,
+   "psnr_rgb": 28.694067865596008,
+   "psnr_y": 30.37474624422184,
+   "psnr_y_gtmean": 31.137635465723374,
+   "lpips": 0.3274627923965454,
+   "input_psnr_y": 8.164602578302645
+  },
+  {
+   "name": "SDSD_indoor/pair1_2",
+   "kind": "video",
+   "frames": 16,
+   "psnr_rgb": 30.616473478895923,
+   "psnr_y": 30.972473341050385,
+   "psnr_y_gtmean": 30.972473341050385,
+   "lpips": 0.1619233787059784,
+   "input_psnr_y": 8.318224880164248
+  },
+  {
+   "name": "SDSD_indoor/pair28",
+   "kind": "video",
+   "frames": 16,
+   "psnr_rgb": 11.88796200003564,
+   "psnr_y": 12.20524864172381,
+   "psnr_y_gtmean": 14.277599690722205,
+   "lpips": 0.4683206081390381,
+   "input_psnr_y": 7.340511291973165
+  },
+  {
+   "name": "SDSD_indoor/pair28_2",
+   "kind": "video",
+   "frames": 16,
+   "psnr_rgb": 10.182892310593752,
+   "psnr_y": 10.395721623530688,
+   "psnr_y_gtmean": 13.178735717097243,
+   "lpips": 0.370387464761734,
+   "input_psnr_y": 6.778188190564531
+  },
+  {
+   "name": "SDSD_outdoor/MVI_0898",
+   "kind": "video",
+   "frames": 16,
+   "psnr_rgb": 26.580545236708446,
+   "psnr_y": 26.824203483464565,
+   "psnr_y_gtmean": 27.26851565289487,
+   "lpips": 0.27499717473983765,
+   "input_psnr_y": 21.51009479195116
+  },
+  {
+   "name": "SDSD_outdoor/MVI_0898_2",
+   "kind": "video",
+   "frames": 16,
+   "psnr_rgb": 22.528231139061162,
+   "psnr_y": 22.379026307649426,
+   "psnr_y_gtmean": 28.230129738667813,
+   "lpips": 0.24096927046775818,
+   "input_psnr_y": 18.91643870993501
+  },
+  {
+   "name": "SDSD_outdoor/MVI_0921",
+   "kind": "video",
+   "frames": 16,
+   "psnr_rgb": 9.450053054022149,
+   "psnr_y": 9.693756978548272,
+   "psnr_y_gtmean": 28.547915522806907,
+   "lpips": 0.626175045967102,
+   "input_psnr_y": 29.389151112386095
+  },
+  {
+   "name": "SDSD_outdoor/MVI_0921_2",
+   "kind": "video",
+   "frames": 16,
+   "psnr_rgb": 10.631275383775844,
+   "psnr_y": 11.04792005599025,
+   "psnr_y_gtmean": 35.70721723667654,
+   "lpips": 0.7631100416183472,
+   "input_psnr_y": 34.30245567023124
+  },
+  {
+   "name": "SDSD_outdoor/MVI_0945",
+   "kind": "video",
+   "frames": 16,
+   "psnr_rgb": 14.347473968322156,
+   "psnr_y": 14.506031370776508,
+   "psnr_y_gtmean": 21.9168227400744,
+   "lpips": 0.28319764137268066,
+   "input_psnr_y": 16.99636130562873
+  },
+  {
+   "name": "SDSD_outdoor/MVI_0945_2",
+   "kind": "video",
+   "frames": 16,
+   "psnr_rgb": 13.533427112366159,
+   "psnr_y": 13.632352973663163,
+   "psnr_y_gtmean": 25.78891596755249,
+   "lpips": 0.24261370301246643,
+   "input_psnr_y": 15.454602100944264
+  },
+  {
+   "name": "SDSD_outdoor/MVI_0965",
+   "kind": "video",
+   "frames": 16,
+   "psnr_rgb": 12.544072824140988,
+   "psnr_y": 12.398328985036983,
+   "psnr_y_gtmean": 24.723865690382876,
+   "lpips": 0.2552328109741211,
+   "input_psnr_y": 4.363781322398127
+  },
+  {
+   "name": "SDSD_outdoor/MVI_0965_2",
+   "kind": "video",
+   "frames": 16,
+   "psnr_rgb": 13.200495746651928,
+   "psnr_y": 13.402564230317983,
+   "psnr_y_gtmean": 17.901509679266205,
+   "lpips": 0.42529943585395813,
+   "input_psnr_y": 4.276396270713195
+  },
+  {
+   "name": "SDSD_outdoor/MVI_0985",
+   "kind": "video",
+   "frames": 16,
+   "psnr_rgb": 22.00171515720117,
+   "psnr_y": 22.51953471268666,
+   "psnr_y_gtmean": 25.03876512449936,
+   "lpips": 0.12038642913103104,
+   "input_psnr_y": 9.723849181653716
+  },
+  {
+   "name": "SDSD_outdoor/MVI_0985_2",
+   "kind": "video",
+   "frames": 16,
+   "psnr_rgb": 21.405603196528936,
+   "psnr_y": 21.98623343036946,
+   "psnr_y_gtmean": 23.70910630026814,
+   "lpips": 0.12077325582504272,
+   "input_psnr_y": 9.53605790598922
+  }
+ ]
+}

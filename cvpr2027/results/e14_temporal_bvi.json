@@ -1,0 +1,180 @@
+{
+ "domain": "bvi",
+ "split": "test",
+ "n": 16,
+ "aggregate": {
+  "intact": {
+   "pretrained": 27.879339597683156,
+   "none": 27.896471504836455,
+   "diff": -0.017131907153298376
+  },
+  "shuffled": {
+   "pretrained": 27.70387051538979,
+   "none": 27.894713552513124,
+   "diff": -0.19084303712333528,
+   "drop_pretrained": -0.17546908229336655,
+   "drop_none": -0.001757952323329648,
+   "gap_ci": [
+    -0.34392497832812174,
+    -0.026606892736128533
+   ]
+  },
+  "frozen": {
+   "pretrained": 28.076512241138847,
+   "none": 27.976311828298332,
+   "diff": 0.10020041284051251,
+   "drop_pretrained": 0.1971726434556872,
+   "drop_none": 0.0798403234618763,
+   "gap_ci": [
+    -0.3591210090906562,
+    0.6469241741006054
+   ]
+  }
+ },
+ "per_clip": [
+  {
+   "name": "BVI/S33_mix5__10fps",
+   "intact/pretrained": 10.471512200355784,
+   "intact/none": 10.736993045512317,
+   "shuffled/pretrained": 10.485378094967452,
+   "shuffled/none": 10.736929994699699,
+   "frozen/pretrained": 10.345456218631416,
+   "frozen/none": 10.455593731383555
+  },
+  {
+   "name": "BVI/S33_mix5__20fps",
+   "intact/pretrained": 32.52857104536838,
+   "intact/none": 33.66893584206565,
+   "shuffled/pretrained": 32.64090183267264,
+   "shuffled/none": 33.66565971894211,
+   "frozen/pretrained": 33.44325926410367,
+   "frozen/none": 34.23244298351939
+  },
+  {
+   "name": "BVI/S34_mix6__10fps",
+   "intact/pretrained": 27.892473129453855,
+   "intact/none": 27.282526934091237,
+   "shuffled/pretrained": 27.926673271047914,
+   "shuffled/none": 27.273991884041465,
+   "frozen/pretrained": 26.819301882799778,
+   "frozen/none": 27.141054564139857
+  },
+  {
+   "name": "BVI/S34_mix6__20fps",
+   "intact/pretrained": 36.140671039019814,
+   "intact/none": 33.862303215413284,
+   "shuffled/pretrained": 36.02002658890368,
+   "shuffled/none": 33.867624208705784,
+   "frozen/pretrained": 34.24622684292383,
+   "frozen/none": 33.967105604231726
+  },
+  {
+   "name": "BVI/S35_Bunny__10fps",
+   "intact/pretrained": 20.315734518124938,
+   "intact/none": 22.90031502274593,
+   "shuffled/pretrained": 19.70408350560706,
+   "shuffled/none": 22.900088040681027,
+   "frozen/pretrained": 21.11769297373977,
+   "frozen/none": 22.886631821380117
+  },
+  {
+   "name": "BVI/S35_Bunny__20fps",
+   "intact/pretrained": 28.386472608183176,
+   "intact/none": 28.92341235460102,
+   "shuffled/pretrained": 28.034965295313537,
+   "shuffled/none": 28.919240870319747,
+   "frozen/pretrained": 29.22291847438675,
+   "frozen/none": 29.047152553001702
+  },
+  {
+   "name": "BVI/S36_Eeyore__10fps",
+   "intact/pretrained": 25.396969654990023,
+   "intact/none": 27.559573995117088,
+   "shuffled/pretrained": 24.603435609276367,
+   "shuffled/none": 27.555582537832635,
+   "frozen/pretrained": 26.43826233740383,
+   "frozen/none": 27.709072719785894
+  },
+  {
+   "name": "BVI/S36_Eeyore__20fps",
+   "intact/pretrained": 28.848615273672255,
+   "intact/none": 31.243594735600027,
+   "shuffled/pretrained": 28.472976399686075,
+   "shuffled/none": 31.23745857290144,
+   "frozen/pretrained": 29.78946384756977,
+   "frozen/none": 31.3571260261146
+  },
+  {
+   "name": "BVI/S37_Mario3__10fps",
+   "intact/pretrained": 21.81747983711947,
+   "intact/none": 20.315292774449965,
+   "shuffled/pretrained": 20.904816821541743,
+   "shuffled/none": 20.311851966340775,
+   "frozen/pretrained": 25.06806927862134,
+   "frozen/none": 20.62175031222872
+  },
+  {
+   "name": "BVI/S37_Mario3__20fps",
+   "intact/pretrained": 29.885486133680566,
+   "intact/none": 28.746014834528502,
+   "shuffled/pretrained": 29.960789037590878,
+   "shuffled/none": 28.745639992415647,
+   "frozen/pretrained": 29.80678368114814,
+   "frozen/none": 28.973873171429034
+  },
+  {
+   "name": "BVI/S38_Mario4__10fps",
+   "intact/pretrained": 28.728988183008372,
+   "intact/none": 26.815590520221406,
+   "shuffled/pretrained": 28.71481321844151,
+   "shuffled/none": 26.816602342723165,
+   "frozen/pretrained": 28.62162105674039,
+   "frozen/none": 26.838313169320195
+  },
+  {
+   "name": "BVI/S38_Mario4__20fps",
+   "intact/pretrained": 29.60924911773735,
+   "intact/none": 27.286863807979756,
+   "shuffled/pretrained": 29.806414414180995,
+   "shuffled/none": 27.29090476244278,
+   "frozen/pretrained": 28.900339996024208,
+   "frozen/none": 27.25376702404021
+  },
+  {
+   "name": "BVI/S39_Books4__10fps",
+   "intact/pretrained": 25.630545997904,
+   "intact/none": 26.29625972609083,
+   "shuffled/pretrained": 25.484402527398338,
+   "shuffled/none": 26.29258801439525,
+   "frozen/pretrained": 25.48668730508727,
+   "frozen/none": 26.225368415424235
+  },
+  {
+   "name": "BVI/S39_Books4__20fps",
+   "intact/pretrained": 36.526745745247126,
+   "intact/none": 36.36057343816387,
+   "shuffled/pretrained": 36.57233571897513,
+   "shuffled/none": 36.355847721948024,
+   "frozen/pretrained": 36.312630100426674,
+   "frozen/none": 36.32811292206961
+  },
+  {
+   "name": "BVI/S40_Books5__10fps",
+   "intact/pretrained": 26.44271898413025,
+   "intact/none": 28.131260354091356,
+   "shuffled/pretrained": 26.482009389992143,
+   "shuffled/none": 28.13147756669149,
+   "frozen/pretrained": 26.115038685224025,
+   "frozen/none": 28.17229480325122
+  },
+  {
+   "name": "BVI/S40_Books5__20fps",
+   "intact/pretrained": 37.44720009493519,
+   "intact/none": 36.21403347671109,
+   "shuffled/pretrained": 37.44790652064122,
+   "shuffled/none": 36.213928645129016,
+   "frozen/pretrained": 37.49044391339068,
+   "frozen/none": 36.41132943145328
+  }
+ ]
+}

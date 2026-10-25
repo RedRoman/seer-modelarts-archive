@@ -42,7 +42,7 @@ from models.predictor_lora import CounterfactualRefiner  # noqa: E402
 from models.vjepa_backbone import VJepaBackboneLocal21  # noqa: E402
 from models.exposure_head import (ExposureHead, apply_gain, target_log_gain)  # noqa: E402
 
-ROOT = "/temp/zihaohe/seer_cvpr"
+ROOT = os.environ.get("SEER_ROOT", "/temp/zihaohe/seer_cvpr")
 SPLITS = f"{ROOT}/datasets/splits_cvpr.json"
 VJEPA_REPO = f"{ROOT}/modelzoo/vjepa2-main"
 VJEPA_CKPT = f"{ROOT}/weights/vjepa2_1_vitl_dist_vitG_384.pt"
@@ -139,6 +139,9 @@ def main():
     ap.add_argument("--edc_vjepa", choices=["on", "off"], default="on",
                     help="let the gain head see the pooled V-JEPA token (scene prior)")
     ap.add_argument("--edc_weight", type=float, default=1.0, help="weight of the log-gain loss")
+    ap.add_argument("--no_edc_detach", dest="edc_detach", action="store_false",
+                    help="let the gain gradient reach the pixel branch; the "
+                         "default keeps them decoupled, which is the point of EDC")
     ap.add_argument("--edc_detach", action="store_true", default=True,
                     help="keep the gain gradient out of the pixel branch")
     ap.add_argument("--arch", choices=["v1", "v2"], default="v2",
@@ -158,6 +161,19 @@ def main():
     ap.add_argument("--lora_rank", type=int, default=16)
     ap.add_argument("--router_c", type=float, default=4.0)
     ap.add_argument("--gate_init", type=float, default=0.0)
+    ap.add_argument("--taps", default="5,11,17,23",
+                    help="V-JEPA blocks read as conditioning (E2/H3). The default "
+                         "spans shallow to deep; 23,23,23,23 gives every scale "
+                         "the deepest block only, 17,17,23,23 the top two.")
+    ap.add_argument("--kv", choices=["per_tubelet", "full", "hybrid"],
+                    default="per_tubelet",
+                    help="how much of the clip each query frame sees (E15/H12); "
+                         "per_tubelet is the current behaviour")
+    ap.add_argument("--xattn", choices=["global", "spatial"], default="global",
+                    help="spatial gives queries and tokens a shared positional "
+                         "basis so a pixel can prefer its own location (E11/H10)")
+    ap.add_argument("--branch", choices=["full", "small"], default="full",
+                    help="small is the ~22M pixel branch for E3/H4; full is 361M")
     ap.add_argument("--device", default="npu", choices=["npu", "cuda"])
     args = ap.parse_args()
 
@@ -177,6 +193,10 @@ def main():
 
     torch.manual_seed(args.seed); np.random.seed(args.seed)
     sp = json.load(open(SPLITS))
+    # the splits file carries absolute roots from the host that built it
+    for _k, _v in sp.items():
+        if isinstance(_v, dict) and isinstance(_v.get('root'), str):
+            _v['root'] = _v['root'].replace('/temp/zihaohe/seer_cvpr', ROOT)
 
     backbone = refiner = None
     if args.vjepa != "none":
@@ -184,7 +204,8 @@ def main():
             torch.manual_seed(RANDOM_VJEPA_SEED)
         backbone = VJepaBackboneLocal21(
             local_repo=VJEPA_REPO, local_ckpt=("" if args.vjepa == "random" else VJEPA_CKPT),
-            feature_layers=(5, 11, 17, 23), image_size=256, frames_per_clip=args.clip_len,
+            feature_layers=tuple(int(t) for t in args.taps.split(",")),
+            image_size=256, frames_per_clip=args.clip_len,
             patch_size=16, tubelet_size=2, freeze=True).to(dev).eval()
         for p in backbone.parameters():
             p.requires_grad_(False)
@@ -200,11 +221,17 @@ def main():
                 lora_rank=args.lora_rank, freeze_body=True).to(dev)
 
     if args.arch == "v2":
+        # E3/H4 asks whether a 361M branch memorises the source domain through
+        # the tokens; the small variant keeps every component and only narrows
+        # and shortens the stages, so the arms differ in capacity alone.
+        shape = (dict(dims=(20, 40, 80, 160, 320), num_blocks=(2, 4, 4, 6, 8),
+                      heads=(2, 4, 4, 8, 8)) if args.branch == "small" else {})
         pb = SeerV2PixelBranch(
             in_channels=3, vjepa_dim=VJEPA_DIM, vjepa_grid=(args.clip_len // 2, 16, 16),
             num_vjepa_layers=N_LAYERS, cross_attn_at_scales=(1, 2, 3, 4),
             use_cfim_bottleneck=True, use_illumination_cues=True,
-            use_gradient_checkpoint=True).to(dev)
+            use_gradient_checkpoint=True, xattn=args.xattn,
+            kv_mode=args.kv, **shape).to(dev)
     else:
         pb = VJepaPixelBranch(
         in_channels=3, vjepa_dim=VJEPA_DIM, vjepa_grid=(args.clip_len // 2, 16, 16),
