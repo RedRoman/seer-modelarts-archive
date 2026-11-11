@@ -1,0 +1,830 @@
+{
+  "purpose": "TRAIN-only candidate-family oracle and selector cache; not learned performance",
+  "n": 48,
+  "per_sequence": [
+    {
+      "name": "BVI/S02_animals1__10fps",
+      "scene": "S02_animals1",
+      "condition": "10",
+      "base_mse": 0.0017985193990170956,
+      "past_mse": 0.0018629515543580055,
+      "future_mse": 0.0018236502073705196,
+      "fixed_average_mse": 0.0016400072490796447,
+      "oracle_mse": 0.0012959311716258526,
+      "positive_gain_patch_fraction": 0.8800048828125,
+      "weights_mean": [
+        0.33225834369659424,
+        0.328874796628952
+      ],
+      "cache_path": "clip_000.pt",
+      "cache_sha256": "c2677d5aa8f4692009f819855d6e56f4d1cc4d5294f2e864899363ff8ff4a783"
+    },
+    {
+      "name": "BVI/S02_animals1__20fps",
+      "scene": "S02_animals1",
+      "condition": "20",
+      "base_mse": 0.00016275278176181018,
+      "past_mse": 0.00015805740258656442,
+      "future_mse": 0.00014889216981828213,
+      "fixed_average_mse": 0.00011692977568600327,
+      "oracle_mse": 9.10531307454221e-05,
+      "positive_gain_patch_fraction": 0.98333740234375,
+      "weights_mean": [
+        0.3234865069389343,
+        0.3596004843711853
+      ],
+      "cache_path": "clip_001.pt",
+      "cache_sha256": "b862d01468f014774f5a6b49beb5bd1291d706f3b75f85cc83099d935dbee8a6"
+    },
+    {
+      "name": "BVI/S03_animals2__10fps",
+      "scene": "S03_animals2",
+      "condition": "10",
+      "base_mse": 0.0022887219674885273,
+      "past_mse": 0.002478254958987236,
+      "future_mse": 0.002575388178229332,
+      "fixed_average_mse": 0.002312665805220604,
+      "oracle_mse": 0.001820985577069223,
+      "positive_gain_patch_fraction": 0.82135009765625,
+      "weights_mean": [
+        0.308509886264801,
+        0.31546205282211304
+      ],
+      "cache_path": "clip_002.pt",
+      "cache_sha256": "caf8a0513e4333d3abcf48a6eca0b51eb5701f884b3209e23dcd63a6c25866b6"
+    },
+    {
+      "name": "BVI/S03_animals2__20fps",
+      "scene": "S03_animals2",
+      "condition": "20",
+      "base_mse": 0.0007176348590292037,
+      "past_mse": 0.0007902684737928212,
+      "future_mse": 0.000739104812964797,
+      "fixed_average_mse": 0.0006724249105900526,
+      "oracle_mse": 0.000537564919795841,
+      "positive_gain_patch_fraction": 0.903076171875,
+      "weights_mean": [
+        0.2967497408390045,
+        0.31762784719467163
+      ],
+      "cache_path": "clip_003.pt",
+      "cache_sha256": "0b4e6756f836da4b4fb3406e893a651c37c820b03d31e45920e072191b527f5e"
+    },
+    {
+      "name": "BVI/S04_colour_sticks__10fps",
+      "scene": "S04_colour_sticks",
+      "condition": "10",
+      "base_mse": 0.0012212605215609074,
+      "past_mse": 0.001703621936030686,
+      "future_mse": 0.0020053579937666655,
+      "fixed_average_mse": 0.0013123687822371721,
+      "oracle_mse": 0.000748326419852674,
+      "positive_gain_patch_fraction": 0.94354248046875,
+      "weights_mean": [
+        0.3669750392436981,
+        0.30092692375183105
+      ],
+      "cache_path": "clip_004.pt",
+      "cache_sha256": "d08c4e504b70806684410f4418b2cfd3bbf4cf3f52a39724b93594675511e50c"
+    },
+    {
+      "name": "BVI/S04_colour_sticks__20fps",
+      "scene": "S04_colour_sticks",
+      "condition": "20",
+      "base_mse": 0.00025729151093401015,
+      "past_mse": 0.00028178305365145206,
+      "future_mse": 0.0002686157822608948,
+      "fixed_average_mse": 0.00022353146050591022,
+      "oracle_mse": 0.0001764340850058943,
+      "positive_gain_patch_fraction": 0.853759765625,
+      "weights_mean": [
+        0.2553720474243164,
+        0.2625751197338104
+      ],
+      "cache_path": "clip_005.pt",
+      "cache_sha256": "943f2fc340a0fa473f6bab02acca39ab6c2e65b340f3d95008db5b7759d8bbc6"
+    },
+    {
+      "name": "BVI/S06_lego__10fps",
+      "scene": "S06_lego",
+      "condition": "10",
+      "base_mse": 0.0031883236952126026,
+      "past_mse": 0.0038205257151275873,
+      "future_mse": 0.0032774165738373995,
+      "fixed_average_mse": 0.0033505046740174294,
+      "oracle_mse": 0.002864701673388481,
+      "positive_gain_patch_fraction": 0.61376953125,
+      "weights_mean": [
+        0.08265092968940735,
+        0.2600773274898529
+      ],
+      "cache_path": "clip_006.pt",
+      "cache_sha256": "198811b8281237e6c89720d613dd61b39fb34bee497359b6570813eae11c1f42"
+    },
+    {
+      "name": "BVI/S06_lego__20fps",
+      "scene": "S06_lego",
+      "condition": "20",
+      "base_mse": 0.000282231078017503,
+      "past_mse": 0.0002893906203098595,
+      "future_mse": 0.00027337431674823165,
+      "fixed_average_mse": 0.0002414186019450426,
+      "oracle_mse": 0.00019464726210571826,
+      "positive_gain_patch_fraction": 0.95220947265625,
+      "weights_mean": [
+        0.32797789573669434,
+        0.3190172016620636
+      ],
+      "cache_path": "clip_007.pt",
+      "cache_sha256": "6f78f56fe440f7260de179b37d00def73e8d1d08451fe1591fd49b6831818b88"
+    },
+    {
+      "name": "BVI/S07_hats__10fps",
+      "scene": "S07_hats",
+      "condition": "10",
+      "base_mse": 0.002442828845232725,
+      "past_mse": 0.002482935320585966,
+      "future_mse": 0.0024964758194983006,
+      "fixed_average_mse": 0.0023604249581694603,
+      "oracle_mse": 0.0020276543218642473,
+      "positive_gain_patch_fraction": 0.73162841796875,
+      "weights_mean": [
+        0.2938734292984009,
+        0.27082017064094543
+      ],
+      "cache_path": "clip_008.pt",
+      "cache_sha256": "9a31054d1c93586271781d528309dc372cf81a7d297499aa5e0841b092ccfe13"
+    },
+    {
+      "name": "BVI/S07_hats__20fps",
+      "scene": "S07_hats",
+      "condition": "20",
+      "base_mse": 0.0002753440057858825,
+      "past_mse": 0.00039472561911679804,
+      "future_mse": 0.00036787305725738406,
+      "fixed_average_mse": 0.00032535294303670526,
+      "oracle_mse": 0.0002374761097598821,
+      "positive_gain_patch_fraction": 0.82318115234375,
+      "weights_mean": [
+        0.22265179455280304,
+        0.22968994081020355
+      ],
+      "cache_path": "clip_009.pt",
+      "cache_sha256": "f2639ea00a034d9f0312174bbc7a94239473a9e3f8879606de5aee39af0003e9"
+    },
+    {
+      "name": "BVI/S08_soft_toys__10fps",
+      "scene": "S08_soft_toys",
+      "condition": "10",
+      "base_mse": 0.005133334547281265,
+      "past_mse": 0.005352528765797615,
+      "future_mse": 0.005142054986208677,
+      "fixed_average_mse": 0.005098981317132711,
+      "oracle_mse": 0.0045051188208162785,
+      "positive_gain_patch_fraction": 0.722412109375,
+      "weights_mean": [
+        0.1731916069984436,
+        0.4410938620567322
+      ],
+      "cache_path": "clip_010.pt",
+      "cache_sha256": "ad6d66bd3e545ab55f28850bd417940ee3b42150896ec08f90d8b9cad9654ba5"
+    },
+    {
+      "name": "BVI/S08_soft_toys__20fps",
+      "scene": "S08_soft_toys",
+      "condition": "20",
+      "base_mse": 0.0004987533902749419,
+      "past_mse": 0.0004594941856339574,
+      "future_mse": 0.0005257668672129512,
+      "fixed_average_mse": 0.00044268122292123735,
+      "oracle_mse": 0.00036328763235360384,
+      "positive_gain_patch_fraction": 0.890380859375,
+      "weights_mean": [
+        0.41700252890586853,
+        0.2796574831008911
+      ],
+      "cache_path": "clip_011.pt",
+      "cache_sha256": "fa208a37b8a866014eb48c2242292649fa6a86a4cb099e54a8422ed6e317f840"
+    },
+    {
+      "name": "BVI/S10_messy_toy__10fps",
+      "scene": "S10_messy_toy",
+      "condition": "10",
+      "base_mse": 0.001073902240023017,
+      "past_mse": 0.0009371209307573736,
+      "future_mse": 0.0009617645409889519,
+      "fixed_average_mse": 0.0008057643426582217,
+      "oracle_mse": 0.0006276617059484124,
+      "positive_gain_patch_fraction": 0.95904541015625,
+      "weights_mean": [
+        0.2940175533294678,
+        0.393218070268631
+      ],
+      "cache_path": "clip_012.pt",
+      "cache_sha256": "a941695a85c8267b76aee95d1aedd85eb5a4500a2d4213f28df07cddd18c5e3e"
+    },
+    {
+      "name": "BVI/S10_messy_toy__20fps",
+      "scene": "S10_messy_toy",
+      "condition": "20",
+      "base_mse": 0.00022425380302593112,
+      "past_mse": 0.0002289010735694319,
+      "future_mse": 0.00020646787015721202,
+      "fixed_average_mse": 0.0001803799968911335,
+      "oracle_mse": 0.00013720217975787818,
+      "positive_gain_patch_fraction": 0.97491455078125,
+      "weights_mean": [
+        0.3589465320110321,
+        0.35867300629615784
+      ],
+      "cache_path": "clip_013.pt",
+      "cache_sha256": "a6af9c04ed1e50d0223a1ac2b897d746f2dc5880f0df1f81a6096ea0d2e523f5"
+    },
+    {
+      "name": "BVI/S11_gift_wrap__10fps",
+      "scene": "S11_gift_wrap",
+      "condition": "10",
+      "base_mse": 0.0005713573191314936,
+      "past_mse": 0.0006148110260255635,
+      "future_mse": 0.0006004013703204691,
+      "fixed_average_mse": 0.0005256750155240297,
+      "oracle_mse": 0.0004236075619701296,
+      "positive_gain_patch_fraction": 0.92498779296875,
+      "weights_mean": [
+        0.28304463624954224,
+        0.2923732399940491
+      ],
+      "cache_path": "clip_014.pt",
+      "cache_sha256": "7a4f9dc0ea27f0b05f653d989fed5682c29c352746c77628b326d03de6611ee1"
+    },
+    {
+      "name": "BVI/S11_gift_wrap__20fps",
+      "scene": "S11_gift_wrap",
+      "condition": "20",
+      "base_mse": 0.0009072978282347322,
+      "past_mse": 0.0011109743500128388,
+      "future_mse": 0.0010991792660206556,
+      "fixed_average_mse": 0.0009999978356063366,
+      "oracle_mse": 0.0007337107672356069,
+      "positive_gain_patch_fraction": 0.78814697265625,
+      "weights_mean": [
+        0.25506648421287537,
+        0.30704960227012634
+      ],
+      "cache_path": "clip_015.pt",
+      "cache_sha256": "2aa56ccb657a3757871525b60a44d942707730de425bceff32edaf3252359852"
+    },
+    {
+      "name": "BVI/S12_woods__10fps",
+      "scene": "S12_woods",
+      "condition": "10",
+      "base_mse": 0.0013800037559121847,
+      "past_mse": 0.0013463664799928665,
+      "future_mse": 0.0014594654785469174,
+      "fixed_average_mse": 0.0012514370027929544,
+      "oracle_mse": 0.0010378502774983644,
+      "positive_gain_patch_fraction": 0.84930419921875,
+      "weights_mean": [
+        0.3203061819076538,
+        0.3176913261413574
+      ],
+      "cache_path": "clip_016.pt",
+      "cache_sha256": "1bae4f405670810e598f5360a1159549e658bcddf7f8012cd70d1eabf479c58f"
+    },
+    {
+      "name": "BVI/S12_woods__20fps",
+      "scene": "S12_woods",
+      "condition": "20",
+      "base_mse": 0.0002667372755240649,
+      "past_mse": 0.0004377722507342696,
+      "future_mse": 0.001962532289326191,
+      "fixed_average_mse": 0.0006765848374925554,
+      "oracle_mse": 0.00019884065841324627,
+      "positive_gain_patch_fraction": 0.9254150390625,
+      "weights_mean": [
+        0.3178158402442932,
+        0.3088730573654175
+      ],
+      "cache_path": "clip_017.pt",
+      "cache_sha256": "9bb2fb82bbee3b9f43b024f395681550bc3336c848d5ea4b596771cad5ea5f55"
+    },
+    {
+      "name": "BVI/S14_colour_balls__10fps",
+      "scene": "S14_colour_balls",
+      "condition": "10",
+      "base_mse": 0.009428874589502811,
+      "past_mse": 0.009664165787398815,
+      "future_mse": 0.0091586047783494,
+      "fixed_average_mse": 0.009056582115590572,
+      "oracle_mse": 0.006339512765407562,
+      "positive_gain_patch_fraction": 0.54400634765625,
+      "weights_mean": [
+        0.21537552773952484,
+        0.2985481321811676
+      ],
+      "cache_path": "clip_018.pt",
+      "cache_sha256": "959dbd274fce7ce3cf8b70833d060f3bcf704182496412a19348d45e1f2feddb"
+    },
+    {
+      "name": "BVI/S14_colour_balls__20fps",
+      "scene": "S14_colour_balls",
+      "condition": "20",
+      "base_mse": 0.0005467848386615515,
+      "past_mse": 0.0006438583368435502,
+      "future_mse": 0.0006925314664840698,
+      "fixed_average_mse": 0.0005214952398091555,
+      "oracle_mse": 0.0003658047062344849,
+      "positive_gain_patch_fraction": 0.83197021484375,
+      "weights_mean": [
+        0.30057427287101746,
+        0.2748410701751709
+      ],
+      "cache_path": "clip_019.pt",
+      "cache_sha256": "321a53d60c52f5dda864758321e06bea6962b06dabf3d9a900fb803755095f6f"
+    },
+    {
+      "name": "BVI/S15_flowers__10fps",
+      "scene": "S15_flowers",
+      "condition": "10",
+      "base_mse": 0.0009655788308009505,
+      "past_mse": 0.0008797834161669016,
+      "future_mse": 0.000919324578717351,
+      "fixed_average_mse": 0.0008130914648063481,
+      "oracle_mse": 0.0006239491049200296,
+      "positive_gain_patch_fraction": 0.9493408203125,
+      "weights_mean": [
+        0.3450087606906891,
+        0.3561132848262787
+      ],
+      "cache_path": "clip_020.pt",
+      "cache_sha256": "1fcf446d44658790849653172d6d9ef65e5c5767b2e7db565dc4ab696159665c"
+    },
+    {
+      "name": "BVI/S15_flowers__20fps",
+      "scene": "S15_flowers",
+      "condition": "20",
+      "base_mse": 0.00026753093698062,
+      "past_mse": 0.0002427028666716069,
+      "future_mse": 0.00026619364507496357,
+      "fixed_average_mse": 0.00021695808391086757,
+      "oracle_mse": 0.00017802846559789032,
+      "positive_gain_patch_fraction": 0.98748779296875,
+      "weights_mean": [
+        0.3746092915534973,
+        0.37054264545440674
+      ],
+      "cache_path": "clip_021.pt",
+      "cache_sha256": "953f1ad8bba21ff9dc4e7eb7dea960a75cd4aed1833cbd6d1538af6fffa487e9"
+    },
+    {
+      "name": "BVI/S16_faces1__10fps",
+      "scene": "S16_faces1",
+      "condition": "10",
+      "base_mse": 0.0057727196253836155,
+      "past_mse": 0.005611667409539223,
+      "future_mse": 0.005807870998978615,
+      "fixed_average_mse": 0.00551750510931015,
+      "oracle_mse": 0.004841936752200127,
+      "positive_gain_patch_fraction": 0.75970458984375,
+      "weights_mean": [
+        0.4387992322444916,
+        0.21567805111408234
+      ],
+      "cache_path": "clip_022.pt",
+      "cache_sha256": "0e21923177d669c8911725a7d2294aa8da0a11526f52fb06d912a202ba1005ee"
+    },
+    {
+      "name": "BVI/S16_faces1__20fps",
+      "scene": "S16_faces1",
+      "condition": "20",
+      "base_mse": 0.0002638615551404655,
+      "past_mse": 0.0002743678051047027,
+      "future_mse": 0.0003492037358228117,
+      "fixed_average_mse": 0.00026116243680007756,
+      "oracle_mse": 0.00019052170682698488,
+      "positive_gain_patch_fraction": 0.91754150390625,
+      "weights_mean": [
+        0.342000275850296,
+        0.32550758123397827
+      ],
+      "cache_path": "clip_023.pt",
+      "cache_sha256": "5b29c73431fb0ac8ff956cb827731b658255df682f7515c6049a869b44d393c9"
+    },
+    {
+      "name": "BVI/S18_books1__10fps",
+      "scene": "S18_books1",
+      "condition": "10",
+      "base_mse": 0.00383303826674819,
+      "past_mse": 0.003556653391569853,
+      "future_mse": 0.0039152717217803,
+      "fixed_average_mse": 0.0035622131545096636,
+      "oracle_mse": 0.003040831070393324,
+      "positive_gain_patch_fraction": 0.74676513671875,
+      "weights_mean": [
+        0.43577468395233154,
+        0.22854991257190704
+      ],
+      "cache_path": "clip_024.pt",
+      "cache_sha256": "cd6a01334282421e5180e00758d3a690dd02682d63e0ad1c8277ab6c374749f9"
+    },
+    {
+      "name": "BVI/S18_books1__20fps",
+      "scene": "S18_books1",
+      "condition": "20",
+      "base_mse": 0.0003603558870963752,
+      "past_mse": 0.00033393886405974627,
+      "future_mse": 0.000343390682246536,
+      "fixed_average_mse": 0.0002969296765513718,
+      "oracle_mse": 0.00025931396521627903,
+      "positive_gain_patch_fraction": 0.967529296875,
+      "weights_mean": [
+        0.38617682456970215,
+        0.3285060524940491
+      ],
+      "cache_path": "clip_025.pt",
+      "cache_sha256": "bd34f6f00969597b6266596d1a4e787c1b4cd9c9e9cffd9aa4c34a7babebf686"
+    },
+    {
+      "name": "BVI/S19_books2__10fps",
+      "scene": "S19_books2",
+      "condition": "10",
+      "base_mse": 0.001606175908818841,
+      "past_mse": 0.0016658494714647532,
+      "future_mse": 0.0015066060004755855,
+      "fixed_average_mse": 0.001450873794965446,
+      "oracle_mse": 0.0012354196514934301,
+      "positive_gain_patch_fraction": 0.8475341796875,
+      "weights_mean": [
+        0.2796754539012909,
+        0.35304710268974304
+      ],
+      "cache_path": "clip_026.pt",
+      "cache_sha256": "bfee914652bb30940f58babc0682dac13cba9e3cb7f60e5b1e2d0896404f756c"
+    },
+    {
+      "name": "BVI/S19_books2__20fps",
+      "scene": "S19_books2",
+      "condition": "20",
+      "base_mse": 0.0006162847857922316,
+      "past_mse": 0.0006324521964415908,
+      "future_mse": 0.0005882473196834326,
+      "fixed_average_mse": 0.0005556127871386707,
+      "oracle_mse": 0.00045506501919589937,
+      "positive_gain_patch_fraction": 0.9100341796875,
+      "weights_mean": [
+        0.3508477210998535,
+        0.35310816764831543
+      ],
+      "cache_path": "clip_027.pt",
+      "cache_sha256": "00a07a95067f08dc43e1f9336a062729ce2a1ac3dbc01ed903afaa0d99df11c3"
+    },
+    {
+      "name": "BVI/S20_books3__10fps",
+      "scene": "S20_books3",
+      "condition": "10",
+      "base_mse": 0.0013658945681527257,
+      "past_mse": 0.0014216876588761806,
+      "future_mse": 0.0014502268750220537,
+      "fixed_average_mse": 0.0013068849220871925,
+      "oracle_mse": 0.0011131090577691793,
+      "positive_gain_patch_fraction": 0.83074951171875,
+      "weights_mean": [
+        0.30485206842422485,
+        0.29910576343536377
+      ],
+      "cache_path": "clip_028.pt",
+      "cache_sha256": "2f975b640be76ebcd21365d87e6e5749ab03e35efac094d3787b1e8992f25f93"
+    },
+    {
+      "name": "BVI/S20_books3__20fps",
+      "scene": "S20_books3",
+      "condition": "20",
+      "base_mse": 0.00038675195537507534,
+      "past_mse": 0.0004161684773862362,
+      "future_mse": 0.00039647467201575637,
+      "fixed_average_mse": 0.00037012409302406013,
+      "oracle_mse": 0.00030909900669939816,
+      "positive_gain_patch_fraction": 0.9031982421875,
+      "weights_mean": [
+        0.2687219977378845,
+        0.3664129674434662
+      ],
+      "cache_path": "clip_029.pt",
+      "cache_sha256": "79a3eaf625615ef2587e13366973bf7974bc126ab779f876214e36c819b548f5"
+    },
+    {
+      "name": "BVI/S22_mario2__10fps",
+      "scene": "S22_mario2",
+      "condition": "10",
+      "base_mse": 0.0010821330361068249,
+      "past_mse": 0.0011045022401958704,
+      "future_mse": 0.0010343611938878894,
+      "fixed_average_mse": 0.0009028846397995949,
+      "oracle_mse": 0.0006989223184064031,
+      "positive_gain_patch_fraction": 0.90948486328125,
+      "weights_mean": [
+        0.3227326273918152,
+        0.3343324363231659
+      ],
+      "cache_path": "clip_030.pt",
+      "cache_sha256": "3661b274803231ec4aaf3f498b6c47c0877376124459808bc4d39cfd650c6a4c"
+    },
+    {
+      "name": "BVI/S22_mario2__20fps",
+      "scene": "S22_mario2",
+      "condition": "20",
+      "base_mse": 0.0006211848231032491,
+      "past_mse": 0.0006799142574891448,
+      "future_mse": 0.0006886853370815516,
+      "fixed_average_mse": 0.0006156917661428452,
+      "oracle_mse": 0.0005300436750985682,
+      "positive_gain_patch_fraction": 0.87347412109375,
+      "weights_mean": [
+        0.2965487539768219,
+        0.3073711097240448
+      ],
+      "cache_path": "clip_031.pt",
+      "cache_sha256": "30d213d7a8e578c7ff069e9e8044129cc6985ba8e059566c33317e6774627ea8"
+    },
+    {
+      "name": "BVI/S23_messy_wires__10fps",
+      "scene": "S23_messy_wires",
+      "condition": "10",
+      "base_mse": 0.001503420528024435,
+      "past_mse": 0.0013108492130413651,
+      "future_mse": 0.001587436068803072,
+      "fixed_average_mse": 0.0012882008450105786,
+      "oracle_mse": 0.0010047841351479292,
+      "positive_gain_patch_fraction": 0.8382568359375,
+      "weights_mean": [
+        0.38376057147979736,
+        0.2803785800933838
+      ],
+      "cache_path": "clip_032.pt",
+      "cache_sha256": "f1b144f6f25fa50fbfc5f8fc48ca4ffe0ca75d0bcd30898c2f63fdbae02e617e"
+    },
+    {
+      "name": "BVI/S23_messy_wires__20fps",
+      "scene": "S23_messy_wires",
+      "condition": "20",
+      "base_mse": 0.00030744861578568816,
+      "past_mse": 0.0006198356859385967,
+      "future_mse": 0.000385382620152086,
+      "fixed_average_mse": 0.0003410362987779081,
+      "oracle_mse": 0.00020773735013790429,
+      "positive_gain_patch_fraction": 0.95355224609375,
+      "weights_mean": [
+        0.3344159424304962,
+        0.3242497742176056
+      ],
+      "cache_path": "clip_033.pt",
+      "cache_sha256": "1e4e06b3859d2319302d7a487cd0932992e408904c9bf87710fd9154dc347d86"
+    },
+    {
+      "name": "BVI/S24_figures1__10fps",
+      "scene": "S24_figures1",
+      "condition": "10",
+      "base_mse": 0.002443573670461774,
+      "past_mse": 0.002740145893767476,
+      "future_mse": 0.00271183461882174,
+      "fixed_average_mse": 0.002523967996239662,
+      "oracle_mse": 0.0021369410678744316,
+      "positive_gain_patch_fraction": 0.7469482421875,
+      "weights_mean": [
+        0.25811585783958435,
+        0.25708919763565063
+      ],
+      "cache_path": "clip_034.pt",
+      "cache_sha256": "eeba3edb876a6f96e58471aa193dd7013b49b31b362303b4e3887ae82903c307"
+    },
+    {
+      "name": "BVI/S24_figures1__20fps",
+      "scene": "S24_figures1",
+      "condition": "20",
+      "base_mse": 0.0010051593417301774,
+      "past_mse": 0.0013332979287952185,
+      "future_mse": 0.0013575213961303234,
+      "fixed_average_mse": 0.0011691811960190535,
+      "oracle_mse": 0.0008480219403281808,
+      "positive_gain_patch_fraction": 0.7763671875,
+      "weights_mean": [
+        0.32402312755584717,
+        0.206541508436203
+      ],
+      "cache_path": "clip_035.pt",
+      "cache_sha256": "e499c1e853a6127bb367651bb5af785a354205b8ffa96b9064112cb4c05221b2"
+    },
+    {
+      "name": "BVI/S26_cameras__10fps",
+      "scene": "S26_cameras",
+      "condition": "10",
+      "base_mse": 0.0040678596124053,
+      "past_mse": 0.004149685613811016,
+      "future_mse": 0.004156999755650759,
+      "fixed_average_mse": 0.004104685038328171,
+      "oracle_mse": 0.0036679301410913467,
+      "positive_gain_patch_fraction": 0.726806640625,
+      "weights_mean": [
+        0.32771775126457214,
+        0.3052719235420227
+      ],
+      "cache_path": "clip_036.pt",
+      "cache_sha256": "b2bd38d25281a2053cf0f9f5d12e63dd7ff35006ded9cb1970e3ac5da195ec1f"
+    },
+    {
+      "name": "BVI/S26_cameras__20fps",
+      "scene": "S26_cameras",
+      "condition": "20",
+      "base_mse": 0.0018529881490394473,
+      "past_mse": 0.002258703112602234,
+      "future_mse": 0.001630028011277318,
+      "fixed_average_mse": 0.001789422007277608,
+      "oracle_mse": 0.0014158065896481276,
+      "positive_gain_patch_fraction": 0.868896484375,
+      "weights_mean": [
+        0.2272959053516388,
+        0.42803943157196045
+      ],
+      "cache_path": "clip_037.pt",
+      "cache_sha256": "9d6808f63258f68ff562072397e16d7d8cb5471fa7e0a5ed1c2ad1c74ca65cb9"
+    },
+    {
+      "name": "BVI/S27_cloths1__10fps",
+      "scene": "S27_cloths1",
+      "condition": "10",
+      "base_mse": 0.0018683196976780891,
+      "past_mse": 0.0017636606935411692,
+      "future_mse": 0.0019119768403470516,
+      "fixed_average_mse": 0.0017304661450907588,
+      "oracle_mse": 0.0014601286966353655,
+      "positive_gain_patch_fraction": 0.806396484375,
+      "weights_mean": [
+        0.36485064029693604,
+        0.27757254242897034
+      ],
+      "cache_path": "clip_038.pt",
+      "cache_sha256": "6b628178f3d4cd70b6cebaa74a12c877e9df64ab3c2a571d47daab48ad111310"
+    },
+    {
+      "name": "BVI/S27_cloths1__20fps",
+      "scene": "S27_cloths1",
+      "condition": "20",
+      "base_mse": 0.00039292831206694245,
+      "past_mse": 0.00046130898408591747,
+      "future_mse": 0.0004671118804253638,
+      "fixed_average_mse": 0.0003905901685357094,
+      "oracle_mse": 0.0003176986356265843,
+      "positive_gain_patch_fraction": 0.85980224609375,
+      "weights_mean": [
+        0.24648718535900116,
+        0.2698342800140381
+      ],
+      "cache_path": "clip_039.pt",
+      "cache_sha256": "48685ea558f81d4ff7b9a63c35240d51fef17e31664d08cef80f1f97478be051"
+    },
+    {
+      "name": "BVI/S28_cloths2__10fps",
+      "scene": "S28_cloths2",
+      "condition": "10",
+      "base_mse": 0.0027029491029679775,
+      "past_mse": 0.002490108134225011,
+      "future_mse": 0.0029337371233850718,
+      "fixed_average_mse": 0.002633106429129839,
+      "oracle_mse": 0.0022767186164855957,
+      "positive_gain_patch_fraction": 0.81103515625,
+      "weights_mean": [
+        0.433230996131897,
+        0.22325386106967926
+      ],
+      "cache_path": "clip_040.pt",
+      "cache_sha256": "b6da5ca4719700b11ffdeac05bc87d6be34544f01a93c80c604043ddf652a961"
+    },
+    {
+      "name": "BVI/S28_cloths2__20fps",
+      "scene": "S28_cloths2",
+      "condition": "20",
+      "base_mse": 0.0002781920484267175,
+      "past_mse": 0.0003053135587833822,
+      "future_mse": 0.0003574100264813751,
+      "fixed_average_mse": 0.000266618822934106,
+      "oracle_mse": 0.00021132145775482059,
+      "positive_gain_patch_fraction": 0.9244384765625,
+      "weights_mean": [
+        0.31140780448913574,
+        0.2288707196712494
+      ],
+      "cache_path": "clip_041.pt",
+      "cache_sha256": "ffd18b3c08c285e7778b67a299bd12e066bd0039cab51ba7ec6c26c2cc534f84"
+    },
+    {
+      "name": "BVI/S30_mix2__10fps",
+      "scene": "S30_mix2",
+      "condition": "10",
+      "base_mse": 0.004859499633312225,
+      "past_mse": 0.0047676656395196915,
+      "future_mse": 0.004839535336941481,
+      "fixed_average_mse": 0.004725863225758076,
+      "oracle_mse": 0.004313725046813488,
+      "positive_gain_patch_fraction": 0.70941162109375,
+      "weights_mean": [
+        0.32291221618652344,
+        0.3135606050491333
+      ],
+      "cache_path": "clip_042.pt",
+      "cache_sha256": "1c721aa3c0138251e6309baa42e8fccdff7c79c23eca027ef0961aac51b535e3"
+    },
+    {
+      "name": "BVI/S30_mix2__20fps",
+      "scene": "S30_mix2",
+      "condition": "20",
+      "base_mse": 0.0014889027224853635,
+      "past_mse": 0.0017004180699586868,
+      "future_mse": 0.001725718379020691,
+      "fixed_average_mse": 0.0016120155341923237,
+      "oracle_mse": 0.0013671363703906536,
+      "positive_gain_patch_fraction": 0.75042724609375,
+      "weights_mean": [
+        0.27431461215019226,
+        0.24127736687660217
+      ],
+      "cache_path": "clip_043.pt",
+      "cache_sha256": "f852396f87a43866f332c80bfa615620cff7aa832d504fa7768653c5f8fd0898"
+    },
+    {
+      "name": "BVI/S31_mix3__10fps",
+      "scene": "S31_mix3",
+      "condition": "10",
+      "base_mse": 0.002981661818921566,
+      "past_mse": 0.0029746838845312595,
+      "future_mse": 0.003055628389120102,
+      "fixed_average_mse": 0.0028890506364405155,
+      "oracle_mse": 0.0026157815009355545,
+      "positive_gain_patch_fraction": 0.8348388671875,
+      "weights_mean": [
+        0.348269522190094,
+        0.2981540858745575
+      ],
+      "cache_path": "clip_044.pt",
+      "cache_sha256": "63f787254797dbae750203f73bec9ff03a49cb58eebdcb5d9e09bacf1b3c2cc7"
+    },
+    {
+      "name": "BVI/S31_mix3__20fps",
+      "scene": "S31_mix3",
+      "condition": "20",
+      "base_mse": 0.0009084578487090766,
+      "past_mse": 0.0008652450051158667,
+      "future_mse": 0.0010464655933901668,
+      "fixed_average_mse": 0.0008993375231511891,
+      "oracle_mse": 0.0007612357148900628,
+      "positive_gain_patch_fraction": 0.8155517578125,
+      "weights_mean": [
+        0.4221246540546417,
+        0.18031826615333557
+      ],
+      "cache_path": "clip_045.pt",
+      "cache_sha256": "fa80de01cbf3c6145317c62e07871e681f5bc31ed3b0f408354c301d56b66c84"
+    },
+    {
+      "name": "BVI/S32_mix4__10fps",
+      "scene": "S32_mix4",
+      "condition": "10",
+      "base_mse": 0.004070998169481754,
+      "past_mse": 0.0030080927535891533,
+      "future_mse": 0.0053872354328632355,
+      "fixed_average_mse": 0.003623160533607006,
+      "oracle_mse": 0.0026158373802900314,
+      "positive_gain_patch_fraction": 0.8714599609375,
+      "weights_mean": [
+        0.4306286871433258,
+        0.25657913088798523
+      ],
+      "cache_path": "clip_046.pt",
+      "cache_sha256": "2c13a681e2cf5b990bbe708772a71dde2321d0fa642c113474bd41e8ad0e7ea3"
+    },
+    {
+      "name": "BVI/S32_mix4__20fps",
+      "scene": "S32_mix4",
+      "condition": "20",
+      "base_mse": 0.0007096803747117519,
+      "past_mse": 0.0007338147843256593,
+      "future_mse": 0.0007755564292892814,
+      "fixed_average_mse": 0.0007152097532525659,
+      "oracle_mse": 0.0006330139003694057,
+      "positive_gain_patch_fraction": 0.8072509765625,
+      "weights_mean": [
+        0.36696118116378784,
+        0.2067417949438095
+      ],
+      "cache_path": "clip_047.pt",
+      "cache_sha256": "ba259dbe4d04a4da410bf8e6fb5fa6adb544f4d2ced8ec8bd91a31fa4f5e0878"
+    }
+  ],
+  "base_state_unchanged": true,
+  "mean": {
+    "base_mse": 0.001692703293277494,
+    "past_mse": 0.001736688017748141,
+    "future_mse": 0.001820424010171943,
+    "fixed_average_mse": 0.0016393135868687143,
+    "oracle_mse": 0.0013345297934392875
+  }
+}

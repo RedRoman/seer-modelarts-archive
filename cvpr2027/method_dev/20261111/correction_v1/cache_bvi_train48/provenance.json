@@ -1,0 +1,268 @@
+{
+  "purpose": "TRAIN-only candidate-family oracle and selector cache; not learned performance",
+  "domain": "bvi",
+  "split_sha256": "fb6be5ea78ef73f5cc9db90bca75813bf597275f7609fe39d82f5b2f883e9ad0",
+  "base_checkpoint_sha256": "313180c76cc6e753eb1e5023247d7e3739468b24f00971849c5a4935f9bba173",
+  "base_saved_args": {
+    "tag": "e12_bvi_pretrained_s0",
+    "out_dir": "/cache/zihaohe/seer_cvpr/runs_e12/e12_bvi_pretrained_s0",
+    "heldout": "sdsd",
+    "only": "bvi",
+    "vjepa": "pretrained",
+    "edc": "off",
+    "edc_vjepa": "on",
+    "edc_weight": 1.0,
+    "iters": 2500,
+    "lr": 2e-05,
+    "weight_decay": 0.0001,
+    "accum_steps": 8,
+    "crop": 256,
+    "clip_len": 16,
+    "val_every": 500,
+    "save_every": 2500,
+    "log_every": 50,
+    "grad_ckpt": "on",
+    "balance_domains": "on",
+    "num_workers": 4,
+    "seed": 0,
+    "device": "npu"
+  },
+  "base_reconstruction": {
+    "version": 2,
+    "mode": "saved",
+    "arch": "v2",
+    "trained_arm": "pretrained",
+    "arm": "pretrained",
+    "clip_len": 16,
+    "branch": "full",
+    "xattn": "global",
+    "kv": "per_tubelet",
+    "layers": "single",
+    "taps": [
+      5,
+      11,
+      17,
+      23
+    ],
+    "token_proj": "none",
+    "token_proj_k": 4,
+    "random_encoder_seed": null
+  },
+  "base_state_sha256": "e3c62b24411a5648cbfba9466dab1ac250fc1b86a4858a915b74b51701ce03af",
+  "raft_weights_sha256": "01064c6dba73b0fc9fc8edf772248560a00a3acfd62ac6677e9eeebad9680e27",
+  "flow_inputs": "clamped restored RGB only, target-to-source direction",
+  "args": {
+    "init": "/cache/zihaohe/seer_cvpr/runs_e12/e12_bvi_pretrained_s0/final_cpu.pt",
+    "raft_weights": "/temp/zihaohe/seer_cvpr/weights_small/checkpoint/raft_small_C_T_V2-01064c6d.pth",
+    "out": "/cache/zihaohe/seer_method_dev_20261111/correction_v1/cache_bvi_train48",
+    "data_seed": 20261113,
+    "patch_size": 8,
+    "offset": 2,
+    "flow_steps": 12,
+    "flow_batch": 2,
+    "max_sequences": 48,
+    "device": "npu"
+  },
+  "plan": [
+    {
+      "sequence_index": 0,
+      "augmentation_seed": 1697118881199681878
+    },
+    {
+      "sequence_index": 1,
+      "augmentation_seed": 7725646726281667068
+    },
+    {
+      "sequence_index": 2,
+      "augmentation_seed": 1943719068844149377
+    },
+    {
+      "sequence_index": 3,
+      "augmentation_seed": 1600745349571966231
+    },
+    {
+      "sequence_index": 4,
+      "augmentation_seed": 5043775480152890832
+    },
+    {
+      "sequence_index": 5,
+      "augmentation_seed": 6548758617838212475
+    },
+    {
+      "sequence_index": 6,
+      "augmentation_seed": 4570414210135125020
+    },
+    {
+      "sequence_index": 7,
+      "augmentation_seed": 445168616302828969
+    },
+    {
+      "sequence_index": 8,
+      "augmentation_seed": 2695625313582362344
+    },
+    {
+      "sequence_index": 9,
+      "augmentation_seed": 1574199193212327367
+    },
+    {
+      "sequence_index": 10,
+      "augmentation_seed": 7415835983912875611
+    },
+    {
+      "sequence_index": 11,
+      "augmentation_seed": 2783442051551408619
+    },
+    {
+      "sequence_index": 12,
+      "augmentation_seed": 150698789555461309
+    },
+    {
+      "sequence_index": 13,
+      "augmentation_seed": 7293545869603138395
+    },
+    {
+      "sequence_index": 14,
+      "augmentation_seed": 7027504154443434914
+    },
+    {
+      "sequence_index": 15,
+      "augmentation_seed": 4305910761287364355
+    },
+    {
+      "sequence_index": 16,
+      "augmentation_seed": 7186523099765755487
+    },
+    {
+      "sequence_index": 17,
+      "augmentation_seed": 9114854577659134921
+    },
+    {
+      "sequence_index": 18,
+      "augmentation_seed": 5445333416969457295
+    },
+    {
+      "sequence_index": 19,
+      "augmentation_seed": 8387990389603885038
+    },
+    {
+      "sequence_index": 20,
+      "augmentation_seed": 1477809243266355644
+    },
+    {
+      "sequence_index": 21,
+      "augmentation_seed": 2827969453017046662
+    },
+    {
+      "sequence_index": 22,
+      "augmentation_seed": 8470152683964952830
+    },
+    {
+      "sequence_index": 23,
+      "augmentation_seed": 1652653372801807492
+    },
+    {
+      "sequence_index": 24,
+      "augmentation_seed": 1713186923935010328
+    },
+    {
+      "sequence_index": 25,
+      "augmentation_seed": 4965332525816113040
+    },
+    {
+      "sequence_index": 26,
+      "augmentation_seed": 6306226300894131674
+    },
+    {
+      "sequence_index": 27,
+      "augmentation_seed": 7673648579950127860
+    },
+    {
+      "sequence_index": 28,
+      "augmentation_seed": 7262512066377417772
+    },
+    {
+      "sequence_index": 29,
+      "augmentation_seed": 6016628090891909695
+    },
+    {
+      "sequence_index": 30,
+      "augmentation_seed": 3809523368745356859
+    },
+    {
+      "sequence_index": 31,
+      "augmentation_seed": 4073602532273514097
+    },
+    {
+      "sequence_index": 32,
+      "augmentation_seed": 7523944742251565534
+    },
+    {
+      "sequence_index": 33,
+      "augmentation_seed": 1125491283384499620
+    },
+    {
+      "sequence_index": 34,
+      "augmentation_seed": 7786301710680045900
+    },
+    {
+      "sequence_index": 35,
+      "augmentation_seed": 2531917414985435688
+    },
+    {
+      "sequence_index": 36,
+      "augmentation_seed": 848612739554545018
+    },
+    {
+      "sequence_index": 37,
+      "augmentation_seed": 4807963678956129025
+    },
+    {
+      "sequence_index": 38,
+      "augmentation_seed": 6343397414285877782
+    },
+    {
+      "sequence_index": 39,
+      "augmentation_seed": 2343690400097977192
+    },
+    {
+      "sequence_index": 40,
+      "augmentation_seed": 2669101266985598034
+    },
+    {
+      "sequence_index": 41,
+      "augmentation_seed": 7952269595291097976
+    },
+    {
+      "sequence_index": 42,
+      "augmentation_seed": 4526025282566083939
+    },
+    {
+      "sequence_index": 43,
+      "augmentation_seed": 4893728590030205335
+    },
+    {
+      "sequence_index": 44,
+      "augmentation_seed": 3391120127238251744
+    },
+    {
+      "sequence_index": 45,
+      "augmentation_seed": 9096492246600133263
+    },
+    {
+      "sequence_index": 46,
+      "augmentation_seed": 4737311978535223998
+    },
+    {
+      "sequence_index": 47,
+      "augmentation_seed": 6085117159399184831
+    }
+  ],
+  "source_sha256": {
+    "tools/cache_correction_oracle.py": "7c989a8873101e6139af4cd2c81d0675e5c440024e177a1ae90c10544359fadd",
+    "models/correction_risk.py": "3a9dcc2d567ddc6f6705af0211b0f532829b062d7a51f7b31863595b945ce22d",
+    "data/planned_bvi.py": "cb136a5625d39fd3df58a8c96284730f4b19423dcfbc05fceb67a8398290b21d",
+    "tools/eval_e4.py": "3fb906535d76ca11e379d41113424d1d1d47205d56ca5f5de0b557c3adcf0467",
+    "models/pixel_branch_v2.py": "f83c1aaa5797e5413a1adb41d49cecc0a093e72159e6d4fdbaf610168b739222"
+  },
+  "historical_training_split": "Checkpoint args retained; no historical split hash inferred from counts"
+}

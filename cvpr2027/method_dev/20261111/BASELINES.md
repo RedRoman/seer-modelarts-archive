@@ -60,6 +60,10 @@ Place weights in the adaptation's `checkpoints/` directory; retain filename, sou
 
 No BVI-specific released weight was listed in that README. The shared pretrained weight uses extra data; label a fine-tuned-pretrained baseline accordingly. Training from scratch with unavailable initialization is a different experiment.
 
+**Download lab note, 2026-11-11:** the official parent README still links the Google Drive ID above and names the expected file `amnet_pretrained.pth`. An anonymous metadata-only check from this workspace returned HTTP 401 for the Drive view page; HEAD requests to the official download endpoints redirected to Google sign-in HTML, without a checkpoint `Content-Disposition` or byte length. The official Baidu alternative could not be opened by the web reader. Thus anonymous downloadability and actual filename/size remain **unconfirmed**, not proven unavailable. No weights were downloaded, no account login or permission request was made, and no dependencies were installed. Recheck accessibility when staging the baseline and retain the eventual file SHA; do not infer file integrity from the README filename.
+
+The [official paper, Appendix C](https://arxiv.org/html/2606.11186v1#A3) identifies extra pretraining on Vimeo90K, REDS, YouTube-VOS, Inter4K, UVO and MOSEv2 (1,693,034 frames), with synthetic low light, v2e events and ThermalGen infrared. Preserve this provenance for any RGB-only BVI adaptation. Also retain the recipe distinction: paper Table 6 gives batch32 / LR `2e-4`, whereas the pinned NPU SDSD configs give batch4 and indoor LR `1e-4` or outdoor LR `1e-6` with a frozen backbone. There is no official BVI recipe in the inspected checkout; record the selected source recipe and every adaptation rather than silently combining settings.
+
 ### Existing data to loader contract
 
 Confirmed archive roots are under `/temp/zihaohe/seer_cvpr/datasets/`; resolve symlinks and verify availability on the chosen host before use. The frozen split is `/temp/zihaohe/seer_cvpr/datasets/splits_cvpr.json`.
