@@ -1,0 +1,58 @@
+{
+  "args": {
+    "variant": "baseline",
+    "init": "/temp/zihaohe/seer_cvpr/method_dev_20261111/inputs/e17_small_pretrained_s0_final_cpu.pt",
+    "out": "/cache/zihaohe/seer_method_dev_20261111/runs/baseline_s0",
+    "steps": 400,
+    "accum": 1,
+    "eval_every": 200,
+    "lr": 2e-05,
+    "fusion_lr": 0.0002,
+    "seed": 0,
+    "data_seed": 20261111,
+    "workers": 4,
+    "device": "npu",
+    "base_git": "04313bba457fd53decbfdccde13168a001ec671f"
+  },
+  "init_sha256": "5ab6b6d04d7b13743965007d3754bd66f034d170ec7193abc2abb5a8aa6c8740",
+  "base_pixel_state_sha256": "29613ec2ab794ccafa4ef77872c28c242431ecf07e734af82c173ac097c40695",
+  "base_reconstruction": {
+    "version": 2,
+    "mode": "saved",
+    "arch": "v2",
+    "trained_arm": "pretrained",
+    "arm": "pretrained",
+    "clip_len": 16,
+    "branch": "small",
+    "xattn": "global",
+    "kv": "per_tubelet",
+    "layers": "single",
+    "taps": [
+      5,
+      11,
+      17,
+      23
+    ],
+    "token_proj": "none",
+    "token_proj_k": 4,
+    "random_encoder_seed": null
+  },
+  "fusion_initial_state_sha256": null,
+  "fusion_config": null,
+  "split_sha256": "fb6be5ea78ef73f5cc9db90bca75813bf597275f7609fe39d82f5b2f883e9ad0",
+  "data_plan_sha256": "035e80077b08c89d49596a76e0fb9e9fa410ee2f9940971327c16759d4774c4b",
+  "source_sha256": {
+    "tools/train_method_pilot.py": "16ef786d787b35a7680fbef074e2443fa97876914147cd1d2eabb136b1da2338",
+    "models/pixel_branch_v2.py": "f83c1aaa5797e5413a1adb41d49cecc0a093e72159e6d4fdbaf610168b739222",
+    "models/vjepa_backbone.py": "8d8e4ca44cecad797aec05af5f627b50927b9d72860187b76d466794f2d3e4bf",
+    "models/pixel_branch_fusion.py": "c15250ce398b018f56b1da0ce27cda36c1cbfb75bf4903a3c3c52a0fec20d713",
+    "models/temporal_detail_fusion.py": "f4989100dfe368a0152282bd90ab3c80bba46443d521d43df5763faa0e755676",
+    "data/common.py": "6041b43e832ab67def75b9e7285927dddd77d45d0bc25945bb600167b04e4ded"
+  },
+  "torch_version": "2.7.1+cpu",
+  "trainable_base": 22396769,
+  "trainable_fusion": 0,
+  "selection": "exploratory validation-only method development, no test evaluation",
+  "first_batch_sha256": "cfd35f39373070a8d8be4340491cd3bb0db550e5b376d2d09410a579956036e2",
+  "first_batch_name": "SDSD_outdoor/MVI_0975"
+}

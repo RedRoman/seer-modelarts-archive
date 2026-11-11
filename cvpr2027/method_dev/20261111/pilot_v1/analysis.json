@@ -1,0 +1,3473 @@
+{
+  "stage": "exploratory single-seed method-development screen; not test/SOTA evidence",
+  "step": 400,
+  "validated_steps": [
+    0,
+    200,
+    400
+  ],
+  "n": 16,
+  "scenes": 8,
+  "training_seeds": [
+    0
+  ],
+  "bootstrap_samples": 10000,
+  "rng_seed": 0,
+  "bootstrap_protocol": "One RNG0: sequence draws then scene draws; reuse for all metrics/steps/contrasts. Whole-scene total difference divided by sampled sequence count.",
+  "interval_scope": "Unadjusted intervals conditional on one trained seed; do not estimate seed variation or correct validation-based selection.",
+  "initial_metric_max_differences": {
+    "baseline": {
+      "psnr_y": 0.0,
+      "psnr_rgb": 0.0,
+      "lpips": 0.0,
+      "tlp_gap": 0.0
+    },
+    "local": {
+      "psnr_y": 0.0,
+      "psnr_rgb": 0.0,
+      "lpips": 0.0,
+      "tlp_gap": 0.0
+    },
+    "prior": {
+      "psnr_y": 0.0,
+      "psnr_rgb": 0.0,
+      "lpips": 0.0,
+      "tlp_gap": 0.0
+    }
+  },
+  "gt_temporal_max_difference": 0.0,
+  "provenance_checks": {
+    "recorded_inputs_match": true,
+    "actual_data_plan_hash_and_schedule_match": true,
+    "published_source_hashes_match": true,
+    "input_content_scope": "Checkpoint/first-batch hashes compared as recorded; checkpoint/data image bytes are not opened."
+  },
+  "source_validation": {
+    "mode": "git_revision",
+    "requested_revision": "8a9dcfa84a3466cf2dc567903a39b6ba1210bb8e",
+    "resolved_revision": "8a9dcfa84a3466cf2dc567903a39b6ba1210bb8e",
+    "repository_code_prefix": "cvpr2027/code_full"
+  },
+  "matched_metadata": {
+    "baseline": {
+      "args": {
+        "variant": "baseline",
+        "init": "/temp/zihaohe/seer_cvpr/method_dev_20261111/inputs/e17_small_pretrained_s0_final_cpu.pt",
+        "out": "/cache/zihaohe/seer_method_dev_20261111/runs/baseline_s0",
+        "steps": 400,
+        "accum": 1,
+        "eval_every": 200,
+        "lr": 2e-05,
+        "fusion_lr": 0.0002,
+        "seed": 0,
+        "data_seed": 20261111,
+        "workers": 4,
+        "device": "npu",
+        "base_git": "04313bba457fd53decbfdccde13168a001ec671f"
+      },
+      "init_sha256": "5ab6b6d04d7b13743965007d3754bd66f034d170ec7193abc2abb5a8aa6c8740",
+      "base_pixel_state_sha256": "29613ec2ab794ccafa4ef77872c28c242431ecf07e734af82c173ac097c40695",
+      "base_reconstruction": {
+        "version": 2,
+        "mode": "saved",
+        "arch": "v2",
+        "trained_arm": "pretrained",
+        "arm": "pretrained",
+        "clip_len": 16,
+        "branch": "small",
+        "xattn": "global",
+        "kv": "per_tubelet",
+        "layers": "single",
+        "taps": [
+          5,
+          11,
+          17,
+          23
+        ],
+        "token_proj": "none",
+        "token_proj_k": 4,
+        "random_encoder_seed": null
+      },
+      "fusion_initial_state_sha256": null,
+      "fusion_config": null,
+      "split_sha256": "fb6be5ea78ef73f5cc9db90bca75813bf597275f7609fe39d82f5b2f883e9ad0",
+      "data_plan_sha256": "035e80077b08c89d49596a76e0fb9e9fa410ee2f9940971327c16759d4774c4b",
+      "source_sha256": {
+        "tools/train_method_pilot.py": "16ef786d787b35a7680fbef074e2443fa97876914147cd1d2eabb136b1da2338",
+        "models/pixel_branch_v2.py": "f83c1aaa5797e5413a1adb41d49cecc0a093e72159e6d4fdbaf610168b739222",
+        "models/vjepa_backbone.py": "8d8e4ca44cecad797aec05af5f627b50927b9d72860187b76d466794f2d3e4bf",
+        "models/pixel_branch_fusion.py": "c15250ce398b018f56b1da0ce27cda36c1cbfb75bf4903a3c3c52a0fec20d713",
+        "models/temporal_detail_fusion.py": "f4989100dfe368a0152282bd90ab3c80bba46443d521d43df5763faa0e755676",
+        "data/common.py": "6041b43e832ab67def75b9e7285927dddd77d45d0bc25945bb600167b04e4ded"
+      },
+      "torch_version": "2.7.1+cpu",
+      "trainable_base": 22396769,
+      "trainable_fusion": 0,
+      "selection": "exploratory validation-only method development, no test evaluation",
+      "first_batch_sha256": "cfd35f39373070a8d8be4340491cd3bb0db550e5b376d2d09410a579956036e2",
+      "first_batch_name": "SDSD_outdoor/MVI_0975"
+    },
+    "local": {
+      "args": {
+        "variant": "local",
+        "init": "/temp/zihaohe/seer_cvpr/method_dev_20261111/inputs/e17_small_pretrained_s0_final_cpu.pt",
+        "out": "/cache/zihaohe/seer_method_dev_20261111/runs/local_s0",
+        "steps": 400,
+        "accum": 1,
+        "eval_every": 200,
+        "lr": 2e-05,
+        "fusion_lr": 0.0002,
+        "seed": 0,
+        "data_seed": 20261111,
+        "workers": 4,
+        "device": "npu",
+        "base_git": "04313bba457fd53decbfdccde13168a001ec671f"
+      },
+      "init_sha256": "5ab6b6d04d7b13743965007d3754bd66f034d170ec7193abc2abb5a8aa6c8740",
+      "base_pixel_state_sha256": "29613ec2ab794ccafa4ef77872c28c242431ecf07e734af82c173ac097c40695",
+      "base_reconstruction": {
+        "version": 2,
+        "mode": "saved",
+        "arch": "v2",
+        "trained_arm": "pretrained",
+        "arm": "pretrained",
+        "clip_len": 16,
+        "branch": "small",
+        "xattn": "global",
+        "kv": "per_tubelet",
+        "layers": "single",
+        "taps": [
+          5,
+          11,
+          17,
+          23
+        ],
+        "token_proj": "none",
+        "token_proj_k": 4,
+        "random_encoder_seed": null
+      },
+      "fusion_initial_state_sha256": "43ca22ec293337916ee061708cc133a5c169c9855cafc6d9ba3e10e7d7478273",
+      "fusion_config": {
+        "fusion_mode": "local",
+        "fusion_scale": 3,
+        "fusion_radius": 2,
+        "fusion_offset": 2,
+        "fusion_tap": 2,
+        "fusion_logit_scale": 8.0
+      },
+      "split_sha256": "fb6be5ea78ef73f5cc9db90bca75813bf597275f7609fe39d82f5b2f883e9ad0",
+      "data_plan_sha256": "035e80077b08c89d49596a76e0fb9e9fa410ee2f9940971327c16759d4774c4b",
+      "source_sha256": {
+        "tools/train_method_pilot.py": "16ef786d787b35a7680fbef074e2443fa97876914147cd1d2eabb136b1da2338",
+        "models/pixel_branch_v2.py": "f83c1aaa5797e5413a1adb41d49cecc0a093e72159e6d4fdbaf610168b739222",
+        "models/vjepa_backbone.py": "8d8e4ca44cecad797aec05af5f627b50927b9d72860187b76d466794f2d3e4bf",
+        "models/pixel_branch_fusion.py": "c15250ce398b018f56b1da0ce27cda36c1cbfb75bf4903a3c3c52a0fec20d713",
+        "models/temporal_detail_fusion.py": "f4989100dfe368a0152282bd90ab3c80bba46443d521d43df5763faa0e755676",
+        "data/common.py": "6041b43e832ab67def75b9e7285927dddd77d45d0bc25945bb600167b04e4ded"
+      },
+      "torch_version": "2.7.1+cpu",
+      "trainable_base": 22396769,
+      "trainable_fusion": 30724,
+      "selection": "exploratory validation-only method development, no test evaluation",
+      "first_batch_sha256": "cfd35f39373070a8d8be4340491cd3bb0db550e5b376d2d09410a579956036e2",
+      "first_batch_name": "SDSD_outdoor/MVI_0975"
+    },
+    "prior": {
+      "args": {
+        "variant": "prior",
+        "init": "/temp/zihaohe/seer_cvpr/method_dev_20261111/inputs/e17_small_pretrained_s0_final_cpu.pt",
+        "out": "/cache/zihaohe/seer_method_dev_20261111/runs/prior_s0",
+        "steps": 400,
+        "accum": 1,
+        "eval_every": 200,
+        "lr": 2e-05,
+        "fusion_lr": 0.0002,
+        "seed": 0,
+        "data_seed": 20261111,
+        "workers": 4,
+        "device": "npu",
+        "base_git": "04313bba457fd53decbfdccde13168a001ec671f"
+      },
+      "init_sha256": "5ab6b6d04d7b13743965007d3754bd66f034d170ec7193abc2abb5a8aa6c8740",
+      "base_pixel_state_sha256": "29613ec2ab794ccafa4ef77872c28c242431ecf07e734af82c173ac097c40695",
+      "base_reconstruction": {
+        "version": 2,
+        "mode": "saved",
+        "arch": "v2",
+        "trained_arm": "pretrained",
+        "arm": "pretrained",
+        "clip_len": 16,
+        "branch": "small",
+        "xattn": "global",
+        "kv": "per_tubelet",
+        "layers": "single",
+        "taps": [
+          5,
+          11,
+          17,
+          23
+        ],
+        "token_proj": "none",
+        "token_proj_k": 4,
+        "random_encoder_seed": null
+      },
+      "fusion_initial_state_sha256": "43ca22ec293337916ee061708cc133a5c169c9855cafc6d9ba3e10e7d7478273",
+      "fusion_config": {
+        "fusion_mode": "prior",
+        "fusion_scale": 3,
+        "fusion_radius": 2,
+        "fusion_offset": 2,
+        "fusion_tap": 2,
+        "fusion_logit_scale": 8.0
+      },
+      "split_sha256": "fb6be5ea78ef73f5cc9db90bca75813bf597275f7609fe39d82f5b2f883e9ad0",
+      "data_plan_sha256": "035e80077b08c89d49596a76e0fb9e9fa410ee2f9940971327c16759d4774c4b",
+      "source_sha256": {
+        "tools/train_method_pilot.py": "16ef786d787b35a7680fbef074e2443fa97876914147cd1d2eabb136b1da2338",
+        "models/pixel_branch_v2.py": "f83c1aaa5797e5413a1adb41d49cecc0a093e72159e6d4fdbaf610168b739222",
+        "models/vjepa_backbone.py": "8d8e4ca44cecad797aec05af5f627b50927b9d72860187b76d466794f2d3e4bf",
+        "models/pixel_branch_fusion.py": "c15250ce398b018f56b1da0ce27cda36c1cbfb75bf4903a3c3c52a0fec20d713",
+        "models/temporal_detail_fusion.py": "f4989100dfe368a0152282bd90ab3c80bba46443d521d43df5763faa0e755676",
+        "data/common.py": "6041b43e832ab67def75b9e7285927dddd77d45d0bc25945bb600167b04e4ded"
+      },
+      "torch_version": "2.7.1+cpu",
+      "trainable_base": 22396769,
+      "trainable_fusion": 30724,
+      "selection": "exploratory validation-only method development, no test evaluation",
+      "first_batch_sha256": "cfd35f39373070a8d8be4340491cd3bb0db550e5b376d2d09410a579956036e2",
+      "first_batch_name": "SDSD_outdoor/MVI_0975"
+    }
+  },
+  "curves": {
+    "0": {
+      "absolute": {
+        "baseline": {
+          "psnr_y": 24.362923979851246,
+          "psnr_rgb": 23.780691340921415,
+          "lpips": 0.24228736758232117,
+          "tlp_gap": 0.021371420996729285
+        },
+        "local": {
+          "psnr_y": 24.362923979851246,
+          "psnr_rgb": 23.780691340921415,
+          "lpips": 0.24228736758232117,
+          "tlp_gap": 0.021371420996729285
+        },
+        "prior": {
+          "psnr_y": 24.362923979851246,
+          "psnr_rgb": 23.780691340921415,
+          "lpips": 0.24228736758232117,
+          "tlp_gap": 0.021371420996729285
+        }
+      },
+      "change_from_initial": {
+        "baseline": {
+          "psnr_y": 0.0,
+          "psnr_rgb": 0.0,
+          "lpips": 0.0,
+          "tlp_gap": 0.0
+        },
+        "local": {
+          "psnr_y": 0.0,
+          "psnr_rgb": 0.0,
+          "lpips": 0.0,
+          "tlp_gap": 0.0
+        },
+        "prior": {
+          "psnr_y": 0.0,
+          "psnr_rgb": 0.0,
+          "lpips": 0.0,
+          "tlp_gap": 0.0
+        }
+      },
+      "change_from_initial_intervals": {
+        "baseline": {
+          "psnr_y": {
+            "difference": 0.0,
+            "sequence_ci95": [
+              0.0,
+              0.0
+            ],
+            "scene_ci95": [
+              0.0,
+              0.0
+            ],
+            "sequences_better": 0,
+            "per_sequence_differences": [
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0
+            ]
+          },
+          "psnr_rgb": {
+            "difference": 0.0,
+            "sequence_ci95": [
+              0.0,
+              0.0
+            ],
+            "scene_ci95": [
+              0.0,
+              0.0
+            ],
+            "sequences_better": 0,
+            "per_sequence_differences": [
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0
+            ]
+          },
+          "lpips": {
+            "difference": 0.0,
+            "sequence_ci95": [
+              0.0,
+              0.0
+            ],
+            "scene_ci95": [
+              0.0,
+              0.0
+            ],
+            "sequences_better": 0,
+            "per_sequence_differences": [
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0
+            ]
+          },
+          "tlp_gap": {
+            "difference": 0.0,
+            "sequence_ci95": [
+              0.0,
+              0.0
+            ],
+            "scene_ci95": [
+              0.0,
+              0.0
+            ],
+            "sequences_better": 0,
+            "per_sequence_differences": [
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0
+            ]
+          }
+        },
+        "local": {
+          "psnr_y": {
+            "difference": 0.0,
+            "sequence_ci95": [
+              0.0,
+              0.0
+            ],
+            "scene_ci95": [
+              0.0,
+              0.0
+            ],
+            "sequences_better": 0,
+            "per_sequence_differences": [
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0
+            ]
+          },
+          "psnr_rgb": {
+            "difference": 0.0,
+            "sequence_ci95": [
+              0.0,
+              0.0
+            ],
+            "scene_ci95": [
+              0.0,
+              0.0
+            ],
+            "sequences_better": 0,
+            "per_sequence_differences": [
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0
+            ]
+          },
+          "lpips": {
+            "difference": 0.0,
+            "sequence_ci95": [
+              0.0,
+              0.0
+            ],
+            "scene_ci95": [
+              0.0,
+              0.0
+            ],
+            "sequences_better": 0,
+            "per_sequence_differences": [
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0
+            ]
+          },
+          "tlp_gap": {
+            "difference": 0.0,
+            "sequence_ci95": [
+              0.0,
+              0.0
+            ],
+            "scene_ci95": [
+              0.0,
+              0.0
+            ],
+            "sequences_better": 0,
+            "per_sequence_differences": [
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0
+            ]
+          }
+        },
+        "prior": {
+          "psnr_y": {
+            "difference": 0.0,
+            "sequence_ci95": [
+              0.0,
+              0.0
+            ],
+            "scene_ci95": [
+              0.0,
+              0.0
+            ],
+            "sequences_better": 0,
+            "per_sequence_differences": [
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0
+            ]
+          },
+          "psnr_rgb": {
+            "difference": 0.0,
+            "sequence_ci95": [
+              0.0,
+              0.0
+            ],
+            "scene_ci95": [
+              0.0,
+              0.0
+            ],
+            "sequences_better": 0,
+            "per_sequence_differences": [
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0
+            ]
+          },
+          "lpips": {
+            "difference": 0.0,
+            "sequence_ci95": [
+              0.0,
+              0.0
+            ],
+            "scene_ci95": [
+              0.0,
+              0.0
+            ],
+            "sequences_better": 0,
+            "per_sequence_differences": [
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0
+            ]
+          },
+          "tlp_gap": {
+            "difference": 0.0,
+            "sequence_ci95": [
+              0.0,
+              0.0
+            ],
+            "scene_ci95": [
+              0.0,
+              0.0
+            ],
+            "sequences_better": 0,
+            "per_sequence_differences": [
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0
+            ]
+          }
+        }
+      },
+      "contrasts": {
+        "local_minus_baseline": {
+          "psnr_y": {
+            "difference": 0.0,
+            "sequence_ci95": [
+              0.0,
+              0.0
+            ],
+            "scene_ci95": [
+              0.0,
+              0.0
+            ],
+            "sequences_better": 0,
+            "per_sequence_differences": [
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0
+            ]
+          },
+          "psnr_rgb": {
+            "difference": 0.0,
+            "sequence_ci95": [
+              0.0,
+              0.0
+            ],
+            "scene_ci95": [
+              0.0,
+              0.0
+            ],
+            "sequences_better": 0,
+            "per_sequence_differences": [
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0
+            ]
+          },
+          "lpips": {
+            "difference": 0.0,
+            "sequence_ci95": [
+              0.0,
+              0.0
+            ],
+            "scene_ci95": [
+              0.0,
+              0.0
+            ],
+            "sequences_better": 0,
+            "per_sequence_differences": [
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0
+            ]
+          },
+          "tlp_gap": {
+            "difference": 0.0,
+            "sequence_ci95": [
+              0.0,
+              0.0
+            ],
+            "scene_ci95": [
+              0.0,
+              0.0
+            ],
+            "sequences_better": 0,
+            "per_sequence_differences": [
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0
+            ]
+          }
+        },
+        "prior_minus_baseline": {
+          "psnr_y": {
+            "difference": 0.0,
+            "sequence_ci95": [
+              0.0,
+              0.0
+            ],
+            "scene_ci95": [
+              0.0,
+              0.0
+            ],
+            "sequences_better": 0,
+            "per_sequence_differences": [
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0
+            ]
+          },
+          "psnr_rgb": {
+            "difference": 0.0,
+            "sequence_ci95": [
+              0.0,
+              0.0
+            ],
+            "scene_ci95": [
+              0.0,
+              0.0
+            ],
+            "sequences_better": 0,
+            "per_sequence_differences": [
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0
+            ]
+          },
+          "lpips": {
+            "difference": 0.0,
+            "sequence_ci95": [
+              0.0,
+              0.0
+            ],
+            "scene_ci95": [
+              0.0,
+              0.0
+            ],
+            "sequences_better": 0,
+            "per_sequence_differences": [
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0
+            ]
+          },
+          "tlp_gap": {
+            "difference": 0.0,
+            "sequence_ci95": [
+              0.0,
+              0.0
+            ],
+            "scene_ci95": [
+              0.0,
+              0.0
+            ],
+            "sequences_better": 0,
+            "per_sequence_differences": [
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0
+            ]
+          }
+        },
+        "prior_minus_local": {
+          "psnr_y": {
+            "difference": 0.0,
+            "sequence_ci95": [
+              0.0,
+              0.0
+            ],
+            "scene_ci95": [
+              0.0,
+              0.0
+            ],
+            "sequences_better": 0,
+            "per_sequence_differences": [
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0
+            ]
+          },
+          "psnr_rgb": {
+            "difference": 0.0,
+            "sequence_ci95": [
+              0.0,
+              0.0
+            ],
+            "scene_ci95": [
+              0.0,
+              0.0
+            ],
+            "sequences_better": 0,
+            "per_sequence_differences": [
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0
+            ]
+          },
+          "lpips": {
+            "difference": 0.0,
+            "sequence_ci95": [
+              0.0,
+              0.0
+            ],
+            "scene_ci95": [
+              0.0,
+              0.0
+            ],
+            "sequences_better": 0,
+            "per_sequence_differences": [
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0
+            ]
+          },
+          "tlp_gap": {
+            "difference": 0.0,
+            "sequence_ci95": [
+              0.0,
+              0.0
+            ],
+            "scene_ci95": [
+              0.0,
+              0.0
+            ],
+            "sequences_better": 0,
+            "per_sequence_differences": [
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0
+            ]
+          }
+        }
+      }
+    },
+    "200": {
+      "absolute": {
+        "baseline": {
+          "psnr_y": 23.0197233830076,
+          "psnr_rgb": 22.736235006000285,
+          "lpips": 0.2501233397051692,
+          "tlp_gap": 0.019160534429829568
+        },
+        "local": {
+          "psnr_y": 23.272518287582614,
+          "psnr_rgb": 22.917991689766396,
+          "lpips": 0.25234558898955584,
+          "tlp_gap": 0.01897173741599545
+        },
+        "prior": {
+          "psnr_y": 23.3633259443917,
+          "psnr_rgb": 23.014161551851192,
+          "lpips": 0.25166815239936113,
+          "tlp_gap": 0.018981935747433454
+        }
+      },
+      "change_from_initial": {
+        "baseline": {
+          "psnr_y": -1.3432005968436438,
+          "psnr_rgb": -1.044456334921132,
+          "lpips": 0.007835972122848034,
+          "tlp_gap": -0.002210886566899717
+        },
+        "local": {
+          "psnr_y": -1.0904056922686303,
+          "psnr_rgb": -0.8626996511550171,
+          "lpips": 0.010058221407234669,
+          "tlp_gap": -0.0023996835807338357
+        },
+        "prior": {
+          "psnr_y": -0.9995980354595414,
+          "psnr_rgb": -0.7665297890702238,
+          "lpips": 0.009380784817039967,
+          "tlp_gap": -0.0023894852492958307
+        }
+      },
+      "change_from_initial_intervals": {
+        "baseline": {
+          "psnr_y": {
+            "difference": -1.3432005968436438,
+            "sequence_ci95": [
+              -2.651420628751933,
+              -0.08650404001597724
+            ],
+            "scene_ci95": [
+              -3.0353275977836742,
+              0.30263869519664416
+            ],
+            "sequences_better": 6,
+            "per_sequence_differences": [
+              2.5810456692421155,
+              -0.8869528713754207,
+              -4.960473444881302,
+              0.34769457072039955,
+              -1.0234151010227919,
+              -0.4509218271077735,
+              -0.8688448668642224,
+              -2.8473099047107944,
+              0.4032249636526899,
+              1.9174897547474288,
+              -5.74653217670831,
+              -4.025538797505529,
+              0.7203253423221625,
+              2.1087234918552547,
+              -4.210636985339747,
+              -4.5490873665224605
+            ]
+          },
+          "psnr_rgb": {
+            "difference": -1.044456334921132,
+            "sequence_ci95": [
+              -2.1956231290115604,
+              0.0569008910215246
+            ],
+            "scene_ci95": [
+              -2.5752652122318715,
+              0.42738068665192797
+            ],
+            "sequences_better": 6,
+            "per_sequence_differences": [
+              2.5846748940280797,
+              -1.30532572789377,
+              -4.211743735456057,
+              0.421593256726581,
+              -0.9787430641810957,
+              -0.3614137954887138,
+              -0.37706375157442196,
+              -1.9724118969202706,
+              0.2418169002572199,
+              1.869541496200121,
+              -5.513960701003754,
+              -3.9586980235353373,
+              0.7200365527653041,
+              2.104070546945046,
+              -2.5913230680218504,
+              -3.3823512415851944
+            ]
+          },
+          "lpips": {
+            "difference": 0.007835972122848034,
+            "sequence_ci95": [
+              -0.0015834986465051769,
+              0.019861156889237463
+            ],
+            "scene_ci95": [
+              -0.0028275478398427363,
+              0.02009900358971207
+            ],
+            "sequences_better": 6,
+            "per_sequence_differences": [
+              -0.0005396604537963867,
+              -0.017812252044677734,
+              0.008643090724945068,
+              0.0031780600547790527,
+              0.023167520761489868,
+              0.0018762052059173584,
+              0.021633237600326538,
+              0.014688298106193542,
+              -0.0040962547063827515,
+              -0.01316922903060913,
+              0.07687529921531677,
+              0.006902813911437988,
+              -0.006713926792144775,
+              -0.018433064222335815,
+              0.0163411945104599,
+              0.012834221124649048
+            ]
+          },
+          "tlp_gap": {
+            "difference": -0.002210886566899717,
+            "sequence_ci95": [
+              -0.0036847706185653803,
+              -0.0009156152256764477
+            ],
+            "scene_ci95": [
+              -0.0036676479619927706,
+              -0.0007581454701721668
+            ],
+            "sequences_better": 14,
+            "per_sequence_differences": [
+              0.0022388920187950134,
+              -0.0063834600150585175,
+              -0.005238078534603119,
+              -0.00021516531705856323,
+              -0.004403959959745407,
+              -0.00105966255068779,
+              -0.008769072592258453,
+              -0.0002502426505088806,
+              -0.0006635189056396484,
+              -0.0016921311616897583,
+              -0.004886791110038757,
+              -0.0007149167358875275,
+              -0.0004672631621360779,
+              0.0006875321269035339,
+              -0.0017206352204084396,
+              -0.0018357113003730774
+            ]
+          }
+        },
+        "local": {
+          "psnr_y": {
+            "difference": -1.0904056922686303,
+            "sequence_ci95": [
+              -2.52950331374363,
+              0.2991396760164958
+            ],
+            "scene_ci95": [
+              -2.990407948709583,
+              0.7635074942947182
+            ],
+            "sequences_better": 6,
+            "per_sequence_differences": [
+              3.871049233254965,
+              -0.8752473435944772,
+              -4.084252171355178,
+              1.518292723636506,
+              -1.252341754662801,
+              -0.2723903956191016,
+              -0.9191960934357297,
+              -2.6968380521728648,
+              0.5787956994670651,
+              2.06381910935297,
+              -7.044364062940549,
+              -3.7714102614184277,
+              1.1114408856794764,
+              2.5909556105990195,
+              -3.937325817582405,
+              -4.327478385506552
+            ]
+          },
+          "psnr_rgb": {
+            "difference": -0.8626996511550171,
+            "sequence_ci95": [
+              -2.164337668087537,
+              0.40299188053047247
+            ],
+            "scene_ci95": [
+              -2.6639767547844917,
+              0.8466977889878972
+            ],
+            "sequences_better": 6,
+            "per_sequence_differences": [
+              3.7942106589467386,
+              -1.8237493346681148,
+              -3.5513749540081037,
+              1.5186046735935932,
+              -1.198412078028504,
+              -0.1852103857635221,
+              -0.4203075617456413,
+              -1.8381880490121283,
+              0.3297504920077081,
+              1.9592883700048347,
+              -6.733008328428788,
+              -3.9765202548176575,
+              1.1348228890082321,
+              2.6154812387957964,
+              -2.268177673547523,
+              -3.1604041208171942
+            ]
+          },
+          "lpips": {
+            "difference": 0.010058221407234669,
+            "sequence_ci95": [
+              -0.0019383622799068688,
+              0.026265776669606562
+            ],
+            "scene_ci95": [
+              -0.003423951845616102,
+              0.0269450569525361
+            ],
+            "sequences_better": 6,
+            "per_sequence_differences": [
+              -0.0020175278186798096,
+              -0.02080431580543518,
+              0.013306766748428345,
+              0.0028016865253448486,
+              0.028229832649230957,
+              0.0025703608989715576,
+              0.022435486316680908,
+              0.013228848576545715,
+              -0.005674466490745544,
+              -0.01470041275024414,
+              0.10749372839927673,
+              0.011961638927459717,
+              -0.00877535343170166,
+              -0.019656941294670105,
+              0.01790684461593628,
+              0.012625366449356079
+            ]
+          },
+          "tlp_gap": {
+            "difference": -0.0023996835807338357,
+            "sequence_ci95": [
+              -0.0037998256389982998,
+              -0.0011819728912087159
+            ],
+            "scene_ci95": [
+              -0.0036719404917676,
+              -0.0011963087134063254
+            ],
+            "sequences_better": 15,
+            "per_sequence_differences": [
+              0.0009551346302032471,
+              -0.006678074598312378,
+              -0.004794307053089142,
+              -0.0012224875390529633,
+              -0.004605436697602272,
+              -0.0010406263172626495,
+              -0.008576422929763794,
+              -6.161630153656006e-05,
+              -0.0002776980400085449,
+              -0.0007551610469818115,
+              -0.005607500672340393,
+              -0.000469990074634552,
+              -0.0009324550628662109,
+              -0.0008546262979507446,
+              -0.0014806333929300308,
+              -0.0019930358976125717
+            ]
+          }
+        },
+        "prior": {
+          "psnr_y": {
+            "difference": -0.9995980354595414,
+            "sequence_ci95": [
+              -2.436177946682418,
+              0.41904258545672507
+            ],
+            "scene_ci95": [
+              -2.8951257349486386,
+              0.9090422855448883
+            ],
+            "sequences_better": 6,
+            "per_sequence_differences": [
+              4.661464682304462,
+              -0.5972333986419649,
+              -4.173205262721666,
+              1.7842538889629367,
+              -1.1823335090138514,
+              -0.2592285074705636,
+              -1.028099633894115,
+              -2.7910029614997427,
+              0.5893291955244742,
+              2.3187771223219897,
+              -6.4909602484063775,
+              -3.4672729313730564,
+              1.036166250873059,
+              2.242857378361089,
+              -4.252700820247782,
+              -4.384379812431554
+            ]
+          },
+          "psnr_rgb": {
+            "difference": -0.7665297890702238,
+            "sequence_ci95": [
+              -2.059092242656165,
+              0.5163378253900095
+            ],
+            "scene_ci95": [
+              -2.5328516086373223,
+              0.987123842147966
+            ],
+            "sequences_better": 6,
+            "per_sequence_differences": [
+              4.561066852176946,
+              -1.4304724887384879,
+              -3.578012245322622,
+              1.7782474857731998,
+              -1.132015922215551,
+              -0.17545872637216675,
+              -0.5090176676767051,
+              -1.9137527733644077,
+              0.33304278574754775,
+              2.187013310994267,
+              -6.208575355333863,
+              -3.666881773013664,
+              1.0552154758833314,
+              2.2597000047517692,
+              -2.6003989242023415,
+              -3.224176664210834
+            ]
+          },
+          "lpips": {
+            "difference": 0.009380784817039967,
+            "sequence_ci95": [
+              -0.0016963172703981398,
+              0.024117101076990357
+            ],
+            "scene_ci95": [
+              -0.0030386699363589287,
+              0.024594874121248722
+            ],
+            "sequences_better": 6,
+            "per_sequence_differences": [
+              -0.0004080235958099365,
+              -0.020775318145751953,
+              0.011131733655929565,
+              0.004793703556060791,
+              0.025824666023254395,
+              0.0016475021839141846,
+              0.02179354429244995,
+              0.012501537799835205,
+              -0.005459398031234741,
+              -0.01533520221710205,
+              0.09651081264019012,
+              0.00998280942440033,
+              -0.008176982402801514,
+              -0.01659335196018219,
+              0.01960812509059906,
+              0.013046398758888245
+            ]
+          },
+          "tlp_gap": {
+            "difference": -0.0023894852492958307,
+            "sequence_ci95": [
+              -0.0037359716166974976,
+              -0.001239434868330136
+            ],
+            "scene_ci95": [
+              -0.003612627147231251,
+              -0.001247252570465207
+            ],
+            "sequences_better": 15,
+            "per_sequence_differences": [
+              0.0008707083761692047,
+              -0.006423942744731903,
+              -0.004250027239322662,
+              -0.0018268078565597534,
+              -0.004297863692045212,
+              -0.0008916668593883514,
+              -0.008619271218776703,
+              -0.0006165355443954468,
+              -0.0005057379603385925,
+              -0.0011341646313667297,
+              -0.005498815327882767,
+              -0.0005936101078987122,
+              -0.0006445944309234619,
+              -0.00043960660696029663,
+              -0.001556234434247017,
+              -0.001803593710064888
+            ]
+          }
+        }
+      },
+      "contrasts": {
+        "local_minus_baseline": {
+          "psnr_y": {
+            "difference": 0.2527949045750135,
+            "sequence_ci95": [
+              -0.03511707470206261,
+              0.5223038481396133
+            ],
+            "scene_ci95": [
+              -0.05287148960727195,
+              0.5926389508831371
+            ],
+            "sequences_better": 13,
+            "per_sequence_differences": [
+              1.2900035640128493,
+              0.01170552778094347,
+              0.8762212735261237,
+              1.1705981529161065,
+              -0.2289266536400092,
+              0.1785314314886719,
+              -0.05035122657150737,
+              0.1504718525379296,
+              0.1755707358143752,
+              0.14632935460554108,
+              -1.2978318862322382,
+              0.2541285360871015,
+              0.3911155433573139,
+              0.4822321187437648,
+              0.2733111677573419,
+              0.2216089810159083
+            ]
+          },
+          "psnr_rgb": {
+            "difference": 0.18175668376611498,
+            "sequence_ci95": [
+              -0.09920396007413712,
+              0.44818663803786274
+            ],
+            "scene_ci95": [
+              -0.12645936994218077,
+              0.5155446211359876
+            ],
+            "sequences_better": 11,
+            "per_sequence_differences": [
+              1.2095357649186589,
+              -0.5184236067743448,
+              0.6603687814479535,
+              1.0970114168670122,
+              -0.21966901384740822,
+              0.17620340972519166,
+              -0.043243810171219366,
+              0.13422384790814235,
+              0.0879335917504882,
+              0.0897468738047138,
+              -1.2190476274250344,
+              -0.01782223128232019,
+              0.41478633624292804,
+              0.5114106918507506,
+              0.3231453944743272,
+              0.22194712076800016
+            ]
+          },
+          "lpips": {
+            "difference": 0.002222249284386635,
+            "sequence_ci95": [
+              -0.0006119266618043184,
+              0.006575153185985978
+            ],
+            "scene_ci95": [
+              -0.0007654615677893162,
+              0.007003127597272396
+            ],
+            "sequences_better": 9,
+            "per_sequence_differences": [
+              -0.0014778673648834229,
+              -0.0029920637607574463,
+              0.004663676023483276,
+              -0.0003763735294342041,
+              0.005062311887741089,
+              0.0006941556930541992,
+              0.0008022487163543701,
+              -0.0014594495296478271,
+              -0.001578211784362793,
+              -0.0015311837196350098,
+              0.03061842918395996,
+              0.0050588250160217285,
+              -0.0020614266395568848,
+              -0.0012238770723342896,
+              0.0015656501054763794,
+              -0.00020885467529296875
+            ]
+          },
+          "tlp_gap": {
+            "difference": -0.00018879701383411884,
+            "sequence_ci95": [
+              -0.0005210899835219607,
+              0.00011707445664796976
+            ],
+            "scene_ci95": [
+              -0.0006030118092894554,
+              0.00017695414717309134
+            ],
+            "sequences_better": 8,
+            "per_sequence_differences": [
+              -0.0012837573885917664,
+              -0.0002946145832538605,
+              0.00044377148151397705,
+              -0.0010073222219944,
+              -0.00020147673785686493,
+              1.903623342514038e-05,
+              0.00019264966249465942,
+              0.00018862634897232056,
+              0.0003858208656311035,
+              0.0009369701147079468,
+              -0.0007207095623016357,
+              0.00024492666125297546,
+              -0.00046519190073013306,
+              -0.0015421584248542786,
+              0.0002400018274784088,
+              -0.00015732459723949432
+            ]
+          }
+        },
+        "prior_minus_baseline": {
+          "psnr_y": {
+            "difference": 0.3436025613841024,
+            "sequence_ci95": [
+              0.05789275496266578,
+              0.6850422302928815
+            ],
+            "scene_ci95": [
+              0.03543081004929378,
+              0.7870888788883441
+            ],
+            "sequences_better": 12,
+            "per_sequence_differences": [
+              2.080419013062347,
+              0.2897194727334558,
+              0.7872681821596359,
+              1.4365593182425371,
+              -0.1589184079910595,
+              0.19169331963720992,
+              -0.15925476702989272,
+              0.056306943211051674,
+              0.18610423187178426,
+              0.40128736757456096,
+              -0.7444280716980671,
+              0.5582658661324729,
+              0.3158409085508964,
+              0.13413388650583435,
+              -0.04206383490803489,
+              0.16470755409090643
+            ]
+          },
+          "psnr_rgb": {
+            "difference": 0.27792654585090826,
+            "sequence_ci95": [
+              0.01178856557113262,
+              0.6023020177316365
+            ],
+            "scene_ci95": [
+              -0.0058238727459799635,
+              0.7041775840153988
+            ],
+            "sequences_better": 11,
+            "per_sequence_differences": [
+              1.9763919581488665,
+              -0.12514676084471787,
+              0.6337314901334352,
+              1.3566542290466188,
+              -0.15327285803445534,
+              0.18595506911654702,
+              -0.13195391610228313,
+              0.05865912355586289,
+              0.09122588549032784,
+              0.3174718147941462,
+              -0.6946146543301097,
+              0.2918162505216735,
+              0.3351789231180273,
+              0.15562945780672344,
+              -0.009075856180491115,
+              0.15817457737436058
+            ]
+          },
+          "lpips": {
+            "difference": 0.0015448126941919327,
+            "sequence_ci95": [
+              -0.0004322011256590485,
+              0.004401973867788909
+            ],
+            "scene_ci95": [
+              -0.0004625587724149227,
+              0.004634472541511059
+            ],
+            "sequences_better": 6,
+            "per_sequence_differences": [
+              0.0001316368579864502,
+              -0.0029630661010742188,
+              0.002488642930984497,
+              0.0016156435012817383,
+              0.0026571452617645264,
+              -0.00022870302200317383,
+              0.00016030669212341309,
+              -0.0021867603063583374,
+              -0.0013631433248519897,
+              -0.00216597318649292,
+              0.019635513424873352,
+              0.0030799955129623413,
+              -0.0014630556106567383,
+              0.0018397122621536255,
+              0.00326693058013916,
+              0.00021217763423919678
+            ]
+          },
+          "tlp_gap": {
+            "difference": -0.00017859868239611387,
+            "sequence_ci95": [
+              -0.0005215045297518372,
+              0.0001350272301351651
+            ],
+            "scene_ci95": [
+              -0.0006349002273054793,
+              0.0001825694926083088
+            ],
+            "sequences_better": 7,
+            "per_sequence_differences": [
+              -0.0013681836426258087,
+              -4.048272967338562e-05,
+              0.0009880512952804565,
+              -0.0016116425395011902,
+              0.00010609626770019531,
+              0.00016799569129943848,
+              0.0001498013734817505,
+              -0.00036629289388656616,
+              0.0001577809453010559,
+              0.0005579665303230286,
+              -0.0006120242178440094,
+              0.00012130662798881531,
+              -0.00017733126878738403,
+              -0.0011271387338638306,
+              0.00016440078616142273,
+              3.211759030818939e-05
+            ]
+          }
+        },
+        "prior_minus_local": {
+          "psnr_y": {
+            "difference": 0.09080765680908887,
+            "sequence_ci95": [
+              -0.04461723692512241,
+              0.2391629630015208
+            ],
+            "scene_ci95": [
+              -0.07866463393445695,
+              0.27701337834693285
+            ],
+            "sequences_better": 9,
+            "per_sequence_differences": [
+              0.7904154490494975,
+              0.2780139449525123,
+              -0.08895309136648777,
+              0.26596116532643066,
+              0.0700082456489497,
+              0.013161888148538026,
+              -0.10890354045838535,
+              -0.09416490932687793,
+              0.010533496057409053,
+              0.2549580129690199,
+              0.5534038145341711,
+              0.30413733004537136,
+              -0.0752746348064175,
+              -0.34809823223793046,
+              -0.31537500266537677,
+              -0.056901426925001886
+            ]
+          },
+          "psnr_rgb": {
+            "difference": 0.09616986208479328,
+            "sequence_ci95": [
+              -0.03961520112711932,
+              0.2422371468096691
+            ],
+            "scene_ci95": [
+              -0.07334085347537453,
+              0.27765476049493265
+            ],
+            "sequences_better": 9,
+            "per_sequence_differences": [
+              0.7668561932302076,
+              0.393276845929627,
+              -0.026637291314518308,
+              0.2596428121796066,
+              0.06639615581295288,
+              0.00975165939135536,
+              -0.08871010593106377,
+              -0.07556472435227946,
+              0.0032922937398396357,
+              0.2277249409894324,
+              0.5244329730949246,
+              0.30963848180399367,
+              -0.07960741312490072,
+              -0.3557812340440272,
+              -0.33222125065481833,
+              -0.06377254339363958
+            ]
+          },
+          "lpips": {
+            "difference": -0.0006774365901947021,
+            "sequence_ci95": [
+              -0.0023818104062229397,
+              0.0005780332954600445
+            ],
+            "scene_ci95": [
+              -0.0025960486382246017,
+              0.00085021264385432
+            ],
+            "sequences_better": 8,
+            "per_sequence_differences": [
+              0.001609504222869873,
+              2.899765968322754e-05,
+              -0.0021750330924987793,
+              0.0019920170307159424,
+              -0.0024051666259765625,
+              -0.000922858715057373,
+              -0.000641942024230957,
+              -0.0007273107767105103,
+              0.00021506845951080322,
+              -0.0006347894668579102,
+              -0.010982915759086609,
+              -0.001978829503059387,
+              0.0005983710289001465,
+              0.003063589334487915,
+              0.0017012804746627808,
+              0.00042103230953216553
+            ]
+          },
+          "tlp_gap": {
+            "difference": 1.019833143800497e-05,
+            "sequence_ci95": [
+              -0.00015438229893334208,
+              0.0001667098986217752
+            ],
+            "scene_ci95": [
+              -0.00018957666179630903,
+              0.00020210385555401443
+            ],
+            "sequences_better": 8,
+            "per_sequence_differences": [
+              -8.442625403404236e-05,
+              0.00025413185358047485,
+              0.0005442798137664795,
+              -0.0006043203175067902,
+              0.00030757300555706024,
+              0.0001489594578742981,
+              -4.2848289012908936e-05,
+              -0.0005549192428588867,
+              -0.0002280399203300476,
+              -0.0003790035843849182,
+              0.00010868534445762634,
+              -0.00012362003326416016,
+              0.000287860631942749,
+              0.000415019690990448,
+              -7.560104131698608e-05,
+              0.00018944218754768372
+            ]
+          }
+        }
+      }
+    },
+    "400": {
+      "absolute": {
+        "baseline": {
+          "psnr_y": 24.692694251688913,
+          "psnr_rgb": 23.92695943006985,
+          "lpips": 0.24031953420490026,
+          "tlp_gap": 0.02209945599315688
+        },
+        "local": {
+          "psnr_y": 24.806894145701854,
+          "psnr_rgb": 24.162078206285205,
+          "lpips": 0.23970476165413857,
+          "tlp_gap": 0.020108612661715597
+        },
+        "prior": {
+          "psnr_y": 24.04402151454017,
+          "psnr_rgb": 23.605032988267443,
+          "lpips": 0.24154505785554647,
+          "tlp_gap": 0.018222325656097382
+        }
+      },
+      "change_from_initial": {
+        "baseline": {
+          "psnr_y": 0.32977027183766894,
+          "psnr_rgb": 0.14626808914843703,
+          "lpips": -0.0019678333774209023,
+          "tlp_gap": 0.0007280349964275956
+        },
+        "local": {
+          "psnr_y": 0.4439701658506129,
+          "psnr_rgb": 0.3813868653637893,
+          "lpips": -0.002582605928182602,
+          "tlp_gap": -0.0012628083350136876
+        },
+        "prior": {
+          "psnr_y": -0.3189024653110728,
+          "psnr_rgb": -0.175658352653971,
+          "lpips": -0.0007423097267746925,
+          "tlp_gap": -0.0031490953406319022
+        }
+      },
+      "change_from_initial_intervals": {
+        "baseline": {
+          "psnr_y": {
+            "difference": 0.32977027183766894,
+            "sequence_ci95": [
+              -0.8841161931206308,
+              1.5593570857923977
+            ],
+            "scene_ci95": [
+              -1.018230280654271,
+              1.7728783467865163
+            ],
+            "sequences_better": 9,
+            "per_sequence_differences": [
+              5.6744559180335585,
+              0.23817717240271818,
+              -5.11520389734838,
+              2.8542845044906002,
+              -0.12844983272906063,
+              -0.401423019286133,
+              -1.247310574968374,
+              0.837749576245379,
+              0.5317966031935129,
+              3.220674311162007,
+              1.3170233904283606,
+              -1.9550465035907365,
+              1.6835373096576696,
+              1.8293603081762075,
+              -2.1259647164416258,
+              -1.937336200023001
+            ]
+          },
+          "psnr_rgb": {
+            "difference": 0.14626808914843703,
+            "sequence_ci95": [
+              -0.9351471110800902,
+              1.289886594419837
+            ],
+            "scene_ci95": [
+              -1.118149888121942,
+              1.5234622256309334
+            ],
+            "sequences_better": 8,
+            "per_sequence_differences": [
+              5.160606214755152,
+              0.7005265314990368,
+              -4.2591086122092605,
+              2.490310542406135,
+              -0.06911545233835525,
+              -0.2737975597574813,
+              -1.590477087225164,
+              -0.531999357993648,
+              0.28695590738664123,
+              2.792460721558051,
+              0.6827093545216059,
+              -1.7979090310355517,
+              1.595906605754502,
+              1.7632726740795537,
+              -2.008880502349541,
+              -2.601171522676683
+            ]
+          },
+          "lpips": {
+            "difference": -0.0019678333774209023,
+            "sequence_ci95": [
+              -0.008233677083626389,
+              0.0035574995446950187
+            ],
+            "scene_ci95": [
+              -0.008225214155390858,
+              0.004788669757544994
+            ],
+            "sequences_better": 8,
+            "per_sequence_differences": [
+              0.0015617609024047852,
+              -0.03425014019012451,
+              0.0039052367210388184,
+              0.00655791163444519,
+              -0.004669189453125,
+              -0.008542448282241821,
+              0.0032716691493988037,
+              -0.007581010460853577,
+              -0.004059553146362305,
+              -0.014357104897499084,
+              0.014766931533813477,
+              0.006998538970947266,
+              -0.008644908666610718,
+              -0.010681390762329102,
+              0.014624372124671936,
+              0.009613990783691406
+            ]
+          },
+          "tlp_gap": {
+            "difference": 0.0007280349964275956,
+            "sequence_ci95": [
+              -0.0011932393244933337,
+              0.0028737884393194688
+            ],
+            "scene_ci95": [
+              -0.0017259386717341841,
+              0.0036400606186361983
+            ],
+            "sequences_better": 7,
+            "per_sequence_differences": [
+              -0.002634085714817047,
+              -0.002111293375492096,
+              -0.005153447389602661,
+              -0.003623463213443756,
+              -0.0016934927552938461,
+              0.0011109225451946259,
+              0.008862808346748352,
+              0.009016267955303192,
+              -0.0017239823937416077,
+              -0.003871321678161621,
+              0.0039308927953243256,
+              0.0030241236090660095,
+              2.3894011974334717e-05,
+              0.004648599773645401,
+              0.0007040929049253464,
+              0.0011380445212125778
+            ]
+          }
+        },
+        "local": {
+          "psnr_y": {
+            "difference": 0.4439701658506129,
+            "sequence_ci95": [
+              -0.6175570059028377,
+              1.4684589761101443
+            ],
+            "scene_ci95": [
+              -0.6751415829829825,
+              1.6539247328604614
+            ],
+            "sequences_better": 10,
+            "per_sequence_differences": [
+              5.425196917219893,
+              0.28754559096124055,
+              -5.35686382930141,
+              2.223375966926522,
+              -0.7189699203621984,
+              -0.4639681883410489,
+              -0.8464042812452099,
+              0.9880462086025901,
+              0.03508160571847796,
+              1.6166645621798423,
+              0.6029286207333264,
+              -0.8357063461719001,
+              1.3240879602123847,
+              1.2549475859043415,
+              1.69884399063978,
+              -0.13128379006682422
+            ]
+          },
+          "psnr_rgb": {
+            "difference": 0.3813868653637893,
+            "sequence_ci95": [
+              -0.5582941364150823,
+              1.289914568817134
+            ],
+            "scene_ci95": [
+              -0.5727231531875961,
+              1.4539620797210784
+            ],
+            "sequences_better": 8,
+            "per_sequence_differences": [
+              4.773135510147998,
+              0.6545154902353758,
+              -4.649334488111325,
+              1.9780175377796354,
+              -0.6165223143894174,
+              -0.36306398829488984,
+              -1.0539036300611073,
+              -0.015706480355444086,
+              -0.0850028204801454,
+              1.0785113215861486,
+              0.611688934562757,
+              -0.46472260951593825,
+              1.3215800489387934,
+              1.2816293729277088,
+              1.8293250291153136,
+              -0.17795706826483482
+            ]
+          },
+          "lpips": {
+            "difference": -0.002582605928182602,
+            "sequence_ci95": [
+              -0.009032142697833478,
+              0.0026174575788900254
+            ],
+            "scene_ci95": [
+              -0.009233238245360553,
+              0.002994833188131451
+            ],
+            "sequences_better": 7,
+            "per_sequence_differences": [
+              -0.0017318427562713623,
+              -0.03579798340797424,
+              0.00784274935722351,
+              0.005982875823974609,
+              0.00553739070892334,
+              -0.002523481845855713,
+              -3.2335519790649414e-05,
+              -0.006560295820236206,
+              0.0043550580739974976,
+              0.003259897232055664,
+              0.0018367618322372437,
+              0.004998534917831421,
+              -0.017756164073944092,
+              -0.022512048482894897,
+              0.005638733506202698,
+              0.006140455603599548
+            ]
+          },
+          "tlp_gap": {
+            "difference": -0.0012628083350136876,
+            "sequence_ci95": [
+              -0.002382990322075784,
+              -0.00015831644705031087
+            ],
+            "scene_ci95": [
+              -0.002557635470293462,
+              9.474166436120839e-05
+            ],
+            "sequences_better": 13,
+            "per_sequence_differences": [
+              -0.0017336606979370117,
+              -0.002433985471725464,
+              -0.006455808877944946,
+              -0.003363456577062607,
+              -0.0035284124314785004,
+              -0.0002581588923931122,
+              0.001972004771232605,
+              0.0014333575963974,
+              -0.002556025981903076,
+              -0.0035215094685554504,
+              -0.0003748945891857147,
+              -2.498924732208252e-05,
+              -0.0007538646459579468,
+              0.0027069449424743652,
+              -0.000794924795627594,
+              -0.000517548993229866
+            ]
+          }
+        },
+        "prior": {
+          "psnr_y": {
+            "difference": -0.3189024653110728,
+            "sequence_ci95": [
+              -1.800263964513236,
+              1.0527450085483905
+            ],
+            "scene_ci95": [
+              -2.0895887271874534,
+              1.4077943369838957
+            ],
+            "sequences_better": 9,
+            "per_sequence_differences": [
+              4.789172656383286,
+              -0.5325201947504468,
+              -7.633528894585659,
+              2.239878750923136,
+              0.4113116683432647,
+              0.13416187719486317,
+              -0.7443282181102866,
+              -1.766838562117261,
+              0.34847335955823056,
+              1.8793168298504739,
+              -4.2077295796548775,
+              -3.7327160471690988,
+              0.916559929359984,
+              3.4598867025483475,
+              0.6565195187585076,
+              -1.3200592415096288
+            ]
+          },
+          "psnr_rgb": {
+            "difference": -0.175658352653971,
+            "sequence_ci95": [
+              -1.4877994265449876,
+              1.0150105325916228
+            ],
+            "scene_ci95": [
+              -1.7518083958073796,
+              1.286867782932796
+            ],
+            "sequences_better": 9,
+            "per_sequence_differences": [
+              3.499113094833355,
+              -0.43475063732896757,
+              -6.678878842512308,
+              1.8802586412136293,
+              0.43054399471990834,
+              0.18519119798283867,
+              -0.3131476497200083,
+              -1.0619900270240414,
+              0.16997319586154447,
+              1.448180589445478,
+              -3.9248205661144198,
+              -3.451034640607215,
+              0.9123423119393816,
+              3.450273659830126,
+              1.6712293403940741,
+              -0.593017305376911
+            ]
+          },
+          "lpips": {
+            "difference": -0.0007423097267746925,
+            "sequence_ci95": [
+              -0.01000341868493706,
+              0.008133452804759135
+            ],
+            "scene_ci95": [
+              -0.01068734440486878,
+              0.008143830113112926
+            ],
+            "sequences_better": 6,
+            "per_sequence_differences": [
+              0.01120033860206604,
+              -0.03564909100532532,
+              0.022645533084869385,
+              0.003162860870361328,
+              -0.003418266773223877,
+              -0.005484074354171753,
+              0.012244969606399536,
+              0.0014473944902420044,
+              0.00038962066173553467,
+              -0.006719440221786499,
+              0.03741289675235748,
+              0.0010130256414413452,
+              -0.02113640308380127,
+              -0.03800198435783386,
+              0.0040687620639801025,
+              0.004946902394294739
+            ]
+          },
+          "tlp_gap": {
+            "difference": -0.0031490953406319022,
+            "sequence_ci95": [
+              -0.00471395104250405,
+              -0.0017461690615164119
+            ],
+            "scene_ci95": [
+              -0.004837841028347611,
+              -0.0015520646702498198
+            ],
+            "sequences_better": 14,
+            "per_sequence_differences": [
+              -0.005956403911113739,
+              -0.004616934806108475,
+              -0.010724581778049469,
+              -0.004547685384750366,
+              -0.0021202601492404938,
+              0.0007571373134851456,
+              -0.007960915565490723,
+              -0.0008102357387542725,
+              -0.0018965303897857666,
+              -0.004656098783016205,
+              -0.003993455320596695,
+              -0.0015773177146911621,
+              -0.0007014386355876923,
+              0.0007319487631320953,
+              -0.0011462699621915817,
+              -0.001166483387351036
+            ]
+          }
+        }
+      },
+      "contrasts": {
+        "local_minus_baseline": {
+          "psnr_y": {
+            "difference": 0.11419989401294395,
+            "sequence_ci95": [
+              -0.41416363521349675,
+              0.7605890771803578
+            ],
+            "scene_ci95": [
+              -0.48163704019840115,
+              0.9756180977857095
+            ],
+            "sequences_better": 6,
+            "per_sequence_differences": [
+              -0.24925900081366592,
+              0.049368418558522364,
+              -0.2416599319530306,
+              -0.6309085375640784,
+              -0.5905200876331378,
+              -0.06254516905491592,
+              0.400906293723164,
+              0.15029663235721102,
+              -0.4967149974750349,
+              -1.6040097489821648,
+              -0.7140947696950342,
+              1.1193401574188364,
+              -0.35944934944528484,
+              -0.574412722271866,
+              3.824808707081406,
+              1.8060524099561768
+            ]
+          },
+          "psnr_rgb": {
+            "difference": 0.23511877621535227,
+            "sequence_ci95": [
+              -0.3320836446466488,
+              0.9032350334686805
+            ],
+            "scene_ci95": [
+              -0.44269211929962043,
+              1.1828863752239087
+            ],
+            "sequences_better": 5,
+            "per_sequence_differences": [
+              -0.3874707046071535,
+              -0.04601104126366096,
+              -0.3902258759020647,
+              -0.5122930046264997,
+              -0.5474068620510621,
+              -0.08926642853740852,
+              0.5365734571640566,
+              0.5162928776382039,
+              -0.37195872786678663,
+              -1.7139493999719022,
+              -0.07102041995884889,
+              1.3331864215196134,
+              -0.2743265568157085,
+              -0.48164330115184484,
+              3.8382055314648547,
+              2.4232144544118484
+            ]
+          },
+          "lpips": {
+            "difference": -0.0006147725507616997,
+            "sequence_ci95": [
+              -0.004471497540362179,
+              0.0033934205072000596
+            ],
+            "scene_ci95": [
+              -0.005497850477695465,
+              0.004583478905260563
+            ],
+            "sequences_better": 10,
+            "per_sequence_differences": [
+              -0.0032936036586761475,
+              -0.0015478432178497314,
+              0.003937512636184692,
+              -0.0005750358104705811,
+              0.01020658016204834,
+              0.006018966436386108,
+              -0.003304004669189453,
+              0.0010207146406173706,
+              0.008414611220359802,
+              0.01761700212955475,
+              -0.012930169701576233,
+              -0.0020000040531158447,
+              -0.009111255407333374,
+              -0.011830657720565796,
+              -0.008985638618469238,
+              -0.003473535180091858
+            ]
+          },
+          "tlp_gap": {
+            "difference": -0.0019908433314412832,
+            "sequence_ci95": [
+              -0.003224841941846535,
+              -0.0009341583616333083
+            ],
+            "scene_ci95": [
+              -0.003743762319209054,
+              -0.0006525649223476648
+            ],
+            "sequences_better": 13,
+            "per_sequence_differences": [
+              0.0009004250168800354,
+              -0.0003226920962333679,
+              -0.0013023614883422852,
+              0.0002600066363811493,
+              -0.0018349196761846542,
+              -0.001369081437587738,
+              -0.006890803575515747,
+              -0.007582910358905792,
+              -0.0008320435881614685,
+              0.00034981220960617065,
+              -0.00430578738451004,
+              -0.003049112856388092,
+              -0.0007777586579322815,
+              -0.0019416548311710358,
+              -0.0014990177005529404,
+              -0.0016555935144424438
+            ]
+          }
+        },
+        "prior_minus_baseline": {
+          "psnr_y": {
+            "difference": -0.6486727371487417,
+            "sequence_ci95": [
+              -1.5932573115512092,
+              0.21057362308630154
+            ],
+            "scene_ci95": [
+              -1.730899614731574,
+              0.364049180513331
+            ],
+            "sequences_better": 6,
+            "per_sequence_differences": [
+              -0.8852832616502724,
+              -0.770697367153165,
+              -2.518324997237279,
+              -0.6144057535674641,
+              0.5397615010723253,
+              0.5355848964809962,
+              0.5029823568580873,
+              -2.60458813836264,
+              -0.1833232436352823,
+              -1.3413574813115332,
+              -5.524752970083238,
+              -1.7776695435783623,
+              -0.7669773802976856,
+              1.63052639437214,
+              2.7824842352001333,
+              0.6172769585133722
+            ]
+          },
+          "psnr_rgb": {
+            "difference": -0.32192644180240804,
+            "sequence_ci95": [
+              -1.2400766804988321,
+              0.5878469238941854
+            ],
+            "scene_ci95": [
+              -1.4666908876242875,
+              0.8849414633765997
+            ],
+            "sequences_better": 6,
+            "per_sequence_differences": [
+              -1.661493119921797,
+              -1.1352771688280043,
+              -2.4197702303030475,
+              -0.6100519011925059,
+              0.4996594470582636,
+              0.45898875774032,
+              1.2773294375051556,
+              -0.5299906690303935,
+              -0.11698271152509676,
+              -1.3442801321125728,
+              -4.607529920636026,
+              -1.6531256095716635,
+              -0.6835642938151203,
+              1.6870009857505721,
+              3.680109842743615,
+              2.008154217299772
+            ]
+          },
+          "lpips": {
+            "difference": 0.0012255236506462097,
+            "sequence_ci95": [
+              -0.004708018759265542,
+              0.006912001827731728
+            ],
+            "scene_ci95": [
+              -0.006046108901500702,
+              0.0069124887231737375
+            ],
+            "sequences_better": 7,
+            "per_sequence_differences": [
+              0.009638577699661255,
+              -0.0013989508152008057,
+              0.018740296363830566,
+              -0.0033950507640838623,
+              0.001250922679901123,
+              0.0030583739280700684,
+              0.008973300457000732,
+              0.009028404951095581,
+              0.004449173808097839,
+              0.0076376646757125854,
+              0.022645965218544006,
+              -0.00598551332950592,
+              -0.012491494417190552,
+              -0.02732059359550476,
+              -0.010555610060691833,
+              -0.0046670883893966675
+            ]
+          },
+          "tlp_gap": {
+            "difference": -0.003877130337059498,
+            "sequence_ci95": [
+              -0.006212547927862033,
+              -0.002021023415727541
+            ],
+            "scene_ci95": [
+              -0.006936667487025261,
+              -0.0015657234878744932
+            ],
+            "sequences_better": 16,
+            "per_sequence_differences": [
+              -0.003322318196296692,
+              -0.002505641430616379,
+              -0.005571134388446808,
+              -0.0009242221713066101,
+              -0.00042676739394664764,
+              -0.0003537852317094803,
+              -0.016823723912239075,
+              -0.009826503694057465,
+              -0.00017254799604415894,
+              -0.0007847771048545837,
+              -0.00792434811592102,
+              -0.004601441323757172,
+              -0.000725332647562027,
+              -0.003916651010513306,
+              -0.001850362867116928,
+              -0.002304527908563614
+            ]
+          }
+        },
+        "prior_minus_local": {
+          "psnr_y": {
+            "difference": -0.7628726311616857,
+            "sequence_ci95": [
+              -1.600616539117361,
+              0.019154606143006195
+            ],
+            "scene_ci95": [
+              -1.8483508496218575,
+              0.17974392179791976
+            ],
+            "sequences_better": 7,
+            "per_sequence_differences": [
+              -0.6360242608366065,
+              -0.8200657857116873,
+              -2.2766650652842486,
+              0.016502783996614312,
+              1.1302815887054631,
+              0.5981300655359121,
+              0.10207606313492334,
+              -2.754884770719851,
+              0.3133917538397526,
+              0.26265226767063155,
+              -4.810658200388204,
+              -2.8970097009971987,
+              -0.40752803085240075,
+              2.204939116644006,
+              -1.0423244718812725,
+              -1.1887754514428046
+            ]
+          },
+          "psnr_rgb": {
+            "difference": -0.5570452180177603,
+            "sequence_ci95": [
+              -1.3544476864936545,
+              0.16492308938589775
+            ],
+            "scene_ci95": [
+              -1.6464011491203185,
+              0.3069865556166587
+            ],
+            "sequences_better": 6,
+            "per_sequence_differences": [
+              -1.2740224153146436,
+              -1.0892661275643434,
+              -2.029544354400983,
+              -0.09775889656600611,
+              1.0470663091093257,
+              0.5482551862777285,
+              0.740755980341099,
+              -1.0462835466685974,
+              0.25497601634168987,
+              0.3696692678593294,
+              -4.536509500677177,
+              -2.986312031091277,
+              -0.4092377369994118,
+              2.168644286902417,
+              -0.15809568872123947,
+              -0.4150602371120762
+            ]
+          },
+          "lpips": {
+            "difference": 0.0018402962014079094,
+            "sequence_ci95": [
+              -0.0034556496189907192,
+              0.008344058832153677
+            ],
+            "scene_ci95": [
+              -0.003949757665395737,
+              0.007836524397134781
+            ],
+            "sequences_better": 10,
+            "per_sequence_differences": [
+              0.012932181358337402,
+              0.00014889240264892578,
+              0.014802783727645874,
+              -0.0028200149536132812,
+              -0.008955657482147217,
+              -0.00296059250831604,
+              0.012277305126190186,
+              0.00800769031047821,
+              -0.003965437412261963,
+              -0.009979337453842163,
+              0.03557613492012024,
+              -0.003985509276390076,
+              -0.0033802390098571777,
+              -0.015489935874938965,
+              -0.0015699714422225952,
+              -0.0011935532093048096
+            ]
+          },
+          "tlp_gap": {
+            "difference": -0.0018862870056182146,
+            "sequence_ci95": [
+              -0.003311139700235799,
+              -0.0007164561917306856
+            ],
+            "scene_ci95": [
+              -0.003422630039858632,
+              -0.0005059850896941499
+            ],
+            "sequences_better": 12,
+            "per_sequence_differences": [
+              -0.004222743213176727,
+              -0.002182949334383011,
+              -0.004268772900104523,
+              -0.0011842288076877594,
+              0.0014081522822380066,
+              0.0010152962058782578,
+              -0.009932920336723328,
+              -0.0022435933351516724,
+              0.0006594955921173096,
+              -0.0011345893144607544,
+              -0.0036185607314109802,
+              -0.0015523284673690796,
+              5.2426010370254517e-05,
+              -0.00197499617934227,
+              -0.00035134516656398773,
+              -0.00064893439412117
+            ]
+          }
+        }
+      }
+    }
+  },
+  "absolute": {
+    "baseline": {
+      "psnr_y": 24.692694251688913,
+      "psnr_rgb": 23.92695943006985,
+      "lpips": 0.24031953420490026,
+      "tlp_gap": 0.02209945599315688
+    },
+    "local": {
+      "psnr_y": 24.806894145701854,
+      "psnr_rgb": 24.162078206285205,
+      "lpips": 0.23970476165413857,
+      "tlp_gap": 0.020108612661715597
+    },
+    "prior": {
+      "psnr_y": 24.04402151454017,
+      "psnr_rgb": 23.605032988267443,
+      "lpips": 0.24154505785554647,
+      "tlp_gap": 0.018222325656097382
+    }
+  },
+  "change_from_initial": {
+    "baseline": {
+      "psnr_y": 0.32977027183766894,
+      "psnr_rgb": 0.14626808914843703,
+      "lpips": -0.0019678333774209023,
+      "tlp_gap": 0.0007280349964275956
+    },
+    "local": {
+      "psnr_y": 0.4439701658506129,
+      "psnr_rgb": 0.3813868653637893,
+      "lpips": -0.002582605928182602,
+      "tlp_gap": -0.0012628083350136876
+    },
+    "prior": {
+      "psnr_y": -0.3189024653110728,
+      "psnr_rgb": -0.175658352653971,
+      "lpips": -0.0007423097267746925,
+      "tlp_gap": -0.0031490953406319022
+    }
+  },
+  "change_from_initial_intervals": {
+    "baseline": {
+      "psnr_y": {
+        "difference": 0.32977027183766894,
+        "sequence_ci95": [
+          -0.8841161931206308,
+          1.5593570857923977
+        ],
+        "scene_ci95": [
+          -1.018230280654271,
+          1.7728783467865163
+        ],
+        "sequences_better": 9,
+        "per_sequence_differences": [
+          5.6744559180335585,
+          0.23817717240271818,
+          -5.11520389734838,
+          2.8542845044906002,
+          -0.12844983272906063,
+          -0.401423019286133,
+          -1.247310574968374,
+          0.837749576245379,
+          0.5317966031935129,
+          3.220674311162007,
+          1.3170233904283606,
+          -1.9550465035907365,
+          1.6835373096576696,
+          1.8293603081762075,
+          -2.1259647164416258,
+          -1.937336200023001
+        ]
+      },
+      "psnr_rgb": {
+        "difference": 0.14626808914843703,
+        "sequence_ci95": [
+          -0.9351471110800902,
+          1.289886594419837
+        ],
+        "scene_ci95": [
+          -1.118149888121942,
+          1.5234622256309334
+        ],
+        "sequences_better": 8,
+        "per_sequence_differences": [
+          5.160606214755152,
+          0.7005265314990368,
+          -4.2591086122092605,
+          2.490310542406135,
+          -0.06911545233835525,
+          -0.2737975597574813,
+          -1.590477087225164,
+          -0.531999357993648,
+          0.28695590738664123,
+          2.792460721558051,
+          0.6827093545216059,
+          -1.7979090310355517,
+          1.595906605754502,
+          1.7632726740795537,
+          -2.008880502349541,
+          -2.601171522676683
+        ]
+      },
+      "lpips": {
+        "difference": -0.0019678333774209023,
+        "sequence_ci95": [
+          -0.008233677083626389,
+          0.0035574995446950187
+        ],
+        "scene_ci95": [
+          -0.008225214155390858,
+          0.004788669757544994
+        ],
+        "sequences_better": 8,
+        "per_sequence_differences": [
+          0.0015617609024047852,
+          -0.03425014019012451,
+          0.0039052367210388184,
+          0.00655791163444519,
+          -0.004669189453125,
+          -0.008542448282241821,
+          0.0032716691493988037,
+          -0.007581010460853577,
+          -0.004059553146362305,
+          -0.014357104897499084,
+          0.014766931533813477,
+          0.006998538970947266,
+          -0.008644908666610718,
+          -0.010681390762329102,
+          0.014624372124671936,
+          0.009613990783691406
+        ]
+      },
+      "tlp_gap": {
+        "difference": 0.0007280349964275956,
+        "sequence_ci95": [
+          -0.0011932393244933337,
+          0.0028737884393194688
+        ],
+        "scene_ci95": [
+          -0.0017259386717341841,
+          0.0036400606186361983
+        ],
+        "sequences_better": 7,
+        "per_sequence_differences": [
+          -0.002634085714817047,
+          -0.002111293375492096,
+          -0.005153447389602661,
+          -0.003623463213443756,
+          -0.0016934927552938461,
+          0.0011109225451946259,
+          0.008862808346748352,
+          0.009016267955303192,
+          -0.0017239823937416077,
+          -0.003871321678161621,
+          0.0039308927953243256,
+          0.0030241236090660095,
+          2.3894011974334717e-05,
+          0.004648599773645401,
+          0.0007040929049253464,
+          0.0011380445212125778
+        ]
+      }
+    },
+    "local": {
+      "psnr_y": {
+        "difference": 0.4439701658506129,
+        "sequence_ci95": [
+          -0.6175570059028377,
+          1.4684589761101443
+        ],
+        "scene_ci95": [
+          -0.6751415829829825,
+          1.6539247328604614
+        ],
+        "sequences_better": 10,
+        "per_sequence_differences": [
+          5.425196917219893,
+          0.28754559096124055,
+          -5.35686382930141,
+          2.223375966926522,
+          -0.7189699203621984,
+          -0.4639681883410489,
+          -0.8464042812452099,
+          0.9880462086025901,
+          0.03508160571847796,
+          1.6166645621798423,
+          0.6029286207333264,
+          -0.8357063461719001,
+          1.3240879602123847,
+          1.2549475859043415,
+          1.69884399063978,
+          -0.13128379006682422
+        ]
+      },
+      "psnr_rgb": {
+        "difference": 0.3813868653637893,
+        "sequence_ci95": [
+          -0.5582941364150823,
+          1.289914568817134
+        ],
+        "scene_ci95": [
+          -0.5727231531875961,
+          1.4539620797210784
+        ],
+        "sequences_better": 8,
+        "per_sequence_differences": [
+          4.773135510147998,
+          0.6545154902353758,
+          -4.649334488111325,
+          1.9780175377796354,
+          -0.6165223143894174,
+          -0.36306398829488984,
+          -1.0539036300611073,
+          -0.015706480355444086,
+          -0.0850028204801454,
+          1.0785113215861486,
+          0.611688934562757,
+          -0.46472260951593825,
+          1.3215800489387934,
+          1.2816293729277088,
+          1.8293250291153136,
+          -0.17795706826483482
+        ]
+      },
+      "lpips": {
+        "difference": -0.002582605928182602,
+        "sequence_ci95": [
+          -0.009032142697833478,
+          0.0026174575788900254
+        ],
+        "scene_ci95": [
+          -0.009233238245360553,
+          0.002994833188131451
+        ],
+        "sequences_better": 7,
+        "per_sequence_differences": [
+          -0.0017318427562713623,
+          -0.03579798340797424,
+          0.00784274935722351,
+          0.005982875823974609,
+          0.00553739070892334,
+          -0.002523481845855713,
+          -3.2335519790649414e-05,
+          -0.006560295820236206,
+          0.0043550580739974976,
+          0.003259897232055664,
+          0.0018367618322372437,
+          0.004998534917831421,
+          -0.017756164073944092,
+          -0.022512048482894897,
+          0.005638733506202698,
+          0.006140455603599548
+        ]
+      },
+      "tlp_gap": {
+        "difference": -0.0012628083350136876,
+        "sequence_ci95": [
+          -0.002382990322075784,
+          -0.00015831644705031087
+        ],
+        "scene_ci95": [
+          -0.002557635470293462,
+          9.474166436120839e-05
+        ],
+        "sequences_better": 13,
+        "per_sequence_differences": [
+          -0.0017336606979370117,
+          -0.002433985471725464,
+          -0.006455808877944946,
+          -0.003363456577062607,
+          -0.0035284124314785004,
+          -0.0002581588923931122,
+          0.001972004771232605,
+          0.0014333575963974,
+          -0.002556025981903076,
+          -0.0035215094685554504,
+          -0.0003748945891857147,
+          -2.498924732208252e-05,
+          -0.0007538646459579468,
+          0.0027069449424743652,
+          -0.000794924795627594,
+          -0.000517548993229866
+        ]
+      }
+    },
+    "prior": {
+      "psnr_y": {
+        "difference": -0.3189024653110728,
+        "sequence_ci95": [
+          -1.800263964513236,
+          1.0527450085483905
+        ],
+        "scene_ci95": [
+          -2.0895887271874534,
+          1.4077943369838957
+        ],
+        "sequences_better": 9,
+        "per_sequence_differences": [
+          4.789172656383286,
+          -0.5325201947504468,
+          -7.633528894585659,
+          2.239878750923136,
+          0.4113116683432647,
+          0.13416187719486317,
+          -0.7443282181102866,
+          -1.766838562117261,
+          0.34847335955823056,
+          1.8793168298504739,
+          -4.2077295796548775,
+          -3.7327160471690988,
+          0.916559929359984,
+          3.4598867025483475,
+          0.6565195187585076,
+          -1.3200592415096288
+        ]
+      },
+      "psnr_rgb": {
+        "difference": -0.175658352653971,
+        "sequence_ci95": [
+          -1.4877994265449876,
+          1.0150105325916228
+        ],
+        "scene_ci95": [
+          -1.7518083958073796,
+          1.286867782932796
+        ],
+        "sequences_better": 9,
+        "per_sequence_differences": [
+          3.499113094833355,
+          -0.43475063732896757,
+          -6.678878842512308,
+          1.8802586412136293,
+          0.43054399471990834,
+          0.18519119798283867,
+          -0.3131476497200083,
+          -1.0619900270240414,
+          0.16997319586154447,
+          1.448180589445478,
+          -3.9248205661144198,
+          -3.451034640607215,
+          0.9123423119393816,
+          3.450273659830126,
+          1.6712293403940741,
+          -0.593017305376911
+        ]
+      },
+      "lpips": {
+        "difference": -0.0007423097267746925,
+        "sequence_ci95": [
+          -0.01000341868493706,
+          0.008133452804759135
+        ],
+        "scene_ci95": [
+          -0.01068734440486878,
+          0.008143830113112926
+        ],
+        "sequences_better": 6,
+        "per_sequence_differences": [
+          0.01120033860206604,
+          -0.03564909100532532,
+          0.022645533084869385,
+          0.003162860870361328,
+          -0.003418266773223877,
+          -0.005484074354171753,
+          0.012244969606399536,
+          0.0014473944902420044,
+          0.00038962066173553467,
+          -0.006719440221786499,
+          0.03741289675235748,
+          0.0010130256414413452,
+          -0.02113640308380127,
+          -0.03800198435783386,
+          0.0040687620639801025,
+          0.004946902394294739
+        ]
+      },
+      "tlp_gap": {
+        "difference": -0.0031490953406319022,
+        "sequence_ci95": [
+          -0.00471395104250405,
+          -0.0017461690615164119
+        ],
+        "scene_ci95": [
+          -0.004837841028347611,
+          -0.0015520646702498198
+        ],
+        "sequences_better": 14,
+        "per_sequence_differences": [
+          -0.005956403911113739,
+          -0.004616934806108475,
+          -0.010724581778049469,
+          -0.004547685384750366,
+          -0.0021202601492404938,
+          0.0007571373134851456,
+          -0.007960915565490723,
+          -0.0008102357387542725,
+          -0.0018965303897857666,
+          -0.004656098783016205,
+          -0.003993455320596695,
+          -0.0015773177146911621,
+          -0.0007014386355876923,
+          0.0007319487631320953,
+          -0.0011462699621915817,
+          -0.001166483387351036
+        ]
+      }
+    }
+  },
+  "contrasts": {
+    "local_minus_baseline": {
+      "psnr_y": {
+        "difference": 0.11419989401294395,
+        "sequence_ci95": [
+          -0.41416363521349675,
+          0.7605890771803578
+        ],
+        "scene_ci95": [
+          -0.48163704019840115,
+          0.9756180977857095
+        ],
+        "sequences_better": 6,
+        "per_sequence_differences": [
+          -0.24925900081366592,
+          0.049368418558522364,
+          -0.2416599319530306,
+          -0.6309085375640784,
+          -0.5905200876331378,
+          -0.06254516905491592,
+          0.400906293723164,
+          0.15029663235721102,
+          -0.4967149974750349,
+          -1.6040097489821648,
+          -0.7140947696950342,
+          1.1193401574188364,
+          -0.35944934944528484,
+          -0.574412722271866,
+          3.824808707081406,
+          1.8060524099561768
+        ]
+      },
+      "psnr_rgb": {
+        "difference": 0.23511877621535227,
+        "sequence_ci95": [
+          -0.3320836446466488,
+          0.9032350334686805
+        ],
+        "scene_ci95": [
+          -0.44269211929962043,
+          1.1828863752239087
+        ],
+        "sequences_better": 5,
+        "per_sequence_differences": [
+          -0.3874707046071535,
+          -0.04601104126366096,
+          -0.3902258759020647,
+          -0.5122930046264997,
+          -0.5474068620510621,
+          -0.08926642853740852,
+          0.5365734571640566,
+          0.5162928776382039,
+          -0.37195872786678663,
+          -1.7139493999719022,
+          -0.07102041995884889,
+          1.3331864215196134,
+          -0.2743265568157085,
+          -0.48164330115184484,
+          3.8382055314648547,
+          2.4232144544118484
+        ]
+      },
+      "lpips": {
+        "difference": -0.0006147725507616997,
+        "sequence_ci95": [
+          -0.004471497540362179,
+          0.0033934205072000596
+        ],
+        "scene_ci95": [
+          -0.005497850477695465,
+          0.004583478905260563
+        ],
+        "sequences_better": 10,
+        "per_sequence_differences": [
+          -0.0032936036586761475,
+          -0.0015478432178497314,
+          0.003937512636184692,
+          -0.0005750358104705811,
+          0.01020658016204834,
+          0.006018966436386108,
+          -0.003304004669189453,
+          0.0010207146406173706,
+          0.008414611220359802,
+          0.01761700212955475,
+          -0.012930169701576233,
+          -0.0020000040531158447,
+          -0.009111255407333374,
+          -0.011830657720565796,
+          -0.008985638618469238,
+          -0.003473535180091858
+        ]
+      },
+      "tlp_gap": {
+        "difference": -0.0019908433314412832,
+        "sequence_ci95": [
+          -0.003224841941846535,
+          -0.0009341583616333083
+        ],
+        "scene_ci95": [
+          -0.003743762319209054,
+          -0.0006525649223476648
+        ],
+        "sequences_better": 13,
+        "per_sequence_differences": [
+          0.0009004250168800354,
+          -0.0003226920962333679,
+          -0.0013023614883422852,
+          0.0002600066363811493,
+          -0.0018349196761846542,
+          -0.001369081437587738,
+          -0.006890803575515747,
+          -0.007582910358905792,
+          -0.0008320435881614685,
+          0.00034981220960617065,
+          -0.00430578738451004,
+          -0.003049112856388092,
+          -0.0007777586579322815,
+          -0.0019416548311710358,
+          -0.0014990177005529404,
+          -0.0016555935144424438
+        ]
+      }
+    },
+    "prior_minus_baseline": {
+      "psnr_y": {
+        "difference": -0.6486727371487417,
+        "sequence_ci95": [
+          -1.5932573115512092,
+          0.21057362308630154
+        ],
+        "scene_ci95": [
+          -1.730899614731574,
+          0.364049180513331
+        ],
+        "sequences_better": 6,
+        "per_sequence_differences": [
+          -0.8852832616502724,
+          -0.770697367153165,
+          -2.518324997237279,
+          -0.6144057535674641,
+          0.5397615010723253,
+          0.5355848964809962,
+          0.5029823568580873,
+          -2.60458813836264,
+          -0.1833232436352823,
+          -1.3413574813115332,
+          -5.524752970083238,
+          -1.7776695435783623,
+          -0.7669773802976856,
+          1.63052639437214,
+          2.7824842352001333,
+          0.6172769585133722
+        ]
+      },
+      "psnr_rgb": {
+        "difference": -0.32192644180240804,
+        "sequence_ci95": [
+          -1.2400766804988321,
+          0.5878469238941854
+        ],
+        "scene_ci95": [
+          -1.4666908876242875,
+          0.8849414633765997
+        ],
+        "sequences_better": 6,
+        "per_sequence_differences": [
+          -1.661493119921797,
+          -1.1352771688280043,
+          -2.4197702303030475,
+          -0.6100519011925059,
+          0.4996594470582636,
+          0.45898875774032,
+          1.2773294375051556,
+          -0.5299906690303935,
+          -0.11698271152509676,
+          -1.3442801321125728,
+          -4.607529920636026,
+          -1.6531256095716635,
+          -0.6835642938151203,
+          1.6870009857505721,
+          3.680109842743615,
+          2.008154217299772
+        ]
+      },
+      "lpips": {
+        "difference": 0.0012255236506462097,
+        "sequence_ci95": [
+          -0.004708018759265542,
+          0.006912001827731728
+        ],
+        "scene_ci95": [
+          -0.006046108901500702,
+          0.0069124887231737375
+        ],
+        "sequences_better": 7,
+        "per_sequence_differences": [
+          0.009638577699661255,
+          -0.0013989508152008057,
+          0.018740296363830566,
+          -0.0033950507640838623,
+          0.001250922679901123,
+          0.0030583739280700684,
+          0.008973300457000732,
+          0.009028404951095581,
+          0.004449173808097839,
+          0.0076376646757125854,
+          0.022645965218544006,
+          -0.00598551332950592,
+          -0.012491494417190552,
+          -0.02732059359550476,
+          -0.010555610060691833,
+          -0.0046670883893966675
+        ]
+      },
+      "tlp_gap": {
+        "difference": -0.003877130337059498,
+        "sequence_ci95": [
+          -0.006212547927862033,
+          -0.002021023415727541
+        ],
+        "scene_ci95": [
+          -0.006936667487025261,
+          -0.0015657234878744932
+        ],
+        "sequences_better": 16,
+        "per_sequence_differences": [
+          -0.003322318196296692,
+          -0.002505641430616379,
+          -0.005571134388446808,
+          -0.0009242221713066101,
+          -0.00042676739394664764,
+          -0.0003537852317094803,
+          -0.016823723912239075,
+          -0.009826503694057465,
+          -0.00017254799604415894,
+          -0.0007847771048545837,
+          -0.00792434811592102,
+          -0.004601441323757172,
+          -0.000725332647562027,
+          -0.003916651010513306,
+          -0.001850362867116928,
+          -0.002304527908563614
+        ]
+      }
+    },
+    "prior_minus_local": {
+      "psnr_y": {
+        "difference": -0.7628726311616857,
+        "sequence_ci95": [
+          -1.600616539117361,
+          0.019154606143006195
+        ],
+        "scene_ci95": [
+          -1.8483508496218575,
+          0.17974392179791976
+        ],
+        "sequences_better": 7,
+        "per_sequence_differences": [
+          -0.6360242608366065,
+          -0.8200657857116873,
+          -2.2766650652842486,
+          0.016502783996614312,
+          1.1302815887054631,
+          0.5981300655359121,
+          0.10207606313492334,
+          -2.754884770719851,
+          0.3133917538397526,
+          0.26265226767063155,
+          -4.810658200388204,
+          -2.8970097009971987,
+          -0.40752803085240075,
+          2.204939116644006,
+          -1.0423244718812725,
+          -1.1887754514428046
+        ]
+      },
+      "psnr_rgb": {
+        "difference": -0.5570452180177603,
+        "sequence_ci95": [
+          -1.3544476864936545,
+          0.16492308938589775
+        ],
+        "scene_ci95": [
+          -1.6464011491203185,
+          0.3069865556166587
+        ],
+        "sequences_better": 6,
+        "per_sequence_differences": [
+          -1.2740224153146436,
+          -1.0892661275643434,
+          -2.029544354400983,
+          -0.09775889656600611,
+          1.0470663091093257,
+          0.5482551862777285,
+          0.740755980341099,
+          -1.0462835466685974,
+          0.25497601634168987,
+          0.3696692678593294,
+          -4.536509500677177,
+          -2.986312031091277,
+          -0.4092377369994118,
+          2.168644286902417,
+          -0.15809568872123947,
+          -0.4150602371120762
+        ]
+      },
+      "lpips": {
+        "difference": 0.0018402962014079094,
+        "sequence_ci95": [
+          -0.0034556496189907192,
+          0.008344058832153677
+        ],
+        "scene_ci95": [
+          -0.003949757665395737,
+          0.007836524397134781
+        ],
+        "sequences_better": 10,
+        "per_sequence_differences": [
+          0.012932181358337402,
+          0.00014889240264892578,
+          0.014802783727645874,
+          -0.0028200149536132812,
+          -0.008955657482147217,
+          -0.00296059250831604,
+          0.012277305126190186,
+          0.00800769031047821,
+          -0.003965437412261963,
+          -0.009979337453842163,
+          0.03557613492012024,
+          -0.003985509276390076,
+          -0.0033802390098571777,
+          -0.015489935874938965,
+          -0.0015699714422225952,
+          -0.0011935532093048096
+        ]
+      },
+      "tlp_gap": {
+        "difference": -0.0018862870056182146,
+        "sequence_ci95": [
+          -0.003311139700235799,
+          -0.0007164561917306856
+        ],
+        "scene_ci95": [
+          -0.003422630039858632,
+          -0.0005059850896941499
+        ],
+        "sequences_better": 12,
+        "per_sequence_differences": [
+          -0.004222743213176727,
+          -0.002182949334383011,
+          -0.004268772900104523,
+          -0.0011842288076877594,
+          0.0014081522822380066,
+          0.0010152962058782578,
+          -0.009932920336723328,
+          -0.0022435933351516724,
+          0.0006594955921173096,
+          -0.0011345893144607544,
+          -0.0036185607314109802,
+          -0.0015523284673690796,
+          5.2426010370254517e-05,
+          -0.00197499617934227,
+          -0.00035134516656398773,
+          -0.00064893439412117
+        ]
+      }
+    }
+  },
+  "sequence_names": [
+    "SDSD_indoor/pair1",
+    "SDSD_indoor/pair19",
+    "SDSD_indoor/pair19_2",
+    "SDSD_indoor/pair1_2",
+    "SDSD_indoor/pair28",
+    "SDSD_indoor/pair28_2",
+    "SDSD_outdoor/MVI_0898",
+    "SDSD_outdoor/MVI_0898_2",
+    "SDSD_outdoor/MVI_0921",
+    "SDSD_outdoor/MVI_0921_2",
+    "SDSD_outdoor/MVI_0945",
+    "SDSD_outdoor/MVI_0945_2",
+    "SDSD_outdoor/MVI_0965",
+    "SDSD_outdoor/MVI_0965_2",
+    "SDSD_outdoor/MVI_0985",
+    "SDSD_outdoor/MVI_0985_2"
+  ],
+  "scene_members": {
+    "SDSD_indoor/pair1": [
+      "SDSD_indoor/pair1",
+      "SDSD_indoor/pair1_2"
+    ],
+    "SDSD_indoor/pair19": [
+      "SDSD_indoor/pair19",
+      "SDSD_indoor/pair19_2"
+    ],
+    "SDSD_indoor/pair28": [
+      "SDSD_indoor/pair28",
+      "SDSD_indoor/pair28_2"
+    ],
+    "SDSD_outdoor/MVI_0898": [
+      "SDSD_outdoor/MVI_0898",
+      "SDSD_outdoor/MVI_0898_2"
+    ],
+    "SDSD_outdoor/MVI_0921": [
+      "SDSD_outdoor/MVI_0921",
+      "SDSD_outdoor/MVI_0921_2"
+    ],
+    "SDSD_outdoor/MVI_0945": [
+      "SDSD_outdoor/MVI_0945",
+      "SDSD_outdoor/MVI_0945_2"
+    ],
+    "SDSD_outdoor/MVI_0965": [
+      "SDSD_outdoor/MVI_0965",
+      "SDSD_outdoor/MVI_0965_2"
+    ],
+    "SDSD_outdoor/MVI_0985": [
+      "SDSD_outdoor/MVI_0985",
+      "SDSD_outdoor/MVI_0985_2"
+    ]
+  },
+  "sources": [
+    {
+      "path": "/Users/hezihao/Documents/New project/seer-modelarts-archive/cvpr2027/results/splits_cvpr.json",
+      "sha256": "fb6be5ea78ef73f5cc9db90bca75813bf597275f7609fe39d82f5b2f883e9ad0"
+    },
+    {
+      "path": "/Users/hezihao/Documents/New project/seer_method_dev_20261111/artifacts/runs/baseline_s0/provenance.json",
+      "sha256": "ab9685193c8274517c6b60870ffa89f5d22933417ee5095f90d026bf6749e824"
+    },
+    {
+      "path": "/Users/hezihao/Documents/New project/seer_method_dev_20261111/artifacts/runs/baseline_s0/data_plan.json",
+      "sha256": "035e80077b08c89d49596a76e0fb9e9fa410ee2f9940971327c16759d4774c4b"
+    },
+    {
+      "path": "/Users/hezihao/Documents/New project/seer_method_dev_20261111/artifacts/runs/local_s0/provenance.json",
+      "sha256": "6c5e0de28024f5cbd054858c35dbd8b0e68098abe5f6c76caef4d31852202a9d"
+    },
+    {
+      "path": "/Users/hezihao/Documents/New project/seer_method_dev_20261111/artifacts/runs/local_s0/data_plan.json",
+      "sha256": "035e80077b08c89d49596a76e0fb9e9fa410ee2f9940971327c16759d4774c4b"
+    },
+    {
+      "path": "/Users/hezihao/Documents/New project/seer_method_dev_20261111/artifacts/runs/prior_s0/provenance.json",
+      "sha256": "7bee537dfbe3f79e8efdd69bbb5081321d523cd097eaacd59048c45484f5c817"
+    },
+    {
+      "path": "/Users/hezihao/Documents/New project/seer_method_dev_20261111/artifacts/runs/prior_s0/data_plan.json",
+      "sha256": "035e80077b08c89d49596a76e0fb9e9fa410ee2f9940971327c16759d4774c4b"
+    },
+    {
+      "path": "/Users/hezihao/Documents/New project/seer_method_dev_20261111/artifacts/runs/baseline_s0/val_step_000000.json",
+      "sha256": "f66a2cfe6c34ce42d35382f944295d1f1d0a12c6b7423b32072fda1634816822"
+    },
+    {
+      "path": "/Users/hezihao/Documents/New project/seer_method_dev_20261111/artifacts/runs/local_s0/val_step_000000.json",
+      "sha256": "17ecd303a5aa8a0a8419178b7535b6d0ca194a27b055cc14b2da2c63f23d4094"
+    },
+    {
+      "path": "/Users/hezihao/Documents/New project/seer_method_dev_20261111/artifacts/runs/prior_s0/val_step_000000.json",
+      "sha256": "72af651b800d2d75aae5e1b6db57120b64eb4283e05121413e22607c76a7fc5c"
+    },
+    {
+      "path": "/Users/hezihao/Documents/New project/seer_method_dev_20261111/artifacts/runs/baseline_s0/val_step_000200.json",
+      "sha256": "21919f35ba10c986e25feb661c5fbe9fc42003b534cbcea424ee2ed061eeb360"
+    },
+    {
+      "path": "/Users/hezihao/Documents/New project/seer_method_dev_20261111/artifacts/runs/local_s0/val_step_000200.json",
+      "sha256": "b6f65bda0eb99821516828785674d493101a2a9a1a224b90d772fef7f8bb3b49"
+    },
+    {
+      "path": "/Users/hezihao/Documents/New project/seer_method_dev_20261111/artifacts/runs/prior_s0/val_step_000200.json",
+      "sha256": "319a4a8f468887f95cf4ca1d068a857f6b0451087a4be333a44d5125d95bbd58"
+    },
+    {
+      "path": "/Users/hezihao/Documents/New project/seer_method_dev_20261111/artifacts/runs/baseline_s0/val_step_000400.json",
+      "sha256": "71f9b6411ab53e4802308457a264f50f435796c420ccf915a8793035db8bf22f"
+    },
+    {
+      "path": "/Users/hezihao/Documents/New project/seer_method_dev_20261111/artifacts/runs/local_s0/val_step_000400.json",
+      "sha256": "142a3af17700eec208a2b3bd9715bc6afbe531f0efe8b23bf4d1d0f643528d53"
+    },
+    {
+      "path": "/Users/hezihao/Documents/New project/seer_method_dev_20261111/artifacts/runs/prior_s0/val_step_000400.json",
+      "sha256": "54609183619f3fb71b9822d9c0f0320b5974d2c3d3cc7fa046962b2908e962e8"
+    }
+  ],
+  "analyzer_sha256": "643625e698fdf1afc902859083c657514d2ad5e2818ed8a01e7bfd8c2171d515",
+  "numpy_version": "2.5.1"
+}

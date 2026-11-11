@@ -7,6 +7,7 @@ import argparse
 import hashlib
 import json
 from pathlib import Path
+import subprocess
 import numpy as np
 
 CVPR = Path(__file__).resolve().parents[2]
@@ -24,6 +25,34 @@ def require(condition, message):
 
 def digest(path):
     return hashlib.sha256(Path(path).read_bytes()).hexdigest()
+
+
+def verify_sources(manifest, code_root, code_revision=None):
+    """Read current files or committed bytes without checking out/mutating Git."""
+    if code_root is None:
+        require(code_revision is None, "--code-revision requires --code-root")
+        return {"mode": "not_checked", "requested_revision": None, "resolved_revision": None}
+    code_root = Path(code_root).resolve()
+    require(set(manifest) == set(SOURCES), "Unexpected source manifest paths")
+    resolved, prefix = None, None
+    if code_revision is not None:
+        def git(*arguments):
+            return subprocess.run(["git", "-C", str(code_root), *arguments],
+                                  check=True, capture_output=True, timeout=30).stdout
+        repo_root = Path(git("rev-parse", "--show-toplevel").decode().strip())
+        prefix = code_root.relative_to(repo_root).as_posix()
+        resolved = git("rev-parse", "--verify", "--end-of-options",
+                       str(code_revision) + "^{commit}").decode().strip()
+        require(len(resolved) == 40 and all(c in "0123456789abcdef" for c in resolved),
+                "Git did not resolve a full commit SHA")
+    for relative, expected in manifest.items():
+        raw = (git("show", f"{resolved}:{prefix}/{relative}") if resolved is not None
+               else (code_root / relative).read_bytes())
+        require(hashlib.sha256(raw).hexdigest() == expected,
+                f"Published source hash mismatch: {relative} at {resolved or 'working tree'}")
+    return {"mode": "git_revision" if resolved is not None else "working_tree",
+            "requested_revision": code_revision, "resolved_revision": resolved,
+            "repository_code_prefix": prefix}
 
 
 def scene_key(name):
@@ -55,7 +84,7 @@ def paired_summary(d, groups, draws, scene_draws, metric):
 
 
 def analyze(runs, step=400, *, splits=CVPR / "results/splits_cvpr.json",
-            code_root=CVPR / "code_full", boot=10000):
+            code_root=CVPR / "code_full", code_revision=None, boot=10000):
     source_files = []
 
     def read(path):
@@ -120,9 +149,7 @@ def analyze(runs, step=400, *, splits=CVPR / "results/splits_cvpr.json",
                        "kv": "per_tubelet", "layers": "single", "xattn": "global",
                        "taps": [5, 11, 17, 23], "token_proj": "none"}
     require(all(config.get(k) == v for k, v in expected_config.items()), "Init is not the intended default E17 model")
-    if code_root is not None:
-        for relative, sha in metadata["baseline"]["source_sha256"].items():
-            require(digest(code_root / relative) == sha, f"Published source hash mismatch: {relative}")
+    source_validation = verify_sources(metadata["baseline"]["source_sha256"], code_root, code_revision)
     schedule = metadata["baseline"]["args"]
     require(0 <= step <= schedule["steps"], "Requested step outside training budget")
     steps = sorted({0, step} | set(range(schedule["eval_every"], step + 1, schedule["eval_every"])))
@@ -188,6 +215,7 @@ def analyze(runs, step=400, *, splits=CVPR / "results/splits_cvpr.json",
             "provenance_checks": {"recorded_inputs_match": True, "actual_data_plan_hash_and_schedule_match": True,
                                   "published_source_hashes_match": code_root is not None,
                                   "input_content_scope": "Checkpoint/first-batch hashes compared as recorded; checkpoint/data image bytes are not opened."},
+            "source_validation": source_validation,
             "matched_metadata": metadata, "curves": curves, **curves[str(step)],
             "sequence_names": names, "scene_members": {s: [names[i] for i in g] for s, g in zip(scenes, groups)},
             "sources": source_files, "analyzer_sha256": digest(Path(__file__)), "numpy_version": np.__version__}
@@ -218,6 +246,7 @@ def main():
     parser.add_argument("--step", type=int, default=400)
     parser.add_argument("--splits", type=Path, default=CVPR / "results/splits_cvpr.json")
     parser.add_argument("--code-root", type=Path, default=CVPR / "code_full")
+    parser.add_argument("--code-revision", help="Verify committed source bytes with git show, e.g. 8a9dcfa for pilot v1")
     parser.add_argument("--out", type=Path)
     parser.add_argument("--self-test", action="store_true")
     args = parser.parse_args()
@@ -228,7 +257,8 @@ def main():
         parser.error("--out is required unless --self-test")
     if args.out.exists():
         parser.error(f"refusing to overwrite {args.out}")
-    result = analyze(args.runs, args.step, splits=args.splits, code_root=args.code_root)
+    result = analyze(args.runs, args.step, splits=args.splits, code_root=args.code_root,
+                     code_revision=args.code_revision)
     args.out.parent.mkdir(parents=True, exist_ok=True)
     args.out.write_text(json.dumps(result, indent=2, allow_nan=False) + "\n")
     print(json.dumps({"step": result["step"], "absolute": result["absolute"],
