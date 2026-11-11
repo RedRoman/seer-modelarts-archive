@@ -1,0 +1,24 @@
+{
+  "scope": "Final local artifact and frozen-runtime-source verification; actual CPU/NPU execution logs retained separately",
+  "frozen_source_files_sha_pass": 230,
+  "target_sequences_per_arm": 16,
+  "all_methods_per_arm": 25,
+  "final_heads_per_arm": 18,
+  "base_seeds_per_arm": [
+    0
+  ],
+  "selector_seeds": [
+    0,
+    1,
+    2
+  ],
+  "model_states_unchanged": true,
+  "authored_whitespace_check": "PASS",
+  "byte_preserved_evidence_whitespace": "PASS with CRLF accepted and raw-log blank EOF retained; source evidence bytes/hash unchanged",
+  "binary_checkpoint_and_paper_files_added": false,
+  "raw_result_sha256": {
+    "pretrained": "647dcda7321a93e6745485da23728892288b8c1b971f971df240a97b0133e5dd",
+    "none": "04c7cb3b276f1e78e4509559bacce52860d39249d3484bf34ea54c696bc0c2b8"
+  },
+  "completed_utc": "2026-11-11 15:55 UTC"
+}

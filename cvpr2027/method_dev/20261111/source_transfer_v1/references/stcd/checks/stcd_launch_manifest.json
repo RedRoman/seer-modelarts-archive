@@ -1,0 +1,22 @@
+{
+  "utc": "2026-11-11T15:19:21.309170+00:00",
+  "host": "ma-job-31f7571d-75c6-4944-90cd-ee8d91cb0532-worker-0",
+  "source_archive_sha256": "00ddf46c453685600f10d1bf8c4e480eb313e90cb0d5286b6f3d8abd9ef86031",
+  "source_manifest_sha256": "e83059395e43a2422f8675233683aab242ac82fe615e0149b693b2fddfa25ba0",
+  "wrapper_sha256": "8c1e282925a92dd490e2bd6a6e20ad3900baf70bf39fe5eea784e95549bd8204",
+  "checkpoint": "/temp/zihaohe/seer_cvpr/code/ext_methods/LLVE_STCD/pretrained_model/SDSD_indoor_model/indoor_G.pth",
+  "checkpoint_sha256": "dc50957303b2ac15d2f71a32c3d4231c47c5d3f8dc21daa52bccf48faea49cda",
+  "out": "/cache/zihaohe/seer_method_dev_20261111/stcd_transfer_v1/results/stcd_indoor_release_bvi_val16.json",
+  "physical_npu": 7,
+  "device": "npu:0",
+  "chunk": 1,
+  "precision": "fp32",
+  "scope": "Released SDSD indoor model, BVI VAL16 reference, center16/crop256/lastdup, GT metrics only",
+  "environment": {
+    "OMP_NUM_THREADS": "4",
+    "MKL_NUM_THREADS": "4",
+    "OPENBLAS_NUM_THREADS": "4",
+    "PYTHONPATH": "/cache/zihaohe/seer_method_dev_20261111/stcd_transfer_v1/releases/v1_00ddf46c4536/code_full:/cache/zihaohe/seer_method_dev_20261111/stcd_transfer_v1/releases/v1_00ddf46c4536/code_full/tools:/temp/zihaohe/seer_cvpr/method_dev_20261111/baseline_code_full:/temp/zihaohe/seer_cvpr/code/baselines:/temp/zihaohe/seer_cvpr/code/baselines/common:/usr/local/Ascend/cann-8.5.2/python/site-packages:/usr/local/Ascend/cann-8.5.2/opp/built-in/op_impl/ai_core/tbe:/usr/local/Ascend/ascend-toolkit/latest/tools/ms_fmk_transplt/torch_npu_bridge:/usr/local/Ascend/ascend-toolkit/latest/python/site-packages:/usr/local/seccomponent/lib:/home/ma-user/infer/model/1",
+    "ASCEND_RT_VISIBLE_DEVICES": "7"
+  }
+}

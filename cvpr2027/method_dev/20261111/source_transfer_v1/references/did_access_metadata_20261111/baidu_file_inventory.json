@@ -1,0 +1,96 @@
+{
+  "checked_utc": "2026-11-11T15:32:10.545200+00:00",
+  "scope": "Anonymous public DID directory metadata only; no file or download-link requests",
+  "requests": [
+    {
+      "path": "/share/init",
+      "method": "GET",
+      "status": 200,
+      "bytes_read": 15989,
+      "body_sha256": "77f5996d09ba397c860f40488d40a8b4ec0c53ed9852f6d6c3a6963451e266cc"
+    },
+    {
+      "path": "/share/verify",
+      "method": "POST",
+      "status": 200,
+      "bytes_read": 104,
+      "body_sha256": "f69a3f18daea2d073ff17af100abb615f8e543204c51c5e5702a41c5762e25da",
+      "errno": 0
+    },
+    {
+      "path": "/s/1dSx-XxKd7MVwh9xPLvZn3A",
+      "method": "GET",
+      "status": 200,
+      "bytes_read": 48366,
+      "body_sha256": "bd3e5f5a6e96c3660b90c89f963979afcaa6d7c625e5e8d9e706ba2b247f33ca",
+      "title": [
+        "百度网盘-分享文件"
+      ]
+    },
+    {
+      "path": "/share/list",
+      "method": "GET",
+      "status": 200,
+      "bytes_read": 631,
+      "body_sha256": "ee81fa8dcdbc35cf6581b1a9873769305a1652015e779999a4cd7781655bfca8",
+      "errno": 0,
+      "directory": "/",
+      "page": 1,
+      "root": true
+    },
+    {
+      "path": "/share/list",
+      "method": "GET",
+      "status": 200,
+      "bytes_read": 947,
+      "body_sha256": "e0666014db30f6f29a98ff10547a91fb625d9f71bbab14af280103484285eada",
+      "errno": 0,
+      "directory": "/分享/DID",
+      "page": 1,
+      "root": false
+    }
+  ],
+  "directories": [
+    {
+      "path": "/分享/DID",
+      "depth": 0,
+      "complete": true,
+      "items": [
+        {
+          "category": 6,
+          "fs_id": 982946142519990,
+          "isdir": 0,
+          "md5": "a58d71112qb6d06fe1eb16a096da53c4",
+          "path": "/分享/DID/DID_2k.zip",
+          "server_filename": "DID_2k.zip",
+          "server_mtime": 1692019090,
+          "size": 56650437780
+        },
+        {
+          "category": 6,
+          "fs_id": 367929547658572,
+          "isdir": 0,
+          "md5": "89c8a7a03va5d427264155ee1c342dca",
+          "path": "/分享/DID/DID_1080.zip",
+          "server_filename": "DID_1080.zip",
+          "server_mtime": 1692018603,
+          "size": 32795182798
+        }
+      ]
+    }
+  ],
+  "root_api_files": [
+    {
+      "category": "6",
+      "fs_id": "491154862583003",
+      "isdir": 1,
+      "md5": "",
+      "path": "/分享/DID",
+      "server_filename": "DID",
+      "server_mtime": "1692019090",
+      "size": 0
+    }
+  ],
+  "api_list_requests": 2,
+  "outcome": "Completed bounded metadata traversal"
+}

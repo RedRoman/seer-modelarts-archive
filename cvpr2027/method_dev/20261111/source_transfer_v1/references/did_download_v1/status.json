@@ -1,0 +1,97 @@
+{
+  "file": "DID_1080.zip",
+  "expected_bytes": 32795182798,
+  "created_utc": "2026-11-11T15:47:23.876295+00:00",
+  "source_sha256": "43fbc6847eaa44347db9202f636984a2bbbe272e3d8379bb11eb78e49ea87657",
+  "free_bytes_at_start": 4008355524608,
+  "user_account_used": false,
+  "captcha_solving_attempted": false,
+  "zip_extracted": false,
+  "test_video_opened": false,
+  "events": [
+    {
+      "utc": "2026-11-11T15:47:23.876452+00:00",
+      "event": "created",
+      "free_bytes": 4008355524608
+    },
+    {
+      "utc": "2026-11-11T15:47:25.490801+00:00",
+      "event": "metadata_http",
+      "stage": "share_init",
+      "status": 200,
+      "response_bytes": 15989
+    },
+    {
+      "utc": "2026-11-11T15:47:25.752158+00:00",
+      "event": "metadata_http",
+      "stage": "share_verify",
+      "status": 200,
+      "response_bytes": 104
+    },
+    {
+      "utc": "2026-11-11T15:47:25.753186+00:00",
+      "event": "metadata_result",
+      "stage": "share_verify",
+      "errno": 0,
+      "login_text": false,
+      "captcha_text": false
+    },
+    {
+      "utc": "2026-11-11T15:47:26.488596+00:00",
+      "event": "metadata_http",
+      "stage": "share_page",
+      "status": 200,
+      "response_bytes": 48366
+    },
+    {
+      "utc": "2026-11-11T15:47:26.489687+00:00",
+      "event": "anonymous_share_verified",
+      "loginstate": 0
+    },
+    {
+      "utc": "2026-11-11T15:47:27.887243+00:00",
+      "event": "metadata_http",
+      "stage": "root_list",
+      "status": 200,
+      "response_bytes": 631
+    },
+    {
+      "utc": "2026-11-11T15:47:27.888014+00:00",
+      "event": "metadata_result",
+      "stage": "root_list",
+      "errno": 0,
+      "login_text": false,
+      "captcha_text": false
+    },
+    {
+      "utc": "2026-11-11T15:47:28.336584+00:00",
+      "event": "metadata_http",
+      "stage": "DID_list",
+      "status": 200,
+      "response_bytes": 947
+    },
+    {
+      "utc": "2026-11-11T15:47:28.337623+00:00",
+      "event": "metadata_result",
+      "stage": "DID_list",
+      "errno": 0,
+      "login_text": false,
+      "captcha_text": false
+    },
+    {
+      "utc": "2026-11-11T15:47:28.338509+00:00",
+      "event": "file_identity_verified",
+      "file": "DID_1080.zip",
+      "expected_bytes": 32795182798
+    },
+    {
+      "utc": "2026-11-11T15:47:28.339062+00:00",
+      "event": "stopped",
+      "reason": "normal_download_signature_not_available",
+      "stage": "DID_list"
+    }
+  ],
+  "outcome": "stopped",
+  "stop_reason": "normal_download_signature_not_available",
+  "stage": "DID_list"
+}

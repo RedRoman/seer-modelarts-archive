@@ -1,0 +1,58 @@
+/home/ma-user/anaconda3/envs/PyTorch-2.7.1/lib/python3.12/site-packages/torch/cuda/__init__.py:61: FutureWarning: The pynvml package is deprecated. Please install nvidia-ml-py instead. If you did not install pynvml directly, please report this to the maintainers of the package that installed pynvml for you.
+  import pynvml  # type: ignore[import]
+/home/ma-user/anaconda3/envs/PyTorch-2.7.1/lib/python3.12/site-packages/torch_npu/utils/collect_env.py:58: UserWarning: Warning: The /usr/local/Ascend/cann-8.5.2 owner does not match the current owner.
+  warnings.warn(f"Warning: The {path} owner does not match the current owner.")
+/home/ma-user/anaconda3/envs/PyTorch-2.7.1/lib/python3.12/site-packages/torch_npu/utils/collect_env.py:58: UserWarning: Warning: The /usr/local/Ascend/cann-8.5.2/aarch64-linux/ascend_toolkit_install.info owner does not match the current owner.
+  warnings.warn(f"Warning: The {path} owner does not match the current owner.")
+/home/ma-user/anaconda3/envs/PyTorch-2.7.1/lib/python3.12/site-packages/torch_npu/utils/collect_env.py:58: UserWarning: Warning: The /usr/local/Ascend/cann-8.5.2 owner does not match the current owner.
+  warnings.warn(f"Warning: The {path} owner does not match the current owner.")
+/home/ma-user/anaconda3/envs/PyTorch-2.7.1/lib/python3.12/site-packages/torch_npu/utils/collect_env.py:58: UserWarning: Warning: The /usr/local/Ascend/cann-8.5.2/aarch64-linux/ascend_toolkit_install.info owner does not match the current owner.
+  warnings.warn(f"Warning: The {path} owner does not match the current owner.")
+/home/ma-user/anaconda3/envs/PyTorch-2.7.1/lib/python3.12/site-packages/torch_npu/utils/storage.py:89: UserWarning: TypedStorage is deprecated. It will be removed in the future and UntypedStorage will be the only storage class. This should only matter to you if you are using storages directly.  To access UntypedStorage directly, use tensor.untyped_storage() instead of tensor.storage()
+  if self.device.type != 'cpu':
+Traceback (most recent call last):
+  File "/cache/zihaohe/seer_method_dev_20261111/source_transfer_v1/releases/v1_c65c0b4919cd/code_full/tools/train_source_selector.py", line 243, in <module>
+    main()
+  File "/cache/zihaohe/seer_method_dev_20261111/source_transfer_v1/releases/v1_c65c0b4919cd/code_full/tools/train_source_selector.py", line 239, in main
+    run(args.cache, args.out, args.candidate_mode, args.seed, args.device, args.splits)
+  File "/cache/zihaohe/seer_method_dev_20261111/source_transfer_v1/releases/v1_c65c0b4919cd/code_full/tools/train_source_selector.py", line 213, in run
+    optimizer.step()
+  File "/home/ma-user/anaconda3/envs/PyTorch-2.7.1/lib/python3.12/site-packages/torch/optim/optimizer.py", line 485, in wrapper
+    out = func(*args, **kwargs)
+          ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ma-user/anaconda3/envs/PyTorch-2.7.1/lib/python3.12/site-packages/torch/optim/optimizer.py", line 79, in _use_grad
+    ret = func(self, *args, **kwargs)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ma-user/anaconda3/envs/PyTorch-2.7.1/lib/python3.12/site-packages/torch/optim/adam.py", line 246, in step
+    adam(
+  File "/home/ma-user/anaconda3/envs/PyTorch-2.7.1/lib/python3.12/site-packages/torch/optim/optimizer.py", line 147, in maybe_fallback
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ma-user/anaconda3/envs/PyTorch-2.7.1/lib/python3.12/site-packages/torch/optim/adam.py", line 901, in adam
+    _, foreach = _default_to_fused_or_foreach(
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ma-user/anaconda3/envs/PyTorch-2.7.1/lib/python3.12/site-packages/torch/optim/optimizer.py", line 167, in _default_to_fused_or_foreach
+    foreach_supported_devices = _get_foreach_kernels_supported_devices()
+                                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ma-user/anaconda3/envs/PyTorch-2.7.1/lib/python3.12/site-packages/torch_npu/utils/_optim.py", line 17, in patch_supported_devices
+    else torch_npu.npu.get_device_name(torch_npu.npu.current_device()))
+                                       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ma-user/anaconda3/envs/PyTorch-2.7.1/lib/python3.12/site-packages/torch_npu/npu/utils.py", line 95, in current_device
+    torch_npu.npu._lazy_init()
+  File "/home/ma-user/anaconda3/envs/PyTorch-2.7.1/lib/python3.12/site-packages/torch_npu/npu/__init__.py", line 255, in _lazy_init
+    torch_npu._C._npu_init()
+RuntimeError: Initialize:build/CMakeFiles/torch_npu.dir/compiler_depend.ts:134 NPU function error: aclInit, error code is 107001
+[ERROR] 2026-11-11-23:22:27 (PID:3910161, Device:0, RankID:-1) ERR00100 PTA call acl api failed
+[Error]: Invalid device ID.
+        Check whether the device ID is valid.
+[PID: 3910161] 2026-11-11-23:22:26.753.863 Config_Error_Invalid_Environment_Variable(EE2002): Value  for environment variable ASCEND_RT_VISIBLE_DEVICES is invalid. Expected value: [0, 8).
+        TraceBack (most recent call last):
+        rtGetDeviceCount execution failed, reason=driver error:no valid device[FUNC:FuncErrorReason][FILE:error_message_manage.cc][LINE:61]
+        get device count failed, runtime result = 207004.[FUNC:ReportCallError][FILE:log_inner.cpp][LINE:148]
+        input error deviceId:0 is err:0x7010003[FUNC:SetDefaultDeviceId][FILE:api_error.cc][LINE:5556]
+        rtSetDefaultDeviceId execution failed, reason=device id error[FUNC:FuncErrorReason][FILE:error_message_manage.cc][LINE:61]
+        set default device id failed, ret:107001[FUNC:ReportCallError][FILE:log_inner.cpp][LINE:148]
+        [Process][DefaultDevice]process HandleDefaultDevice failed[FUNC:ReportInnerError][FILE:log_inner.cpp][LINE:132]
+        ctx is NULL![FUNC:GetDevErrMsg][FILE:api_impl.cc][LINE:6338]
+        The argument is invalid.Reason: rtGetDevMsg execution failed, the context is a null pointer.
+

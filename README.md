@@ -12,6 +12,11 @@ baselines. Manuscript work is paused. The executable development plan and raw
 results are in [`method_dev/20261111/`](cvpr2027/method_dev/20261111/PLAN.md);
 independent BVI validation is in
 [`selector_val_v1/`](cvpr2027/method_dev/20261111/selector_val_v1/RESULTS.md).
+The latest [SDSD-to-BVI source-trained experiment](cvpr2027/method_dev/20261111/source_transfer_v1/RESULTS.md)
+completed all 36 declared heads and a same-protocol STCD reference. Observation
+detail improves spatial quality across datasets, with a temporal tradeoff;
+the fixed-fusion controls and no-prior arm remain fully reported. This is
+method development, not a SOTA or isolated video-pretraining claim.
 The preceding takeover audited checkpoint reconstruction, corrected historical
 controls and backed up the reachable final weights. Historical JSONs remain
 unchanged; corrected outputs are separate. The current code is

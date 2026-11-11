@@ -1,0 +1,20 @@
+{
+  "checks": {
+    "source_names": true,
+    "split_sha256": true,
+    "args": true,
+    "plan": true,
+    "paired_frame_inventory": true,
+    "source_sha256": true,
+    "raft_weights_sha256": true,
+    "raft_state_sha256": true
+  },
+  "clips": 136,
+  "scenes": 68,
+  "no_target_read_by_cache": true,
+  "pretrained_base_sha": "5ab6b6d04d7b13743965007d3754bd66f034d170ec7193abc2abb5a8aa6c8740",
+  "none_base_sha": "fa3c0c9e720a28b56f01069f7a2cd407bc5b4d752a2a1d4482f1bd63557b5516",
+  "base_historical_initialization_matched": false,
+  "cache_tensor_sha_is_not_expected_equal": true,
+  "actual_lq_gt_tensor_digests_not_recorded": "The same immutable plan, complete sorted pair inventory, source args and code match; full cached tensor crosshost bitwise identity not additionally measured."
+}

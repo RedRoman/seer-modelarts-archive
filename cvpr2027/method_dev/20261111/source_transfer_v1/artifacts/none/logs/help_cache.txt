@@ -1,0 +1,17 @@
+usage: cache_source_corrections.py [-h] --init INIT --raft-weights
+                                   RAFT_WEIGHTS --out OUT
+                                   [--data-seed DATA_SEED]
+                                   [--device {npu,cuda}]
+
+SDSD TRAIN-only frozen observations for source-trained correction selection.
+One deterministic clip per source training sequence. Cache GT as loss labels,
+never as an input to restoration, flow, candidate construction or selection.
+No target-domain frame is read; no GT oracle is computed.
+
+options:
+  -h, --help            show this help message and exit
+  --init INIT
+  --raft-weights RAFT_WEIGHTS
+  --out OUT
+  --data-seed DATA_SEED
+  --device {npu,cuda}

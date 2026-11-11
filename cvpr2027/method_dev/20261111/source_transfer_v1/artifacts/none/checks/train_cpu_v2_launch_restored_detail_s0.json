@@ -1,0 +1,29 @@
+{
+  "utc": "2026-11-11T15:30:16.320695+00:00",
+  "host": "ma-job-a12ef2f6-03b9-4693-ae59-5bc198485979-worker-0",
+  "source_archive_sha256": "c65c0b4919cd8befdd850f9f96e5ce35565a45c3b3f5335ae2c50d00bebac14c",
+  "wrapper_sha256": "cabf6bb730238bbda925ab4c872e2da1d6af9eaea3eaf23eba9b6b6b9e8b64f7",
+  "cache_provenance_sha256": "3066f8d5fecafca8271c0cd7444b7e245c18789fdf1955c0a9f10bc6eb158451",
+  "cache_summary_sha256": "06b8831e8b871895317bce6489df404e10e5e25ef22437e23c5e2bfd014703fb",
+  "family": "restored_detail",
+  "seed": 0,
+  "device": "cpu",
+  "threads": 4,
+  "steps": 1000,
+  "batch_frames": 8,
+  "lr": 0.001,
+  "modes": [
+    "direct_mse",
+    "direct_mse_normalized"
+  ],
+  "queue": "Nine independent family x seed jobs concurrent; 4 CPU threads each",
+  "scope": "Source TRAIN136 only; final internal source holdout once; no target data",
+  "environment": {
+    "TORCH_DEVICE_BACKEND_AUTOLOAD": "0",
+    "OMP_NUM_THREADS": "4",
+    "MKL_NUM_THREADS": "4",
+    "OPENBLAS_NUM_THREADS": "4",
+    "PYTHONPATH": "/cache/zihaohe/seer_method_dev_20261111/source_transfer_v1/releases/v1_c65c0b4919cd/code_full:/cache/zihaohe/seer_method_dev_20261111/source_transfer_v1/releases/v1_c65c0b4919cd/code_full/tools:/temp/zihaohe/seer_cvpr/method_dev_20261111/baseline_code_full:/temp/zihaohe/seer_cvpr/code/baselines:/temp/zihaohe/seer_cvpr/code/baselines/common:/cache/hanbin/ascend_private/cann-8.5.2/python/site-packages:/cache/hanbin/ascend_private/cann-8.5.2/opp/built-in/op_impl/ai_core/tbe:/usr/local/Ascend/cann-8.5.2/python/site-packages:/usr/local/Ascend/cann-8.5.2/opp/built-in/op_impl/ai_core/tbe:/usr/local/Ascend/ascend-toolkit/latest/tools/ms_fmk_transplt/torch_npu_bridge:/usr/local/Ascend/ascend-toolkit/latest/python/site-packages:/usr/local/seccomponent/lib:/home/ma-user/infer/model/1",
+    "ASCEND_RT_VISIBLE_DEVICES": ""
+  }
+}

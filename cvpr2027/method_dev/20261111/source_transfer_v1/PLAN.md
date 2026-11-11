@@ -97,3 +97,21 @@ pixel-branch initial states despite the same seed name. This is a comparison
 of the two available trained bases and added corrections, not an isolated
 causal test of semantic pretraining. Each base still has only one training
 seed. A matched new retraining remains necessary for that stronger attribution.
+
+## Execution record (appended after completion)
+
+Both source caches and all 36 final heads completed on 2026-11-11. Both arms
+were evaluated on 31051 using the same metric implementation and environment;
+all 25 methods per arm are retained. No model-state changes occurred during
+target inference. See [RESULTS.md](RESULTS.md), full raw JSONs, fixed controls
+and independent scene-statistics checks. This paragraph records execution;
+the pre-result protocol above remains intact.
+
+The first pretrained CPU launch failed before step1 because torch_npu's
+automatic backend patch queried an unavailable device. Failed outputs were
+preserved; new process wrappers disabled backend autoload and used fresh
+output directories. Frozen source package c65c0b4919cd was unchanged. Both
+hosts passed CPU Adam smoke and all 74 CPU tests; all declared final heads
+then completed their fixed budgets. Binary heads and evidence were verified
+and backed up to exclusive shared directories; observation caches remain
+host-local.

@@ -1,0 +1,36 @@
+{
+  "package": "openxlab",
+  "version": "0.1.3",
+  "pypi_metadata": "https://pypi.org/pypi/openxlab/json",
+  "wheel_url": "https://files.pythonhosted.org/packages/b4/96/9328ab5187064f82af8843d8ee6be9bce9a1af0e5b9129d098555cf584f9/openxlab-0.1.3-py3-none-any.whl",
+  "wheel_size": 314531,
+  "wheel_sha256": "28bd36d225e6e92b25979de52b770fa477cc01180e2a0424c06e6ec8157dc57c",
+  "inspection": "Read source from in-memory ZIP; no install, imports, execution or credential-file access",
+  "source_file": "openxlab/dataset/client/api.py",
+  "observations": [
+    {
+      "lines": "65-71",
+      "fact": "File-list requests can use base_headers when auth=False; base_headers only Accept:application/json"
+    },
+    {
+      "lines": "83-88",
+      "fact": "GET {host}/datasets/api/v2/datasets/{dataset_name}/r/main with recursive=True, needContent=True, limit=500"
+    },
+    {
+      "lines": "95-98",
+      "fact": "When hasMediaFile=False, official SDK prints server toast and exits before downloads"
+    },
+    {
+      "lines": "111-119",
+      "fact": "downloadCheck calls http_authorization_header"
+    },
+    {
+      "lines": "137-145",
+      "fact": "Download URL resolution calls http_authorization_header, GET /datasets/resolve/{dataset_id}/main/{file_name}, no redirect following"
+    },
+    {
+      "lines": "153-160",
+      "fact": "Dataset info uses anonymous base_headers and comma-separated dataset name"
+    }
+  ]
+}

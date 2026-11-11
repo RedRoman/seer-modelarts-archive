@@ -1,0 +1,15 @@
+usage: eval_source_selector.py [-h] --selectors SELECTORS [SELECTORS ...]
+                               --init INIT --raft-weights RAFT_WEIGHTS --out
+                               OUT [--device {npu,cuda}]
+
+Score source-trained fixed-final heads on BVI VAL16, never target-tune. Pass
+multiple family/seed directories to share exactly one base/RAFT candidate
+computation per target clip. GT is used only after all predictions exist.
+
+options:
+  -h, --help            show this help message and exit
+  --selectors SELECTORS [SELECTORS ...]
+  --init INIT
+  --raft-weights RAFT_WEIGHTS
+  --out OUT
+  --device {npu,cuda}
