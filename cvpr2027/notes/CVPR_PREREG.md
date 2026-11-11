@@ -617,3 +617,722 @@ concatenates the query's own tubelet with the temporal mean over tubelets;
 Criterion (ii) is what separates a mechanism fix from an unexplained gain, and
 it is the reason E15 is worth running where E11's positional variant was a
 guess that failed. Both criteria are fixed before any E15 number exists.
+
+---
+
+## Amendment 12 (2026-10-28, convergence overturns the architecture and mechanism findings)
+
+### The 2000-iteration protocol was not measuring architecture
+
+E17 trains the 22.4M branch to 20000 iterations. At that budget the validation
+curve plateaus and the seed spread falls from 0.91 dB to about 0.35 dB, which is
+what makes the comparisons below meaningful and what made the earlier ones not.
+
+Converged, SDSD test (39 sequences):
+
+| | PSNR-Y | LPIPS |
+|---|---|---|
+| pretrained (2 seeds) | 24.552 | 0.2192 |
+| none (2 seeds) | 23.951 | 0.2348 |
+| random (1 seed) | 19.809 | 0.2682 |
+| Retinexformer, retrained on our split | 22.621 | 0.2115 |
+
+prior vs none: **PSNR +0.601 [-0.593, +1.968] n.s.**, LPIPS -0.0155
+[-0.0248, -0.0076] better. prior vs random: +4.74 dB, both metrics significant.
+
+Two corrections follow. The +3.25 dB attributed to the prior at 2000 iterations
+was largely an artefact of undertraining; at convergence the PSNR effect is not
+significant and only the perceptual metric separates the arms. And random tokens,
+which were indistinguishable from no tokens when undertrained, now cost 4.1 dB
+against no tokens -- the converged model relies on token content, which is why
+wrong content is actively harmful.
+
+### No injection variant survives
+
+All at 20000 iterations, 22.4M branch, against the converged baseline:
+
+| variant | dPSNR | verdict |
+|---|---|---|
+| spatial grounding | +0.029 [-0.386, +0.368] | n.s. |
+| cross-frame KV (hybrid) | -0.081 [-0.528, +0.336] | n.s. |
+| exposure decoupling | -0.600 [-1.555, +0.292] | n.s. |
+| multi-layer keys | -2.984 [-4.137, -1.903] | **worse** |
+
+E11's -0.68 dB and E16's -2.56 dB were protocol artefacts; multi-layer injection
+looked best of all on validation (25.0-25.8) and is the worst on test, i.e. it
+overfits the 16-sequence validation split. **Conclusion as measured: on this task
+the delivery of V-JEPA tokens is insensitive to its mechanism.**
+
+### The temporal mechanism claim reverses
+
+Re-running the E14 intervention on converged checkpoints, SDSD test:
+
+| | intact | shuffled | frozen |
+|---|---|---|---|
+| pretrained | 24.688 | 24.634 | 23.933 |
+| none | 23.527 | 23.488 | 20.922 |
+
+Shuffling still costs nothing, confirming the prior does not use temporal order.
+But freezing now costs the **no-prior** arm 2.605 dB and the prior arm only
+0.755 dB -- the opposite assignment from the undertrained run, where the prior
+arm lost 2.261 and the no-prior arm 0.043.
+
+So the earlier reading, that 2.22 of the prior's benefit came from multi-frame
+aggregation, is withdrawn. At convergence the prior *substitutes* for multi-frame
+redundancy: it supplies from a single frame what the no-prior model has to
+recover by aggregating several. This also explains why E15's cross-frame
+aggregation changed nothing -- the prior model was not relying on that channel.
+
+Combined with the shuffle result and the insensitivity to injection, the
+mechanism statement the paper can defend is: **a frozen video world model
+contributes single-frame semantics here; none of its video-specific structure is
+used.**
+
+### E21 / H16: the one gap the measurements still single out
+
+What remains unexplained is a trust asymmetry. The prior's sign flips with the
+target domain (+2.80 dB on LOL, -1.43 dB on BVI under identical training), and at
+convergence wrong tokens cost 4.1 dB while right tokens buy 0.6 dB. The model
+relies on the tokens unconditionally, which is free in-domain and harmful when
+they are out of distribution. Every injection variant shares that behaviour,
+consistent with them all performing alike.
+
+`models/xattn_gated.py` predicts a per-location scalar gate on the cross-attention
+residual from two unsupervised signals: the cosine agreement between the attended
+token summary and the query's own content, and the summary's magnitude against a
+tracked scale. Cost: **+0.4K parameters** (22.3968M -> 22.3972M), and the gate is
+initialised open, verified to reproduce the ungated model elementwise at init.
+
+| id | hypothesis | pass rule |
+|---|---|---|
+| H16 | the prior fails out of domain because the model cannot tell when it applies | supported only if **both**: (i) cross-domain BVI improves significantly against the ungated baseline, and (ii) feeding random tokens to the trained gated model recovers close to the no-token result instead of losing 4.1 dB |
+
+Criterion (ii) is checkable by inference alone and does not depend on (i), so a
+gate that learns to close is distinguishable from one that merely helps.
+
+---
+
+## Amendment 13 (2026-10-28, before any E22 run existed)
+
+### The encoder does represent temporal structure; the objective does not ask for it
+
+`tools/token_probe.py` measures the tokens directly, before any pixel branch is
+involved, on 8 SDSD test clips:
+
+| tapped block | across-tubelet distance | same, frozen input | token change when frames are shuffled |
+|---|---|---|---|
+| 5 | 0.026 | 0.004 | **21%** |
+| 11 | 0.042 | 0.018 | 26% |
+| 17 | 0.044 | 0.024 | 27% |
+| 23 | 0.192 | 0.083 | **58%** |
+
+Reordering the input frames changes the block-23 tokens by 58%, and the
+across-tubelet variation halves when the clip is replaced by one repeated frame,
+so that variation is temporal rather than positional. Meanwhile the converged
+model's output changes by 0.054 dB under the same reordering.
+
+The two candidate explanations are therefore resolved: it is not that the
+encoder fails to represent motion on low-light near-static footage, but that the
+model has learned to use only the temporally invariant component. The objective
+explains why -- Charbonnier, Retinex and TV are all per-frame, so nothing
+rewards getting the evolution right, and the 58% that varies with order is free
+to fall in the cross-attention's null space.
+
+A further possibility is ruled out in passing: the low-light input and the
+ground truth give almost the same token structure (0.192 vs 0.200
+across-tubelet, 21% vs 18% shuffle change), so darkness does not degrade the
+features.
+
+### E22 / H17
+
+`losses/temporal_delta.py` differences the tokens along the tubelet axis for the
+prediction and for the target and matches the two difference fields, normalised
+by the target's own delta magnitude. Differencing is what makes the term
+specific: the static semantic component cancels, so it cannot be satisfied by
+improving per-frame appearance, which the existing terms already drive. The
+gradient runs prediction -> frozen encoder -> loss, which is what M2 lacked, and
+the matched quantity is a field rather than the scalar LPM used.
+
+Measured at init, the term reads 1.39-1.42 on a relative scale where 1.0 means
+the prediction's latent dynamics are unrelated to the target's -- consistent
+with the probe. Cost: 6.3 -> 17.7 s/it.
+
+| id | hypothesis | pass rule |
+|---|---|---|
+| H17 | the prior's temporal content is unused because nothing in the objective rewards it, not because it is absent | supported only if **both**: (i) a temporal metric (warp error or tLP, as a gap to the ground truth's own level) improves significantly against the converged baseline, and (ii) the trained model's output becomes sensitive to input frame order in `tools/temporal_ablate.py`, which currently reads 0.054 dB |
+
+Criterion (ii) is the mechanism check and is independent of (i): a model that
+merely scores better without becoming order-sensitive has not started using the
+temporal component, and would be reported as such. PSNR is not part of the rule;
+if it falls by more than 0.3 dB the trade is reported rather than claimed.
+
+---
+
+## Amendment 14 (2026-10-29, written before E22's first checkpoint exists)
+
+### 1.0 is not a floor on the E22 loss, it is the value of giving up
+
+The relative term `|dp - dg| / |dg|` reads exactly 1.0 when the prediction's
+latent deltas are zero, so a run drifting toward 1.0 is ambiguous on its own.
+E22 has gone 1.40 (it 50) -> 1.04 (it 2050) -> 1.021 (it 4500), slowing, with
+no checkpoint yet written. Two readings, separated by the parts of the ratio:
+
+  mag  = |dp| / |dg|     how much temporal variation the prediction carries
+  cos  = <dp, dg>        whether it points where the target's does
+
+`tools/td_probe.py` on the converged baseline (E17 pretrained s0, 12 SDSD test
+clips, block 17) and `tools/td_ref.py` on the target alone:
+
+| field compared with the ground truth's | td | mag | cos |
+|---|---|---|---|
+| gt under gamma 1.1 (same motion, appearance changed) | 0.199 | 0.998 | **+0.968** |
+| gt under additive noise, sigma = 1/255 | 0.438 | 0.996 | +0.852 |
+| gt rolled by one pixel | 0.775 | 1.006 | +0.645 |
+| **converged model's output** | 1.455 | 1.063 | **+0.034** |
+| the low-light input | 1.397 | 1.008 | +0.045 |
+| constant latents (dp = 0) | 1.000 | 0.000 | 0.000 |
+
+Two things follow and neither was known before.
+
+**The target is a well-posed quantity.** A photometric change that leaves the
+motion alone moves it by 0.03 (cos 0.968), so the delta field is not a noise
+artefact and td has real headroom down to roughly 0.2. The earlier worry that
+near-static low-light footage simply has no measurable dynamics is excluded.
+
+**The converged model misses it entirely.** It emits temporal variation of
+essentially the right magnitude (1.06x) pointing nowhere near the target
+(+0.034), no better than the unprocessed input (+0.045). Its latent dynamics
+are its own residual fluctuation, not the scene's motion. No per-frame metric
+can see this, and the pixel-space temporal metrics we report (warp error, tLP)
+did not surface it.
+
+### The prediction, registered now
+
+From (mag 1.06, cos 0.03), the cheapest descent direction for a term normalised
+by the *target's* magnitude is to shrink `mag`, which drives td to 1.0 and no
+further; raising `cos` requires actually reconstructing the motion. The loss as
+written therefore has a reachable trivial optimum, and the observed plateau at
+1.02 is where that optimum sits.
+
+**Prediction:** `tools/td_probe.py` on `e22_tdelta_s0/step_5000.pt` will show
+`mag` well below the baseline's 1.063 -- taken as below 0.5 -- with `cos` not
+meaningfully above the baseline's +0.034, taken as below +0.10.
+
+If instead `cos` exceeds +0.10 the term is doing what it was built to do and
+H17 proceeds on the pre-registered rule in Amendment 13, untouched.
+
+If the prediction holds, the diagnosis is in the normalisation rather than in
+the idea, and the registered fix is a direction-only term, scale-invariant in
+`dp` so that shrinking cannot satisfy it, with magnitude restored by a separate
+symmetric ratio penalty:
+
+```
+L = (1 - cos(dp, dg)) + |log(|dp| / |dg|)|
+```
+
+That variant is E24 and inherits H17's pass rule unchanged. It is recorded here
+before the checkpoint that decides between them exists; whichever branch the
+probe selects, the other is reported.
+
+### Amendment 14, outcome (2026-10-30)
+
+The registered prediction holds, at both checkpoints E22 has written:
+
+| model | td | mag | cos |
+|---|---|---|---|
+| converged baseline, no such term | 1.455 | 1.063 | +0.034 |
+| e22_tdelta_s0 step 5000 | 1.027 | **0.202** | **+0.014** |
+| e22_tdelta_s0 step 10000 | 1.018 | **0.166** | **+0.015** |
+| constant latents | 1.000 | 0.000 | 0.000 |
+
+Registered thresholds were mag < 0.5 and cos < +0.10; both are met with room,
+`mag` is still falling between the two checkpoints, and `cos` is *below* the
+baseline's +0.034 rather than above it. E22 did not learn the target's dynamics;
+it removed its own. H17 is therefore untested by E22, not refuted -- the run
+measures the loss, not the hypothesis.
+
+A unit check on the two forms, fed the magnitudes and alignments measured above:
+
+| state | relative (E22) | cosine (E24) |
+|---|---|---|
+| baseline, mag 1.06 cos +0.03 | 1.437 | 1.030 |
+| E22 at step 5000, mag 0.20 cos +0.01 | **1.018** | 2.590 |
+| full collapse, mag 0 | **1.000** | **14.589** |
+| aligned, mag 1.00 cos +0.90 | 0.111 | 0.006 |
+
+The relative form ranks full collapse as its best state; the cosine form ranks
+it worst. That is the whole of the defect and the whole of the fix.
+
+E24 runs the cosine form on two seeds with every other setting held at E22's,
+including the weight 0.3 -- the two losses read 1.44 and 1.03 at the baseline's
+state, so the weight does not need rescaling and the form stays the only
+variable. It inherits H17's pass rule from Amendment 13 unchanged. E22 is left
+to finish for the record rather than killed, since its final checkpoint is the
+only direct measurement of what the misnormalised term does at convergence.
+
+---
+
+## Amendment 15 (2026-10-31)
+
+### The in-domain effect is significant on both metrics once a third seed exists
+
+Ground rule 4 in full, SDSD test, n = 39, 20000 iterations, 22.4M branch:
+
+| metric | prior | none | difference | 95% CI | per-seed | all agree |
+|---|---|---|---|---|---|---|
+| PSNR-Y | 24.589 | 23.300 | **+1.290** | [+0.270, +2.449] | +1.161 / +0.042 / +2.666 | yes |
+| LPIPS | 0.2160 | 0.2400 | **-0.0240** | [-0.0321, -0.0168] | -0.0232 / -0.0079 / -0.0409 | yes |
+
+At two seeds PSNR read +0.601 with a CI spanning zero; the third seed moves it
+to significance and both halves of the rule now pass on both metrics.
+
+The seed spread is reported with the mean rather than behind it, because it is
+wide: the per-seed PSNR effect ranges from +0.042 (a tie) to +2.666, and the
+largest gap comes from a no-prior run that landed at 21.997 against its
+siblings' 23.527 and 24.375. The all-seeds-agree half of the rule is what
+licenses the claim at this spread -- the prior arm is ahead in every seed -- and
+the honest statement is that the effect is consistent in sign and imprecise in
+size. Absolute prior-arm PSNR is stable across seeds (24.688 / 24.416 /
+24.663); it is the no-prior arm that is volatile, which is itself consistent
+with the prior acting as a stabiliser.
+
+### H16 is not refuted by E21; it was not tested
+
+| criterion | result |
+|---|---|
+| (i) gated vs ungated | PSNR -0.243 [-0.853, +0.359] n.s., seeds disagree; LPIPS +0.0043 n.s., both seeds worse |
+| (ii) does the gate close on random tokens | gated loses 4.764 dB, ungated loses 4.879 dB -- no difference |
+
+The audit explains it. Mean gate value on held-out data: 0.9832 with real
+tokens and 0.9833 with random tokens for seed 0, 0.9844 and 0.9844 for seed 1 --
+identical to four decimals, and sitting at the initialisation value of 0.982.
+All 28 gate tensors across 7 cross-attention sites moved off their initial
+values, so the module trained; the function it computes is nonetheless constant.
+
+The reason is in the training setup rather than the hypothesis: the gate only
+ever saw correct tokens, so closing never reduced the loss and no gradient
+pushed it to. Criterion (ii) asked for zero-shot behaviour the gate had no
+opportunity to learn. This is the same class of error as Amendment 14's -- a
+mechanism hypothesis paired with an implementation that cannot test it -- and it
+is now the second instance, which is worth stating as a pattern in how these
+experiments were designed rather than as two unrelated accidents.
+
+### E24 at 5000 and 10000 iterations
+
+| model | td | mag | cos |
+|---|---|---|---|
+| converged baseline, no such term | 1.455 | 1.063 | +0.034 |
+| the low-light input | 1.397 | 1.008 | +0.045 |
+| E22 step 5000 (relative form) | 1.027 | 0.202 | +0.014 |
+| E22 step 10000 | 1.018 | 0.166 | +0.015 |
+| **E24 step 5000** (cosine form) | 1.387 | **0.998** | **+0.062** |
+| **E24 step 10000** | 1.373 | **0.994** | **+0.076** |
+| ceiling: gt under gamma 1.1 | 0.199 | 0.998 | +0.968 |
+
+The anti-collapse half works as designed and the demonstration is
+interventional: the only change from E22 is the form of that one term, and the
+magnitude holds at the target's level (0.994 against 0.202) instead of being
+driven to zero. Alignment is climbing and has passed the input's own level for
+the first time, but it has covered about 4% of the distance to the ceiling and
+is gaining roughly +0.014 per 5000 iterations, so the honest extrapolation to
+20000 is near +0.10 rather than anything close to the ceiling.
+
+H17's pass rule from Amendment 13 is unchanged and is not about `cos`: it needs
+a temporal metric to improve significantly and the model to become sensitive to
+input frame order. A run that moves `cos` without moving either is reported as
+a mechanism that was engaged and did not pay.
+
+### E2 re-opened at convergence
+
+Declaring the 2000-iteration protocol unable to resolve architecture effects
+invalidated E11, E14, E15, E16 and E18, all of which were retested, and H5,
+which E20 retested. E2 and E3 were not, yet "what the prior needs is feature
+depth -- reading only block 23 instead of {5,11,17,23} costs 4.5 dB" is a
+2000-iteration result load-bearing in the current draft. That rule was not
+applied to it.
+
+E2 is therefore rerun at convergence as `e2c_deep` (`--taps 23,23,23,23`, two
+seeds, 20000 iterations, 22.4M branch) against the three-seed baseline above.
+E3 cannot be: the 361M branch needs roughly 139 GPU-hours for 20000 iterations
+and does not fit before the deadline, so its capacity claim is demoted to
+"measured at a 2000-iteration budget" with that budget stated wherever it
+appears, and is not used to support any architectural conclusion.
+
+---
+
+## Amendment 16 (2026-10-31, before any E25 run exists)
+
+### Giving the gate a condition under which closing is worth anything
+
+E21's gate sat at its initialisation (0.9832 with real tokens, 0.9833 with
+random ones) because every training step fed it correct tokens, so closing
+never lowered the loss. H16 was therefore never tested. E25 changes exactly one
+thing: on a fraction of steps the pixel branch is conditioned on the *previous*
+clip's tokens while the target stays the current clip's.
+
+The corruption is deliberately not noise. Previous-clip tokens are real V-JEPA
+tokens with the right statistics, the right spatial layout and the wrong
+content, which is precisely the situation the gate's agreement input -- cosine
+similarity between the attended summary and the query's own features -- is
+constructed to detect. Gaussian noise would be separable on magnitude alone and
+would teach the gate a shortcut that does not transfer to the out-of-domain case
+the hypothesis is about. Caching costs memory and no compute, since the tokens
+are already produced under `no_grad`.
+
+`p = 0.3`, chosen before any run, on the grounds that the branch must still see
+correct tokens on the large majority of steps or the prior's in-domain benefit
+is traded away to buy the gate. No sweep is planned; if 0.3 fails the result is
+reported at 0.3.
+
+| id | hypothesis | pass rule |
+|---|---|---|
+| H16' | the prior's reliance is unconditional because nothing in training rewards conditioning it; given a condition, a gate can learn to discriminate usable from unusable tokens | supported only if **both**: (i) feeding random tokens to the trained model costs significantly less than the 4.76 dB it costs the E21 gated model and the 4.88 dB it costs the ungated one, and (ii) in-domain PSNR-Y does not degrade significantly against the three-seed converged baseline |
+
+Criterion (i) is inference-only and is the mechanism check; (ii) is the cost
+check, because a model that ignores the prior entirely would pass (i)
+trivially while losing the in-domain effect, and that outcome must be
+distinguishable from the gate actually discriminating. The gate's mean value
+under real and corrupted tokens is reported from `tools/gate_audit.py`
+alongside both, since two numbers that differ by less than 0.001 are what
+exposed E21.
+
+Cross-domain is *not* part of the rule. The hypothesis is about conditional
+reliance, which is measurable in domain; whether that translates to transfer is
+a separate question that E20's seeds are already answering and that E25 has no
+budget to test.
+
+### Logging
+
+`--token_corrupt` prints the configured probability at startup and the realised
+count of corrupted steps in every progress line. Both appear because this
+project has twice shipped a change that was installed and did not fire, and a
+configured probability is not evidence that any step was corrupted.
+
+---
+
+## Amendment 17 (2026-11-01, H5 and H17 both decided)
+
+### H5 passes at convergence, on all three held-out domains
+
+Two seeds, 20000 iterations, 22.4M branch, test splits, ground rule 4 applied
+mechanically:
+
+| held out | n | metric claimed | prior | none | difference | 95% CI | per-seed |
+|---|---|---|---|---|---|---|---|
+| SDSD | 39 | LPIPS | 0.2778 | 0.3035 | **-0.0257** | [-0.0471, -0.0059] | -0.027 / -0.024 agree |
+| BVI | 16 | LPIPS | 0.1965 | 0.2194 | **-0.0229** | [-0.0435, -0.0017] | -0.031 / -0.015 agree |
+| LOL | 215 | PSNR-Y | 17.797 | 16.916 | **+0.881** | [+0.390, +1.395] | +0.420 / +1.342 agree |
+
+The unclaimed metric is not significantly degraded on any domain: SDSD PSNR
++0.292 [-1.875, +2.519] n.s., BVI PSNR +0.298 [-1.593, +1.965] n.s., LOL LPIPS
++0.0011 [-0.0031, +0.0054] n.s. The rule required 2 of 3 and gets 3 of 3.
+
+Two honest qualifications. The per-seed signs disagree on SDSD's PSNR and on
+LOL's LPIPS -- but in both cases that is the metric *not* being claimed and not
+significantly harmed, and the all-seeds-agree condition holds for the claimed
+metric in all three domains. And the metric that passes differs by data type:
+the two video domains pass on LPIPS, the single image domain on PSNR. That
+pattern is reported as an observation; nothing here tests why.
+
+This reverses Amendment 8, which recorded H5 as failing on 1 of 3 domains. That
+verdict came from 2000-2500 iteration models, and no domain that passed then
+passes now -- LOL was the only one significant before and is the only one that
+passes on a different metric now. The two verdicts share no overlapping domain,
+which is the strongest evidence yet that the short protocol was reading noise.
+**The cross-domain claim returns to the paper and the title.**
+
+### H17 fails, with the mechanism demonstrably engaged
+
+E24 against the converged baseline, SDSD test, n = 39, two seeds:
+
+| metric | E24 | baseline | difference | 95% CI | per-seed |
+|---|---|---|---|---|---|
+| PSNR-Y | 24.601 | 24.552 | +0.049 | [-0.408, +0.558] n.s. | agree |
+| LPIPS | 0.2455 | 0.2192 | **+0.0262** | [+0.0128, +0.0412] **worse** | agree |
+| tLP, gap to GT | 0.0228 | 0.0144 | **+0.0085** | [+0.0066, +0.0103] **worse** | agree |
+
+Criterion (i) required a temporal metric to improve significantly; tLP moved
+significantly the wrong way. Criterion (ii) required order sensitivity: intact
+24.768 against shuffled 24.802, a difference of **0.034 dB**, against the
+baseline's 0.054. The model is no more sensitive to the order of its input
+frames than before. **H17 fails on both halves.**
+
+What makes this worth reporting rather than discarding is that the intervention
+did what it was built to do, measured at the level it targeted:
+
+| model | td | mag | cos |
+|---|---|---|---|
+| converged baseline | 1.455 | 1.063 | +0.034 |
+| low-light input | 1.397 | 1.008 | +0.045 |
+| E22 s0 / s1 (misnormalised) | 1.012 / 1.011 | 0.138 / 0.133 | +0.014 / +0.014 |
+| **E24 s0 / s1** | 1.362 / 1.368 | **0.999 / 1.004** | **+0.090 / +0.087** |
+| ceiling, gt under gamma 1.1 | 0.199 | 0.998 | +0.968 |
+
+Latent temporal alignment nearly tripled against the baseline and the magnitude
+held at the target's level, exactly as Amendment 14 predicted and within the
++0.10 it extrapolated. So the finding is not "the loss did not work" but
+something more specific and more useful:
+
+**improving a model's latent temporal alignment does not improve its
+pixel-space temporal consistency, and costs perceptual quality.** tLP's gap
+grows while `cos` triples, and LPIPS degrades by +0.0262 -- more than the
+entire in-domain LPIPS benefit the prior buys (-0.0240). The two notions of
+temporal consistency are not the same quantity, and the frozen encoder's notion
+is not the one the metrics or the eye reward.
+
+E22 is the control and confirms the Amendment 14 diagnosis end to end: at
+convergence its collapsed term (mag 0.138) costs PSNR -0.555 [-1.089, -0.035],
+LPIPS +0.1826 [+0.1659, +0.1985] and tLP gap +0.3587 [+0.3425, +0.3757], all
+significant, all seeds agreeing. The misnormalised objective does not merely
+fail to help; it destroys the model.
+
+### Standing
+
+With H17 decided, E25 (H16', Amendment 16) is the only remaining experiment
+that could yield a method contribution. It is at 5050/20000 with a realised
+corruption rate of 30.0% (12108 corrupted steps of 5050 x 8 forward passes) and
+is due 2026-11-02 evening. If it fails its rule, the paper has no method
+contribution and will be written as the empirical and mechanistic result it is,
+with that stated plainly rather than dressed up.
+
+---
+
+## Amendment 18 (2026-11-01, token sufficiency, written with the screen's result and before E26/E27)
+
+### What the prior contributes, as opposed to how much
+
+Every architectural experiment so far asked how the tokens are delivered, and
+all five injection variants land within noise or worse at convergence. The
+content question was never asked. `tools/token_sufficiency.py` asks it by
+reducing the token field at inference on a model trained with the full field.
+Seed 2, SDSD test, n = 39, paired bootstrap against the identity transform:
+
+| transform | dPSNR-Y | 95% CI | dLPIPS | 95% CI |
+|---|---|---|---|---|
+| spatial mean (256 positions -> 1 per tubelet) | +0.341 | [-0.790, +1.430] | -0.0003 | [-0.0041, +0.0035] |
+| temporal mean (8 tubelets -> 1) | -0.081 | [-0.661, +0.472] | +0.0006 | [-0.0018, +0.0029] |
+| rank 4 of 1024 | +0.213 | [-0.353, +0.763] | +0.0000 | [-0.0024, +0.0027] |
+| rank 16 | +0.186 | [-0.155, +0.518] | -0.0014 | [-0.0033, -0.0000] |
+| rank 64 | +0.094 | [+0.000, +0.194] | -0.0006 | [-0.0012, -0.0002] |
+| rank 256 | -0.001 | [-0.047, +0.034] | -0.0001 | [-0.0002, +0.0000] |
+
+The positive means are **not** significant and are not claimed as improvements.
+What the intervals license is an equivalence bound: rank 4 costs at most
+0.35 dB and the spatial mean at most 0.79 dB, against the 4.8 dB that separates
+correct tokens from random ones. Rank 4 therefore discards at most 7% of the
+prior's measured worth, and the spatial layout at most 16%.
+
+The reading is one-sided by construction. A reduction that loses nothing proves
+the discarded part was surplus, and that inference is sound here because the
+model is demonstrably sensitive to token content. A reduction that lost a great
+deal would not distinguish "the information was needed" from "the model is
+brittle to a conditioning distribution it never trained on". E26 removes that
+asymmetry.
+
+### This is the account the negative results were missing
+
+Six results that read as six separate failures follow from one cause:
+
+| result | why |
+|---|---|
+| five injection variants within noise or worse | no spatial structure to inject |
+| E11 positional grounding +0.029 n.s. | same |
+| E15 cross-frame KV +0.11 n.s. | no temporal content to aggregate |
+| E18 multi-layer keys -2.98 | the code is low-rank already |
+| E14 frame order worth 0.054 dB | temporally constant |
+| E24 cos tripled, tLP and LPIPS worse | the term fought the actual mechanism |
+
+What transfers from the video world model is a very low-dimensional, spatially
+near-uniform, temporally near-constant semantic code. **The paper's current
+title asserts a spatial prior and the paper's own data contradicts it; the
+title changes.**
+
+### The confound this screen carries, and what it forces
+
+The projection uses each clip's *own* principal directions, so the result
+licenses "four clip-adaptive directions suffice" and not "a fixed four-
+dimensional code suffices". Those are different claims and only the second can
+be distilled. A fixed basis estimated once on the training split is therefore
+measured before E27 is defined, as `rank k (global)`. If the global-basis
+numbers are materially worse than the per-clip ones, E27 is not launched and
+the finding is reported at the weaker, clip-adaptive strength.
+
+### E26 and E27, registered now
+
+| id | hypothesis | pass rule |
+|---|---|---|
+| H18 | the low-rank sufficiency is a property of the prior, not of a train/test conditioning mismatch | supported if a branch **trained** with globally-rank-k tokens is not significantly worse than the three-seed full-token baseline on PSNR-Y or LPIPS, two seeds, k fixed at the smallest value the global screen supports |
+| H19 | the transferred code is predictable from the low-light input, so the frozen encoder is removable at inference | supported only if a small predictor (<= 2M parameters) conditioning the branch recovers significantly more than the random-token arm **and** is not significantly worse than the full-token baseline, two seeds |
+
+H19 is registered with both outcomes stated as results in advance, because they
+are both informative and the temptation to report only the flattering one is
+exactly what pre-registration is for. If a small predictor trained on this data
+recovers the benefit, the frozen 300M encoder is removable at inference. If it
+does not, the claim is that what transfers is a low-dimensional code that
+*cannot be learned from the task data*, which is the stronger scientific
+statement and which the no-prior arm's 23.300 against 24.589 already makes
+plausible. Neither outcome is a failure of the hypothesis set; only a
+non-result -- a predictor that beats neither arm significantly -- would be.
+
+---
+
+## Amendment 19 (2026-11-01, the E27 gate fires and E27 is cancelled)
+
+### Four clip-adaptive directions suffice; four fixed directions are as bad as noise
+
+Amendment 18 made a fixed basis the gate on E27, on the grounds that only a
+fixed code can be predicted by a small network. The basis was estimated on 60
+training-split clips (test read once, per ground rule 1). It explains little:
+4 global components account for 0.267--0.368 of token variance depending on the
+tapped block, 16 for 0.483--0.572, 64 for 0.719--0.772.
+
+Applied at inference on the converged model, seed 2, SDSD test n = 39:
+
+| projection | dPSNR-Y | dLPIPS |
+|---|---|---|
+| per-clip rank 4 | +0.213 | +0.0000 |
+| per-clip rank 16 | +0.186 | -0.0014 |
+| **global rank 4** | **-4.019** | **+0.0381** |
+| **global rank 16** | **-3.593** | **+0.0307** |
+| global rank 64 | -0.042 | +0.0061 |
+| reference: random tokens | -4.88 | +0.0585 |
+
+A fixed rank-4 projection costs 4.02 dB, which is within the noise of
+destroying the prior entirely (random tokens cost 4.88). Sixteen fixed
+directions are no better. It takes 64 before the projection is harmless.
+
+**E27 is cancelled.** The gate was registered before this was measured and it
+has fired: there is no fixed low-dimensional code to distil, so the efficiency
+claim that would have followed is not available and is not made. This also
+retracts a statement made in conversation before the measurement existed --
+that the frozen 300M encoder was likely removable at inference. It is not, on
+this evidence, and the reason is now measured rather than assumed.
+
+### What the contrast actually says, which is more specific than the earlier reading
+
+Per-clip rank 4 preserves the benefit; global rank 4 destroys it. The useful
+content is therefore not a small fixed set of semantic axes. It is *which*
+four-dimensional subspace a given clip's tokens occupy, and the identity of
+that subspace varies enough across clips that 64 fixed directions are needed to
+contain their union.
+
+This sharpens rather than weakens the account, and it explains why the
+projection cannot be shortcut: locating the subspace requires the encoder that
+produced it. A low-rank description of what transfers is not a low-cost route
+to obtaining it. Any reader of the rank-4 number alone would draw the opposite
+conclusion, so the two must be reported together, and the intro and abstract
+are amended accordingly.
+
+### Three-seed per-clip sufficiency, and one result that is not an equivalence
+
+| transform | dPSNR-Y | 95% CI | per-seed | dLPIPS | 95% CI |
+|---|---|---|---|---|---|
+| per-clip rank 4 | **+0.426** | [+0.033, +0.853] | +++ | -0.0010 | [-0.0029, +0.0006] |
+| per-clip rank 16 | +0.193 | [-0.010, +0.390] | +++ | -0.0011 | [-0.0020, -0.0003] |
+| per-clip rank 64 | +0.072 | [-0.037, +0.173] | +++ | -0.0005 | [-0.0009, -0.0001] |
+| spatial mean | +0.336 | [-0.685, +1.331] | +++ | -0.0005 | [-0.0039, +0.0028] |
+| temporal mean | +0.283 | [-0.180, +0.764] | ++- | -0.0007 | [-0.0026, +0.0010] |
+
+On three seeds the per-clip rank-4 projection is significantly *better* than
+the full token field, not merely equivalent, with all seeds agreeing. The
+reading is that the field carries clip-specific variation the branch is
+slightly harmed by and that a rank-4 projection removes. It is an
+inference-time result on models trained with the full field, so it is a
+measurement about the conditioning and not yet a claim about architecture.
+
+### H18 restated and H20 added
+
+| id | hypothesis | pass rule |
+|---|---|---|
+| H18 | the low-rank sufficiency is a property of the prior, not of a train/test conditioning mismatch | supported if a branch **trained** with global-rank-64 tokens -- the smallest fixed rank the screen above supports -- is not significantly worse than the three-seed full-token baseline on PSNR-Y or LPIPS, two seeds |
+| H20 | the token field's clip-specific component is a nuisance, so projecting it away is an architectural improvement and not only an inference-time artefact | supported only if a branch **trained** with per-clip rank-4 tokens is significantly better than the three-seed full-token baseline on PSNR-Y or LPIPS, two seeds, with no significant degradation of the other |
+
+H20 is the only remaining candidate for a method contribution, and it is a
+modest one: the inference-time effect is +0.426 dB with a confidence interval
+that nearly touches zero. It is registered with that stated, so that a
+null outcome is a reported null and not a quiet omission.
+
+---
+
+## Amendment 20 (2026-11-03, E2 re-decided, H16' and H18 both fail)
+
+### E2 at convergence: tap depth is the one architectural factor that is real
+
+`--taps 23,23,23,23` against the default `5,11,17,23`, two seeds against the
+three-seed baseline, SDSD test n = 39:
+
+| metric | deep-only | baseline | difference | 95% CI | per-seed |
+|---|---|---|---|---|---|
+| PSNR-Y | 21.281 | 24.589 | **-3.309** | [-4.600, -1.940] | -5.107 / -1.510 |
+| LPIPS | 0.2462 | 0.2160 | **+0.0301** | [+0.0206, +0.0405] | +0.043 / +0.017 |
+
+The 2000-iteration estimate was -4.5 dB; at convergence it is -3.309 dB, both
+significant and in the same direction. **E2 is the only architectural result in
+this paper that the short protocol got qualitatively right**, and it survives
+having its own rule applied to it. Reading only the deepest block costs more
+than two thirds of the entire prior benefit (4.88 dB), so the shallow-to-deep
+span is load-bearing and is the one design choice the paper can defend.
+
+This matters for the account in Amendment 18. Depth across blocks is necessary
+while rank within a block is not: the useful signal is spread over the
+encoder's hierarchy, not over the 1024 channels of any single tap.
+
+### H16' fails, and fails more informatively than H16
+
+Trained with 30% of steps conditioned on the previous clip's tokens (realised
+48126 and 47981 corrupted forward passes of 160000):
+
+| criterion | result |
+|---|---|
+| (i) random-token cost reduced | -4.088 dB [-5.421, -2.808] against the ungated -4.879 and E21's -4.764 -- overlapping, no reduction |
+| (ii) in-domain not degraded | PSNR **-1.130** [-1.905, -0.427], LPIPS **+0.0202** [+0.0149, +0.0258], both significant, both seeds agreeing -- **degraded** |
+
+Gate values on held-out data: 0.9824 real / 0.9837 random for seed 0, 0.9844 /
+0.9844 for seed 1. Still at the initialisation value of 0.982, still identical
+between real and random tokens to three decimals.
+
+E21's failure was attributable to the training setup -- the gate never saw
+unusable tokens, so closing could not lower the loss. Amendment 16 removed that
+explanation, and the gate still did not learn to close. The conclusion is
+therefore about the hypothesis and not the implementation: **the agreement and
+magnitude statistics available at a query location do not support
+discriminating usable from unusable conditioning here**, even when 30% of
+training steps reward doing so. What the corruption bought instead was a
+uniformly worse model: it paid 1.13 dB in domain and recovered nothing.
+
+H16 and H16' are reported together, because the second is what licenses the
+stronger reading of the first.
+
+### H18 fails: low-rank sufficiency does not survive training
+
+Trained with globally-rank-64 tokens, the smallest fixed rank the inference
+screen found harmless (-0.042 dB there):
+
+| metric | rank 64 | baseline | difference | 95% CI | per-seed |
+|---|---|---|---|---|---|
+| PSNR-Y | 23.929 | 24.589 | **-0.660** | [-1.213, -0.111] | -0.780 / -0.540 |
+| LPIPS | 0.2201 | 0.2160 | +0.0041 | [-0.0002, +0.0083] | +0.004 / +0.004 |
+
+A projection that costs 0.04 dB when applied to a model trained on the full
+field costs 0.66 dB when the model is trained with it, significant on PSNR with
+both seeds agreeing. The asymmetry Amendment 18 warned about is therefore real
+and runs in the direction that limits the claim: the full field is not surplus
+to a model that can train on it, even though a model trained on it can be
+deprived of most of it at inference.
+
+**The sufficiency finding is restated accordingly, and the restatement is the
+one the paper will carry.** It is a statement about what a trained branch *uses*
+-- a converged model's reliance is concentrated in a low-rank, clip-adaptive
+subspace, and 1024 dimensions, spatial layout and frame order are all largely
+surplus to it at inference -- and not a statement that the representation could
+have been smaller to begin with. The inference-time and training-time numbers
+are reported side by side so that distinction is visible rather than argued.
+
+### Standing after this wave
+
+Seven hypotheses tested at convergence by intervention; one architectural
+factor survives (tap depth, E2); the in-domain and cross-domain effects are
+significant and hold. H20 (per-clip rank 4 trained) is at 13300/20000 and is
+the last experiment. Given H18's outcome -- the same shape of question, with
+the training-time effect significantly negative -- the honest prior on H20 is
+now poor, and that is recorded here before its result exists.

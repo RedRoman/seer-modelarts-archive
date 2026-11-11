@@ -1,0 +1,387 @@
+{
+ "domain": "sdsd",
+ "split": "test",
+ "n": 39,
+ "aggregate": {
+  "intact": {
+   "pretrained": 24.688058845069683,
+   "none": 23.52683026090886,
+   "diff": 1.1612285841608225
+  },
+  "shuffled": {
+   "pretrained": 24.634281136539485,
+   "none": 23.488020866615436,
+   "diff": 1.1462602699240467,
+   "drop_pretrained": -0.05377770853019944,
+   "drop_none": -0.03880939429342398,
+   "gap_ci": [
+    -0.43193666125820296,
+    0.3920225674802167
+   ]
+  },
+  "frozen": {
+   "pretrained": 23.932579867188384,
+   "none": 20.92215031091847,
+   "diff": 3.010429556269911,
+   "drop_pretrained": -0.7554789778813034,
+   "drop_none": -2.604679949990392,
+   "gap_ci": [
+    -0.7658051701149219,
+    4.340818362642835
+   ]
+  }
+ },
+ "per_clip": [
+  {
+   "name": "SDSD_indoor/pair34_2",
+   "intact/pretrained": 18.740930243199386,
+   "intact/none": 19.143694041212363,
+   "shuffled/pretrained": 18.794490938360116,
+   "shuffled/none": 19.139823541085917,
+   "frozen/pretrained": 19.96467586715524,
+   "frozen/none": 19.315630498933494
+  },
+  {
+   "name": "SDSD_indoor/pair3_2",
+   "intact/pretrained": 25.56454247131091,
+   "intact/none": 27.128424978903283,
+   "shuffled/pretrained": 25.304927345159992,
+   "shuffled/none": 27.020467008540017,
+   "frozen/pretrained": 29.8187181113947,
+   "frozen/none": 27.824444420564078
+  },
+  {
+   "name": "SDSD_indoor/pair4",
+   "intact/pretrained": 23.08988839321129,
+   "intact/none": 14.44211076592698,
+   "shuffled/pretrained": 22.956588190926226,
+   "shuffled/none": 15.30433874200321,
+   "frozen/pretrained": 19.47801058123673,
+   "frozen/none": 22.61167226661849
+  },
+  {
+   "name": "SDSD_indoor/pair4_2",
+   "intact/pretrained": 26.630975944650615,
+   "intact/none": 29.6762074571409,
+   "shuffled/pretrained": 27.009027768443957,
+   "shuffled/none": 29.737297135927545,
+   "frozen/pretrained": 30.24231705597333,
+   "frozen/none": 29.80120463392303
+  },
+  {
+   "name": "SDSD_indoor/pair5",
+   "intact/pretrained": 25.813278429627047,
+   "intact/none": 26.788008151070215,
+   "shuffled/pretrained": 25.75372087628703,
+   "shuffled/none": 26.80610221538151,
+   "frozen/pretrained": 27.82191734840803,
+   "frozen/none": 26.54522803398259
+  },
+  {
+   "name": "SDSD_indoor/pair5_2",
+   "intact/pretrained": 24.13442153353163,
+   "intact/none": 15.415852368689297,
+   "shuffled/pretrained": 24.47187733602882,
+   "shuffled/none": 15.568669810093446,
+   "frozen/pretrained": 25.428485331756676,
+   "frozen/none": 24.499431555039838
+  },
+  {
+   "name": "SDSD_indoor/pair6",
+   "intact/pretrained": 29.400814893168615,
+   "intact/none": 20.253629993900397,
+   "shuffled/pretrained": 26.842211518526227,
+   "shuffled/none": 20.93947142407852,
+   "frozen/pretrained": 30.66028836352403,
+   "frozen/none": 31.074313306392987
+  },
+  {
+   "name": "SDSD_indoor/pair6_2",
+   "intact/pretrained": 23.38155874044488,
+   "intact/none": 8.996567315574994,
+   "shuffled/pretrained": 23.414175255514856,
+   "shuffled/none": 9.550497277516781,
+   "frozen/pretrained": 14.357601287381264,
+   "frozen/none": 24.172351730751206
+  },
+  {
+   "name": "SDSD_indoor/pair7",
+   "intact/pretrained": 20.44461066283393,
+   "intact/none": 18.010876067662153,
+   "shuffled/pretrained": 20.94787398500168,
+   "shuffled/none": 18.008723337511185,
+   "frozen/pretrained": 17.18081374334011,
+   "frozen/none": 18.197454082734943
+  },
+  {
+   "name": "SDSD_indoor/pair7_2",
+   "intact/pretrained": 15.422535035705776,
+   "intact/none": 16.610530945163404,
+   "shuffled/pretrained": 15.418475382161601,
+   "shuffled/none": 16.60865519953949,
+   "frozen/pretrained": 15.607742886500265,
+   "frozen/none": 16.847659093626618
+  },
+  {
+   "name": "SDSD_indoor/pair8",
+   "intact/pretrained": 26.846458867220907,
+   "intact/none": 26.742336625713676,
+   "shuffled/pretrained": 27.07621762384899,
+   "shuffled/none": 26.732905824568327,
+   "frozen/pretrained": 25.67745847657946,
+   "frozen/none": 26.681684427037617
+  },
+  {
+   "name": "SDSD_indoor/pair8_2",
+   "intact/pretrained": 23.63698796122887,
+   "intact/none": 23.351023664765265,
+   "shuffled/pretrained": 22.668268600113365,
+   "shuffled/none": 23.468369814596823,
+   "frozen/pretrained": 26.348001327591597,
+   "frozen/none": 23.653981251013334
+  },
+  {
+   "name": "SDSD_indoor/pair9",
+   "intact/pretrained": 28.366019200868827,
+   "intact/none": 32.51935819097437,
+   "shuffled/pretrained": 28.455643479879342,
+   "shuffled/none": 32.4917738979418,
+   "frozen/pretrained": 33.30664581867963,
+   "frozen/none": 33.23831118287315
+  },
+  {
+   "name": "SDSD_indoor/pair9_2",
+   "intact/pretrained": 28.180685674231746,
+   "intact/none": 27.76092123501008,
+   "shuffled/pretrained": 28.21419409370388,
+   "shuffled/none": 27.72624334869819,
+   "frozen/pretrained": 28.023302344130286,
+   "frozen/none": 28.322647114983862
+  },
+  {
+   "name": "SDSD_outdoor/MVI_1007_2",
+   "intact/pretrained": 24.925103809997218,
+   "intact/none": 26.15017238550661,
+   "shuffled/pretrained": 25.485718705699355,
+   "shuffled/none": 26.05715604698981,
+   "frozen/pretrained": 25.885028917823302,
+   "frozen/none": 14.36114490656423
+  },
+  {
+   "name": "SDSD_outdoor/MVI_1009",
+   "intact/pretrained": 25.566111886900273,
+   "intact/none": 25.762236818998765,
+   "shuffled/pretrained": 27.546200747457362,
+   "shuffled/none": 26.59596076812637,
+   "frozen/pretrained": 27.735044033877216,
+   "frozen/none": 23.657709278163473
+  },
+  {
+   "name": "SDSD_outdoor/MVI_1009_2",
+   "intact/pretrained": 23.066658023926564,
+   "intact/none": 23.258678557992397,
+   "shuffled/pretrained": 23.820092279222266,
+   "shuffled/none": 23.351628465892524,
+   "frozen/pretrained": 22.301527121420445,
+   "frozen/none": 25.49025362080656
+  },
+  {
+   "name": "SDSD_outdoor/MVI_1011",
+   "intact/pretrained": 21.632146615012662,
+   "intact/none": 20.252847935336554,
+   "shuffled/pretrained": 23.721315377634536,
+   "shuffled/none": 20.205115796250762,
+   "frozen/pretrained": 19.53996684135597,
+   "frozen/none": 19.9741470156879
+  },
+  {
+   "name": "SDSD_outdoor/MVI_1011_2",
+   "intact/pretrained": 25.28855599980937,
+   "intact/none": 21.032807566132703,
+   "shuffled/pretrained": 25.695928520820825,
+   "shuffled/none": 21.473059091139003,
+   "frozen/pretrained": 22.64473565962364,
+   "frozen/none": 20.31814362017026
+  },
+  {
+   "name": "SDSD_outdoor/MVI_1013",
+   "intact/pretrained": 27.190233267274827,
+   "intact/none": 28.875348069326165,
+   "shuffled/pretrained": 25.945355790370563,
+   "shuffled/none": 29.515658016018364,
+   "frozen/pretrained": 31.948139933821423,
+   "frozen/none": 30.69466309067819
+  },
+  {
+   "name": "SDSD_outdoor/MVI_1013_2",
+   "intact/pretrained": 24.636115184716846,
+   "intact/none": 24.136549440162767,
+   "shuffled/pretrained": 24.384593479810057,
+   "shuffled/none": 24.31370794528105,
+   "frozen/pretrained": 24.075623200103472,
+   "frozen/none": 22.295788992520805
+  },
+  {
+   "name": "SDSD_outdoor/MVI_1015",
+   "intact/pretrained": 27.26988197226126,
+   "intact/none": 26.119921768801,
+   "shuffled/pretrained": 27.17825757504379,
+   "shuffled/none": 27.28244943137191,
+   "frozen/pretrained": 32.962260315890376,
+   "frozen/none": 12.83370010902901
+  },
+  {
+   "name": "SDSD_outdoor/MVI_1015_2",
+   "intact/pretrained": 22.712462491114813,
+   "intact/none": 22.22023249071782,
+   "shuffled/pretrained": 22.484433225334676,
+   "shuffled/none": 22.68338823126269,
+   "frozen/pretrained": 23.70712700215607,
+   "frozen/none": 12.088681647253422
+  },
+  {
+   "name": "SDSD_outdoor/MVI_1017",
+   "intact/pretrained": 26.80249732926999,
+   "intact/none": 25.287352916169066,
+   "shuffled/pretrained": 26.075659089143333,
+   "shuffled/none": 26.073355890633874,
+   "frozen/pretrained": 33.108842244727114,
+   "frozen/none": 14.44037250676395
+  },
+  {
+   "name": "SDSD_outdoor/MVI_1017_2",
+   "intact/pretrained": 26.08773579706967,
+   "intact/none": 27.121783316454895,
+   "shuffled/pretrained": 28.642700108474653,
+   "shuffled/none": 26.05203000714817,
+   "frozen/pretrained": 21.521922698307705,
+   "frozen/none": 17.259283336076827
+  },
+  {
+   "name": "SDSD_outdoor/MVI_1019",
+   "intact/pretrained": 12.454235856826385,
+   "intact/none": 12.23263606354665,
+   "shuffled/pretrained": 12.38507532288143,
+   "shuffled/none": 12.268806923896504,
+   "frozen/pretrained": 12.297184422811323,
+   "frozen/none": 12.44832425646815
+  },
+  {
+   "name": "SDSD_outdoor/MVI_1019_2",
+   "intact/pretrained": 12.387749304988693,
+   "intact/none": 12.19081837046818,
+   "shuffled/pretrained": 12.297397368873497,
+   "shuffled/none": 12.197108124898694,
+   "frozen/pretrained": 12.310334454698273,
+   "frozen/none": 12.292119288981542
+  },
+  {
+   "name": "SDSD_outdoor/MVI_1021",
+   "intact/pretrained": 24.364536017599733,
+   "intact/none": 22.56513840622734,
+   "shuffled/pretrained": 24.112481607321243,
+   "shuffled/none": 22.597889750980958,
+   "frozen/pretrained": 24.18155182076885,
+   "frozen/none": 23.92254295060941
+  },
+  {
+   "name": "SDSD_outdoor/MVI_1021_2",
+   "intact/pretrained": 22.531920683638667,
+   "intact/none": 20.001252568556012,
+   "shuffled/pretrained": 22.16132623613623,
+   "shuffled/none": 18.946215508557746,
+   "frozen/pretrained": 22.425934821841267,
+   "frozen/none": 22.211094260426698
+  },
+  {
+   "name": "SDSD_outdoor/MVI_1024",
+   "intact/pretrained": 25.185766753196646,
+   "intact/none": 28.590197072304992,
+   "shuffled/pretrained": 24.511552945837927,
+   "shuffled/none": 30.288742846516477,
+   "frozen/pretrained": 32.58617229838046,
+   "frozen/none": 30.98505779015701
+  },
+  {
+   "name": "SDSD_outdoor/MVI_1024_2",
+   "intact/pretrained": 25.881507931630015,
+   "intact/none": 27.522645635757943,
+   "shuffled/pretrained": 26.602037971710885,
+   "shuffled/none": 27.828957018225417,
+   "frozen/pretrained": 29.513792838737682,
+   "frozen/none": 24.004977026959995
+  },
+  {
+   "name": "SDSD_outdoor/MVI_1026",
+   "intact/pretrained": 26.65488497270634,
+   "intact/none": 30.30121147228453,
+   "shuffled/pretrained": 26.36110701350299,
+   "shuffled/none": 29.251796356481584,
+   "frozen/pretrained": 32.56388659305864,
+   "frozen/none": 16.530195755973857
+  },
+  {
+   "name": "SDSD_outdoor/MVI_1026_2",
+   "intact/pretrained": 31.02315383243446,
+   "intact/none": 16.78971166075636,
+   "shuffled/pretrained": 32.07436578488774,
+   "shuffled/none": 15.758957987280734,
+   "frozen/pretrained": 32.885294860178064,
+   "frozen/none": 14.753488516071867
+  },
+  {
+   "name": "SDSD_outdoor/MVI_1028",
+   "intact/pretrained": 18.155720059865374,
+   "intact/none": 17.831434106670756,
+   "shuffled/pretrained": 17.62178462224184,
+   "shuffled/none": 17.439712004438814,
+   "frozen/pretrained": 19.353570636662255,
+   "frozen/none": 25.144794164842267
+  },
+  {
+   "name": "SDSD_outdoor/MVI_1028_2",
+   "intact/pretrained": 18.557631370417127,
+   "intact/none": 17.358531044105913,
+   "shuffled/pretrained": 18.828637298587175,
+   "shuffled/none": 17.507727370972283,
+   "frozen/pretrained": 19.287140361165527,
+   "frozen/none": 20.07018567370684
+  },
+  {
+   "name": "SDSD_outdoor/MVI_1030",
+   "intact/pretrained": 33.84800585954656,
+   "intact/none": 34.03124233548408,
+   "shuffled/pretrained": 33.0711135452151,
+   "shuffled/none": 31.46006746342558,
+   "frozen/pretrained": 19.787129705165853,
+   "frozen/none": 13.172144999861839
+  },
+  {
+   "name": "SDSD_outdoor/MVI_1030_2",
+   "intact/pretrained": 32.98819106562175,
+   "intact/none": 32.74970016554545,
+   "shuffled/pretrained": 32.98039272077569,
+   "shuffled/none": 32.0350931660834,
+   "frozen/pretrained": 19.193459431945914,
+   "frozen/none": 12.443441520887685
+  },
+  {
+   "name": "SDSD_outdoor/MVI_1032",
+   "intact/pretrained": 33.32735676816484,
+   "intact/none": 35.17278347761473,
+   "shuffled/pretrained": 30.436511197580494,
+   "shuffled/none": 35.26453220425773,
+   "frozen/pretrained": 12.424651273062821,
+   "frozen/none": 10.756205159101208
+  },
+  {
+   "name": "SDSD_outdoor/MVI_1032_2",
+   "intact/pretrained": 30.64242405249317,
+   "intact/none": 33.15160472881655,
+   "shuffled/pretrained": 28.985233396520158,
+   "shuffled/none": 30.480358804388864,
+   "frozen/pretrained": 15.214314789111842,
+   "frozen/none": 11.029389039582092
+  }
+ ]
+}

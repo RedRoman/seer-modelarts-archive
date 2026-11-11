@@ -1,0 +1,37 @@
+\begin{abstract}
+A frozen video world model is an appealing prior for low-light video
+enhancement: it is trained to predict how scenes evolve, and it costs no paired
+data. We ask what such a prior actually contributes, and how much of it is
+needed. Conditioning a Restormer-style pixel branch on frozen V-JEPA\,2 tokens
+improves a matched no-prior network by \R{indomain@psnr} dB PSNR-Y and
+\R{indomain@lpips} LPIPS on held-out SDSD sequences, significant on both
+metrics over three seeds, and the gain is attributable to the tokens' content
+rather than to the extra conditioning path: tokens from a randomly initialised
+encoder of the same size are worth \R{randomgap@psnr} dB less than pretrained
+ones. The prior also transfers, improving at least one metric significantly on
+each of three held-out domains with no significant degradation of the other --
+a result that is invisible at the short training budgets such comparisons are
+usually made at, where none of the three domains that pass here passed at all.
+What a converged branch relies on, however, is a small part of the
+representation. Five ways of injecting the tokens -- positional grounding,
+cross-frame keys, multi-layer keys, exposure decoupling and a learned
+reliability gate -- are statistically indistinguishable from the simplest one
+or worse, and the order of the input frames is worth \R{ordersens} dB. At
+inference, projecting each clip's 1024-dimensional tokens onto that clip's own
+four principal directions does not hurt (\R{suff@rank4@d} dB), whereas four
+fixed directions estimated on the training data cost \R{gsuff@global4} dB, close
+to discarding the tokens altogether; a branch trained on a fixed 64-dimensional
+projection is significantly worse than one trained on the full field
+(\R{grank64@psnr} dB). The useful content is low-rank but clip-adaptive, and
+locating it requires the encoder. The one architectural choice that survives
+at convergence is reading the encoder across depth: taking only its last block
+loses \R{e2deep@psnr} dB. The encoder does
+represent temporal structure on this data, and a loss that forces the model to
+match it triples the latent agreement while making both perceptual quality and
+pixel-space temporal consistency significantly worse. What a trained branch
+uses is a low-rank, clip-adaptive, spatially near-uniform and temporally
+near-constant code read across the encoder's depth, and the architectures built
+to exploit more than that cannot be distinguished from the one that does not
+try. Every claim is pre-registered;
+all numbers are generated from released per-sequence results.
+\end{abstract}

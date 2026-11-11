@@ -1,0 +1,6 @@
+\section{Conclusion and limitations}\label{sec:conclusion}
+
+A frozen video world model is a useful prior for low-light video enhancement in the domain the restorer is fine-tuned on: with everything else fixed, pretrained V-JEPA tokens improve fidelity, perceptual quality and temporal consistency, and neither a random encoder of the same size nor other frozen encoders match them. The prior does not, by itself, make the restorer robust to unseen sensors and scenes. % CROSS-DOMAIN SENTENCE PENDING
+Two components we designed for the prior did not pay off: the counterfactual predictor stays at identity when free and hurts when forced open, and closed-form chroma preservation only helps when calibrated on target data.
+
+\textbf{Limitations.} All controlled arms share a pixel branch pre-trained with V-JEPA tokens, so a from-scratch comparison may change the size of the in-domain effect. Seer is large ($370$\,M trainable and $305$\,M frozen parameters) and slow compared with image enhancers. Our model code is a re-implementation from the checkpoint layout; all controlled comparisons use the same code, but its absolute numbers differ from the archived reference checkpoint, whose encoder-swap runs we report separately. Results use three seeds for the main arms and one or two for ablations.

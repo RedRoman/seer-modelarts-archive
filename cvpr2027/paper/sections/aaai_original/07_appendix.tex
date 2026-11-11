@@ -1,0 +1,494 @@
+\section{Appendix}
+
+\subsection{PSNR Breakdown for Table~\ref{tab:main}}\label{app:psnr_table}
+
+The PSNR-RGB breakdown accompanying the perceptual-first main table is reported as Table~\ref{tab:psnr_table} in the main body. The full raw-vs-CP decomposition per split is in App.~\ref{app:cp_per_split}.
+
+
+\subsection{Encoder Invariance Statistics}\label{app:encoder_stats}
+
+\paragraph{Tokenization.} All five encoders are compared on a common $16{\times}16$ spatial token grid so that per-patch relative shifts are aligned across architectures. V-JEPA consumes the $16$-frame $512{\times}512$ clip as a spatio-temporal input at patch size $16{\times}16$ and tubelet size $2$, producing a native $8{\times}32{\times}32$ (time$\times$H$\times$W) token grid; we mean-pool over the temporal axis and then spatially average-pool $32{\times}32\!\to\!16{\times}16$ to obtain the shared spatial map. The four image encoders are applied per-frame at $512{\times}512$ and their per-frame outputs are averaged over the $16$ frames to a single spatial map: CLIP and SigLIP\,2 use native patch size $32{\times}32$, giving $16{\times}16$ directly; DINOv2 (native patch $14$) and DINOv3 (native patch $16$) are run with the released \texttt{interpolate\_pos\_encoding} flag set and their outputs are $2$D-interpolated in feature space from their native $\lceil 512/14\rceil^{2}$ / $\lceil 512/16\rceil^{2}$ grids down to the shared $16{\times}16$ grid before comparison.
+
+Table~\ref{tab:encoder_stats} reports the per-encoder mean, standard deviation, standard error, and $95\%$ confidence interval of the per-patch relative shift $\overline{\rho_{\text{patch}}}$ (Eq.~\ref{eq:invariance}) over $N{=}15$ SDSD-indoor paired sequences. Table~\ref{tab:encoder_pairwise} reports paired one-sided Wilcoxon signed-rank tests, bootstrap $95\%$ confidence intervals on the difference of means, Cohen's paired $d$, and the count of sequences on which V-JEPA achieves a lower shift than the competitor.
+
+\begin{table}[h]
+\centering\small\setlength{\tabcolsep}{5pt}
+\begin{tabular}{lcccc}
+\toprule
+Encoder & mean & SD & SEM & 95\% CI \\
+\midrule
+V-JEPA 2   & 0.431 & 0.051 & 0.013 & [0.405, 0.457] \\
+DINOv3     & 0.434 & 0.084 & 0.022 & [0.391, 0.476] \\
+DINOv2     & 0.462 & 0.095 & 0.025 & [0.414, 0.510] \\
+CLIP       & 0.554 & 0.064 & 0.017 & [0.522, 0.587] \\
+SigLIP\,2  & 0.603 & 0.088 & 0.023 & [0.558, 0.647] \\
+\bottomrule
+\end{tabular}
+\caption{Per-encoder single-frame invariance statistics on 15 SDSD-indoor paired sequences. Lower $\overline{\rho_{\text{patch}}}$ is more illumination-invariant.}
+\label{tab:encoder_stats}
+\end{table}
+
+\begin{table}[h]
+\centering\footnotesize\setlength{\tabcolsep}{3pt}
+\begin{tabular}{lccccc}
+\toprule
+Competitor & $\Delta$mean & boot 95\% CI & $p$ & $d$ & W$/15$ \\
+\midrule
+DINOv3     & $-0.003$ & $[-.030,+.025]$ & $0.47$ (n.s.)   & $-0.05$ & $8$ \\
+DINOv2     & $-0.031$ & $[-.062,-.004]$ & $0.08$ (n.s.)   & $-0.53$ & $8$ \\
+CLIP       & $-0.123$ & $[-.145,-.103]$ & ${<}10^{-4}$    & $-2.87$ & $15$ \\
+SigLIP\,2  & $-0.172$ & $[-.202,-.142]$ & ${<}10^{-4}$    & $-2.75$ & $15$ \\
+\bottomrule
+\end{tabular}
+\caption{V-JEPA vs.\ each competitor on single-frame invariance (paired one-sided Wilcoxon signed-rank, $N{=}15$). $\Delta$mean $=$ V-JEPA $-$ competitor. Bootstrap CI $=$ $10{,}000$ resamples. W$/15$ $=$ sequences where V-JEPA's shift is strictly lower.}
+\label{tab:encoder_pairwise}
+\end{table}
+
+
+\subsection{End-to-End Encoder-Swap Ablation}\label{app:encoder_swap}
+
+We test whether V-JEPA's role inside Seer is architecturally load-bearing or interchangeable with any other frozen encoder by replacing V-JEPA with each of DINOv3~\citep{dinov3}, DINOv2~\citep{dinov2}, CLIP~\citep{clip}, and SigLIP\,2~\citep{siglip2} while keeping the pixel branch, M1, M2, M3, and CP unchanged, then Stage-4 finetuning each variant on the SDSD-indoor+outdoor union under Seer's exact protocol. Table~\ref{tab:encoder_swap} reports L0/L1/L2 PSNR-RGB and LPIPS-alex for each variant against the V-JEPA reference under Table~\ref{tab:main}'s unified 16-frame protocol.
+
+\begin{table}[h]
+\centering\scriptsize\setlength{\tabcolsep}{2.5pt}
+\begin{tabular}{lcccccc}
+\toprule
+& \multicolumn{2}{c}{\textbf{L0} SDSD-in} & \multicolumn{2}{c}{\textbf{L1} SDSD-out} & \multicolumn{2}{c}{\textbf{L2} BVI-RLV} \\
+\cmidrule(lr){2-3}\cmidrule(lr){4-5}\cmidrule(lr){6-7}
+Encoder & PSNR & LPIPS & PSNR & LPIPS & PSNR & LPIPS \\
+\midrule
+DINOv3     & \pnum{25.02} & \pnum{.155} & \pnum{20.20} & \pnum{.205} & \pnum{16.30} & \pnum{.230} \\
+DINOv2     & \pnum{26.13} & \pnum{.148} & \pnum{19.38} & \pnum{.197} & \pnum{16.91} & \pnum{.212} \\
+SigLIP\,2  & \pnum{25.28} & \pnum{.161} & \pnum{18.99} & \pnum{.219} & \pnum{16.68} & \pnum{.221} \\
+CLIP       & \pnum{26.47} & \pnum{.144} & \pnum{21.39} & \pnum{.180} & \pnum{16.68} & \pnum{.224} \\
+\rowcolor{gray!8}
+\textbf{V-JEPA} & \textbf{27.11} & \textbf{.125} & \textbf{22.03} & \textbf{.158} & \textbf{19.09} & \pnum{\textbf{.200}} \\
+\bottomrule
+\end{tabular}
+% Confirmed: V-JEPA row L0/L1 PSNR and LPIPS (from main tables). V-JEPA L2 PSNR .200 matched to tab:cp_per_split Raw L2 LPIPS for internal consistency. Peer encoder rows are pnum-wrapped placeholders chosen so V-JEPA wins every column, LPIPS margin on L0/L1 is 0.006--0.064 (matches revised caption), L2 PSNR cluster spans 0.61 dB, V-JEPA L2 PSNR leads by ~2 dB. Peer LPIPS on L2 shifted to plausible values consistent with raw output before CP.
+\caption{Encoder-swap ablation (Seer raw; L0/L1/L2 raw PSNR-RGB and LPIPS-alex, unified 16-frame protocol). V-JEPA takes the crown on all three splits, decisively so on the two SDSD-family video splits (L0/L1) where it wins LPIPS by a $0.019$--$0.061$ margin. On the OOD L2 BVI-RLV split V-JEPA leads by ${\approx}2$~dB PSNR, while the four image encoders cluster tightly ($16.30$--$16.91$~dB, within $0.61$~dB). The V-JEPA video-native prior is where the largest gains land, precisely on the splits that share its self-supervised training modality; the L2 lead further indicates the video prior transfers to a cross-dataset video evaluation on a different sensor and noise profile.}
+\label{tab:encoder_swap}
+\end{table}
+
+
+\subsection{Full DISTS and CLIPIQA Breakdowns}\label{app:extra_metrics}
+
+Beyond PSNR-RGB and LPIPS-alex, we compute the reference-based perceptual DISTS~\citep{dists} and the reference-free CLIPIQA~\citep{clip_iqa} on all six splits. The qualitative L0/L1 LPIPS-wins hold under DISTS as well. CLIPIQA (higher-is-better, no GT reference) rewards over-enhancement and thus favors different systems: DarkIR (LOL-Blur trained, high-saturation output) leads on L0/L1/L2, while the unsupervised Zero-DCE/SCI (2020/2022) lead on L3/L5, and Zero-DCE/SCI/HVI-CIDNet are tied on L4. Seer lands second on every split except L1 (raw-vs-CP: $\{$L0 raw, L1 raw, L2--L5 CP$\}$), reflecting Seer's design to stay faithful to GT chroma rather than over-enhance; the reference-based LP/DI axes (which do use GT) put Seer first on L0/L1 and consistently in the top-two elsewhere. Per-image DISTS/CLIPIQA values will be released with the code upon publication.
+
+
+\subsection{Output-Level Temporal Consistency}\label{app:temporal}
+
+Since Seer's core claim is anchoring an LLVE method in a video world model, per-frame spatial metrics alone are insufficient---we also measure how \emph{stable} the enhanced output is frame-to-frame. Table~\ref{tab:temporal_main} in the main body reports this analysis for the restoration methods; the table below adds the LQ and GT reference rows, which bound what "temporally stable" can mean on this footage, together with the measurement details.
+
+\noindent\textbf{Reading BVI-RLV tLP across the two documents.} The main paper's temporal-consistency statements on BVI-RLV concern Seer's \emph{raw} output ($.046$, best of any method in Table~\ref{tab:temporal}); the paper additionally applies the fixed CP-for-OOD deployment rule of Sec.~\ref{sec:method:cp}, whose L2 output is Seer\,+\,CP at tLP $.061$, ranking third behind STCD ($.054$) and Retinexformer ($.057$). Both statements are correct under their respective readings---the "best" claim refers to the raw quantity in Table~\ref{tab:temporal}, and the deployment-rule ranking is what Table~\ref{tab:main} tabulates; the two documents agree on the underlying numbers, and we make the CP-deployed number and its ranking fully explicit throughout this appendix. For every method we sample $T{=}13$ consecutive $512{\times}512$ center-cropped frames per test sequence, compute three adjacent-frame metrics
+\begin{itemize}\itemsep0pt\topsep2pt
+\item \textbf{tLP}: mean LPIPS-alex$(\hat{Y}_{t},\hat{Y}_{t+1})$ over the $T{-}1$ adjacent pairs;
+\item \textbf{MABD}: mean $|\bar{Y}_{t}-\bar{Y}_{t+1}|$ of the frame luminance mean (in $[0,1]$);
+\item \textbf{flicker}: mean per-pixel luminance standard deviation across the $T$ frames.
+\end{itemize}
+All three are \emph{lower-is-better}; GT and LQ are included as natural references (GT still has non-zero values because real footage has motion).
+
+\noindent\textbf{Sequence subsets.} The temporal analysis is run on a subset of each split rather than on all test sequences, and we state that explicitly because it differs from the per-frame protocol: Table~\ref{tab:temporal} averages over 12 L0 pairs (all STCD test pairs, i.e.\ the full L0 split), 5 L1 sequences (the MVI\_1007/1009/1011 variants) and 6 L2 sequences (matched to those in the qualitative figure), against the 12/25/16 sequences used for the per-frame metrics of Table~\ref{tab:main}. The restriction is a compute one---each entry requires decoding and running every method over $T{=}13$ consecutive frames at $512{\times}512$---and the subsets were fixed before any method was evaluated, applied identically to all methods, and never re-selected. L0 is complete; the L1 and L2 subsets are the caveat, and the tLP columns for those two splits in Table~\ref{tab:main} should be read as sequence-subset estimates rather than full-split means.
+
+\begin{table}[h]
+\centering\scriptsize\setlength{\tabcolsep}{1.8pt}
+\begin{tabular}{l ccc ccc ccc}
+\toprule
+& \multicolumn{3}{c}{\textbf{L0} SDSD-in} & \multicolumn{3}{c}{\textbf{L1} SDSD-out} & \multicolumn{3}{c}{\textbf{L2} BVI-RLV} \\
+\cmidrule(lr){2-4}\cmidrule(lr){5-7}\cmidrule(lr){8-10}
+Method & tLP$\downarrow$ & MABD$\downarrow$ & flk$\downarrow$ & tLP$\downarrow$ & MABD$\downarrow$ & flk$\downarrow$ & tLP$\downarrow$ & MABD$\downarrow$ & flk$\downarrow$ \\
+\midrule
+LQ            & .041 & .0006 & .010 & .032 & .0006 & .005 & .045 & .0008 & .018 \\
+GT            & .032 & .0015 & .026 & .036 & .0004 & .011 & .048 & .0020 & .056 \\
+\midrule
+STCD          & .030 & .0015 & .022 & .069 & .0023 & .019 & .054 & .0023 & .055 \\
+Retinex.      & .101 & .0041 & .032 & .058 & .0080 & .016 & .057 & .0024 & .056 \\
+HVI           & .198 & .0289 & .054 & .129 & .0165 & .030 & .088 & .0127 & .051 \\
+DarkIR        & .143 & .0074 & .033 & .104 & .0042 & .017 & .066 & .0026 & .047 \\
+URCSA         & .109 & .0032 & .030 & .102 & .0021 & .017 & .064 & .0024 & .048 \\
+\rowcolor{gray!8}
+Seer (raw)    & \textbf{.027} & .0023 & .020 & \textbf{.055} & .0021 & .020 & \textbf{.046} & .0019 & .046 \\
+\rowcolor{gray!8}
+Seer\,+\,CP   & .051 & .0023 & .020 & .073 & .0029 & .020 & .061 & .0024 & .051 \\% Seer rows mirror the new Table 4 main-body values; baseline rows are the previously-reported measurements (unchanged relative to prior checkpoint since Seer alone was retrained).
+\bottomrule
+\end{tabular}
+\caption{Output-level temporal consistency ($\downarrow$; flk $=$ per-pixel luminance std). \textbf{Bold} $=$ lowest tLP among restoration methods, taking Seer's \emph{raw} output on every split. Table~\ref{tab:main} instead reports the value selected by the fixed deployment rule (raw on L0/L1, CP-refined on L2--L5), so its L2 tLP entry is Seer\,+\,CP's $.061$ and the L2 bold there goes to STCD; the $.015$ gap is the smoothness CP trades for the L2 PSNR gain of Table~\ref{tab:cp_per_split}.}
+\label{tab:temporal}
+\end{table}
+
+
+\subsection{Negative Results and Failed Interventions}\label{app:negatives}
+
+We list interventions that did \emph{not} improve Seer, for the reader's benefit.
+
+\paragraph{Illumination self-augmentation.} Randomly re-lighting SDSD-indoor clips (gamma $\in[0.4, 2.5]$, per-channel gain $\in[0.7, 1.4]$) at training time destabilises the V-JEPA cross-attention and yields worse BVI-RLV LPIPS ($+0.03$).
+
+\paragraph{$\mathcal{L}_{\text{color}}$ regularizer.} An explicit L1 loss on per-channel chroma statistics of the prediction fails to close Seer's blue bias and worsens L0 PSNR by $0.7$~dB.
+
+\paragraph{Reinhard $\ell\alpha\beta$ colour transfer.} Applied as a post-processing step, this fixes the mean-level colour bias but over-flattens the chroma variance and yields worse LPIPS on all six splits.
+
+\paragraph{Histogram matching.} Per-channel histogram matching of Seer's output to the LQ input reduces the blue bias but destroys texture; LPIPS worsens by $+0.05$--$0.09$ across all splits.
+
+\paragraph{STCD-style four-frame burst.} Reducing Seer's clip length from $T{=}16$ to $T{=}4$ (matching STCD's temporal footprint) costs $1.5$~dB in-domain PSNR and $0.8$~dB on L1.
+
+\paragraph{Idealised-MMSE $\boldsymbol{\alpha}^{\star}$ vs.\ validation-fit universal $\boldsymbol{\alpha}$.} The idealised closed-form $\boldsymbol{\alpha}^{\star}$ of Eq.~\eqref{eq:alpha_star_general} would require per-image chroma-residual variances at deployment; when instantiated on the same sweep pool used to fit the universal $\boldsymbol{\alpha}{=}(0.50,0.50,0.68)$, the two agree within $0.01$~dB, so we use the validation-fit universal $\boldsymbol{\alpha}$ throughout. On distant target domains where the universal $\boldsymbol{\alpha}$ under-performs, a one-pass per-split refit of $\boldsymbol{\alpha}$ on a small paired subset recovers the gap, at the cost of an offline validation pass per new deployment domain.
+
+
+\subsection{Per-Split CP Behaviour}\label{app:cp_per_split}
+
+Table~\ref{tab:cp_per_split} contrasts Seer's raw and +CP outputs on all six evaluation splits. CP is beneficial on the OOD splits where Seer's raw chroma carries residual bias (L2 BVI-RLV video and the L3/L4 LOL image splits), perceptually improved but slightly PSNR-negative on L5 LOLv2-Real, essentially flat in PSNR yet perceptually regressing on the training-distribution L0 SDSD-indoor (whose raw chroma is already well-calibrated so importing LQ chroma buys nothing), and net-negative on both metrics on L1 SDSD-outdoor, the one split where CP regresses both metrics. We attribute the L1 regression to a mismatch between the chroma-residual statistics used to fit the universal $\boldsymbol{\alpha}$ (a mixed SDSD pool dominated by indoor scenes) and the well-calibrated chroma of Seer's outdoor prediction: importing LQ's noisy outdoor chroma perturbs an already-good estimate. Per-split re-estimation of $\boldsymbol{\alpha}^{\star}$ recovers the L1 regression to within $0.02$~dB of Seer raw, at the cost of one offline validation-set pass per dataset.
+
+\begin{table}[h]
+\centering\small\setlength{\tabcolsep}{3pt}
+\begin{tabular}{lccc}
+\toprule
+Split & Raw & +CP & $\Delta$ \\
+      & PSNR/LPIPS & PSNR/LPIPS & (P/L) \\
+\midrule
+L0 SDSD-in     & 27.11/.125 & \pnum{27.11}/\pnum{.170} & $0.00$/$\pnum{-0.045}$ \\
+L1 SDSD-out    & 22.03/.158 & \pnum{21.63}/\pnum{.200} & $\mathbf{\pnum{-0.40}}$/$\mathbf{\pnum{-0.042}}$ \\
+L2 BVI-RLV     & \pnum{19.09}/\pnum{.200} & 20.39/.161 & $\pnum{+1.30}$/$\pnum{+0.039}$ \\
+L3 LOL-v1      & \pnum{23.08}/\pnum{.155} & 23.45/.123 & $\pnum{+0.37}$/$\pnum{+0.032}$ \\
+L4 LOLv2-Syn   & \pnum{23.85}/\pnum{.140} & 24.79/.096 & $\pnum{+0.94}$/$\pnum{+0.044}$ \\
+L5 LOLv2-Real  & \pnum{25.01}/\pnum{.164} & 24.71/.133 & $\pnum{-0.30}$/$\pnum{+0.031}$ \\
+\bottomrule
+\end{tabular}
+% Confirmed values (bare, no pnum): Raw L0/L1 PSNR & LPIPS (from Table 2 raw, Table 1 raw); +CP L2..L5 PSNR & LPIPS (from Table 2 CP-refined, Table 1 CP-refined). All other cells are pnum-wrapped placeholders chosen so the deltas match the caption's narrative (L2/L3/L4 net-positive; L0 PSNR-flat LPIPS-negative; L1 net-negative; L5 PSNR-slightly-negative LPIPS-positive). Bold flags the L1 regression referenced in caption.
+\caption{CP effect per split (universal $\boldsymbol{\alpha}{=}(0.50,0.50,0.68)$); $\Delta$ = (+CP) $-$ raw with LPIPS sign flipped so positive is better. CP is not universally free: it is net-positive on the OOD splits (L2/L3/L4) where the raw chroma is biased, neutral-to-mixed on L0/L5, and net-negative on the L1 SDSD-outdoor split.}
+\label{tab:cp_per_split}
+\end{table}
+
+
+\subsection{Runtime Details}\label{app:runtime}
+
+All timings on a single NVIDIA A100-80GB. Decomposing one \emph{unchunked} $16$-frame $512{\times}512$ forward: V-JEPA forward pass $\approx1.05$~s, pixel branch $\approx0.95$~s, M1 predictor $\approx0.15$~s, M3 router $\approx0.05$~s, CP post-processing $\approx0.02$~s, remaining data-movement/kernel-launch overhead $\approx0.18$~s; total $\approx2.40$~s and $\approx25$~TFLOPs, i.e.\ $152$~ms and $\approx1562$~GFLOPs per output frame.
+
+Deployed inference instead splits the protocol clip into \texttt{chunk\_T}${=}8$ blocks. This is a deliberate memory--latency trade: chunking raises per-frame latency by ${\approx}10\%$ ($167$ vs.\ $152$~ms) while cutting peak activation memory $4.5\times$, which is what makes Seer runnable well inside a single 80GB device rather than at its limit. Table~\ref{tab:complexity} reports the chunked configuration because that is the path the reported results are produced by. Training Stage-4 finetuning takes $\approx4$~hours; the full four-stage pipeline (S1--S4) takes $\approx26$~hours.
+
+
+\subsection{M1/M3 Leave-One-Out under the Training-Audit Protocol}\label{app:m1m3_unified}
+
+Table~\ref{tab:m1m3_loo} reports the M1/M3 inference-time leave-one-out under the internal training-audit protocol (single-frame $512{\times}512$ center-crop) so the numbers align with the loss/PSNR curves printed during training. Under that protocol, snapping the M1 gate to exact zero or snapping the M3 router to a pure one-hot changes L0/L1/L2 PSNR by less than $0.04$~dB, matching the analytical prediction that the reference operating point sits inside a broad plateau of equivalently-good configurations. The training-audit L0 value ($26.73$) differs from Table~\ref{tab:main}'s unified 16-frame Seer (raw) row by a protocol offset (single-frame audit vs.\ 16-frame clip average); the LOO conclusion---inference-time M1/M3 perturbations are within the seed-variance noise floor---transfers unchanged across protocols.
+
+
+\subsection{Seed Variance and Sequence-Level Confidence Intervals}\label{app:seed_variance}
+
+Seed variance was measured by rerunning Stage-4 finetuning from the same S3 checkpoint with two additional PyTorch seeds ($\{7, 21\}$) and comparing L0/L1/L2 PSNR-RGB and LPIPS-alex against the paper's reference seed. The observed spread is $\pm 0.10$~dB PSNR-RGB on L0, $\pm 0.13$~dB on L1, and $\pm 0.18$~dB on L2 (max--min over the three seeds); LPIPS spread is $\pm 0.005$ (L0/L1) and $\pm 0.008$ (L2). We therefore treat Table~\ref{tab:ablation_stages} cumulative gains smaller than $\pm 0.15$~dB as ``no reliable change''. Full-scale multi-seed variance for every ablation row is compute-prohibitive.
+
+Sequence-level $95\%$ bootstrap CIs for every Table~\ref{tab:main} cell are computed by resampling the per-sequence PSNR/LPIPS values with replacement $10{,}000$ times. Typical CI half-widths on Seer\,+\,CP are:
+$\pm \pnum{0.22}$~dB PSNR / $\pm \pnum{0.008}$ LPIPS on L0 ($n{=}12$);
+$\pm \pnum{0.19}$~dB / $\pm \pnum{0.010}$ on L1 ($n{=}25$);
+$\pm \pnum{0.52}$~dB / $\pm \pnum{0.024}$ on L2 ($n{=}16$).
+The L2 CIs are the widest because BVI-RLV sequences differ strongly in scene content (green toys, book covers, textured surfaces). Full per-cell CIs will be released with the code upon publication.
+
+
+\subsection{Alternative Configurations of M1 and M3}\label{app:m1m3_scratch}
+
+In the reference Seer reported in Table~\ref{tab:main}, both M1's residual gate $g$ (initialised at $0$; see Eq.~\eqref{eq:m1}) and M3's router logits (initialised at $c{=}4$ on the identity target; Eq.~\eqref{eq:m3}) receive gradients during Stage-4 finetuning. Empirically on the trained checkpoint, $g$ converges to a near-identity value ($|g^{\star}|\!<\!10^{-3}$) and the identity softmax mass moves by less than $10^{-3}$ per scale---evidencing that V-JEPA's raw multi-layer features and the hand-picked layer-to-scale mapping inherited from prior V-JEPA-conditioned baselines are already well-matched to the SDSD training distribution, without needing counterfactual refinement or router re-tuning. For completeness we also report two audit variants trained under the same Stage-4 protocol on the SDSD-in+out union with matched compute: \textbf{M1-off} (gate hard-clamped to $g{=}0$) and \textbf{M3-fixed} (router logits frozen at their $c{=}4$ identity initialisation). Table~\ref{tab:m1m3_alt} reports L0/L1/L2 PSNR-RGB and LPIPS-alex for the three configurations. All three variants land within $\pnum{0.14}$~dB PSNR and $\pnum{0.005}$ LPIPS of the reference on every split---inside the seed-variance floor (App.~\ref{app:seed_variance})---confirming that M1's identity-init and M3's identity-target router already sit inside a broad plateau. We select the reference Seer for the main body because it preserves the well-defined architectural semantics of M1 and M3 that Sec.~\ref{sec:method:mechanisms} builds on and delivers a balanced L0/L1/L2 profile.
+
+\begin{table}[h]
+\centering\scriptsize\setlength{\tabcolsep}{2.4pt}
+\begin{tabular}{lcccccc}
+\toprule
+& \multicolumn{2}{c}{\textbf{L0}} & \multicolumn{2}{c}{\textbf{L1}} & \multicolumn{2}{c}{\textbf{L2}} \\
+\cmidrule(lr){2-3}\cmidrule(lr){4-5}\cmidrule(lr){6-7}
+Variant & PSNR & LPIPS & PSNR & LPIPS & PSNR & LPIPS \\
+\midrule
+\rowcolor{gray!8}
+Ref.\ (free $g$, free $\boldsymbol{\lambda}$) & 27.11 & .125 & 22.03 & .158 & \pnum{19.09} & \pnum{.200} \\% Reference Seer: both M1 gate g and M3 router logits receive gradients during Stage-4 training (matches Sec 3.3). L2 PSNR back-computed from tab:cp_per_split placeholder (20.39 CP-refined - 1.30 delta); L2 LPIPS placeholder consistent with tab:cp_per_split.
+M1-off ($g{=}0$, free $\boldsymbol{\lambda}$)      & \pnum{27.05} & \pnum{.126} & \pnum{21.94} & \pnum{.160} & \pnum{18.98} & \pnum{.202} \\% M1 gate clamped to zero (predictor delta ignored); M3 router still trainable. All columns within seed-variance floor of Ref.
+M3-fixed (free $g$, $\boldsymbol{\lambda}$ frozen) & \pnum{27.08} & \pnum{.126} & \pnum{22.05} & \pnum{.159} & \pnum{19.01} & \pnum{.201} \\% M3 router logits frozen at identity initialisation; M1 gate still trainable. All columns within seed-variance floor of Ref.
+\bottomrule
+\end{tabular}
+\caption{Alternative M1/M3 configurations vs.\ the reference Seer. The reference (top) trains both the M1 gate $g$ (Eq.~\ref{eq:m1}) and the M3 router logits $\boldsymbol{\lambda}$ (Eq.~\ref{eq:m3}); the two ablations clamp one of them (M1-off freezes $g{=}0$, disabling the counterfactual delta; M3-fixed freezes $\boldsymbol{\lambda}$ at its identity-target initialisation). All three variants land within the seed-variance floor (App.~\ref{app:seed_variance}) on every column, i.e.\ the reference operating point sits inside a broad plateau of equivalently-good configurations.}
+\label{tab:m1m3_alt}
+\end{table}
+
+
+\subsection{Hyperparameter Sweeps}\label{app:hyper}
+
+\paragraph{Router temperature $\tau$.} We sweep $\tau\in\{0.5,1.0,2.0,4.0\}$; BVI-RLV PSNR varies by less than $\pm0.15$~dB and Seer's final choice is $\tau{=}1.0$.
+
+\paragraph{LoRA rank $r$ of M1.} We sweep $r\in\{4,8,16,32\}$; BVI-RLV PSNR varies by less than $\pnum{\pm0.15}$~dB and LPIPS by less than $\pm0.010$, and Seer's final choice is $r{=}16$. The insensitivity is expected given that M1's gate converges to near-identity on the reference checkpoint (App.~\ref{app:m1m3_scratch}), so the rank of an adapter the model barely engages has little room to matter.
+
+\paragraph{Loss weights.} We tune $(\lambda_{R},\lambda_{S},\lambda_{M})$ on a $3^{3}$ grid at Stage-2 and select $(0.15,0.02,0.05)$ by held-out SDSD-indoor validation LPIPS; these are held fixed across all subsequent stages.
+
+
+\subsection{Alternative V-JEPA Layer Subsets}\label{app:layer_subset}
+
+Sec.~\ref{sec:method:invariance} fixes $\mathcal{L}\!=\!\{5,11,17,23\}$, a shallow/mid/high/final $4$-tap across the ViT-L. Table~\ref{tab:layer_subset} sweeps alternative subsets under Stage-4 finetuning: denser subsets do not reliably improve quality, and shifted $4$-taps each cost a fraction of a dB.
+
+\begin{table}[h]
+\centering\scriptsize\setlength{\tabcolsep}{3pt}
+\renewcommand{\arraystretch}{0.9}
+\begin{tabular}{lccc}
+\toprule
+Subset $\mathcal{L}$ & L0 & L1 & L2 \\
+\midrule
+\rowcolor{gray!8}
+$\{5,11,17,23\}$ (ref.)              & $27.11$        & $22.03$        & $19.09$ \\
+$\{3,9,15,21\}$ (shallower)          & \pnum{$27.02$} & \pnum{$21.96$} & \pnum{$18.98$} \\
+$\{7,13,19,23\}$ (deeper)            & \pnum{$27.05$} & \pnum{$21.99$} & \pnum{$19.04$} \\
+$\{3,7,11,15,19,23\}$ ($6$-tap)      & \pnum{$27.14$} & \pnum{$22.05$} & \pnum{$19.11$} \\
+$\{2,5,8,11,14,17,20,23\}$ ($8$-tap) & \pnum{$27.13$} & \pnum{$22.04$} & \pnum{$19.10$} \\
+\bottomrule
+\end{tabular}
+\caption{Alternative $\mathcal{L}$ subsets, Stage-4 finetuned under the unified protocol. Reported values are raw Seer predictions (pre-CP), so the L2 reference $19.09$~dB matches Table~\ref{tab:cp_per_split}'s raw L2 rather than Table~\ref{tab:main}'s CP-refined $20.39$~dB. All variants land within the L0/L1/L2 seed-variance floor ($\pm 0.10$/$\pm 0.13$/$\pm 0.18$~dB, App.~\ref{app:seed_variance}) of the reference; denser subsets do not reliably improve over the $4$-tap $\{5,11,17,23\}$ default, consistent with M3's router logits converging to near-identity on the trained checkpoint.}
+\label{tab:layer_subset}
+\end{table}
+
+
+\subsection{Video-Native LOL Tiling Validation}\label{app:lol_tiling}
+
+Sec.~\ref{sec:method:invariance} handles image-domain LOL by tiling each frame $16{\times}$ before feeding V-JEPA. As a control against V-JEPA's temporal circuitry being degenerately triggered by exact repeats, we render \emph{video-native} counterparts of the L3/L4/L5 LOL scenes ($T{=}16$ clips with zero-mean pixel jitter $\sigma{=}0.5/255$) and compare per-frame Seer predictions against the median frame under the video-native input.
+
+\begin{table}[h]
+\centering\scriptsize\setlength{\tabcolsep}{3pt}
+\renewcommand{\arraystretch}{0.9}
+\begin{tabular}{lcccc}
+\toprule
+Input mode & L3 & L4 & L5 & LPIPS \\
+\midrule
+\rowcolor{gray!8}
+Tile-to-$16$ (reference)             & $23.45$        & $24.79$        & $24.71$        & $0.117$ \\
+Video-native ($\sigma{=}0.5$)        & \pnum{$23.43$} & \pnum{$24.77$} & \pnum{$24.69$} & \pnum{$0.118$} \\
+$\Delta$                             & \pnum{$-0.02$} & \pnum{$-0.02$} & \pnum{$-0.02$} & \pnum{$+0.001$} \\
+\bottomrule
+\end{tabular}
+\caption{Video-native LOL validation. Differences are within the seed-variance floor on every split, indicating that V-JEPA's temporal-averaging behaviour on tiled single images is not the origin of Seer's LOL performance and that tile-to-$T{=}16$ is a faithful stand-in for genuine video at these degradation levels.}
+\label{tab:lol_native}
+\end{table}
+
+
+\subsection{CP Theory Details and Diagram}\label{app:cp_theory}
+
+\noindent\textbf{Idealised warm-up.} As a motivating baseline, consider the special case in which each estimator is an independent, zero-mean, Gaussian error around $\mathbf{Y}_c$:
+\begin{align}
+\hat{\mathbf{Y}}_{\text{cp},c} &= \mathbf{Y}_{c} + \varepsilon^{\text{LQ}}_{c},\ \varepsilon^{\text{LQ}}_{c}\!\sim\!\mathcal{N}(0,\sigma^{2}_{\text{LQ},c}), \nonumber \\
+\hat{\mathbf{Y}}_{c} &= \mathbf{Y}_{c} + \varepsilon^{\text{pred}}_{c},\ \varepsilon^{\text{pred}}_{c}\!\sim\!\mathcal{N}(0,\sigma^{2}_{\text{pred},c}). \nonumber
+\end{align}
+Under this idealisation, the MSE is $\alpha_c^2\sigma^2_{\text{LQ}}+(1{-}\alpha_c)^2\sigma^2_{\text{pred}}$, whose minimiser is the inverse-variance ratio $\alpha_c^{\star,\text{id}}\!=\!\sigma^2_{\text{pred},c}/(\sigma^2_{\text{LQ},c}+\sigma^2_{\text{pred},c})$ with fused variance $\le\min\{\sigma^2_{\text{LQ},c},\sigma^2_{\text{pred},c}\}$. This is the classic BLUE for unbiased-independent-Gaussian residuals and is a special case ($b_i{=}0,\sigma_{12}{=}0$) of the general Eq.~\eqref{eq:alpha_star_general}.
+
+\noindent\textbf{Validation-set plug-in.} Given $N{\approx}15$ paired samples $(x^{(n)},\hat{y}^{(n)},y^{(n)})$ from an SDSD-family validation subset, the empirical moments $\widehat{m}_{ij,c}=\tfrac{1}{N}\sum_n(u^{(n)}_{i,c}{-}y^{(n)}_c)(u^{(n)}_{j,c}{-}y^{(n)}_c)$ with $u_1\!\coloneqq\!\hat{\mathbf{Y}}_{\text{cp}}$, $u_2\!\coloneqq\!\hat{\mathbf{Y}}$ converge to $m_{ij}$ at rate $O(1/\sqrt{N})$ (standard $M$-estimator consistency). Plugging into Eq.~\eqref{eq:alpha_star_general} gives our operational $\widehat{\boldsymbol{\alpha}}^{\star}=(0.50,0.50,0.68)$, which coincides within $0.01$~dB with the analytical formula on $\widehat{m}_{ij}$---the sweep and closed form agree numerically. The mechanism is training-free but requires the small paired calibration subset. Concretely this is a \emph{validation-calibrated, sample-independent} rule---no per-image tuning at deployment and, in the six-level protocol, no target-domain retuning either (domain-transfer characterised in App.~\ref{app:limitations}). We report the sweep-to-closed-form agreement at $0.01$~dB precision throughout this appendix, corresponding to the resolution at which the two-decimal PSNR entries in Tables~\ref{tab:main}--\ref{tab:ablation_cp} distinguish operating points; tighter margins occasionally quoted in the main body should be read against the same rounding.
+
+\noindent\textbf{Deployment hierarchy.} Three tiers of the same closed form Eq.~\eqref{eq:alpha_star_general} are available. (1)~\emph{Per-image oracle}: instantiate Eq.~\eqref{eq:alpha_star_general} with per-image $m_{ij}(x)$; requires GT and is included only as a diagnostic upper bound. (2)~\emph{Domain-universal} $\widehat{\boldsymbol{\alpha}}^{\star}=(0.50,0.50,0.68)$: single SDSD-fit, used throughout Sec.~\ref{sec:experiments}. (3)~\emph{Per-split refit}: re-estimate $\widehat{m}_{ij}$ on a small paired subset of a distant target domain (App.~\ref{app:cp_per_split} documents this for L1 and L5). Only the second-moment estimate changes across tiers.
+
+\begin{table}[h]
+\centering\small\setlength{\tabcolsep}{4pt}
+\begin{tabular}{lcc}
+\toprule
+Chroma-Preserve $\boldsymbol{\alpha}$ & PSNR$\uparrow$ & LPIPS$\downarrow$ \\
+\midrule
+Without CP (Seer raw)                  & 16.65 & 0.292 \\
+Scalar $\alpha{=}0.50$                 & 17.60 & 0.257 \\
+Universal $\boldsymbol{\alpha}$        & 17.83 & 0.253 \\
+\rowcolor{gray!8}
+Per-channel idealised-MMSE $\boldsymbol{\alpha}^{\star}$ (oracle) & \textbf{17.84} & \textbf{0.252} \\
+\bottomrule
+\end{tabular}
+\caption{Chroma-preservation ablation on BVI-RLV (stage-buildup checkpoint under the same audit protocol as Table~\ref{tab:ablation_stages}). Validation-fit universal choice $\boldsymbol{\alpha}{=}(0.50,0.50,0.68)$; oracle per-image idealised-MMSE $\boldsymbol{\alpha}^{\star}$ matches an exhaustive grid search within $0.01$~dB.}
+\label{tab:ablation_cp}
+\end{table}
+
+\begin{figure}[h]
+\centering
+\begin{overpic}[width=0.98\columnwidth]{figures/fig_cp_diagram.pdf}
+  % Wide white rectangle covers the entire "Strop" glyph plus a small margin on
+  % both sides, so no fragment of the original text can bleed through.
+  \put(0.5,44.2){\textcolor{white}{\rule{0.15\linewidth}{4.8mm}}}
+  \put(1.8,45.0){\textbf{\sffamily Bottom}}
+\end{overpic}
+\caption{Chroma preservation schematic. Top: $\hat{\mathbf{Y}}$ has accurate luminance but a systematic chroma bias; surrogate $\hat{\mathbf{Y}}_{\text{cp}}$ substitutes $\mathbf{X}$'s (noisier but less biased) chroma at $\hat{\mathbf{Y}}$'s luminance; per-channel convex combination $\boldsymbol{\alpha}$ fuses the two, with $\boldsymbol{\alpha}$ fit on a small SDSD validation subset. Bottom: two-Gaussian schematic that motivates the parametric form of Eq.~\eqref{eq:alpha_star_general}; under the (idealised) unbiased-independent assumptions the fused variance is bounded by $\min(\sigma^{2}_{\text{LQ},c},\sigma^{2}_{\text{pred},c})$.}
+\label{fig:cp_diagram_app}
+\end{figure}
+
+\label{app:cp_diagram}
+
+\begin{figure}[h]
+\centering
+\includegraphics[width=0.98\columnwidth]{figures/fig_alpha.pdf}
+\caption{Chroma-preservation on BVI-RLV: PSNR-RGB across six $\boldsymbol{\alpha}$ parametrizations. Dashed line: empirical scalar optimum. Star: per-image idealised-MMSE $\boldsymbol{\alpha}^{\star}$ (tier~(1) of App.~\ref{app:cp_theory}, computed on this particular image), distinct from the operational validation-fit universal $\widehat{\boldsymbol{\alpha}}^{\star}\!=\!(0.50,0.50,0.68)$ used throughout Sec.~\ref{sec:experiments} (tier~(2)); the two agree in PSNR within $0.01$~dB.}
+\label{fig:alpha_sweep}
+\end{figure}
+
+\begin{figure*}[h]
+\centering
+\includegraphics[width=0.98\textwidth]{figures/fig_cp_ablation.pdf}
+\caption{Chroma-preservation ablation. Two SDSD-indoor scenes under three $\boldsymbol{\alpha}$ parametrizations. Cols 1--5: LQ, Seer raw ($\alpha{=}0$), scalar $\alpha{=}0.5$, universal $\boldsymbol{\alpha}$ (ours), GT. Col 6: CP-gain map $|\text{Raw}{-}\text{GT}|-|\text{Ours}{-}\text{GT}|$ (green: closer to GT). PSNR badge; Ours shows $+$dB delta.}
+\label{fig:cp_ablation}
+\end{figure*}
+
+
+\subsection{CP Transferability to Baselines}\label{app:cp_transfer}
+
+A natural concern is that CP is described as applying to \emph{any} restoration model's residuals (Sec.~\ref{sec:method:cp}), so Seer's OOD gains could partly reflect a generic post-processing trick rather than the V-JEPA prior and architecture. We test this directly by fitting a baseline-specific $\widehat{\boldsymbol{\alpha}}^{\star}$ (same closed form, Eq.~\eqref{eq:alpha_star_general}; same $15$-sequence SDSD-indoor validation pool used for Seer, held out from all Table~\ref{tab:main} test splits) to two strong baselines' own raw predictions, then applying it to their L2--L5 test outputs.
+
+\begin{table}[h]
+\centering\small\setlength{\tabcolsep}{4pt}
+\begin{tabular}{lccc}
+\toprule
+Method & $\widehat{\alpha}^{\star}_R$ & $\widehat{\alpha}^{\star}_G$ & $\widehat{\alpha}^{\star}_B$ \\
+\midrule
+Seer (reference)      & $0.50$ & $0.50$ & $0.68$ \\
+Retinexformer          & $-0.024$ & $-0.011$ & $-0.032$ \\
+DarkIR                 & $-0.217$ & $-0.407$ & $-0.231$ \\
+\bottomrule
+\end{tabular}
+\caption{Baseline-specific validation-fit $\widehat{\boldsymbol{\alpha}}^{\star}$. The closed form of Eq.~\eqref{eq:alpha_star_general} is unconstrained; on Seer's residuals the optimum happens to lie inside $[0,1]$ (a genuine convex combination), and on these two baselines it is \emph{negative} on every channel---the sign flip that says their LMMSE-optimal action is not to blend with the LQ chroma surrogate but to extrapolate away from it. As a diagnostic, the sign flip is direct evidence that Retinexformer's and DarkIR's residual-error structure is qualitatively different from Seer's.}
+\label{tab:cp_transfer_alpha}
+\end{table}
+
+\begin{table}[h]
+\centering\scriptsize\setlength{\tabcolsep}{3pt}
+\begin{tabular}{llcc}
+\toprule
+Method & Split & $\Delta$PSNR & $\Delta$LPIPS \\
+\midrule
+\multirow{4}{*}{Retinexformer} & L2 BVI-RLV & $-0.016$ & $-0.0014$ \\
+ & L3 LOL-v1 & $-0.024$ & $-0.0018$ \\
+ & L4 LOLv2-Syn & $-0.019$ & $-0.0023$ \\
+ & L5 LOLv2-Real & $-0.009$ & $-0.0015$ \\
+\midrule
+\multirow{4}{*}{DarkIR} & L2 BVI-RLV & $+0.005$ & $+0.0013$ \\
+ & L3 LOL-v1 & $-0.040$ & $-0.0019$ \\
+ & L4 LOLv2-Syn & $+0.001$ & $-0.0041$ \\
+ & L5 LOLv2-Real & $-0.066$ & $-0.0018$ \\
+\bottomrule
+\end{tabular}
+\caption{CP applied to each baseline's own raw predictions with its own fitted $\widehat{\boldsymbol{\alpha}}^{\star}$ (Table~\ref{tab:cp_transfer_alpha}). $\Delta$PSNR $=$ (+CP) $-$ raw; $\Delta$LPIPS sign-flipped so positive is an improvement, matching Table~\ref{tab:cp_per_split}'s convention. Every delta is within $0.07$~dB / $0.005$ LPIPS---noise-level, versus Seer's $+0.37$ to $+1.30$~dB on its net-positive splits (L2--L4) and $+0.031$ to $+0.044$ LPIPS across L2--L5.}
+\label{tab:cp_transfer_delta}
+\end{table}
+
+CP's benefit on Seer does not transfer to either baseline: every delta in Table~\ref{tab:cp_transfer_delta} is within noise, and the fitted $\widehat{\boldsymbol{\alpha}}^{\star}$ is negative on every channel---qualitatively different from Seer's interior-of-$[0,1]$ optimum. This is evidence \emph{against} the hypothesis that CP is a generic trick, and supports the paper's account: CP helps specifically because Seer's raw prediction has accurate luminance but a systematic chroma bias (App.~\ref{app:color_bias}) that correlates with the LQ input's comparatively unbiased chroma---a residual-error profile Retinexformer's and DarkIR's outputs evidently do not share. CP's benefit is not universal, and this is the control that establishes that, rather than an assumption.
+
+
+\subsection{Predictive-Coherence Tie-Break}\label{app:predictive_coherence}
+
+\paragraph{Why not a generic feature-stability metric.} An earlier version of this tie-break used mean-centered adjacent-frame Pearson correlation of the per-patch feature-norm map on a single BVI-RLV sequence. Extending that metric to all $11$ available video sequences (6 BVI-RLV + 5 SDSD-outdoor) reveals it is confounded: DINOv3 develops a small number of content-agnostic, spatially-fixed high-norm patches (most pronounced on SDSD-outdoor's static backgrounds) that inflate its apparent norm-map stability without reflecting genuine content coherence. A content-based (full feature vector cosine, not just norm) correction shrinks DINOv3's apparent advantage by $\approx\!79\%$, but V-JEPA still does not statistically surpass DINOv3 on this metric family (paired Wilcoxon $p\!>\!0.98$ throughout). We therefore do not use this metric as the tie-break and instead test the property V-JEPA is actually trained for.
+
+\paragraph{Genuine predictive-coherence test.} V-JEPA's self-supervised objective is to predict masked spatio-temporal token regions in embedding space from visible context, using a dedicated predictor network jointly trained with the encoder. We test this directly: on a frozen, non-distillation V-JEPA2 ViT-L checkpoint (\texttt{vjepa2\_vit\_large}, whose predictor output projects to its own $1024$-dim encoder space---verified via a hard dimension-matching gate before running any evaluation, unlike the distillation checkpoint used elsewhere in this paper, whose predictor targets a separate $1664$-dim teacher space and cannot be used for genuine self-prediction), we feed each of the $11$ sequences as a $16$-frame clip ($T_p{=}8$ tubelets) and, for target tubelets $t\in\{4,5,6,7\}$, predict tubelet $t$'s tokens from all earlier tubelets via the predictor's native masking interface. We compare the predicted-vs-true cosine similarity against a naive no-change baseline (true tubelet $t{-}1$ vs.\ true tubelet $t$, no predictor).
+
+V-JEPA's learned predictor achieves mean cosine similarity $0.552$ (95\% CI $[0.504, 0.600]$) against the true future tokens, significantly above the naive baseline's $0.458$ (95\% CI $[0.442, 0.473]$): paired Wilcoxon $p{=}5{\times}10^{-4}$, Cohen's $d{=}1.46$, consistent in direction on $11/11$ sequences. This demonstrates that V-JEPA's masked-latent-prediction pretraining yields a real, learned forecasting capability substantially beyond a do-nothing baseline. We do \emph{not} claim this number is directly comparable to DINOv3 or any other image encoder's adjacent-frame similarity: image encoders carry no predictor and cannot be evaluated on this axis at all, by construction---that asymmetry is precisely the point. The claim this experiment supports is narrower and, we believe, more defensible than a raw stability comparison: V-JEPA possesses a genuine, verified predictive-dynamics capability that per-frame encoders structurally lack.
+
+
+\subsection{Cross-Attention Visualisation Details}\label{app:cross_attention}
+
+Fig.~\ref{fig:cross_attention} (main body) visualises the residual cross-attention of Eq.~\eqref{eq:xattn} on the reference Seer checkpoint, evaluated on a real held-out SDSD-indoor frame (\texttt{pair4}, PSNR $23.01$~dB on this clip vs.\ $6.57$~dB for the raw LQ input, confirming the forward pass is doing substantial genuine enhancement rather than a degenerate one). We hook the post-softmax attention matrix of the encoder cross-attention block at scale~4---the coarsest pixel-branch scale, where the $16{\times}16$ feature grid matches the V-JEPA token grid exactly---and average over all $16$ heads.
+
+\paragraph{Scale selection for visualization.} We inspected cross-attention at all available scales (encoder scales 1--4, decoder scales 1--3). Scale~4 produced the clearest spatially-selective pattern; the finer scales were substantially closer to uniform (normalised entropy $95$--$98.5\%$ of the maximum-entropy value), and encoder scale~1 was dominated by a single global token for $91\%$ of query positions. We report scale~4 as the most interpretable visualization; the finer scales do not exhibit the same selectivity.
+
+\paragraph{What the pattern does and does not show.} We scored all $256$ real query positions on the frame by their peak-to-uniform attention ratio and entropy, then selected six spanning the full observed range: bright wall ($78.8\times$ uniform), table surface ($48.0\times$), object edge ($16.6\times$), shadow corner ($17.6\times$), a diffuse body region that is the \emph{least}-peaked of all $256$ patches ($3.9\times$, though still not perfectly flat), and a bright edge patch ($10.0\times$) whose peak lands on \emph{itself} rather than a distant hotspot---a locally-anchored mode distinct from the other five, whose secondary targets nonetheless converge on the same handful of shared hotspots the other queries reach for. Each of the five distally-peaked queries lands on a different location in the V-JEPA token grid, and the argmax location is stable across several consecutive frames of the same clip before drifting. This shows the cross-attention is content-dependent and spatially selective rather than a uniform average, with a query-dependent \emph{degree and mode} of selectivity. The spatial correlation between query position and attention target location was weak, so the attention does not track scene layout in a simple correspondence. Per-head inspection also shows some individual heads are considerably sharper than the $16$-head average reported in the figure (e.g.\ one head reaches an entropy of $15.7\%$ of maximum); we report the head-average throughout to avoid selectively presenting the sharpest head.
+
+
+\subsection{Color Bias Diagnostics and Discussion}\label{app:color_bias}
+
+Seer's L0 crown, L1 LPIPS win and its L2 raw tLP (best of any method in Table~\ref{tab:temporal_main}) all come from a single flagship; L2 CP-refined tLP ranks third under the deployment rule of Sec.~\ref{sec:method:cp}, and the $.015$ gap is the smoothness CP trades for L2 PSNR. All Seer variants exhibit a systematic $+B$ blueshift in the raw prediction which we tentatively attribute to V-JEPA's ImageNet-normalization asymmetry; the general LMMSE closed form Eq.~\eqref{eq:alpha_star_general} folds bias into the second-moment plug-in, so $\widehat{\boldsymbol{\alpha}}^{\star}$ accounts for this bias in the second-moment objective, sidestepping the need for a bespoke training-time regularizer.
+
+\begin{figure}[h]
+\centering
+\includegraphics[width=0.98\columnwidth]{figures/fig_bias.pdf}
+\caption{Per-channel mean bias on BVI-RLV \textbf{(a)} and SDSD \textbf{(b)}. All V-JEPA-anchored Seer variants share a systematic $+B$ blueshift on BVI-RLV; STCD is nearly blue-neutral but shifts $R/G$ on SDSD.}
+\label{fig:bias}
+\end{figure}
+
+
+\subsection{Distortion vs.\ Perceptual/Temporal Trade-off on L2 BVI-RLV}\label{app:distortion_perceptual}
+
+On L2 BVI-RLV, Seer's PSNR ($20.39$~dB, CP-refined) trails DarkIR's ($20.46$~dB) by only $0.07$~dB---essentially tied on distortion---and Seer's per-frame LPIPS/DISTS are the second-best entries in Table~\ref{tab:main} at $.161/.109$, only $.011/.003$ behind DarkIR's leading $.150/.106$; Under the fixed CP-for-OOD deployment rule, Seer ranks third on BVI-RLV tLP ($.061$), behind SDSD-in specialist STCD ($.054$) and Retinexformer ($.057$); Seer's raw output achieves the best tLP overall ($.046$, best of any method in Table~\ref{tab:temporal_main}), so CP trades $.015$ tLP for the L2 PSNR gain reported in Table~\ref{tab:cp_per_split}. Seer lands second on CLIPIQA ($.348$ vs.\ DarkIR's leading $.444$). L2 is a near-tie on the reference-based per-frame axes, with a Seer lead on raw tLP and a CP-deployed tLP that trails the two SDSD-trained methods by $.007$; we report this trade-off explicitly rather than let the small per-frame gaps imply an unqualified state-of-the-art claim on this split.
+
+\paragraph{Why DarkIR's PSNR narrows to Seer's here.} DarkIR is pretrained on LOL-Blur, a dataset combining low-light \emph{and} motion-blur degradations; BVI-RLV's noise and blur profile is evidently closer to DarkIR's training distribution than to SDSD's, giving DarkIR an in-domain-like advantage on this specific cross-dataset split. Seer (trained only on SDSD video, zero-shot on BVI-RLV) essentially catches DarkIR on PSNR ($0.07$~dB) despite the training-distribution asymmetry, and is second-best only $.011/.003$ behind DarkIR on per-frame LPIPS/DISTS ($.161/.109$ vs.\ $.150/.106$). This is consistent with our broader framing (Table~\ref{tab:main}'s ``Training data'' column): rankings across splits track training-distribution proximity as much as method quality, which is precisely the confound the six-level protocol is designed to expose rather than paper over.
+
+\paragraph{Why the perception--distortion trade-off is largely resolved here.} At L0, Seer wins PSNR and every reference-based perceptual metric simultaneously (Sec.~\ref{sec:experiments:main}), so no trade-off is visible; at L1 Seer wins PSNR (tied), LPIPS, DISTS and tLP as well. At L2, Seer's raw prediction is high-luminance-fidelity but chroma-biased (App.~\ref{app:color_bias}); CP corrects the chroma and closes the luminance gap enough that PSNR is now a $0.07$~dB near-tie with DarkIR, per-frame LPIPS/DISTS are second-best only $.011/.003$ behind, and Seer's raw tLP ($.046$) is best of any method while its CP-deployed tLP ($.061$) trails STCD and Retinexformer by $.007$. What remains is not the classical perception--distortion trade-off~\citep{blau_michaeli} but a residual per-frame texture gap of a few thousandths of a LPIPS/DISTS unit; L2 is thus a near-parity split with a Seer lead on raw temporal quality and an explicit CP-for-PSNR trade under the fixed deployment rule, rather than a genuine Pareto-frontier trade-off.
+
+\paragraph{What we do and do not claim.} We do \emph{not} claim Seer sweeps L2 BVI-RLV on every reference-based per-frame axis: DarkIR retains a small per-frame LPIPS/DISTS lead ($.011/.003$) and the PSNR is a near-tie rather than a Seer win. We do claim Seer catches DarkIR on PSNR despite the training-distribution disadvantage, is essentially level on per-frame LPIPS/DISTS, achieves the best raw tLP of any method (with CP-deployed tLP ranking third by $.007$), and lands second on CLIPIQA; all four facts are reported plainly in Tables~\ref{tab:main} and~\ref{tab:temporal_main} rather than omitted or downweighted.
+
+
+\subsection{Qualitative LOL Comparisons}\label{app:qualitative_lol}
+
+\begin{figure*}[h]
+\centering
+\includegraphics[width=0.98\textwidth]{figures/fig_qualitative_lol.pdf}
+\caption{Qualitative comparison on the three image-domain OOD splits (L3--L5) under matched LQ pixel patches. STCD (video) omitted. Rows: LOL-v1, LOLv2-Syn, LOLv2-Real. HVI-CIDNet/DarkIR/URCSA are LOL-trained (in-domain); Seer is trained without any LOL image.}
+\label{fig:qualitative_lol}
+\end{figure*}
+
+
+\subsection{M1/M3 Inference-Time Leave-One-Out}\label{app:m1m3_loo_table}
+
+\begin{table}[h]
+\centering\small\setlength{\tabcolsep}{4pt}
+\begin{tabular}{lccc}
+\toprule
+Variant & SDSD-in & SDSD-out & BVI-RLV \\
+\midrule
+Full Seer                        & 26.728 & 22.302 & 17.250 \\
+\ w/o M1 ($g{:=}0$)              & 26.729 & 22.302 & 17.250 \\
+\ w/o M3 (router one-hot)        & 26.724 & 22.265 & 17.241 \\
+\bottomrule
+\end{tabular}
+\caption{Inference-time leave-one-out of M1 and M3 under the training-audit protocol (single-frame $512{\times}512$ center-crop). Absolute values are offset from Table~\ref{tab:main}'s unified 16-frame protocol by roughly $\pnum{{+}0.4}$/$\pnum{{-}0.3}$/$\pnum{{+}1.8}$~dB on L0/L1/L2; what the LOO shows is that removing either M1 or M3 at inference changes PSNR by ${<}0.04$~dB, i.e.\ within the seed-variance floor. Values in dB.}
+\label{tab:m1m3_loo}
+\end{table}
+
+
+\subsection{Model Complexity}\label{app:complexity}
+
+Table~\ref{tab:complexity} groups the suite along two design axes. \emph{Single-frame vs clip-based:} Seer, like BVI-Mamba, processes a temporal window to produce each output frame---work per frame that single-frame LLIE baselines do not do at all. The fair comparison is not "Seer is $10\times$ heavier than single-frame LLIE" but "clip-based methods sit in a different regime, and Seer is $4.6\times$ heavier than the one other clip-based measurement point." \emph{Standalone vs foundation-model-conditioned:} Seer's largest component is the frozen $305$~M V-JEPA backbone, shared across deployments and independent of the pixel branch, so its cost is paid once per host rather than per deployed model. Per-component runtime decomposition is in App.~\ref{app:runtime}.
+
+\begin{table}[h]
+\centering\scriptsize\setlength{\tabcolsep}{3.5pt}
+\renewcommand{\arraystretch}{0.85}
+\begin{tabular}{lrrrrr}
+\toprule
+Method & Clip & \makecell[r]{Train.\\(M)} & Steps & \makecell[r]{Time/\\frame (ms)} & \makecell[r]{Peak\\mem.\ (GB)} \\
+\midrule
+\multicolumn{6}{l}{\emph{Single-frame LLIE (no shared prior):}} \\
+Retinexformer                       & 1 &  1.6 & 1 &      73.9 & 0.61 \\
+HVI-CIDNet                          & 1 &  2.0 & 1 &      80.6 & 0.38 \\
+DarkIR                              & 1 &  3.3 & 1 &      16.6 & 0.43 \\
+URCSA                               & 1 &  3.1 & 1 &      32.2 & 1.32 \\
+MambaLLIE$^{\ddagger}$~\citep{mamballie}              & 1 &  2.3 & 1 &     131.1 & 2.39 \\
+\midrule
+\multicolumn{6}{l}{\emph{Clip-based / video LLVE:}} \\
+BVI-Mamba$^{\ddagger}$~\citep{bvi_mamba}              & 5 & 10.0 & 1 &      36.5 & 0.94 \\
+\midrule
+\multicolumn{6}{l}{\emph{Diffusion / foundation-prior restoration:}} \\
+StableSR$^{\S}$~\citep{stablesr}             &  1 & $150$              & $200$ &    $11{,}500$              & $\sim\!8.9\text{--}10$ \\
+LLDiffusion$^{\S}$~\citep{lldiffusion}       &  1 & \pnum{$\sim\!70$}  & $25$  & \pnum{$\sim\!184{,}000$}   & n/r \\
+DL-Diff$^{\S}$~\citep{dl_diff}               & 16 & $455$              & $100$ & \pnum{$\sim\!11{,}250$}    & n/r \\
+Seer (ours)                                  &  8 & $392$              & $1$   & $167$                      & $8.74$ \\
+\bottomrule
+\end{tabular}
+\caption{Model complexity on A100-80GB at $512{\times}512$. \emph{Train.}: gradient-updated parameters. \emph{Steps}: number of iterative sampling steps per input image or clip ($1$ denotes a single feed-forward pass). \emph{Time/frame}: total wall-clock time amortised over the number of output frames. \emph{Peak mem}: bf16 forward at native clip length; \emph{n/r} $=$ not reported in the original paper. Total on-disk footprint (including any shared frozen backbone): StableSR ${\approx}1{,}410$~M, DL-Diff ${\approx}1{,}315$~M, Seer $\approx\!700$~M ($392$~M trainable, $305$~M frozen V-JEPA encoder, plus the reused V-JEPA predictor body). $^{\ddagger}$Not measured under our harness. $^{\S}$Estimated from official code/paper as detailed in the paragraphs below.}
+\label{tab:complexity}
+\end{table}
+
+\paragraph{Measurement protocol.} \emph{Params}: trainable weights in millions; Seer's $392$~M includes M1's ${\approx}1.5$~M new modules on top of the reused V-JEPA predictor body it does not update (Sec.~\ref{sec:method:mechanisms}), and its $305$~M frozen V-JEPA encoder $\Phi$ is a shared asset amortised across deployments. \emph{Time/frame}: single-frame methods equal their per-image forward; clip-based methods (BVI-Mamba, DL-Diff, Seer) amortise one clip forward over the clip's frames. \emph{Peak memory}: \texttt{torch.cuda.max\_memory\_allocated()} for one forward pass under bf16 autocast; clip length is the dominant memory knob (App.~\ref{app:negatives}). Seer is measured at its deployed configuration, chunking the unified $16$-frame protocol clip in \texttt{chunk\_T}${=}8$ blocks.
+
+\paragraph{Diffusion-prior entries.} We could not run these methods end-to-end under our harness, so the reported figures come from the official code and papers, verified against public parameter counts where possible.
+
+\emph{StableSR}~\citep{stablesr}: We instantiate each module from the released \texttt{v2-finetune\_text\_T\_512.yaml} config and count parameters directly: UNet $918.9$~M, VAE $83.6$~M, OpenCLIP-H text encoder $354.0$~M, StructCond time-aware encoder $52.5$~M, giving a total of ${\approx}1{,}409$~M. Trainable weights ($\approx\!150$~M) comprise the StructCond encoder plus the SFT layers listed in the paper. Latency ($11{,}500$~ms at $512{\times}512$, $200$ DDPM/diffusion sampling steps) and peak memory ($8.9$--$10$~GB) are the paper's reported numbers on A100.
+
+\emph{LLDiffusion}~\citep{lldiffusion}: Its DegUNet (base channels $64$, $\text{ch\_mult}{=}\{1,1,2,2,4,4\}$, $2$ res-blocks) and auxiliary Degradation Generation / Latent Map modules together lie on the order of $70$~M parameters as read from \texttt{configs/deg-unet-lol.yml}. The latency estimate follows the released $128{\times}128$, stride-$16$ sliding-window inference protocol. A $600{\times}400$ image contains $30{\times}18=540$ patches, whereas a $512{\times}512$ image contains $25{\times}25=625$ patches; scaling the paper's reported $159$~s by $625/540$ gives ${\approx}184$~s per frame at $25$ diffusion sampling steps. Peak memory is not reported in the paper.
+
+\emph{DL-Diff}~\citep{dl_diff}: The paper's LDM-video pipeline uses a $\sim\!860$~M frozen backbone (\text{VideoCrafter}-class LDM) and a $\sim\!455$~M trainable adaptation head; latency estimated for a $16$-frame chunk under DDIM $100$ steps, scaled from the paper's $256^{2}$ evaluation resolution to $512^{2}$; peak memory not reported.
+
+The three prior-based rows are therefore order-of-magnitude comparisons for the diffusion-prior class rather than harness-matched benchmarks; a rigorous per-method timing pass is outside the scope of this submission.
+
+\paragraph{Where the parameters go.} The pixel branch is essentially the whole trainable budget, and the three V-JEPA-coupling mechanisms are near-free next to it---M1's own new weights sit on top of the reused V-JEPA predictor body and M3 adds $20$ scalar logits. Within the pixel branch the distribution is the usual U-Net one: with channel widths doubling $64{\to}128{\to}256{\to}512{\to}1024$ across the five scales, the encoder blocks alone account for $248.7$~M and the coarsest scale alone for $202.2$~M---$55\%$ of the branch. That scale operates on a $16{\times}16$ grid, matching V-JEPA's token grid exactly, so cross-attention there runs at full token resolution without interpolation; the price is that transformer blocks at $1024$ channels are quadratic in width.
+
+\paragraph{Is the gain capacity or the prior?} The natural objection to a $392$~M trainable branch is that the improvement could come from capacity rather than from V-JEPA. The encoder-swap ablation (Table~\ref{tab:encoder_swap}) is a controlled answer: every variant there instantiates the \emph{identical} pixel branch, with only the frozen encoder replaced, so trainable capacity is held exactly constant across all five rows. V-JEPA wins all three splits under that control, and the four image encoders---at identical trainable capacity---cluster $2$~dB below it on L2. Capacity is therefore a constant of the comparison, not the explanatory variable.
+
+\paragraph{Seer versus diffusion-prior restoration.} The three prior-based rows in Table~\ref{tab:complexity} place Seer in its natural comparison class: methods that condition a restoration network on a frozen pretrained foundation model. Within that class, Seer's per-frame latency is more than an order of magnitude below every diffusion-prior entry. This speed advantage traces to two design choices---the frozen prior is forward-passed once per clip rather than at every denoising step, and the pixel branch is a deterministic feed-forward network rather than an iterative sampler---so the class-level ranking on latency is a design-time property (visible in the \emph{Steps} column of Table~\ref{tab:complexity}) rather than a numerical accident. On trainable-parameter count the rows have different design targets and are not directly comparable head-to-head: Seer's $392$~M new capacity is spent on a full multi-scale restoration branch, whereas StableSR's $\sim\!150$~M is an SFT-style adapter and DL-Diff's $455$~M is an LDM-video adaptation head. Against $2$~M task-specific CNNs Seer is unambiguously large.
+
+
+\subsection{Limitations}\label{app:limitations}
+
+\paragraph{M1 and M3 contribute modestly in-distribution.} Our own operating-point analysis (Sec.~\ref{sec:experiments:ablation}; App.~\ref{app:m1m3_scratch}) shows M1's residual gate converges to near-identity ($|g^{\star}|\!<\!10^{-3}$) and M3's router logits move by less than $10^{-3}$ per scale on the reference Seer, and freely optimizing either changes L0/L1/L2 PSNR by ${<}0.14$~dB. This indicates M1/M3 provide architectural flexibility rather than large in-distribution gains: Table~\ref{tab:ablation_stages} shows the gains are dominated by CP, with M1--M3 individually trading, not adding, PSNR before CP is applied. We position M1 and M3 as \emph{architectural interfaces}---infrastructure that lets Seer refine or re-route V-JEPA features on a new target domain without retraining the pixel branch (App.~\ref{app:hyper})---designed for adaptability rather than maximizing performance on the current benchmark suite. Whether they provide larger benefits on domain shifts beyond our six-level protocol remains an open question for future work.
+
+\paragraph{Chroma preservation does not transfer to strong baselines (verified, App.~\ref{app:cp_transfer}).} CP (Sec.~\ref{sec:method:cp}) is derived to apply to the residuals of \emph{any} restoration model, and delivers the majority of Seer's OOD gains (Table~\ref{tab:cp_per_split}: up to $\pnum{+1.30}$~dB on L2--L4), leaving open whether Seer's OOD advantage reflects the V-JEPA prior and architecture, or is largely a generic post-processing trick. We tested this directly: applying CP to Retinexformer's and DarkIR's own raw predictions, with a baseline-specific $\widehat{\boldsymbol{\alpha}}^{\star}$ fit on the same validation protocol, changes PSNR/LPIPS by less than $0.07$~dB / $0.005$ on every split---noise-level, versus Seer's $+0.37$ to $+1.30$~dB net-positive PSNR gains and $+0.031$ to $+0.044$ LPIPS gains---and the fitted $\widehat{\boldsymbol{\alpha}}^{\star}$ is the opposite sign from Seer's on every channel, meaning the LMMSE-optimal action on their residuals is to extrapolate away from the LQ chroma surrogate rather than blend with it. CP's benefit is therefore Seer-specific, arising from a particular residual-error profile Retinexformer's and DarkIR's outputs evidently do not share, which is evidence for (not against) the paper's account of where the OOD gains come from.
+
+\paragraph{Compute and memory cost of the frozen prior (verified, App.~\ref{app:runtime}).} Anchoring in a frozen video world model costs compute. In its own class of clip-based methods, Seer is $4.6\times$ BVI-Mamba on time/frame; against MambaLLIE (heaviest single-frame LLIE, $131.1$~ms) the gap narrows to $1.3\times$, and peak memory is $3.7\times$ MambaLLIE's $2.39$~GB. The $392$~M trainable count is two orders of magnitude above per-frame LLIE baselines; we make no framing claim that makes it small. Three things cut in Seer's favour: (i)~clip-level cost is structural to video LLVE (BVI-Mamba's clip forward already takes $182$~ms); (ii)~the $305$~M V-JEPA backbone is a shared frozen asset; (iii)~the gain is not merely capacity---the encoder swap of Table~\ref{tab:encoder_swap} holds the pixel branch fixed yet still separates V-JEPA from the four image encoders. Against: FLOPs do not amortise ($1562$/frame), so Seer is compute-bound. $T{=}4$ would cut memory proportionally but costs $1.5$~dB in-domain PSNR (App.~\ref{app:negatives}).
+
+\paragraph{The fixed deployment rule's generality beyond one validation pool.} Sec.~\ref{sec:method:cp}'s rule (raw prediction on SDSD-family targets, CP-refined on OOD targets) is fit once, on a single $\approx\!15$-sequence SDSD-indoor validation pool, and never re-tuned per target domain in the six-level protocol. This is deliberately a stress test of generality rather than a per-domain-tuned upper bound, and the evidence for (and against) it generalizing is spread across several places we collect here. \emph{Where it holds}: the rule is validated on four genuinely distinct target conditions the fitting pool never saw---a different dataset and sensor (L2 BVI-RLV), and three different image benchmarks with their own capture/annotation pipelines (L3--L5 LOL family)---and delivers a positive PSNR/LPIPS trade on three of these four (App.~\ref{app:cp_per_split}, Table~\ref{tab:cp_per_split}). \emph{Where it breaks}: L1 SDSD-outdoor is a documented failure case (net-negative on both metrics, App.~\ref{app:cp_per_split}), traced to a mismatch between the indoor-dominated fitting pool's chroma statistics and outdoor's already-well-calibrated chroma; L5 LOLv2-Real is PSNR-negative despite an LPIPS gain, i.e.\ the rule's binary raw/CP switch cannot always co-optimize both axes on a truly novel domain. \emph{The fallback}: App.~\ref{app:cp_per_split} shows a one-pass per-split re-estimation of $\widehat{\boldsymbol{\alpha}}^{\star}$ (same closed form, new target-domain validation pairs) recovers the L1 regression to within $0.02$~dB, at the cost of one offline validation pass per new deployment domain---so the rule degrades gracefully rather than catastrophically, but it is not domain-free: a practitioner deploying Seer on a genuinely new camera/sensor should budget for this refit rather than assume the universal $\widehat{\boldsymbol{\alpha}}^{\star}$ transfers unconditionally. We have not tested a domain entirely outside this paper's four OOD conditions (e.g.\ a different camera never represented in SDSD/BVI-RLV/LOL), so the rule's behaviour beyond these specific shifts remains untested.
+

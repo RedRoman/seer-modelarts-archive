@@ -1,0 +1,81 @@
+# Result provenance (auto-generated)
+
+- Zero-DCE: L0 baselines_L0_fixedpairing_eval.json; L1-L5 Zero-DCE_eval_v2.json; temporal baselines_temporal_unified_v2.json
+- SCI: L0 baselines_L0_fixedpairing_eval.json; L1-L5 SCI_eval_v2.json; temporal baselines_temporal_unified_v2.json
+- HVI-CIDNet: L0 baselines_L0_fixedpairing_eval.json; L1-L5 HVI-CIDNet_eval_v2.json; temporal baselines_temporal_unified_v2.json
+- DarkIR: L0 baselines_L0_fixedpairing_eval.json; L1-L5 DarkIR_eval_v2.json; temporal baselines_temporal_unified_v2.json
+- URCSA: L0 baselines_L0_fixedpairing_eval.json; L1-L5 URCSA_eval_v2.json; temporal baselines_temporal_unified_v2.json
+- STCD: L0 baselines_L0_fixedpairing_eval.json; L1-L5 STCD_unified_eval.json; temporal baselines_temporal_unified_v2.json
+- Retinexformer: L0 baselines_L0_fixedpairing_eval.json; L1-L5 Retinexformer_eval_v2.json; temporal baselines_temporal_unified_v2.json
+- Retinexformer retrained (union, Seer split): Retinexformer_union_seersplit_eval_v2.json + _L0seer_eval_v2.json
+- ctrl_novjepa_s0 [HMP-raw]: ctrl_novjepa_s0_eval_unified.json
+- ctrl_novjepa_s1 [HMP-raw]: ctrl_novjepa_s1_eval_unified.json
+- ctrl_novjepa_s2 [HMP-raw]: ctrl_novjepa_s2_eval_unified.json
+- ctrl_vjepa_s0 [HMP-raw]: ctrl_vjepa_s0_eval_unified.json
+- ctrl_vjepa_s1 [HMP-raw]: ctrl_vjepa_s1_eval_unified.json
+- ctrl_vjepa_s2 [HMP-raw]: ctrl_vjepa_s2_eval_unified.json
+- ctrl_vjepa_s0 [HMP+CPfit]: ctrl_vjepa_s0_eval_unified.json
+- ctrl_vjepa_s1 [HMP+CPfit]: ctrl_vjepa_s1_eval_unified.json
+- ctrl_vjepa_s2 [HMP+CPfit]: ctrl_vjepa_s2_eval_unified.json
+- ctrl_novjepa_s0 [HMP-raw]: ctrl_novjepa_s0_eval_unified.json
+- ctrl_novjepa_s1 [HMP-raw]: ctrl_novjepa_s1_eval_unified.json
+- ctrl_novjepa_s2 [HMP-raw]: ctrl_novjepa_s2_eval_unified.json
+- abl_randvjepa_s0 [HMP-raw]: abl_randvjepa_s0_eval_unified.json
+- abl_randvjepa_s1 [HMP-raw]: abl_randvjepa_s1_eval_unified.json
+- ctrl_vjepa_s0 [HMP-raw]: ctrl_vjepa_s0_eval_unified.json
+- ctrl_vjepa_s1 [HMP-raw]: ctrl_vjepa_s1_eval_unified.json
+- ctrl_vjepa_s2 [HMP-raw]: ctrl_vjepa_s2_eval_unified.json
+- ctrl_vjepa_s0_step_750 [HMP-raw]: ctrl_vjepa_s0_step_750_eval_unified.json
+- ctrl_vjepa_s1_step_750 [HMP-raw]: ctrl_vjepa_s1_step_750_eval_unified.json
+- ctrl_vjepa_s2_step_750 [HMP-raw]: ctrl_vjepa_s2_step_750_eval_unified.json
+- ctrl_vjepa_s0_step_750 [HMP+CPfit]: ctrl_vjepa_s0_step_750_eval_unified.json
+- ctrl_vjepa_s1_step_750 [HMP+CPfit]: ctrl_vjepa_s1_step_750_eval_unified.json
+- ctrl_vjepa_s2_step_750 [HMP+CPfit]: ctrl_vjepa_s2_step_750_eval_unified.json
+- encoder swap: encswap_*_L012.json + reference_v35stage4_L0to5_full_metrics_v2.json (July runs, original code); invariance: aaai_data/invariance_v2.json
+- membership: train_membership.json
+- ctrl_vjepa_s0 [HMP-raw]: ctrl_vjepa_s0_eval_unified.json
+- ctrl_vjepa_s1 [HMP-raw]: ctrl_vjepa_s1_eval_unified.json
+- ctrl_vjepa_s2 [HMP-raw]: ctrl_vjepa_s2_eval_unified.json
+- ctrl_vjepa_s0 [HMP+CPfit]: ctrl_vjepa_s0_eval_unified.json
+- ctrl_vjepa_s1 [HMP+CPfit]: ctrl_vjepa_s1_eval_unified.json
+- ctrl_vjepa_s2 [HMP+CPfit]: ctrl_vjepa_s2_eval_unified.json
+- ctrl_vjepa_s0 [HMP+CPxfit]: ctrl_vjepa_s0_eval_unified.json
+- ctrl_vjepa_s1 [HMP+CPxfit]: ctrl_vjepa_s1_eval_unified.json
+- ctrl_vjepa_s2 [HMP+CPxfit]: ctrl_vjepa_s2_eval_unified.json
+- ctrl_vjepa_s0 [HMP+CP]: ctrl_vjepa_s0_eval_unified.json
+- ctrl_vjepa_s1 [HMP+CP]: ctrl_vjepa_s1_eval_unified.json
+- ctrl_vjepa_s2 [HMP+CP]: ctrl_vjepa_s2_eval_unified.json
+- Retinexformer retrained (indoor, Seer split): Retinexformer_indoor_seersplit_eval_v2.json + _L0seer_eval_v2.json
+- Retinexformer retrained (union, Seer split): Retinexformer_union_seersplit_eval_v2.json + _L0seer_eval_v2.json
+- ctrl_novjepa_s0 [HMP-raw]: ctrl_novjepa_s0_eval_unified.json
+- ctrl_novjepa_s1 [HMP-raw]: ctrl_novjepa_s1_eval_unified.json
+- ctrl_novjepa_s2 [HMP-raw]: ctrl_novjepa_s2_eval_unified.json
+- ctrl_vjepa_s0 [HMP-raw]: ctrl_vjepa_s0_eval_unified.json
+- ctrl_vjepa_s1 [HMP-raw]: ctrl_vjepa_s1_eval_unified.json
+- ctrl_vjepa_s2 [HMP-raw]: ctrl_vjepa_s2_eval_unified.json
+- data control: Retinexformer_{indoor,union}_seersplit_*; Seer / w/o V-JEPA: ctrl_* runs; indoor-only Seer excluded (initialised from union-trained Stage 2)
+- CP transfer: baselines_cp_eval.json
+- ctrl_novjepa_s0 [HMP-raw]: ctrl_novjepa_s0_eval_unified.json
+- ctrl_novjepa_s1 [HMP-raw]: ctrl_novjepa_s1_eval_unified.json
+- ctrl_novjepa_s2 [HMP-raw]: ctrl_novjepa_s2_eval_unified.json
+- ctrl_novjepa_s0 [HMP+CPfit]: ctrl_novjepa_s0_eval_unified.json
+- ctrl_novjepa_s1 [HMP+CPfit]: ctrl_novjepa_s1_eval_unified.json
+- ctrl_novjepa_s2 [HMP+CPfit]: ctrl_novjepa_s2_eval_unified.json
+- ctrl_novjepa_s0 [HMP+CPxfit]: ctrl_novjepa_s0_eval_unified.json
+- ctrl_novjepa_s1 [HMP+CPxfit]: ctrl_novjepa_s1_eval_unified.json
+- ctrl_novjepa_s2 [HMP+CPxfit]: ctrl_novjepa_s2_eval_unified.json
+- ctrl_vjepa_s0 [HMP-raw]: ctrl_vjepa_s0_eval_unified.json
+- ctrl_vjepa_s1 [HMP-raw]: ctrl_vjepa_s1_eval_unified.json
+- ctrl_vjepa_s2 [HMP-raw]: ctrl_vjepa_s2_eval_unified.json
+- ctrl_vjepa_s0 [HMP+CPfit]: ctrl_vjepa_s0_eval_unified.json
+- ctrl_vjepa_s1 [HMP+CPfit]: ctrl_vjepa_s1_eval_unified.json
+- ctrl_vjepa_s2 [HMP+CPfit]: ctrl_vjepa_s2_eval_unified.json
+- ctrl_vjepa_s0 [HMP+CPxfit]: ctrl_vjepa_s0_eval_unified.json
+- ctrl_vjepa_s1 [HMP+CPxfit]: ctrl_vjepa_s1_eval_unified.json
+- ctrl_vjepa_s2 [HMP+CPxfit]: ctrl_vjepa_s2_eval_unified.json
+- GT-mean: baselines_gtmean_eval.json, ctrl_*_s*_gtmean_eval.json
+- adaptation: adapt_{vjepa,novjepa}_s*_{step_100,final}_eval_unified.json + ctrl_* zero-shot
+
+## Warnings
+
+- none

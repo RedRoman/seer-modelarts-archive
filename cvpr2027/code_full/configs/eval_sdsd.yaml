@@ -1,0 +1,21 @@
+_base_: base_21.yaml
+
+# Evaluation config. Pass the checkpoint via CLI:
+#   bash scripts/eval.sh /path/to/best.pt
+
+output_dir: /cache/zihaohe/checkpoint/runs/eval_sdsd
+ckpt: null     # REQUIRED via CLI
+
+eval:
+  crop_size: 256
+  clip_len: 16
+  batch_size: 1
+  save_samples: 8
+  inference_steps: 8
+
+data:
+  val:
+    kind: sdsd
+    root: /home/ma-user/workspace/zihaohe/datasets/SDSD_indoor
+    subset: direct
+    split: test

@@ -1,0 +1,87 @@
+_base_: base_21.yaml
+
+# v10: V-JEPA-LLVE with VJepaPosEmb (M1) + crop curriculum (M2)
+#      + color_mean_loss (M5) + fixed-split eval (M7).
+# Spec: V10_DESIGN_SPEC.md v2 (CJ-approved 2026-05-03).
+# Anchor: v9.0b_mix best.pt (Y-512 = 26.843).
+
+output_dir: /cache/zihaohe/checkpoint/runs/v10_first
+
+precision: bf16
+
+model:
+  pixel_branch:
+    dims: [64, 128, 256, 512, 1024]
+    num_blocks: [4, 8, 8, 12, 16]
+    heads: [4, 8, 8, 16, 16]
+    ffn_exp: 2.66
+    vjepa_layer_per_scale: [0, 0, 1, 2, 3]
+    cross_attn_at_scales: [1, 2, 3, 4]
+    use_cfim_bottleneck: true
+    use_illumination_cues: true
+    use_gradient_checkpoint: true
+
+train:
+  batch_size: 1                 # crop=512 memory-limited per V10_SPEC §6
+  clip_len: 16
+  crop_size: 256                # initial; overridden by crop_schedule
+  log_every: 50
+  val_every: 250                # CH6 sentinel cadence (note: also ~halved vs v9.0b)
+  audit_every: 1000             # full Y-512 audit (and best.pt promotion gate)
+  save_every: 1000
+  keep_n_step_ckpts: 2
+  ema_decay: 0.999
+  ema_start: 500
+  val_window: 3
+
+  # Crop curriculum (V10_SPEC §3 M2 / §5)
+  crop_schedule:
+    - {iter: 0,    crop: 256}
+    - {iter: 1500, crop: 384}
+    - {iter: 3500, crop: 512}
+  transition_lr_decay: 0.5      # halve lr for 100 iter post-transition (§5)
+  transition_lr_iters: 100
+
+optim:
+  lr: 2.0e-5                    # same as v9.0b
+  min_lr: 1.0e-6
+  weight_decay: 1.0e-4
+  betas: [0.9, 0.99]
+  total_iters: 5000             # V10_SPEC §5 schedule total
+  warmup_iters: 0
+  scheduler: cosine
+  grad_clip: 1.0
+  accum_steps: 4
+  resume_from: /cache/zihaohe/checkpoint/runs/v9_0b/ckpts/best.pt
+  resume_reset_optim: true
+
+data:
+  train:
+    datasets:
+      - kind: sdsd
+        root: /home/ma-user/workspace/zihaohe/datasets/SDSD_indoor
+        subset: direct
+        split: train
+        weight: 1.0
+      - kind: sdsd
+        root: /home/ma-user/workspace/zihaohe/datasets/SDSD_outdoor
+        subset: direct
+        split: train
+        weight: 1.0
+  val:
+    kind: sdsd
+    root: /home/ma-user/workspace/zihaohe/datasets/SDSD_indoor
+    subset: direct
+    split: test
+
+# Loss weights — v9.0b config preserved (CH4); only color_mean is added.
+loss:
+  pix_weight: 1.5
+  lpips_weight: 0.0
+  retinex_compose_weight: 0.15
+  L_smooth_spatial_weight: 0.02
+  L_smooth_temporal_weight: 0.0
+  R_adjacent_weight: 0.0
+  R_adjacent_scale: 2
+  pred_dod_weight: 0.0
+  color_mean_weight: 0.1        # ★ NEW v10 (M5) — V10_SPEC §5

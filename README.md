@@ -44,3 +44,11 @@ See `CHECKPOINTS.md` for the list, sizes and sha256. Restore with
 - `eval_lib.iter_sdsd_indoor_stcd` pairs LQ/GT by file name, which is wrong for pair50/52/58/60/68/70;
   use `run_fixedpairing_all.iter_sdsd_indoor_stcd_idx` or `seer_eval_unified.iter_sdsd_indoor_seer`.
 - The AAAI-27 manuscript numbers were not measured; the measured values are in `results/`.
+
+## CVPR 2027 round (converged, 2026-11-11)
+
+Start at `cvpr2027/STATUS.md` (current verdicts, what is unfinished, decisions
+pending) and `cvpr2027/EXPERIMENTS.md` (every experiment's flags, seeds, host
+port, server run and result paths, and archived location). Host 32677 has been
+unreachable since 2026-11-05; what was recovered from it and what was not is
+listed in both files.

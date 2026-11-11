@@ -1,0 +1,87 @@
+_base_: base_21.yaml
+
+# v9.1a: v9.0 + frozen RAFT-small flow + forward-backward occlusion mask
+# + mask-normalized self-consistent warp losses (Option B per J4).
+# Locked spec: reviewer J7 (2026-05-01).
+
+output_dir: /cache/zihaohe/checkpoint/runs/v9_1
+
+precision: bf16
+
+model:
+  pixel_branch:
+    dims: [64, 128, 256, 512, 1024]
+    num_blocks: [4, 8, 8, 12, 16]
+    heads: [4, 8, 8, 16, 16]
+    ffn_exp: 2.66
+    vjepa_layer_per_scale: [0, 0, 1, 2, 3]
+    cross_attn_at_scales: [1, 2, 3, 4]
+    use_cfim_bottleneck: true
+    use_illumination_cues: true
+    use_gradient_checkpoint: true
+  raft:
+    enabled: true
+    variant: small
+    weights: C_T_V2
+    freeze: true
+    cache_flow: false           # J2: default off; require unit checks before enabling
+    occlusion_fb_threshold: 1.0
+    n_iter: 12
+
+train:
+  batch_size: 2
+  clip_len: 16
+  crop_size: 256
+  log_every: 50
+  val_every: 500
+  save_every: 2000
+  keep_n_step_ckpts: 2
+  ema_decay: 0.999
+  ema_start: 1000
+  val_window: 3
+
+optim:
+  lr: 2.0e-4
+  min_lr: 1.0e-5
+  weight_decay: 1.0e-4
+  betas: [0.9, 0.99]
+  total_iters: 10000          # J1: 10000 default; extension rule applied in train loop
+  extend_to: 15000            # if last 3 vals still improving by iter 9500/10000
+  warmup_iters: 250
+  scheduler: cosine
+  grad_clip: 1.0
+  accum_steps: 4
+  resume_from: null
+  resume_reset_optim: false
+
+data:
+  train:
+    datasets:
+      - kind: sdsd
+        root: /home/ma-user/workspace/zihaohe/datasets/SDSD_indoor
+        subset: direct
+        split: train
+        weight: 1.0
+      - kind: sdsd
+        root: /home/ma-user/workspace/zihaohe/datasets/SDSD_outdoor
+        subset: direct
+        split: train
+        weight: 1.0
+  val:
+    kind: sdsd
+    root: /home/ma-user/workspace/zihaohe/datasets/SDSD_indoor
+    subset: direct
+    split: test
+
+# Loss weights — locked per J7
+loss:
+  pix_weight: 1.0
+  lpips_weight: 0.1
+  retinex_compose_weight: 0.5
+  L_smooth_spatial_weight: 0.05
+  L_smooth_temporal_weight: 0.10
+  R_adjacent_weight: 0.01           # ★ lowered from 0.05 per J7
+  R_adjacent_scale: 2
+  pred_dod_weight: 0.05
+  pred_warp_weight: 0.05            # ★ NEW (J7)
+  R_warp_weight: 0.10               # ★ NEW (J7)

@@ -1,125 +1,91 @@
-# Seer → CVPR 2027: status (2026-10-25)
+# Seer -> CVPR 2027：进度（2026-11-11）
 
-Deadline 2026-11-16 AoE. All numbers below are produced by one evaluator from
-the frozen splits in `results/splits_cvpr.json` and `results/splits_lol.json`;
-`notes/CVPR_PREREG.md` carries eleven amendments, each written before the
-corresponding result existed.
+截稿 2026-11-16 AoE（北京时间 11-17 约 20:00）。实验配置、主机端口、服务器路径见
+`EXPERIMENTS.md`；每条判据的预注册规则见 `notes/CVPR_PREREG.md`（20 条修正案，
+每条都写在对应结果出现之前）。本文件取代 10-25 版（git 历史里可查）。
 
-## 1. What is measured and holds
+## 一句话
 
-### The prior helps in-domain, and the benefit is attributable
+先验的效果在收敛点上是真的、可归因的、能跨域的；但我们为了"利用更多先验"而设计的
+每一个架构改动都不成立。论文的形态因此是**受控的经验 + 机制结果**，不是新模块论文。
+唯一一个还可能给出方法贡献的实验（H20/E28）结果锁在不可达的 32677 上。
 
-SDSD test, 39 sequences, crop 256 (the training crop), seed-averaged:
+## 1. 已定稿的结论（全部 20000 步、22.4M 分支、SDSD test n=39，除非注明）
 
-| method | PSNR-Y | LPIPS | params |
-|---|---|---|---|
-| **Seer-v2 (V-JEPA)** | **23.481** | 0.2437 | 361M |
-| Retinexformer, retrained on our split (160k it) | 22.621 | **0.2115** | 1.6M |
-| Seer-v2, random tokens | 20.729 | 0.2830 | 361M |
-| Seer-v2, no tokens | 20.231 | 0.2852 | 361M |
-| DarkIR | 20.154 | 0.2911 | 13M |
-| HVI-CIDNet (generalization) | 17.728 | 0.3574 | 8M |
+### 成立的
 
-Random tokens score essentially the same as no tokens (20.729 vs 20.231), so the
-+3.25 dB comes from the tokens' content and not from having an extra
-conditioning path.
+| 结论 | 数 | 种子 |
+|---|---|---|
+| 域内：先验 vs 无 token | PSNR-Y **+1.290** [+0.270, +2.449]；LPIPS **-0.0240** [-0.0321, -0.0168] | 3，逐种子同号（+1.161 / +0.042 / +2.666） |
+| 归因：真 token vs 随机初始化编码器的 token | **4.88 dB** [3.61, 6.10] | 1（seed 0 配对） |
+| 跨域 H5：留一域外测 | SDSD LPIPS **-0.0257** [-0.0471, -0.0059]；BVI LPIPS **-0.0229** [-0.0435, -0.0017]；LOL PSNR **+0.881** [+0.390, +1.395]；另一指标均无显著退化 -> **3/3 域通过**（规则要求 2/3） | 2，被 claim 的指标逐种子同号 |
+| 协议：短预算读的是噪声 | 2000 步时 H5 通过的域与收敛后通过的域没有一个重合；同一配置三种子跨 0.91 dB | -- |
+| 唯一存活的架构因素：跨深度读取编码器（E2c） | 只读第 23 块 vs 读 5/11/17/23：PSNR **-3.309** [-4.600, -1.940]；LPIPS +0.0301 | 2 |
 
-The margin over the training-matched baseline is thinner than the mean suggests:
-**median -0.27 dB, 18/39 sequences won**. The advantage is concentrated where the
-input is already bright (correlation between input PSNR and our margin +0.684):
-on the brighter half we are +5.14 dB and win 14/20; on the darker half -1.41 dB
-and win 4/19. Retinexformer fails catastrophically on bright inputs — on
-`MVI_0921_2` it turns a 34.3 dB input into 11.0 dB output — and that failure mode
-drives our mean.
+与在同一划分上重训的 Retinexformer（1.6M，160k 步）比：PSNR 均值 +1.968，**中位数 -0.307，只赢 19/39**；
+LPIPS +0.0045 [-0.0287, +0.0363] 不显著。我们的划分去过场景泄漏，绝对值不与已发表表格可比。
 
-### What the prior actually uses
+### 不成立的（阴性结果，论文里照报）
 
-Interventions that hold frame content pixel-identical and vary only its
-arrangement (`code/temporal_ablate.py`), SDSD test:
+| 实验 | 改动 | 结果 |
+|---|---|---|
+| E18 spatial | 位置对齐的交叉注意力 | +0.029 [-0.386, +0.367] n.s. |
+| E18 hybrid | 跨帧 KV | -0.081 [-0.533, +0.335] n.s. |
+| E18 EDC | 曝光解耦 | s0-1：**-1.614** [-2.312, -0.924]；s2：-0.711 n.s. 同号；LPIPS 三种子都显著变差 |
+| E18 layers_all | 每个尺度读所有 tap | s2：**-3.095** [-4.308, -1.999]（11-11 才与 seed-2 基线配对） |
+| E21 / H16 | 可学习信赖门 | -0.243 n.s.；喂随机 token 掉 4.764 dB vs 无门 4.879；门值 0.9832 / 0.9833（初始 0.982） |
+| E25 / H16' | 门 + 30% 步喂错内容 token | 域内 **-1.130** [-1.905, -0.427]，LPIPS +0.0202；随机 token 仍掉 4.09 dB；门值 0.9824 / 0.9837，**仍是初始值** |
+| E22 | 潜时序 loss（相对式） | 平凡坍缩（mag 0.135）；PSNR -0.555、LPIPS +0.1826、tLP 差距 +0.3587，全显著变差 |
+| E24 / H17 | 潜时序 loss（余弦式） | 机制被激活（对齐 cos 0.034 -> 0.089），但 LPIPS **+0.0262** [+0.0128, +0.0412]、tLP 差距 **+0.0085** [+0.0066, +0.0103] 显著变差；帧序敏感性 0.034 dB 没变 |
+| E26 / H18 | 用固定 64 维投影 token 训练 | PSNR **-0.660** [-1.213, -0.111] |
+| E27 / H19 | 把码蒸馏进小网络 | 预注册门槛触发，**取消**（见下） |
 
-| condition | prior effect |
+### 机制测量（推理期、在全 token 训练的模型上）
+
+| 投影 | dPSNR-Y | 种子 |
+|---|---|---|
+| 每个 clip 自己的 4 个主方向 | **+0.426** [+0.033, +0.853] | 3，同号 |
+| 空间均值（256 位置 -> 1） | +0.336 [-0.685, +1.331] n.s. | 3 |
+| 时间均值（8 tubelet -> 1） | +0.283 [-0.180, +0.764] n.s. | 3 |
+| **固定**的 4 个方向（训练集 PCA） | **-4.275** [-6.835, -1.888] | 2（s0, s1） |
+| 固定 16 个方向 | -3.115 [-5.279, -1.142] | 2 |
+| 固定 64 个方向 | -0.215 [-1.395, +0.904] n.s.（逐种子 -0.377 / -0.053） | 2 |
+
+读法：训练好的分支依赖的是一个**低秩、但随 clip 变化**的子空间——依赖本身很小，
+但定位它仍需要编码器，所以没有固定低维码可蒸馏（E27 因此取消）；而 E26 说明
+"推理期可以丢"不等于"训练时本来就可以更小"。论文按这两半成对表述。
+
+另有：V-JEPA 确实编码时序（打乱帧序使 block-23 token 变 58%，低光不降解），
+而收敛模型的潜动态与目标几乎正交（cos +0.034，只改外观的上界 +0.968）。
+
+## 2. 没完成的
+
+| 项 | 状态 | 说明 |
+|---|---|---|
+| **E28 / H20**（per-clip rank 4 从头训练） | 结果未知 | 11-03 15:25 在 13300/20000；32677 从 11-05 起不可达；**我当时没给它挂自动评测**（其他实验都挂了），所以没有结果 JSON。昇腾上保底重跑的冒烟测试是 86.9 s/it（每步 SVD 在 NPU 上极慢），20000 步约 20 天，**按现写法不可行** |
+| 定性对比图 | 丢失 | 20 张 PNG 只在 32677 上。可在 31051 用 E17 checkpoint 按同一选图规则重出，约 30 分钟 |
+| 32677 上的若干探针 JSON | 未归档 | td 基线/中间步/上界、固定基底 s2；数字都已记入预注册 Amendment 14/17/19 |
+| **论文正文** | **关键路径** | 只有 abstract 和 intro 已按 CVPR 结果重写（0 个 TBD，115 个宏全部从 JSON 生成）；**related / prelim / method / experiments / conclusion 仍是 ICLR 版**，描述的是已废弃的 M1 / router / counterfactual predictor 和旧数字。当前 PDF 11 页（含附录），正文排到第 8 页；重写后须压进 CVPR 的 8 页 |
+
+## 3. 建议（需要你定）
+
+1. **实验现在冻结**，剩下 5 天全部给写作。H20 的先验已经很差（同形状的 H18 训练期显著为负），
+   而且结果拿不到；论文里报为"未完成"，或者 32677 若在 11-14 前恢复就补评它。
+2. 若一定要 H20：把每步 SVD 改成 Gram 矩阵在 CPU 上做 eigh，估计能降到 10 s/it 左右、约 55 小时，
+   但这个估计**未经实测**，且会和写作抢 11-12 到 11-14 的时间。
+3. 定性图在 31051 上重出（不抢训练卡）。
+
+## 4. 本仓库里 CVPR 轮的内容
+
+| 路径 | 内容 |
 |---|---|
-| intact | +3.781 dB |
-| shuffled (same frames, random order) | +3.785 dB |
-| frozen (centre frame x16) | +1.563 dB |
-
-Shuffling costs nothing (gap +0.004, CI [-0.418, +0.480]); freezing costs
-2.218 dB and is prior-specific (CI [-3.780, -0.837]). **The prior does not use
-temporal order.** Two further ablations agree that it needs neither spatial
-correspondence (E11, -0.68 dB when positional grounding is added) nor the pixel
-branch's capacity (E3, +2.02 dB at 22.4M against +3.31 dB at 361M).
-
-What it does need is feature depth: reading only block 23 instead of
-{5,11,17,23} costs 4.5 dB, more than the entire prior benefit.
-
-### Exposure is a per-scene quantity
-
-Variance decomposition over 271 sequences in three domains: between-domain
-sd 0.200, within-domain sd 0.469, **ICC 0.154**. A per-domain offset estimated
-from k clips has standard error 0.469/sqrt(k), which exceeds the offset being
-corrected for every k <= 5 — confirmed by sweeping k = 0..30 (E7). GT-mean
-normalisation is worth 4-7 dB cross-domain to *every* method tested, so this is
-a property of the task rather than of any model.
-
-## 2. What was tried and did not work
-
-Four negative results, each with the instrument that produced it:
-
-| attempt | result |
-|---|---|
-| LPM: world-model predictor as a temporal prior | fails a pre-registered specificity probe — spatial blur moves the measure 1.8x more than flicker |
-| E11: spatially grounded cross-attention | -0.68 dB at +0.2% parameters |
-| E15: cross-frame KV aggregation | +0.11 dB, n.s.; removes the frozen-condition deficit without a net gain |
-| E16: exposure decoupling switched on | **-2.56 dB cross-domain** [-3.29, -1.81]; the residual exposure error *grows* (headroom 4.54 -> 6.5) |
-
-H5 (cross-domain prior) fails: significant on 1 of 3 held-out domains (LOL
-+1.59 dB, SDSD and BVI n.s. across 3 seeds), so the claim leaves the title.
-
-## 3. The finding that changes how the rest is read
-
-Every architecture comparison above was made at 2000 iterations, and that
-protocol cannot resolve the effects being judged:
-
-```
-one configuration, three seeds, step 2000:  23.82 / 23.44 / 22.91   (spread 0.91 dB)
-effects being judged:                       +0.11 (E15), -0.68 (E11)
-```
-
-The validation curves also cross: E15 hybrid leads the baseline by 1.0 dB at
-steps 500 and 1000 and is overtaken by step 2000; several runs *decline* between
-1500 and 2000. None has reached a plateau. The protocol additionally carries a
-systematic bias against architectural additions, since anything with new
-parameters to learn looks worse inside an undertrained window — which is exactly
-the shape of all three failures.
-
-For scale: Retinexformer reaches 22.6 dB with 1.6M parameters and 160k
-iterations; our 361M branch without the prior reaches 20.2 dB in 2000. A 225x
-parameter ratio losing by 2.4 dB is a training-budget result, not an
-architectural one.
-
-**No architectural conclusion in section 2 should be treated as established.**
-
-## 4. Running now
-
-E17: convergence runs, 20000 iterations on the 22.4M branch (6.3 s/it on 910B,
-four times faster than the 361M branch, the only configuration that can reach
-convergence before the deadline). Arms: pretrained x2, none x2, random x1, with
-validation every 1000 steps. Due 2026-10-27.
-
-It answers three things the current data cannot: the prior's benefit at
-convergence, where we stand against Retinexformer at a comparable training
-budget, and whether the seed spread falls far enough to make architecture
-comparison possible at all. The third decides whether any method contribution
-is reachable in the remaining time.
-
-## 5. Open
-
-- Paper skeleton moved to CVPR format and compiling; title changed to
-  "What Transfers from a Video World Model? A Spatial--Semantic Prior for
-  Low-Light Video Enhancement" per the pre-registered decision point.
-- `clean-6` still undecided; the contamination it was designed to avoid is
-  already handled by retraining Retinexformer on our split, so dropping it with
-  a stated reason is the current plan.
-- LPIPS trails Retinexformer in-domain (0.2437 vs 0.2115) and the two metrics
-  disagree only in aggregate: per sequence they correlate at -0.78, so the
-  sequences we lose on lose on both.
+| `STATUS.md` | 本文件 |
+| `EXPERIMENTS.md` | 每个实验的改动、种子、主机端口、服务器运行目录与评测 JSON 路径、归档位置 |
+| `notes/CVPR_PREREG.md` | 预注册与 20 条修正案 |
+| `code_full/` | 31051 上的完整代码树（11-11 打包，已含所有曾在 32677 上运行的改动；不含权重和日志） |
+| `code/` | 10-25 推送的部分代码（保留，未改） |
+| `runners/host31051_ascend/` | 31051 上实际使用的启动/评测脚本（从服务器拷出） |
+| `runners/host32677_a100/` | 32677 上的脚本，从会话记录中逐字恢复；`patches_applied/` 是对训练器和评测器打过的补丁，按时间顺序 |
+| `results/cvpr_converged/` | 收敛轮全部已归档的逐序列评测 JSON（61 个），论文宏的唯一来源 |
+| `results/`（其余） | 10-25 推送的 2000 步轮结果 |
+| `paper/` | 论文工作区（CVPR 模板），`paper/main_draft_20261111.pdf` 是当前草稿 |

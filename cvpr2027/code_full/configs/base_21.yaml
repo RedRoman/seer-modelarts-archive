@@ -1,0 +1,22 @@
+_base_: base.yaml
+
+# V-JEPA 2.1 variant: load from local clone of facebookresearch/vjepa2.
+# Default for v5 training (HF doesn't yet host V-JEPA 2.1 weights, and our
+# Predictor counterfactual logic depends on the 2.1 predictor structure).
+
+model:
+  backbone:
+    source: local_21
+    local_repo: /home/ma-user/workspace/zihaohe/modelzoo/vjepa2-main
+    local_ckpt: /home/ma-user/workspace/zihaohe/checkpoint/vjepa2_1_vitl_dist_vitG_384.pt
+    feature_layers: [5, 11, 17, 23]
+    image_size: 256
+    frames_per_clip: 16
+    freeze: true
+    patch_size: 16
+    tubelet_size: 2
+
+  predictor:
+    # Predictor reuses the same V-JEPA 2.1 ckpt (it has both encoder + predictor weights)
+    local_repo: /home/ma-user/workspace/zihaohe/modelzoo/vjepa2-main
+    ckpt_path: /home/ma-user/workspace/zihaohe/checkpoint/vjepa2_1_vitl_dist_vitG_384.pt

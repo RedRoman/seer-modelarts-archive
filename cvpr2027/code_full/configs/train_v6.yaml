@@ -1,0 +1,81 @@
+_base_: base_21.yaml
+
+# v6: V-JEPA Latent Flow Matching + V-JEPA-Grounded Pixel Decoder.
+# Architecture (no SD VAE, no external pretrained pixel models):
+#   - V-JEPA 2.1 Encoder (frozen, 304M)
+#   - VJepaLatentDiT (~120M trainable): rectified flow in V-JEPA's 1024-dim latent
+#   - VJepaPixelDecoder (~80M trainable): 4-scale UNet, V-JEPA cross-attn at every scale
+# Training: random t per batch, MSE flow loss + Charbonnier pixel loss + LPIPS + temporal.
+# Goal: beat v3 V-DUN 25.8 PSNR baseline.
+
+output_dir: /cache/zihaohe/checkpoint/runs/v6
+
+precision: bf16
+
+model:
+  inference_steps: 8
+
+  latent_dit:
+    dim: 768
+    depth: 16
+    num_heads: 12
+    ffn_mult: 4.0
+    use_gradient_checkpoint: true
+
+  pixel_decoder:
+    base_dim: 48
+    num_blocks: [2, 4, 4, 6, 8]      # [enc0, enc1, enc2, enc3, bottleneck]
+    heads: [2, 4, 8, 8, 8]
+    ffn_exp: 2.66
+    vjepa_layer_per_scale: [0, 0, 1, 2, 3]    # shallow V-JEPA at fine decoder scales
+    cross_attn_at_scales: [2, 3, 4]            # cross-attn at 64x64, 32x32, 16x16
+    use_gradient_checkpoint: true
+
+  predictor:
+    enabled: false                   # off in v6 main path; engineering trick only
+
+train:
+  batch_size: 1
+  clip_len: 16
+  crop_size: 256
+  log_every: 50
+  val_every: 1000
+  save_every: 2000
+  keep_n_step_ckpts: 2
+
+optim:
+  lr: 2.0e-4
+  min_lr: 1.0e-5
+  weight_decay: 1.0e-4
+  betas: [0.9, 0.99]
+  total_iters: 40000
+  warmup_iters: 500
+  scheduler: cosine
+  grad_clip: 1.0
+  accum_steps: 4                     # effective batch = 4 (matches v3)
+  resume_from: null
+
+data:
+  train:
+    datasets:
+      - kind: sdsd
+        root: /home/ma-user/workspace/zihaohe/datasets/SDSD_indoor
+        subset: direct
+        split: train
+        weight: 1.0
+      - kind: sdsd
+        root: /home/ma-user/workspace/zihaohe/datasets/SDSD_outdoor
+        subset: direct
+        split: train
+        weight: 1.0
+  val:
+    kind: sdsd
+    root: /home/ma-user/workspace/zihaohe/datasets/SDSD_indoor
+    subset: direct
+    split: test
+
+loss:
+  flow_weight: 1.0
+  pix_weight: 1.0
+  lpips_weight: 0.1
+  temporal_weight: 0.1

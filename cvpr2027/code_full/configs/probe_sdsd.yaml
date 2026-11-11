@@ -1,0 +1,23 @@
+_base_: base_21.yaml
+
+# V-JEPA invariance probe (GO/NO-GO before training).
+# Verifies that V-JEPA features at shallow layers are illumination-invariant
+# enough to serve as a useful prior. Probe was passed on host 31116 with
+# cos_best (layer 5) = 0.962 indoor, 0.975 outdoor.
+
+output_dir: /cache/zihaohe/checkpoint/runs/probe_sdsd
+
+probe:
+  n_samples: 24
+  clip_len: 16
+  crop_size: 256
+  save_pca_viz: true
+  threshold_best_layer_cos: 0.85
+  threshold_r2: 0.4
+
+data:
+  val:
+    kind: sdsd
+    root: /home/ma-user/workspace/zihaohe/datasets/SDSD_indoor
+    subset: direct
+    split: test

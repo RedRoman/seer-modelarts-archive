@@ -1,0 +1,68 @@
+\section{Methodology}\label{sec:method}
+
+\input{sections/02_motivation}
+
+\paragraph{Notation.} Let $\mathcal{V}\coloneqq\mathbb{R}^{3\times T\times H\times W}$ denote RGB video clips with $T{=}16$ frames. $\mathbf{X}\in\mathcal{V}$ is the low-quality input, $\mathbf{Y}\in\mathcal{V}$ its (unknown at inference) well-lit counterpart, $\hat{\mathbf{Y}}\in\mathcal{V}$ our prediction. The frozen V-JEPA ViT-L encoder $\Phi:\mathcal{V}\to\mathbb{R}^{d\times T'\!\times h\times w}$ exposes token features $\Phi^{(l)}$ at every block $l\in\{1,\dots,23\}$; we tap a hierarchical subset $\mathcal{L}\coloneqq\{5,11,17,23\}\subset\{1,\dots,23\}$ (four blocks spanning the network depth, matching~\citep{vjepa2}; no probing evidence is claimed for what each block encodes, and alternative subsets are ablated in Sec.~\ref{sec:experiments:ablation}). For image-domain inputs with $T{=}1$ (LOL splits) we tile the frame to $T{=}16$ before feeding V-JEPA (validated against video-native LOL variants in the appendix). The pixel branch $\mathcal{P}_{\theta}$ is a five-scale Restormer-style~\citep{restormer} U-Net with scales $\mathcal{S}\coloneqq\{1,\dots,5\}$, and Seer's forward pass factorizes as $\hat{\mathbf{Y}} = \mathcal{P}_{\theta}(\mathbf{X};\tilde{\boldsymbol{\Phi}})$, $\tilde{\boldsymbol{\Phi}} = \{\tilde{\Phi}_{s}\}_{s\in\mathcal{S}}$, where $\tilde{\Phi}_{s}$ is the V-JEPA feature routed to scale $s$ (Sec.~\ref{sec:method:mechanisms}).
+
+\subsection{Overall Architecture}\label{sec:method:arch}
+Seer maintains two parallel paths (Fig.~\ref{fig:arch}).
+
+\begin{figure*}[t]
+\centering
+\includegraphics[width=0.73\textwidth]{figures/fig_arch.pdf}
+\caption{Seer architecture. Frozen V-JEPA (top) at four block depths $\mathcal{L}$, refined by M1 counterfactual predictor $\Psi$ and mixed by M3 cross-layer router; trainable pixel path (bottom) absorbs V-JEPA via residual cross-attention at every scale. M2 closes the loop as a feature-space self-consistency loss. A training-free chroma-preservation post-processor is engaged conditionally on the target domain (Sec.~\ref{sec:method:cp}).}
+\label{fig:arch}
+\end{figure*}
+
+\noindent\textbf{V-JEPA path (frozen).} $\mathbf{X}$ is fed once through V-JEPA; token features are cached at four block depths $l\!\in\!\mathcal{L}$ spanning shallow, mid, high, and final blocks. The learnable cross-layer router M3 (Sec.~\ref{sec:method:mechanisms}) is initialized to a hand-picked layer-to-scale mapping and free to reweight during training; each cached feature is refined by a counterfactual predictor $\Psi$ (Sec.~\ref{sec:method:mechanisms}) before injection.
+
+\noindent\textbf{Pixel path (trainable).} A $3{\times}3$ stem embeds $\mathbf{X}$ into $C$ channels; five encoder stages downsample by $2{\times}$, each with an Illumination-Guided Attention Block (IGAB, from Retinexformer~\citep{retinexformer}) and a Local Illumination Cue (LIC) modulator; a bottleneck combines a 3-D temporal mixer with a channel feature-interaction module; four decoder stages symmetrically upsample via skip paths. At every scale $s\in\mathcal{S}$, the pixel feature $\mathbf{F}_{s}\in\mathbb{R}^{N_{s}\times d_{s}}$ absorbs V-JEPA information through residual cross-attention,
+\begin{equation}\label{eq:xattn}
+\mathbf{F}_{s} \leftarrow \mathbf{F}_{s} + \operatorname{softmax}\!\Bigl(\tfrac{\mathbf{F}_{s}\mathbf{W}_{Q}^{s}(\tilde{\Phi}_{s}\mathbf{W}_{K}^{s})^{\!\top}}{\sqrt{d_{h}}}\Bigr)\tilde{\Phi}_{s}\mathbf{W}_{V}^{s},
+\end{equation}
+so V-JEPA acts as a read-only key/value memory. The decoder produces the main prediction $\hat{\mathbf{Y}}\!\in\![0,1]^{3\times T\times H\times W}$ (used at inference) and an auxiliary Retinex decomposition $(\hat{\mathbf{R}},\hat{\mathbf{L}})$ supervised only during training.
+
+\noindent\textbf{Chroma-preservation stage (inference).} The raw output $\hat{\mathbf{Y}}$ is post-processed by a training-free, network-decoupled stage that reweighs colour channels against $\mathbf{X}$'s chroma statistics; the benefit is empirically Seer-specific (\appref{app:cp_transfer}; Sec.~\ref{sec:method:cp}).
+
+\subsection{V-JEPA-Centric Anchoring Mechanisms}\label{sec:method:mechanisms}
+Seer couples the two paths through three complementary mechanisms and a single joint objective. All three preserve $\Phi$'s illumination invariance while giving the trainable branch tightly controlled access to it.
+
+\paragraph{Counterfactual predictor (M1).} $\Phi(\mathbf{X})$ is close to $\Phi(\mathbf{Y})$ but not identical (Sec.~\ref{sec:method:invariance}). We provide a lightweight interface for optional feature refinement---a \emph{counterfactual predictor} $\Psi$ that reuses V-JEPA's pretrained $12$-block predictor body (frozen except for rank-$r$ LoRA~\citep{lora} on each block's attention QKV projection), a trainable projection head, and a learnable residual gate. For a stacked token feature $\Phi\in\mathbb{R}^{N\times d}$,
+\begin{equation}\label{eq:m1}
+\Psi(\Phi) \;=\; \Phi \;+\; g\;\cdot\;\underbrace{f_{\text{new}}\bigl(\mathcal{P}_{\text{LoRA}}(\Phi)\bigr)}_{\text{counterfactual delta}},
+\end{equation}
+where $\mathcal{P}_{\text{LoRA}}\!:\!\mathbb{R}^{d}\!\to\!\mathbb{R}^{d_p}$ is the LoRA-adapted predictor body ($d_p{=}384$), $f_{\text{new}}\!:\!\mathbb{R}^{d_p}\!\to\!\mathbb{R}^{d}$ is a trunc-normal-initialised linear head, and $g\!\in\!\mathbb{R}$ is a learnable scalar initialised to $g_{0}{=}0$ so that $\Psi\!\approx\!\mathrm{Id}$ at step $0$. With V-JEPA hidden dimension $d{=}1024$, LoRA rank $r{=}16$ on all $12$ predictor blocks, plus $f_{\text{new}}$ and the gate, the trainable footprint is $\approx\!1.5$~M ($0.4\%$ of the pixel branch); the frozen predictor body carries $10.4$~M of pretrained V-JEPA knowledge that $\Psi$ inherits at no training cost. Identity initialisation lets the pixel branch train against unrefined V-JEPA features from step $0$ and remain free to use or ignore the LoRA delta; the reference Seer converges to a near-identity gate ($g^{\star}\!\approx\!0$, Sec.~\ref{sec:experiments:ablation}), so the interface is kept for post-hoc domain adaptation rather than needed in-distribution.
+
+\paragraph{V-JEPA self-consistency loss (M2).} V-JEPA is a competent perceptual judge (Sec.~\ref{sec:method:invariance}): low-quality and ground-truth clips land in the same neighborhood. We reuse it as a \emph{closed-loop supervisor} on the prediction, $\mathcal{L}_{\text{M2}}(\hat{\mathbf{Y}},\mathbf{Y}) = \|\Phi(\hat{\mathbf{Y}}) - \Phi(\mathbf{Y})\|_{F}^{2} / \|\Phi(\mathbf{Y})\|_{F}^{2}$ computed on the final-block features $\Phi^{(23)}$, with the denominator decoupling loss magnitude from V-JEPA's absolute feature scale. Because $\Phi$ is illumination-invariant, $\mathcal{L}_{\text{M2}}$ penalizes structural/semantic mismatches while remaining permissive about pixel-exact colour, trading off usefully against the $\ell_{1}$ term.
+
+\paragraph{Cross-layer router (M3).} Different pixel-branch scales prefer different V-JEPA depths (fine scales benefit from low-block features, coarse scales from high-block features); rather than hand-tune this mapping, we let the network learn it via a temperature-controlled softmax mixture over $\mathcal{L}$,
+\begin{equation}\label{eq:m3}
+\tilde{\Phi}_{s} = \sum_{l\in\mathcal{L}} \pi_{s}^{(l)}\Psi(\Phi^{(l)}),\quad
+\pi_{s}^{(l)} = \frac{\exp(\lambda_{s}^{(l)}/\tau)}{\sum_{l'\in\mathcal{L}}\exp(\lambda_{s}^{(l')}/\tau)},
+\end{equation}
+with $20$ logits $\lambda_{s}^{(l)}$ and $\tau{=}1$, initialised to $\lambda_{s}^{(l^{\star}(s))}{=}4$ and $0$ elsewhere ($l^{\star}(s)$ the layer used by prior V-JEPA-conditioned baselines; initial identity-target mass $\approx\!0.95$). The router logits receive gradients during Stage-4 training; on the trained checkpoint the identity-target mass has moved to only $\pnum{\approx\!0.948}$ ($\pnum{\Delta\!<\!0.001}$ per scale), confirming the hand-picked assignment is close to data-optimal on SDSD. M3 is thus both a design-time specification and a learnable interface free to re-route if needed; alternative configurations are in \appref{app:m1m3_scratch}. $\tilde{\Phi}_{s}$ enters the pixel branch via Eq.~\eqref{eq:xattn}.
+
+\paragraph{Joint objective.} With pixel reconstruction $\mathcal{L}_{\ell_{1}}{=}\|\hat{\mathbf{Y}}{-}\mathbf{Y}\|_{1}$, composition-consistency $\mathcal{L}_{\text{Ret}}{=}\|\hat{\mathbf{R}}\!\odot\!\hat{\mathbf{L}}{-}\mathbf{Y}\|_{1}$ from the auxiliary Retinex heads, and an isotropic TV smoothness prior $\mathcal{L}_{\text{sm}}$ on illumination ($\beta{=}0.1$ lighter along time than space), Seer trains end-to-end with $\mathcal{L}_{\text{total}} = \mathcal{L}_{\ell_{1}} + \lambda_{R}\mathcal{L}_{\text{Ret}} + \lambda_{S}\mathcal{L}_{\text{sm}} + \lambda_{M}\mathcal{L}_{\text{M2}}$, weights fixed across all stages (values in Sec.~\ref{sec:experiments}).
+
+\subsection{Bayesian Chroma Preservation}\label{sec:method:cp}
+Seer's raw prediction $\hat{\mathbf{Y}}$ recovers luminance accurately but inherits a systematic blue-channel bias (\appref{app:color_bias}); the low-quality input $\mathbf{X}$ carries noisier but less biased chroma. Following Retinex~\citep{retinex_original}, we define a chroma-preserving surrogate $\hat{\mathbf{Y}}_{\text{cp}}$ that inherits $\mathbf{X}$'s chroma at $\hat{\mathbf{Y}}$'s luminance, and fuse it with $\hat{\mathbf{Y}}$ through a per-channel convex combination:
+\begin{align}\label{eq:cp_surrogate_fusion}
+\hat{\mathbf{Y}}_{\text{cp}} &\coloneqq \mathbf{X}\odot Y_{\hat{\mathbf{Y}}}/(Y_{\mathbf{X}}{+}\epsilon), \\
+\hat{\mathbf{Y}}^{\star}_{c}(\alpha_{c}) &= \alpha_{c}\hat{\mathbf{Y}}_{\text{cp},c} + (1{-}\alpha_{c})\hat{\mathbf{Y}}_{c}, \nonumber
+\end{align}
+with $Y_{\bullet}$ the standard Retinex luminance projection and $\epsilon{=}10^{-3}$ guarding the division; processed in linear RGB, clamped to $[0,1]$ (schematic in \appref{app:cp_diagram}).
+
+\noindent\textbf{General LMMSE closed form and validation plug-in.} Writing the two residuals as $\varepsilon_i\!\coloneqq\!u_i\!-\!\mathbf{Y}_c$ with $u_1\!\coloneqq\!\hat{\mathbf{Y}}_{\text{cp},c}$, $u_2\!\coloneqq\!\hat{\mathbf{Y}}_{c}$, let $m_{ij}\!\coloneqq\!\mathbb{E}[\varepsilon_i\varepsilon_j]\!=\!\sigma_{ij}\!+\!b_ib_j$ be the (uncentred) joint second-moment matrix. Minimising the exact quadratic MSE $\alpha_c^2m_{11}+2\alpha_c(1{-}\alpha_c)m_{12}+(1{-}\alpha_c)^2m_{22}$ gives the closed form
+\begin{equation}\label{eq:alpha_star_general}
+\alpha_{c}^{\star} \;=\; \frac{m_{22}-m_{12}}{m_{11}-2m_{12}+m_{22}}.
+\end{equation}
+Two consequences. \emph{(i)~No Gaussianity required}---only second moments enter, so Eq.~\eqref{eq:alpha_star_general} is the minimum-MSE sum-to-one linear combination. \emph{(ii)~Bias and covariance are absorbed} through $m_{ij}\!=\!\sigma_{ij}\!+\!b_ib_j$; setting $b_i\!=\!0,\sigma_{12}\!=\!0$ recovers the classical inverse-variance ratio (\appref{app:cp_theory}). We plug in empirical second moments $\widehat{m}_{ij}$ from $N\!\approx\!15$ SDSD validation pairs; the resulting $\widehat{\boldsymbol{\alpha}}^{\star}\!=\!(0.50,0.50,0.68)$ agrees with an exhaustive PSNR grid-search within $0.01$~dB---\emph{training-free} yet principled.
+
+\noindent\textbf{Deployment rule.} Seer ships with a single data-independent flag: SDSD-family targets return the raw prediction, cross-domain targets return the CP-refined prediction. The flag is set once per deployment, not per sample or per metric. In the six-level protocol, L0/L1 use raw; L2--L5 use CP; generality is discussed in \appref{app:limitations}.
+
+\begin{figure}[!tb]
+\centering
+\includegraphics[width=0.98\columnwidth]{figures/fig_cross_attention.pdf}
+\caption{Residual cross-attention (Eq.~\eqref{eq:xattn}, encoder scale~4) for six query patches spanning the range over all $256$ positions; real SDSD-indoor frame, reference Seer checkpoint.}
+\label{fig:cross_attention}
+\end{figure}

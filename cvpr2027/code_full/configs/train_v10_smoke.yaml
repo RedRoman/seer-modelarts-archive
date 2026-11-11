@@ -1,0 +1,19 @@
+_base_: train_v10.yaml
+
+# CN-E smoke: tiny crop curriculum 256→384→512 with transitions at iter 4 and 6.
+output_dir: /cache/zihaohe/checkpoint/runs/v10_smoke_combined
+
+train:
+  log_every: 1
+  val_every: 999
+  audit_every: 999
+  save_every: 8
+  crop_schedule:
+    - {iter: 0, crop: 256}
+    - {iter: 4, crop: 384}
+    - {iter: 6, crop: 512}
+  transition_lr_iters: 2
+
+optim:
+  total_iters: 8
+  accum_steps: 1

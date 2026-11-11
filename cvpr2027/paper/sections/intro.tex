@@ -1,0 +1,96 @@
+\section{Introduction}\label{sec:intro}
+
+Low-light video enhancement is ill-posed: the same dark clip admits many
+plausible well-lit versions, and supervised models resolve the ambiguity with
+statistics learned from one paired dataset. They do well on held-out clips of
+that dataset and degrade on other sensors and scenes~\citep{bvi_rlv}. A prior
+that does not come from the paired data is an obvious remedy, and video world
+models are an attractive source: V-JEPA~\citep{vjepa,vjepa2} is trained to
+predict the latent representation of masked spatio-temporal regions, so it is
+usually described as modelling how scenes evolve rather than how they look.
+
+That description is what makes the prior appealing, and this paper is about the
+gap between it and what the prior is actually used for. We condition a
+trainable Restormer-style pixel branch on frozen V-JEPA\,2 tokens through
+zero-initialised residual cross-attention -- the simplest injection we could
+write down -- and then spend the paper trying to establish that anything more
+elaborate is warranted. It is not.
+
+\paragraph{The prior works, and the gain is attributable.}
+On held-out SDSD sequences the prior improves a matched network that differs
+only in the tokens it reads by $\R{indomain@psnr}$\,dB PSNR-Y
+$\R{indomain@psnr@ci}$ and $\R{indomain@lpips}$ LPIPS
+$\R{indomain@lpips@ci}$, significant on both metrics across
+\R{indomain@seeds} seeds with every seed agreeing in sign. Tokens from a
+randomly initialised encoder of the same size are worth $\R{randomgap@psnr}$\,dB
+less than pretrained ones $\R{randomgap@psnr@ci}$, so the gain comes from the
+tokens' content and not from the extra conditioning path. The prior also
+transfers: on each of three held-out domains it improves at least one metric
+significantly with no significant degradation of the other
+(Sec.~\ref{sec:exp:xdomain}).
+
+\paragraph{The transfer result is invisible at the usual budget.}
+Conditioning studies are commonly run at a few thousand iterations. At that
+budget, on our data, one configuration's three seeds span 0.91\,dB while the
+architectural effects being judged are 0.11--0.68\,dB, validation curves cross
+between steps 1000 and 2000, and no run has plateaued. We re-ran every
+architectural and cross-domain comparison at convergence and the verdicts moved:
+of the three held-out domains that pass at convergence, none passed at the
+short budget, and the one domain that was significant there is significant here
+on a different metric. The short protocol also carries a bias against
+additions, since anything with new parameters looks worse inside an
+undertrained window -- which is the shape of every architectural improvement we
+first believed we had.
+
+\paragraph{What transfers is far less than the architecture assumes.}
+Five ways of giving the pixel branch more of the representation -- positional
+grounding, cross-frame keys, multi-layer keys, exposure decoupling, and a
+learned reliability gate -- are at convergence statistically indistinguishable
+from the simplest injection or significantly worse. Shuffling the input frames
+changes the output by $\R{ordersens}$\,dB. Replacing all 256 spatial positions
+of each tubelet with their mean is not significantly worse than the full field
+($\R{suff@spatial@d}$\,dB, $\R{suff@spatial@ci}$), and neither is averaging
+over time. Projecting each clip's 1024-dimensional tokens onto that clip's own
+four principal directions does not hurt either ($\R{suff@rank4@d}$\,dB,
+$\R{suff@rank4@ci}$) -- but four \emph{fixed} directions estimated on the
+training split cost $\R{gsuff@global4}$\,dB, close to the
+$\R{randomgap@psnr}$\,dB of discarding the tokens, and a branch trained on a
+fixed 64-dimensional projection is significantly worse than one trained on the
+full field ($\R{grank64@psnr}$\,dB, $\R{grank64@psnr@ci}$). Both halves are
+needed to read the result correctly. What a converged branch relies on is a
+low-rank subspace whose identity changes from clip to clip, so the reliance is
+small while obtaining it still requires the encoder. The one design choice that
+survives every test is depth: reading only the encoder's last block instead of
+four blocks spanning its depth costs $\R{e2deep@psnr}$\,dB
+($\R{e2deep@psnr@ci}$).
+
+The temporal case is the sharpest, because the information is present and the
+model declines it. Reordering a clip's frames changes V-JEPA's block-23 tokens
+by 58\%, and low light does not degrade that structure. The converged model's
+own latent dynamics are nonetheless almost orthogonal to the target's
+(agreement $+0.034$ against $+0.968$ for a well-exposed clip under a mild
+photometric change). Adding a loss that matches them raises the agreement to
+$\R{h17@tdcos@cos}$ and makes perceptual quality and pixel-space temporal
+consistency significantly \emph{worse} ($\R{h17@tdcos@lpips}$ LPIPS,
+$\R{h17@tdcos@tlp}$ tLP gap). Latent temporal consistency and the kind the
+metrics and the eye reward are not the same quantity.
+
+\paragraph{Contributions.}
+(i)~A controlled, converged attribution of a frozen video world model's benefit
+for low-light video enhancement, significant in domain on both fidelity and
+perceptual quality and significant on all three held-out domains, with
+random-encoder and no-token controls.
+(ii)~A measurement of \emph{what} a trained branch uses rather than how much it
+gains: its reliance is low-rank, clip-adaptive, spatially near-uniform and
+temporally near-constant, spread across the encoder's depth rather than its
+channels, which accounts in one stroke for five architectural additions that do
+not help -- and is distinguished, by training-time controls, from the stronger
+and false claim that the representation could have been smaller.
+(iii)~Evidence that forcing the unused temporal structure into the objective
+engages the intended mechanism and degrades the result, with the instrument
+that measures it and its calibrated ceiling.
+(iv)~A protocol result: the training budget at which such comparisons are
+usually made cannot resolve the effects being compared, demonstrated by
+re-deciding six hypotheses at convergence.
+All claims are pre-registered, and every number is generated from released
+per-sequence results.

@@ -1,0 +1,14 @@
+\subsection{Preliminaries}\label{sec:method:invariance}
+
+We quantify the illumination invariance of five frozen pre-trained encoders: CLIP ViT-L~\citep{clip}, DINOv2 ViT-L~\citep{dinov2}, DINOv3 ViT-L~\citep{dinov3}, SigLIP\,2 ViT-L~\citep{siglip2}, and V-JEPA 2 ViT-L~\citep{vjepa2}. Every encoder receives \emph{the same} $16$-frame $512{\times}512$ clip, resampled to a common $16{\times}16$ patch grid per frame (image encoders' per-frame outputs are averaged to a single token map; tokenization details in \appref{app:encoder_stats}). This isolates \emph{single-frame} invariance---temporal handling is compared separately (Sec.~\ref{sec:experiments:ablation}). For each encoder $\Phi$ and paired clip $(\mathbf{X},\mathbf{Y})$ we compute the mean per-patch relative shift
+\begin{equation}\label{eq:invariance}
+\overline{\rho_{\text{patch}}}(\Phi;\mathbf{X},\mathbf{Y}) = \tfrac{1}{P}\sum_{p=1}^{P}\tfrac{\bigl\|\Phi_{p}(\mathbf{X}) - \Phi_{p}(\mathbf{Y})\bigr\|_{2}}{\bigl\|\Phi_{p}(\mathbf{Y})\bigr\|_{2}},
+\end{equation}
+where $\Phi_{p}$ denotes the $p$-th token of the last-block output. Averaged over 15 SDSD-indoor paired sequences: $\overline{\rho_{\text{patch}}}=0.603$ (SigLIP\,2), $0.554$ (CLIP), $0.462$ (DINOv2), $0.434$ (DINOv3), $\mathbf{0.431}$ (V-JEPA). V-JEPA is \emph{decisively} more invariant than CLIP and SigLIP\,2 (paired one-sided Wilcoxon vs.\ V-JEPA, $p{<}10^{-4}$; Cohen's $d{<}{-}2.7$; lower on $15/15$ sequences), but \emph{statistically indistinguishable} from DINOv3 ($p{=}0.47$; $d{=}{-}0.05$; lower on only $8/15$) and only trending over DINOv2 ($p{=}0.08$). Single-frame invariance thus identifies a \emph{family} of low-drift encoders---V-JEPA, DINOv3, and (weakly) DINOv2---rather than a unique winner; Sec.~\ref{sec:experiments:ablation} breaks the tie via V-JEPA's verified predictive-dynamics capability (\appref{app:predictive_coherence}) and end-to-end encoder-swap ablations.
+
+\begin{figure}[t]
+\centering
+\includegraphics[width=0.87\columnwidth]{figures/fig_invariance.pdf}
+\caption{Single-frame illumination invariance on 15 SDSD-indoor pairs for five frozen encoders (sorted least-to-most invariant left-to-right). Gray polylines: individual sequences; markers: mean $\pm$ 95\% CI. Significance stars: paired one-sided Wilcoxon vs V-JEPA ($\star\star\star{:}\,p{<}10^{-4}$; n.s.: $p{>}0.05$).}
+\label{fig:invariance}
+\end{figure}

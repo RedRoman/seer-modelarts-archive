@@ -1,0 +1,16 @@
+\section{Which frozen encoder sees in the dark?}\label{sec:prelim}
+
+\paragraph{Illumination invariance.} We feed six frozen ViT-L encoders the same $16$-frame $512{\times}512$ low-light clip $\X$ and its well-lit ground truth $\Y$ from $15$ SDSD-indoor pairs: CLIP~\citep{clip}, SigLIP\,2~\citep{siglip2}, DINOv2~\citep{dinov2}, DINOv3~\citep{dinov3}, the pixel-reconstructing video autoencoder VideoMAE~\citep{videomae} and the latent-predictive video world model V-JEPA~2.1~\citep{vjepa2}. Image encoders are run per frame and averaged over time; all outputs are resampled to a common $16{\times}16$ grid (App.~\ref{app:invariance}). For the last-block tokens we measure the mean per-patch relative shift
+\begin{equation}\label{eq:invariance}
+\bar\rho_{\text{patch}}(\Phi;\X,\Y)=\tfrac1P\textstyle\sum_{p}\lVert\Phi_p(\X)-\Phi_p(\Y)\rVert_2/\lVert\Phi_p(\Y)\rVert_2 .
+\end{equation}
+Figure~\ref{fig:invariance} shows two groups. The two image--text encoders drift most (SigLIP\,2 \R{inv@siglip2}, CLIP \R{inv@clip}); V-JEPA (\R{inv@vjepa}) is lower on every one of the $15$ pairs (paired one-sided Wilcoxon $p{=}\R{inv@p@clip}$ against both). The self-supervised encoders form a single low-drift tier: DINOv2 \R{inv@dinov2}, DINOv3 \R{inv@dinov3}, V-JEPA \R{inv@vjepa} and VideoMAE \R{inv@videomae}; V-JEPA is statistically tied with DINOv3 ($p{=}\R{inv@p@dinov3}$) and is not more invariant than VideoMAE, which is lower on 10 of the 15 pairs. Illumination invariance therefore does not single out a video world model: it is shared by self-supervised encoders in general.
+
+\begin{figure}[t]
+\centering
+\includegraphics[width=0.5\columnwidth]{figures/fig_invariance.pdf}
+\caption{Single-frame illumination invariance of six frozen encoders on 15 SDSD-indoor pairs (lower is more invariant). Grey lines: individual pairs; markers: mean with bootstrap 95\% CI. Stars: paired one-sided Wilcoxon test against V-JEPA (n.s.: $p{>}0.05$).}
+\label{fig:invariance}
+\end{figure}
+
+\paragraph{Latent prediction under darkness.} What V-JEPA has and the other encoders lack is a predictor trained to forecast the latent tokens of unseen spatio-temporal regions. On $11$ low-light clips (6 BVI-RLV, 5 SDSD-outdoor), the frozen V-JEPA~2 predictor forecasts the tokens of held-out future tubelets with cosine $0.552$ to the true tokens, against $0.458$ for copying the last observed tubelet (paired Wilcoxon $p{=}5{\times}10^{-4}$, $d{=}1.46$, higher on $11/11$ clips). VideoMAE's pixel decoder, asked for the same future tubelets of the $15$ SDSD-indoor low-light clips, is \emph{worse} than copying (cosine to the true patches $0.406$ vs.\ $0.558$), and drops by $0.14$ relative to well-lit input. The latent predictor is the component our method reuses (M1); Sec.~\ref{sec:exp:encoder} tests whether this difference matters once the encoder is plugged into a restoration network.

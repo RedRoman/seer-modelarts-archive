@@ -1,0 +1,93 @@
+_base_: base_21.yaml
+
+# v8.B+: V-JEPA Predictor multi-iter rollout + big PixelBranch
+#         + Illumination Prompt Bank (VLU-Net inspired)
+#         + Pixel parallel CNN path + Bottleneck CFIM + Retinex aux
+#         + BiasFree LN + PixelShuffle + warmup-cosine schedule
+
+output_dir: /cache/zihaohe/checkpoint/runs/v8
+
+precision: bf16
+
+model:
+  predictor:
+    enabled: true
+    target_layer_idx: 3
+    predictor_embed_dim: 384
+    depth: 12
+    num_heads: 12
+    lora_rank: 16
+    num_iters: 3                      # K=3 step counterfactual rollout
+    local_repo: /home/ma-user/workspace/zihaohe/modelzoo/vjepa2-main
+    ckpt_path: /home/ma-user/workspace/zihaohe/checkpoint/vjepa2_1_vitl_dist_vitG_384.pt
+
+  illumination_router:
+    num_conditions: 8                 # K=8 illumination conditions
+
+  pixel_branch:
+    dims: [64, 128, 256, 512, 1024]
+    num_blocks: [4, 8, 8, 12, 16]
+    heads: [4, 8, 8, 16, 16]
+    ffn_exp: 2.66
+    vjepa_layer_per_scale: [0, 0, 1, 2, 3]
+    cross_attn_at_scales: [1, 2, 3, 4]
+    prompt_bank_at_scales: [1, 2, 3, 4]
+    prompt_dim: 96
+    prompt_grid: [8, 8, 8]
+    pixel_parallel_dims: [32, 64, 128, 192]
+    use_cfim_bottleneck: true
+    use_gradient_checkpoint: true
+
+train:
+  batch_size: 2                       # bump to fill GPU (was 24GB at B=1, target 50GB+)
+  clip_len: 16
+  crop_size: 256
+  log_every: 50
+  val_every: 500
+  save_every: 2000
+  keep_n_step_ckpts: 2
+  ema_decay: 0.999
+  ema_start: 1000
+  val_window: 3
+  warmup_iters: 500                   # warmup-cosine (VLU-Net inspired)
+
+optim:
+  lr: 2.0e-4
+  min_lr: 1.0e-5
+  weight_decay: 1.0e-4
+  betas: [0.9, 0.99]
+  total_iters: 20000                  # B=2 doubles step time; reduce iters to keep ETA reasonable
+  warmup_iters: 250
+  scheduler: cosine
+  grad_clip: 1.0
+  accum_steps: 4                      # effective batch = 2 * 4 = 8
+  resume_from: /cache/zihaohe/checkpoint/runs/v8/ckpts/step_4000.pt
+  resume_reset_optim: false
+
+data:
+  train:
+    datasets:
+      - kind: sdsd
+        root: /home/ma-user/workspace/zihaohe/datasets/SDSD_indoor
+        subset: direct
+        split: train
+        weight: 1.0
+      - kind: sdsd
+        root: /home/ma-user/workspace/zihaohe/datasets/SDSD_outdoor
+        subset: direct
+        split: train
+        weight: 1.0
+  val:
+    kind: sdsd
+    root: /home/ma-user/workspace/zihaohe/datasets/SDSD_indoor
+    subset: direct
+    split: test
+
+loss:
+  pix_weight: 1.0
+  lpips_weight: 0.1
+  temporal_weight: 0.1
+  retinex_weight: 0.5
+  smooth_L_weight: 0.05
+  counter_weight: 0.3                 # counterfactual latent L1
+  monotonic_weight: 0.05              # iterative monotonicity constraint
