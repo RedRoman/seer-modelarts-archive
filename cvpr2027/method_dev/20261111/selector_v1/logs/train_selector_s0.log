@@ -1,0 +1,79 @@
+Launch provenance recorded
+START 2026-11-11T13:41:48Z
+/home/ma-user/anaconda3/envs/PyTorch-2.7.1/lib/python3.12/site-packages/torch/cuda/__init__.py:61: FutureWarning: The pynvml package is deprecated. Please install nvidia-ml-py instead. If you did not install pynvml directly, please report this to the maintainers of the package that installed pynvml for you.
+  import pynvml  # type: ignore[import]
+/home/ma-user/anaconda3/envs/PyTorch-2.7.1/lib/python3.12/site-packages/torch_npu/utils/collect_env.py:58: UserWarning: Warning: The /usr/local/Ascend/cann-8.5.2 owner does not match the current owner.
+  warnings.warn(f"Warning: The {path} owner does not match the current owner.")
+/home/ma-user/anaconda3/envs/PyTorch-2.7.1/lib/python3.12/site-packages/torch_npu/utils/collect_env.py:58: UserWarning: Warning: The /usr/local/Ascend/cann-8.5.2/aarch64-linux/ascend_toolkit_install.info owner does not match the current owner.
+  warnings.warn(f"Warning: The {path} owner does not match the current owner.")
+/home/ma-user/anaconda3/envs/PyTorch-2.7.1/lib/python3.12/site-packages/torch_npu/utils/collect_env.py:58: UserWarning: Warning: The /usr/local/Ascend/cann-8.5.2 owner does not match the current owner.
+  warnings.warn(f"Warning: The {path} owner does not match the current owner.")
+/home/ma-user/anaconda3/envs/PyTorch-2.7.1/lib/python3.12/site-packages/torch_npu/utils/collect_env.py:58: UserWarning: Warning: The /usr/local/Ascend/cann-8.5.2/aarch64-linux/ascend_toolkit_install.info owner does not match the current owner.
+  warnings.warn(f"Warning: The {path} owner does not match the current owner.")
+/home/ma-user/anaconda3/envs/PyTorch-2.7.1/lib/python3.12/site-packages/torch_npu/utils/storage.py:89: UserWarning: TypedStorage is deprecated. It will be removed in the future and UntypedStorage will be the only storage class. This should only matter to you if you are using storages directly.  To access UntypedStorage directly, use tensor.untyped_storage() instead of tensor.storage()
+  if self.device.type != 'cpu':
+{"mode": "risk_full", "step": 1, "loss": 0.9607881307601929, "batch_rgb_mse": 0.0016143480315804482, "batch_base_mse": 0.0017297028098255396, "prediction_timing": "Before optimizer update"}
+{"mode": "risk_full", "step": 50, "loss": 0.47390225529670715, "batch_rgb_mse": 0.0008579647983424366, "batch_base_mse": 0.0009286505519412458, "prediction_timing": "Before optimizer update"}
+{"mode": "risk_full", "step": 100, "loss": 0.9251351356506348, "batch_rgb_mse": 0.001986192772164941, "batch_base_mse": 0.0021354141645133495, "prediction_timing": "Before optimizer update"}
+{"mode": "risk_full", "step": 150, "loss": 0.925114631652832, "batch_rgb_mse": 0.001150056952610612, "batch_base_mse": 0.0011952318018302321, "prediction_timing": "Before optimizer update"}
+{"mode": "risk_full", "step": 200, "loss": 1.2115612030029297, "batch_rgb_mse": 0.0017632602248340845, "batch_base_mse": 0.001955112675204873, "prediction_timing": "Before optimizer update"}
+{"mode": "risk_full", "step": 250, "loss": 0.6485775709152222, "batch_rgb_mse": 0.0010095385368913412, "batch_base_mse": 0.0011144018499180675, "prediction_timing": "Before optimizer update"}
+{"mode": "risk_full", "step": 300, "loss": 0.5905110239982605, "batch_rgb_mse": 0.0021882494911551476, "batch_base_mse": 0.002447657287120819, "prediction_timing": "Before optimizer update"}
+{"mode": "risk_full", "step": 350, "loss": 1.4210803508758545, "batch_rgb_mse": 0.002175056841224432, "batch_base_mse": 0.0024053193628787994, "prediction_timing": "Before optimizer update"}
+{"mode": "risk_full", "step": 400, "loss": 0.8147547245025635, "batch_rgb_mse": 0.0013047878164798021, "batch_base_mse": 0.0014094312209635973, "prediction_timing": "Before optimizer update"}
+{"mode": "risk_full", "step": 450, "loss": 0.7765960693359375, "batch_rgb_mse": 0.001545184524729848, "batch_base_mse": 0.001700777793303132, "prediction_timing": "Before optimizer update"}
+{"mode": "risk_full", "step": 500, "loss": 0.9722847938537598, "batch_rgb_mse": 0.0018980235327035189, "batch_base_mse": 0.002768963575363159, "prediction_timing": "Before optimizer update"}
+{"mode": "risk_full", "step": 550, "loss": 0.5805627107620239, "batch_rgb_mse": 0.00128512317314744, "batch_base_mse": 0.001378153800033033, "prediction_timing": "Before optimizer update"}
+{"mode": "risk_full", "step": 600, "loss": 0.5149921178817749, "batch_rgb_mse": 0.0010575236519798636, "batch_base_mse": 0.0012235918547958136, "prediction_timing": "Before optimizer update"}
+{"mode": "risk_full", "step": 650, "loss": 0.703350305557251, "batch_rgb_mse": 0.00185067905113101, "batch_base_mse": 0.002159820171073079, "prediction_timing": "Before optimizer update"}
+{"mode": "risk_full", "step": 700, "loss": 0.48954063653945923, "batch_rgb_mse": 0.0010661371052265167, "batch_base_mse": 0.0011412411695346236, "prediction_timing": "Before optimizer update"}
+{"mode": "risk_full", "step": 750, "loss": 0.46746528148651123, "batch_rgb_mse": 0.0010174904018640518, "batch_base_mse": 0.0010387918446213007, "prediction_timing": "Before optimizer update"}
+{"mode": "risk_full", "step": 800, "loss": 0.5411762595176697, "batch_rgb_mse": 0.002196719404309988, "batch_base_mse": 0.002419722266495228, "prediction_timing": "Before optimizer update"}
+{"mode": "risk_full", "step": 850, "loss": 0.2151229977607727, "batch_rgb_mse": 0.0009932905668392777, "batch_base_mse": 0.0010622162371873856, "prediction_timing": "Before optimizer update"}
+{"mode": "risk_full", "step": 900, "loss": 1.5203392505645752, "batch_rgb_mse": 0.002310784999281168, "batch_base_mse": 0.0024403126444667578, "prediction_timing": "Before optimizer update"}
+{"mode": "risk_full", "step": 950, "loss": 0.48990434408187866, "batch_rgb_mse": 0.0009073112159967422, "batch_base_mse": 0.0010230629704892635, "prediction_timing": "Before optimizer update"}
+{"mode": "risk_full", "step": 1000, "loss": 0.5672885179519653, "batch_rgb_mse": 0.00163551839068532, "batch_base_mse": 0.0017402325756847858, "prediction_timing": "Before optimizer update"}
+{"mode": "direct_mse", "step": 1, "loss": 0.0016143480315804482, "batch_rgb_mse": 0.0016143480315804482, "batch_base_mse": 0.0017297028098255396, "prediction_timing": "Before optimizer update"}
+{"mode": "direct_mse", "step": 50, "loss": 0.0008602376328781247, "batch_rgb_mse": 0.0008602376328781247, "batch_base_mse": 0.0009286505519412458, "prediction_timing": "Before optimizer update"}
+{"mode": "direct_mse", "step": 100, "loss": 0.001997397281229496, "batch_rgb_mse": 0.001997397281229496, "batch_base_mse": 0.0021354141645133495, "prediction_timing": "Before optimizer update"}
+{"mode": "direct_mse", "step": 150, "loss": 0.0011371395085006952, "batch_rgb_mse": 0.0011371395085006952, "batch_base_mse": 0.0011952318018302321, "prediction_timing": "Before optimizer update"}
+{"mode": "direct_mse", "step": 200, "loss": 0.0017891796305775642, "batch_rgb_mse": 0.0017891796305775642, "batch_base_mse": 0.001955112675204873, "prediction_timing": "Before optimizer update"}
+{"mode": "direct_mse", "step": 250, "loss": 0.001033502398058772, "batch_rgb_mse": 0.001033502398058772, "batch_base_mse": 0.0011144018499180675, "prediction_timing": "Before optimizer update"}
+{"mode": "direct_mse", "step": 300, "loss": 0.0022277142852544785, "batch_rgb_mse": 0.0022277142852544785, "batch_base_mse": 0.002447657287120819, "prediction_timing": "Before optimizer update"}
+{"mode": "direct_mse", "step": 350, "loss": 0.0021999620366841555, "batch_rgb_mse": 0.0021999620366841555, "batch_base_mse": 0.0024053193628787994, "prediction_timing": "Before optimizer update"}
+{"mode": "direct_mse", "step": 400, "loss": 0.001295939669944346, "batch_rgb_mse": 0.001295939669944346, "batch_base_mse": 0.0014094312209635973, "prediction_timing": "Before optimizer update"}
+{"mode": "direct_mse", "step": 450, "loss": 0.0015926746418699622, "batch_rgb_mse": 0.0015926746418699622, "batch_base_mse": 0.001700777793303132, "prediction_timing": "Before optimizer update"}
+{"mode": "direct_mse", "step": 500, "loss": 0.001961731817573309, "batch_rgb_mse": 0.001961731817573309, "batch_base_mse": 0.002768963575363159, "prediction_timing": "Before optimizer update"}
+{"mode": "direct_mse", "step": 550, "loss": 0.001289212959818542, "batch_rgb_mse": 0.001289212959818542, "batch_base_mse": 0.001378153800033033, "prediction_timing": "Before optimizer update"}
+{"mode": "direct_mse", "step": 600, "loss": 0.0010622069239616394, "batch_rgb_mse": 0.0010622069239616394, "batch_base_mse": 0.0012235918547958136, "prediction_timing": "Before optimizer update"}
+{"mode": "direct_mse", "step": 650, "loss": 0.001863218960352242, "batch_rgb_mse": 0.001863218960352242, "batch_base_mse": 0.002159820171073079, "prediction_timing": "Before optimizer update"}
+{"mode": "direct_mse", "step": 700, "loss": 0.001067924196831882, "batch_rgb_mse": 0.001067924196831882, "batch_base_mse": 0.0011412411695346236, "prediction_timing": "Before optimizer update"}
+{"mode": "direct_mse", "step": 750, "loss": 0.0010145277483388782, "batch_rgb_mse": 0.0010145277483388782, "batch_base_mse": 0.0010387918446213007, "prediction_timing": "Before optimizer update"}
+{"mode": "direct_mse", "step": 800, "loss": 0.0022169507574290037, "batch_rgb_mse": 0.0022169507574290037, "batch_base_mse": 0.002419722266495228, "prediction_timing": "Before optimizer update"}
+{"mode": "direct_mse", "step": 850, "loss": 0.000996675924398005, "batch_rgb_mse": 0.000996675924398005, "batch_base_mse": 0.0010622162371873856, "prediction_timing": "Before optimizer update"}
+{"mode": "direct_mse", "step": 900, "loss": 0.002291843295097351, "batch_rgb_mse": 0.002291843295097351, "batch_base_mse": 0.0024403126444667578, "prediction_timing": "Before optimizer update"}
+{"mode": "direct_mse", "step": 950, "loss": 0.0009065460180863738, "batch_rgb_mse": 0.0009065460180863738, "batch_base_mse": 0.0010230629704892635, "prediction_timing": "Before optimizer update"}
+{"mode": "direct_mse", "step": 1000, "loss": 0.0016340401489287615, "batch_rgb_mse": 0.0016340401489287615, "batch_base_mse": 0.0017402325756847858, "prediction_timing": "Before optimizer update"}
+{"mode": "direct_mse_normalized", "step": 1, "loss": 0.9789965748786926, "batch_rgb_mse": 0.0016143480315804482, "batch_base_mse": 0.0017297028098255396, "prediction_timing": "Before optimizer update"}
+{"mode": "direct_mse_normalized", "step": 50, "loss": 0.5216609239578247, "batch_rgb_mse": 0.0008602095767855644, "batch_base_mse": 0.0009286505519412458, "prediction_timing": "Before optimizer update"}
+{"mode": "direct_mse_normalized", "step": 100, "loss": 1.211010217666626, "batch_rgb_mse": 0.001996934413909912, "batch_base_mse": 0.0021354141645133495, "prediction_timing": "Before optimizer update"}
+{"mode": "direct_mse_normalized", "step": 150, "loss": 0.6892855763435364, "batch_rgb_mse": 0.001136619714088738, "batch_base_mse": 0.0011952318018302321, "prediction_timing": "Before optimizer update"}
+{"mode": "direct_mse_normalized", "step": 200, "loss": 1.0836268663406372, "batch_rgb_mse": 0.0017868815921247005, "batch_base_mse": 0.001955112675204873, "prediction_timing": "Before optimizer update"}
+{"mode": "direct_mse_normalized", "step": 250, "loss": 0.6261226534843445, "batch_rgb_mse": 0.001032465137541294, "batch_base_mse": 0.0011144018499180675, "prediction_timing": "Before optimizer update"}
+{"mode": "direct_mse_normalized", "step": 300, "loss": 1.3495280742645264, "batch_rgb_mse": 0.0022253477945923805, "batch_base_mse": 0.002447657287120819, "prediction_timing": "Before optimizer update"}
+{"mode": "direct_mse_normalized", "step": 350, "loss": 1.3338944911956787, "batch_rgb_mse": 0.0021995683200657368, "batch_base_mse": 0.0024053193628787994, "prediction_timing": "Before optimizer update"}
+{"mode": "direct_mse_normalized", "step": 400, "loss": 0.784871518611908, "batch_rgb_mse": 0.00129423919133842, "batch_base_mse": 0.0014094312209635973, "prediction_timing": "Before optimizer update"}
+{"mode": "direct_mse_normalized", "step": 450, "loss": 0.9638466238975525, "batch_rgb_mse": 0.001589366002008319, "batch_base_mse": 0.001700777793303132, "prediction_timing": "Before optimizer update"}
+{"mode": "direct_mse_normalized", "step": 500, "loss": 1.1810375452041626, "batch_rgb_mse": 0.0019475100561976433, "batch_base_mse": 0.002768963575363159, "prediction_timing": "Before optimizer update"}
+{"mode": "direct_mse_normalized", "step": 550, "loss": 0.7818995714187622, "batch_rgb_mse": 0.0012893385719507933, "batch_base_mse": 0.001378153800033033, "prediction_timing": "Before optimizer update"}
+{"mode": "direct_mse_normalized", "step": 600, "loss": 0.6433624625205994, "batch_rgb_mse": 0.0010608932934701443, "batch_base_mse": 0.0012235918547958136, "prediction_timing": "Before optimizer update"}
+{"mode": "direct_mse_normalized", "step": 650, "loss": 1.1290711164474487, "batch_rgb_mse": 0.0018618182512000203, "batch_base_mse": 0.002159820171073079, "prediction_timing": "Before optimizer update"}
+{"mode": "direct_mse_normalized", "step": 700, "loss": 0.6485199332237244, "batch_rgb_mse": 0.0010693978983908892, "batch_base_mse": 0.0011412411695346236, "prediction_timing": "Before optimizer update"}
+{"mode": "direct_mse_normalized", "step": 750, "loss": 0.6155221462249756, "batch_rgb_mse": 0.0010149851441383362, "batch_base_mse": 0.0010387918446213007, "prediction_timing": "Before optimizer update"}
+{"mode": "direct_mse_normalized", "step": 800, "loss": 1.3442224264144897, "batch_rgb_mse": 0.0022165989503264427, "batch_base_mse": 0.002419722266495228, "prediction_timing": "Before optimizer update"}
+{"mode": "direct_mse_normalized", "step": 850, "loss": 0.6050954461097717, "batch_rgb_mse": 0.0009977916488423944, "batch_base_mse": 0.0010622162371873856, "prediction_timing": "Before optimizer update"}
+{"mode": "direct_mse_normalized", "step": 900, "loss": 1.3887083530426025, "batch_rgb_mse": 0.0022899555042386055, "batch_base_mse": 0.0024403126444667578, "prediction_timing": "Before optimizer update"}
+{"mode": "direct_mse_normalized", "step": 950, "loss": 0.5493448972702026, "batch_rgb_mse": 0.0009058600408025086, "batch_base_mse": 0.0010230629704892635, "prediction_timing": "Before optimizer update"}
+{"mode": "direct_mse_normalized", "step": 1000, "loss": 0.9913504123687744, "batch_rgb_mse": 0.0016347193159162998, "batch_base_mse": 0.0017402325756847858, "prediction_timing": "Before optimizer update"}
+{"internal_holdout_rgb_mse": {"base": 0.0018238661962444076, "past": 0.0018771670969746634, "future": 0.0018759338759668787, "fixed_average": 0.0017209607714764412, "initial_thirds": 0.0016954593895562216, "risk_full": 0.001437139342819499, "direct_mse": 0.00141791702348761, "direct_mse_normalized": 0.0014120992992308716, "gt_oracle": 0.0013042251880264477}}
+END 2026-11-11T13:43:50Z
