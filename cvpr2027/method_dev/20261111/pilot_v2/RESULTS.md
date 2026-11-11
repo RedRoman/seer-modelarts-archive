@@ -51,12 +51,12 @@ Prior 相对起点的 LPIPS 为 −0.00010250，其未校正场景区间 [−0.0
 
 ## 复算
 
-在仓库根目录运行。`--source-archive` 指向上述 SHA 的原冻结源码包；该二进制包当前保存在实验 workspace，路径可替换。输出文件必须尚不存在。
+在仓库根目录运行。以下固定源码 commit 已逐字节匹配运行时 manifest，并复算得到相同统计；无须外部源码包。输出文件必须尚不存在。
 
 ```sh
 python3 cvpr2027/method_dev/20261111/analyze_fusion_only.py \
   --runs cvpr2027/method_dev/20261111/pilot_v2/runs \
-  --source-archive ../seer_method_dev_20261111/source_pilot_v2.tgz \
+  --code-revision 3dc62f050dfca411640b1918232a1bd7c7659173 \
   --step 600 \
   --out /tmp/pilot_v2_recomputed.json
 ```

@@ -30,15 +30,32 @@ finite nonzero fusion gradients. Output checkpoints include optimizer state,
 model configuration, inputs/source hashes and data-plan identity. Runs use
 fresh local `/cache/zihaohe/seer_method_dev_20261111/` directories.
 
-## Next method hypothesis
+## Completed screens and current candidate
 
-If the fusion path can improve recovery, supervise evidence selection using
-counterfactual restoration utility: compare local GT error when neighbouring
-evidence is admitted versus withheld, and train a selector to reject harmful
-evidence. Motion/feature confidence alone is not the intended contribution.
-Teacher information is confined to training supervision; inference uses only
-the observed low-light video. This requires controls against ordinary local
-attention, semantic guidance alone and conventional confidence gates.
+Pilot v1 local beat matched continuation by 0.1142 dB, with a scene interval
+crossing zero. Pilot v2 froze the base exactly and trained only fusion for 600
+steps: local improved by 0.00415 dB, prior by 0.00263 dB. Both PSNR intervals
+cross zero. Full curves and raw rows are in `pilot_v1/` and `pilot_v2/`.
+The extra feature path has not supplied a substantial restoration gain.
+
+The next feasibility experiment uses the stronger BVI-only full restoration
+checkpoint and real BVI motion. One restoration pass supplies all RGB frames;
+frozen RAFT on restored predictions transports donors t−2 and t+2 to the target.
+No GT is used for flow or candidate generation. On each 8×8 output patch,
+correction directions d define observable Gram G_ij=mean(d_i*d_j).
+Training GT supplies signed benefits a_j=mean((GT−base)*d_j). Constrained weights
+minimize w^T G w−2 a^T w, w≥0, sum(w)≤1; zero correction is feasible.
+This quadratic identity and minimizer are classical, not a novelty claim.
+
+First cache one fixed crop/clip per TRAIN48 sequence and measure the GT oracle
+within this candidate family. Only a sufficiently useful candidate family
+warrants learning. The subsequent small selector pilot will split these 24
+training scenes into 18 fit / 6 internal holdout scenes, fit input statistics on
+fit scenes only, and compare signed-risk supervision with direct MSE gating at
+equal input/capacity/update budget. These are internal selector-development
+scenes: the historical base model may have seen all of them. Its checkpoint
+does not contain a historical split hash. Neither this oracle nor that holdout
+is a final learned benchmark result. GT-derived a/weights must never be inputs.
 
 ## Competitive evaluation
 

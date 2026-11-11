@@ -1,0 +1,30 @@
+{
+  "package_sha256": "aa3895124732263c82d33b2067f5d05f78dcb55240b329b57e8c1e4ccdcaf947",
+  "verified_source_files": 201,
+  "host": "huawei-modelarts-31051",
+  "physical_npu": 7,
+  "pid": 3742015,
+  "start_utc": "2026-11-11T13:20:20Z",
+  "session": "seer_correction_cache_bvi_aa3895",
+  "python": "/cache/zihaohe/seer_cvpr/venv_npu/bin/python",
+  "cann_root": "/usr/local/Ascend/cann-8.5.2",
+  "threads": 4,
+  "code_root": "/cache/zihaohe/seer_method_dev_20261111/correction_v1/code_full",
+  "cache_path": "/cache/zihaohe/seer_method_dev_20261111/correction_v1/cache_bvi_train48",
+  "init": "/cache/zihaohe/seer_cvpr/runs_e12/e12_bvi_pretrained_s0/final_cpu.pt",
+  "raft_weights": "/temp/zihaohe/seer_cvpr/weights_small/checkpoint/raft_small_C_T_V2-01064c6d.pth",
+  "args": {
+    "data_seed": 20261113,
+    "patch_size": 8,
+    "offset": 2,
+    "flow_steps": 12,
+    "flow_batch": 2,
+    "max_sequences": 48
+  },
+  "cpu_tests": {
+    "passed": 48,
+    "skipped": 0
+  },
+  "wrapper_sha256": "81035fef18de7db45ed45e861a07846ad7386014e8739cce3fbff49ea31896ab",
+  "purpose": "TRAIN-only convex motion-correction family oracle and cache. Frozen model. GT used only to label patch risk; no validation/test images. Upper bound, not learned performance."
+}
