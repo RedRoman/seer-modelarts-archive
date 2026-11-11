@@ -1,5 +1,34 @@
 \section{Related work}\label{sec:related}
 
-\paragraph{Low-light enhancement.} Video methods exploit temporal redundancy through Retinex decomposition with cross-frame consistency~\citep{stcd2025}, spatial-temporal compatible learning~\citep{tcenet}, memory-controlled recurrence~\citep{retinexmcnet}, state-space models~\citep{bvi_mamba}, event cameras~\citep{seeing_unseen} and diffusion~\citep{bvi_rlv,dl_diff}; BVI-RLV~\citep{bvi_rlv} exposed their fragility across sensors. Image methods include Retinex transformers~\citep{retinexformer} and their Mamba and diffusion extensions~\citep{mamballie,lldiffusion}, HVI-CIDNet~\citep{hvi_cidnet}, DarkIR~\citep{darkir}, URCSA~\citep{urcsa}, and unpaired or zero-reference methods~\citep{zerodce2020,sci2022,quadruple_priors}. Cross-dataset evaluation remains rare, and released checkpoints are often trained on sequences of common test splits (Sec.~\ref{sec:exp:protocol}).
+\paragraph{Low-light video enhancement.}
+Video restorers combine spatial reconstruction with temporal redundancy through
+decomposition~\citep{stcd2025}, spatial--temporal compatible
+learning~\citep{tcenet}, recurrence~\citep{retinexmcnet}, state-space
+models~\citep{bvi_mamba}, or diffusion~\citep{bvi_rlv,dl_diff}.
+Image methods provide strong frame-wise alternatives, including
+Retinexformer~\citep{retinexformer}, HVI-CIDNet~\citep{hvi_cidnet},
+DarkIR~\citep{darkir}, and zero-reference methods~\citep{zerodce2020,sci2022}.
+BVI-RLV~\citep{bvi_rlv} makes sensor and scene transfer explicit.
+Our main comparison holds the restoration architecture and training data fixed
+and changes its conditioning; a separately retrained Retinexformer provides
+context rather than a claim of universal superiority.
 
-\paragraph{Pretrained representations as restoration priors.} Frozen networks serve as perceptual judges~\citep{johnson_perceptual,lpips,dists,clip_iqa} and as active conditioning: DA-CLIP~\citep{daclip} injects adapted CLIP embeddings into a restorer through cross-attention, pretrained features refine restoration networks~\citep{xu2024priors}, CLIP/DINO-style features guide diffusion restorers~\citep{stablesr}, and illumination-invariant priors have been designed for low-light enhancement~\citep{quadruple_priors}. Seer follows this conditioning paradigm with a \emph{video world model}~\citep{vjepa,vjepa2}, which predicts masked spatio-temporal regions in latent space rather than pixels~\citep{videomae}, and additionally reuses its predictor. We test the prior with controls the conditioning literature rarely reports: the same network without the tokens and with a randomly initialised encoder.
+\paragraph{Frozen representations for restoration.}
+Pretrained features can judge reconstruction quality through perceptual
+losses~\citep{johnson_perceptual,lpips}, or condition the restorer directly.
+DA-CLIP~\citep{daclip} uses adapted vision--language embeddings, and pretrained
+features also guide restoration networks~\citep{xu2024priors} and diffusion
+restorers~\citep{stablesr}. We study the latter role with a frozen video
+encoder: V-JEPA~\citep{vjepa,vjepa2}, learned by predicting masked
+spatio-temporal representations. Its training objective motivates a temporal
+prior, but does not establish that a downstream restorer uses temporal
+information. We measure that distinction by intervening on the tokens and on
+the training objective.
+
+\paragraph{Representation versus downstream use.}
+A representation may contain information that a particular readout does not
+use. Our experiments therefore separate encoder sensitivity, restoration
+quality, and the sensitivity of a trained restorer to token interventions.
+Likewise, low rank after training is a property of that model under a specified
+intervention; it does not by itself establish a smaller trainable model, a
+cheaper encoder, or equivalence between two conditioning distributions.

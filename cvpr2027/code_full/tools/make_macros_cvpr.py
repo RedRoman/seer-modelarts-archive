@@ -152,12 +152,14 @@ for tag in ("e24_tdcos", "e22_tdelta"):
         m, ci, n = paired(v, B, metric)
         emit(f"h17@{short}@{key}", "%+.*f" % (nd, m))
         emit(f"h17@{short}@{key}@ci", fmt_ci(ci, nd))
-    # tLP as a gap to the ground truth's own level, which is what the rule names
+    # Match aggregate.py --temporal: first seed-average each arm's per-sequence
+    # tLP and GT tLP, then take their absolute gap. A signed difference can
+    # reward a clip that moves further below the target's temporal activity.
     names = common(v + B)
-    gv = np.array([[seqs(p)[n]["tlp"] - seqs(p)[n]["gt_tlp"] for p in v]
-                   for n in names]).mean(1)
-    gb = np.array([[seqs(p)[n]["tlp"] - seqs(p)[n]["gt_tlp"] for p in B]
-                   for n in names]).mean(1)
+    gv = np.abs(np.array([[seqs(p)[n]["tlp"] - seqs(p)[n]["gt_tlp"] for p in v]
+                          for n in names]).mean(1))
+    gb = np.abs(np.array([[seqs(p)[n]["tlp"] - seqs(p)[n]["gt_tlp"] for p in B]
+                          for n in names]).mean(1))
     emit(f"h17@{short}@tlp", "%+.4f" % (gv - gb).mean())
     emit(f"h17@{short}@tlp@ci", fmt_ci(boot(gv - gb), 4))
     pr = [json.load(open(p.replace(".json", "_tdprobe.json")))["mean"]

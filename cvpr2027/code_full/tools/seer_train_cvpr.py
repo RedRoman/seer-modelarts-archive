@@ -43,6 +43,7 @@ from models.pixel_branch_v10 import VJepaPixelBranch  # noqa: E402
 from models.pixel_branch_v2 import SeerV2PixelBranch  # noqa: E402
 from models.predictor_lora import CounterfactualRefiner  # noqa: E402
 from models.vjepa_backbone import VJepaBackboneLocal21  # noqa: E402
+from models.token_projection import project_tokens  # noqa: E402
 from models.exposure_head import (ExposureHead, apply_gain, target_log_gain)  # noqa: E402
 
 ROOT = os.environ.get("SEER_ROOT", "/temp/zihaohe/seer_cvpr")
@@ -94,26 +95,6 @@ def rgb_to_y(x):
 def psnr(pred, gt, eps=1e-10):
     mse = (pred - gt).pow(2).mean(dim=(1, 2, 3)).clamp_min(eps)
     return -10 * torch.log10(mse)
-
-
-def project_tokens(z, mode, k, basis, li):
-    """Rank-k projection of one tapped layer's tokens.
-
-    clip_rank takes the clip's own principal directions, so the subspace moves
-    with the content; global_rank takes a fixed subspace estimated once on the
-    training split. The two are measured to differ by 4 dB at rank 4, which is
-    the whole reason both are offered rather than one.
-    """
-    b, n, d = z.shape
-    if mode == "global_rank":
-        mu, V = basis["mean"][li], basis["comp"][li][:k]
-        x = z.reshape(-1, d) - mu
-        return ((x @ V.T) @ V + mu).reshape(b, n, d)
-    x = z.reshape(-1, d)
-    mu = x.mean(0, keepdim=True)
-    xc = (x - mu).float()
-    V = torch.linalg.svd(xc, full_matrices=False)[2][:k]
-    return (((xc @ V.T) @ V) + mu).reshape(b, n, d).to(z.dtype)
 
 
 def zero_tokens(b, dev):

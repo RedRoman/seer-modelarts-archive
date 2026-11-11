@@ -6,6 +6,14 @@ archived copy is in this repository. Verdicts are in `STATUS.md`; the
 pre-registered rule each one was judged by is in `notes/CVPR_PREREG.md`
 (20 amendments, each written before the result it governs).
 
+**Protocol audit update (2026-11-11):** the location tables below describe the
+historical runs. The generic evaluator omitted some saved conditioning settings
+and the random encoder's training seed. Corrected runs are listed in
+`notes/TAKEOVER_20261111.md` and `results/protocol_audit_20261111/`;
+their runners are in `runners/takeover_20261111/`. Use the current `STATUS.md`
+for interpretations. Amendment 21 separates this retrospective audit from the
+new validation-only mean/basis diagnostic. Original JSONs are unchanged.
+
 ## 1. Hosts
 
 All hosts are `ma-user@dev-modelarts-cnnorth9.huaweicloud.com`, key

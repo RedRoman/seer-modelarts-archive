@@ -1336,3 +1336,45 @@ significant and hold. H20 (per-clip rank 4 trained) is at 13300/20000 and is
 the last experiment. Given H18's outcome -- the same shape of question, with
 the training-time effect significantly negative -- the honest prior on H20 is
 now poor, and that is recorded here before its result exists.
+
+## Amendment 21 — protocol audit and validation mean/basis control (2026-11-11)
+
+The project handover exposed reconstruction omissions in the archived generic
+evaluator: random encoders were not initialized with the training seed, and
+some saved attention/tap/projection settings were not restored. This is a
+retrospective implementation audit, not an amendment that makes already-seen
+results preregistered. Historical JSONs and the preceding text remain intact;
+the current STATUS and audit notes identify superseded interpretations.
+Corrected final-checkpoint evaluations use identical splits, crops and metrics,
+restore saved settings, and write separate JSONs with provenance. They must not
+select a checkpoint or tune a hyperparameter against test scores.
+
+The following **new exploratory diagnostic is specified before its numbers**.
+Earlier adaptive and fixed PCA interventions changed both the token mean and
+the basis; the adaptive intervention retained the full clip mean. Neither
+the four-direction result nor the fixed-basis loss isolates basis adaptivity
+or supplies evidence that a four-scalar code suffices.
+
+- Data: all 16 frozen SDSD validation sequences, no test sequences or labels
+  used to choose conditions. Use existing E17 pretrained seeds 0 and 1;
+  do not select or retrain these checkpoints.
+- Basis: the saved basis estimated from 60 training clips, rank fixed at 4.
+  Compute adaptive directions from each tap's clip-centred token field on CPU.
+- Six conditions: identity; broadcast clip mean only; and the full 2x2
+  combination of clip/training-set mean and clip-adaptive/training-set basis.
+  Every projection is `mu + (Z-mu) V V^T`. Adaptive directions always come
+  from clip-centred tokens, irrespective of the reconstruction mean.
+- Score the same 16-frame, 256-crop clips with uint8 PSNR-Y and AlexNet LPIPS.
+  Save sequence names, per-condition scores, checkpoint/basis/source hashes,
+  CPU projection backend, and full arguments. Never replace archived files.
+- Report every condition and within-sequence contrast with 10,000 bootstrap
+  replicates (RNG 0), seed averaging, and a scene-cluster sensitivity check.
+  Main contrasts isolate the mean with basis held fixed and the basis with
+  mean held fixed; clip-mean-only is a separate structural control.
+- This is exploratory validation evidence. No equivalence margin or formal
+  success gate is declared; a nonsignificant difference is inconclusive.
+  No early stopping or condition selection is permitted based on performance.
+  Full encoder computation remains, so this is not a runtime compression test.
+
+The old E27 cancellation and unfinished E28 remain historical facts. They do
+not establish that a different distillation scheme is impossible.

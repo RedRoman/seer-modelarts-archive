@@ -1,0 +1,47 @@
+{
+  "definition": "Three-seed mean pretrained PSNR-Y minus retrained Retinexformer per-sequence PSNR-Y, same 39 SDSD test sequences",
+  "sources": [
+    {
+      "local_path": "/Users/hezihao/Documents/New project/seer-modelarts-archive/cvpr2027/results/cvpr_converged/indomain/e17_small_pretrained_s0.json",
+      "sha256": "6cae86eef2d92d11a69a6a6e58292045a2bee99145e06cccf1867a52e535fef8"
+    },
+    {
+      "local_path": "/Users/hezihao/Documents/New project/seer-modelarts-archive/cvpr2027/results/cvpr_converged/indomain/e17_small_pretrained_s1.json",
+      "sha256": "4532364e5e99170bc55c4ad367d56c7655af9288a918de14e694ae5c726351c4"
+    },
+    {
+      "local_path": "/Users/hezihao/Documents/New project/seer-modelarts-archive/cvpr2027/results/cvpr_converged/indomain/e19_small_pretrained_s2.json",
+      "sha256": "e2bb7cdfa0ac855cabf272f971fb80dfb4d077aabeadafd6799f28d3cf1b1cdd"
+    },
+    {
+      "local_path": "/Users/hezihao/Documents/New project/seer-modelarts-archive/cvpr2027/results/cvpr_converged/retinexformer.json",
+      "sha256": "4d6a7ed65e7aedf97a414c3fad361476cac4b98947fb6f09faf6b30b05f3aeb2"
+    }
+  ],
+  "verified_max_difference": 7.105427357601002e-15,
+  "selected_percentiles": [
+    10,
+    35,
+    60,
+    85
+  ],
+  "selected": [
+    [
+      "SDSD_indoor/pair6_2",
+      -6.129719332789644
+    ],
+    [
+      "SDSD_outdoor/MVI_1028_2",
+      -2.3614200185724172
+    ],
+    [
+      "SDSD_outdoor/MVI_1011_2",
+      0.8721795893680699
+    ],
+    [
+      "SDSD_outdoor/MVI_1026",
+      10.581978457537005
+    ]
+  ],
+  "note": "Panel pixels use explicit seed0 checkpoints; selection margins use the preregistered three-seed means."
+}

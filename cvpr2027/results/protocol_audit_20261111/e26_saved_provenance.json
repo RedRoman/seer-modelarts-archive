@@ -1,0 +1,59 @@
+{
+  "host": "ma-job-31f7571d-75c6-4944-90cd-ee8d91cb0532-worker-0",
+  "observed_at_utc": "2026-11-11T10:18:49.220485+00:00",
+  "device": 7,
+  "mode": "saved",
+  "crop": 256,
+  "split": "test",
+  "domain": "sdsd",
+  "seeds": [
+    0,
+    1
+  ],
+  "sequential": true,
+  "python": "/cache/zihaohe/seer_cvpr/venv_npu/bin/python",
+  "SEER_ROOT": "/temp/zihaohe/seer_cvpr",
+  "RAFT_WEIGHTS": "/temp/zihaohe/seer_cvpr/weights_small/checkpoint/raft_small_C_T_V2-01064c6d.pth",
+  "files": {
+    "basis": {
+      "path": "/cache/zihaohe/seer_cvpr/results/token_basis_train.json",
+      "bytes": 5918353,
+      "sha256": "30176997369915d607cfdd9f0684e92b1be424daff9c286ff1e8c8246cee6b11"
+    },
+    "runner": {
+      "path": "/cache/zihaohe/seer_takeover_20261111/incoming/run_e26_saved.sh",
+      "bytes": 1260,
+      "sha256": "788e33c5e8260775d2cc34dd0e36970e9a7f84262eb9c973bc4d4a82e6abedfd"
+    },
+    "checkpoint_s0": {
+      "path": "/cache/zihaohe/seer_cvpr/runs_e26/e26_grank64_s0/final.pt",
+      "bytes": 89742167,
+      "sha256": "832b3b4beb44c0a9b51c6f2f315772dfae74735cd257235b638e89420e1ba15e"
+    },
+    "checkpoint_s1": {
+      "path": "/cache/zihaohe/seer_cvpr/runs_e26/e26_grank64_s1/final.pt",
+      "bytes": 89742167,
+      "sha256": "64ec99724a9e4946bc67ec1be1763975485b94c95b752502ec4fb824d5aa60f2"
+    },
+    "source:tools/eval_e4.py": {
+      "path": "/cache/zihaohe/seer_takeover_20261111/code_full/tools/eval_e4.py",
+      "bytes": 23236,
+      "sha256": "3fb906535d76ca11e379d41113424d1d1d47205d56ca5f5de0b557c3adcf0467"
+    },
+    "source:tools/checkpoint_config.py": {
+      "path": "/cache/zihaohe/seer_takeover_20261111/code_full/tools/checkpoint_config.py",
+      "bytes": 5190,
+      "sha256": "1afa4b685b092150a7f178938c80cc31d339d901335b357ce0c3bdcdcd6f4c7b"
+    },
+    "source:models/pixel_branch_v2.py": {
+      "path": "/cache/zihaohe/seer_takeover_20261111/code_full/models/pixel_branch_v2.py",
+      "bytes": 11344,
+      "sha256": "f83c1aaa5797e5413a1adb41d49cecc0a093e72159e6d4fdbaf610168b739222"
+    },
+    "source:models/token_projection.py": {
+      "path": "/cache/zihaohe/seer_takeover_20261111/code_full/models/token_projection.py",
+      "bytes": 1764,
+      "sha256": "8c7b455ecc56cb5d503b016f226be622be3c6fc4ae4be814b270628b4752c7c1"
+    }
+  }
+}

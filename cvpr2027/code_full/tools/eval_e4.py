@@ -22,6 +22,7 @@ pre-registration allows that once, on final checkpoints.
 from __future__ import annotations
 
 import argparse
+import hashlib
 import json
 import os
 import sys
@@ -43,6 +44,9 @@ from models.pixel_branch_v2 import SeerV2PixelBranch  # noqa: E402
 from models.predictor_lora import CounterfactualRefiner  # noqa: E402
 from models.exposure_head import ExposureHead, apply_gain  # noqa: E402
 from models.vjepa_backbone import VJepaBackboneLocal21  # noqa: E402
+from models.token_projection import ProjectedBackbone  # noqa: E402
+from checkpoint_config import (encoder_initialization_seed, resolve_basis_path,  # noqa: E402
+                               resolve_config)
 from temporal_metrics import safe_gt_flows, temporal_metrics  # noqa: E402
 
 ROOT = os.environ.get("SEER_ROOT", "/cache/zihaohe/seer_cvpr")
@@ -154,7 +158,7 @@ def held_out_sequences(domain, split, n_frames, crop):
         raise ValueError(domain)
 
 
-def build_model(ckpt, dev, force_arm=None):
+def build_model(ckpt, dev, force_arm=None, reconstruction="saved", token_basis=None):
     """Rebuild whichever architecture the checkpoint was trained with.
 
     Loading a v1 checkpoint into SeerV2PixelBranch does not fail: the IGAB and
@@ -165,21 +169,8 @@ def build_model(ckpt, dev, force_arm=None):
     """
     st = torch.load(ckpt, map_location="cpu", weights_only=False)
     saved = st.get("args", {})
-    arm = saved.get("vjepa", "pretrained")
-    trained_arm = arm
-    if force_arm is not None and force_arm != arm:
-        # H16 criterion (ii) is an inference-only test: take a model trained
-        # with the real tokens and feed it tokens from a randomly initialised
-        # encoder. Nothing but the token source changes, so a trained gate that
-        # has learned to recognise unusable conditioning should close and
-        # recover the no-token result rather than losing the 4.1 dB that the
-        # ungated model loses.
-        if force_arm == "none":
-            raise ValueError("force_arm=none would leave the cross-attention "
-                             "without keys; it is a different architecture")
-        arm = force_arm
-    arch = saved.get("arch", "v2")
-    clip_len = int(saved.get("clip_len", 16))
+    config = resolve_config(saved, force_arm, reconstruction)
+    arm, arch, clip_len = config["arm"], config["arch"], config["clip_len"]
     common = dict(in_channels=3, vjepa_dim=VJEPA_DIM,
                   vjepa_grid=(clip_len // 2, 16, 16), num_vjepa_layers=N_LAYERS,
                   cross_attn_at_scales=(1, 2, 3, 4), use_cfim_bottleneck=True,
@@ -190,11 +181,11 @@ def build_model(ckpt, dev, force_arm=None):
     else:
         # reconstruct the exact architecture the checkpoint was trained with,
         # including branch size and xattn variant, before loading any weights
-        branch = saved.get("branch", "full")
-        xattn = saved.get("xattn", "global")
+        branch, xattn = config["branch"], config["xattn"]
         shape = (dict(dims=(20, 40, 80, 160, 320), num_blocks=(2, 4, 4, 6, 8),
                       heads=(2, 4, 4, 8, 8)) if branch == "small" else {})
-        pb = SeerV2PixelBranch(xattn=xattn, **shape, **common).to(dev).eval()
+        pb = SeerV2PixelBranch(xattn=xattn, kv_mode=config["kv"],
+                              layer_mode=config["layers"], **shape, **common).to(dev).eval()
     missing, unexpected = pb.load_state_dict(st["pixel_branch"], strict=False)
     truly_missing = [k for k in missing]
     truly_unexpected = [k for k in unexpected]
@@ -205,22 +196,53 @@ def build_model(ckpt, dev, force_arm=None):
     # A checkpoint trained with --edc on carries an exposure head; scoring
     # without it would measure a different model from the one trained.
     exp_head = None
+    if reconstruction == "saved" and saved.get("edc") == "on" and not st.get("exposure_head"):
+        raise RuntimeError(f"{ckpt}: edc=on but the checkpoint has no exposure head")
     if st.get("exposure_head"):
         exp_head = ExposureHead(
             vjepa_dim=VJEPA_DIM,
-            use_vjepa=(saved.get("edc_vjepa", "on") == "on" and arm != "none")
+            use_vjepa=(saved.get("edc_vjepa", "on") == "on" and config["trained_arm"] != "none")
         ).to(dev).eval()
         m, u = exp_head.load_state_dict(st["exposure_head"], strict=False)
-        if m:
-            raise RuntimeError(f"{ckpt}: exposure head missing {len(m)} keys")
+        if m or u:
+            raise RuntimeError(f"{ckpt}: exposure head missing={len(m)} unexpected={len(u)}")
     bb = refiner = None
     if arm != "none":
-        bb = VJepaBackboneLocal21(
-            local_repo=VJEPA_REPO,
-            local_ckpt=("" if arm == "random" else VJEPA_CKPT),
-            feature_layers=(5, 11, 17, 23), image_size=256,
-            frames_per_clip=clip_len, patch_size=16, tubelet_size=2,
-            freeze=True).to(dev).eval()
+        with encoder_initialization_seed(config["random_encoder_seed"]):
+            bb = VJepaBackboneLocal21(
+                local_repo=VJEPA_REPO,
+                local_ckpt=("" if arm == "random" else VJEPA_CKPT),
+                feature_layers=tuple(config["taps"]), image_size=256,
+                frames_per_clip=clip_len, patch_size=16, tubelet_size=2,
+                freeze=True)
+        if arm == "random":
+            # Same first-eight-parameter checksum as the training log, before
+            # moving the encoder to a device. This verifies the random control
+            # against archived logs without relying on the seed alone.
+            model = getattr(bb, "model", bb)
+            config["random_encoder_fingerprint"] = float(sum(
+                p.detach().cpu().double().sum() for p in list(model.parameters())[:8]))
+        bb = bb.to(dev).eval()
+        if config["token_proj"] != "none":
+            basis = None
+            if config["token_proj"] == "global_rank":
+                path = resolve_basis_path(saved.get("token_basis"), ROOT, ckpt, token_basis)
+                raw = path.read_bytes()
+                bj = json.loads(raw)
+                if bj.get("taps") != config["taps"]:
+                    raise ValueError(f"{path}: basis taps do not match checkpoint taps")
+                if int(bj["rank"]) < config["token_proj_k"]:
+                    raise ValueError(f"{path}: basis rank is smaller than token_proj_k")
+                basis = {"mean": torch.tensor(bj["mean"], device=dev).float(),
+                         "comp": torch.tensor(bj["components"], device=dev).float()}
+                if (tuple(basis["mean"].shape) != (N_LAYERS, VJEPA_DIM)
+                        or tuple(basis["comp"].shape) != (N_LAYERS, int(bj["rank"]), VJEPA_DIM)):
+                    raise ValueError(f"{path}: basis tensor dimensions do not match the encoder")
+                config["token_basis"] = str(path)
+                config["token_basis_sha256"] = hashlib.sha256(raw).hexdigest()
+            bb = ProjectedBackbone(bb, config["token_proj"], config["token_proj_k"], basis).eval()
+        if reconstruction == "saved" and arch == "v1" and not st.get("cf_refiner"):
+            raise RuntimeError(f"{ckpt}: v1 with tokens requires its saved cf_refiner")
         if arch == "v1" and st.get("cf_refiner"):
             refiner = CounterfactualRefiner(
                 local_repo=VJEPA_REPO, ckpt_path=VJEPA_CKPT,
@@ -229,8 +251,9 @@ def build_model(ckpt, dev, force_arm=None):
                 num_heads=12, lora_rank=int(saved.get("lora_rank", 16)),
                 freeze_body=True).to(dev).eval()
             m2, u2 = refiner.load_state_dict(st["cf_refiner"], strict=False)
-            if m2:
-                raise RuntimeError(f"{ckpt}: refiner missing {len(m2)} keys")
+            if m2 or u2:
+                raise RuntimeError(f"{ckpt}: refiner missing={len(m2)} unexpected={len(u2)}")
+    pb.eval_reconstruction = config
     return pb, bb, refiner, exp_head, arm, clip_len, saved
 
 
@@ -255,7 +278,7 @@ def run_clip(pb, bb, refiner, exp_head, arm, lq_u8, clip_len, dev, amp_dtype):
                                     mode="reflect").reshape(1, 3, -1, h0 + ph, w0 + pw)
     with _sdpa_pref(), torch.autocast(device_type=dev.type, dtype=amp_dtype):
         if arm == "none":
-            z = [torch.zeros(1, N_TOKENS, VJEPA_DIM, device=dev)] * N_LAYERS
+            z = [torch.zeros(1, (clip_len // 2) * 16 * 16, VJEPA_DIM, device=dev)] * N_LAYERS
         else:
             z = [t.float() for t in bb(x)["feats"]]
             if refiner is not None:        # v1 routes the last layer through M1
@@ -336,13 +359,21 @@ def main():
     ap.add_argument("--force_arm", default=None, choices=["pretrained", "random"],
                     help="score a trained checkpoint with a different token "
                          "source than it was trained with (H16 criterion ii)")
+    ap.add_argument("--reconstruction", choices=["saved", "legacy"], default="saved",
+                    help="saved restores training conditioning; legacy retains the archived "
+                         "evaluator's omissions for forensic comparisons")
+    ap.add_argument("--token_basis", default=None,
+                    help="relocated basis JSON for a saved global_rank checkpoint")
     args = ap.parse_args()
 
     if args.device == "npu":
         import torch_npu  # noqa: F401
     dev = torch.device(f"{args.device}:0")
     amp_dtype = torch.bfloat16
-    pb, bb, refiner, exp_head, arm, clip_len, saved = build_model(args.ckpt, dev, force_arm=args.force_arm)
+    pb, bb, refiner, exp_head, arm, clip_len, saved = build_model(
+        args.ckpt, dev, force_arm=args.force_arm, reconstruction=args.reconstruction,
+        token_basis=args.token_basis)
+    print(f"[reconstruction] {json.dumps(pb.eval_reconstruction, sort_keys=True)}", flush=True)
     print(f"[eval_e4] {os.path.basename(args.ckpt)} arm={arm} "
           f"arch={saved.get('arch','v2')} heldout={args.heldout} split={args.split} "
           f"trained_heldout={saved.get('heldout')} seed={saved.get('seed')}", flush=True)
@@ -405,6 +436,7 @@ def main():
     keys += [k for k in ("gt_tlp", "gt_mabd", "gt_flicker", "gt_warp_err") if k in rows[0]]
     agg = {k: float(np.mean([r[k] for r in rows if k in r])) for k in keys}
     out = {"ckpt": args.ckpt, "arm": arm, "heldout": args.heldout, "split": args.split,
+           "reconstruction": pb.eval_reconstruction,
            "seed": saved.get("seed"), "iters": saved.get("iters"),
            "edc": saved.get("edc", "off"),
            "crop": args.crop, "tile": args.tile, "tile_overlap": args.tile_overlap,

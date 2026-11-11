@@ -1,82 +1,234 @@
-\section{Implementation details}\label{app:impl}
+\section{Implementation and data details}\label{app:impl}
 
-\paragraph{V-JEPA input.} The checkpoint is the released V-JEPA~2.1 ViT-L distilled from ViT-G at $384$\,px. Clips are bilinearly resized to $256{\times}256$ (so a $512{\times}512$ evaluation crop is downsampled by $2$ for V-JEPA only), normalised with ImageNet statistics and encoded with RoPE, tubelet $2$ and patch $16$. Clips with fewer than $16$ frames are repeat-padded. Taps are the outputs of blocks $5,11,17,23$, each after its own hierarchical LayerNorm.
+\paragraph{Encoder.}
+The frozen checkpoint is V-JEPA\,2.1 ViT-L distilled from ViT-G at
+$384$ pixels. Its input is bilinearly resized to $256\times256$ and
+normalised using ImageNet statistics. Tubelet size is two, patch size is
+$16$, and the $24$-block encoder is read at zero-indexed blocks
+$5,11,17,23$ after the corresponding hierarchical normalisation.
+This produces four $2048\times1024$ fields.
+The frozen encoder contributes approximately $304.7$\,M parameters in
+addition to the $22.4$\,M trainable pixel branch.
+Parameter count of the pixel branch alone is not an inference-cost comparison.
 
-\paragraph{Pixel branch.} Widths $(64,128,256,512,1024)$, attention heads $(4,8,8,16,16)$, GDFN expansion $2.66$, bias-free LayerNorm. Each encoder and decoder stage is followed, in this order, by V-JEPA cross-attention (stages $2$--$5$), LIC injection and, in the decoder, an IGAB with two blocks of illumination-guided channel attention (head width $64$). The illumination estimator maps $[\X,\operatorname{mean}_c\X]$ through a $1{\times}1$ and a $5{\times}5$ convolution to $64$ channels; a $1{\times}1$ convolution per decoder stage projects them to the stage width. The residual head is a zero-initialised $3{\times}3$ convolution; the reflectance and illumination heads are conv--SiLU--conv--sigmoid stacks with $3$ and $1$ output channels. The pixel branch has $369.8$\,M parameters; together with M1 the trainable total is $370.4$\,M, and the frozen V-JEPA encoder adds $304.7$\,M.
+\paragraph{Pixel branch.}
+Attention heads are $(2,4,4,8,8)$ and the feed-forward expansion is $2.66$.
+The decoder mirrors the four non-bottleneck encoder scales, with skip
+concatenation and a $1\times1$ reduction.
+Pixel-unshuffle and pixel-shuffle operations change resolution.
+The bottleneck has a residual temporal convolution followed by cross-frame
+attention; other restoration blocks operate frame-wise.
+Each stage applies restoration blocks, token cross-attention where enabled,
+and local illumination cue injection.
+Reflectance and illumination heads are convolution--SiLU--convolution--sigmoid
+stacks with three and one output channels, respectively. Their outputs
+contribute only to the training loss.
+The residual head is a zero-initialised $3\times3$ convolution.
 
-\paragraph{Cross-attention.} Queries come from bias-free-normalised pixel features through a $1{\times}1$ convolution, keys and values from the routed tokens through one linear layer; attention is PyTorch scaled-dot-product attention with the stage's number of heads. The $8$ V-JEPA tubelets are repeated twice along time to match the $16$ frames.
+\paragraph{Initialisation and optimisation.}\label{app:stages}
+The converged CVPR comparisons use from-scratch pixel branches, not the
+warm-started stages in the earlier project snapshot.
+The frozen representation is the only pretrained part of the default model.
+The zero-token arm keeps the same cross-attention modules.
+The arms use the same nominal seed set, but constructing the pretrained
+encoder consumes random draws before the pixel branch is initialised,
+whereas the zero-token arm skips that construction. Their initial pixel
+weights and training random draws are therefore not shared.
+The comparison controls architecture and optimisation recipe; pairing refers
+to test sequences, not to identical training randomness.
+All arms use the optimiser and crop recipe in Sec.~\ref{sec:method:train}
+and score the final checkpoint without validation-based selection.
+The converged run collection includes both Ascend 910B3 and NVIDIA A100
+runs; experiment identifiers, seeds and hardware are listed in the released
+manifest. The third in-domain seed was completed on different hardware, so
+the seed collection does not separately estimate hardware effects.
 
-\paragraph{Training stages.}\label{app:stages} The Stage-3 checkpoint from which all controlled runs start was obtained by warm-started stages on the same SDSD training split with the optimiser of Sec.~\ref{sec:method:train}: an earlier V-JEPA-conditioned pixel branch with IGAB (\texttt{v34a}) was fine-tuned with M2 (Stage~1, $8$k iterations), with the Retinex auxiliary heads (Stage~2, $10$k), and with M1 (Stage~3, $8$k). Stage~4 adds the M3 router; in this paper Stage~4 is the fine-tuning phase whose variants we compare. Because the pixel branch of every arm was pre-trained with V-JEPA tokens up to Stage~3, the no-V-JEPA arm of Sec.~\ref{sec:exp:control} measures the contribution of the tokens during the final fine-tuning and at inference; a from-scratch comparison is left for future work.
+\paragraph{Split provenance.}\label{app:membership}
+SDSD-indoor contributes $46/6/14$ train/validation/test sequences and
+SDSD-outdoor $90/10/25$.
+Validation groups repeated passes of a scene together.
+BVI-RLV contains both frame rates of each scene; its two clips per scene
+stay in the same data split.
+LOL-v1 has $436/49/15$ training/validation/test images,
+LOL-v2-real $620/69/100$, and LOL-v2-synthetic $810/90/100$.
+The frozen split files, rather than a split reconstructed at evaluation time,
+define membership.
+Retinexformer is retrained on these SDSD training sequences.
+Results from released checkpoints trained on other splits are excluded from
+the current main comparison.
 
-\paragraph{Controlled runs.} Each arm is fine-tuned from Stage~3 for $1500$ optimiser steps (ablations: $750$) with the Stage-4 recipe, seeds $0,1,2$; audits during training are logged but not used for checkpoint selection, and the final checkpoint is evaluated. The code used here is a re-implementation of the model from its checkpoint layout (every tensor of the checkpoint loads with matching shape); all arms, including the reference, use this same code.
+\paragraph{Evaluation details.}
+Inputs and targets are paired by sorted frame index, which handles SDSD
+sequences with filename offsets.
+The central video clip and spatial crop are fixed before inference.
+Short clips and images are repeated to $16$ frames; images produce a single
+scored frame.
+Image sizes are padded to the branch's spatial divisor and cropped back
+after inference.
+Raw predictions are clipped to $[0,1]$ and rounded to uint8 for PSNR.
+GT-mean rescaling and previous colour-calibration procedures are not used in
+the main claims.
+The registered bootstrap unit is the evaluated sequence or image.
+Paired SDSD passes and BVI-RLV frame-rate clips can share a scene.
+A post-hoc sensitivity analysis therefore resamples whole scene groups,
+retaining sequence weights through a total-sum/total-count estimator.
+The in-domain PSNR-Y and LPIPS benefits and the two video-domain transfer
+LPIPS benefits retain their direction and zero-excluding intervals.
+The SDSD transfer LPIPS bound is close to zero. This robustness analysis
+does not replace more training seeds or eliminate other dependence.
 
-\section{Training-set membership of released checkpoints}\label{app:membership}
-For each released checkpoint we reconstructed its training sequences from the official option files and data loaders: the \texttt{testing\_dir} lists of Retinexformer's SDSD indoor and outdoor option files (its loader excludes a folder when its name, or its name without \texttt{\_2}, is listed), STCD's SDSD-indoor training options and URCSA's training script (both exclude by exact name only; URCSA releases no outdoor split). Retinexformer's SDSD release does not contain the six clean-6 sequences at all. Zero-DCE, SCI, HVI-CIDNet and DarkIR are trained without SDSD. SDSD records most scenes twice (\texttt{pairX}, \texttt{pairX\_2}; the second pass is a different camera path through the same room), so exact-name exclusion can leave a test scene's second pass in the training set; we count only exact sequence overlap in Table~\ref{tab:membership}. Seer's own split is the deterministic $80/20$ split of sorted sequence names; it contains no L0 or L1 test sequence, but the second pass of two test scenes (\texttt{pair5}, \texttt{MVI\_1007}) is in Seer's training set.
+\section{Intervention details}\label{app:interventions}
 
-\begin{table}[h]
-\centering\scriptsize\setlength{\tabcolsep}{4pt}
-\input{tables/tab_membership}
-\caption{Number of our test sequences contained in the training set of each released SDSD checkpoint, determined from the official split files (ranges: the release does not state whether second-pass \texttt{\_2} sequences were included; unknown: no split file released). Seer's training split contains none of L0/L1. Details and file-level provenance in App.~\ref{app:membership}.}
-\label{tab:membership}
+\paragraph{Principal components.}
+Per-clip projection centres all $2048$ tokens at each tap, obtains the right
+singular vectors of the centred matrix, and reconstructs it after retaining
+$k$ directions. The full clip mean is added back.
+It therefore retains substantially more than $k$ scalar values: the mean,
+directions, and token-dependent coordinates all remain.
+The fixed basis uses the first $60$ training-split clips in the saved order,
+accumulating means and second moments separately at each tap; eigendecomposition
+gives a rank-$64$ basis, truncated to the requested rank.
+No target or test label is used in either projection.
+The per-clip projection nevertheless depends on the test input, as intended,
+whereas the fixed basis and mean do not.
+
+\paragraph{Exploratory mean--basis control (validation only).}\label{app:meanbasis}
+The historical test intervention changes both factors.
+To separate them, we use the existing full-token-trained E17 seeds zero and
+one on every frozen SDSD validation sequence, without retraining or checkpoint
+selection. The diagnostic was chosen after the earlier results were inspected;
+its six conditions and validation-only protocol were recorded in Amendment~21
+before its outcomes. It is exploratory rather than a new confirmatory test.
+All principal-component projections here have rank four.
+The adaptive directions are computed from clip-centred tokens independently
+of which mean is used in reconstruction.
+
+\begin{table}[t]
+\centering\small
+\setlength{\tabcolsep}{4pt}
+\begin{tabular}{lcc}
+\toprule
+Validation condition & PSNR-Y $\uparrow$ & LPIPS $\downarrow$\\
+\midrule
+Identity & \R{meanval@identity@psnr} & \R{meanval@identity@lpips}\\
+Clip mean only & \R{meanval@meanonly@psnr} & \R{meanval@meanonly@lpips}\\
+Clip mean, clip basis & \R{meanval@clipclip@psnr} & \R{meanval@clipclip@lpips}\\
+Clip mean, fixed basis & \R{meanval@clipfixed@psnr} & \R{meanval@clipfixed@lpips}\\
+Train mean, clip basis & \R{meanval@trainclip@psnr} & \R{meanval@trainclip@lpips}\\
+Train mean, fixed basis & \R{meanval@trainfixed@psnr} & \R{meanval@trainfixed@lpips}\\
+\bottomrule
+\end{tabular}
+\caption{Exploratory mean--basis diagnostic on
+$\R{meanval@n}$ validation sequences from $\R{meanval@scenes}$ scenes,
+averaged over $\R{meanval@seeds}$ existing checkpoints. The four crossed
+conditions use rank-four directions; clip-mean-only broadcasts the mean to
+every token. These are validation measurements, separate from
+Table~\ref{tab:sufficiency}'s test results.}
+\label{tab:meanbasis}
 \end{table}
 
-\begin{table}[h]
-\centering\scriptsize\setlength{\tabcolsep}{3pt}
-\input{tables/tab_clean6}
-\caption{L0 restricted to the six sequences (\texttt{pair50/52/58/60/68/70}) that none of the evaluated SDSD checkpoints was trained on.}
-\label{tab:clean6}
-\end{table}
+We pair differences by sequence after seed averaging and report unadjusted
+$95\%$ scene-bootstrap intervals, with $10{,}000$ resamples from eight scenes;
+the archive also reports sequence-bootstrap intervals and every seed effect.
+At fixed clip mean, replacing the training basis with adaptive directions
+changes PSNR-Y by $\R{meanval@clipvsfixed@psnr}$\,dB
+($\R{meanval@clipvsfixed@psnr@sceneci}$).
+At fixed adaptive basis, replacing the training mean with the clip mean
+changes it by $\R{meanval@meanvsfixedmean_clipbasis@psnr}$\,dB
+($\R{meanval@meanvsfixedmean_clipbasis@psnr@sceneci}$);
+with the fixed basis, the corresponding change is
+$\R{meanval@meanvsfixedmean_fixedbasis@psnr}$\,dB
+($\R{meanval@meanvsfixedmean_fixedbasis@psnr@sceneci}$).
+Every seed agrees in sign on these contrasts.
+The basis contrast at the training mean remains unresolved on PSNR,
+so the adaptive-basis effect is conditional on the retained mean.
 
-\section{Encoder invariance and predictive coherence}\label{app:invariance}
-\paragraph{Tokenisation.} V-JEPA and VideoMAE consume the $16$-frame clip natively; their token grids are mean-pooled over time and average-pooled to $16{\times}16$. Image encoders are run on every frame at $512{\times}512$ and their per-frame token maps averaged over the $16$ frames; CLIP and SigLIP\,2 (patch $32$) give $16{\times}16$ directly, DINOv2 (patch $14$) and DINOv3 (patch $16$) are run with interpolated position encodings and resampled in feature space. Averaging per-frame shifts instead of per-frame features raises DINOv3's shift from \R{inv@dinov3} to $0.534$, so the aggregation choice favours the image encoders.
+Rank-four adaptive projection also improves on clip-mean-only by
+$\R{meanval@rank4vsmeanonly@psnr}$\,dB
+($\R{meanval@rank4vsmeanonly@psnr@sceneci}$), with both seeds positive.
+Against identity, however, the change is
+$\R{meanval@rank4vsidentity@psnr}$\,dB
+($\R{meanval@rank4vsidentity@psnr@sceneci}$), and LPIPS effects have
+opposite signs across seeds. This does not establish equivalence or a
+validation improvement over the full field.
+The matched contrasts support contributions from both the input-dependent
+mean and basis under these interventions. They do not show that either can be
+obtained cheaply, that a trained model needs only four dimensions, or that the
+same representation suffices during training.
 
-\paragraph{Predictive coherence.} The predictor test uses the non-distilled V-JEPA~2 ViT-L checkpoint, whose predictor outputs the encoder's own $1024$-d space (the distilled checkpoint used in Seer predicts a separate teacher space). For each clip ($16$ frames, $8$ tubelets) the tokens of tubelets $4$--$7$ are predicted from all earlier tubelets with the predictor's native masking; the naive baseline copies tubelet $t{-}1$. The VideoMAE analogue masks the same future tubelets and scores its decoder output against the normalised ground-truth pixel patches. The two scores live in different spaces and are not compared with each other, only with their own copy baselines.
+\paragraph{Interpretation of averaging.}
+Spatial mean retains a separate vector for each tubelet; temporal mean retains
+a separate vector for each spatial position.
+Neither transformation removes the frozen encoder's computation.
+An interval that crosses zero bounds the detected effect but does not establish
+statistical equivalence without a predeclared equivalence margin.
 
-\section{Encoder swap}\label{app:encoder}
-\begin{table}[h]
-\centering\scriptsize\setlength{\tabcolsep}{2.6pt}
-\input{tables/tab_encoder}
-\caption{Frozen encoder swapped inside the full architecture. Invariance from Sec.~\ref{sec:prelim}. Swapped encoders were fine-tuned $1500$ iterations from the V-JEPA Stage-3 checkpoint, the V-JEPA reference $6000$; this favours V-JEPA (App.~\ref{app:encoder}). Raw outputs, no CP.}
-\label{tab:encoder}
-\end{table}
+\paragraph{Temporal measurements.}
+The latent diagnostic reports mean cosine agreement of consecutive-tubelet
+differences and their mean absolute magnitude ratio.
+The relative and cosine losses are trained on two seeds each.
+The cosine form's log-ratio penalty penalises both expansion and contraction.
+For each sequence and arm, tLP and target tLP are averaged over the arm's
+seeds, then their absolute difference is taken. Differences between these
+absolute gaps are paired over sequences. Each individual seed's absolute-gap
+effect is also checked for the same sign.
+The order of averaging and taking the absolute value matches the released
+aggregation tool. This gap uses identical frames and crops and is not a
+motion-compensated error.
 
-The swapped encoders replace V-JEPA inside the full architecture (all have width $1024$, so the cross-attention projections are reused), M2 is computed in the swapped encoder's space, and each variant is fine-tuned from the V-JEPA Stage-3 checkpoint for $1500$ iterations. The pixel branch therefore starts adapted to V-JEPA tokens, and the V-JEPA reference was fine-tuned for $6000$ iterations; both choices favour V-JEPA. These runs, unlike the controlled study, used the original training code of the reference checkpoint.
+\section{Corrected controls and outstanding validation}\label{app:pending}
 
-\section{Additional metrics}\label{app:extra}
-\begin{table}[h]
-\centering\scriptsize\setlength{\tabcolsep}{2.4pt}
-\resizebox{\textwidth}{!}{\input{tables/tab_extra_metrics}}
-\caption{DISTS ($\downarrow$) and CLIPIQA ($\uparrow$, no reference) for the rows of Table~\ref{tab:main}.}
-\label{tab:extra}
-\end{table}
+The archive contains evaluations beyond those used in the current claims.
+The random-encoder control has now been rescored with CPU initialisation seed
+$1234$, matching the training implementation. Its recorded initial-parameter
+checksum agrees up to the float-versus-double accumulation difference logged
+by the NPU runtime; this is an approximate fingerprint, not a full model hash.
+The corrected JSON records reconstruction settings separately from the
+historical result. Section~\ref{sec:exp:control} uses the corrected single-seed
+comparison and does not retain the earlier large fidelity-attribution claim.
 
-\section{Chroma preservation: calibration details}\label{app:cp}
-\paragraph{CP-src.} $\alpha^\star$ is fitted per checkpoint on $15$ fixed clips of the SDSD training split ($8$ indoor, $7$ outdoor, evenly spaced in sorted order; centre $16$ frames, $512{\times}512$ crop), pooling the second moments of Eq.~\eqref{eq:alpha} over all pixels. The average fitted value over the three Seer seeds is $\alpha^\star{=}\R{cp@alphasrc}$ before clipping. % TODO(after results): interpret the fitted value.
+Corrected hybrid cross-frame keys are reported in
+Sec.~\ref{sec:exp:ablation}. Restoring all-depth keys for the available
+seed-two checkpoint gives $\R{audit@alllayers@psnr@a}$\,dB, replacing the
+archived, incorrectly configured $21.568$\,dB result. Against the corresponding
+full-token default seed, its differences are
+$\R{audit@alllayers@psnr}$\,dB ($\R{audit@alllayers@psnr@ci}$) and
+$\R{audit@alllayers@lpips}$ LPIPS ($\R{audit@alllayers@lpips@ci}$).
+Both intervals include zero. The variant was trained on Ascend and the
+reference on A100, with only one available variant seed; this conditional
+comparison cannot establish a general architectural effect. Its temporal
+diagnostics also show tradeoffs, detailed in the audit record.
+Deepest-only taps and learned gates still require the actual trained
+configuration and weights before their archived differences can support
+architectural conclusions.
+The fixed-rank-$64$ training control has been reevaluated with its saved
+projection. Its current comparison uses the same two baseline seed numbers;
+the old three-baseline-seed comparison is preserved in the audit record.
+Neither comparison resolves a training-time penalty after correction.
+It still does not establish a computational compression result.
 
-\paragraph{CP-tgt.} Scenes of a target split are sorted by name and split into two folds by index parity (the $10$ and $20$\,fps copies of a BVI-RLV scene and the \texttt{\_2} pass of an SDSD scene stay in the same fold); each clip is fused with the $\alpha^\star$ fitted on the other fold. CP-tgt thus needs paired target data and is not comparable with methods that receive none; we report it separately from Table~\ref{tab:main}.
+H20/E28, training from scratch with per-clip centred rank-four tokens, remains
+unfinished: no verified final evaluation is available.
+It is neither a positive nor a negative result.
+The proposed small-network distillation experiment was cancelled by its
+registered screening rule and was not run; its cancellation supplies no
+evidence that another encoder or distillation procedure cannot work.
+Some baseline temporal diagnostics were not included in the original archive.
+Claims requiring those missing measurements are withheld until they are
+reproduced under the same protocol. The qualitative panels have been
+regenerated with checkpoint, source and output hashes.
 
-\paragraph{Archived coefficient.} An earlier version of this work used a single $\alpha{=}(0.50,0.50,0.68)$ for all targets. That value was not produced by Eq.~\eqref{eq:alpha} on source data: it was chosen between a closed-form fit on SDSD and one on BVI-RLV by its BVI-RLV test PSNR. We list it for reference only (last row of Table~\ref{tab:cp_archived}); it is not used for any claim.
+\section{Scope of the conclusions}\label{app:scope}
 
-\begin{table}[h]
-\centering\scriptsize\setlength{\tabcolsep}{2.2pt}
-\input{tables/tab_cp_archived}
-\caption{All CP calibrations on the final Seer checkpoints (mean $\pm$ s.d.\ over three seeds). The archived row uses a coefficient selected with BVI-RLV test data (see text) and is shown for reference only.}
-\label{tab:cp_archived}
-\end{table}
-
-\paragraph{Is CP specific to Seer?} Table~\ref{tab:cp_transfer} applies both calibrations, with the identical protocol and fit clips, to every baseline. For each method CP-src is fitted with the checkpoint the method uses on SDSD, so for URCSA and HVI-CIDNet, whose LOL results come from separate LOL checkpoints, the source-fitted coefficient is transferred across checkpoints; the large drops in those cells reflect that mismatch.
-
-\begin{table}[h]
-\centering\scriptsize\setlength{\tabcolsep}{3pt}
-\input{tables/tab_cp_transfer}
-\caption{PSNR change (dB) from applying CP to each method's own raw output, with $\alpha^\star$ fitted on SDSD training clips (src) or cross-fitted on the target split (tgt). Bold: 95\% bootstrap interval over sequences excludes $0$.}
-\label{tab:cp_transfer}
-\end{table}
-
-\section{Full temporal metrics}\label{app:temporal}
-\begin{table}[h]
-\centering\scriptsize\setlength{\tabcolsep}{2.6pt}
-\resizebox{\textwidth}{!}{\input{tables/tab_temporal}}
-\caption{All temporal metrics on the $16$-frame clips ($\downarrow$; flk: per-pixel luma standard deviation over time). tLP, MABD and flk do not account for motion and favour outputs that change little; WE compensates motion with RAFT flow from the ground truth. GT and LQ rows bound the range.}
-\label{tab:temporal_full}
-\end{table}
+The main conclusions concern one frozen encoder, one restoration family,
+and the specified data splits.
+Few seeds limit inference about training variability, and sequence bootstraps
+do not replace additional independent runs.
+SDSD includes low-motion material, while the LOL test contains still images.
+A video encoder's temporal sensitivity and a readout's weak order sensitivity
+therefore do not prove that temporal representations are irrelevant to other
+video-restoration tasks.
+The tested low-rank replacements describe the behaviour of existing
+checkpoints. The exploratory validation control separates mean and basis
+effects under those replacements; future work must separately test efficient
+encoders and training with the restricted representation.

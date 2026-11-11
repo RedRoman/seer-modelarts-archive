@@ -1,6 +1,20 @@
-\section{Conclusion and limitations}\label{sec:conclusion}
+\section{Conclusion}\label{sec:conclusion}
 
-A frozen video world model is a useful prior for low-light video enhancement in the domain the restorer is fine-tuned on: with everything else fixed, pretrained V-JEPA tokens improve fidelity, perceptual quality and temporal consistency, and neither a random encoder of the same size nor other frozen encoders match them. The prior does not, by itself, make the restorer robust to unseen sensors and scenes. % CROSS-DOMAIN SENTENCE PENDING
-Two components we designed for the prior did not pay off: the counterfactual predictor stays at identity when free and hurts when forced open, and closed-form chroma preservation only helps when calibrated on target data.
-
-\textbf{Limitations.} All controlled arms share a pixel branch pre-trained with V-JEPA tokens, so a from-scratch comparison may change the size of the in-domain effect. Seer is large ($370$\,M trainable and $305$\,M frozen parameters) and slow compared with image enhancers. Our model code is a re-implementation from the checkpoint layout; all controlled comparisons use the same code, but its absolute numbers differ from the archived reference checkpoint, whose encoder-swap runs we report separately. Results use three seeds for the main arms and one or two for ablations.
+Frozen V-JEPA conditioning benefits a matched low-light restorer in domain and
+under the specified leave-one-domain-out protocol. The stronger question is
+what the trained branch uses. It tolerates removal of most centred token
+variation when its clip mean and a few clip-specific principal directions are
+preserved; the tested fixed replacement is much less successful. An exploratory
+validation control separates contributions of the clip mean and, conditional
+on that mean, adaptive directions; its rank-four versus full-field comparison
+remains inconclusive. These results
+characterise the trained readout and do not yet provide a smaller encoder or a
+validated computational compression recipe. The corrected fixed-rank
+training control has an unresolved effect rather than the previously reported
+penalty, while the single-seed random control resolves a perceptual benefit
+without resolving a fidelity benefit.
+Hybrid keys modestly improve LPIPS, spatial grounding does not resolve an improvement, exposure decoupling
+degrades the result, and directly matching latent temporal changes worsens
+perceptual quality and the measured tLP gap. The study supports measuring
+downstream use separately from what a pretrained model can represent, and
+making those measurements on converged, reproducible comparisons.

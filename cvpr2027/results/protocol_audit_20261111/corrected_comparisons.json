@@ -1,0 +1,201 @@
+{
+  "bootstrap_samples": 10000,
+  "rng_seed": 0,
+  "unit": "paired sequence, conditional on available trained seeds",
+  "comparisons": {
+    "random": {
+      "interpretation": "pretrained minus random",
+      "seeds": [
+        0
+      ],
+      "n": 39,
+      "sources": [
+        {
+          "path": "results/cvpr_converged/indomain/e17_small_pretrained_s0.json",
+          "sha256": "6cae86eef2d92d11a69a6a6e58292045a2bee99145e06cccf1867a52e535fef8"
+        },
+        {
+          "path": "results/protocol_audit_20261111/reevaluated/e17_small_random_s0_saved.json",
+          "sha256": "a42660f65cddd06a4d80365f4de902af92fb5a692d79ba43454d141cb0fc0003"
+        }
+      ],
+      "metrics": {
+        "psnr_y": {
+          "difference": 0.6039115441057725,
+          "ci95": [
+            -0.48188971531547686,
+            1.870245293604442
+          ],
+          "a_mean": 24.688058845069683,
+          "b_mean": 24.084147300963913,
+          "per_seed_differences": [
+            0.6039115441057725
+          ]
+        },
+        "lpips": {
+          "difference": -0.019356555281541288,
+          "ci95": [
+            -0.030778308470661823,
+            -0.009173969685649262
+          ],
+          "a_mean": 0.2172639182744882,
+          "b_mean": 0.2366204735560295,
+          "per_seed_differences": [
+            -0.019356555281541288
+          ]
+        }
+      }
+    },
+    "grank64": {
+      "interpretation": "rank64 minus full-token-trained",
+      "seeds": [
+        0,
+        1
+      ],
+      "n": 39,
+      "sources": [
+        {
+          "path": "results/protocol_audit_20261111/reevaluated/e26_grank64_s0_saved.json",
+          "sha256": "3250cfff9d93f1ed1963467a5ea59178b7f312a981d73b917480a0290ae89406"
+        },
+        {
+          "path": "results/protocol_audit_20261111/reevaluated/e26_grank64_s1_saved.json",
+          "sha256": "327b5469fece7b70f35c3ec99d4c359ab92d2068fa32e4ef424f76e34a862012"
+        },
+        {
+          "path": "results/cvpr_converged/indomain/e17_small_pretrained_s0.json",
+          "sha256": "6cae86eef2d92d11a69a6a6e58292045a2bee99145e06cccf1867a52e535fef8"
+        },
+        {
+          "path": "results/cvpr_converged/indomain/e17_small_pretrained_s1.json",
+          "sha256": "4532364e5e99170bc55c4ad367d56c7655af9288a918de14e694ae5c726351c4"
+        }
+      ],
+      "metrics": {
+        "psnr_y": {
+          "difference": -0.06092884773121732,
+          "ci95": [
+            -0.571234372119974,
+            0.4571271877294638
+          ],
+          "a_mean": 24.491158101043613,
+          "b_mean": 24.552086948774836,
+          "per_seed_differences": [
+            -0.7004544664247921,
+            0.5785967709623574
+          ]
+        },
+        "lpips": {
+          "difference": -0.00021635760099459917,
+          "ci95": [
+            -0.00414150390917292,
+            0.004009343908192254
+          ],
+          "a_mean": 0.21902955094209084,
+          "b_mean": 0.21924590854308543,
+          "per_seed_differences": [
+            0.0032098982960749897,
+            -0.003642613498064188
+          ]
+        }
+      }
+    },
+    "hybrid": {
+      "interpretation": "hybrid minus per-tubelet, matched seeds 0/1",
+      "seeds": [
+        0,
+        1
+      ],
+      "n": 39,
+      "sources": [
+        {
+          "path": "results/protocol_audit_20261111/reevaluated/e18_hybrid_s0_saved.json",
+          "sha256": "d072c0c37290cb289ae15a6a017f81e61fbac5135e71e5db0ad2ad0240edd2ef"
+        },
+        {
+          "path": "results/protocol_audit_20261111/reevaluated/e18_hybrid_s1_saved.json",
+          "sha256": "0ee12374e92e063210c1d34c8f055cea50bd4ad7d0f27e5a917bc79c3eaf9471"
+        },
+        {
+          "path": "results/cvpr_converged/indomain/e17_small_pretrained_s0.json",
+          "sha256": "6cae86eef2d92d11a69a6a6e58292045a2bee99145e06cccf1867a52e535fef8"
+        },
+        {
+          "path": "results/cvpr_converged/indomain/e17_small_pretrained_s1.json",
+          "sha256": "4532364e5e99170bc55c4ad367d56c7655af9288a918de14e694ae5c726351c4"
+        }
+      ],
+      "metrics": {
+        "psnr_y": {
+          "difference": 0.04877766380872272,
+          "ci95": [
+            -0.4249585915332865,
+            0.49193742417726277
+          ],
+          "a_mean": 24.600864612583557,
+          "b_mean": 24.552086948774836,
+          "per_seed_differences": [
+            0.10371805558070057,
+            -0.0061627279632545835
+          ]
+        },
+        "lpips": {
+          "difference": -0.00482028426650243,
+          "ci95": [
+            -0.008113462160317561,
+            -0.0016320129760946985
+          ],
+          "a_mean": 0.21442562427658302,
+          "b_mean": 0.21924590854308543,
+          "per_seed_differences": [
+            -0.003739677369594574,
+            -0.0059008911634102846
+          ]
+        }
+      }
+    },
+    "alllayers": {
+      "interpretation": "all-layers minus single-layer, seed 2; training hardware differs",
+      "seeds": [
+        2
+      ],
+      "n": 39,
+      "sources": [
+        {
+          "path": "results/protocol_audit_20261111/reevaluated/e18_layers_all_s2_saved.json",
+          "sha256": "e8fab7cbd69333c38c0b969cdca4eef6db7481d758bd1f8f0dbce3bd9fb19f35"
+        },
+        {
+          "path": "results/cvpr_converged/indomain/e19_small_pretrained_s2.json",
+          "sha256": "e2bb7cdfa0ac855cabf272f971fb80dfb4d077aabeadafd6799f28d3cf1b1cdd"
+        }
+      ],
+      "metrics": {
+        "psnr_y": {
+          "difference": 0.47629600242866743,
+          "ci95": [
+            -0.2763157881675468,
+            1.2451545376891113
+          ],
+          "a_mean": 25.139352997155786,
+          "b_mean": 24.663056994727125,
+          "per_seed_differences": [
+            0.47629600242866743
+          ]
+        },
+        "lpips": {
+          "difference": -0.004527473869996193,
+          "ci95": [
+            -0.009440720372666151,
+            8.564680241621446e-05
+          ],
+          "a_mean": 0.20505360628549868,
+          "b_mean": 0.2095810801554949,
+          "per_seed_differences": [
+            -0.004527473869996193
+          ]
+        }
+      }
+    }
+  }
+}
