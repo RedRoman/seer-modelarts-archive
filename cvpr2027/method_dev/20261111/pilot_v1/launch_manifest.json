@@ -1,0 +1,64 @@
+{
+  "package": {
+    "path": "source_pilot_v1.tgz",
+    "sha256": "820f30ba54311f7771e44ccec9161440b73f8c16965f28c9cc67bba83eed798c"
+  },
+  "init": {
+    "path": "/temp/zihaohe/seer_cvpr/method_dev_20261111/inputs/e17_small_pretrained_s0_final_cpu.pt",
+    "sha256": "5ab6b6d04d7b13743965007d3754bd66f034d170ec7193abc2abb5a8aa6c8740"
+  },
+  "arms": {
+    "baseline": {
+      "host": "huawei-modelarts-32193",
+      "physical_npu": 4,
+      "pid": 3560481,
+      "start_utc": "2026-11-11T12:42:57Z",
+      "cann_root": "/cache/hanbin/ascend_private/cann-8.5.2",
+      "pyiqa_version": "0.1.16"
+    },
+    "prior": {
+      "host": "huawei-modelarts-32193",
+      "physical_npu": 7,
+      "pid": 3560881,
+      "start_utc": "2026-11-11T12:43:00Z",
+      "cann_root": "/cache/hanbin/ascend_private/cann-8.5.2",
+      "pyiqa_version": "0.1.16"
+    },
+    "local": {
+      "host": "huawei-modelarts-31051",
+      "physical_npu": 7,
+      "cann_root": "/usr/local/Ascend/cann-8.5.2",
+      "failed_initial_pid": 3701408,
+      "failed_start_utc": "2026-11-11T12:43:03Z",
+      "python": "/cache/zihaohe/seer_cvpr/venv_npu/bin/python",
+      "session": "seer_method_local_s0_v1_venv",
+      "pyiqa_version": "0.1.13",
+      "failed_attempt": "base conda lacked pyiqa; stopped in VAL0 before any train step; failed output preserved under failed/local_s0_runtime1"
+    }
+  },
+  "python": "/home/ma-user/anaconda3/envs/PyTorch-2.7.1/bin/python",
+  "source_root_each_host": "/cache/zihaohe/seer_method_dev_20261111/code_full",
+  "outputs_root_each_host": "/cache/zihaohe/seer_method_dev_20261111/runs",
+  "steps": 400,
+  "accum": 1,
+  "eval_every": 200,
+  "workers": 4,
+  "seed": 0,
+  "data_seed": 20261111,
+  "omp_mkl_openblas_threads": 4,
+  "smoke": {
+    "passed": true,
+    "start_utc": "2026-11-11T12:39:56Z",
+    "end_utc": "2026-11-11T12:42:13Z",
+    "initial_failed_attempt": "launcher overwrote CANN PYTHONPATH; ModuleNotFoundError tbe; fixed only shell wrapper to preserve existing path, no frozen source edits"
+  },
+  "limitations": [
+    "local arm uses a different host and separately installed CANN 8.5.2; same Ascend910B3 hardware model",
+    "single seed exploratory validation-only matched continuation; no TEST and no automatic continuation"
+  ],
+  "wrapper_hashes": {
+    "run_method_smoke.sh": "9ea8af4d5f6e3748c3bbd9022d8a2f3c99fd400114ec5acb1a70f2ad33ae97b6",
+    "run_method_arm.sh": "6a74d0e1256de04eded5d0141c3c9dae926c7b3234310c69056410fc1d017ceb"
+  },
+  "lpips_weight_sha256_both_hosts": "df73285e35b22355a2df87cdb6b70b343713b667eddbda73e1977e0c860835c0"
+}
