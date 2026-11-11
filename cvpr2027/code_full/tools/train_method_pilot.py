@@ -110,7 +110,7 @@ class PlannedSDSD(Dataset):
 
 
 @torch.no_grad()
-def evaluate(model, backbone, clips, dev, step, variant):
+def evaluate(model, backbone, clips, dev, step, variant, domain="sdsd"):
     model.eval()
     rows = []
     for name, lq_u8, gt_u8, kind in clips:
@@ -138,7 +138,7 @@ def evaluate(model, backbone, clips, dev, step, variant):
     model.train()
     return {"variant": variant, "step": step, "split": "val", "n": len(rows),
             "metrics": scores, "per_sequence": rows,
-            "protocol": "SDSD frozen val16, centre16 frames, centre256 crop, rounded uint8; development only"}
+            "protocol": f"{domain} frozen val16, centre16 frames, centre256 crop, rounded uint8; development only"}
 
 
 def cpu_tree(value):
@@ -154,6 +154,8 @@ def cpu_tree(value):
 def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--variant", choices=["baseline", "local", "prior"], required=True)
+    ap.add_argument("--trainable", choices=["all", "fusion"], default="all")
+    ap.add_argument("--domain", choices=["sdsd", "bvi"], default="sdsd")
     ap.add_argument("--init", required=True)
     ap.add_argument("--out", required=True)
     ap.add_argument("--steps", type=int, default=400)
@@ -167,6 +169,8 @@ def main():
     ap.add_argument("--device", choices=["npu", "cuda"], default="npu")
     ap.add_argument("--base_git", default="04313bba457fd53decbfdccde13168a001ec671f")
     args = ap.parse_args()
+    if args.trainable == "fusion" and args.variant == "baseline":
+        raise ValueError("The fixed base reference has no fusion parameters to train")
     if min(args.steps, args.accum, args.eval_every) < 1:
         raise ValueError("steps, accum and eval_every must be positive")
     outdir = Path(args.out)
@@ -184,7 +188,12 @@ def main():
     random.seed(args.seed)
     root = Path(os.environ.get("SEER_ROOT", "/temp/zihaohe/seer_cvpr"))
     splits = root / "datasets/splits_cvpr.json"
-    dataset = PlannedSDSD(splits, root, args.steps * args.accum, args.data_seed, 256, 16)
+    if args.domain == "bvi":
+        from data.planned_bvi import PlannedBVI
+        dataset_class = PlannedBVI
+    else:
+        dataset_class = PlannedSDSD
+    dataset = dataset_class(splits, root, args.steps * args.accum, args.data_seed, 256, 16)
     plan = {"data_seed": args.data_seed, "sequence_names": [i[0] for i in dataset.items],
             "samples": dataset.plan}
     write_json(outdir / "data_plan.json", plan)
@@ -193,6 +202,10 @@ def main():
         raise ValueError("Pilot requires the default pretrained v2 checkpoint")
     if saved.get("branch") != "small" or saved.get("arch") != "v2":
         raise ValueError("Pilot requires small v2")
+    expected = {"xattn": "global", "kv": "per_tubelet", "layers": "single",
+                "taps": [5, 11, 17, 23], "token_proj": "none"}
+    if any(base.eval_reconstruction.get(k) != v for k, v in expected.items()):
+        raise ValueError("This pilot requires the default attention/taps/projection configuration")
     baseline_sha = state_digest(base.state_dict())
     baseline_config = base.eval_reconstruction
     fusion_init_sha = None
@@ -215,10 +228,13 @@ def main():
         model = model.to(dev)
         del base
     model.use_checkpoint = True
+    if args.trainable == "fusion":
+        for name, parameter in model.named_parameters():
+            parameter.requires_grad_(name.startswith("temporal_fusion."))
     params = [(n, p) for n, p in model.named_parameters() if p.requires_grad]
     old = [p for n, p in params if not n.startswith("temporal_fusion.")]
     new = [p for n, p in params if n.startswith("temporal_fusion.")]
-    groups = [{"params": old, "lr": args.lr}]
+    groups = [{"params": old, "lr": args.lr}] if old else []
     if new:
         groups.append({"params": new, "lr": args.fusion_lr})
     optimizer = torch.optim.AdamW(groups, betas=(.9, .99), weight_decay=1e-4)
@@ -228,6 +244,8 @@ def main():
     sources = [Path(__file__), CODE / "models/pixel_branch_v2.py",
                CODE / "models/vjepa_backbone.py", CODE / "models/pixel_branch_fusion.py",
                CODE / "models/temporal_detail_fusion.py", CODE / "data/common.py"]
+    if args.domain == "bvi":
+        sources.append(CODE / "data/planned_bvi.py")
     metadata = {"args": vars(args), "init_sha256": digest(args.init),
                 "base_pixel_state_sha256": baseline_sha,
                 "base_reconstruction": baseline_config,
@@ -243,8 +261,8 @@ def main():
     log.info("START variant=%s steps=%d accum=%d params=%d+%d base=%s plan=%s",
              args.variant, args.steps, args.accum, metadata["trainable_base"],
              metadata["trainable_fusion"], baseline_sha, metadata["data_plan_sha256"])
-    clips = list(held_out_sequences("sdsd", "val", 16, 256))
-    initial = evaluate(model, backbone, clips, dev, 0, args.variant)
+    clips = list(held_out_sequences(args.domain, "val", 16, 256))
+    initial = evaluate(model, backbone, clips, dev, 0, args.variant, args.domain)
     write_json(outdir / "val_step_000000.json", initial)
     log.info("VAL step=0 %s", initial["metrics"])
     model.train()
@@ -285,7 +303,14 @@ def main():
                      float(np.mean(recent)), (time.time() - started) / it, stats)
             recent = []
         if it % args.eval_every == 0 or it == args.steps:
-            report = evaluate(model, backbone, clips, dev, it, args.variant)
+            if args.trainable == "fusion":
+                unchanged = state_digest({k: v for k, v in model.state_dict().items()
+                                          if not k.startswith("temporal_fusion.")})
+                if unchanged != baseline_sha:
+                    raise RuntimeError("Frozen base changed during fusion-only training")
+                metadata["verified_frozen_base_sha256"] = unchanged
+                write_json(outdir / "provenance.json", metadata)
+            report = evaluate(model, backbone, clips, dev, it, args.variant, args.domain)
             write_json(outdir / f"val_step_{it:06d}.json", report)
             checkpoint = {"step": it, "args": vars(args), "pixel_branch": cpu_tree(model.state_dict()),
                           "optimizer": cpu_tree(optimizer.state_dict()),

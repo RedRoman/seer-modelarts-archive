@@ -17,6 +17,7 @@ def main():
     p.add_argument("--init", required=True)
     p.add_argument("--device", default="npu")
     p.add_argument("--out", required=True)
+    p.add_argument("--trainable", choices=["all", "fusion"], default="all")
     args = p.parse_args()
     if args.device == "npu":
         import torch_npu  # noqa: F401
@@ -31,7 +32,8 @@ def main():
     with torch.no_grad(), torch.autocast(dev.type, dtype=torch.bfloat16):
         tokens = [z.float() for z in bb(low)["feats"]]
         reference = model(low, tokens)["pred_pixels"]
-    checks = {"data_repeat_equal": True, "sample_name": a["name"], "modes": {}}
+    checks = {"data_repeat_equal": True, "sample_name": a["name"],
+              "trainable": args.trainable, "modes": {}}
     initial = None
     for mode in ("local", "prior"):
         torch.manual_seed(9000)
@@ -50,6 +52,11 @@ def main():
             prediction = candidate(low, tokens)["pred_pixels"]
         max_error = float((prediction - reference).abs().max())
         assert max_error == 0., max_error
+        if args.trainable == "fusion":
+            for name, parameter in candidate.named_parameters():
+                parameter.requires_grad_(name.startswith("temporal_fusion."))
+        base_before = state_digest({k: v for k, v in candidate.state_dict().items()
+                                    if not k.startswith("temporal_fusion.")})
         candidate.train()
         with torch.autocast(dev.type, dtype=torch.bfloat16):
             result = candidate(low, tokens)
@@ -58,11 +65,23 @@ def main():
         grad = candidate.temporal_fusion.output_proj.weight.grad
         assert grad is not None and torch.isfinite(grad).all() and grad.abs().max() > 0
         grad_norm = float(grad.float().norm())
-        optimizer = torch.optim.AdamW(candidate.parameters(), lr=2e-5)
+        optimizer = torch.optim.AdamW([p for p in candidate.parameters() if p.requires_grad],
+                                      lr=2e-4)
         optimizer.step()
         assert torch.isfinite(candidate.temporal_fusion.output_proj.weight).all()
+        updated = state_digest(candidate.temporal_fusion.state_dict())
+        assert updated != fingerprint, "Fusion parameters did not update"
+        base_after = state_digest({k: v for k, v in candidate.state_dict().items()
+                                   if not k.startswith("temporal_fusion.")})
+        if args.trainable == "fusion":
+            assert base_after == base_before, "Frozen restoration state changed"
+            assert all(p.grad is None for n, p in candidate.named_parameters()
+                       if not n.startswith("temporal_fusion."))
         checks["modes"][mode] = {"initial_prediction_max_error": max_error,
                                  "fusion_initial_sha256": fingerprint,
+                                 "fusion_updated_sha256": updated,
+                                 "base_state_before_sha256": base_before,
+                                 "base_state_after_sha256": base_after,
                                  "first_loss": float(loss), "output_projection_grad_norm": grad_norm}
         del candidate, optimizer, result, prediction, loss, grad
     Path(args.out).write_text(json.dumps(checks, indent=2) + "\n")

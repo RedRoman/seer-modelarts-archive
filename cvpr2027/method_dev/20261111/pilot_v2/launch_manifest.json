@@ -1,0 +1,65 @@
+{
+  "package_sha256": "25948bb0ef40c46199cdbb1957826516c992494fbc155637d289c262fffc5351",
+  "code_root": "/cache/zihaohe/seer_method_dev_20261111/pilot_v2/code_full",
+  "init_sha256": "5ab6b6d04d7b13743965007d3754bd66f034d170ec7193abc2abb5a8aa6c8740",
+  "host": "huawei-modelarts-32193",
+  "cann_root": "/cache/hanbin/ascend_private/cann-8.5.2",
+  "python": "/home/ma-user/anaconda3/envs/PyTorch-2.7.1/bin/python",
+  "threads": 4,
+  "args": {
+    "trainable": "fusion",
+    "domain": "sdsd",
+    "steps": 600,
+    "accum": 1,
+    "eval_every": 200,
+    "fusion_lr": 0.0002,
+    "seed": 0,
+    "data_seed": 20261111,
+    "workers": 4
+  },
+  "arms": {
+    "local": {
+      "device": 4,
+      "pid": 3616589,
+      "start_utc": "2026-11-11T13:07:57Z",
+      "session": "seer_pilot_v2_local_s0_25948b",
+      "training_complete_steps": 600,
+      "complete_utc": "2026-11-11T13:15:07Z",
+      "python_duration_seconds": 356.231,
+      "shell_end_present": true,
+      "frozen_base_sha_unchanged": true
+    },
+    "prior": {
+      "device": 7,
+      "pid": 3617340,
+      "start_utc": "2026-11-11T13:08:02Z",
+      "session": "seer_pilot_v2_prior_s0_25948b",
+      "training_complete_steps": 600,
+      "complete_utc": "2026-11-11T13:15:54Z",
+      "python_duration_seconds": 400.979,
+      "shell_end_present": true,
+      "frozen_base_sha_unchanged": true
+    }
+  },
+  "checks": {
+    "cpu_tests_both_hosts": {
+      "passed": 33,
+      "skipped": 0
+    },
+    "smoke": "validation_32193/checks/smoke_fusion.json",
+    "source_manifest": "validation_32193/checks/source_manifest.json",
+    "source_files_verified_against_archive": 197,
+    "v1_reload": "validation_31051/checks/v1_local_reload_comparison.json"
+  },
+  "wrapper_hashes": {
+    "run_v2_smoke_25948b.sh": "1b19170cfa854b8ac0cc8abf9647d39ebd44f57de8823499fdd3835b0ce1f8ac",
+    "run_v2_arm_25948b.sh": "ec1d9883604d71be8e9a8a477b5f7b9b2a474132f6a4be5041fc136778c79ff6",
+    "reload_v1_local_25948b.sh": "05a2a06594da28c725c68f79172cbd1d13ef36ea39e7002cb9f00e87cc277431"
+  },
+  "bundle_sha256": {
+    "validation_32193.tgz": "ddb4404e834c4af7c67850d58a730b38b7332a571989e6467e53fc3c4b289357",
+    "validation_31051.tgz": "04c72cbc1109954b656d73dd89a5be8fad2144a257af89c72cd9bae74006b49d",
+    "pilot_v2_32193_artifacts.tgz": "36925cde5d60940cc9381a516006dd84907a4663f9365938b04c5b2573b27b6d"
+  },
+  "deployment_note": "Archive has flat code root. Initial extraction at pilot_v2 produced wrong working-directory test attempt; no NPU allocated, error logs preserved. Correct code_full was freshly extracted and actual suite passed33. V1 untouched. Versioned wrappers immutable after launch."
+}
