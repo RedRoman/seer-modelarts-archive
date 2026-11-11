@@ -1,0 +1,1133 @@
+{
+  "scope": "Selector internal holdout within base TRAIN scenes; NOT final VAL/test",
+  "evaluation": "Once after all fixed-budget training; no best selection",
+  "coverage": "All pixels in every cached holdout clip, not full original BVI videos",
+  "scenes": 6,
+  "clips": 12,
+  "frames": 192,
+  "methods": {
+    "base": {
+      "rgb_mse": 0.0018238661962444076,
+      "scene_mean_mse": 0.0018238661962444076,
+      "rgb_squared_error_sum": 68848.64354135434,
+      "rgb_elements": 37748736,
+      "per_scene": {
+        "S04_colour_sticks": 0.0007392759825468609,
+        "S07_hats": 0.0013590863510625217,
+        "S10_messy_toy": 0.0006490779737788888,
+        "S14_colour_balls": 0.004987829526808429,
+        "S18_books1": 0.0020966970352512826,
+        "S19_books2": 0.0011112303080184627
+      },
+      "per_sequence": [
+        {
+          "name": "BVI/S04_colour_sticks__10fps",
+          "scene": "S04_colour_sticks",
+          "condition": "10",
+          "path": "clip_004.pt",
+          "sha256": "d08c4e504b70806684410f4418b2cfd3bbf4cf3f52a39724b93594675511e50c",
+          "mse": 0.0012212604693202511,
+          "patches": 16384
+        },
+        {
+          "name": "BVI/S04_colour_sticks__20fps",
+          "scene": "S04_colour_sticks",
+          "condition": "20",
+          "path": "clip_005.pt",
+          "sha256": "943f2fc340a0fa473f6bab02acca39ab6c2e65b340f3d95008db5b7759d8bbc6",
+          "mse": 0.00025729149577347066,
+          "patches": 16384
+        },
+        {
+          "name": "BVI/S07_hats__10fps",
+          "scene": "S07_hats",
+          "condition": "10",
+          "path": "clip_008.pt",
+          "sha256": "9a31054d1c93586271781d528309dc372cf81a7d297499aa5e0841b092ccfe13",
+          "mse": 0.0024428287004525373,
+          "patches": 16384
+        },
+        {
+          "name": "BVI/S07_hats__20fps",
+          "scene": "S07_hats",
+          "condition": "20",
+          "path": "clip_009.pt",
+          "sha256": "f2639ea00a034d9f0312174bbc7a94239473a9e3f8879606de5aee39af0003e9",
+          "mse": 0.00027534400167250617,
+          "patches": 16384
+        },
+        {
+          "name": "BVI/S10_messy_toy__10fps",
+          "scene": "S10_messy_toy",
+          "condition": "10",
+          "path": "clip_012.pt",
+          "sha256": "a941695a85c8267b76aee95d1aedd85eb5a4500a2d4213f28df07cddd18c5e3e",
+          "mse": 0.001073902160409368,
+          "patches": 16384
+        },
+        {
+          "name": "BVI/S10_messy_toy__20fps",
+          "scene": "S10_messy_toy",
+          "condition": "20",
+          "path": "clip_013.pt",
+          "sha256": "a6af9c04ed1e50d0223a1ac2b897d746f2dc5880f0df1f81a6096ea0d2e523f5",
+          "mse": 0.0002242537871484096,
+          "patches": 16384
+        },
+        {
+          "name": "BVI/S14_colour_balls__10fps",
+          "scene": "S14_colour_balls",
+          "condition": "10",
+          "path": "clip_018.pt",
+          "sha256": "959dbd274fce7ce3cf8b70833d060f3bcf704182496412a19348d45e1f2feddb",
+          "mse": 0.009428874245422492,
+          "patches": 16384
+        },
+        {
+          "name": "BVI/S14_colour_balls__20fps",
+          "scene": "S14_colour_balls",
+          "condition": "20",
+          "path": "clip_019.pt",
+          "sha256": "321a53d60c52f5dda864758321e06bea6962b06dabf3d9a900fb803755095f6f",
+          "mse": 0.0005467848081943671,
+          "patches": 16384
+        },
+        {
+          "name": "BVI/S18_books1__10fps",
+          "scene": "S18_books1",
+          "condition": "10",
+          "path": "clip_024.pt",
+          "sha256": "cd6a01334282421e5180e00758d3a690dd02682d63e0ad1c8277ab6c374749f9",
+          "mse": 0.0038330382127398366,
+          "patches": 16384
+        },
+        {
+          "name": "BVI/S18_books1__20fps",
+          "scene": "S18_books1",
+          "condition": "20",
+          "path": "clip_025.pt",
+          "sha256": "bd34f6f00969597b6266596d1a4e787c1b4cd9c9e9cffd9aa4c34a7babebf686",
+          "mse": 0.0003603558577627286,
+          "patches": 16384
+        },
+        {
+          "name": "BVI/S19_books2__10fps",
+          "scene": "S19_books2",
+          "condition": "10",
+          "path": "clip_026.pt",
+          "sha256": "bfee914652bb30940f58babc0682dac13cba9e3cb7f60e5b1e2d0896404f756c",
+          "mse": 0.0016061758681571447,
+          "patches": 16384
+        },
+        {
+          "name": "BVI/S19_books2__20fps",
+          "scene": "S19_books2",
+          "condition": "20",
+          "path": "clip_027.pt",
+          "sha256": "00a07a95067f08dc43e1f9336a062729ce2a1ac3dbc01ed903afaa0d99df11c3",
+          "mse": 0.0006162847478797806,
+          "patches": 16384
+        }
+      ]
+    },
+    "past": {
+      "rgb_mse": 0.0018771670969746634,
+      "scene_mean_mse": 0.0018771670969746634,
+      "rgb_squared_error_sum": 70860.68517158297,
+      "rgb_elements": 37748736,
+      "per_scene": {
+        "S04_colour_sticks": 0.000992702457685346,
+        "S07_hats": 0.0014388303017548454,
+        "S10_messy_toy": 0.0005830109748693468,
+        "S14_colour_balls": 0.0051540118216967246,
+        "S18_books1": 0.0019452961737485008,
+        "S19_books2": 0.001149150852093217
+      },
+      "per_sequence": [
+        {
+          "name": "BVI/S04_colour_sticks__10fps",
+          "scene": "S04_colour_sticks",
+          "condition": "10",
+          "path": "clip_004.pt",
+          "sha256": "d08c4e504b70806684410f4418b2cfd3bbf4cf3f52a39724b93594675511e50c",
+          "mse": 0.0017036218817287896,
+          "patches": 16384
+        },
+        {
+          "name": "BVI/S04_colour_sticks__20fps",
+          "scene": "S04_colour_sticks",
+          "condition": "20",
+          "path": "clip_005.pt",
+          "sha256": "943f2fc340a0fa473f6bab02acca39ab6c2e65b340f3d95008db5b7759d8bbc6",
+          "mse": 0.0002817830336419025,
+          "patches": 16384
+        },
+        {
+          "name": "BVI/S07_hats__10fps",
+          "scene": "S07_hats",
+          "condition": "10",
+          "path": "clip_008.pt",
+          "sha256": "9a31054d1c93586271781d528309dc372cf81a7d297499aa5e0841b092ccfe13",
+          "mse": 0.002482934993578212,
+          "patches": 16384
+        },
+        {
+          "name": "BVI/S07_hats__20fps",
+          "scene": "S07_hats",
+          "condition": "20",
+          "path": "clip_009.pt",
+          "sha256": "f2639ea00a034d9f0312174bbc7a94239473a9e3f8879606de5aee39af0003e9",
+          "mse": 0.00039472560993147887,
+          "patches": 16384
+        },
+        {
+          "name": "BVI/S10_messy_toy__10fps",
+          "scene": "S10_messy_toy",
+          "condition": "10",
+          "path": "clip_012.pt",
+          "sha256": "a941695a85c8267b76aee95d1aedd85eb5a4500a2d4213f28df07cddd18c5e3e",
+          "mse": 0.0009371208803115039,
+          "patches": 16384
+        },
+        {
+          "name": "BVI/S10_messy_toy__20fps",
+          "scene": "S10_messy_toy",
+          "condition": "20",
+          "path": "clip_013.pt",
+          "sha256": "a6af9c04ed1e50d0223a1ac2b897d746f2dc5880f0df1f81a6096ea0d2e523f5",
+          "mse": 0.0002289010694271898,
+          "patches": 16384
+        },
+        {
+          "name": "BVI/S14_colour_balls__10fps",
+          "scene": "S14_colour_balls",
+          "condition": "10",
+          "path": "clip_018.pt",
+          "sha256": "959dbd274fce7ce3cf8b70833d060f3bcf704182496412a19348d45e1f2feddb",
+          "mse": 0.009664165346555897,
+          "patches": 16384
+        },
+        {
+          "name": "BVI/S14_colour_balls__20fps",
+          "scene": "S14_colour_balls",
+          "condition": "20",
+          "path": "clip_019.pt",
+          "sha256": "321a53d60c52f5dda864758321e06bea6962b06dabf3d9a900fb803755095f6f",
+          "mse": 0.0006438582968375517,
+          "patches": 16384
+        },
+        {
+          "name": "BVI/S18_books1__10fps",
+          "scene": "S18_books1",
+          "condition": "10",
+          "path": "clip_024.pt",
+          "sha256": "cd6a01334282421e5180e00758d3a690dd02682d63e0ad1c8277ab6c374749f9",
+          "mse": 0.0035566535004782907,
+          "patches": 16384
+        },
+        {
+          "name": "BVI/S18_books1__20fps",
+          "scene": "S18_books1",
+          "condition": "20",
+          "path": "clip_025.pt",
+          "sha256": "bd34f6f00969597b6266596d1a4e787c1b4cd9c9e9cffd9aa4c34a7babebf686",
+          "mse": 0.000333938847018711,
+          "patches": 16384
+        },
+        {
+          "name": "BVI/S19_books2__10fps",
+          "scene": "S19_books2",
+          "condition": "10",
+          "path": "clip_026.pt",
+          "sha256": "bfee914652bb30940f58babc0682dac13cba9e3cb7f60e5b1e2d0896404f756c",
+          "mse": 0.0016658494941497182,
+          "patches": 16384
+        },
+        {
+          "name": "BVI/S19_books2__20fps",
+          "scene": "S19_books2",
+          "condition": "20",
+          "path": "clip_027.pt",
+          "sha256": "00a07a95067f08dc43e1f9336a062729ce2a1ac3dbc01ed903afaa0d99df11c3",
+          "mse": 0.0006324522100367158,
+          "patches": 16384
+        }
+      ]
+    },
+    "future": {
+      "rgb_mse": 0.0018759338759668787,
+      "scene_mean_mse": 0.0018759338759668787,
+      "rgb_squared_error_sum": 70814.13263733045,
+      "rgb_elements": 37748736,
+      "per_scene": {
+        "S04_colour_sticks": 0.0011369868582280507,
+        "S07_hats": 0.0014321743836439582,
+        "S10_messy_toy": 0.0005841161702955233,
+        "S14_colour_balls": 0.004925568088305798,
+        "S18_books1": 0.002129331109833821,
+        "S19_books2": 0.0010474266454941206
+      },
+      "per_sequence": [
+        {
+          "name": "BVI/S04_colour_sticks__10fps",
+          "scene": "S04_colour_sticks",
+          "condition": "10",
+          "path": "clip_004.pt",
+          "sha256": "d08c4e504b70806684410f4418b2cfd3bbf4cf3f52a39724b93594675511e50c",
+          "mse": 0.002005357927556073,
+          "patches": 16384
+        },
+        {
+          "name": "BVI/S04_colour_sticks__20fps",
+          "scene": "S04_colour_sticks",
+          "condition": "20",
+          "path": "clip_005.pt",
+          "sha256": "943f2fc340a0fa473f6bab02acca39ab6c2e65b340f3d95008db5b7759d8bbc6",
+          "mse": 0.00026861578890002846,
+          "patches": 16384
+        },
+        {
+          "name": "BVI/S07_hats__10fps",
+          "scene": "S07_hats",
+          "condition": "10",
+          "path": "clip_008.pt",
+          "sha256": "9a31054d1c93586271781d528309dc372cf81a7d297499aa5e0841b092ccfe13",
+          "mse": 0.00249647570294087,
+          "patches": 16384
+        },
+        {
+          "name": "BVI/S07_hats__20fps",
+          "scene": "S07_hats",
+          "condition": "20",
+          "path": "clip_009.pt",
+          "sha256": "f2639ea00a034d9f0312174bbc7a94239473a9e3f8879606de5aee39af0003e9",
+          "mse": 0.00036787306434704625,
+          "patches": 16384
+        },
+        {
+          "name": "BVI/S10_messy_toy__10fps",
+          "scene": "S10_messy_toy",
+          "condition": "10",
+          "path": "clip_012.pt",
+          "sha256": "a941695a85c8267b76aee95d1aedd85eb5a4500a2d4213f28df07cddd18c5e3e",
+          "mse": 0.0009617644799408964,
+          "patches": 16384
+        },
+        {
+          "name": "BVI/S10_messy_toy__20fps",
+          "scene": "S10_messy_toy",
+          "condition": "20",
+          "path": "clip_013.pt",
+          "sha256": "a6af9c04ed1e50d0223a1ac2b897d746f2dc5880f0df1f81a6096ea0d2e523f5",
+          "mse": 0.00020646786065015021,
+          "patches": 16384
+        },
+        {
+          "name": "BVI/S14_colour_balls__10fps",
+          "scene": "S14_colour_balls",
+          "condition": "10",
+          "path": "clip_018.pt",
+          "sha256": "959dbd274fce7ce3cf8b70833d060f3bcf704182496412a19348d45e1f2feddb",
+          "mse": 0.009158604736560605,
+          "patches": 16384
+        },
+        {
+          "name": "BVI/S14_colour_balls__20fps",
+          "scene": "S14_colour_balls",
+          "condition": "20",
+          "path": "clip_019.pt",
+          "sha256": "321a53d60c52f5dda864758321e06bea6962b06dabf3d9a900fb803755095f6f",
+          "mse": 0.0006925314400509919,
+          "patches": 16384
+        },
+        {
+          "name": "BVI/S18_books1__10fps",
+          "scene": "S18_books1",
+          "condition": "10",
+          "path": "clip_024.pt",
+          "sha256": "cd6a01334282421e5180e00758d3a690dd02682d63e0ad1c8277ab6c374749f9",
+          "mse": 0.003915271546418353,
+          "patches": 16384
+        },
+        {
+          "name": "BVI/S18_books1__20fps",
+          "scene": "S18_books1",
+          "condition": "20",
+          "path": "clip_025.pt",
+          "sha256": "bd34f6f00969597b6266596d1a4e787c1b4cd9c9e9cffd9aa4c34a7babebf686",
+          "mse": 0.0003433906732492886,
+          "patches": 16384
+        },
+        {
+          "name": "BVI/S19_books2__10fps",
+          "scene": "S19_books2",
+          "condition": "10",
+          "path": "clip_026.pt",
+          "sha256": "bfee914652bb30940f58babc0682dac13cba9e3cb7f60e5b1e2d0896404f756c",
+          "mse": 0.0015066059686106303,
+          "patches": 16384
+        },
+        {
+          "name": "BVI/S19_books2__20fps",
+          "scene": "S19_books2",
+          "condition": "20",
+          "path": "clip_027.pt",
+          "sha256": "00a07a95067f08dc43e1f9336a062729ce2a1ac3dbc01ed903afaa0d99df11c3",
+          "mse": 0.0005882473223776108,
+          "patches": 16384
+        }
+      ]
+    },
+    "fixed_average": {
+      "rgb_mse": 0.0017209607714764412,
+      "scene_mean_mse": 0.0017209607714764412,
+      "rgb_squared_error_sum": 64964.09382882051,
+      "rgb_elements": 37748736,
+      "per_scene": {
+        "S04_colour_sticks": 0.000767950112878113,
+        "S07_hats": 0.0013428889579688574,
+        "S10_messy_toy": 0.000493072177276177,
+        "S14_colour_balls": 0.004789038726770056,
+        "S18_books1": 0.0019295713848500595,
+        "S19_books2": 0.0010032432691153836
+      },
+      "per_sequence": [
+        {
+          "name": "BVI/S04_colour_sticks__10fps",
+          "scene": "S04_colour_sticks",
+          "condition": "10",
+          "path": "clip_004.pt",
+          "sha256": "d08c4e504b70806684410f4418b2cfd3bbf4cf3f52a39724b93594675511e50c",
+          "mse": 0.0013123687804177386,
+          "patches": 16384
+        },
+        {
+          "name": "BVI/S04_colour_sticks__20fps",
+          "scene": "S04_colour_sticks",
+          "condition": "20",
+          "path": "clip_005.pt",
+          "sha256": "943f2fc340a0fa473f6bab02acca39ab6c2e65b340f3d95008db5b7759d8bbc6",
+          "mse": 0.00022353144533848734,
+          "patches": 16384
+        },
+        {
+          "name": "BVI/S07_hats__10fps",
+          "scene": "S07_hats",
+          "condition": "10",
+          "path": "clip_008.pt",
+          "sha256": "9a31054d1c93586271781d528309dc372cf81a7d297499aa5e0841b092ccfe13",
+          "mse": 0.002360425005818456,
+          "patches": 16384
+        },
+        {
+          "name": "BVI/S07_hats__20fps",
+          "scene": "S07_hats",
+          "condition": "20",
+          "path": "clip_009.pt",
+          "sha256": "f2639ea00a034d9f0312174bbc7a94239473a9e3f8879606de5aee39af0003e9",
+          "mse": 0.0003253529101192587,
+          "patches": 16384
+        },
+        {
+          "name": "BVI/S10_messy_toy__10fps",
+          "scene": "S10_messy_toy",
+          "condition": "10",
+          "path": "clip_012.pt",
+          "sha256": "a941695a85c8267b76aee95d1aedd85eb5a4500a2d4213f28df07cddd18c5e3e",
+          "mse": 0.0008057643612300325,
+          "patches": 16384
+        },
+        {
+          "name": "BVI/S10_messy_toy__20fps",
+          "scene": "S10_messy_toy",
+          "condition": "20",
+          "path": "clip_013.pt",
+          "sha256": "a6af9c04ed1e50d0223a1ac2b897d746f2dc5880f0df1f81a6096ea0d2e523f5",
+          "mse": 0.00018037999332232157,
+          "patches": 16384
+        },
+        {
+          "name": "BVI/S14_colour_balls__10fps",
+          "scene": "S14_colour_balls",
+          "condition": "10",
+          "path": "clip_018.pt",
+          "sha256": "959dbd274fce7ce3cf8b70833d060f3bcf704182496412a19348d45e1f2feddb",
+          "mse": 0.009056582225317023,
+          "patches": 16384
+        },
+        {
+          "name": "BVI/S14_colour_balls__20fps",
+          "scene": "S14_colour_balls",
+          "condition": "20",
+          "path": "clip_019.pt",
+          "sha256": "321a53d60c52f5dda864758321e06bea6962b06dabf3d9a900fb803755095f6f",
+          "mse": 0.00052149522822309,
+          "patches": 16384
+        },
+        {
+          "name": "BVI/S18_books1__10fps",
+          "scene": "S18_books1",
+          "condition": "10",
+          "path": "clip_024.pt",
+          "sha256": "cd6a01334282421e5180e00758d3a690dd02682d63e0ad1c8277ab6c374749f9",
+          "mse": 0.003562213125160696,
+          "patches": 16384
+        },
+        {
+          "name": "BVI/S18_books1__20fps",
+          "scene": "S18_books1",
+          "condition": "20",
+          "path": "clip_025.pt",
+          "sha256": "bd34f6f00969597b6266596d1a4e787c1b4cd9c9e9cffd9aa4c34a7babebf686",
+          "mse": 0.00029692964453942317,
+          "patches": 16384
+        },
+        {
+          "name": "BVI/S19_books2__10fps",
+          "scene": "S19_books2",
+          "condition": "10",
+          "path": "clip_026.pt",
+          "sha256": "bfee914652bb30940f58babc0682dac13cba9e3cb7f60e5b1e2d0896404f756c",
+          "mse": 0.001450873798375385,
+          "patches": 16384
+        },
+        {
+          "name": "BVI/S19_books2__20fps",
+          "scene": "S19_books2",
+          "condition": "20",
+          "path": "clip_027.pt",
+          "sha256": "00a07a95067f08dc43e1f9336a062729ce2a1ac3dbc01ed903afaa0d99df11c3",
+          "mse": 0.0005556127398553823,
+          "patches": 16384
+        }
+      ]
+    },
+    "initial_thirds": {
+      "rgb_mse": 0.0016954593895562216,
+      "scene_mean_mse": 0.0016954593895562216,
+      "rgb_squared_error_sum": 64001.44889507897,
+      "rgb_elements": 37748736,
+      "per_scene": {
+        "S04_colour_sticks": 0.0006769295043513868,
+        "S07_hats": 0.0013176325201519345,
+        "S10_messy_toy": 0.0005178494541154821,
+        "S14_colour_balls": 0.004700096628086681,
+        "S18_books1": 0.0019539841366453814,
+        "S19_books2": 0.0010062640939864642
+      },
+      "per_sequence": [
+        {
+          "name": "BVI/S04_colour_sticks__10fps",
+          "scene": "S04_colour_sticks",
+          "condition": "10",
+          "path": "clip_004.pt",
+          "sha256": "d08c4e504b70806684410f4418b2cfd3bbf4cf3f52a39724b93594675511e50c",
+          "mse": 0.0011426195413850593,
+          "patches": 16384
+        },
+        {
+          "name": "BVI/S04_colour_sticks__20fps",
+          "scene": "S04_colour_sticks",
+          "condition": "20",
+          "path": "clip_005.pt",
+          "sha256": "943f2fc340a0fa473f6bab02acca39ab6c2e65b340f3d95008db5b7759d8bbc6",
+          "mse": 0.00021123946731771426,
+          "patches": 16384
+        },
+        {
+          "name": "BVI/S07_hats__10fps",
+          "scene": "S07_hats",
+          "condition": "10",
+          "path": "clip_008.pt",
+          "sha256": "9a31054d1c93586271781d528309dc372cf81a7d297499aa5e0841b092ccfe13",
+          "mse": 0.0023466174088184744,
+          "patches": 16384
+        },
+        {
+          "name": "BVI/S07_hats__20fps",
+          "scene": "S07_hats",
+          "condition": "20",
+          "path": "clip_009.pt",
+          "sha256": "f2639ea00a034d9f0312174bbc7a94239473a9e3f8879606de5aee39af0003e9",
+          "mse": 0.00028864763148539474,
+          "patches": 16384
+        },
+        {
+          "name": "BVI/S10_messy_toy__10fps",
+          "scene": "S10_messy_toy",
+          "condition": "10",
+          "path": "clip_012.pt",
+          "sha256": "a941695a85c8267b76aee95d1aedd85eb5a4500a2d4213f28df07cddd18c5e3e",
+          "mse": 0.000853965523941902,
+          "patches": 16384
+        },
+        {
+          "name": "BVI/S10_messy_toy__20fps",
+          "scene": "S10_messy_toy",
+          "condition": "20",
+          "path": "clip_013.pt",
+          "sha256": "a6af9c04ed1e50d0223a1ac2b897d746f2dc5880f0df1f81a6096ea0d2e523f5",
+          "mse": 0.00018173338428906227,
+          "patches": 16384
+        },
+        {
+          "name": "BVI/S14_colour_balls__10fps",
+          "scene": "S14_colour_balls",
+          "condition": "10",
+          "path": "clip_018.pt",
+          "sha256": "959dbd274fce7ce3cf8b70833d060f3bcf704182496412a19348d45e1f2feddb",
+          "mse": 0.0089062753629916,
+          "patches": 16384
+        },
+        {
+          "name": "BVI/S14_colour_balls__20fps",
+          "scene": "S14_colour_balls",
+          "condition": "20",
+          "path": "clip_019.pt",
+          "sha256": "321a53d60c52f5dda864758321e06bea6962b06dabf3d9a900fb803755095f6f",
+          "mse": 0.0004939178931817612,
+          "patches": 16384
+        },
+        {
+          "name": "BVI/S18_books1__10fps",
+          "scene": "S18_books1",
+          "condition": "10",
+          "path": "clip_024.pt",
+          "sha256": "cd6a01334282421e5180e00758d3a690dd02682d63e0ad1c8277ab6c374749f9",
+          "mse": 0.003606237761331954,
+          "patches": 16384
+        },
+        {
+          "name": "BVI/S18_books1__20fps",
+          "scene": "S18_books1",
+          "condition": "20",
+          "path": "clip_025.pt",
+          "sha256": "bd34f6f00969597b6266596d1a4e787c1b4cd9c9e9cffd9aa4c34a7babebf686",
+          "mse": 0.00030173051195880873,
+          "patches": 16384
+        },
+        {
+          "name": "BVI/S19_books2__10fps",
+          "scene": "S19_books2",
+          "condition": "10",
+          "path": "clip_026.pt",
+          "sha256": "bfee914652bb30940f58babc0682dac13cba9e3cb7f60e5b1e2d0896404f756c",
+          "mse": 0.00145573795378251,
+          "patches": 16384
+        },
+        {
+          "name": "BVI/S19_books2__20fps",
+          "scene": "S19_books2",
+          "condition": "20",
+          "path": "clip_027.pt",
+          "sha256": "00a07a95067f08dc43e1f9336a062729ce2a1ac3dbc01ed903afaa0d99df11c3",
+          "mse": 0.0005567902341904185,
+          "patches": 16384
+        }
+      ]
+    },
+    "risk_full": {
+      "rgb_mse": 0.0014143871957923344,
+      "scene_mean_mse": 0.0014143871957923344,
+      "rgb_squared_error_sum": 53391.328855745145,
+      "rgb_elements": 37748736,
+      "per_scene": {
+        "S04_colour_sticks": 0.0005575941478490609,
+        "S07_hats": 0.0011739345595861428,
+        "S10_messy_toy": 0.00042952111201993715,
+        "S14_colour_balls": 0.0036601076131002053,
+        "S18_books1": 0.0016980921684762729,
+        "S19_books2": 0.0009670735737223879
+      },
+      "per_sequence": [
+        {
+          "name": "BVI/S04_colour_sticks__10fps",
+          "scene": "S04_colour_sticks",
+          "condition": "10",
+          "path": "clip_004.pt",
+          "sha256": "d08c4e504b70806684410f4418b2cfd3bbf4cf3f52a39724b93594675511e50c",
+          "mse": 0.0009091937296015207,
+          "patches": 16384
+        },
+        {
+          "name": "BVI/S04_colour_sticks__20fps",
+          "scene": "S04_colour_sticks",
+          "condition": "20",
+          "path": "clip_005.pt",
+          "sha256": "943f2fc340a0fa473f6bab02acca39ab6c2e65b340f3d95008db5b7759d8bbc6",
+          "mse": 0.00020599456609660116,
+          "patches": 16384
+        },
+        {
+          "name": "BVI/S07_hats__10fps",
+          "scene": "S07_hats",
+          "condition": "10",
+          "path": "clip_008.pt",
+          "sha256": "9a31054d1c93586271781d528309dc372cf81a7d297499aa5e0841b092ccfe13",
+          "mse": 0.0020798606105021378,
+          "patches": 16384
+        },
+        {
+          "name": "BVI/S07_hats__20fps",
+          "scene": "S07_hats",
+          "condition": "20",
+          "path": "clip_009.pt",
+          "sha256": "f2639ea00a034d9f0312174bbc7a94239473a9e3f8879606de5aee39af0003e9",
+          "mse": 0.0002680085086701478,
+          "patches": 16384
+        },
+        {
+          "name": "BVI/S10_messy_toy__10fps",
+          "scene": "S10_messy_toy",
+          "condition": "10",
+          "path": "clip_012.pt",
+          "sha256": "a941695a85c8267b76aee95d1aedd85eb5a4500a2d4213f28df07cddd18c5e3e",
+          "mse": 0.0006811141567544254,
+          "patches": 16384
+        },
+        {
+          "name": "BVI/S10_messy_toy__20fps",
+          "scene": "S10_messy_toy",
+          "condition": "20",
+          "path": "clip_013.pt",
+          "sha256": "a6af9c04ed1e50d0223a1ac2b897d746f2dc5880f0df1f81a6096ea0d2e523f5",
+          "mse": 0.00017792806728544885,
+          "patches": 16384
+        },
+        {
+          "name": "BVI/S14_colour_balls__10fps",
+          "scene": "S14_colour_balls",
+          "condition": "10",
+          "path": "clip_018.pt",
+          "sha256": "959dbd274fce7ce3cf8b70833d060f3bcf704182496412a19348d45e1f2feddb",
+          "mse": 0.00677370752386075,
+          "patches": 16384
+        },
+        {
+          "name": "BVI/S14_colour_balls__20fps",
+          "scene": "S14_colour_balls",
+          "condition": "20",
+          "path": "clip_019.pt",
+          "sha256": "321a53d60c52f5dda864758321e06bea6962b06dabf3d9a900fb803755095f6f",
+          "mse": 0.0005465077023396603,
+          "patches": 16384
+        },
+        {
+          "name": "BVI/S18_books1__10fps",
+          "scene": "S18_books1",
+          "condition": "10",
+          "path": "clip_024.pt",
+          "sha256": "cd6a01334282421e5180e00758d3a690dd02682d63e0ad1c8277ab6c374749f9",
+          "mse": 0.0030940915797188495,
+          "patches": 16384
+        },
+        {
+          "name": "BVI/S18_books1__20fps",
+          "scene": "S18_books1",
+          "condition": "20",
+          "path": "clip_025.pt",
+          "sha256": "bd34f6f00969597b6266596d1a4e787c1b4cd9c9e9cffd9aa4c34a7babebf686",
+          "mse": 0.0003020927572336962,
+          "patches": 16384
+        },
+        {
+          "name": "BVI/S19_books2__10fps",
+          "scene": "S19_books2",
+          "condition": "10",
+          "path": "clip_026.pt",
+          "sha256": "bfee914652bb30940f58babc0682dac13cba9e3cb7f60e5b1e2d0896404f756c",
+          "mse": 0.001370593483756899,
+          "patches": 16384
+        },
+        {
+          "name": "BVI/S19_books2__20fps",
+          "scene": "S19_books2",
+          "condition": "20",
+          "path": "clip_027.pt",
+          "sha256": "00a07a95067f08dc43e1f9336a062729ce2a1ac3dbc01ed903afaa0d99df11c3",
+          "mse": 0.0005635536636878768,
+          "patches": 16384
+        }
+      ]
+    },
+    "direct_mse": {
+      "rgb_mse": 0.0014110233710215858,
+      "scene_mean_mse": 0.0014110233710215858,
+      "rgb_squared_error_sum": 53264.34872252389,
+      "rgb_elements": 37748736,
+      "per_scene": {
+        "S04_colour_sticks": 0.0006038613944592264,
+        "S07_hats": 0.0011714739295141108,
+        "S10_messy_toy": 0.0004224559866449762,
+        "S14_colour_balls": 0.0036005841477131373,
+        "S18_books1": 0.0017093787442407082,
+        "S19_books2": 0.000958386023557356
+      },
+      "per_sequence": [
+        {
+          "name": "BVI/S04_colour_sticks__10fps",
+          "scene": "S04_colour_sticks",
+          "condition": "10",
+          "path": "clip_004.pt",
+          "sha256": "d08c4e504b70806684410f4418b2cfd3bbf4cf3f52a39724b93594675511e50c",
+          "mse": 0.0010060232611366349,
+          "patches": 16384
+        },
+        {
+          "name": "BVI/S04_colour_sticks__20fps",
+          "scene": "S04_colour_sticks",
+          "condition": "20",
+          "path": "clip_005.pt",
+          "sha256": "943f2fc340a0fa473f6bab02acca39ab6c2e65b340f3d95008db5b7759d8bbc6",
+          "mse": 0.00020169952778181788,
+          "patches": 16384
+        },
+        {
+          "name": "BVI/S07_hats__10fps",
+          "scene": "S07_hats",
+          "condition": "10",
+          "path": "clip_008.pt",
+          "sha256": "9a31054d1c93586271781d528309dc372cf81a7d297499aa5e0841b092ccfe13",
+          "mse": 0.0020822621381491047,
+          "patches": 16384
+        },
+        {
+          "name": "BVI/S07_hats__20fps",
+          "scene": "S07_hats",
+          "condition": "20",
+          "path": "clip_009.pt",
+          "sha256": "f2639ea00a034d9f0312174bbc7a94239473a9e3f8879606de5aee39af0003e9",
+          "mse": 0.0002606857208791169,
+          "patches": 16384
+        },
+        {
+          "name": "BVI/S10_messy_toy__10fps",
+          "scene": "S10_messy_toy",
+          "condition": "10",
+          "path": "clip_012.pt",
+          "sha256": "a941695a85c8267b76aee95d1aedd85eb5a4500a2d4213f28df07cddd18c5e3e",
+          "mse": 0.0006726577896420949,
+          "patches": 16384
+        },
+        {
+          "name": "BVI/S10_messy_toy__20fps",
+          "scene": "S10_messy_toy",
+          "condition": "20",
+          "path": "clip_013.pt",
+          "sha256": "a6af9c04ed1e50d0223a1ac2b897d746f2dc5880f0df1f81a6096ea0d2e523f5",
+          "mse": 0.0001722541836478575,
+          "patches": 16384
+        },
+        {
+          "name": "BVI/S14_colour_balls__10fps",
+          "scene": "S14_colour_balls",
+          "condition": "10",
+          "path": "clip_018.pt",
+          "sha256": "959dbd274fce7ce3cf8b70833d060f3bcf704182496412a19348d45e1f2feddb",
+          "mse": 0.006653583726786039,
+          "patches": 16384
+        },
+        {
+          "name": "BVI/S14_colour_balls__20fps",
+          "scene": "S14_colour_balls",
+          "condition": "20",
+          "path": "clip_019.pt",
+          "sha256": "321a53d60c52f5dda864758321e06bea6962b06dabf3d9a900fb803755095f6f",
+          "mse": 0.0005475845686402359,
+          "patches": 16384
+        },
+        {
+          "name": "BVI/S18_books1__10fps",
+          "scene": "S18_books1",
+          "condition": "10",
+          "path": "clip_024.pt",
+          "sha256": "cd6a01334282421e5180e00758d3a690dd02682d63e0ad1c8277ab6c374749f9",
+          "mse": 0.0031231520841963345,
+          "patches": 16384
+        },
+        {
+          "name": "BVI/S18_books1__20fps",
+          "scene": "S18_books1",
+          "condition": "20",
+          "path": "clip_025.pt",
+          "sha256": "bd34f6f00969597b6266596d1a4e787c1b4cd9c9e9cffd9aa4c34a7babebf686",
+          "mse": 0.000295605404285082,
+          "patches": 16384
+        },
+        {
+          "name": "BVI/S19_books2__10fps",
+          "scene": "S19_books2",
+          "condition": "10",
+          "path": "clip_026.pt",
+          "sha256": "bfee914652bb30940f58babc0682dac13cba9e3cb7f60e5b1e2d0896404f756c",
+          "mse": 0.001351169586265022,
+          "patches": 16384
+        },
+        {
+          "name": "BVI/S19_books2__20fps",
+          "scene": "S19_books2",
+          "condition": "20",
+          "path": "clip_027.pt",
+          "sha256": "00a07a95067f08dc43e1f9336a062729ce2a1ac3dbc01ed903afaa0d99df11c3",
+          "mse": 0.0005656024608496901,
+          "patches": 16384
+        }
+      ]
+    },
+    "direct_mse_normalized": {
+      "rgb_mse": 0.001412188987368464,
+      "scene_mean_mse": 0.001412188987368464,
+      "rgb_squared_error_sum": 53308.34926627949,
+      "rgb_elements": 37748736,
+      "per_scene": {
+        "S04_colour_sticks": 0.0006416664167747665,
+        "S07_hats": 0.0011714290716465237,
+        "S10_messy_toy": 0.0004211440721350046,
+        "S14_colour_balls": 0.0035721640878028094,
+        "S18_books1": 0.0017080669358560119,
+        "S19_books2": 0.000958663339995669
+      },
+      "per_sequence": [
+        {
+          "name": "BVI/S04_colour_sticks__10fps",
+          "scene": "S04_colour_sticks",
+          "condition": "10",
+          "path": "clip_004.pt",
+          "sha256": "d08c4e504b70806684410f4418b2cfd3bbf4cf3f52a39724b93594675511e50c",
+          "mse": 0.0010799189659027597,
+          "patches": 16384
+        },
+        {
+          "name": "BVI/S04_colour_sticks__20fps",
+          "scene": "S04_colour_sticks",
+          "condition": "20",
+          "path": "clip_005.pt",
+          "sha256": "943f2fc340a0fa473f6bab02acca39ab6c2e65b340f3d95008db5b7759d8bbc6",
+          "mse": 0.00020341386764677338,
+          "patches": 16384
+        },
+        {
+          "name": "BVI/S07_hats__10fps",
+          "scene": "S07_hats",
+          "condition": "10",
+          "path": "clip_008.pt",
+          "sha256": "9a31054d1c93586271781d528309dc372cf81a7d297499aa5e0841b092ccfe13",
+          "mse": 0.00208178271144277,
+          "patches": 16384
+        },
+        {
+          "name": "BVI/S07_hats__20fps",
+          "scene": "S07_hats",
+          "condition": "20",
+          "path": "clip_009.pt",
+          "sha256": "f2639ea00a034d9f0312174bbc7a94239473a9e3f8879606de5aee39af0003e9",
+          "mse": 0.00026107543185027726,
+          "patches": 16384
+        },
+        {
+          "name": "BVI/S10_messy_toy__10fps",
+          "scene": "S10_messy_toy",
+          "condition": "10",
+          "path": "clip_012.pt",
+          "sha256": "a941695a85c8267b76aee95d1aedd85eb5a4500a2d4213f28df07cddd18c5e3e",
+          "mse": 0.0006726727339216865,
+          "patches": 16384
+        },
+        {
+          "name": "BVI/S10_messy_toy__20fps",
+          "scene": "S10_messy_toy",
+          "condition": "20",
+          "path": "clip_013.pt",
+          "sha256": "a6af9c04ed1e50d0223a1ac2b897d746f2dc5880f0df1f81a6096ea0d2e523f5",
+          "mse": 0.00016961541034832273,
+          "patches": 16384
+        },
+        {
+          "name": "BVI/S14_colour_balls__10fps",
+          "scene": "S14_colour_balls",
+          "condition": "10",
+          "path": "clip_018.pt",
+          "sha256": "959dbd274fce7ce3cf8b70833d060f3bcf704182496412a19348d45e1f2feddb",
+          "mse": 0.006596721301624697,
+          "patches": 16384
+        },
+        {
+          "name": "BVI/S14_colour_balls__20fps",
+          "scene": "S14_colour_balls",
+          "condition": "20",
+          "path": "clip_019.pt",
+          "sha256": "321a53d60c52f5dda864758321e06bea6962b06dabf3d9a900fb803755095f6f",
+          "mse": 0.0005476068739809214,
+          "patches": 16384
+        },
+        {
+          "name": "BVI/S18_books1__10fps",
+          "scene": "S18_books1",
+          "condition": "10",
+          "path": "clip_024.pt",
+          "sha256": "cd6a01334282421e5180e00758d3a690dd02682d63e0ad1c8277ab6c374749f9",
+          "mse": 0.003120451019224646,
+          "patches": 16384
+        },
+        {
+          "name": "BVI/S18_books1__20fps",
+          "scene": "S18_books1",
+          "condition": "20",
+          "path": "clip_025.pt",
+          "sha256": "bd34f6f00969597b6266596d1a4e787c1b4cd9c9e9cffd9aa4c34a7babebf686",
+          "mse": 0.0002956828524873778,
+          "patches": 16384
+        },
+        {
+          "name": "BVI/S19_books2__10fps",
+          "scene": "S19_books2",
+          "condition": "10",
+          "path": "clip_026.pt",
+          "sha256": "bfee914652bb30940f58babc0682dac13cba9e3cb7f60e5b1e2d0896404f756c",
+          "mse": 0.0013512261606042353,
+          "patches": 16384
+        },
+        {
+          "name": "BVI/S19_books2__20fps",
+          "scene": "S19_books2",
+          "condition": "20",
+          "path": "clip_027.pt",
+          "sha256": "00a07a95067f08dc43e1f9336a062729ce2a1ac3dbc01ed903afaa0d99df11c3",
+          "mse": 0.0005661005193871027,
+          "patches": 16384
+        }
+      ]
+    },
+    "gt_oracle": {
+      "rgb_mse": 0.0013042251880264477,
+      "scene_mean_mse": 0.0013042251880264477,
+      "rgb_squared_error_sum": 49232.852307360736,
+      "rgb_elements": 37748736,
+      "per_scene": {
+        "S04_colour_sticks": 0.00046238024708078473,
+        "S07_hats": 0.001132565163942001,
+        "S10_messy_toy": 0.00038243195406201247,
+        "S14_colour_balls": 0.0033526588427075232,
+        "S18_books1": 0.0016500725971296815,
+        "S19_books2": 0.0008452423232366835
+      },
+      "per_sequence": [
+        {
+          "name": "BVI/S04_colour_sticks__10fps",
+          "scene": "S04_colour_sticks",
+          "condition": "10",
+          "path": "clip_004.pt",
+          "sha256": "d08c4e504b70806684410f4418b2cfd3bbf4cf3f52a39724b93594675511e50c",
+          "mse": 0.0007483264101568743,
+          "patches": 16384
+        },
+        {
+          "name": "BVI/S04_colour_sticks__20fps",
+          "scene": "S04_colour_sticks",
+          "condition": "20",
+          "path": "clip_005.pt",
+          "sha256": "943f2fc340a0fa473f6bab02acca39ab6c2e65b340f3d95008db5b7759d8bbc6",
+          "mse": 0.00017643408400469518,
+          "patches": 16384
+        },
+        {
+          "name": "BVI/S07_hats__10fps",
+          "scene": "S07_hats",
+          "condition": "10",
+          "path": "clip_008.pt",
+          "sha256": "9a31054d1c93586271781d528309dc372cf81a7d297499aa5e0841b092ccfe13",
+          "mse": 0.002027654228923481,
+          "patches": 16384
+        },
+        {
+          "name": "BVI/S07_hats__20fps",
+          "scene": "S07_hats",
+          "condition": "20",
+          "path": "clip_009.pt",
+          "sha256": "f2639ea00a034d9f0312174bbc7a94239473a9e3f8879606de5aee39af0003e9",
+          "mse": 0.0002374760989605207,
+          "patches": 16384
+        },
+        {
+          "name": "BVI/S10_messy_toy__10fps",
+          "scene": "S10_messy_toy",
+          "condition": "10",
+          "path": "clip_012.pt",
+          "sha256": "a941695a85c8267b76aee95d1aedd85eb5a4500a2d4213f28df07cddd18c5e3e",
+          "mse": 0.0006276617181155686,
+          "patches": 16384
+        },
+        {
+          "name": "BVI/S10_messy_toy__20fps",
+          "scene": "S10_messy_toy",
+          "condition": "20",
+          "path": "clip_013.pt",
+          "sha256": "a6af9c04ed1e50d0223a1ac2b897d746f2dc5880f0df1f81a6096ea0d2e523f5",
+          "mse": 0.00013720219000845635,
+          "patches": 16384
+        },
+        {
+          "name": "BVI/S14_colour_balls__10fps",
+          "scene": "S14_colour_balls",
+          "condition": "10",
+          "path": "clip_018.pt",
+          "sha256": "959dbd274fce7ce3cf8b70833d060f3bcf704182496412a19348d45e1f2feddb",
+          "mse": 0.006339512961613281,
+          "patches": 16384
+        },
+        {
+          "name": "BVI/S14_colour_balls__20fps",
+          "scene": "S14_colour_balls",
+          "condition": "20",
+          "path": "clip_019.pt",
+          "sha256": "321a53d60c52f5dda864758321e06bea6962b06dabf3d9a900fb803755095f6f",
+          "mse": 0.0003658047238017659,
+          "patches": 16384
+        },
+        {
+          "name": "BVI/S18_books1__10fps",
+          "scene": "S18_books1",
+          "condition": "10",
+          "path": "clip_024.pt",
+          "sha256": "cd6a01334282421e5180e00758d3a690dd02682d63e0ad1c8277ab6c374749f9",
+          "mse": 0.0030408312591276854,
+          "patches": 16384
+        },
+        {
+          "name": "BVI/S18_books1__20fps",
+          "scene": "S18_books1",
+          "condition": "20",
+          "path": "clip_025.pt",
+          "sha256": "bd34f6f00969597b6266596d1a4e787c1b4cd9c9e9cffd9aa4c34a7babebf686",
+          "mse": 0.00025931393513167755,
+          "patches": 16384
+        },
+        {
+          "name": "BVI/S19_books2__10fps",
+          "scene": "S19_books2",
+          "condition": "10",
+          "path": "clip_026.pt",
+          "sha256": "bfee914652bb30940f58babc0682dac13cba9e3cb7f60e5b1e2d0896404f756c",
+          "mse": 0.0012354196416088925,
+          "patches": 16384
+        },
+        {
+          "name": "BVI/S19_books2__20fps",
+          "scene": "S19_books2",
+          "condition": "20",
+          "path": "clip_027.pt",
+          "sha256": "00a07a95067f08dc43e1f9336a062729ce2a1ac3dbc01ed903afaa0d99df11c3",
+          "mse": 0.00045506500486447443,
+          "patches": 16384
+        }
+      ]
+    }
+  },
+  "oracle_scope": "GT-a simplex optimum inside these two fixed source-bound corrections only",
+  "training_seconds": {
+    "risk_full": 29.986876144073904,
+    "direct_mse": 25.95873458404094,
+    "direct_mse_normalized": 26.701177389360964
+  },
+  "checkpoint_selection": "Last step only; holdout never used by optimizer/normalization/selection"
+}

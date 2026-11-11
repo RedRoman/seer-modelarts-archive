@@ -1,0 +1,28 @@
+{
+  "host": "huawei-modelarts-31051",
+  "hostname": "ma-job-31f7571d-75c6-4944-90cd-ee8d91cb0532-worker-0",
+  "started_utc": "2026-11-11T13:55:43.651526+00:00",
+  "source_archive_sha256": "35e7a704e2deb5aa111fa7d88586965ff61a961b926566958858ef3a376cc7ec",
+  "source_manifest_sha256": "647c06213f538c6f678e01a05bf12180b7a8e70aa133a29f0cd2fe159e31942e",
+  "cpu_tests_sha256": "dcca3380c5abe9900a318a6ba6c58969a5647ec83dafb41a9db5603fd00758f3",
+  "wrapper_sha256": "4a665a30a93a6adeaafa5dfa8580393e275718ccc33e4519f7fac2672cf4155f",
+  "python": "/cache/zihaohe/seer_cvpr/venv_npu/bin/python",
+  "device": "cpu",
+  "cpu_threads": 4,
+  "environment": {
+    "OMP_NUM_THREADS": "4",
+    "MKL_NUM_THREADS": "4",
+    "OPENBLAS_NUM_THREADS": "4",
+    "PYTHONPATH": "/cache/zihaohe/seer_method_dev_20261111/selector_v1/code_full:/cache/zihaohe/seer_method_dev_20261111/selector_v1/code_full/tools:/temp/zihaohe/seer_cvpr/method_dev_20261111/baseline_code_full:/temp/zihaohe/seer_cvpr/code/baselines:/temp/zihaohe/seer_cvpr/code/baselines/common:/usr/local/Ascend/cann-8.5.2/python/site-packages:/usr/local/Ascend/cann-8.5.2/opp/built-in/op_impl/ai_core/tbe:/usr/local/Ascend/ascend-toolkit/latest/tools/ms_fmk_transplt/torch_npu_bridge:/usr/local/Ascend/ascend-toolkit/latest/python/site-packages:/usr/local/seccomponent/lib:/home/ma-user/infer/model/1"
+  },
+  "cache": "/cache/zihaohe/seer_method_dev_20261111/correction_v1/cache_bvi_train48",
+  "out": "/cache/zihaohe/seer_method_dev_20261111/selector_v1/runs/s2",
+  "args": {
+    "steps": 1000,
+    "lr": 0.001,
+    "seed": 2,
+    "batch_frames": 8,
+    "device": "cpu"
+  },
+  "policy": "Fixed final step; three matched arms; only one internal holdout evaluation; no formal VAL/test evaluation."
+}

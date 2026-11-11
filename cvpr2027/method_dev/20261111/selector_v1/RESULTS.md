@@ -19,5 +19,5 @@
 | gt_oracle | 0.001304225188 | +28.49118% |
 
 风险监督在本轮未胜过两种直接MSE门控。风险目标与CsNet的凸融合目标代数等价，后续作为控制保留，不能以其作为新方法的创新主张。
-正式BVI VAL16将独立评价全部三个最终模型，GT仅用于最后评分；原始TEST图像未读取。
+三个最终模型已用独立BVI VAL16评价，并补做selector seeds 1/2：正式验证结果和场景配对分析见 `../selector_val_v1/RESULTS.md`。GT仅用于最后评分；原始TEST图像未读取。上述表格保留为selector seed0的训练场景内部留出结果，不与正式VAL合并。
 完整曲线/采样计划/normalization/模型来源在runs/s0，小checkpoint已下载至实验workspace并经sidecar逐一核对；此目录不上传.pt。

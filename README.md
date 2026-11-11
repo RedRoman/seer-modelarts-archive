@@ -6,13 +6,16 @@ were reclaimed. The September snapshot was copied relative to the servers except
 
 ## CVPR 2027 round (`cvpr2027/`)
 
-Start with [`cvpr2027/STATUS.md`](cvpr2027/STATUS.md). The 2026-11-11 takeover
-audited checkpoint reconstruction, corrected random-encoder, fixed-rank and
-attention controls, completed an exploratory mean/basis validation diagnostic,
-and backed up the reachable final weights. The aligned review draft is
-[`main_takeover_20261111.pdf`](cvpr2027/paper/main_takeover_20261111.pdf).
-Historical JSONs remain unchanged; corrected outputs are separate. The current
-code is `cvpr2027/code_full/`; `cvpr2027/code/` is the earlier partial snapshot.
+Start with [`cvpr2027/STATUS.md`](cvpr2027/STATUS.md). Current work prioritizes
+method development with positive, reproducible experiments and strong video
+baselines. Manuscript work is paused. The executable development plan and raw
+results are in [`method_dev/20261111/`](cvpr2027/method_dev/20261111/PLAN.md);
+independent BVI validation is in
+[`selector_val_v1/`](cvpr2027/method_dev/20261111/selector_val_v1/RESULTS.md).
+The preceding takeover audited checkpoint reconstruction, corrected historical
+controls and backed up the reachable final weights. Historical JSONs remain
+unchanged; corrected outputs are separate. The current code is
+`cvpr2027/code_full/`; `cvpr2027/code/` is the earlier partial snapshot.
 `cvpr2027/notes/CVPR_PREREG.md` contains the hypotheses, decision rules and
 append-only amendments. Amendment 21 distinguishes the retrospective audit
 from a newly specified validation-only mean/basis diagnostic.

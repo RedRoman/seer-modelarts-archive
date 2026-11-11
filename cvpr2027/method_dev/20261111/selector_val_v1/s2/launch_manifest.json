@@ -1,0 +1,23 @@
+{
+  "host": "huawei-modelarts-31051",
+  "hostname": "ma-job-31f7571d-75c6-4944-90cd-ee8d91cb0532-worker-0",
+  "started_utc": "2026-11-11T14:01:45.173445+00:00",
+  "source_archive_sha256": "f2cf65cfdb0a79e9cfc071127d2275b003f8d3a0e369800987625f0a5aa4ec1e",
+  "source_manifest_sha256": "2bfd72d7d9a3f624e49f35ec8bcaaaf41bca1c0eda71a5b2e74ac30d179a5774",
+  "wrapper_sha256": "039c37bae6675be203e128a569545d3158a8077aa25b650b1a870e7b283cac1c",
+  "python": "/cache/zihaohe/seer_cvpr/venv_npu/bin/python",
+  "device": "npu:0",
+  "physical_device": 7,
+  "environment": {
+    "OMP_NUM_THREADS": "4",
+    "MKL_NUM_THREADS": "4",
+    "OPENBLAS_NUM_THREADS": "4",
+    "PYTHONPATH": "/cache/zihaohe/seer_method_dev_20261111/selector_val_v1/code_full:/cache/zihaohe/seer_method_dev_20261111/selector_val_v1/code_full/tools:/temp/zihaohe/seer_cvpr/method_dev_20261111/baseline_code_full:/temp/zihaohe/seer_cvpr/code/baselines:/temp/zihaohe/seer_cvpr/code/baselines/common:/usr/local/Ascend/cann-8.5.2/python/site-packages:/usr/local/Ascend/cann-8.5.2/opp/built-in/op_impl/ai_core/tbe:/usr/local/Ascend/ascend-toolkit/latest/tools/ms_fmk_transplt/torch_npu_bridge:/usr/local/Ascend/ascend-toolkit/latest/python/site-packages:/usr/local/seccomponent/lib:/home/ma-user/infer/model/1",
+    "ASCEND_RT_VISIBLE_DEVICES": "7"
+  },
+  "selectors": "/cache/zihaohe/seer_method_dev_20261111/selector_v1/runs/s2",
+  "base": "/cache/zihaohe/seer_cvpr/runs_e12/e12_bvi_pretrained_s0/final_cpu.pt",
+  "raft": "/temp/zihaohe/seer_cvpr/weights_small/checkpoint/raft_small_C_T_V2-01064c6d.pth",
+  "out": "/cache/zihaohe/seer_method_dev_20261111/selector_val_v1/results/bvi_val16_s2.json",
+  "policy": "All three predeclared final1000 arms; frozen BVI VAL16; no test; guards fail closed."
+}

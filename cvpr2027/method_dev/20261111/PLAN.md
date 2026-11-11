@@ -30,32 +30,85 @@ finite nonzero fusion gradients. Output checkpoints include optimizer state,
 model configuration, inputs/source hashes and data-plan identity. Runs use
 fresh local `/cache/zihaohe/seer_method_dev_20261111/` directories.
 
-## Completed screens and current candidate
+## Positive learned result and fixed strong control
+
+The frozen E12 BVI restoration model plus restored-RGB RAFT t−2/t+2 donors and a
+6,626-parameter selector has now been trained and independently validated.
+The selector uses 19 observable patch features; GT enters only training losses
+and final scoring. Base and selector state digests are checked unchanged during validation; RAFT uses the same strictly loaded weight file in every run.
+
+Three selector initialization/sampling seeds, each fixed at 1,000 optimizer
+steps, give direct-MSE PSNR-Y gains of +0.4503 / +0.4661 / +0.4601 dB on
+BVI VAL16 (eight unseen development scenes, both illumination conditions,
+center16/crop256). Their mean is +0.4588 dB, with a whole-scene 95% interval
+[+0.1364,+0.9482] after averaging each sequence's effect over selectors.
+PSNR-RGB improves by +0.4497 dB. LPIPS falls from .15323 to .14494 on average,
+but its scene interval crosses zero, as does that of the temporal gap.
+These intervals are conditional on the three fitted selectors and one E12
+base seed0. They do not include base-training or model-selection uncertainty.
+
+The same-capacity direct-MSE control with a fit-only scalar loss normalization
+gives +0.4581 dB. Risk supervision gives +0.4032 dB and loses to direct MSE.
+Its simplex objective is algebraically equivalent to CsNet's classical MSE
+fusion objective (see BASELINES); it is a control, not a new principle.
+All three final models from every seed were evaluated; no best checkpoint or
+best seed was selected. Fixed donor controls have tiny repeated-NPU numerical
+drift (maximum per-sequence PSNR-Y .0003214 dB); the base and GT metrics match
+exactly. Do not attribute all cross-run changes to selector randomness.
+
+Raw validation rows, scene analyses, launch/source/checkpoint hashes and
+backup manifests are in `selector_val_v1/`. Training plans, full curves,
+fit-only normalization and internal holdout results are in `selector_v1/`.
+The nine small selector weights are retained outside Git and on shared SFS;
+the full E12 base is also backed up with verified SHA. No TEST images were read.
+
+## Next method experiment
+
+Use the positive direct-MSE selector as the minimum performance control.
+The next question is whether truly different source observations can correct
+errors shared by all-clip restored donors. A candidate constructed only by
+warping another output of the same all-clip model does not isolate that
+frame's information. Test proposals that use source low-light observations as
+values, with prediction-only alignment and photometric guidance. A cheap
+sampling-residual/backprojection proposal is a separate candidate control.
+Tone/detail transfer, backprojection, noise weighting and negative kernels
+already have strong prior art; combining them does not establish novelty.
+
+Freeze a concrete candidate mechanism before further validation. First audit
+its dataflow and measure training-only conditional oracle headroom, donor error
+correlation and recovered learned gain. Then compare the same candidate family
+under matched direct-MSE, full-Gram risk, and any proposed context-dependent
+nonlinear fusion training. A contribution must beat the direct learned outcome
+at matched capacity, source information and compute; a larger GT oracle or a
+renamed GT confidence target is insufficient. Any context-dependent utility
+experiment must intervene on added messages while retaining identical
+background messages. The base already sees the whole clip, so this is not
+removal of all information from a source frame.
+
+These follow-up mechanisms have not yet been implemented or evaluated.
+Manuscript work remains paused while method performance and novelty develop.
+
+## Completed feasibility screens
 
 Pilot v1 local beat matched continuation by 0.1142 dB, with a scene interval
 crossing zero. Pilot v2 froze the base exactly and trained only fusion for 600
 steps: local improved by 0.00415 dB, prior by 0.00263 dB. Both PSNR intervals
-cross zero. Full curves and raw rows are in `pilot_v1/` and `pilot_v2/`.
-The extra feature path has not supplied a substantial restoration gain.
+cross zero. Full curves and raw rows remain in `pilot_v1/` and `pilot_v2/`.
 
-The next feasibility experiment uses the stronger BVI-only full restoration
-checkpoint and real BVI motion. One restoration pass supplies all RGB frames;
-frozen RAFT on restored predictions transports donors t−2 and t+2 to the target.
-No GT is used for flow or candidate generation. On each 8×8 output patch,
-correction directions d define observable Gram G_ij=mean(d_i*d_j).
-Training GT supplies signed benefits a_j=mean((GT−base)*d_j). Constrained weights
-minimize w^T G w−2 a^T w, w≥0, sum(w)≤1; zero correction is feasible.
-This quadratic identity and minimizer are classical, not a novelty claim.
+The BVI TRAIN48 cache then established a useful RGB correction family.
+One restoration pass supplies all RGB frames; frozen RAFT on restored
+predictions transports donors t−2 and t+2. No GT enters flow or candidates.
+Per 8×8 patch, observable Gram G and training-only signed benefits a define the
+classical bounded quadratic risk. Fixed averaging reduces TRAIN MSE by 3.15%;
+its GT-assisted oracle reduces it by 21.16%. The latter is a feasibility bound,
+not learned performance. These facts motivated the selector experiment above.
 
-First cache one fixed crop/clip per TRAIN48 sequence and measure the GT oracle
-within this candidate family. Only a sufficiently useful candidate family
-warrants learning. The subsequent small selector pilot will split these 24
-training scenes into 18 fit / 6 internal holdout scenes, fit input statistics on
-fit scenes only, and compare signed-risk supervision with direct MSE gating at
-equal input/capacity/update budget. These are internal selector-development
-scenes: the historical base model may have seen all of them. Its checkpoint
-does not contain a historical split hash. Neither this oracle nor that holdout
-is a final learned benchmark result. GT-derived a/weights must never be inputs.
+The selector's 24 cached training scenes use a fixed 18 fit / 6 internal holdout
+split, fit-only normalization, and one final holdout pass after all models finish.
+Those six scenes may have been seen by the historical base; they are not final
+validation. The E12 checkpoint lacks a historical split hash, so retained
+logs/counts are not claimed as hash-level historical split proof. The separate
+BVI VAL scenes do not overlap the current frozen training lists.
 
 ## Competitive evaluation
 

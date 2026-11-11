@@ -1,0 +1,110 @@
+{
+  "verification": "Independent raw-row differences and balanced-scene bootstrap; no aggregate analyzer import",
+  "n_scenes": 8,
+  "selector_seeds": [
+    0,
+    1,
+    2
+  ],
+  "base_seeds": [
+    0
+  ],
+  "base_all_rows_all_metrics_max_difference": 0.0,
+  "contrasts_vs_base": {
+    "direct_mse": {
+      "psnr_y": {
+        "seed_averaged_difference": 0.4588473839873066,
+        "scene_ci95": [
+          0.13643932790668845,
+          0.9481588703992306
+        ]
+      },
+      "psnr_rgb": {
+        "seed_averaged_difference": 0.4497349493466922,
+        "scene_ci95": [
+          0.16020955512654397,
+          0.901527693478959
+        ]
+      },
+      "lpips": {
+        "seed_averaged_difference": -0.008293760009109974,
+        "scene_ci95": [
+          -0.025284653529524803,
+          0.0025848456813643375
+        ]
+      },
+      "tlp_gap": {
+        "seed_averaged_difference": -0.0006231096340343358,
+        "scene_ci95": [
+          -0.0027058272777746124,
+          0.0013616814666117226
+        ]
+      }
+    },
+    "direct_mse_normalized": {
+      "psnr_y": {
+        "seed_averaged_difference": 0.45808903568143394,
+        "scene_ci95": [
+          0.14056055949564336,
+          0.9419806490810052
+        ]
+      },
+      "psnr_rgb": {
+        "seed_averaged_difference": 0.4504276721823962,
+        "scene_ci95": [
+          0.16232993437803314,
+          0.9033268956639362
+        ]
+      },
+      "lpips": {
+        "seed_averaged_difference": -0.008325750473886728,
+        "scene_ci95": [
+          -0.02546861755933302,
+          0.0026382296346127987
+        ]
+      },
+      "tlp_gap": {
+        "seed_averaged_difference": -0.0006946658443969984,
+        "scene_ci95": [
+          -0.0028459261608077212,
+          0.0013244087652613719
+        ]
+      }
+    },
+    "risk_full": {
+      "psnr_y": {
+        "seed_averaged_difference": 0.4031934902237594,
+        "scene_ci95": [
+          0.09488481741755325,
+          0.8606545506207056
+        ]
+      },
+      "psnr_rgb": {
+        "seed_averaged_difference": 0.4067502545394033,
+        "scene_ci95": [
+          0.1281557072518719,
+          0.8361300152953937
+        ]
+      },
+      "lpips": {
+        "seed_averaged_difference": -0.005508843809366226,
+        "scene_ci95": [
+          -0.02092676268269618,
+          0.004455392404148976
+        ]
+      },
+      "tlp_gap": {
+        "seed_averaged_difference": -5.036320847769582e-05,
+        "scene_ci95": [
+          -0.001826294357306324,
+          0.0016678750873931362
+        ]
+      }
+    }
+  },
+  "inputs": {
+    "0": "5beb824edd291dbb5329e05e6c4719f263b6411e54d213512ab5f9716f1371d9",
+    "1": "1497309aa6ffbdad96d93d6121986f654abcd441611fcec2f8066a5dc2a8fdf1",
+    "2": "9b203835ee4f61ef40b80f60519ca7c8c535db907d362680f172b91408b1e44b"
+  }
+}

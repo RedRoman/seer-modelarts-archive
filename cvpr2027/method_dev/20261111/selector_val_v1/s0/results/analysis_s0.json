@@ -1,0 +1,1024 @@
+{
+  "scope": "Exploratory BVI VAL16, eight scenes, one trained seed; not TEST/SOTA/equivalence evidence",
+  "training_seed": 0,
+  "n_sequences": 16,
+  "n_scenes": 8,
+  "bootstrap": {
+    "samples": 10000,
+    "rng_seed": 0,
+    "protocol": "Shared whole-scene draws across metrics/contrasts; total paired sums / sequence counts",
+    "intervals": "Unadjusted percentile 95%; conditional on this seed; no selection correction"
+  },
+  "sequence_names": [
+    "BVI/S01_colour_chart__10fps",
+    "BVI/S01_colour_chart__20fps",
+    "BVI/S05_bunnies__10fps",
+    "BVI/S05_bunnies__20fps",
+    "BVI/S09_kitchen__10fps",
+    "BVI/S09_kitchen__20fps",
+    "BVI/S13_wires__10fps",
+    "BVI/S13_wires__20fps",
+    "BVI/S17_faces2__10fps",
+    "BVI/S17_faces2__20fps",
+    "BVI/S21_mario1__10fps",
+    "BVI/S21_mario1__20fps",
+    "BVI/S25_figures2__10fps",
+    "BVI/S25_figures2__20fps",
+    "BVI/S29_mix1__10fps",
+    "BVI/S29_mix1__20fps"
+  ],
+  "scene_conditions": {
+    "S01_colour_chart": [
+      "BVI/S01_colour_chart__10fps",
+      "BVI/S01_colour_chart__20fps"
+    ],
+    "S05_bunnies": [
+      "BVI/S05_bunnies__10fps",
+      "BVI/S05_bunnies__20fps"
+    ],
+    "S09_kitchen": [
+      "BVI/S09_kitchen__10fps",
+      "BVI/S09_kitchen__20fps"
+    ],
+    "S13_wires": [
+      "BVI/S13_wires__10fps",
+      "BVI/S13_wires__20fps"
+    ],
+    "S17_faces2": [
+      "BVI/S17_faces2__10fps",
+      "BVI/S17_faces2__20fps"
+    ],
+    "S21_mario1": [
+      "BVI/S21_mario1__10fps",
+      "BVI/S21_mario1__20fps"
+    ],
+    "S25_figures2": [
+      "BVI/S25_figures2__10fps",
+      "BVI/S25_figures2__20fps"
+    ],
+    "S29_mix1": [
+      "BVI/S29_mix1__10fps",
+      "BVI/S29_mix1__20fps"
+    ]
+  },
+  "gt_temporal_max_difference": 0.0,
+  "absolute": {
+    "base": {
+      "psnr_rgb": 28.105014393204954,
+      "psnr_y": 29.12779492396902,
+      "lpips": 0.15323243918828666,
+      "tlp_gap": 0.0064641633071005344
+    },
+    "fixed_average": {
+      "psnr_rgb": 28.108504319651207,
+      "psnr_y": 29.036976806809285,
+      "lpips": 0.16379398899152875,
+      "tlp_gap": 0.005851792055182159
+    },
+    "initial_thirds": {
+      "psnr_rgb": 28.23355292288214,
+      "psnr_y": 29.18613945162098,
+      "lpips": 0.1562840745318681,
+      "tlp_gap": 0.006588278920389712
+    },
+    "risk_full": {
+      "psnr_rgb": 28.522143615587037,
+      "psnr_y": 29.537995493531767,
+      "lpips": 0.14674370759166777,
+      "tlp_gap": 0.006271395133808255
+    },
+    "direct_mse": {
+      "psnr_rgb": 28.549198888742886,
+      "psnr_y": 29.578138340486525,
+      "lpips": 0.14502268517389894,
+      "tlp_gap": 0.005851730704307556
+    },
+    "direct_mse_normalized": {
+      "psnr_rgb": 28.54865512171213,
+      "psnr_y": 29.577998469681646,
+      "lpips": 0.1452014937531203,
+      "tlp_gap": 0.005875679955352098
+    }
+  },
+  "comparisons": {
+    "risk_full_minus_base": {
+      "psnr_rgb": {
+        "difference": 0.4171292223820835,
+        "scene_ci95": [
+          0.13227332127664138,
+          0.8543012019594967
+        ],
+        "sequences_better": 15,
+        "scenes_better": 7,
+        "per_sequence_differences": {
+          "BVI/S01_colour_chart__10fps": 0.400507724240299,
+          "BVI/S01_colour_chart__20fps": 0.44082590740391936,
+          "BVI/S05_bunnies__10fps": 0.5497295732326464,
+          "BVI/S05_bunnies__20fps": 0.37435886243299166,
+          "BVI/S09_kitchen__10fps": 0.03530621332916439,
+          "BVI/S09_kitchen__20fps": 0.19814661277477796,
+          "BVI/S13_wires__10fps": 2.022533592453314,
+          "BVI/S13_wires__20fps": 1.6491194205052366,
+          "BVI/S17_faces2__10fps": 0.1647694640573718,
+          "BVI/S17_faces2__20fps": 0.031887326001211136,
+          "BVI/S21_mario1__10fps": 0.2775132588064295,
+          "BVI/S21_mario1__20fps": 0.09086148708326647,
+          "BVI/S25_figures2__10fps": 0.10793378134025033,
+          "BVI/S25_figures2__20fps": -0.12772341710178026,
+          "BVI/S29_mix1__10fps": 0.40436458806102493,
+          "BVI/S29_mix1__20fps": 0.05393316349321253
+        },
+        "per_scene_differences": {
+          "S01_colour_chart": 0.4206668158221092,
+          "S05_bunnies": 0.462044217832819,
+          "S09_kitchen": 0.11672641305197118,
+          "S13_wires": 1.8358265064792754,
+          "S17_faces2": 0.09832839502929147,
+          "S21_mario1": 0.184187372944848,
+          "S25_figures2": -0.009894817880764961,
+          "S29_mix1": 0.22914887577711873
+        }
+      },
+      "psnr_y": {
+        "difference": 0.41020056956274753,
+        "scene_ci95": [
+          0.09996375643417776,
+          0.8723597432996253
+        ],
+        "sequences_better": 13,
+        "scenes_better": 7,
+        "per_sequence_differences": {
+          "BVI/S01_colour_chart__10fps": 0.4964717367429401,
+          "BVI/S01_colour_chart__20fps": 0.42437111023250296,
+          "BVI/S05_bunnies__10fps": 0.6508000729428289,
+          "BVI/S05_bunnies__20fps": 0.3190313909540947,
+          "BVI/S09_kitchen__10fps": 0.03237282776741068,
+          "BVI/S09_kitchen__20fps": 0.10159527383004274,
+          "BVI/S13_wires__10fps": 1.9843690996676848,
+          "BVI/S13_wires__20fps": 1.7544875493930334,
+          "BVI/S17_faces2__10fps": 0.14776431736676443,
+          "BVI/S17_faces2__20fps": 0.019702809868345383,
+          "BVI/S21_mario1__10fps": 0.30664901004632483,
+          "BVI/S21_mario1__20fps": -0.08208461656547428,
+          "BVI/S25_figures2__10fps": 0.030205341831837984,
+          "BVI/S25_figures2__20fps": -0.168218808016789,
+          "BVI/S29_mix1__10fps": 0.5690951408182165,
+          "BVI/S29_mix1__20fps": -0.023403143875803778
+        },
+        "per_scene_differences": {
+          "S01_colour_chart": 0.4604214234877215,
+          "S05_bunnies": 0.4849157319484618,
+          "S09_kitchen": 0.06698405079872671,
+          "S13_wires": 1.8694283245303591,
+          "S17_faces2": 0.08373356361755491,
+          "S21_mario1": 0.11228219674042528,
+          "S25_figures2": -0.06900673309247551,
+          "S29_mix1": 0.2728459984712064
+        }
+      },
+      "lpips": {
+        "difference": -0.006488731596618891,
+        "scene_ci95": [
+          -0.02197726520244032,
+          0.003504360094666481
+        ],
+        "sequences_better": 8,
+        "scenes_better": 4,
+        "per_sequence_differences": {
+          "BVI/S01_colour_chart__10fps": -0.009133070707321167,
+          "BVI/S01_colour_chart__20fps": -0.002410590648651123,
+          "BVI/S05_bunnies__10fps": 0.005710184574127197,
+          "BVI/S05_bunnies__20fps": 0.009534038603305817,
+          "BVI/S09_kitchen__10fps": 0.003308713436126709,
+          "BVI/S09_kitchen__20fps": -0.005599752068519592,
+          "BVI/S13_wires__10fps": -0.07986623048782349,
+          "BVI/S13_wires__20fps": -0.03373724967241287,
+          "BVI/S17_faces2__10fps": 0.0015388429164886475,
+          "BVI/S17_faces2__20fps": 0.007034119218587875,
+          "BVI/S21_mario1__10fps": -0.003980815410614014,
+          "BVI/S21_mario1__20fps": 0.006404377520084381,
+          "BVI/S25_figures2__10fps": 0.005020037293434143,
+          "BVI/S25_figures2__20fps": 0.007484734058380127,
+          "BVI/S29_mix1__10fps": -0.013022765517234802,
+          "BVI/S29_mix1__20fps": -0.002104278653860092
+        },
+        "per_scene_differences": {
+          "S01_colour_chart": -0.005771830677986145,
+          "S05_bunnies": 0.007622111588716507,
+          "S09_kitchen": -0.0011455193161964417,
+          "S13_wires": -0.05680174008011818,
+          "S17_faces2": 0.004286481067538261,
+          "S21_mario1": 0.0012117810547351837,
+          "S25_figures2": 0.006252385675907135,
+          "S29_mix1": -0.007563522085547447
+        }
+      },
+      "tlp_gap": {
+        "difference": -0.00019276817329227924,
+        "scene_ci95": [
+          -0.002064167521893978,
+          0.0016063165909145016
+        ],
+        "sequences_better": 8,
+        "scenes_better": 5,
+        "per_sequence_differences": {
+          "BVI/S01_colour_chart__10fps": -0.0010690391063690186,
+          "BVI/S01_colour_chart__20fps": -2.376362681388855e-05,
+          "BVI/S05_bunnies__10fps": -0.005574129521846771,
+          "BVI/S05_bunnies__20fps": 0.00309646874666214,
+          "BVI/S09_kitchen__10fps": 0.008960127830505371,
+          "BVI/S09_kitchen__20fps": -0.003086525946855545,
+          "BVI/S13_wires__10fps": 0.003663361072540283,
+          "BVI/S13_wires__20fps": -0.010426566004753113,
+          "BVI/S17_faces2__10fps": 0.004697196185588837,
+          "BVI/S17_faces2__20fps": 0.0015212371945381165,
+          "BVI/S21_mario1__10fps": -0.007960068061947823,
+          "BVI/S21_mario1__20fps": -0.0009127277880907059,
+          "BVI/S25_figures2__10fps": 0.0031230896711349487,
+          "BVI/S25_figures2__20fps": 0.001470416784286499,
+          "BVI/S29_mix1__10fps": -0.0009686127305030823,
+          "BVI/S29_mix1__20fps": 0.00040524452924728394
+        },
+        "per_scene_differences": {
+          "S01_colour_chart": -0.0005464013665914536,
+          "S05_bunnies": -0.0012388303875923157,
+          "S09_kitchen": 0.002936800941824913,
+          "S13_wires": -0.003381602466106415,
+          "S17_faces2": 0.0031092166900634766,
+          "S21_mario1": -0.004436397925019264,
+          "S25_figures2": 0.002296753227710724,
+          "S29_mix1": -0.00028168410062789917
+        }
+      }
+    },
+    "direct_mse_minus_base": {
+      "psnr_rgb": {
+        "difference": 0.4441844955379306,
+        "scene_ci95": [
+          0.15716581905686167,
+          0.8921990433422508
+        ],
+        "sequences_better": 15,
+        "scenes_better": 8,
+        "per_sequence_differences": {
+          "BVI/S01_colour_chart__10fps": 0.39713611597526466,
+          "BVI/S01_colour_chart__20fps": 0.5208439612389846,
+          "BVI/S05_bunnies__10fps": 0.5781607086723142,
+          "BVI/S05_bunnies__20fps": 0.3559672479975049,
+          "BVI/S09_kitchen__10fps": 0.030706431684198066,
+          "BVI/S09_kitchen__20fps": 0.2491656769591799,
+          "BVI/S13_wires__10fps": 1.9826528778940293,
+          "BVI/S13_wires__20fps": 1.837783381134777,
+          "BVI/S17_faces2__10fps": 0.13884245397130712,
+          "BVI/S17_faces2__20fps": 0.08146647644150207,
+          "BVI/S21_mario1__10fps": 0.26724359208549586,
+          "BVI/S21_mario1__20fps": 0.13460417935474567,
+          "BVI/S25_figures2__10fps": 0.08891181255214065,
+          "BVI/S25_figures2__20fps": 0.018435610608435127,
+          "BVI/S29_mix1__10fps": 0.42687190737117575,
+          "BVI/S29_mix1__20fps": -0.0018405053341652433
+        },
+        "per_scene_differences": {
+          "S01_colour_chart": 0.4589900386071246,
+          "S05_bunnies": 0.46706397833490954,
+          "S09_kitchen": 0.13993605432168899,
+          "S13_wires": 1.9102181295144032,
+          "S17_faces2": 0.1101544652064046,
+          "S21_mario1": 0.20092388572012077,
+          "S25_figures2": 0.053673711580287886,
+          "S29_mix1": 0.21251570101850525
+        }
+      },
+      "psnr_y": {
+        "difference": 0.45034341651750665,
+        "scene_ci95": [
+          0.13289834205533865,
+          0.934430588431688
+        ],
+        "sequences_better": 13,
+        "scenes_better": 7,
+        "per_sequence_differences": {
+          "BVI/S01_colour_chart__10fps": 0.48845050528617406,
+          "BVI/S01_colour_chart__20fps": 0.5146855718548977,
+          "BVI/S05_bunnies__10fps": 0.6853530620085806,
+          "BVI/S05_bunnies__20fps": 0.2986001787752599,
+          "BVI/S09_kitchen__10fps": 0.026138423943784517,
+          "BVI/S09_kitchen__20fps": 0.18083653469216898,
+          "BVI/S13_wires__10fps": 1.926136895242692,
+          "BVI/S13_wires__20fps": 2.081978264651262,
+          "BVI/S17_faces2__10fps": 0.11882309056998608,
+          "BVI/S17_faces2__20fps": 0.07246130450507948,
+          "BVI/S21_mario1__10fps": 0.3166073764614872,
+          "BVI/S21_mario1__20fps": -0.015886402503156205,
+          "BVI/S25_figures2__10fps": -0.02722040149213356,
+          "BVI/S25_figures2__20fps": 0.001132226760262256,
+          "BVI/S29_mix1__10fps": 0.6196526636807356,
+          "BVI/S29_mix1__20fps": -0.08225463015697443
+        },
+        "per_scene_differences": {
+          "S01_colour_chart": 0.5015680385705359,
+          "S05_bunnies": 0.49197662039192025,
+          "S09_kitchen": 0.10348747931797675,
+          "S13_wires": 2.004057579946977,
+          "S17_faces2": 0.09564219753753278,
+          "S21_mario1": 0.1503604869791655,
+          "S25_figures2": -0.013044087365935653,
+          "S29_mix1": 0.26869901676188057
+        }
+      },
+      "lpips": {
+        "difference": -0.008209754014387727,
+        "scene_ci95": [
+          -0.02499562595039606,
+          0.0025797698064707214
+        ],
+        "sequences_better": 8,
+        "scenes_better": 4,
+        "per_sequence_differences": {
+          "BVI/S01_colour_chart__10fps": -0.011574923992156982,
+          "BVI/S01_colour_chart__20fps": -0.0024827420711517334,
+          "BVI/S05_bunnies__10fps": 0.007351219654083252,
+          "BVI/S05_bunnies__20fps": 0.009889498353004456,
+          "BVI/S09_kitchen__10fps": 0.0011439919471740723,
+          "BVI/S09_kitchen__20fps": -0.007369101047515869,
+          "BVI/S13_wires__10fps": -0.08901867270469666,
+          "BVI/S13_wires__20fps": -0.03647303581237793,
+          "BVI/S17_faces2__10fps": 0.0011836737394332886,
+          "BVI/S17_faces2__20fps": 0.0030056126415729523,
+          "BVI/S21_mario1__10fps": -0.002793610095977783,
+          "BVI/S21_mario1__20fps": 0.006115779280662537,
+          "BVI/S25_figures2__10fps": 0.0022828876972198486,
+          "BVI/S25_figures2__20fps": 0.005280494689941406,
+          "BVI/S29_mix1__10fps": -0.01694139838218689,
+          "BVI/S29_mix1__20fps": -0.0009557381272315979
+        },
+        "per_scene_differences": {
+          "S01_colour_chart": -0.007028833031654358,
+          "S05_bunnies": 0.008620359003543854,
+          "S09_kitchen": -0.0031125545501708984,
+          "S13_wires": -0.06274585425853729,
+          "S17_faces2": 0.0020946431905031204,
+          "S21_mario1": 0.0016610845923423767,
+          "S25_figures2": 0.0037816911935806274,
+          "S29_mix1": -0.008948568254709244
+        }
+      },
+      "tlp_gap": {
+        "difference": -0.0006124326027929783,
+        "scene_ci95": [
+          -0.0026715637650340796,
+          0.001341793179744852
+        ],
+        "sequences_better": 9,
+        "scenes_better": 5,
+        "per_sequence_differences": {
+          "BVI/S01_colour_chart__10fps": -0.0006342381238937378,
+          "BVI/S01_colour_chart__20fps": 7.470324635505676e-05,
+          "BVI/S05_bunnies__10fps": -0.0056634992361068726,
+          "BVI/S05_bunnies__20fps": 0.0031198039650917053,
+          "BVI/S09_kitchen__10fps": 0.009545393288135529,
+          "BVI/S09_kitchen__20fps": -0.003476366400718689,
+          "BVI/S13_wires__10fps": -0.00283663347363472,
+          "BVI/S13_wires__20fps": -0.007726041600108147,
+          "BVI/S17_faces2__10fps": 0.004345361143350601,
+          "BVI/S17_faces2__20fps": 0.0014063604176044464,
+          "BVI/S21_mario1__10fps": -0.007973093539476395,
+          "BVI/S21_mario1__20fps": -0.0008553694933652878,
+          "BVI/S25_figures2__10fps": 0.001900896430015564,
+          "BVI/S25_figures2__20fps": 0.0007217079401016235,
+          "BVI/S29_mix1__10fps": -0.0011671781539916992,
+          "BVI/S29_mix1__20fps": -0.0005807280540466309
+        },
+        "per_scene_differences": {
+          "S01_colour_chart": -0.0002797674387693405,
+          "S05_bunnies": -0.0012718476355075836,
+          "S09_kitchen": 0.00303451344370842,
+          "S13_wires": -0.005281337536871433,
+          "S17_faces2": 0.002875860780477524,
+          "S21_mario1": -0.004414231516420841,
+          "S25_figures2": 0.0013113021850585938,
+          "S29_mix1": -0.000873953104019165
+        }
+      }
+    },
+    "direct_mse_normalized_minus_base": {
+      "psnr_rgb": {
+        "difference": 0.4436407285071735,
+        "scene_ci95": [
+          0.16296644731262785,
+          0.8845162424746009
+        ],
+        "sequences_better": 15,
+        "scenes_better": 8,
+        "per_sequence_differences": {
+          "BVI/S01_colour_chart__10fps": 0.39811614640943205,
+          "BVI/S01_colour_chart__20fps": 0.5121794912796176,
+          "BVI/S05_bunnies__10fps": 0.5768014865539008,
+          "BVI/S05_bunnies__20fps": 0.3629944706211603,
+          "BVI/S09_kitchen__10fps": 0.030343728991248042,
+          "BVI/S09_kitchen__20fps": 0.25482434503872753,
+          "BVI/S13_wires__10fps": 1.982949531155029,
+          "BVI/S13_wires__20fps": 1.7965454856284566,
+          "BVI/S17_faces2__10fps": 0.14047078164997728,
+          "BVI/S17_faces2__20fps": 0.08092530839457979,
+          "BVI/S21_mario1__10fps": 0.25531163173415194,
+          "BVI/S21_mario1__20fps": 0.13058210017609895,
+          "BVI/S25_figures2__10fps": 0.15706969829976458,
+          "BVI/S25_figures2__20fps": 0.010750760598529752,
+          "BVI/S29_mix1__10fps": 0.42142462999398234,
+          "BVI/S29_mix1__20fps": -0.013037940409880378
+        },
+        "per_scene_differences": {
+          "S01_colour_chart": 0.4551478188445248,
+          "S05_bunnies": 0.4698979785875306,
+          "S09_kitchen": 0.14258403701498779,
+          "S13_wires": 1.8897475083917428,
+          "S17_faces2": 0.11069804502227854,
+          "S21_mario1": 0.19294686595512545,
+          "S25_figures2": 0.08391022944914717,
+          "S29_mix1": 0.20419334479205098
+        }
+      },
+      "psnr_y": {
+        "difference": 0.45020354571262544,
+        "scene_ci95": [
+          0.14086431918828213,
+          0.9232769702428736
+        ],
+        "sequences_better": 13,
+        "scenes_better": 8,
+        "per_sequence_differences": {
+          "BVI/S01_colour_chart__10fps": 0.48821011720483654,
+          "BVI/S01_colour_chart__20fps": 0.5034720241359594,
+          "BVI/S05_bunnies__10fps": 0.6840855241168029,
+          "BVI/S05_bunnies__20fps": 0.30438749316395786,
+          "BVI/S09_kitchen__10fps": 0.025638649293952653,
+          "BVI/S09_kitchen__20fps": 0.18345413725789683,
+          "BVI/S13_wires__10fps": 1.9257931078726251,
+          "BVI/S13_wires__20fps": 2.0275500024398028,
+          "BVI/S17_faces2__10fps": 0.120017987986067,
+          "BVI/S17_faces2__20fps": 0.07355063243722526,
+          "BVI/S21_mario1__10fps": 0.3093809094162019,
+          "BVI/S21_mario1__20fps": -0.02247773005202447,
+          "BVI/S25_figures2__10fps": 0.06102627638804492,
+          "BVI/S25_figures2__20fps": -0.00720890355130166,
+          "BVI/S29_mix1__10fps": 0.624311016483535,
+          "BVI/S29_mix1__20fps": -0.09793451319157498
+        },
+        "per_scene_differences": {
+          "S01_colour_chart": 0.49584107067039795,
+          "S05_bunnies": 0.4942365086403804,
+          "S09_kitchen": 0.10454639327592474,
+          "S13_wires": 1.976671555156214,
+          "S17_faces2": 0.09678431021164613,
+          "S21_mario1": 0.1434515896820887,
+          "S25_figures2": 0.02690868641837163,
+          "S29_mix1": 0.26318825164598003
+        }
+      },
+      "lpips": {
+        "difference": -0.008030945435166359,
+        "scene_ci95": [
+          -0.024826176464557648,
+          0.0027353346813470125
+        ],
+        "sequences_better": 8,
+        "scenes_better": 4,
+        "per_sequence_differences": {
+          "BVI/S01_colour_chart__10fps": -0.011544182896614075,
+          "BVI/S01_colour_chart__20fps": -0.002287045121192932,
+          "BVI/S05_bunnies__10fps": 0.00690615177154541,
+          "BVI/S05_bunnies__20fps": 0.010260716080665588,
+          "BVI/S09_kitchen__10fps": 0.0013460814952850342,
+          "BVI/S09_kitchen__20fps": -0.006699874997138977,
+          "BVI/S13_wires__10fps": -0.0888533741235733,
+          "BVI/S13_wires__20fps": -0.036268092691898346,
+          "BVI/S17_faces2__10fps": 0.0012548118829727173,
+          "BVI/S17_faces2__20fps": 0.004008147865533829,
+          "BVI/S21_mario1__10fps": -0.002782776951789856,
+          "BVI/S21_mario1__20fps": 0.006497196853160858,
+          "BVI/S25_figures2__10fps": 0.0020169317722320557,
+          "BVI/S25_figures2__20fps": 0.005430474877357483,
+          "BVI/S29_mix1__10fps": -0.016865283250808716,
+          "BVI/S29_mix1__20fps": -0.0009150095283985138
+        },
+        "per_scene_differences": {
+          "S01_colour_chart": -0.006915614008903503,
+          "S05_bunnies": 0.0085834339261055,
+          "S09_kitchen": -0.0026768967509269714,
+          "S13_wires": -0.06256073340773582,
+          "S17_faces2": 0.002631479874253273,
+          "S21_mario1": 0.001857209950685501,
+          "S25_figures2": 0.0037237033247947693,
+          "S29_mix1": -0.008890146389603615
+        }
+      },
+      "tlp_gap": {
+        "difference": -0.0005884833517484367,
+        "scene_ci95": [
+          -0.002622308435093146,
+          0.0013547727605327947
+        ],
+        "sequences_better": 9,
+        "scenes_better": 5,
+        "per_sequence_differences": {
+          "BVI/S01_colour_chart__10fps": -0.0006940662860870361,
+          "BVI/S01_colour_chart__20fps": 0.00013622641563415527,
+          "BVI/S05_bunnies__10fps": -0.005827702581882477,
+          "BVI/S05_bunnies__20fps": 0.003173450008034706,
+          "BVI/S09_kitchen__10fps": 0.009694674983620644,
+          "BVI/S09_kitchen__20fps": -0.00361662358045578,
+          "BVI/S13_wires__10fps": -0.0026725009083747864,
+          "BVI/S13_wires__20fps": -0.00764475017786026,
+          "BVI/S17_faces2__10fps": 0.004269961267709732,
+          "BVI/S17_faces2__20fps": 0.0013414472341537476,
+          "BVI/S21_mario1__10fps": -0.007860401645302773,
+          "BVI/S21_mario1__20fps": -0.0008350098505616188,
+          "BVI/S25_figures2__10fps": 0.0021159350872039795,
+          "BVI/S25_figures2__20fps": 0.0008381754159927368,
+          "BVI/S29_mix1__10fps": -0.001184515655040741,
+          "BVI/S29_mix1__20fps": -0.0006500333547592163
+        },
+        "per_scene_differences": {
+          "S01_colour_chart": -0.00027891993522644043,
+          "S05_bunnies": -0.0013271262869238853,
+          "S09_kitchen": 0.003039025701582432,
+          "S13_wires": -0.005158625543117523,
+          "S17_faces2": 0.00280570425093174,
+          "S21_mario1": -0.004347705747932196,
+          "S25_figures2": 0.0014770552515983582,
+          "S29_mix1": -0.0009172745048999786
+        }
+      }
+    },
+    "fixed_average_minus_base": {
+      "psnr_rgb": {
+        "difference": 0.0034899264462542323,
+        "scene_ci95": [
+          -0.3386807178089106,
+          0.410993949949132
+        ],
+        "sequences_better": 7,
+        "scenes_better": 3,
+        "per_sequence_differences": {
+          "BVI/S01_colour_chart__10fps": 0.04947841440802847,
+          "BVI/S01_colour_chart__20fps": -0.35864341006855227,
+          "BVI/S05_bunnies__10fps": 0.35846697193176524,
+          "BVI/S05_bunnies__20fps": 0.23522577269744005,
+          "BVI/S09_kitchen__10fps": -0.029660897232194117,
+          "BVI/S09_kitchen__20fps": -0.3300247977968951,
+          "BVI/S13_wires__10fps": 0.9859843767521141,
+          "BVI/S13_wires__20fps": 1.4069731438682638,
+          "BVI/S17_faces2__10fps": -0.13182980699416547,
+          "BVI/S17_faces2__20fps": -1.1549575570782302,
+          "BVI/S21_mario1__10fps": 0.24638098607607262,
+          "BVI/S21_mario1__20fps": -0.08306932571727543,
+          "BVI/S25_figures2__10fps": -0.7129782317533184,
+          "BVI/S25_figures2__20fps": -0.3846868845723783,
+          "BVI/S29_mix1__10fps": 0.19130220386224295,
+          "BVI/S29_mix1__20fps": -0.2321221352428502
+        },
+        "per_scene_differences": {
+          "S01_colour_chart": -0.1545824978302619,
+          "S05_bunnies": 0.29684637231460265,
+          "S09_kitchen": -0.1798428475145446,
+          "S13_wires": 1.196478760310189,
+          "S17_faces2": -0.6433936820361978,
+          "S21_mario1": 0.08165583017939859,
+          "S25_figures2": -0.5488325581628484,
+          "S29_mix1": -0.020409965690303622
+        }
+      },
+      "psnr_y": {
+        "difference": -0.09081811715973598,
+        "scene_ci95": [
+          -0.4519096080312812,
+          0.3476422001141003
+        ],
+        "sequences_better": 7,
+        "scenes_better": 2,
+        "per_sequence_differences": {
+          "BVI/S01_colour_chart__10fps": 0.01971596006902132,
+          "BVI/S01_colour_chart__20fps": -0.4444267476764807,
+          "BVI/S05_bunnies__10fps": 0.3595443323442922,
+          "BVI/S05_bunnies__20fps": 0.14184364882554945,
+          "BVI/S09_kitchen__10fps": -0.03379184147271275,
+          "BVI/S09_kitchen__20fps": -0.6904502369136338,
+          "BVI/S13_wires__10fps": 0.9425820843426287,
+          "BVI/S13_wires__20fps": 1.4352739402598047,
+          "BVI/S17_faces2__10fps": -0.1645210164787585,
+          "BVI/S17_faces2__20fps": -1.2366289330482267,
+          "BVI/S21_mario1__10fps": 0.23303849480135597,
+          "BVI/S21_mario1__20fps": -0.31270347544599986,
+          "BVI/S25_figures2__10fps": -1.0274693704721187,
+          "BVI/S25_figures2__20fps": -0.434283233871831,
+          "BVI/S29_mix1__10fps": 0.17041048883947596,
+          "BVI/S29_mix1__20fps": -0.4112239686581418
+        },
+        "per_scene_differences": {
+          "S01_colour_chart": -0.2123553938037297,
+          "S05_bunnies": 0.2506939905849208,
+          "S09_kitchen": -0.3621210391931733,
+          "S13_wires": 1.1889280123012167,
+          "S17_faces2": -0.7005749747634926,
+          "S21_mario1": -0.039832490322321945,
+          "S25_figures2": -0.7308763021719749,
+          "S29_mix1": -0.12040673990933293
+        }
+      },
+      "lpips": {
+        "difference": 0.010561549803242087,
+        "scene_ci95": [
+          -0.005498743505449965,
+          0.023110636742785573
+        ],
+        "sequences_better": 2,
+        "scenes_better": 1,
+        "per_sequence_differences": {
+          "BVI/S01_colour_chart__10fps": 0.0015286058187484741,
+          "BVI/S01_colour_chart__20fps": 0.008631691336631775,
+          "BVI/S05_bunnies__10fps": 0.01942300796508789,
+          "BVI/S05_bunnies__20fps": 0.020136594772338867,
+          "BVI/S09_kitchen__10fps": 0.017538487911224365,
+          "BVI/S09_kitchen__20fps": 0.009846337139606476,
+          "BVI/S13_wires__10fps": -0.047062426805496216,
+          "BVI/S13_wires__20fps": -0.029144704341888428,
+          "BVI/S17_faces2__10fps": 0.025732070207595825,
+          "BVI/S17_faces2__20fps": 0.04257180169224739,
+          "BVI/S21_mario1__10fps": 0.01090097427368164,
+          "BVI/S21_mario1__20fps": 0.021677054464817047,
+          "BVI/S25_figures2__10fps": 0.02842468023300171,
+          "BVI/S25_figures2__20fps": 0.026751138269901276,
+          "BVI/S29_mix1__10fps": 0.004077732563018799,
+          "BVI/S29_mix1__20fps": 0.007951751351356506
+        },
+        "per_scene_differences": {
+          "S01_colour_chart": 0.0050801485776901245,
+          "S05_bunnies": 0.01977980136871338,
+          "S09_kitchen": 0.01369241252541542,
+          "S13_wires": -0.03810356557369232,
+          "S17_faces2": 0.03415193594992161,
+          "S21_mario1": 0.016289014369249344,
+          "S25_figures2": 0.027587909251451492,
+          "S29_mix1": 0.006014741957187653
+        }
+      },
+      "tlp_gap": {
+        "difference": -0.0006123712519183755,
+        "scene_ci95": [
+          -0.003788354224525392,
+          0.00213643080787733
+        ],
+        "sequences_better": 7,
+        "scenes_better": 4,
+        "per_sequence_differences": {
+          "BVI/S01_colour_chart__10fps": 0.0011643506586551666,
+          "BVI/S01_colour_chart__20fps": 0.0007005743682384491,
+          "BVI/S05_bunnies__10fps": -0.0045894235372543335,
+          "BVI/S05_bunnies__20fps": 0.0032950304448604584,
+          "BVI/S09_kitchen__10fps": 0.007576365023851395,
+          "BVI/S09_kitchen__20fps": -0.004962760955095291,
+          "BVI/S13_wires__10fps": -0.007398858666419983,
+          "BVI/S13_wires__20fps": -0.010511171072721481,
+          "BVI/S17_faces2__10fps": 0.006151769310235977,
+          "BVI/S17_faces2__20fps": 0.003614600747823715,
+          "BVI/S21_mario1__10fps": -0.01040956936776638,
+          "BVI/S21_mario1__20fps": -0.00037850067019462585,
+          "BVI/S25_figures2__10fps": 0.004461929202079773,
+          "BVI/S25_figures2__20fps": 0.0017747431993484497,
+          "BVI/S29_mix1__10fps": 2.6747584342956543e-06,
+          "BVI/S29_mix1__20fps": -0.0002896934747695923
+        },
+        "per_scene_differences": {
+          "S01_colour_chart": 0.0009324625134468079,
+          "S05_bunnies": -0.0006471965461969376,
+          "S09_kitchen": 0.0013068020343780518,
+          "S13_wires": -0.008955014869570732,
+          "S17_faces2": 0.004883185029029846,
+          "S21_mario1": -0.005394035018980503,
+          "S25_figures2": 0.0031183362007141113,
+          "S29_mix1": -0.00014350935816764832
+        }
+      }
+    },
+    "risk_full_minus_direct_mse": {
+      "psnr_rgb": {
+        "difference": -0.027055273155847104,
+        "scene_ci95": [
+          -0.047716295638646884,
+          -0.007998275722960949
+        ],
+        "sequences_better": 8,
+        "scenes_better": 1,
+        "per_sequence_differences": {
+          "BVI/S01_colour_chart__10fps": 0.0033716082650343537,
+          "BVI/S01_colour_chart__20fps": -0.08001805383506522,
+          "BVI/S05_bunnies__10fps": -0.0284311354396678,
+          "BVI/S05_bunnies__20fps": 0.01839161443548676,
+          "BVI/S09_kitchen__10fps": 0.004599781644966328,
+          "BVI/S09_kitchen__20fps": -0.05101906418440194,
+          "BVI/S13_wires__10fps": 0.03988071455928477,
+          "BVI/S13_wires__20fps": -0.18866396062954038,
+          "BVI/S17_faces2__10fps": 0.025927010086064683,
+          "BVI/S17_faces2__20fps": -0.04957915044029093,
+          "BVI/S21_mario1__10fps": 0.010269666720933657,
+          "BVI/S21_mario1__20fps": -0.0437426922714792,
+          "BVI/S25_figures2__10fps": 0.01902196878810969,
+          "BVI/S25_figures2__20fps": -0.14615902771021538,
+          "BVI/S29_mix1__10fps": -0.02250731931015082,
+          "BVI/S29_mix1__20fps": 0.055773668827377776
+        },
+        "per_scene_differences": {
+          "S01_colour_chart": -0.03832322278501543,
+          "S05_bunnies": -0.00501976050209052,
+          "S09_kitchen": -0.023209641269717807,
+          "S13_wires": -0.07439162303512781,
+          "S17_faces2": -0.011826070177113124,
+          "S21_mario1": -0.01673651277527277,
+          "S25_figures2": -0.06356852946105285,
+          "S29_mix1": 0.016633174758613478
+        }
+      },
+      "psnr_y": {
+        "difference": -0.040142846954759115,
+        "scene_ci95": [
+          -0.07142897051348407,
+          -0.01611667455140986
+        ],
+        "sequences_better": 7,
+        "scenes_better": 1,
+        "per_sequence_differences": {
+          "BVI/S01_colour_chart__10fps": 0.008021231456766031,
+          "BVI/S01_colour_chart__20fps": -0.09031446162239476,
+          "BVI/S05_bunnies__10fps": -0.03455298906575166,
+          "BVI/S05_bunnies__20fps": 0.020431212178834812,
+          "BVI/S09_kitchen__10fps": 0.006234403823626167,
+          "BVI/S09_kitchen__20fps": -0.07924126086212624,
+          "BVI/S13_wires__10fps": 0.05823220442499277,
+          "BVI/S13_wires__20fps": -0.3274907152582287,
+          "BVI/S17_faces2__10fps": 0.028941226796778352,
+          "BVI/S17_faces2__20fps": -0.0527584946367341,
+          "BVI/S21_mario1__10fps": -0.009958366415162345,
+          "BVI/S21_mario1__20fps": -0.06619821406231807,
+          "BVI/S25_figures2__10fps": 0.057425743323971545,
+          "BVI/S25_figures2__20fps": -0.16935103477705127,
+          "BVI/S29_mix1__10fps": -0.05055752286251902,
+          "BVI/S29_mix1__20fps": 0.05885148628117065
+        },
+        "per_scene_differences": {
+          "S01_colour_chart": -0.041146615082814364,
+          "S05_bunnies": -0.007060888443458424,
+          "S09_kitchen": -0.036503428519250036,
+          "S13_wires": -0.13462925541661797,
+          "S17_faces2": -0.011908633919977873,
+          "S21_mario1": -0.03807829023874021,
+          "S25_figures2": -0.05596264572653986,
+          "S29_mix1": 0.004146981709325814
+        }
+      },
+      "lpips": {
+        "difference": 0.001721022417768836,
+        "scene_ci95": [
+          0.00048023826093412936,
+          0.0031881599687039815
+        ],
+        "sequences_better": 4,
+        "scenes_better": 2,
+        "per_sequence_differences": {
+          "BVI/S01_colour_chart__10fps": 0.0024418532848358154,
+          "BVI/S01_colour_chart__20fps": 7.215142250061035e-05,
+          "BVI/S05_bunnies__10fps": -0.0016410350799560547,
+          "BVI/S05_bunnies__20fps": -0.0003554597496986389,
+          "BVI/S09_kitchen__10fps": 0.0021647214889526367,
+          "BVI/S09_kitchen__20fps": 0.0017693489789962769,
+          "BVI/S13_wires__10fps": 0.009152442216873169,
+          "BVI/S13_wires__20fps": 0.0027357861399650574,
+          "BVI/S17_faces2__10fps": 0.0003551691770553589,
+          "BVI/S17_faces2__20fps": 0.004028506577014923,
+          "BVI/S21_mario1__10fps": -0.0011872053146362305,
+          "BVI/S21_mario1__20fps": 0.0002885982394218445,
+          "BVI/S25_figures2__10fps": 0.0027371495962142944,
+          "BVI/S25_figures2__20fps": 0.0022042393684387207,
+          "BVI/S29_mix1__10fps": 0.003918632864952087,
+          "BVI/S29_mix1__20fps": -0.0011485405266284943
+        },
+        "per_scene_differences": {
+          "S01_colour_chart": 0.0012570023536682129,
+          "S05_bunnies": -0.0009982474148273468,
+          "S09_kitchen": 0.001967035233974457,
+          "S13_wires": 0.005944114178419113,
+          "S17_faces2": 0.002191837877035141,
+          "S21_mario1": -0.000449303537607193,
+          "S25_figures2": 0.0024706944823265076,
+          "S29_mix1": 0.0013850461691617966
+        }
+      },
+      "tlp_gap": {
+        "difference": 0.00041966442950069904,
+        "scene_ci95": [
+          9.992276318371296e-06,
+          0.0009332546673249452
+        ],
+        "sequences_better": 6,
+        "scenes_better": 3,
+        "per_sequence_differences": {
+          "BVI/S01_colour_chart__10fps": -0.00043480098247528076,
+          "BVI/S01_colour_chart__20fps": -9.846687316894531e-05,
+          "BVI/S05_bunnies__10fps": 8.936971426010132e-05,
+          "BVI/S05_bunnies__20fps": -2.333521842956543e-05,
+          "BVI/S09_kitchen__10fps": -0.0005852654576301575,
+          "BVI/S09_kitchen__20fps": 0.0003898404538631439,
+          "BVI/S13_wires__10fps": 0.006499994546175003,
+          "BVI/S13_wires__20fps": -0.002700524404644966,
+          "BVI/S17_faces2__10fps": 0.0003518350422382355,
+          "BVI/S17_faces2__20fps": 0.00011487677693367004,
+          "BVI/S21_mario1__10fps": 1.3025477528572083e-05,
+          "BVI/S21_mario1__20fps": -5.735829472541809e-05,
+          "BVI/S25_figures2__10fps": 0.0012221932411193848,
+          "BVI/S25_figures2__20fps": 0.0007487088441848755,
+          "BVI/S29_mix1__10fps": 0.00019856542348861694,
+          "BVI/S29_mix1__20fps": 0.0009859725832939148
+        },
+        "per_scene_differences": {
+          "S01_colour_chart": -0.00026663392782211304,
+          "S05_bunnies": 3.3017247915267944e-05,
+          "S09_kitchen": -9.771250188350677e-05,
+          "S13_wires": 0.0018997350707650185,
+          "S17_faces2": 0.00023335590958595276,
+          "S21_mario1": -2.2166408598423004e-05,
+          "S25_figures2": 0.0009854510426521301,
+          "S29_mix1": 0.0005922690033912659
+        }
+      }
+    },
+    "risk_full_minus_direct_mse_normalized": {
+      "psnr_rgb": {
+        "difference": -0.026511506125090012,
+        "scene_ci95": [
+          -0.050651732171074215,
+          -0.005056048166030049
+        ],
+        "sequences_better": 7,
+        "scenes_better": 1,
+        "per_sequence_differences": {
+          "BVI/S01_colour_chart__10fps": 0.0023915778308669644,
+          "BVI/S01_colour_chart__20fps": -0.07135358387569823,
+          "BVI/S05_bunnies__10fps": -0.02707191332125447,
+          "BVI/S05_bunnies__20fps": 0.011364391811831354,
+          "BVI/S09_kitchen__10fps": 0.004962484337916351,
+          "BVI/S09_kitchen__20fps": -0.056677732263949565,
+          "BVI/S13_wires__10fps": 0.03958406129828518,
+          "BVI/S13_wires__20fps": -0.14742606512321998,
+          "BVI/S17_faces2__10fps": 0.024298682407394523,
+          "BVI/S17_faces2__20fps": -0.04903798239336865,
+          "BVI/S21_mario1__10fps": 0.022201627072277574,
+          "BVI/S21_mario1__20fps": -0.03972061309283248,
+          "BVI/S25_figures2__10fps": -0.04913591695951425,
+          "BVI/S25_figures2__20fps": -0.13847417770031,
+          "BVI/S29_mix1__10fps": -0.017060041932957404,
+          "BVI/S29_mix1__20fps": 0.06697110390309291
+        },
+        "per_scene_differences": {
+          "S01_colour_chart": -0.034481003022415635,
+          "S05_bunnies": -0.007853760754711558,
+          "S09_kitchen": -0.025857623963016607,
+          "S13_wires": -0.0539210019124674,
+          "S17_faces2": -0.012369649992987064,
+          "S21_mario1": -0.008759493010277453,
+          "S25_figures2": -0.09380504732991213,
+          "S29_mix1": 0.024955530985067753
+        }
+      },
+      "psnr_y": {
+        "difference": -0.04000297614987791,
+        "scene_ci95": [
+          -0.06854073543968081,
+          -0.015096740735290484
+        ],
+        "sequences_better": 6,
+        "scenes_better": 1,
+        "per_sequence_differences": {
+          "BVI/S01_colour_chart__10fps": 0.00826161953810356,
+          "BVI/S01_colour_chart__20fps": -0.07910091390345642,
+          "BVI/S05_bunnies__10fps": -0.03328545117397397,
+          "BVI/S05_bunnies__20fps": 0.014643897790136862,
+          "BVI/S09_kitchen__10fps": 0.00673417847345803,
+          "BVI/S09_kitchen__20fps": -0.08185886342785409,
+          "BVI/S13_wires__10fps": 0.05857599179505968,
+          "BVI/S13_wires__20fps": -0.27306245304676935,
+          "BVI/S17_faces2__10fps": 0.027746329380697432,
+          "BVI/S17_faces2__20fps": -0.05384782256887988,
+          "BVI/S21_mario1__10fps": -0.0027318993698770555,
+          "BVI/S21_mario1__20fps": -0.05960688651344981,
+          "BVI/S25_figures2__10fps": -0.030820934556206936,
+          "BVI/S25_figures2__20fps": -0.16100990446548735,
+          "BVI/S29_mix1__10fps": -0.05521587566531849,
+          "BVI/S29_mix1__20fps": 0.0745313693157712
+        },
+        "per_scene_differences": {
+          "S01_colour_chart": -0.03541964718267643,
+          "S05_bunnies": -0.009320776691918553,
+          "S09_kitchen": -0.03756234247719803,
+          "S13_wires": -0.10724323062585484,
+          "S17_faces2": -0.013050746594091223,
+          "S21_mario1": -0.031169392941663432,
+          "S25_figures2": -0.09591541951084714,
+          "S29_mix1": 0.009657746825226354
+        }
+      },
+      "lpips": {
+        "difference": 0.0015422138385474682,
+        "scene_ci95": [
+          0.00032944418489933014,
+          0.0029943897505290786
+        ],
+        "sequences_better": 6,
+        "scenes_better": 2,
+        "per_sequence_differences": {
+          "BVI/S01_colour_chart__10fps": 0.0024111121892929077,
+          "BVI/S01_colour_chart__20fps": -0.00012354552745819092,
+          "BVI/S05_bunnies__10fps": -0.0011959671974182129,
+          "BVI/S05_bunnies__20fps": -0.0007266774773597717,
+          "BVI/S09_kitchen__10fps": 0.001962631940841675,
+          "BVI/S09_kitchen__20fps": 0.0011001229286193848,
+          "BVI/S13_wires__10fps": 0.008987143635749817,
+          "BVI/S13_wires__20fps": 0.0025308430194854736,
+          "BVI/S17_faces2__10fps": 0.0002840310335159302,
+          "BVI/S17_faces2__20fps": 0.0030259713530540466,
+          "BVI/S21_mario1__10fps": -0.0011980384588241577,
+          "BVI/S21_mario1__20fps": -9.281933307647705e-05,
+          "BVI/S25_figures2__10fps": 0.0030031055212020874,
+          "BVI/S25_figures2__20fps": 0.002054259181022644,
+          "BVI/S29_mix1__10fps": 0.0038425177335739136,
+          "BVI/S29_mix1__20fps": -0.0011892691254615784
+        },
+        "per_scene_differences": {
+          "S01_colour_chart": 0.0011437833309173584,
+          "S05_bunnies": -0.0009613223373889923,
+          "S09_kitchen": 0.0015313774347305298,
+          "S13_wires": 0.005758993327617645,
+          "S17_faces2": 0.0016550011932849884,
+          "S21_mario1": -0.0006454288959503174,
+          "S25_figures2": 0.0025286823511123657,
+          "S29_mix1": 0.0013266243040561676
+        }
+      },
+      "tlp_gap": {
+        "difference": 0.00039571517845615745,
+        "scene_ci95": [
+          8.908682502806187e-06,
+          0.0008646005895570851
+        ],
+        "sequences_better": 7,
+        "scenes_better": 3,
+        "per_sequence_differences": {
+          "BVI/S01_colour_chart__10fps": -0.0003749728202819824,
+          "BVI/S01_colour_chart__20fps": -0.00015999004244804382,
+          "BVI/S05_bunnies__10fps": 0.00025357306003570557,
+          "BVI/S05_bunnies__20fps": -7.698126137256622e-05,
+          "BVI/S09_kitchen__10fps": -0.0007345471531152725,
+          "BVI/S09_kitchen__20fps": 0.000530097633600235,
+          "BVI/S13_wires__10fps": 0.00633586198091507,
+          "BVI/S13_wires__20fps": -0.002781815826892853,
+          "BVI/S17_faces2__10fps": 0.0004272349178791046,
+          "BVI/S17_faces2__20fps": 0.0001797899603843689,
+          "BVI/S21_mario1__10fps": -9.966641664505005e-05,
+          "BVI/S21_mario1__20fps": -7.771793752908707e-05,
+          "BVI/S25_figures2__10fps": 0.0010071545839309692,
+          "BVI/S25_figures2__20fps": 0.0006322413682937622,
+          "BVI/S29_mix1__10fps": 0.0002159029245376587,
+          "BVI/S29_mix1__20fps": 0.0010552778840065002
+        },
+        "per_scene_differences": {
+          "S01_colour_chart": -0.0002674814313650131,
+          "S05_bunnies": 8.829589933156967e-05,
+          "S09_kitchen": -0.00010222475975751877,
+          "S13_wires": 0.0017770230770111084,
+          "S17_faces2": 0.00030351243913173676,
+          "S21_mario1": -8.869217708706856e-05,
+          "S25_figures2": 0.0008196979761123657,
+          "S29_mix1": 0.0006355904042720795
+        }
+      }
+    }
+  },
+  "input": {
+    "path": "cvpr2027/method_dev/20261111/selector_val_v1/s0/results/bvi_val16_s0.json",
+    "sha256": "5beb824edd291dbb5329e05e6c4719f263b6411e54d213512ab5f9716f1371d9"
+  },
+  "split_sha256": "fb6be5ea78ef73f5cc9db90bca75813bf597275f7609fe39d82f5b2f883e9ad0",
+  "analyzer_sha256": "cbb13288b963a0ea9b74d1b4768c609dd5f9090d9851b4cb20b9c1c433a06e3b",
+  "numpy_version": "2.5.1",
+  "selector_checkpoint_sha256": {
+    "risk_full": "8b004b76e4a1a66c5dde65761f17bab608ac4d871fae229524c29efebf3ab206",
+    "direct_mse": "42bea357d82b911bbd9bde28e84aeab8200e98b7f6a028aeb48a063a1b863301",
+    "direct_mse_normalized": "d3fc6df7001e3392ef10bbcb8bc6b4aeb3f7c7e9924a3906e9a0b56b3c429731"
+  },
+  "evaluation_source_sha256": {
+    "tools/eval_correction_selector.py": "5d99715af4ba3084c342a0b6086e278da969fc2669515eef6b8046b74d204853",
+    "tools/cache_correction_oracle.py": "7c989a8873101e6139af4cd2c81d0675e5c440024e177a1ae90c10544359fadd",
+    "models/correction_selector.py": "f81613c275bff26478d8010eb21f15040163e0f955c15b261df136ff0409a93c",
+    "models/correction_risk.py": "3a9dcc2d567ddc6f6705af0211b0f532829b062d7a51f7b31863595b945ce22d"
+  },
+  "provenance_scope": "JSON/source/checkpoint hash records cross-checked; no checkpoint or frame bytes loaded"
+}

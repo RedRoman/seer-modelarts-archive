@@ -1,0 +1,772 @@
+{
+  "purpose": "TRAIN-only selector learnability; not benchmark/SOTA evidence",
+  "args": {
+    "steps": 1000,
+    "lr": 0.001,
+    "seed": 2,
+    "batch_frames": 8,
+    "device": "cpu",
+    "optimizer": "Adam default betas/eps, no weight decay",
+    "modes": [
+      "risk_full",
+      "direct_mse",
+      "direct_mse_normalized"
+    ]
+  },
+  "split": {
+    "seed": 20261114,
+    "fit": [
+      "S16_faces1",
+      "S27_cloths1",
+      "S15_flowers",
+      "S26_cameras",
+      "S20_books3",
+      "S28_cloths2",
+      "S23_messy_wires",
+      "S02_animals1",
+      "S11_gift_wrap",
+      "S30_mix2",
+      "S24_figures1",
+      "S22_mario2",
+      "S08_soft_toys",
+      "S31_mix3",
+      "S12_woods",
+      "S06_lego",
+      "S03_animals2",
+      "S32_mix4"
+    ],
+    "internal_holdout": [
+      "S19_books2",
+      "S04_colour_sticks",
+      "S14_colour_balls",
+      "S10_messy_toy",
+      "S07_hats",
+      "S18_books1"
+    ],
+    "scope": "Selector internal holdout within base TRAIN scenes; NOT final VAL/test"
+  },
+  "normalization": {
+    "feature_mean": [
+      0.12227364487623055,
+      0.11363953250619718,
+      0.11051434811003336,
+      0.32217189855705247,
+      0.3308236600580514,
+      0.31314544921003024,
+      0.0004661003925921077,
+      0.0005230179911954745,
+      0.00048563897693114887,
+      -0.00023819107845219253,
+      -0.0002547848860322578,
+      -0.00023804325741234983,
+      0.0006881055541128694,
+      0.0024784377858321134,
+      0.00028501100844127237,
+      3.667004980552826e-05,
+      0.00032350222770147034,
+      0.8484918806287978,
+      0.8493002520667182
+    ],
+    "feature_std": [
+      0.13840000334546818,
+      0.1302345522592627,
+      0.124042583064917,
+      0.27074599983450953,
+      0.24608549298213883,
+      0.22828416321287873,
+      0.011630245979548995,
+      0.00822986528515669,
+      0.010004826164696608,
+      0.013577259871119924,
+      0.010245304257735318,
+      0.010663856094161303,
+      0.0023893456277146365,
+      0.006454786223094292,
+      0.001022053142373459,
+      0.0003230127483706609,
+      0.0035785643007057405,
+      0.3479661828101329,
+      0.34757512576722494
+    ],
+    "energy_floor": 1.744295324970434e-05,
+    "target_scale": [
+      0.01647212253175381,
+      0.0152943542769787
+    ],
+    "direct_mse_normalizer": 0.0016489822764171953,
+    "source": "Fit scenes only; population feature std; uncentered target RMS; mean base MSE",
+    "fit_frames": 576,
+    "fit_patches": 589824
+  },
+  "features": [
+    "low_mean_r",
+    "low_mean_g",
+    "low_mean_b",
+    "base_mean_r",
+    "base_mean_g",
+    "base_mean_b",
+    "past_correction_mean_r",
+    "past_correction_mean_g",
+    "past_correction_mean_b",
+    "future_correction_mean_r",
+    "future_correction_mean_g",
+    "future_correction_mean_b",
+    "low_rgb_variance",
+    "base_rgb_variance",
+    "gram_00",
+    "gram_01",
+    "gram_11",
+    "past_valid_fraction",
+    "future_valid_fraction"
+  ],
+  "context": "Exactly 3x3 patch-grid context",
+  "architecture": {
+    "name": "TinyCorrectionSelector",
+    "channels": [
+      19,
+      32,
+      32,
+      2
+    ],
+    "kernels": [
+      3,
+      1,
+      1
+    ],
+    "direct_none_logit": 0.0
+  },
+  "cache_provenance_sha256": "2965ab0292fbb962fa4de72403e0f71fdacb5fbae03d0c8116d8a67a5cf26a1f",
+  "cache_summary_sha256": "fcb05f0bbab1d5161ee4349cab016644f9434dbee3321f54bbb483ead3659a75",
+  "cache_provenance": {
+    "purpose": "TRAIN-only candidate-family oracle and selector cache; not learned performance",
+    "domain": "bvi",
+    "split_sha256": "fb6be5ea78ef73f5cc9db90bca75813bf597275f7609fe39d82f5b2f883e9ad0",
+    "base_checkpoint_sha256": "313180c76cc6e753eb1e5023247d7e3739468b24f00971849c5a4935f9bba173",
+    "base_saved_args": {
+      "tag": "e12_bvi_pretrained_s0",
+      "out_dir": "/cache/zihaohe/seer_cvpr/runs_e12/e12_bvi_pretrained_s0",
+      "heldout": "sdsd",
+      "only": "bvi",
+      "vjepa": "pretrained",
+      "edc": "off",
+      "edc_vjepa": "on",
+      "edc_weight": 1.0,
+      "iters": 2500,
+      "lr": 2e-05,
+      "weight_decay": 0.0001,
+      "accum_steps": 8,
+      "crop": 256,
+      "clip_len": 16,
+      "val_every": 500,
+      "save_every": 2500,
+      "log_every": 50,
+      "grad_ckpt": "on",
+      "balance_domains": "on",
+      "num_workers": 4,
+      "seed": 0,
+      "device": "npu"
+    },
+    "base_reconstruction": {
+      "version": 2,
+      "mode": "saved",
+      "arch": "v2",
+      "trained_arm": "pretrained",
+      "arm": "pretrained",
+      "clip_len": 16,
+      "branch": "full",
+      "xattn": "global",
+      "kv": "per_tubelet",
+      "layers": "single",
+      "taps": [
+        5,
+        11,
+        17,
+        23
+      ],
+      "token_proj": "none",
+      "token_proj_k": 4,
+      "random_encoder_seed": null
+    },
+    "base_state_sha256": "e3c62b24411a5648cbfba9466dab1ac250fc1b86a4858a915b74b51701ce03af",
+    "raft_weights_sha256": "01064c6dba73b0fc9fc8edf772248560a00a3acfd62ac6677e9eeebad9680e27",
+    "flow_inputs": "clamped restored RGB only, target-to-source direction",
+    "args": {
+      "init": "/cache/zihaohe/seer_cvpr/runs_e12/e12_bvi_pretrained_s0/final_cpu.pt",
+      "raft_weights": "/temp/zihaohe/seer_cvpr/weights_small/checkpoint/raft_small_C_T_V2-01064c6d.pth",
+      "out": "/cache/zihaohe/seer_method_dev_20261111/correction_v1/cache_bvi_train48",
+      "data_seed": 20261113,
+      "patch_size": 8,
+      "offset": 2,
+      "flow_steps": 12,
+      "flow_batch": 2,
+      "max_sequences": 48,
+      "device": "npu"
+    },
+    "plan": [
+      {
+        "sequence_index": 0,
+        "augmentation_seed": 1697118881199681878
+      },
+      {
+        "sequence_index": 1,
+        "augmentation_seed": 7725646726281667068
+      },
+      {
+        "sequence_index": 2,
+        "augmentation_seed": 1943719068844149377
+      },
+      {
+        "sequence_index": 3,
+        "augmentation_seed": 1600745349571966231
+      },
+      {
+        "sequence_index": 4,
+        "augmentation_seed": 5043775480152890832
+      },
+      {
+        "sequence_index": 5,
+        "augmentation_seed": 6548758617838212475
+      },
+      {
+        "sequence_index": 6,
+        "augmentation_seed": 4570414210135125020
+      },
+      {
+        "sequence_index": 7,
+        "augmentation_seed": 445168616302828969
+      },
+      {
+        "sequence_index": 8,
+        "augmentation_seed": 2695625313582362344
+      },
+      {
+        "sequence_index": 9,
+        "augmentation_seed": 1574199193212327367
+      },
+      {
+        "sequence_index": 10,
+        "augmentation_seed": 7415835983912875611
+      },
+      {
+        "sequence_index": 11,
+        "augmentation_seed": 2783442051551408619
+      },
+      {
+        "sequence_index": 12,
+        "augmentation_seed": 150698789555461309
+      },
+      {
+        "sequence_index": 13,
+        "augmentation_seed": 7293545869603138395
+      },
+      {
+        "sequence_index": 14,
+        "augmentation_seed": 7027504154443434914
+      },
+      {
+        "sequence_index": 15,
+        "augmentation_seed": 4305910761287364355
+      },
+      {
+        "sequence_index": 16,
+        "augmentation_seed": 7186523099765755487
+      },
+      {
+        "sequence_index": 17,
+        "augmentation_seed": 9114854577659134921
+      },
+      {
+        "sequence_index": 18,
+        "augmentation_seed": 5445333416969457295
+      },
+      {
+        "sequence_index": 19,
+        "augmentation_seed": 8387990389603885038
+      },
+      {
+        "sequence_index": 20,
+        "augmentation_seed": 1477809243266355644
+      },
+      {
+        "sequence_index": 21,
+        "augmentation_seed": 2827969453017046662
+      },
+      {
+        "sequence_index": 22,
+        "augmentation_seed": 8470152683964952830
+      },
+      {
+        "sequence_index": 23,
+        "augmentation_seed": 1652653372801807492
+      },
+      {
+        "sequence_index": 24,
+        "augmentation_seed": 1713186923935010328
+      },
+      {
+        "sequence_index": 25,
+        "augmentation_seed": 4965332525816113040
+      },
+      {
+        "sequence_index": 26,
+        "augmentation_seed": 6306226300894131674
+      },
+      {
+        "sequence_index": 27,
+        "augmentation_seed": 7673648579950127860
+      },
+      {
+        "sequence_index": 28,
+        "augmentation_seed": 7262512066377417772
+      },
+      {
+        "sequence_index": 29,
+        "augmentation_seed": 6016628090891909695
+      },
+      {
+        "sequence_index": 30,
+        "augmentation_seed": 3809523368745356859
+      },
+      {
+        "sequence_index": 31,
+        "augmentation_seed": 4073602532273514097
+      },
+      {
+        "sequence_index": 32,
+        "augmentation_seed": 7523944742251565534
+      },
+      {
+        "sequence_index": 33,
+        "augmentation_seed": 1125491283384499620
+      },
+      {
+        "sequence_index": 34,
+        "augmentation_seed": 7786301710680045900
+      },
+      {
+        "sequence_index": 35,
+        "augmentation_seed": 2531917414985435688
+      },
+      {
+        "sequence_index": 36,
+        "augmentation_seed": 848612739554545018
+      },
+      {
+        "sequence_index": 37,
+        "augmentation_seed": 4807963678956129025
+      },
+      {
+        "sequence_index": 38,
+        "augmentation_seed": 6343397414285877782
+      },
+      {
+        "sequence_index": 39,
+        "augmentation_seed": 2343690400097977192
+      },
+      {
+        "sequence_index": 40,
+        "augmentation_seed": 2669101266985598034
+      },
+      {
+        "sequence_index": 41,
+        "augmentation_seed": 7952269595291097976
+      },
+      {
+        "sequence_index": 42,
+        "augmentation_seed": 4526025282566083939
+      },
+      {
+        "sequence_index": 43,
+        "augmentation_seed": 4893728590030205335
+      },
+      {
+        "sequence_index": 44,
+        "augmentation_seed": 3391120127238251744
+      },
+      {
+        "sequence_index": 45,
+        "augmentation_seed": 9096492246600133263
+      },
+      {
+        "sequence_index": 46,
+        "augmentation_seed": 4737311978535223998
+      },
+      {
+        "sequence_index": 47,
+        "augmentation_seed": 6085117159399184831
+      }
+    ],
+    "source_sha256": {
+      "tools/cache_correction_oracle.py": "7c989a8873101e6139af4cd2c81d0675e5c440024e177a1ae90c10544359fadd",
+      "models/correction_risk.py": "3a9dcc2d567ddc6f6705af0211b0f532829b062d7a51f7b31863595b945ce22d",
+      "data/planned_bvi.py": "cb136a5625d39fd3df58a8c96284730f4b19423dcfbc05fceb67a8398290b21d",
+      "tools/eval_e4.py": "3fb906535d76ca11e379d41113424d1d1d47205d56ca5f5de0b557c3adcf0467",
+      "models/pixel_branch_v2.py": "f83c1aaa5797e5413a1adb41d49cecc0a093e72159e6d4fdbaf610168b739222"
+    },
+    "historical_training_split": "Checkpoint args retained; no historical split hash inferred from counts"
+  },
+  "base_may_have_seen_internal_holdout": true,
+  "initial_state_sha256": "48cd6923104610f76ef815de40caf4d92ad4dc98916db557aa7c81d56c2e70e4",
+  "initial_weights": [
+    0.3333333333333333,
+    0.3333333333333333
+  ],
+  "initial_none_weight": 0.3333333333333333,
+  "sample_plan_sha256": "98161d4bcf5a1d5a679c09960feab30193e7d787708bdc332adf47827e67a93f",
+  "cache_clips": [
+    {
+      "name": "BVI/S02_animals1__10fps",
+      "scene": "S02_animals1",
+      "condition": "10",
+      "path": "clip_000.pt",
+      "sha256": "c2677d5aa8f4692009f819855d6e56f4d1cc4d5294f2e864899363ff8ff4a783"
+    },
+    {
+      "name": "BVI/S02_animals1__20fps",
+      "scene": "S02_animals1",
+      "condition": "20",
+      "path": "clip_001.pt",
+      "sha256": "b862d01468f014774f5a6b49beb5bd1291d706f3b75f85cc83099d935dbee8a6"
+    },
+    {
+      "name": "BVI/S03_animals2__10fps",
+      "scene": "S03_animals2",
+      "condition": "10",
+      "path": "clip_002.pt",
+      "sha256": "caf8a0513e4333d3abcf48a6eca0b51eb5701f884b3209e23dcd63a6c25866b6"
+    },
+    {
+      "name": "BVI/S03_animals2__20fps",
+      "scene": "S03_animals2",
+      "condition": "20",
+      "path": "clip_003.pt",
+      "sha256": "0b4e6756f836da4b4fb3406e893a651c37c820b03d31e45920e072191b527f5e"
+    },
+    {
+      "name": "BVI/S04_colour_sticks__10fps",
+      "scene": "S04_colour_sticks",
+      "condition": "10",
+      "path": "clip_004.pt",
+      "sha256": "d08c4e504b70806684410f4418b2cfd3bbf4cf3f52a39724b93594675511e50c"
+    },
+    {
+      "name": "BVI/S04_colour_sticks__20fps",
+      "scene": "S04_colour_sticks",
+      "condition": "20",
+      "path": "clip_005.pt",
+      "sha256": "943f2fc340a0fa473f6bab02acca39ab6c2e65b340f3d95008db5b7759d8bbc6"
+    },
+    {
+      "name": "BVI/S06_lego__10fps",
+      "scene": "S06_lego",
+      "condition": "10",
+      "path": "clip_006.pt",
+      "sha256": "198811b8281237e6c89720d613dd61b39fb34bee497359b6570813eae11c1f42"
+    },
+    {
+      "name": "BVI/S06_lego__20fps",
+      "scene": "S06_lego",
+      "condition": "20",
+      "path": "clip_007.pt",
+      "sha256": "6f78f56fe440f7260de179b37d00def73e8d1d08451fe1591fd49b6831818b88"
+    },
+    {
+      "name": "BVI/S07_hats__10fps",
+      "scene": "S07_hats",
+      "condition": "10",
+      "path": "clip_008.pt",
+      "sha256": "9a31054d1c93586271781d528309dc372cf81a7d297499aa5e0841b092ccfe13"
+    },
+    {
+      "name": "BVI/S07_hats__20fps",
+      "scene": "S07_hats",
+      "condition": "20",
+      "path": "clip_009.pt",
+      "sha256": "f2639ea00a034d9f0312174bbc7a94239473a9e3f8879606de5aee39af0003e9"
+    },
+    {
+      "name": "BVI/S08_soft_toys__10fps",
+      "scene": "S08_soft_toys",
+      "condition": "10",
+      "path": "clip_010.pt",
+      "sha256": "ad6d66bd3e545ab55f28850bd417940ee3b42150896ec08f90d8b9cad9654ba5"
+    },
+    {
+      "name": "BVI/S08_soft_toys__20fps",
+      "scene": "S08_soft_toys",
+      "condition": "20",
+      "path": "clip_011.pt",
+      "sha256": "fa208a37b8a866014eb48c2242292649fa6a86a4cb099e54a8422ed6e317f840"
+    },
+    {
+      "name": "BVI/S10_messy_toy__10fps",
+      "scene": "S10_messy_toy",
+      "condition": "10",
+      "path": "clip_012.pt",
+      "sha256": "a941695a85c8267b76aee95d1aedd85eb5a4500a2d4213f28df07cddd18c5e3e"
+    },
+    {
+      "name": "BVI/S10_messy_toy__20fps",
+      "scene": "S10_messy_toy",
+      "condition": "20",
+      "path": "clip_013.pt",
+      "sha256": "a6af9c04ed1e50d0223a1ac2b897d746f2dc5880f0df1f81a6096ea0d2e523f5"
+    },
+    {
+      "name": "BVI/S11_gift_wrap__10fps",
+      "scene": "S11_gift_wrap",
+      "condition": "10",
+      "path": "clip_014.pt",
+      "sha256": "7a4f9dc0ea27f0b05f653d989fed5682c29c352746c77628b326d03de6611ee1"
+    },
+    {
+      "name": "BVI/S11_gift_wrap__20fps",
+      "scene": "S11_gift_wrap",
+      "condition": "20",
+      "path": "clip_015.pt",
+      "sha256": "2aa56ccb657a3757871525b60a44d942707730de425bceff32edaf3252359852"
+    },
+    {
+      "name": "BVI/S12_woods__10fps",
+      "scene": "S12_woods",
+      "condition": "10",
+      "path": "clip_016.pt",
+      "sha256": "1bae4f405670810e598f5360a1159549e658bcddf7f8012cd70d1eabf479c58f"
+    },
+    {
+      "name": "BVI/S12_woods__20fps",
+      "scene": "S12_woods",
+      "condition": "20",
+      "path": "clip_017.pt",
+      "sha256": "9bb2fb82bbee3b9f43b024f395681550bc3336c848d5ea4b596771cad5ea5f55"
+    },
+    {
+      "name": "BVI/S14_colour_balls__10fps",
+      "scene": "S14_colour_balls",
+      "condition": "10",
+      "path": "clip_018.pt",
+      "sha256": "959dbd274fce7ce3cf8b70833d060f3bcf704182496412a19348d45e1f2feddb"
+    },
+    {
+      "name": "BVI/S14_colour_balls__20fps",
+      "scene": "S14_colour_balls",
+      "condition": "20",
+      "path": "clip_019.pt",
+      "sha256": "321a53d60c52f5dda864758321e06bea6962b06dabf3d9a900fb803755095f6f"
+    },
+    {
+      "name": "BVI/S15_flowers__10fps",
+      "scene": "S15_flowers",
+      "condition": "10",
+      "path": "clip_020.pt",
+      "sha256": "1fcf446d44658790849653172d6d9ef65e5c5767b2e7db565dc4ab696159665c"
+    },
+    {
+      "name": "BVI/S15_flowers__20fps",
+      "scene": "S15_flowers",
+      "condition": "20",
+      "path": "clip_021.pt",
+      "sha256": "953f1ad8bba21ff9dc4e7eb7dea960a75cd4aed1833cbd6d1538af6fffa487e9"
+    },
+    {
+      "name": "BVI/S16_faces1__10fps",
+      "scene": "S16_faces1",
+      "condition": "10",
+      "path": "clip_022.pt",
+      "sha256": "0e21923177d669c8911725a7d2294aa8da0a11526f52fb06d912a202ba1005ee"
+    },
+    {
+      "name": "BVI/S16_faces1__20fps",
+      "scene": "S16_faces1",
+      "condition": "20",
+      "path": "clip_023.pt",
+      "sha256": "5b29c73431fb0ac8ff956cb827731b658255df682f7515c6049a869b44d393c9"
+    },
+    {
+      "name": "BVI/S18_books1__10fps",
+      "scene": "S18_books1",
+      "condition": "10",
+      "path": "clip_024.pt",
+      "sha256": "cd6a01334282421e5180e00758d3a690dd02682d63e0ad1c8277ab6c374749f9"
+    },
+    {
+      "name": "BVI/S18_books1__20fps",
+      "scene": "S18_books1",
+      "condition": "20",
+      "path": "clip_025.pt",
+      "sha256": "bd34f6f00969597b6266596d1a4e787c1b4cd9c9e9cffd9aa4c34a7babebf686"
+    },
+    {
+      "name": "BVI/S19_books2__10fps",
+      "scene": "S19_books2",
+      "condition": "10",
+      "path": "clip_026.pt",
+      "sha256": "bfee914652bb30940f58babc0682dac13cba9e3cb7f60e5b1e2d0896404f756c"
+    },
+    {
+      "name": "BVI/S19_books2__20fps",
+      "scene": "S19_books2",
+      "condition": "20",
+      "path": "clip_027.pt",
+      "sha256": "00a07a95067f08dc43e1f9336a062729ce2a1ac3dbc01ed903afaa0d99df11c3"
+    },
+    {
+      "name": "BVI/S20_books3__10fps",
+      "scene": "S20_books3",
+      "condition": "10",
+      "path": "clip_028.pt",
+      "sha256": "2f975b640be76ebcd21365d87e6e5749ab03e35efac094d3787b1e8992f25f93"
+    },
+    {
+      "name": "BVI/S20_books3__20fps",
+      "scene": "S20_books3",
+      "condition": "20",
+      "path": "clip_029.pt",
+      "sha256": "79a3eaf625615ef2587e13366973bf7974bc126ab779f876214e36c819b548f5"
+    },
+    {
+      "name": "BVI/S22_mario2__10fps",
+      "scene": "S22_mario2",
+      "condition": "10",
+      "path": "clip_030.pt",
+      "sha256": "3661b274803231ec4aaf3f498b6c47c0877376124459808bc4d39cfd650c6a4c"
+    },
+    {
+      "name": "BVI/S22_mario2__20fps",
+      "scene": "S22_mario2",
+      "condition": "20",
+      "path": "clip_031.pt",
+      "sha256": "30d213d7a8e578c7ff069e9e8044129cc6985ba8e059566c33317e6774627ea8"
+    },
+    {
+      "name": "BVI/S23_messy_wires__10fps",
+      "scene": "S23_messy_wires",
+      "condition": "10",
+      "path": "clip_032.pt",
+      "sha256": "f1b144f6f25fa50fbfc5f8fc48ca4ffe0ca75d0bcd30898c2f63fdbae02e617e"
+    },
+    {
+      "name": "BVI/S23_messy_wires__20fps",
+      "scene": "S23_messy_wires",
+      "condition": "20",
+      "path": "clip_033.pt",
+      "sha256": "1e4e06b3859d2319302d7a487cd0932992e408904c9bf87710fd9154dc347d86"
+    },
+    {
+      "name": "BVI/S24_figures1__10fps",
+      "scene": "S24_figures1",
+      "condition": "10",
+      "path": "clip_034.pt",
+      "sha256": "eeba3edb876a6f96e58471aa193dd7013b49b31b362303b4e3887ae82903c307"
+    },
+    {
+      "name": "BVI/S24_figures1__20fps",
+      "scene": "S24_figures1",
+      "condition": "20",
+      "path": "clip_035.pt",
+      "sha256": "e499c1e853a6127bb367651bb5af785a354205b8ffa96b9064112cb4c05221b2"
+    },
+    {
+      "name": "BVI/S26_cameras__10fps",
+      "scene": "S26_cameras",
+      "condition": "10",
+      "path": "clip_036.pt",
+      "sha256": "b2bd38d25281a2053cf0f9f5d12e63dd7ff35006ded9cb1970e3ac5da195ec1f"
+    },
+    {
+      "name": "BVI/S26_cameras__20fps",
+      "scene": "S26_cameras",
+      "condition": "20",
+      "path": "clip_037.pt",
+      "sha256": "9d6808f63258f68ff562072397e16d7d8cb5471fa7e0a5ed1c2ad1c74ca65cb9"
+    },
+    {
+      "name": "BVI/S27_cloths1__10fps",
+      "scene": "S27_cloths1",
+      "condition": "10",
+      "path": "clip_038.pt",
+      "sha256": "6b628178f3d4cd70b6cebaa74a12c877e9df64ab3c2a571d47daab48ad111310"
+    },
+    {
+      "name": "BVI/S27_cloths1__20fps",
+      "scene": "S27_cloths1",
+      "condition": "20",
+      "path": "clip_039.pt",
+      "sha256": "48685ea558f81d4ff7b9a63c35240d51fef17e31664d08cef80f1f97478be051"
+    },
+    {
+      "name": "BVI/S28_cloths2__10fps",
+      "scene": "S28_cloths2",
+      "condition": "10",
+      "path": "clip_040.pt",
+      "sha256": "b6da5ca4719700b11ffdeac05bc87d6be34544f01a93c80c604043ddf652a961"
+    },
+    {
+      "name": "BVI/S28_cloths2__20fps",
+      "scene": "S28_cloths2",
+      "condition": "20",
+      "path": "clip_041.pt",
+      "sha256": "ffd18b3c08c285e7778b67a299bd12e066bd0039cab51ba7ec6c26c2cc534f84"
+    },
+    {
+      "name": "BVI/S30_mix2__10fps",
+      "scene": "S30_mix2",
+      "condition": "10",
+      "path": "clip_042.pt",
+      "sha256": "1c721aa3c0138251e6309baa42e8fccdff7c79c23eca027ef0961aac51b535e3"
+    },
+    {
+      "name": "BVI/S30_mix2__20fps",
+      "scene": "S30_mix2",
+      "condition": "20",
+      "path": "clip_043.pt",
+      "sha256": "f852396f87a43866f332c80bfa615620cff7aa832d504fa7768653c5f8fd0898"
+    },
+    {
+      "name": "BVI/S31_mix3__10fps",
+      "scene": "S31_mix3",
+      "condition": "10",
+      "path": "clip_044.pt",
+      "sha256": "63f787254797dbae750203f73bec9ff03a49cb58eebdcb5d9e09bacf1b3c2cc7"
+    },
+    {
+      "name": "BVI/S31_mix3__20fps",
+      "scene": "S31_mix3",
+      "condition": "20",
+      "path": "clip_045.pt",
+      "sha256": "fa80de01cbf3c6145317c62e07871e681f5bc31ed3b0f408354c301d56b66c84"
+    },
+    {
+      "name": "BVI/S32_mix4__10fps",
+      "scene": "S32_mix4",
+      "condition": "10",
+      "path": "clip_046.pt",
+      "sha256": "2c13a681e2cf5b990bbe708772a71dde2321d0fa642c113474bd41e8ad0e7ea3"
+    },
+    {
+      "name": "BVI/S32_mix4__20fps",
+      "scene": "S32_mix4",
+      "condition": "20",
+      "path": "clip_047.pt",
+      "sha256": "ba259dbe4d04a4da410bf8e6fb5fa6adb544f4d2ced8ec8bd91a31fa4f5e0878"
+    }
+  ],
+  "source_sha256": {
+    "tools/train_correction_selector.py": "cc7af1ae735f7ea112ca6dec62a668b9eb3e744941d2f44034a58173f7fbcf9c",
+    "models/correction_selector.py": "f81613c275bff26478d8010eb21f15040163e0f955c15b261df136ff0409a93c",
+    "models/correction_risk.py": "3a9dcc2d567ddc6f6705af0211b0f532829b062d7a51f7b31863595b945ce22d"
+  },
+  "runtime": {
+    "torch": "2.7.1+cpu",
+    "numpy": "1.26.4",
+    "cpu_threads": 4,
+    "deterministic_algorithms": false
+  },
+  "gt_firewall": "Only low/base/corrections/valid_mask -> features; a/e0 are loss labels; oracle only final evaluation",
+  "losses": {
+    "risk_full": "Normalized moment regression MSE",
+    "direct_mse": "Exact raw RGB patch MSE",
+    "direct_mse_normalized": "Exact raw RGB patch MSE / fit-only mean e0 (one positive scalar)"
+  },
+  "holdout_policy": "No intermediate evaluation or checkpoint selection; one pass after all three arms"
+}
