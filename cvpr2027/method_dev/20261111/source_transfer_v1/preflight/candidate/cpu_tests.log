@@ -1,0 +1,22 @@
+/home/ma-user/anaconda3/envs/PyTorch-2.7.1/lib/python3.12/site-packages/torch/cuda/__init__.py:61: FutureWarning: The pynvml package is deprecated. Please install nvidia-ml-py instead. If you did not install pynvml directly, please report this to the maintainers of the package that installed pynvml for you.
+  import pynvml  # type: ignore[import]
+/home/ma-user/anaconda3/envs/PyTorch-2.7.1/lib/python3.12/site-packages/torch_npu/utils/collect_env.py:58: UserWarning: Warning: The /usr/local/Ascend/cann-8.5.2 owner does not match the current owner.
+  warnings.warn(f"Warning: The {path} owner does not match the current owner.")
+/home/ma-user/anaconda3/envs/PyTorch-2.7.1/lib/python3.12/site-packages/torch_npu/utils/collect_env.py:58: UserWarning: Warning: The /usr/local/Ascend/cann-8.5.2/aarch64-linux/ascend_toolkit_install.info owner does not match the current owner.
+  warnings.warn(f"Warning: The {path} owner does not match the current owner.")
+/home/ma-user/anaconda3/envs/PyTorch-2.7.1/lib/python3.12/site-packages/torch_npu/utils/collect_env.py:58: UserWarning: Warning: The /usr/local/Ascend/cann-8.5.2 owner does not match the current owner.
+  warnings.warn(f"Warning: The {path} owner does not match the current owner.")
+/home/ma-user/anaconda3/envs/PyTorch-2.7.1/lib/python3.12/site-packages/torch_npu/utils/collect_env.py:58: UserWarning: Warning: The /usr/local/Ascend/cann-8.5.2/aarch64-linux/ascend_toolkit_install.info owner does not match the current owner.
+  warnings.warn(f"Warning: The {path} owner does not match the current owner.")
+test_both_detail_controls_share_eroded_mask_and_outputs_are_bounded (test_observation_candidates.ObservationTests.test_both_detail_controls_share_eroded_mask_and_outputs_are_bounded) ... ok
+test_invalid_shapes_flow_mask_and_values_fail_closed (test_observation_candidates.ObservationTests.test_invalid_shapes_flow_mask_and_values_fail_closed) ... ok
+test_lowpass_removes_flat_donor_brightness_changes (test_observation_candidates.ObservationTests.test_lowpass_removes_flat_donor_brightness_changes) ... ok
+test_no_gt_argument_or_autograd_path (test_observation_candidates.ObservationTests.test_no_gt_argument_or_autograd_path) ... ok
+test_pixel_translation_uses_target_to_source_gather (test_observation_candidates.ObservationTests.test_pixel_translation_uses_target_to_source_gather) ... ok
+test_raw_detail_uses_exact_source_low_frame_not_target_low_frame (test_observation_candidates.ObservationTests.test_raw_detail_uses_exact_source_low_frame_not_target_low_frame) ... ok
+test_restored_zero_flow_samples_correct_temporal_source (test_observation_candidates.ObservationTests.test_restored_zero_flow_samples_correct_temporal_source) ... ok
+
+----------------------------------------------------------------------
+Ran 7 tests in 0.058s
+
+OK

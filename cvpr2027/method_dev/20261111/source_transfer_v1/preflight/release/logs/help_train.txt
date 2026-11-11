@@ -1,0 +1,19 @@
+usage: train_source_selector.py [-h] --cache CACHE --out OUT --candidate-mode
+                                {restored,restored_detail,raw_detail} --seed
+                                {0,1,2} [--device {cpu,npu,cuda}]
+                                [--splits SPLITS]
+
+Source-only fixed-budget correction heads; no target frames or selection.
+Reuse the frozen observable features/network/MSE machinery. All three
+candidate families use the same source clips, scene split, seed-specific model
+state and frame sampling plan. Normalization is fit-scene-only and family-
+specific.
+
+options:
+  -h, --help            show this help message and exit
+  --cache CACHE
+  --out OUT
+  --candidate-mode {restored,restored_detail,raw_detail}
+  --seed {0,1,2}
+  --device {cpu,npu,cuda}
+  --splits SPLITS

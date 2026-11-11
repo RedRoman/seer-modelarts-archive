@@ -1,0 +1,32 @@
+{
+  "purpose": "synthetic CPU strict-load/shape smoke; no data evaluation",
+  "shape": [
+    3,
+    3,
+    32,
+    32
+  ],
+  "finite": true,
+  "provenance": {
+    "label": "STCD official SDSD-indoor released reference; zero BVI fine-tuning",
+    "source_domain": "SDSD indoor only, as documented by the official release",
+    "source_repo": "https://github.com/xiaogang00/LLVE_STCD",
+    "public_checkpoint": "https://drive.google.com/file/d/1sUzhwKWxJOjITFL8ypb3UQeofz0KI7E4/view",
+    "public_archive_name": "pretrained_model_LLVE_STCD.zip",
+    "checkpoint": "/temp/zihaohe/seer_cvpr/code/ext_methods/LLVE_STCD/pretrained_model/SDSD_indoor_model/indoor_G.pth",
+    "checkpoint_sha256": "dc50957303b2ac15d2f71a32c3d4231c47c5d3f8dc21daa52bccf48faea49cda",
+    "public_archive_byte_identity_reverified": false,
+    "checkpoint_origin_note": "Existing archived official-release file; no new public archive download/hash manifest",
+    "source_root": "/temp/zihaohe/seer_cvpr/code/ext_methods/LLVE_STCD",
+    "upstream_source_sha256": {
+      "models/archs/arch_util.py": "7939420cd8105cf430b3e4a92333435ce1a015e1afd0644610dca94627d13bd8",
+      "models/archs/low_light_transformer42.py": "b55c74879b6a0c3de44f60b69e79bd6c34a7380490d22038cd125d6f2a0b034b"
+    },
+    "in_memory_adaptation": "Remove exactly two constructor .to('cuda') calls; inject isolated pinned arch_util; no network-operation changes",
+    "adapted_architecture_sha256": "c95868792c2b9214682f4be58fcbb07882027ee493fb0e5889535453f3c8cc33",
+    "state_sha256": "05099b76cdcad9e380d5b7d8c84b291a849702c34bab3debede82f6428353973",
+    "parameters": 1810678,
+    "load_state_dict_strict": true,
+    "precision": "float32; no autocast"
+  }
+}

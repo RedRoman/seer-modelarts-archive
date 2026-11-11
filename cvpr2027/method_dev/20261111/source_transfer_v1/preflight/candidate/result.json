@@ -1,0 +1,19 @@
+{
+  "host": "huawei-modelarts-31051",
+  "device": "cpu",
+  "python": "/cache/zihaohe/seer_cvpr/venv_npu/bin/python",
+  "cpu_threads": 4,
+  "copied_utc": "2026-11-11T14:54:07.660116+00:00",
+  "files": {
+    "models/observation_candidates.py": "6c2747de79dcdea95832bd7a221d266f00257078360b9b425cfad5811ff178b8",
+    "tests/test_observation_candidates.py": "a733cd9832060b3750f8566fc9842e485a019f983ebf17fe8352bdf431af5b9a"
+  },
+  "completed_utc": "2026-11-11T14:56:06.842464+00:00",
+  "status": "PASS",
+  "tests": 7,
+  "skips": 0,
+  "test_seconds": 0.058,
+  "log_sha256": "fafa05d449024e7441c31eb1f8c9f2aa3f8635364e77b6b1211da453f929de46",
+  "remote_root": "/cache/zihaohe/seer_method_dev_20261111/source_transfer_v1/preflight_candidate/attempt2",
+  "command": "OMP_NUM_THREADS=4 MKL_NUM_THREADS=4 OPENBLAS_NUM_THREADS=4 PYTHONDONTWRITEBYTECODE=1 /cache/zihaohe/seer_cvpr/venv_npu/bin/python -B -m unittest discover -s tests -p test_observation_candidates.py -v"
+}
