@@ -1,0 +1,25 @@
+{
+  "created_utc": "2026-11-11T16:17:09.449523+00:00",
+  "new_owned_source_sha256": {
+    "tools/cache_adjacent_flows.py": "7893ac7ad73f0637af25bbff9676eceb12bdea553e55f5028d5b2494ea981d18",
+    "tests/test_cache_adjacent_flows.py": "11741ced1c74f797f4eb45a937a70c85d046fbe9a4a8189c9c505320ebe4ca84"
+  },
+  "unchanged_reference_sha256": {
+    "tools/cache_correction_oracle.py": "7c989a8873101e6139af4cd2c81d0675e5c440024e177a1ae90c10544359fadd"
+  },
+  "donor_function_sha256": "92ea05233443480976a78604576a457ad4bc35731ae0c88f63f1993662c35125",
+  "remote_source_hashes_equal_local": true,
+  "cpu_tests": {
+    "host": "huawei-modelarts-32193",
+    "python": "/home/ma-user/anaconda3/envs/PyTorch-2.7.1/bin/python",
+    "remote_directory": "/cache/zihaohe/seer_observation_dev_20261112/controls_cpu_v1",
+    "tests_run": 11,
+    "tests_skipped": 0,
+    "passed": true,
+    "runtime_seconds": 0.307,
+    "log_sha256": "c73e4677fc05287adb385c16ce10c1b7d17921740c63511d61c16713e86854b9",
+    "device_backend_autoload": "0",
+    "threads": 1
+  },
+  "scope": "Synthetic CPU/fakeRAFT only; no real cache/GT/target frames/weights loaded; frozen v1 source unchanged"
+}

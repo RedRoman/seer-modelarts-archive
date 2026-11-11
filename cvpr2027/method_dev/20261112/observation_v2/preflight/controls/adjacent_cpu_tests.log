@@ -1,0 +1,40 @@
+test_full_136_manifest_requires_every_original_sha_and_order (test_cache_adjacent_flows.ManifestTests.test_full_136_manifest_requires_every_original_sha_and_order) ... ok
+test_helper_signature_and_pinned_function_source (test_cache_adjacent_flows.ManifestTests.test_helper_signature_and_pinned_function_source) ... ok
+test_missing_file_or_incomplete_state_fails_before_export (test_cache_adjacent_flows.ManifestTests.test_missing_file_or_incomplete_state_fails_before_export) ... ok
+test_output_path_is_exclusive_and_resolved_under_cache (test_cache_adjacent_flows.ManifestTests.test_output_path_is_exclusive_and_resolved_under_cache) ... ok
+test_adjacent_direction_batching_mask_and_four_frame_boundary (test_cache_adjacent_flows.TensorTests.test_adjacent_direction_batching_mask_and_four_frame_boundary) ... ok
+test_base_shape_range_dtype_and_train_mode_are_rejected (test_cache_adjacent_flows.TensorTests.test_base_shape_range_dtype_and_train_mode_are_rejected) ... ok
+test_export_is_base_only_self_contained_and_gt_agnostic (test_cache_adjacent_flows.TensorTests.test_export_is_base_only_self_contained_and_gt_agnostic) ... {"event": "exported_base", "index": 0, "name": "SDSD_indoor/a"}
+{"event": "exported_base", "index": 1, "name": "SDSD_indoor/a_2"}
+{"event": "exported_base", "index": 2, "name": "SDSD_outdoor/a"}
+{"event": "exported_base", "index": 3, "name": "SDSD_outdoor/a_2"}
+ok
+test_flow_cache_full_and_slim_are_equal_and_preserve_lineage (test_cache_adjacent_flows.TensorTests.test_flow_cache_full_and_slim_are_equal_and_preserve_lineage) ... {"event": "exported_base", "index": 0, "name": "SDSD_indoor/a"}
+{"event": "exported_base", "index": 1, "name": "SDSD_indoor/a_2"}
+{"event": "exported_base", "index": 2, "name": "SDSD_outdoor/a"}
+{"event": "exported_base", "index": 3, "name": "SDSD_outdoor/a_2"}
+{"event": "cached_adjacent", "index": 0, "name": "SDSD_indoor/a", "elapsed_seconds": 0.005}
+{"event": "cached_adjacent", "index": 1, "name": "SDSD_indoor/a_2", "elapsed_seconds": 0.01}
+{"event": "cached_adjacent", "index": 2, "name": "SDSD_outdoor/a", "elapsed_seconds": 0.015}
+{"event": "cached_adjacent", "index": 3, "name": "SDSD_outdoor/a_2", "elapsed_seconds": 0.02}
+{"event": "cached_adjacent", "index": 0, "name": "SDSD_indoor/a", "elapsed_seconds": 0.004}
+{"event": "cached_adjacent", "index": 1, "name": "SDSD_indoor/a_2", "elapsed_seconds": 0.009}
+{"event": "cached_adjacent", "index": 2, "name": "SDSD_outdoor/a", "elapsed_seconds": 0.013}
+{"event": "cached_adjacent", "index": 3, "name": "SDSD_outdoor/a_2", "elapsed_seconds": 0.017}
+ok
+test_original_loader_accesses_no_other_tensor_key (test_cache_adjacent_flows.TensorTests.test_original_loader_accesses_no_other_tensor_key) ... ok
+test_slim_detects_file_and_tensor_lineage_tampering (test_cache_adjacent_flows.TensorTests.test_slim_detects_file_and_tensor_lineage_tampering) ... {"event": "exported_base", "index": 0, "name": "SDSD_indoor/a"}
+{"event": "exported_base", "index": 1, "name": "SDSD_indoor/a_2"}
+{"event": "exported_base", "index": 2, "name": "SDSD_outdoor/a"}
+{"event": "exported_base", "index": 3, "name": "SDSD_outdoor/a_2"}
+ok
+test_wrong_weights_or_mutated_raft_state_fail_without_complete_summary (test_cache_adjacent_flows.TensorTests.test_wrong_weights_or_mutated_raft_state_fail_without_complete_summary) ... {"event": "cached_adjacent", "index": 0, "name": "SDSD_indoor/a", "elapsed_seconds": 0.005}
+{"event": "cached_adjacent", "index": 1, "name": "SDSD_indoor/a_2", "elapsed_seconds": 0.01}
+{"event": "cached_adjacent", "index": 2, "name": "SDSD_outdoor/a", "elapsed_seconds": 0.015}
+{"event": "cached_adjacent", "index": 3, "name": "SDSD_outdoor/a_2", "elapsed_seconds": 0.02}
+ok
+
+----------------------------------------------------------------------
+Ran 11 tests in 0.307s
+
+OK

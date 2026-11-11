@@ -1,0 +1,21 @@
+{
+  "host": "32193",
+  "python": "/home/ma-user/anaconda3/envs/PyTorch-2.7.1/bin/python",
+  "backend_autoload": 0,
+  "cpu_tests": {
+    "passed": 12,
+    "skipped": 0
+  },
+  "source_sha256": {
+    "cvpr2027/code_full/models/trajectory_reconstruction.py": "0b94db04a309b91c83e25a83e1ca9d70f8eaa2983cc08bc952b8fff972dbd716",
+    "cvpr2027/code_full/tests/test_trajectory_reconstruction.py": "1fee1026e2df2f2b0c839be66dd61c6d1272cf79bbe913be6834fea87b8963bd"
+  },
+  "evidence_sha256": {
+    "cpu_tests.log": "75f5e306f83ebbad92a8954e00a617a1b7dba87fc0e11998435cfce5643977c3",
+    "benchmark.json": "8eccb5be5483b4036671a6672c89002cf00bb7596bda4fb14fd439b5196a4264",
+    "benchmark.log": "254d6f5a1da0d597312d7a7d98dc67c7d63bcfa6a1211591c6dd1eced6f26d36",
+    "benchmark_trajectory.py": "a87a4427f54804871f09d72adc8e8d7e3287072486e5c1b4d6817169082ec647"
+  },
+  "remote_directory": "/cache/zihaohe/seer_graph_preflight_20261112",
+  "scope": "Synthetic CPU tests and benchmark only; no accelerator or real-data quality evaluation."
+}

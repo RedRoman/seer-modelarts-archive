@@ -1,0 +1,19 @@
+test_all_21_heads_load_with_matching_seed_plan_and_cpu_frozen_states (test_eval_observation_v2.EvaluationProvenanceTests.test_all_21_heads_load_with_matching_seed_plan_and_cpu_frozen_states) ... ok
+test_candidate_mode_scope_and_fixed_budget_are_checked (test_eval_observation_v2.EvaluationProvenanceTests.test_candidate_mode_scope_and_fixed_budget_are_checked) ... ok
+test_checkpoint_file_and_tensor_fingerprints_are_both_checked (test_eval_observation_v2.EvaluationProvenanceTests.test_checkpoint_file_and_tensor_fingerprints_are_both_checked) ... ok
+test_common_forged_initialization_cannot_pass_cross_variant_matching (test_eval_observation_v2.EvaluationProvenanceTests.test_common_forged_initialization_cannot_pass_cross_variant_matching) ... ok
+test_common_forged_sample_plan_cannot_pass_cross_variant_matching (test_eval_observation_v2.EvaluationProvenanceTests.test_common_forged_sample_plan_cannot_pass_cross_variant_matching) ... ok
+test_hash_formats_are_distinct_and_base_raft_call_sites_use_torch_format (test_eval_observation_v2.EvaluationProvenanceTests.test_hash_formats_are_distinct_and_base_raft_call_sites_use_torch_format) ... ok
+test_head_source_manifest_must_equal_preparation (test_eval_observation_v2.EvaluationProvenanceTests.test_head_source_manifest_must_equal_preparation) ... ok
+test_missing_duplicate_and_unexpected_seed_rejected (test_eval_observation_v2.EvaluationProvenanceTests.test_missing_duplicate_and_unexpected_seed_rejected) ... ok
+test_source_hash_manifest_missing_changed_or_escaping_fails_closed (test_eval_observation_v2.EvaluationProvenanceTests.test_source_hash_manifest_missing_changed_or_escaping_fails_closed) ... ok
+test_source_manifest_complete_and_51_17_scene_split (test_eval_observation_v2.EvaluationProvenanceTests.test_source_manifest_complete_and_51_17_scene_split) ... ok
+test_target_or_oracle_markers_and_source_names_split_are_rejected (test_eval_observation_v2.EvaluationProvenanceTests.test_target_or_oracle_markers_and_source_names_split_are_rejected) ... ok
+test_crop_masks_reject_donors_outside_available_state (test_train_observation_v2.SourceCropTests.test_crop_masks_reject_donors_outside_available_state) ... ok
+test_fit_only_clip_plan_and_valid_frame_crop_budget (test_train_observation_v2.SourcePlanTests.test_fit_only_clip_plan_and_valid_frame_crop_budget) ... ok
+test_scene_prefixes_prevent_accidental_source_mix (test_train_observation_v2.SourcePlanTests.test_scene_prefixes_prevent_accidental_source_mix) ... ok
+
+----------------------------------------------------------------------
+Ran 14 tests in 6.801s
+
+OK

@@ -1,0 +1,28 @@
+{
+  "created_utc": "2026-11-11T16:06:54.319976+00:00",
+  "new_owned_source_sha256": {
+    "models/observation_controls.py": "1e53b72ca23c56fd8631e6c19178aab60b69b2f1aadaa1ae794135f61aba60f2",
+    "tests/test_observation_controls.py": "2a85cc872e90d72c19cbf4e21d07256b5e732e1121abe7398b70604cc273ade6"
+  },
+  "unchanged_reference_sha256": {
+    "models/observation_candidates.py": "6c2747de79dcdea95832bd7a221d266f00257078360b9b425cfad5811ff178b8"
+  },
+  "remote_source_hashes_equal_local": true,
+  "cpu_tests": {
+    "host": "huawei-modelarts-32193",
+    "python": "/home/ma-user/anaconda3/envs/PyTorch-2.7.1/bin/python",
+    "remote_directory": "/cache/zihaohe/seer_observation_dev_20261112/controls_cpu_v1",
+    "environment": {
+      "TORCH_DEVICE_BACKEND_AUTOLOAD": "0",
+      "OMP_NUM_THREADS": "1",
+      "MKL_NUM_THREADS": "1",
+      "OPENBLAS_NUM_THREADS": "1"
+    },
+    "tests_run": 13,
+    "tests_skipped": 0,
+    "passed": true,
+    "runtime_seconds": 0.388,
+    "log_sha256": "168af4415de37efbe811b8f65a48d819c209a6c530640abf7af6981cafaf6cec"
+  },
+  "scope": "data-free CPU only; no cache/training/target evaluation; old source files unchanged"
+}
