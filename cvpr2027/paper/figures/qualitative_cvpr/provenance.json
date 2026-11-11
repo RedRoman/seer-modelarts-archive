@@ -1,0 +1,237 @@
+{
+  "generated_at_utc": "2026-11-11T10:59:14.702143+00:00",
+  "hostname": "ma-job-31f7571d-75c6-4944-90cd-ee8d91cb0532-worker-0",
+  "arguments": {
+    "out": "/cache/zihaohe/seer_takeover_20261111/qualitative_verified",
+    "ours": "/cache/zihaohe/seer_cvpr/runs_e17/e17_small_pretrained_s0/final_cpu.pt",
+    "none": "/cache/zihaohe/seer_cvpr/runs_e17/e17_small_none_s0/final_cpu.pt",
+    "retinexformer": "/temp/zihaohe/seer_cvpr/weights_small/checkpoint/runs/retinexformer_seer_protocol/experiments/RetinexFormer_SDSD_union_seer_protocol/models/net_g_160000.pth",
+    "margins": "/cache/zihaohe/seer_takeover_20261111/incoming/qualitative_selection_margins.json",
+    "crop": 256,
+    "device": "npu:0"
+  },
+  "selection_basis": "Three-seed mean prior PSNR-Y minus retrained Retinexformer, 39 test sequences",
+  "panel_seed": 0,
+  "cpu_threads": 4,
+  "retinexformer_device": "cpu",
+  "npu_visible_devices": "7",
+  "reconstruction": {
+    "ours": {
+      "version": 2,
+      "mode": "saved",
+      "arch": "v2",
+      "trained_arm": "pretrained",
+      "arm": "pretrained",
+      "clip_len": 16,
+      "branch": "small",
+      "xattn": "global",
+      "kv": "per_tubelet",
+      "layers": "single",
+      "taps": [
+        5,
+        11,
+        17,
+        23
+      ],
+      "token_proj": "none",
+      "token_proj_k": 4,
+      "random_encoder_seed": null
+    },
+    "none": {
+      "version": 2,
+      "mode": "saved",
+      "arch": "v2",
+      "trained_arm": "none",
+      "arm": "none",
+      "clip_len": 16,
+      "branch": "small",
+      "xattn": "global",
+      "kv": "per_tubelet",
+      "layers": "single",
+      "taps": [
+        5,
+        11,
+        17,
+        23
+      ],
+      "token_proj": "none",
+      "token_proj_k": 4,
+      "random_encoder_seed": null
+    }
+  },
+  "sources": {
+    "ours_checkpoint": {
+      "path": "/cache/zihaohe/seer_cvpr/runs_e17/e17_small_pretrained_s0/final_cpu.pt",
+      "bytes": 89737483,
+      "sha256": "5ab6b6d04d7b13743965007d3754bd66f034d170ec7193abc2abb5a8aa6c8740"
+    },
+    "none_checkpoint": {
+      "path": "/cache/zihaohe/seer_cvpr/runs_e17/e17_small_none_s0/final_cpu.pt",
+      "bytes": 89737483,
+      "sha256": "fa3c0c9e720a28b56f01069f7a2cd407bc5b4d752a2a1d4482f1bd63557b5516"
+    },
+    "retinexformer_checkpoint": {
+      "path": "/temp/zihaohe/seer_cvpr/weights_small/checkpoint/runs/retinexformer_seer_protocol/experiments/RetinexFormer_SDSD_union_seer_protocol/models/net_g_160000.pth",
+      "bytes": 6476532,
+      "sha256": "928cfa4f130914aa49268807b1f751095c5d28875051d87e3922af00017e53b6"
+    },
+    "margins": {
+      "path": "/cache/zihaohe/seer_takeover_20261111/incoming/qualitative_selection_margins.json",
+      "bytes": 1749,
+      "sha256": "235d80c719e69607b5ccddaed1cdf2f7df5affcaf68f78713a9b9cf009a58dd7"
+    },
+    "generator": {
+      "path": "/cache/zihaohe/seer_takeover_20261111/incoming/dump_qual_cvpr_verified.py",
+      "bytes": 7288,
+      "sha256": "c52dbf82527f22049411d0558528dd9995e02fe510246fa68c6354a97dc69372"
+    },
+    "baseline_loader": {
+      "path": "/cache/zihaohe/seer_cvpr/qual_regen/eval_baseline.py",
+      "bytes": 7148,
+      "sha256": "0bd3fd1a543d100245e2bed2814f5a570c106f38f2d523ad220fe1c12db4dbc9"
+    },
+    "selection_provenance": {
+      "path": "/cache/zihaohe/seer_takeover_20261111/incoming/qualitative_selection_provenance.json",
+      "bytes": 1661,
+      "sha256": "3ea20dcb99b273f2bd048b1b1b3295ab8fb3d86771e48ca3464318961111f804"
+    },
+    "frozen_encoder_checkpoint": {
+      "path": "/temp/zihaohe/seer_cvpr/weights/vjepa2_1_vitl_dist_vitG_384.pt",
+      "bytes": 5151198524,
+      "sha256": "7ea9b7cb4a75d10644a8a8d42cff9e177b10dca8f02173f0eaf2b0bed82838c6"
+    },
+    "eval_e4": {
+      "path": "/cache/zihaohe/seer_takeover_20261111/code_full/tools/eval_e4.py",
+      "bytes": 23236,
+      "sha256": "3fb906535d76ca11e379d41113424d1d1d47205d56ca5f5de0b557c3adcf0467"
+    },
+    "checkpoint_config": {
+      "path": "/cache/zihaohe/seer_takeover_20261111/code_full/tools/checkpoint_config.py",
+      "bytes": 5190,
+      "sha256": "1afa4b685b092150a7f178938c80cc31d339d901335b357ce0c3bdcdcd6f4c7b"
+    },
+    "pixel_branch_v2": {
+      "path": "/cache/zihaohe/seer_takeover_20261111/code_full/models/pixel_branch_v2.py",
+      "bytes": 11344,
+      "sha256": "f83c1aaa5797e5413a1adb41d49cecc0a093e72159e6d4fdbaf610168b739222"
+    },
+    "retinexformer_arch": {
+      "path": "/temp/zihaohe/seer_cvpr/code/ext_methods/Retinexformer/basicsr/models/archs/RetinexFormer_arch.py",
+      "bytes": 12312,
+      "sha256": "1567c89d55285a3c1a4d4ca33f288b1fd98dc6b6bbdf971eda02d745f9087631"
+    },
+    "splits_cvpr": {
+      "path": "/temp/zihaohe/seer_cvpr/datasets/splits_cvpr.json",
+      "bytes": 6927,
+      "sha256": "fb6be5ea78ef73f5cc9db90bca75813bf597275f7609fe39d82f5b2f883e9ad0"
+    }
+  },
+  "outputs": {
+    "SDSD_indoor__pair6_2__gt.png": {
+      "path": "/cache/zihaohe/seer_takeover_20261111/qualitative_verified/SDSD_indoor__pair6_2__gt.png",
+      "bytes": 51220,
+      "sha256": "1995b1b19d035b3b8f44a23d89cdf9031b64546d0f204dd7c6eb9663815573cb"
+    },
+    "SDSD_indoor__pair6_2__lq.png": {
+      "path": "/cache/zihaohe/seer_takeover_20261111/qualitative_verified/SDSD_indoor__pair6_2__lq.png",
+      "bytes": 55962,
+      "sha256": "41e0507c288d32b1bff13cefd935b31c106d8030f94990f1c6bc541095ab7b43"
+    },
+    "SDSD_indoor__pair6_2__none.png": {
+      "path": "/cache/zihaohe/seer_takeover_20261111/qualitative_verified/SDSD_indoor__pair6_2__none.png",
+      "bytes": 79251,
+      "sha256": "36e3223fa1d4c27c3ac64432fbaf43e7f959d0f1d041637e41d13aa1090ecb34"
+    },
+    "SDSD_indoor__pair6_2__ours.png": {
+      "path": "/cache/zihaohe/seer_takeover_20261111/qualitative_verified/SDSD_indoor__pair6_2__ours.png",
+      "bytes": 79207,
+      "sha256": "c9aebd2e449f56e0e987af8910b633005e71d6914d05c96cb0fe7077abd455d5"
+    },
+    "SDSD_indoor__pair6_2__retinexformer.png": {
+      "path": "/cache/zihaohe/seer_takeover_20261111/qualitative_verified/SDSD_indoor__pair6_2__retinexformer.png",
+      "bytes": 69679,
+      "sha256": "df4d4aec3e3268456d91ffcc37ebaf198da22ba78e62ab1fac763c58bcafefae"
+    },
+    "SDSD_outdoor__MVI_1011_2__gt.png": {
+      "path": "/cache/zihaohe/seer_takeover_20261111/qualitative_verified/SDSD_outdoor__MVI_1011_2__gt.png",
+      "bytes": 70999,
+      "sha256": "de080fe7d78659bdf1bb0ae33a56eaf14344647bad3e554658683d7de5cd3216"
+    },
+    "SDSD_outdoor__MVI_1011_2__lq.png": {
+      "path": "/cache/zihaohe/seer_takeover_20261111/qualitative_verified/SDSD_outdoor__MVI_1011_2__lq.png",
+      "bytes": 53589,
+      "sha256": "d8b3a0fab9a4929795aebf725acc2b7e0885d755dc03d3f1a8f62d9c4c3b9291"
+    },
+    "SDSD_outdoor__MVI_1011_2__none.png": {
+      "path": "/cache/zihaohe/seer_takeover_20261111/qualitative_verified/SDSD_outdoor__MVI_1011_2__none.png",
+      "bytes": 82498,
+      "sha256": "0a28d11fd30f9e72d4ea57870e1b2ad60389703173c1ffbbe5b1cac01b99ebbe"
+    },
+    "SDSD_outdoor__MVI_1011_2__ours.png": {
+      "path": "/cache/zihaohe/seer_takeover_20261111/qualitative_verified/SDSD_outdoor__MVI_1011_2__ours.png",
+      "bytes": 80321,
+      "sha256": "12c750c4300e5ee955057d9e7e6b82f91a1f9e6e8a7114b57c2b5a976435d906"
+    },
+    "SDSD_outdoor__MVI_1011_2__retinexformer.png": {
+      "path": "/cache/zihaohe/seer_takeover_20261111/qualitative_verified/SDSD_outdoor__MVI_1011_2__retinexformer.png",
+      "bytes": 82918,
+      "sha256": "1d3cca32919ae71ce96dba2acc3ec7705df0edc70e7ba7fb71ae03df8f7a1faa"
+    },
+    "SDSD_outdoor__MVI_1026__gt.png": {
+      "path": "/cache/zihaohe/seer_takeover_20261111/qualitative_verified/SDSD_outdoor__MVI_1026__gt.png",
+      "bytes": 59254,
+      "sha256": "bdbc43eb7c04bdd035388127d29b21141be6b96a4938fdeb8960baa6eb0badfe"
+    },
+    "SDSD_outdoor__MVI_1026__lq.png": {
+      "path": "/cache/zihaohe/seer_takeover_20261111/qualitative_verified/SDSD_outdoor__MVI_1026__lq.png",
+      "bytes": 49857,
+      "sha256": "d4904f88b27a5500df5262344db7bcaae287bb6552a8916e25db8f662a436abd"
+    },
+    "SDSD_outdoor__MVI_1026__none.png": {
+      "path": "/cache/zihaohe/seer_takeover_20261111/qualitative_verified/SDSD_outdoor__MVI_1026__none.png",
+      "bytes": 73922,
+      "sha256": "afe1d90c178f8a8a24fbd3346439992385da8bd82c4a46c9ed506036cf840978"
+    },
+    "SDSD_outdoor__MVI_1026__ours.png": {
+      "path": "/cache/zihaohe/seer_takeover_20261111/qualitative_verified/SDSD_outdoor__MVI_1026__ours.png",
+      "bytes": 70622,
+      "sha256": "8238c6228d78bd2eb298fce21c94fdd38c733564f74e89ab491bbeddd2403871"
+    },
+    "SDSD_outdoor__MVI_1026__retinexformer.png": {
+      "path": "/cache/zihaohe/seer_takeover_20261111/qualitative_verified/SDSD_outdoor__MVI_1026__retinexformer.png",
+      "bytes": 83143,
+      "sha256": "8dbccad264727184e75684eda76625e4d0cbc75f25ae5cb83e4b06a27d197926"
+    },
+    "SDSD_outdoor__MVI_1028_2__gt.png": {
+      "path": "/cache/zihaohe/seer_takeover_20261111/qualitative_verified/SDSD_outdoor__MVI_1028_2__gt.png",
+      "bytes": 92903,
+      "sha256": "2a06b5de9a66267de9dbf9b55a076c26634b4a05efcebb6d8462e192680a2c89"
+    },
+    "SDSD_outdoor__MVI_1028_2__lq.png": {
+      "path": "/cache/zihaohe/seer_takeover_20261111/qualitative_verified/SDSD_outdoor__MVI_1028_2__lq.png",
+      "bytes": 64973,
+      "sha256": "0eb37908716a0ec0a2494153ca1e2c869249b93cce49e0bd1916dc8a46f6a7df"
+    },
+    "SDSD_outdoor__MVI_1028_2__none.png": {
+      "path": "/cache/zihaohe/seer_takeover_20261111/qualitative_verified/SDSD_outdoor__MVI_1028_2__none.png",
+      "bytes": 86559,
+      "sha256": "b3543ccaf08b46a8ba2a5beb06a8a8de2c15cd4216cbf391b3dfb0503e0c6d19"
+    },
+    "SDSD_outdoor__MVI_1028_2__ours.png": {
+      "path": "/cache/zihaohe/seer_takeover_20261111/qualitative_verified/SDSD_outdoor__MVI_1028_2__ours.png",
+      "bytes": 88837,
+      "sha256": "8a4bfa5f1630993946f403c1e7a9e97f2c0de61d864ff460245a3215875998f3"
+    },
+    "SDSD_outdoor__MVI_1028_2__retinexformer.png": {
+      "path": "/cache/zihaohe/seer_takeover_20261111/qualitative_verified/SDSD_outdoor__MVI_1028_2__retinexformer.png",
+      "bytes": 96269,
+      "sha256": "759a5a81b013eba0fb03144d6013ba908456af504081201124facc25cdb54923"
+    },
+    "qualitative.json": {
+      "path": "/cache/zihaohe/seer_takeover_20261111/qualitative_verified/qualitative.json",
+      "bytes": 1834,
+      "sha256": "736f5aed38821b8c2d195b69d46c060e07469df771609f47de61d5a4ad93608f"
+    }
+  },
+  "source_modifications": "Isolated saved evaluator import, explicit checkpoint reconstruction, four CPU threads, and provenance recording. Selection and frame generation logic retained."
+}

@@ -1,0 +1,510 @@
+{
+  "analysis": "Inference-only recovery of available final-step E18 checkpoints; no tuning or checkpoint selection",
+  "bootstrap": {
+    "replicates": 10000,
+    "rng_seed": 0,
+    "shared_draws_across_metrics": true,
+    "sequence_and_scene_rng_streams": "independently initialized with seed 0",
+    "scene_rule": "strip terminal _2; resample clusters retaining every member; sequence-weighted statistic"
+  },
+  "temporal_score": "Primary matches repaired aggregate.py: average raw prediction and GT across seeds within each arm and sequence, then absolute gap and paired difference. Per-seed signs use within-seed absolute gaps. Alternative mean-of-per-seed-absolute-gaps is separately labeled diagnostic.",
+  "hybrid_vs_matched_prior": {
+    "description": "Hybrid kv, seeds 0 and 1 versus corresponding full-token per-tubelet prior",
+    "difference_direction": "corrected E18 minus matched prior",
+    "seeds": [
+      0,
+      1
+    ],
+    "n_sequences": 39,
+    "n_scene_clusters": 21,
+    "sources": [
+      {
+        "_source_path": "cvpr2027/results/protocol_audit_20261111/reevaluated/e18_hybrid_s0_saved.json",
+        "_source_sha256": "d072c0c37290cb289ae15a6a017f81e61fbac5135e71e5db0ad2ad0240edd2ef",
+        "seed": 0,
+        "aggregate": {
+          "psnr_rgb": 24.06211017722371,
+          "psnr_y": 24.791776900650387,
+          "psnr_y_gtmean": 28.08072911308153,
+          "lpips": 0.21352424090489364,
+          "input_psnr_y": 11.81614732548535,
+          "tlp": 0.03906810669403555,
+          "mabd": 0.0027051731878413986,
+          "flicker": 0.011718380491798505,
+          "warp_err": 0.01230881661654283,
+          "gt_tlp": 0.02590762785890609,
+          "gt_mabd": 0.0003427727112862974,
+          "gt_flicker": 0.009009970572944254,
+          "gt_warp_err": 0.008744641434019193
+        }
+      },
+      {
+        "_source_path": "cvpr2027/results/protocol_audit_20261111/reevaluated/e18_hybrid_s1_saved.json",
+        "_source_sha256": "0ee12374e92e063210c1d34c8f055cea50bd4ad7d0f27e5a917bc79c3eaf9471",
+        "seed": 1,
+        "aggregate": {
+          "psnr_rgb": 23.782152027242656,
+          "psnr_y": 24.409952324516723,
+          "psnr_y_gtmean": 28.325882313591457,
+          "lpips": 0.2153270076482724,
+          "input_psnr_y": 11.81614732548535,
+          "tlp": 0.03819618351502806,
+          "mabd": 0.0022046582994218436,
+          "flicker": 0.010834246623114897,
+          "warp_err": 0.011395918706861826,
+          "gt_tlp": 0.02590762785890609,
+          "gt_mabd": 0.0003427727112862974,
+          "gt_flicker": 0.009009970572944254,
+          "gt_warp_err": 0.008744641434019193
+        }
+      }
+    ],
+    "baseline_sources": [
+      {
+        "_source_path": "cvpr2027/results/cvpr_converged/indomain/e17_small_pretrained_s0.json",
+        "_source_sha256": "6cae86eef2d92d11a69a6a6e58292045a2bee99145e06cccf1867a52e535fef8",
+        "seed": 0,
+        "aggregate": {
+          "psnr_rgb": 23.915113855205142,
+          "psnr_y": 24.688058845069683,
+          "psnr_y_gtmean": 28.550441781122707,
+          "lpips": 0.2172639182744882,
+          "input_psnr_y": 11.81614732548535,
+          "tlp": 0.041412720485375476,
+          "mabd": 0.002308005762573045,
+          "flicker": 0.0114747891202569,
+          "gt_tlp": 0.02590762785890609,
+          "gt_mabd": 0.0003427727112862974,
+          "gt_flicker": 0.009009970572944254
+        }
+      },
+      {
+        "_source_path": "cvpr2027/results/cvpr_converged/indomain/e17_small_pretrained_s1.json",
+        "_source_sha256": "4532364e5e99170bc55c4ad367d56c7655af9288a918de14e694ae5c726351c4",
+        "seed": 1,
+        "aggregate": {
+          "psnr_rgb": 23.605459577505496,
+          "psnr_y": 24.41611505247998,
+          "psnr_y_gtmean": 28.157757773032035,
+          "lpips": 0.22122789881168267,
+          "input_psnr_y": 11.81614732548535,
+          "tlp": 0.03911530657265431,
+          "mabd": 0.0024983103787048887,
+          "flicker": 0.010915110675761333,
+          "gt_tlp": 0.02590762785890609,
+          "gt_mabd": 0.0003427727112862974,
+          "gt_flicker": 0.009009970572944254
+        }
+      }
+    ],
+    "metrics": {
+      "psnr_y": {
+        "available": true,
+        "corrected_mean": 24.600864612583557,
+        "baseline_mean": 24.552086948774832,
+        "mean_difference": 0.04877766380872272,
+        "per_seed_differences": [
+          0.10371805558070057,
+          -0.0061627279632545835
+        ],
+        "sequence_ci95": [
+          -0.4249585915332865,
+          0.49193742417726277
+        ],
+        "scene_cluster_ci95": [
+          -0.4670579641217729,
+          0.5415253034523961
+        ],
+        "same_sign_across_seeds": false,
+        "ci_excludes_zero": false,
+        "interpretation_limit": "Two observed training seeds only"
+      },
+      "lpips": {
+        "available": true,
+        "corrected_mean": 0.21442562427658302,
+        "baseline_mean": 0.21924590854308543,
+        "mean_difference": -0.00482028426650243,
+        "per_seed_differences": [
+          -0.003739677369594574,
+          -0.0059008911634102846
+        ],
+        "sequence_ci95": [
+          -0.008113462160317561,
+          -0.0016320129760946985
+        ],
+        "scene_cluster_ci95": [
+          -0.00805754566278595,
+          -0.0014376026526779738
+        ],
+        "same_sign_across_seeds": true,
+        "ci_excludes_zero": true,
+        "interpretation_limit": "Two observed training seeds only"
+      },
+      "psnr_y_gtmean": {
+        "available": true,
+        "corrected_mean": 28.203305713336487,
+        "baseline_mean": 28.354099777077362,
+        "mean_difference": -0.15079406374087695,
+        "per_seed_differences": [
+          -0.4697126680411778,
+          0.1681245405594243
+        ],
+        "sequence_ci95": [
+          -0.5090770873408551,
+          0.12567151382708344
+        ],
+        "scene_cluster_ci95": [
+          -0.5199372514110396,
+          0.13790804021184477
+        ],
+        "same_sign_across_seeds": false,
+        "ci_excludes_zero": false,
+        "interpretation_limit": "Two observed training seeds only"
+      },
+      "d_tlp": {
+        "available": true,
+        "corrected_mean": 0.016056055178802105,
+        "baseline_mean": 0.017628334080959616,
+        "mean_difference": -0.0015722789021575053,
+        "per_seed_differences": [
+          -0.0023842025277578927,
+          -0.0007603552765571154
+        ],
+        "sequence_ci95": [
+          -0.0027322696961669464,
+          -0.0006411974885676091
+        ],
+        "scene_cluster_ci95": [
+          -0.0026401111149169216,
+          -0.0006354235086163367
+        ],
+        "same_sign_across_seeds": true,
+        "ci_excludes_zero": true,
+        "interpretation_limit": "Two observed training seeds only",
+        "per_seed_abs_gap_then_average_diagnostic": {
+          "definition": "Alternative diagnostic only: take each seed absolute gap before averaging seeds",
+          "corrected_mean": 0.01605605517880211,
+          "baseline_mean": 0.017628334080959613,
+          "mean_difference": -0.0015722789021575044
+        }
+      },
+      "d_mabd": {
+        "available": true,
+        "corrected_mean": 0.002112143032345324,
+        "baseline_mean": 0.0020603853593526697,
+        "mean_difference": 5.1757672992654334e-05,
+        "per_seed_differences": [
+          0.00039716742526835355,
+          -0.0002936520792830449
+        ],
+        "sequence_ci95": [
+          -0.0004360451608357461,
+          0.0006121785192450401
+        ],
+        "scene_cluster_ci95": [
+          -0.0004428209565230645,
+          0.0006236942765705555
+        ],
+        "same_sign_across_seeds": false,
+        "ci_excludes_zero": false,
+        "interpretation_limit": "Two observed training seeds only",
+        "per_seed_abs_gap_then_average_diagnostic": {
+          "definition": "Alternative diagnostic only: take each seed absolute gap before averaging seeds",
+          "corrected_mean": 0.002112143032345324,
+          "baseline_mean": 0.0020603853593526697,
+          "mean_difference": 5.1757672992654334e-05
+        }
+      },
+      "d_flicker": {
+        "available": true,
+        "corrected_mean": 0.003727256433847241,
+        "baseline_mean": 0.0036237807407115516,
+        "mean_difference": 0.00010347569313568946,
+        "per_seed_differences": [
+          0.00018122139124151989,
+          0.00013112590815394351
+        ],
+        "sequence_ci95": [
+          -0.000665816707829109,
+          0.0009267610378372357
+        ],
+        "scene_cluster_ci95": [
+          -0.0006385745816204412,
+          0.0009183570791375696
+        ],
+        "same_sign_across_seeds": true,
+        "ci_excludes_zero": false,
+        "interpretation_limit": "Two observed training seeds only",
+        "per_seed_abs_gap_then_average_diagnostic": {
+          "definition": "Alternative diagnostic only: take each seed absolute gap before averaging seeds",
+          "corrected_mean": 0.0037912551062897993,
+          "baseline_mean": 0.0036350814565920676,
+          "mean_difference": 0.00015617364969773171
+        }
+      },
+      "d_warp_err": {
+        "available": false
+      }
+    }
+  },
+  "all_layers_vs_prior_seed2": {
+    "description": "All-layer checkpoint directory ends npu_s0 but saved seed is 2; prior seed2 was trained on different hardware",
+    "difference_direction": "corrected E18 minus matched prior",
+    "seeds": [
+      2
+    ],
+    "n_sequences": 39,
+    "n_scene_clusters": 21,
+    "sources": [
+      {
+        "_source_path": "cvpr2027/results/protocol_audit_20261111/reevaluated/e18_layers_all_s2_saved.json",
+        "_source_sha256": "e8fab7cbd69333c38c0b969cdca4eef6db7481d758bd1f8f0dbce3bd9fb19f35",
+        "seed": 2,
+        "aggregate": {
+          "psnr_rgb": 24.36774614408075,
+          "psnr_y": 25.139352997155786,
+          "psnr_y_gtmean": 28.90925427963685,
+          "lpips": 0.20505360628549868,
+          "input_psnr_y": 11.81614732548535,
+          "tlp": 0.04096212084285723,
+          "mabd": 0.002393950326129412,
+          "flicker": 0.011255925413794242,
+          "warp_err": 0.012321604487414543,
+          "gt_tlp": 0.02590762785890609,
+          "gt_mabd": 0.0003427727112862974,
+          "gt_flicker": 0.009009970572944254,
+          "gt_warp_err": 0.008744641434019193
+        }
+      }
+    ],
+    "baseline_sources": [
+      {
+        "_source_path": "cvpr2027/results/cvpr_converged/indomain/e19_small_pretrained_s2.json",
+        "_source_sha256": "e2bb7cdfa0ac855cabf272f971fb80dfb4d077aabeadafd6799f28d3cf1b1cdd",
+        "seed": 2,
+        "aggregate": {
+          "psnr_rgb": 24.02718293243855,
+          "psnr_y": 24.663056994727125,
+          "psnr_y_gtmean": 28.15603951608444,
+          "lpips": 0.2095810801554949,
+          "input_psnr_y": 11.81614732548535,
+          "tlp": 0.038576051597602856,
+          "mabd": 0.0022762718831356135,
+          "flicker": 0.010985775504452296,
+          "warp_err": 0.01177371171518014,
+          "gt_tlp": 0.025899118250315507,
+          "gt_mabd": 0.0003427725250964077,
+          "gt_flicker": 0.00900997032220356,
+          "gt_warp_err": 0.008744019083678722
+        }
+      }
+    ],
+    "metrics": {
+      "psnr_y": {
+        "available": true,
+        "corrected_mean": 25.139352997155786,
+        "baseline_mean": 24.663056994727125,
+        "mean_difference": 0.47629600242866743,
+        "per_seed_differences": [
+          0.47629600242866743
+        ],
+        "sequence_ci95": [
+          -0.2763157881675468,
+          1.2451545376891113
+        ],
+        "scene_cluster_ci95": [
+          -0.2997074000433875,
+          1.1924403566434154
+        ],
+        "same_sign_across_seeds": null,
+        "ci_excludes_zero": false,
+        "interpretation_limit": "One seed and training-hardware difference; conditional checkpoint comparison only"
+      },
+      "lpips": {
+        "available": true,
+        "corrected_mean": 0.20505360628549868,
+        "baseline_mean": 0.2095810801554949,
+        "mean_difference": -0.004527473869996193,
+        "per_seed_differences": [
+          -0.004527473869996193
+        ],
+        "sequence_ci95": [
+          -0.009440720372666151,
+          8.564680241621446e-05
+        ],
+        "scene_cluster_ci95": [
+          -0.009698499786930206,
+          0.00042416842188686094
+        ],
+        "same_sign_across_seeds": null,
+        "ci_excludes_zero": false,
+        "interpretation_limit": "One seed and training-hardware difference; conditional checkpoint comparison only"
+      },
+      "psnr_y_gtmean": {
+        "available": true,
+        "corrected_mean": 28.90925427963685,
+        "baseline_mean": 28.15603951608444,
+        "mean_difference": 0.753214763552403,
+        "per_seed_differences": [
+          0.753214763552403
+        ],
+        "sequence_ci95": [
+          0.38244416130592906,
+          1.150949534068635
+        ],
+        "scene_cluster_ci95": [
+          0.40054856012898676,
+          1.1285444068374537
+        ],
+        "same_sign_across_seeds": null,
+        "ci_excludes_zero": true,
+        "interpretation_limit": "One seed and training-hardware difference; conditional checkpoint comparison only"
+      },
+      "d_tlp": {
+        "available": true,
+        "corrected_mean": 0.018533070764751136,
+        "baseline_mean": 0.01629394618237121,
+        "mean_difference": 0.00223912458237993,
+        "per_seed_differences": [
+          0.00223912458237993
+        ],
+        "sequence_ci95": [
+          0.00022475348018372455,
+          0.004778622861854081
+        ],
+        "scene_cluster_ci95": [
+          0.00020263381988944973,
+          0.00461597057355918
+        ],
+        "same_sign_across_seeds": null,
+        "ci_excludes_zero": true,
+        "interpretation_limit": "One seed and training-hardware difference; conditional checkpoint comparison only",
+        "per_seed_abs_gap_then_average_diagnostic": {
+          "definition": "Alternative diagnostic only: take each seed absolute gap before averaging seeds",
+          "corrected_mean": 0.018533070764751136,
+          "baseline_mean": 0.01629394618237121,
+          "mean_difference": 0.00223912458237993
+        }
+      },
+      "d_mabd": {
+        "available": true,
+        "corrected_mean": 0.0020511776148431147,
+        "baseline_mean": 0.0019334993580392061,
+        "mean_difference": 0.0001176782568039086,
+        "per_seed_differences": [
+          0.0001176782568039086
+        ],
+        "sequence_ci95": [
+          -0.0003341697828429273,
+          0.0005819854314046464
+        ],
+        "scene_cluster_ci95": [
+          -0.000287539629976098,
+          0.0005676613103852493
+        ],
+        "same_sign_across_seeds": null,
+        "ci_excludes_zero": false,
+        "interpretation_limit": "One seed and training-hardware difference; conditional checkpoint comparison only",
+        "per_seed_abs_gap_then_average_diagnostic": {
+          "definition": "Alternative diagnostic only: take each seed absolute gap before averaging seeds",
+          "corrected_mean": 0.0020511776148431147,
+          "baseline_mean": 0.0019334993580392061,
+          "mean_difference": 0.0001176782568039086
+        }
+      },
+      "d_flicker": {
+        "available": true,
+        "corrected_mean": 0.0036925543636943284,
+        "baseline_mean": 0.0036020457016256377,
+        "mean_difference": 9.0508662068691e-05,
+        "per_seed_differences": [
+          9.0508662068691e-05
+        ],
+        "sequence_ci95": [
+          -0.00037829615056323703,
+          0.0005740021042024286
+        ],
+        "scene_cluster_ci95": [
+          -0.0004420139868769927,
+          0.0006242667437744455
+        ],
+        "same_sign_across_seeds": null,
+        "ci_excludes_zero": false,
+        "interpretation_limit": "One seed and training-hardware difference; conditional checkpoint comparison only",
+        "per_seed_abs_gap_then_average_diagnostic": {
+          "definition": "Alternative diagnostic only: take each seed absolute gap before averaging seeds",
+          "corrected_mean": 0.0036925543636943284,
+          "baseline_mean": 0.0036020457016256377,
+          "mean_difference": 9.0508662068691e-05
+        }
+      },
+      "d_warp_err": {
+        "available": true,
+        "corrected_mean": 0.00406130862971529,
+        "baseline_mean": 0.003530041816142889,
+        "mean_difference": 0.0005312668135724006,
+        "per_seed_differences": [
+          0.0005312668135724006
+        ],
+        "sequence_ci95": [
+          8.819472307387072e-05,
+          0.0010944884956981505
+        ],
+        "scene_cluster_ci95": [
+          6.925432262517013e-05,
+          0.0010978304585683167
+        ],
+        "same_sign_across_seeds": null,
+        "ci_excludes_zero": true,
+        "interpretation_limit": "One seed and training-hardware difference; conditional checkpoint comparison only",
+        "per_seed_abs_gap_then_average_diagnostic": {
+          "definition": "Alternative diagnostic only: take each seed absolute gap before averaging seeds",
+          "corrected_mean": 0.00406130862971529,
+          "baseline_mean": 0.003530041816142889,
+          "mean_difference": 0.0005312668135724006
+        }
+      }
+    }
+  },
+  "legacy_aggregate_for_audit_only": {
+    "e18_hybrid_s0": {
+      "psnr_rgb": 24.02906189482634,
+      "psnr_y": 24.76492198423441,
+      "psnr_y_gtmean": 28.01206319796656,
+      "lpips": 0.21372130322150695,
+      "input_psnr_y": 11.81614732548535,
+      "tlp": 0.03930204912033091,
+      "mabd": 0.0037054741883483264,
+      "flicker": 0.01258649154064747,
+      "gt_tlp": 0.02590762785890609,
+      "gt_mabd": 0.0003427727112862974,
+      "gt_flicker": 0.009009970572944254
+    },
+    "e18_hybrid_s1": {
+      "psnr_rgb": 23.586733875091834,
+      "psnr_y": 24.177443392226415,
+      "psnr_y_gtmean": 28.2410852892573,
+      "lpips": 0.21733079430384514,
+      "input_psnr_y": 11.81614732548535,
+      "tlp": 0.03820554070715975,
+      "mabd": 0.0030072498499439694,
+      "flicker": 0.011685422239586329,
+      "gt_tlp": 0.02590762785890609,
+      "gt_mabd": 0.0003427727112862974,
+      "gt_flicker": 0.009009970572944254
+    },
+    "e18_layers_all_npu_s0": {
+      "psnr_rgb": 21.12372937909721,
+      "psnr_y": 21.56815303290917,
+      "psnr_y_gtmean": 26.877561297584446,
+      "lpips": 0.23094049306252065,
+      "input_psnr_y": 11.81614732548535,
+      "tlp": 0.03679663206681482,
+      "mabd": 0.003174240871046025,
+      "flicker": 0.01104712300002575,
+      "gt_tlp": 0.02590762785890609,
+      "gt_mabd": 0.0003427727112862974,
+      "gt_flicker": 0.009009970572944254
+    }
+  }
+}

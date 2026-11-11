@@ -52,6 +52,27 @@ def seed_average(runs):
     return out, {k: sorted(x for x in v if x is not None) for k, v in seeds.items()}
 
 
+def metric_value(row, metric):
+    """Use the same score definition for pooled estimates and seed signs."""
+    if metric.startswith("d_"):
+        base = metric[2:]
+        pred, gt = row.get(base), row.get(f"gt_{base}")
+        return None if pred is None or gt is None else abs(pred - gt)
+    return row.get(metric)
+
+
+def paired_metric_values(sa, sb, metric, names=None):
+    """Drop a sequence jointly when either arm lacks the requested score."""
+    if names is None:
+        names = sorted(set(sa) & set(sb))
+    pairs = [(n, metric_value(sa[n], metric), metric_value(sb[n], metric))
+             for n in names if n in sa and n in sb]
+    pairs = [(n, va, vb) for n, va, vb in pairs if va is not None and vb is not None]
+    return ([n for n, _, _ in pairs],
+            np.array([va for _, va, _ in pairs]),
+            np.array([vb for _, _, vb in pairs]))
+
+
 def per_seed_sign(runs, group, a, b, metric):
     """Sign of (a - b) within each seed, for the all-seeds-agree half of the rule."""
     by_seed = defaultdict(dict)
@@ -66,10 +87,10 @@ def per_seed_sign(runs, group, a, b, metric):
     for s, arms in sorted(by_seed.items(), key=lambda kv: (kv[0] is None, kv[0])):
         if a not in arms or b not in arms:
             continue
-        names = [n for n in arms[a] if n in arms[b] and metric in arms[a][n]]
+        names, va, vb = paired_metric_values(arms[a], arms[b], metric)
         if not names:
             continue
-        dm = np.mean([arms[a][n][metric] - arms[b][n][metric] for n in names])
+        dm = np.mean(va - vb)
         signs.append(np.sign(dm))
     return signs
 
@@ -109,20 +130,9 @@ def main():
         names = sorted(set(sa) & set(sb))
         print(f"\n[{g}]  n={len(names)}  seeds {a}={seeds[(g, a)]} {b}={seeds[(g, b)]}")
         for met in metrics:
-            if met.startswith("d_"):
-                base = met[2:]
-                def val(d, n):      # distance to the ground truth's own level
-                    if base not in d[n] or f"gt_{base}" not in d[n]:
-                        return None
-                    return abs(d[n][base] - d[n][f"gt_{base}"])
-                higher_better = False
-            else:
-                def val(d, n, m=met):
-                    return d[n].get(m)
-                higher_better = met in HIGHER_BETTER
-            va = np.array([val(sa, n) for n in names if val(sa, n) is not None])
-            vb = np.array([val(sb, n) for n in names if val(sb, n) is not None])
-            if len(va) != len(vb) or len(va) == 0:
+            higher_better = not met.startswith("d_") and met in HIGHER_BETTER
+            valid_names, va, vb = paired_metric_values(sa, sb, met, names)
+            if not valid_names:
                 continue
             diff = va - vb
             bs = np.array([rng.choice(diff, len(diff), replace=True).mean()
@@ -130,7 +140,7 @@ def main():
             lo, hi = np.percentile(bs, [2.5, 97.5])
             better = (lo > 0) if higher_better else (hi < 0)
             worse = (hi < 0) if higher_better else (lo > 0)
-            signs = per_seed_sign(runs, g, a, b, met[2:] if met.startswith("d_") else met)
+            signs = per_seed_sign(runs, g, a, b, met)
             agree = len(set(signs)) <= 1 and len(signs) > 0
             verdict = ("better" if better else "worse" if worse else "n.s.")
             if verdict != "n.s." and not agree:

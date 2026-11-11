@@ -1,0 +1,85 @@
+{
+ "crop": 256,
+ "frame": "middle of the centre 16-frame clip",
+ "selection": "test sequences at margin percentiles (10, 35, 60, 85) over the retrained Retinexformer",
+ "picked": [
+  "SDSD_indoor/pair6_2",
+  "SDSD_outdoor/MVI_1028_2",
+  "SDSD_outdoor/MVI_1011_2",
+  "SDSD_outdoor/MVI_1026"
+ ],
+ "per_image": {
+  "SDSD_indoor/pair6_2": {
+   "lq": {
+    "psnr_y": 5.967289213643182,
+    "lpips": 0.41428616642951965
+   },
+   "ours": {
+    "psnr_y": 23.30190875847255,
+    "lpips": 0.24255868792533875
+   },
+   "none": {
+    "psnr_y": 9.064236433770596,
+    "lpips": 0.3820297122001648
+   },
+   "retinexformer": {
+    "psnr_y": 28.74197730232206,
+    "lpips": 0.05448906123638153
+   }
+  },
+  "SDSD_outdoor/MVI_1011_2": {
+   "lq": {
+    "psnr_y": 12.721351678965892,
+    "lpips": 0.5212879776954651
+   },
+   "ours": {
+    "psnr_y": 25.200381866216954,
+    "lpips": 0.21615540981292725
+   },
+   "none": {
+    "psnr_y": 20.86656004711402,
+    "lpips": 0.2807665467262268
+   },
+   "retinexformer": {
+    "psnr_y": 25.782577267957247,
+    "lpips": 0.3066863715648651
+   }
+  },
+  "SDSD_outdoor/MVI_1026": {
+   "lq": {
+    "psnr_y": 18.110517443890245,
+    "lpips": 0.35448434948921204
+   },
+   "ours": {
+    "psnr_y": 26.878962362459426,
+    "lpips": 0.1829647719860077
+   },
+   "none": {
+    "psnr_y": 30.788119075862838,
+    "lpips": 0.1959080994129181
+   },
+   "retinexformer": {
+    "psnr_y": 17.042090116467786,
+    "lpips": 0.31118690967559814
+   }
+  },
+  "SDSD_outdoor/MVI_1028_2": {
+   "lq": {
+    "psnr_y": 10.554048824946385,
+    "lpips": 0.6252803802490234
+   },
+   "ours": {
+    "psnr_y": 18.38638210840559,
+    "lpips": 0.2834712266921997
+   },
+   "none": {
+    "psnr_y": 17.248795981769383,
+    "lpips": 0.31608349084854126
+   },
+   "retinexformer": {
+    "psnr_y": 21.13176235816003,
+    "lpips": 0.190913125872612
+   }
+  }
+ }
+}

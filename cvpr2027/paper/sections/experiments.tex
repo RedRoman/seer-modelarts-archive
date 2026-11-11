@@ -2,99 +2,296 @@
 
 \subsection{Protocol}\label{sec:exp:protocol}
 
-\paragraph{Six evaluation levels.} We train on the SDSD-indoor and SDSD-outdoor training sequences~\citep{sdsd} and evaluate at six levels of increasing distance: \textbf{L0} SDSD-indoor ($15$ held-out sequences), \textbf{L1} SDSD-outdoor ($25$), \textbf{L2} BVI-RLV~\citep{bvi_rlv} ($16$ clips of $8$ scenes; different sensor and noise), and the image sets \textbf{L3} LOL-v1~\citep{lol_v1} ($15$), \textbf{L4} LOLv2-Syn and \textbf{L5} LOLv2-Real~\citep{lol_v2} ($100$ each). Videos are scored on the centre $16$ frames with a $512{\times}512$ centre crop; images at full resolution, tiled to $16$ frames for V-JEPA with the middle output frame scored. Input and ground-truth frames are paired by sorted frame index: six SDSD-indoor sequences store their input and ground-truth frames with offset file names, and pairing by name, as in our earlier evaluation code, silently compares different time steps.
+\paragraph{Data and evaluation.}
+In-domain training uses the fixed SDSD~\citep{sdsd} split:
+$136$ training sequences, $16$ validation sequences, and $39$ test sequences.
+Scene groups are kept together when defining validation; sequences identified
+as leaking between training and test were removed before this round.
+For transfer we treat SDSD, BVI-RLV~\citep{bvi_rlv}, and
+LOL~\citep{lol_v1,lol_v2} as three domains.
+BVI-RLV has $48/16/16$ train/validation/test clips from $24/8/8$ scenes.
+The LOL domain pools LOL-v1, LOL-v2-real, and LOL-v2-synthetic, with
+$215$ test images in total.
+Leave-one-domain-out training samples each of the two source domains with
+probability $1/2$; neither source arm sees the held-out domain.
 
-\paragraph{Metrics.} Per frame: PSNR on uint8 RGB, LPIPS-alex~\citep{lpips}, DISTS~\citep{dists} and CLIPIQA~\citep{clip_iqa}. Across frames: tLP (LPIPS between adjacent output frames), MABD, flicker, and a warping error WE, the masked mean absolute difference between output frame $t{+}1$ and output frame $t$ warped with RAFT~\citep{raft} flow estimated on the ground truth, with occlusions removed by a forward--backward check. tLP, MABD and flicker reward any output that changes little, including one that fails to follow motion; WE does not. Seer numbers are means over three fine-tuning seeds ($\pm$ one standard deviation); differences between arms are paired over sequences with a $95\%$ bootstrap interval.
+Videos use the centre $16$ frames and a $256\times256$ centre crop.
+Frames are paired by sorted index rather than filename.
+LOL images are evaluated at full resolution, repeated to form the encoder's
+clip input; the single image prediction is scored.
+PSNR-Y is computed after uint8 rounding, using the evaluator's BT.601 luma
+conversion. LPIPS uses AlexNet~\citep{lpips}.
+Temporal diagnostics include LPIPS between adjacent frames (tLP), reported
+as the absolute gap to the target clip's value after seed-averaging within
+each arm. Such diagnostics remain sensitive to
+motion and are not interchangeable with perceptual reconstruction quality.
 
-\paragraph{Baselines and training-set membership.} We compare with Zero-DCE, SCI, HVI-CIDNet, DarkIR, URCSA, STCD and Retinexformer using released checkpoints, run with their official inference code under the protocol above. TCE-Net~\citep{tcenet} releases no weights and RetinexMCNet~\citep{retinexmcnet} no code, so they are discussed but not evaluated. Released SDSD checkpoints are trained on their authors' splits, which overlap ours (App.~\ref{app:membership}, Table~\ref{tab:membership}): Retinexformer's SDSD-outdoor model saw $19$ of our $25$ L1 sequences during training. We therefore also report (i) Retinexformer retrained with its official code on exactly Seer's training split, and (ii) the six L0 sequences that no evaluated SDSD checkpoint was trained on (``clean-6'').
+\paragraph{Decision rule.}
+The main in-domain comparison has three seeds; transfer and most interventions
+have two. Differences are paired by sequence after averaging within each arm
+over seeds. We use $10{,}000$ sequence-bootstrap samples for $95\%$ intervals.
+A claimed effect must exclude zero and have the same sign in every seed.
+These intervals describe test-sequence variation conditional on the trained
+models; the sign check does not replace estimating uncertainty over a larger
+population of training seeds.
+Unless specified otherwise, $\Delta$ means intervention minus reference,
+so higher PSNR and lower LPIPS are better.
 
-
-\subsection{Main results}\label{sec:exp:main}
-
-\begin{table*}[t]
-\centering\scriptsize\setlength{\tabcolsep}{2.4pt}
-\resizebox{\textwidth}{!}{\input{tables/tab_main}}
-\caption{Six-level evaluation (PSNR in dB). $^{\dagger}$Released checkpoint trained on part of our L0/L1 test sequences (App.~\ref{app:membership}). SDSD$^{\ast}$: trained on Seer's SDSD training split only. Seer: mean $\pm$ s.d.\ over three seeds. CP-src uses $\alpha^\star$ fitted on SDSD training clips only. \textbf{Bold}/\underline{underline}: best/second per column. DISTS and CLIPIQA in App.~\ref{app:extra}.}
-\label{tab:main}
-\end{table*}
-
-\paragraph{In-domain.} On the two SDSD levels Seer is the best of all evaluated models on PSNR and LPIPS (Table~\ref{tab:main}): \R{seer@L0@psnr_rgb}\,dB / \R{seer@L0@lpips} on L0 and \R{seer@L1@psnr_rgb}\,dB / \R{seer@L1@lpips} on L1, although the released Retinexformer and STCD checkpoints were trained on part of these test sequences. Retinexformer retrained on exactly our split reaches \R{fac@Retinexformer@SDSD-in+out@L0@psnr_rgb}\,dB / \R{fac@Retinexformer@SDSD-in+out@L0@lpips} on L0 (Table~\ref{tab:datacontrol}); our pixel branch without V-JEPA matches its PSNR with a much lower LPIPS (\R{fac@Seer w/o V-JEPA@SDSD-in+out@L0@lpips}), and the V-JEPA tokens add the rest. On the six L0 sequences that no SDSD checkpoint has seen (App.~\ref{app:membership}), the retrained Retinexformer has the higher PSNR (\R{retinexformerRT@L0c6@psnr_rgb} vs.\ \R{seer@L0c6@psnr_rgb}\,dB) while Seer keeps the lower LPIPS (\R{seer@L0c6@lpips} vs.\ \R{retinexformerRT@L0c6@lpips}).
-
-\paragraph{Cross-dataset.} On the four unseen datasets Seer is not competitive without calibration. On BVI-RLV it reaches \R{seer@L2@psnr_rgb}\,dB, behind DarkIR (\R{darkir@L2@psnr_rgb}) and the retrained Retinexformer (\R{retinexformerRT@L2@psnr_rgb}); on the LOL image sets it trails every model trained on LOL. The required brightening differs strongly between datasets (median ground-truth-to-input luma ratio $2.6$--$7.2{\times}$ across L2--L5 vs.\ $3.5$--$4.5{\times}$ on SDSD), so a model trained on one dataset cannot know the target exposure; Sec.~\ref{sec:exp:crossdomain} separates this factor from restoration quality.
+\subsection{The prior helps in domain}\label{sec:exp:control}
 
 \begin{table}[t]
-\centering\scriptsize\setlength{\tabcolsep}{3pt}
-\input{tables/tab_factorial}
-\caption{Training-data control on Seer's split (raw outputs). Retinexformer is retrained from scratch with its official code on the SDSD-indoor training sequences only, or on indoor and outdoor. Seer rows: controlled runs (mean $\pm$ s.d.\ over seeds). No indoor-only Seer is shown: our only indoor-fine-tuned Seer starts from stages trained on both subsets and would overstate indoor-to-outdoor transfer.}
-\label{tab:datacontrol}
-\end{table}
-
-\subsection{Does the V-JEPA prior matter? A controlled study}\label{sec:exp:control}
-
-Table~\ref{tab:control} isolates the prior. All arms start from the same Stage-3 checkpoint and are fine-tuned with the same schedule and seeds; they differ only in the tokens read by the pixel branch. Pretrained V-JEPA tokens improve SDSD-indoor by $\R{deltanovjepa@L0@psnr_rgb}$\,dB (95\% CI $\R{deltanovjepa@L0@psnr_rgb@ci}$) and lower LPIPS on both SDSD levels, and they make the output more temporally consistent (tLP and motion-compensated WE, Table~\ref{tab:control}). A randomly initialised V-JEPA of the same size is worse than no V-JEPA in-domain, so the gain comes from pretraining rather than from the extra attention pathway. Across datasets the picture reverses: on BVI-RLV the pretrained tokens change PSNR by $\R{deltanovjepa@L2@psnr_rgb}$\,dB and \emph{increase} LPIPS by $\R{deltanovjepa@L2@lpips}$, the random-init encoder does better than the pretrained one on L2, and on L3--L5 the pretrained tokens raise LPIPS as well (Table~\ref{tab:main}). The pretrained video world model is thus a strong prior for the domain it is fine-tuned on, and we find no evidence that it transfers to unseen sensors on its own. One caveat applies to all arms: the pixel branch was pre-trained with V-JEPA tokens up to Stage~3, which may disadvantage the arms without them (App.~\ref{app:stages}).
-
-\begin{table}[t]
-\centering\scriptsize\setlength{\tabcolsep}{2.6pt}
-\input{tables/tab_control}
-\caption{Same Stage-3 initialisation, schedule and seeds; only the tokens fed to the pixel branch change. Zero tokens remove V-JEPA; random-init V-JEPA keeps the architecture but not the pretraining. Bold $\Delta$: 95\% bootstrap interval over sequences excludes $0$.}
+\centering\small
+\setlength{\tabcolsep}{5pt}
+\begin{tabular}{lcc}
+\toprule
+Conditioning / model & PSNR-Y $\uparrow$ & LPIPS $\downarrow$\\
+\midrule
+Zero tokens & \R{indomain@abs@none} & \R{indomain@abs@none@lpips}\\
+Pretrained tokens & \R{indomain@abs@prior} & \R{indomain@abs@prior@lpips}\\
+\midrule
+Retinexformer, retrained & \R{rf@abs@psnr} & \R{rf@abs@lpips}\\
+\bottomrule
+\end{tabular}
+\caption{SDSD test, $n=\R{indomain@n}$. Seer-v2 arms share architecture,
+from-scratch recipe and the three nominal seeds. They do not share initial
+pixel weights or training random draws (App.~\ref{app:stages}).
+Retinexformer uses the same training split but its own architecture and
+training schedule.}
 \label{tab:control}
 \end{table}
 
-\subsection{Where does the cross-domain gap come from?}\label{sec:exp:crossdomain}
+Pretrained conditioning improves the matched zero-token arm by
+$\R{indomain@psnr}$\,dB
+($\R{indomain@psnr@ci}$) and $\R{indomain@lpips}$ LPIPS
+($\R{indomain@lpips@ci}$).
+All three seeds agree in sign on both metrics.
+The PSNR effect varies substantially across seeds, so its mean is evidence of
+benefit under this protocol rather than a promise of a fixed improvement on
+every run.
+Because both arms start from scratch, this comparison avoids inheriting a
+branch already adapted to the pretrained tokens.
+The matched comparison alone does not separate the value of pretraining from
+every possible alternative feature source.
+The archived random control instantiated a different random encoder at
+evaluation. Reusing the training seed instead yields
+$\R{audit@random@psnr@b}$\,dB and
+$\R{audit@random@lpips@b}$ LPIPS for that seed-zero checkpoint.
+Against the corresponding pretrained seed, the differences are
+$\R{audit@random@psnr}$\,dB ($\R{audit@random@psnr@ci}$) and
+$\R{audit@random@lpips}$ LPIPS ($\R{audit@random@lpips@ci}$).
+Only LPIPS resolves a benefit. This is a single trained random-control seed,
+so its sequence interval cannot establish consistency over training seeds.
 
-% PROSE PENDING: filled once tab_gtmean / tab_adapt are complete (pre-specified analyses, reported as measured).
-\textbf{Exposure.} GT-mean scores (Table~\ref{tab:gtmean}) rescale each output frame to the mean luma of its ground truth, removing the dataset-specific exposure level that no source-trained model can infer. \textbf{Few-shot adaptation.} Each model is fine-tuned for $200$ steps on four scenes of the BVI-RLV \emph{training} split (\texttt{S01}, \texttt{S09}, \texttt{S17}, \texttt{S25}; both frame rates) and evaluated on the unchanged BVI-RLV test split and on L0 (Table~\ref{tab:adapt}).
-
-\begin{table}[t]
-\centering\scriptsize\setlength{\tabcolsep}{2.2pt}
-\resizebox{\textwidth}{!}{\input{tables/tab_gtmean}}
-\caption{GT-mean diagnostic: every output frame is rescaled to the mean luma of its ground truth before scoring, for all methods. This uses ground truth and is not a deployable result; it isolates errors other than global exposure.}
-\label{tab:gtmean}
-\end{table}
-
-\begin{table}[t]
-\centering\scriptsize\setlength{\tabcolsep}{3pt}
-\input{tables/tab_adapt}
-\caption{Few-shot adaptation: fine-tuning on four BVI-RLV training scenes (no test scene), starting from each arm's SDSD model; step 0 is zero-shot. Mean $\pm$ s.d.\ over two source seeds; bold $\Delta$: 95\% bootstrap interval over test clips excludes $0$.}
-\label{tab:adapt}
-\end{table}
-
-\subsection{Component ablations}\label{sec:exp:ablation}
-
-Table~\ref{tab:ablation} changes one component at a time. Opening the M1 gate ($g_0{=}0.5$), i.e.\ actually using the counterfactual predictor's delta, lowers PSNR on L0, L1 and L2: with the M2 target alone, the refined tokens are less useful to the pixel branch than the raw ones, which is consistent with the gate staying at $|g|{<}10^{-3}$ when it is free. The pixel-domain illumination cues (LIC) matter most off the training scenes, the bottleneck temporal mixing improves tLP and L2, and the Retinex auxiliary losses and IGAB have no consistent effect.
-
-\begin{table}[t]
-\centering\scriptsize\setlength{\tabcolsep}{2.6pt}
-\input{tables/tab_ablation}
-\caption{One component changed at a time, each fine-tuned $750$ iterations from the same Stage-3 checkpoint and compared with the full model at the same iteration. $\Delta$ relative to the full model; bold: 95\% bootstrap interval excludes $0$.}
-\label{tab:ablation}
-\end{table}
-
-\subsection{Encoder choice}\label{sec:exp:encoder}
-
-Replacing V-JEPA by other frozen ViT-L encoders inside the same architecture (Table~\ref{tab:encoder}, App.~\ref{app:encoder}) gives the same picture as the controlled study: V-JEPA yields the best L0 PSNR and LPIPS and the best L1 LPIPS (CLIP has a slightly higher L1 PSNR), whereas on L2 all six encoders lie within $0.9$\,dB and V-JEPA is in the middle. Invariance does not predict the in-domain order either: VideoMAE, the most invariant encoder, is fourth on L0 PSNR and second-to-last on L1. The swap favours V-JEPA, since each swapped variant starts from a pixel branch adapted to V-JEPA tokens (App.~\ref{app:encoder}).
-
+\paragraph{Comparison with a retrained restorer.}
+Retinexformer~\citep{retinexformer} is retrained for $160{,}000$ steps on the
+same SDSD training split.
+Seer-v2's mean PSNR margin is $\R{vsrf@psnr}$\,dB
+($\R{vsrf@psnr@ci}$), but its median is
+$\R{vsrf@median}$\,dB and it wins only
+$\R{vsrf@won}/\R{vsrf@n}$ sequences.
+Its LPIPS difference is $\R{vsrf@lpips}$
+($\R{vsrf@lpips@ci}$).
+Neither interval excludes zero. The uneven sequence-level margin and different
+model sizes preclude a claim of uniform superiority.
+Our split and evaluation crop also differ from published benchmark tables,
+so those absolute scores are not directly comparable.
 
 \begin{figure*}[t]
 \centering
-\IfFileExists{figures/fig_qualitative.pdf}{\includegraphics[width=\textwidth]{figures/fig_qualitative.pdf}}{\fbox{\textcolor{red}{qualitative figure pending}}}
-\caption{Frame 8 of five test clips: L0 \texttt{pair60} and \texttt{pair70} (not in the training set of any SDSD checkpoint shown), L1 \texttt{MVI\_1030} (held out by Seer and by Retinexformer's release) and two BVI-RLV scenes. Red box: $2{\times}$ zoom (inset, bottom left). Numbers: PSNR / LPIPS of the frame. The LQ column is gamma-boosted for display only; its scores are on the original input. Seer and Seer w/o V-JEPA: seed 0 of the controlled study (Sec.~\ref{sec:exp:control}).}
+\includegraphics[width=\textwidth]{figures/fig_qualitative_cvpr.pdf}
+\caption{Qualitative comparison, with columns showing input, retrained
+Retinexformer, zero-token Seer-v2, pretrained Seer-v2, and ground truth.
+Sequences are selected at four fixed quantiles of the sequence-level
+PSNR-Y margin between the three-seed pretrained average and Retinexformer.
+Displayed panel metrics score one middle frame, whereas the tables score
+the full evaluation clip. Panels use pretrained and zero-token seed zero;
+checkpoint, source and image hashes accompany the released figure.}
 \label{fig:qualitative}
 \end{figure*}
 
-\subsection{Temporal consistency}\label{sec:exp:temporal}
+\subsection{The prior transfers under held-out-domain training}
+\label{sec:exp:xdomain}
 
-Seer has the lowest tLP of all methods on the three video levels and the lowest motion-compensated warping error on L0 (Table~\ref{tab:temporal}); on L1 and L2 its WE is within $0.001$ of the best. Since WE penalises outputs that fail to follow the ground-truth motion, the low tLP is not an artefact of a static output. Among the baselines only the two-frame video model STCD is close on L0. The V-JEPA tokens contribute measurably on L0 (Table~\ref{tab:control}), much less on L1 and L2.
+\begin{table*}[t]
+\centering\small
+\setlength{\tabcolsep}{8pt}
+\begin{tabular}{lcll}
+\toprule
+Held out & $n$ & $\Delta$ PSNR-Y [95\% CI] & $\Delta$ LPIPS [95\% CI]\\
+\midrule
+SDSD & \R{xdom@sdsd@n} &
+\R{xdom@sdsd@psnr}\ \R{xdom@sdsd@psnr@ci} &
+\R{xdom@sdsd@lpips}\ \R{xdom@sdsd@lpips@ci}\\
+BVI-RLV & \R{xdom@bvi@n} &
+\R{xdom@bvi@psnr}\ \R{xdom@bvi@psnr@ci} &
+\R{xdom@bvi@lpips}\ \R{xdom@bvi@lpips@ci}\\
+LOL & \R{xdom@lol@n} &
+\R{xdom@lol@psnr}\ \R{xdom@lol@psnr@ci} &
+\R{xdom@lol@lpips}\ \R{xdom@lol@lpips@ci}\\
+\bottomrule
+\end{tabular}
+\caption{Leave-one-domain-out transfer: pretrained minus zero-token
+conditioning, two seeds per arm. A domain passes the registered rule when one
+metric improves significantly, every seed agrees on that metric, and the other
+metric has no significant degradation. SDSD and BVI-RLV pass on LPIPS; LOL
+passes on PSNR-Y.}
+\label{tab:xdomain}
+\end{table*}
+
+The registered transfer criterion requires improvement on at least one metric
+in at least two held-out domains, without significant degradation of the other
+metric. All three domains satisfy it (Table~\ref{tab:xdomain}).
+The metric that improves differs: perceptual distance on SDSD and BVI-RLV,
+and luminance fidelity on LOL.
+This supports transfer of useful conditioning under the specified source
+mixtures. It does not establish simultaneous improvement on every metric or
+universal transfer to arbitrary sensors.
+LOL is an image-domain test, so its improvement supplies no evidence of
+temporal transfer.
+
+\subsection{What a converged branch tolerates}\label{sec:exp:sufficiency}
 
 \begin{table}[t]
-\centering\scriptsize\setlength{\tabcolsep}{3pt}
-\input{tables/tab_temporal_compact}
-\caption{Temporal consistency on the $16$-frame clips ($\downarrow$). tLP: LPIPS between adjacent output frames; WE: warping error with RAFT flow from the ground truth and an occlusion mask. MABD, flicker and the LQ row are in App.~\ref{app:temporal}.}
-\label{tab:temporal}
+\centering\small
+\setlength{\tabcolsep}{3pt}
+\begin{tabular}{lcl}
+\toprule
+Inference intervention & Seeds & $\Delta$ PSNR-Y [95\% CI]\\
+\midrule
+Per-clip centred rank 4 & \R{suff@seeds} &
+\makecell[l]{\R{suff@rank4@d}\\\R{suff@rank4@ci}}\\
+Spatial mean & \R{suff@seeds} &
+\makecell[l]{\R{suff@spatial@d}\\\R{suff@spatial@ci}}\\
+Temporal mean & \R{suff@seeds} &
+\makecell[l]{\R{suff@temporal@d}\\\R{suff@temporal@ci}}\\
+\midrule
+Fixed rank 4 & \R{gsuff@seeds} &
+\makecell[l]{\R{gsuff@global4}\\\R{gsuff@global4@ci}}\\
+Fixed rank 16 & \R{gsuff@seeds} &
+\makecell[l]{\R{gsuff@global16}\\\R{gsuff@global16@ci}}\\
+Fixed rank 64 & \R{gsuff@seeds} &
+\makecell[l]{\R{gsuff@global64}\\\R{gsuff@global64@ci}}\\
+\bottomrule
+\end{tabular}
+\caption{Inference-only interventions on full-token-trained checkpoints,
+paired with their identity controls on the same $39$ SDSD clips.
+Per-clip projection retains the full clip mean; fixed projection uses the
+training-set mean and basis. The two blocks have different seed counts.}
+\label{tab:sufficiency}
 \end{table}
 
-\subsection{Chroma preservation}\label{sec:exp:cp}
+Keeping four principal directions of each clip's centred tokens improves
+PSNR-Y by $\R{suff@rank4@d}$\,dB
+($\R{suff@rank4@ci}$), with all three seeds agreeing.
+The corresponding $1024$-dimensional mean and the basis itself remain
+clip-dependent. This is evidence that much of the within-clip token variation
+can be removed after training; it is not a four-dimensional representation of
+the whole clip.
 
-Calibrated on source data (CP-src), the closed-form coefficient is close to zero on the green and blue channels and CP leaves Seer's output essentially unchanged on every split (Table~\ref{tab:main}, App.~\ref{app:cp}). Calibrated on a few paired target clips (CP-tgt) it adds $\R{cpx@Seer@CP-tgt@L2}$\,dB on BVI-RLV and $\R{cpx@Seer@CP-tgt@L4}$\,dB on LOLv2-Syn. With the same protocol, no baseline gains more than $\R{cpx@SCI@CP-tgt@L2}$\,dB on BVI-RLV, while our pixel branch without V-JEPA gains $\R{cpx@w/o V-JEPA@CP-tgt@L2}$\,dB (Table~\ref{tab:cp_transfer}); CP-src changes PSNR by less than $0.3$\,dB for every method except where its coefficient is transferred to a different checkpoint (App.~\ref{app:cp}). The cross-domain errors of our architecture thus contain a colour component that a target-calibrated CP can remove, independently of the V-JEPA tokens; without target data CP does not help.
+Spatial or temporal averaging does not produce a significant PSNR change.
+Their intervals are broad: the data still admit losses of roughly
+$\R{suff@spatial}$\,dB and $\R{suff@temporal}$\,dB, respectively.
+Absence of a detected degradation is therefore weaker than equivalence or
+proof that the original field carries no useful spatial or temporal detail.
 
-% CP results: Table~\ref{tab:cp_archived} and Table~\ref{tab:cp_transfer} (App.~\ref{app:cp}).
+Fixed rank-4 and rank-16 replacements significantly degrade PSNR; fixed
+rank-64 does not.
+The contrast establishes that this fixed low-rank replacement is less
+compatible with the learned branch than the per-clip replacement.
+Because Eqs.~\eqref{eq:cliprank} and~\eqref{eq:globalrank} differ in both mean
+and basis, that contrast cannot assign the gap solely to basis adaptivity.
+Nor does it establish that the frozen encoder is impossible to replace.
+
+\paragraph{Separating mean and basis on validation.}
+An exploratory follow-up crosses both factors on all
+$\R{meanval@n}$ SDSD validation sequences
+($\R{meanval@scenes}$ scenes, $\R{meanval@seeds}$ existing seeds;
+App.~\ref{app:meanbasis}).
+Holding the clip mean fixed, adaptive rather than fixed rank-four directions
+change PSNR-Y by $\R{meanval@clipvsfixed@psnr}$\,dB, with unadjusted
+scene-bootstrap interval $\R{meanval@clipvsfixed@psnr@sceneci}$ and
+positive effects in both seeds. Holding either basis fixed also favours the
+clip mean over the training mean. This implicates both factors on validation;
+it does not establish a training bottleneck or a cheaper encoder.
+Rank-four projection versus identity remains inconclusive on this split.
+
+Training-time projection addresses a different question.
+The archived fixed-rank training evaluation did not restore its input
+projection. Corrected evaluation applies the saved training-set mean and
+rank-$64$ basis at inference as well.
+Against full-token-trained seeds zero and one, its PSNR difference is
+$\R{audit@grank64@psnr}$\,dB
+($\R{audit@grank64@psnr@ci}$), and its LPIPS difference is
+$\R{audit@grank64@lpips}$ ($\R{audit@grank64@lpips@ci}$).
+The per-seed PSNR differences have opposite signs.
+Neither interval resolves a difference, so the earlier significant
+training-time penalty is withdrawn. These intervals also do not establish
+equivalence or a faster model: the projection still follows the full encoder.
+
+\subsection{Injection changes have mixed outcomes}
+\label{sec:exp:ablation}
+
+Restoring the saved hybrid key/value configuration also changes its archived
+evaluation. Against the corresponding per-tubelet seeds zero and one,
+hybrid keys change PSNR-Y by $\R{audit@hybrid@psnr}$\,dB
+($\R{audit@hybrid@psnr@ci}$) and LPIPS by
+$\R{audit@hybrid@lpips}$ ($\R{audit@hybrid@lpips@ci}$).
+LPIPS improves in both seeds; PSNR remains unresolved.
+This supports a modest perceptual benefit for this tested key/value variant.
+
+Spatial grounding adds positional correspondence between pixel queries and
+token keys. Over two seeds, its PSNR difference is
+$\R{inj@spatial@psnr}$\,dB
+($\R{inj@spatial@psnr@ci}$), and its LPIPS difference is
+$\R{inj@spatial@lpips}$ ($\R{inj@spatial@lpips@ci}$).
+Neither metric resolves an improvement at convergence.
+
+Exposure decoupling adds a predicted global gain and a supervised exposure
+objective. In its two-seed comparison, PSNR changes by
+$\R{inj@edc@psnr}$\,dB ($\R{inj@edc@psnr@ci}$), while LPIPS changes by
+$\R{inj@edc@lpips}$ ($\R{inj@edc@lpips@ci}$), both worse.
+The spatial and exposure interventions do not justify their added structure
+under this protocol. A corrected all-depth comparison is limited to one
+variant seed with different training hardware (App.~\ref{app:pending});
+deepest-only taps and learned gates still await verified evaluation.
+
+\subsection{A temporal objective engages a different target}
+\label{sec:exp:temporal}
+
+The encoder is sensitive to temporal structure on this data.
+The archived eight-clip probe detects a substantial block-23 token change
+after shuffling under its relative token-distance measure.
+This is a measurement of the encoder, separate from the restorer.
+
+The relative temporal loss reduces the latent magnitude ratio to
+$\R{h17@tdrel@mag}$ and leaves directional agreement at
+$\R{h17@tdrel@cos}$.
+Its LPIPS and tLP-gap changes are
+$\R{h17@tdrel@lpips}$ ($\R{h17@tdrel@lpips@ci}$) and
+$\R{h17@tdrel@tlp}$ ($\R{h17@tdrel@tlp@ci}$), respectively:
+the loss rewards a smaller latent variation without improving the measured
+reconstruction.
+
+The cosine form restores the magnitude ratio to $\R{h17@tdcos@mag}$ and
+reaches directional agreement $\R{h17@tdcos@cos}$.
+Nevertheless LPIPS worsens by $\R{h17@tdcos@lpips}$
+($\R{h17@tdcos@lpips@ci}$) and the tLP gap worsens by
+$\R{h17@tdcos@tlp}$ ($\R{h17@tdcos@tlp@ci}$).
+PSNR is unresolved:
+$\R{h17@tdcos@psnr}$\,dB ($\R{h17@tdcos@psnr@ci}$).
+The archived order probe for this model changes aggregate PSNR by only
+$\R{ordersens}$\,dB after shuffling.
+These observations distinguish matching latent temporal differences from
+improving the pixel-space result; the former does not guarantee the latter.
+
+\subsection{Why training budget belongs in the conclusion}
+\label{sec:exp:budget}
+
+The initial short-budget round and the converged round lead to different
+decisions about the conditioning benefit, transfer, and temporal interventions.
+Consequently, all effect estimates used above come from the fixed
+$20{,}000$-step schedule, and early results are kept as exploratory records.
+A conclusion about a small architectural effect requires that the reference
+and intervention have both been trained long enough to make that comparison
+meaningful. This is a protocol requirement demonstrated by this study, rather
+than a proposed universal iteration count.

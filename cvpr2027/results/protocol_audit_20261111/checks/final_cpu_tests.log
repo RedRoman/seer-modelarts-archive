@@ -1,0 +1,35 @@
+/home/ma-user/anaconda3/envs/PyTorch-2.7.1/lib/python3.12/site-packages/torch/cuda/__init__.py:61: FutureWarning: The pynvml package is deprecated. Please install nvidia-ml-py instead. If you did not install pynvml directly, please report this to the maintainers of the package that installed pynvml for you.
+  import pynvml  # type: ignore[import]
+/home/ma-user/anaconda3/envs/PyTorch-2.7.1/lib/python3.12/site-packages/torch_npu/utils/collect_env.py:58: UserWarning: Warning: The /usr/local/Ascend/cann-8.5.2 owner does not match the current owner.
+  warnings.warn(f"Warning: The {path} owner does not match the current owner.")
+/home/ma-user/anaconda3/envs/PyTorch-2.7.1/lib/python3.12/site-packages/torch_npu/utils/collect_env.py:58: UserWarning: Warning: The /usr/local/Ascend/cann-8.5.2/aarch64-linux/ascend_toolkit_install.info owner does not match the current owner.
+  warnings.warn(f"Warning: The {path} owner does not match the current owner.")
+/home/ma-user/anaconda3/envs/PyTorch-2.7.1/lib/python3.12/site-packages/torch_npu/utils/collect_env.py:58: UserWarning: Warning: The /usr/local/Ascend/cann-8.5.2 owner does not match the current owner.
+  warnings.warn(f"Warning: The {path} owner does not match the current owner.")
+/home/ma-user/anaconda3/envs/PyTorch-2.7.1/lib/python3.12/site-packages/torch_npu/utils/collect_env.py:58: UserWarning: Warning: The /usr/local/Ascend/cann-8.5.2/aarch64-linux/ascend_toolkit_install.info owner does not match the current owner.
+  warnings.warn(f"Warning: The {path} owner does not match the current owner.")
+test_full_data_pooling_and_temporal_absolute_order_are_unchanged (test_aggregate.AggregationTests.test_full_data_pooling_and_temporal_absolute_order_are_unchanged) ... ok
+test_main_does_not_compare_different_missing_sequences (test_aggregate.AggregationTests.test_main_does_not_compare_different_missing_sequences) ... ok
+test_missing_scores_are_filtered_jointly (test_aggregate.AggregationTests.test_missing_scores_are_filtered_jointly) ... ok
+test_temporal_seed_sign_measures_distance_from_gt (test_aggregate.AggregationTests.test_temporal_seed_sign_measures_distance_from_gt) ... ok
+test_temporal_seed_sign_requires_gt_on_both_arms (test_aggregate.AggregationTests.test_temporal_seed_sign_requires_gt_on_both_arms) ... ok
+test_baseline_defaults_have_same_conditioning (test_checkpoint_reconstruction.ConfigTests.test_baseline_defaults_have_same_conditioning) ... ok
+test_basis_relocation_requires_the_saved_file_or_explicit_override (test_checkpoint_reconstruction.ConfigTests.test_basis_relocation_requires_the_saved_file_or_explicit_override) ... ok
+test_invalid_configuration_is_rejected_before_loading (test_checkpoint_reconstruction.ConfigTests.test_invalid_configuration_is_rejected_before_loading) ... ok
+test_random_seed_does_not_change_pretrained_arm (test_checkpoint_reconstruction.ConfigTests.test_random_seed_does_not_change_pretrained_arm) ... ok
+test_saved_variants_and_explicit_legacy (test_checkpoint_reconstruction.ConfigTests.test_saved_variants_and_explicit_legacy) ... ok
+test_cpu_encoder_seed_matches_training_and_restores_rng (test_checkpoint_reconstruction.TensorTests.test_cpu_encoder_seed_matches_training_and_restores_rng) ... ok
+test_evaluator_rejects_basis_tap_mismatch (test_checkpoint_reconstruction.TensorTests.test_evaluator_rejects_basis_tap_mismatch) ... ok
+test_evaluator_rejects_checkpoint_keys_that_do_not_match (test_checkpoint_reconstruction.TensorTests.test_evaluator_rejects_checkpoint_keys_that_do_not_match) ... ok
+test_evaluator_restores_configuration_and_random_weights (test_checkpoint_reconstruction.TensorTests.test_evaluator_restores_configuration_and_random_weights) ... ok
+test_gated_branch_constructs_and_preserves_initial_residual_identity (test_checkpoint_reconstruction.TensorTests.test_gated_branch_constructs_and_preserves_initial_residual_identity) ... ok
+test_projection_math_and_float32_autocast_boundary (test_checkpoint_reconstruction.TensorTests.test_projection_math_and_float32_autocast_boundary) ... ok
+test_backbone_and_svd_are_cached_per_clip_across_conditions (test_mean_basis_control.MeanBasisTests.test_backbone_and_svd_are_cached_per_clip_across_conditions) ... ok
+test_identity_mean_only_and_all_four_crossed_conditions (test_mean_basis_control.MeanBasisTests.test_identity_mean_only_and_all_four_crossed_conditions) ... ok
+test_invalid_selection_and_projection_dimensions_fail (test_mean_basis_control.MeanBasisTests.test_invalid_selection_and_projection_dimensions_fail) ... ok
+test_svd_runs_once_and_is_clip_centered_float32 (test_mean_basis_control.MeanBasisTests.test_svd_runs_once_and_is_clip_centered_float32) ... ok
+
+----------------------------------------------------------------------
+Ran 20 tests in 0.411s
+
+OK

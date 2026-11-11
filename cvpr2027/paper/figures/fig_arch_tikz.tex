@@ -1,0 +1,22 @@
+\begin{tikzpicture}[
+  box/.style={draw=linkink,rounded corners=2pt,align=center,
+              minimum height=9mm,text width=29mm,font=\small},
+  memory/.style={box,fill=blue!5},
+  train/.style={box,fill=orange!8},
+  arr/.style={->,thick,draw=linkink},
+  note/.style={font=\scriptsize,align=center}
+]
+\node[box] (input) at (0,0) {Low-light clip\\$16\times H\times W$};
+\node[memory] (encoder) at (4,1.4) {Frozen V-JEPA\\ViT-L};
+\node[memory] (tokens) at (8,1.4) {Blocks\\$5,11,17,23$};
+\node[train] (pixel) at (4,-1.1) {Pixel branch\\$22.4$\,M};
+\node[box] (output) at (8,-1.1) {Enhanced clip\\$\Yhat=\X+\mathrm{residual}$};
+\node[note] (inject) at (6,-0.05) {Fixed depth-to-scale map\\zero-init cross-attention};
+\draw[arr] (input) -- (encoder);
+\draw[arr] (encoder) -- (tokens);
+\draw[arr] (input) -- (pixel);
+\draw[arr] (tokens.south) -- ++(0,-0.45) -| (pixel.north);
+\draw[arr] (pixel) -- (output);
+\node[note] at (4,-2.2) {Training: reconstruction + Retinex auxiliary heads\\
+Inference probes: averaging / centred PCA of the token memory};
+\end{tikzpicture}

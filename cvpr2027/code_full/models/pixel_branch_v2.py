@@ -27,6 +27,7 @@ from .local_illumination_cues import IlluminationCueInjection, extract_illuminat
 from .pixel_branch_v8 import (FlexDown, FlexUp, RestormerBlockBF, TemporalMixer3D,
                               VJepaCrossAttnBF, _vjepa_to_kv_at_scale)
 from models.xattn_spatial import VJepaCrossAttnSpatial
+from models.xattn_gated import VJepaCrossAttnGated
 
 
 class SeerV2PixelBranch(nn.Module):
@@ -75,8 +76,8 @@ class SeerV2PixelBranch(nn.Module):
         if self.kv_mode not in ("per_tubelet", "full", "hybrid"):
             raise ValueError(f"kv_mode must be per_tubelet|full|hybrid, got {kv_mode!r}")
         self.xattn_kind = str(xattn)
-        if self.xattn_kind not in ("global", "spatial"):
-            raise ValueError(f"xattn must be global|spatial, got {xattn!r}")
+        if self.xattn_kind not in ("global", "spatial", "gated"):
+            raise ValueError(f"xattn must be global|spatial|gated, got {xattn!r}")
 
         def _mk_xattn(dim_s, heads_s):
             # E11/H10: the spatial variant adds a shared positional basis so
@@ -85,6 +86,8 @@ class SeerV2PixelBranch(nn.Module):
             if self.xattn_kind == "spatial":
                 return VJepaCrossAttnSpatial(dim_s, vjepa_dim, num_heads=heads_s,
                                              grid_hw=(vjepa_grid[1], vjepa_grid[2]))
+            if self.xattn_kind == "gated":
+                return VJepaCrossAttnGated(dim_s, vjepa_dim, num_heads=heads_s)
             return VJepaCrossAttnBF(dim_s, vjepa_dim, num_heads=heads_s)
 
         self.stem = nn.Conv2d(in_channels, dims[0], 3, padding=1, bias=True)

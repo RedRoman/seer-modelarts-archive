@@ -1,0 +1,480 @@
+{
+  "scope": "Exploratory validation only, all 16 frozen sequences, seeds 0 and 1; unadjusted paired bootstrap intervals, no success or equivalence gate",
+  "bootstrap_replicates": 10000,
+  "bootstrap_rng_seed": 0,
+  "cluster_sensitivity": "Resample scene clusters with replacement, retain every member sequence of each selected cluster; sequence-weighted statistic",
+  "clusters": {
+    "SDSD_indoor/pair1": [
+      "SDSD_indoor/pair1",
+      "SDSD_indoor/pair1_2"
+    ],
+    "SDSD_indoor/pair19": [
+      "SDSD_indoor/pair19",
+      "SDSD_indoor/pair19_2"
+    ],
+    "SDSD_indoor/pair28": [
+      "SDSD_indoor/pair28",
+      "SDSD_indoor/pair28_2"
+    ],
+    "SDSD_outdoor/MVI_0898": [
+      "SDSD_outdoor/MVI_0898",
+      "SDSD_outdoor/MVI_0898_2"
+    ],
+    "SDSD_outdoor/MVI_0921": [
+      "SDSD_outdoor/MVI_0921",
+      "SDSD_outdoor/MVI_0921_2"
+    ],
+    "SDSD_outdoor/MVI_0945": [
+      "SDSD_outdoor/MVI_0945",
+      "SDSD_outdoor/MVI_0945_2"
+    ],
+    "SDSD_outdoor/MVI_0965": [
+      "SDSD_outdoor/MVI_0965",
+      "SDSD_outdoor/MVI_0965_2"
+    ],
+    "SDSD_outdoor/MVI_0985": [
+      "SDSD_outdoor/MVI_0985",
+      "SDSD_outdoor/MVI_0985_2"
+    ]
+  },
+  "conditions": {
+    "identity": {
+      "psnr_y": {
+        "mean": 24.5773191817985,
+        "per_seed": [
+          24.362923979851246,
+          24.791714383745752
+        ]
+      },
+      "lpips": {
+        "mean": 0.241376590449363,
+        "per_seed": [
+          0.24228736758232117,
+          0.24046581331640482
+        ]
+      }
+    },
+    "clip_mean_only": {
+      "psnr_y": {
+        "mean": 23.282931742840812,
+        "per_seed": [
+          23.740533388844742,
+          22.825330096836883
+        ]
+      },
+      "lpips": {
+        "mean": 0.2517890306189656,
+        "per_seed": [
+          0.25160137098282576,
+          0.2519766902551055
+        ]
+      }
+    },
+    "clip_mean_clip_basis": {
+      "psnr_y": {
+        "mean": 24.698355556123182,
+        "per_seed": [
+          24.38450663806912,
+          25.012204474177242
+        ]
+      },
+      "lpips": {
+        "mean": 0.24088154872879386,
+        "per_seed": [
+          0.2424033209681511,
+          0.23935977648943663
+        ]
+      }
+    },
+    "clip_mean_training_basis": {
+      "psnr_y": {
+        "mean": 22.73981108119839,
+        "per_seed": [
+          22.741725859660125,
+          22.73789630273665
+        ]
+      },
+      "lpips": {
+        "mean": 0.25931557081639767,
+        "per_seed": [
+          0.25991564244031906,
+          0.2587154991924763
+        ]
+      }
+    },
+    "training_mean_clip_basis": {
+      "psnr_y": {
+        "mean": 17.73460483875097,
+        "per_seed": [
+          17.517201734474675,
+          17.952007943027265
+        ]
+      },
+      "lpips": {
+        "mean": 0.3637465466745198,
+        "per_seed": [
+          0.36256339959800243,
+          0.3649296937510371
+        ]
+      }
+    },
+    "training_mean_training_basis": {
+      "psnr_y": {
+        "mean": 17.945878189671532,
+        "per_seed": [
+          17.69788345656078,
+          18.19387292278228
+        ]
+      },
+      "lpips": {
+        "mean": 0.3516705227084458,
+        "per_seed": [
+          0.35109433624893427,
+          0.3522467091679573
+        ]
+      }
+    }
+  },
+  "contrasts": {
+    "clip_mean_only_minus_identity": {
+      "psnr_y": {
+        "mean_difference": -1.2943874389576862,
+        "per_seed_differences": [
+          -0.6223905910065004,
+          -1.966384286908872
+        ],
+        "sequence_ci95": [
+          -2.3110933976981287,
+          -0.3553275716630972
+        ],
+        "scene_cluster_ci95": [
+          -2.5308580956398834,
+          -0.2815398924463217
+        ],
+        "same_sign_across_seeds": true
+      },
+      "lpips": {
+        "mean_difference": 0.010412440169602633,
+        "per_seed_differences": [
+          0.009314003400504589,
+          0.011510876938700676
+        ],
+        "sequence_ci95": [
+          0.001088598556816578,
+          0.02297494321828708
+        ],
+        "scene_cluster_ci95": [
+          -0.0002753511071205139,
+          0.02601433824747801
+        ],
+        "same_sign_across_seeds": true
+      }
+    },
+    "clip_mean_clip_basis_minus_identity": {
+      "psnr_y": {
+        "mean_difference": 0.12103637432468195,
+        "per_seed_differences": [
+          0.021582658217875084,
+          0.22049009043148882
+        ],
+        "sequence_ci95": [
+          -0.1521360169207046,
+          0.3993172318057633
+        ],
+        "scene_cluster_ci95": [
+          -0.08902456900127853,
+          0.31257262884850257
+        ],
+        "same_sign_across_seeds": true
+      },
+      "lpips": {
+        "mean_difference": -0.0004950417205691338,
+        "per_seed_differences": [
+          0.00011595338582992554,
+          -0.001106036826968193
+        ],
+        "sequence_ci95": [
+          -0.0024671222898177804,
+          0.0016528369160369036
+        ],
+        "scene_cluster_ci95": [
+          -0.0024145408533513546,
+          0.0019302657456137212
+        ],
+        "same_sign_across_seeds": false
+      }
+    },
+    "clip_mean_training_basis_minus_identity": {
+      "psnr_y": {
+        "mean_difference": -1.837508100600109,
+        "per_seed_differences": [
+          -1.6211981201911185,
+          -2.0538180810090996
+        ],
+        "sequence_ci95": [
+          -3.9651887838920294,
+          -0.3009104990451612
+        ],
+        "scene_cluster_ci95": [
+          -3.663248739381631,
+          -0.34952943731238034
+        ],
+        "same_sign_across_seeds": true
+      },
+      "lpips": {
+        "mean_difference": 0.017938980367034674,
+        "per_seed_differences": [
+          0.017628274857997894,
+          0.018249685876071453
+        ],
+        "sequence_ci95": [
+          0.003479421965312213,
+          0.03620451785391196
+        ],
+        "scene_cluster_ci95": [
+          0.0016025081276893616,
+          0.03713879855349659
+        ],
+        "same_sign_across_seeds": true
+      }
+    },
+    "training_mean_clip_basis_minus_identity": {
+      "psnr_y": {
+        "mean_difference": -6.8427143430475255,
+        "per_seed_differences": [
+          -6.845722245376564,
+          -6.839706440718487
+        ],
+        "sequence_ci95": [
+          -10.88470908345156,
+          -3.0911205804015314
+        ],
+        "scene_cluster_ci95": [
+          -12.681489364414261,
+          -1.835901421212923
+        ],
+        "same_sign_across_seeds": true
+      },
+      "lpips": {
+        "mean_difference": 0.12236995622515678,
+        "per_seed_differences": [
+          0.12027603201568127,
+          0.1244638804346323
+        ],
+        "sequence_ci95": [
+          0.04010680308565497,
+          0.2257441021502018
+        ],
+        "scene_cluster_ci95": [
+          0.022584902588278055,
+          0.2652192057692445
+        ],
+        "same_sign_across_seeds": true
+      }
+    },
+    "training_mean_training_basis_minus_identity": {
+      "psnr_y": {
+        "mean_difference": -6.631440992126967,
+        "per_seed_differences": [
+          -6.665040523290458,
+          -6.5978414609634735
+        ],
+        "sequence_ci95": [
+          -10.557341480170049,
+          -3.168263990061868
+        ],
+        "scene_cluster_ci95": [
+          -12.105796923161748,
+          -1.8475023578198142
+        ],
+        "same_sign_across_seeds": true
+      },
+      "lpips": {
+        "mean_difference": 0.1102939322590828,
+        "per_seed_differences": [
+          0.1088069686666131,
+          0.11178089585155249
+        ],
+        "sequence_ci95": [
+          0.0282259528641589,
+          0.21444488698616623
+        ],
+        "scene_cluster_ci95": [
+          0.010863525606691841,
+          0.25765356281772256
+        ],
+        "same_sign_across_seeds": true
+      }
+    },
+    "clip_mean_clip_basis_minus_clip_mean_training_basis": {
+      "psnr_y": {
+        "mean_difference": 1.958544474924791,
+        "per_seed_differences": [
+          1.6427807784089936,
+          2.2743081714405884
+        ],
+        "sequence_ci95": [
+          0.44272333889891397,
+          4.026455849157311
+        ],
+        "scene_cluster_ci95": [
+          0.353844664348759,
+          3.7986404845317994
+        ],
+        "same_sign_across_seeds": true
+      },
+      "lpips": {
+        "mean_difference": -0.018434022087603807,
+        "per_seed_differences": [
+          -0.01751232147216797,
+          -0.019355722703039646
+        ],
+        "sequence_ci95": [
+          -0.0361033056746237,
+          -0.0043731302837841214
+        ],
+        "scene_cluster_ci95": [
+          -0.03718301063636318,
+          -0.002609053160995245
+        ],
+        "same_sign_across_seeds": true
+      }
+    },
+    "training_mean_clip_basis_minus_training_mean_training_basis": {
+      "psnr_y": {
+        "mean_difference": -0.21127335092055954,
+        "per_seed_differences": [
+          -0.18068172208610567,
+          -0.2418649797550133
+        ],
+        "sequence_ci95": [
+          -1.381190854819723,
+          1.17968009054897
+        ],
+        "scene_cluster_ci95": [
+          -1.6719551852160572,
+          1.776209473043631
+        ],
+        "same_sign_across_seeds": true
+      },
+      "lpips": {
+        "mean_difference": 0.01207602396607399,
+        "per_seed_differences": [
+          0.011469063349068165,
+          0.012682984583079815
+        ],
+        "sequence_ci95": [
+          0.0006428781780414283,
+          0.02445218903012573
+        ],
+        "scene_cluster_ci95": [
+          -0.00036844665883108954,
+          0.028940525837242603
+        ],
+        "same_sign_across_seeds": true
+      }
+    },
+    "clip_mean_clip_basis_minus_training_mean_clip_basis": {
+      "psnr_y": {
+        "mean_difference": 6.963750717372207,
+        "per_seed_differences": [
+          6.867304903594438,
+          7.060196531149976
+        ],
+        "sequence_ci95": [
+          3.1190352215234194,
+          11.151104386341853
+        ],
+        "scene_cluster_ci95": [
+          1.9488511834970716,
+          12.8025035277024
+        ],
+        "same_sign_across_seeds": true
+      },
+      "lpips": {
+        "mean_difference": -0.12286499794572592,
+        "per_seed_differences": [
+          -0.12016007862985134,
+          -0.1255699172616005
+        ],
+        "sequence_ci95": [
+          -0.22670581702841447,
+          -0.040882058336865194
+        ],
+        "scene_cluster_ci95": [
+          -0.26763757783919573,
+          -0.01944275852292776
+        ],
+        "same_sign_across_seeds": true
+      }
+    },
+    "clip_mean_training_basis_minus_training_mean_training_basis": {
+      "psnr_y": {
+        "mean_difference": 4.793932891526857,
+        "per_seed_differences": [
+          5.04384240309934,
+          4.544023379954375
+        ],
+        "sequence_ci95": [
+          1.9359119686916986,
+          7.941745684463649
+        ],
+        "scene_cluster_ci95": [
+          1.2092275582129388,
+          8.924019006933783
+        ],
+        "same_sign_across_seeds": true
+      },
+      "lpips": {
+        "mean_difference": -0.09235495189204812,
+        "per_seed_differences": [
+          -0.09117869380861521,
+          -0.09353120997548103
+        ],
+        "sequence_ci95": [
+          -0.18628779667196796,
+          -0.020489876356441564
+        ],
+        "scene_cluster_ci95": [
+          -0.22340910327620805,
+          -0.006959517952054739
+        ],
+        "same_sign_across_seeds": true
+      }
+    },
+    "clip_mean_clip_basis_minus_clip_mean_only": {
+      "psnr_y": {
+        "mean_difference": 1.415423813282368,
+        "per_seed_differences": [
+          0.6439732492243755,
+          2.1868743773403607
+        ],
+        "sequence_ci95": [
+          0.5540318294585974,
+          2.436269552083865
+        ],
+        "scene_cluster_ci95": [
+          0.35132933897724616,
+          2.6739203351069443
+        ],
+        "same_sign_across_seeds": true
+      },
+      "lpips": {
+        "mean_difference": -0.010907481890171766,
+        "per_seed_differences": [
+          -0.009198050014674664,
+          -0.012616913765668869
+        ],
+        "sequence_ci95": [
+          -0.023472069972194733,
+          -0.0017490656813606623
+        ],
+        "scene_cluster_ci95": [
+          -0.025883519556373358,
+          -0.00048680929467082024
+        ],
+        "same_sign_across_seeds": true
+      }
+    }
+  }
+}

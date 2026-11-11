@@ -1,0 +1,595 @@
+START 2026-11-11T11:11:13Z
+3fb906535d76ca11e379d41113424d1d1d47205d56ca5f5de0b557c3adcf0467  tools/eval_e4.py
+1afa4b685b092150a7f178938c80cc31d339d901335b357ce0c3bdcdcd6f4c7b  tools/checkpoint_config.py
+f83c1aaa5797e5413a1adb41d49cecc0a093e72159e6d4fdbaf610168b739222  models/pixel_branch_v2.py
+8c7b455ecc56cb5d503b016f226be622be3c6fc4ae4be814b270628b4752c7c1  models/token_projection.py
+/home/ma-user/anaconda3/envs/PyTorch-2.7.1/lib/python3.12/site-packages/torch/cuda/__init__.py:61: FutureWarning: The pynvml package is deprecated. Please install nvidia-ml-py instead. If you did not install pynvml directly, please report this to the maintainers of the package that installed pynvml for you.
+  import pynvml  # type: ignore[import]
+/home/ma-user/anaconda3/envs/PyTorch-2.7.1/lib/python3.12/site-packages/torch_npu/utils/collect_env.py:58: UserWarning: Warning: The /usr/local/Ascend/cann-8.5.2 owner does not match the current owner.
+  warnings.warn(f"Warning: The {path} owner does not match the current owner.")
+/home/ma-user/anaconda3/envs/PyTorch-2.7.1/lib/python3.12/site-packages/torch_npu/utils/collect_env.py:58: UserWarning: Warning: The /usr/local/Ascend/cann-8.5.2/aarch64-linux/ascend_toolkit_install.info owner does not match the current owner.
+  warnings.warn(f"Warning: The {path} owner does not match the current owner.")
+/home/ma-user/anaconda3/envs/PyTorch-2.7.1/lib/python3.12/site-packages/torch_npu/utils/collect_env.py:58: UserWarning: Warning: The /usr/local/Ascend/cann-8.5.2 owner does not match the current owner.
+  warnings.warn(f"Warning: The {path} owner does not match the current owner.")
+/home/ma-user/anaconda3/envs/PyTorch-2.7.1/lib/python3.12/site-packages/torch_npu/utils/collect_env.py:58: UserWarning: Warning: The /usr/local/Ascend/cann-8.5.2/aarch64-linux/ascend_toolkit_install.info owner does not match the current owner.
+  warnings.warn(f"Warning: The {path} owner does not match the current owner.")
+CASE hybrid_s0 START 2026-11-11T11:11:24Z
+/home/ma-user/anaconda3/envs/PyTorch-2.7.1/lib/python3.12/site-packages/torch/cuda/__init__.py:61: FutureWarning: The pynvml package is deprecated. Please install nvidia-ml-py instead. If you did not install pynvml directly, please report this to the maintainers of the package that installed pynvml for you.
+  import pynvml  # type: ignore[import]
+/home/ma-user/anaconda3/envs/PyTorch-2.7.1/lib/python3.12/site-packages/torch_npu/utils/collect_env.py:58: UserWarning: Warning: The /usr/local/Ascend/cann-8.5.2 owner does not match the current owner.
+  warnings.warn(f"Warning: The {path} owner does not match the current owner.")
+/home/ma-user/anaconda3/envs/PyTorch-2.7.1/lib/python3.12/site-packages/torch_npu/utils/collect_env.py:58: UserWarning: Warning: The /usr/local/Ascend/cann-8.5.2/aarch64-linux/ascend_toolkit_install.info owner does not match the current owner.
+  warnings.warn(f"Warning: The {path} owner does not match the current owner.")
+/home/ma-user/anaconda3/envs/PyTorch-2.7.1/lib/python3.12/site-packages/torch_npu/utils/collect_env.py:58: UserWarning: Warning: The /usr/local/Ascend/cann-8.5.2 owner does not match the current owner.
+  warnings.warn(f"Warning: The {path} owner does not match the current owner.")
+/home/ma-user/anaconda3/envs/PyTorch-2.7.1/lib/python3.12/site-packages/torch_npu/utils/collect_env.py:58: UserWarning: Warning: The /usr/local/Ascend/cann-8.5.2/aarch64-linux/ascend_toolkit_install.info owner does not match the current owner.
+  warnings.warn(f"Warning: The {path} owner does not match the current owner.")
+[VJepaBackboneLocal21] loaded /temp/zihaohe/seer_cvpr/weights/vjepa2_1_vitl_dist_vitG_384.pt | missing=0 unexpected=2
+  unexpected (first 5): ['patch_embed_img.proj.weight', 'patch_embed_img.proj.bias']
+[reconstruction] {"arch": "v2", "arm": "pretrained", "branch": "small", "clip_len": 16, "kv": "hybrid", "layers": "single", "mode": "saved", "random_encoder_seed": null, "taps": [5, 11, 17, 23], "token_proj": "none", "token_proj_k": 4, "trained_arm": "pretrained", "version": 2, "xattn": "global"}
+[eval_e4] final_cpu.pt arm=pretrained arch=v2 heldout=sdsd split=test trained_heldout=None seed=0
+/home/ma-user/anaconda3/envs/PyTorch-2.7.1/lib/python3.12/contextlib.py:105: FutureWarning: `torch.backends.cuda.sdp_kernel()` is deprecated. In the future, this context manager will be removed. Please see `torch.nn.attention.sdpa_kernel()` for the new context manager, with updated signature.
+  self.gen = func(*args, **kwds)
+/usr/local/Ascend/cann-8.5.2/python/site-packages/tbe/dsl/classifier/transdata/transdata_classifier.py:222: SyntaxWarning: invalid escape sequence '\B'
+  """
+/usr/local/Ascend/cann-8.5.2/python/site-packages/tbe/dsl/unify_schedule/vector/transdata/common/graph/transdata_graph_info.py:143: SyntaxWarning: invalid escape sequence '\c'
+  """
+/usr/local/Ascend/cann-8.5.2/python/site-packages/tbe/dsl/unify_schedule/vector/transdata/common/graph/transdata_graph_info.py:170: SyntaxWarning: invalid escape sequence '\c'
+  """
+/usr/local/Ascend/cann-8.5.2/python/site-packages/asc_op_compile_base/asc_op_compiler/ascendc_compile_gen_code.py:161: SyntaxWarning: invalid escape sequence '\w'
+  match = re.search(f'{option}=(\w+)', ' '.join(compile_options))
+/usr/local/Ascend/cann-8.5.2/python/site-packages/tbe/dsl/classifier/transdata/transdata_classifier.py:222: SyntaxWarning: invalid escape sequence '\B'
+  """
+/usr/local/Ascend/cann-8.5.2/python/site-packages/tbe/dsl/classifier/transdata/transdata_classifier.py:222: SyntaxWarning: invalid escape sequence '\B'
+  """
+/usr/local/Ascend/cann-8.5.2/python/site-packages/tbe/dsl/classifier/transdata/transdata_classifier.py:222: SyntaxWarning: invalid escape sequence '\B'
+  """
+/usr/local/Ascend/cann-8.5.2/python/site-packages/tbe/dsl/classifier/transdata/transdata_classifier.py:222: SyntaxWarning: invalid escape sequence '\B'
+  """
+/usr/local/Ascend/cann-8.5.2/python/site-packages/tbe/dsl/classifier/transdata/transdata_classifier.py:222: SyntaxWarning: invalid escape sequence '\B'
+  """
+/usr/local/Ascend/cann-8.5.2/python/site-packages/tbe/dsl/classifier/transdata/transdata_classifier.py:222: SyntaxWarning: invalid escape sequence '\B'
+  """
+/usr/local/Ascend/cann-8.5.2/python/site-packages/tbe/dsl/classifier/transdata/transdata_classifier.py:222: SyntaxWarning: invalid escape sequence '\B'
+  """
+/usr/local/Ascend/cann-8.5.2/python/site-packages/tbe/dsl/classifier/transdata/transdata_classifier.py:222: SyntaxWarning: invalid escape sequence '\B'
+  """
+/usr/local/Ascend/cann-8.5.2/python/site-packages/tbe/dsl/classifier/transdata/transdata_classifier.py:222: SyntaxWarning: invalid escape sequence '\B'
+  """
+/usr/local/Ascend/cann-8.5.2/python/site-packages/tbe/dsl/unify_schedule/vector/transdata/common/graph/transdata_graph_info.py:143: SyntaxWarning: invalid escape sequence '\c'
+  """
+/usr/local/Ascend/cann-8.5.2/python/site-packages/tbe/dsl/unify_schedule/vector/transdata/common/graph/transdata_graph_info.py:170: SyntaxWarning: invalid escape sequence '\c'
+  """
+/usr/local/Ascend/cann-8.5.2/python/site-packages/tbe/dsl/unify_schedule/vector/transdata/common/graph/transdata_graph_info.py:143: SyntaxWarning: invalid escape sequence '\c'
+  """
+/usr/local/Ascend/cann-8.5.2/python/site-packages/tbe/dsl/unify_schedule/vector/transdata/common/graph/transdata_graph_info.py:170: SyntaxWarning: invalid escape sequence '\c'
+  """
+/usr/local/Ascend/cann-8.5.2/python/site-packages/tbe/dsl/unify_schedule/vector/transdata/common/graph/transdata_graph_info.py:143: SyntaxWarning: invalid escape sequence '\c'
+  """
+/usr/local/Ascend/cann-8.5.2/python/site-packages/tbe/dsl/unify_schedule/vector/transdata/common/graph/transdata_graph_info.py:170: SyntaxWarning: invalid escape sequence '\c'
+  """
+/usr/local/Ascend/cann-8.5.2/python/site-packages/tbe/dsl/unify_schedule/vector/transdata/common/graph/transdata_graph_info.py:143: SyntaxWarning: invalid escape sequence '\c'
+  """
+/usr/local/Ascend/cann-8.5.2/python/site-packages/tbe/dsl/unify_schedule/vector/transdata/common/graph/transdata_graph_info.py:170: SyntaxWarning: invalid escape sequence '\c'
+  """
+/usr/local/Ascend/cann-8.5.2/python/site-packages/tbe/dsl/unify_schedule/vector/transdata/common/graph/transdata_graph_info.py:143: SyntaxWarning: invalid escape sequence '\c'
+  """
+/usr/local/Ascend/cann-8.5.2/python/site-packages/tbe/dsl/unify_schedule/vector/transdata/common/graph/transdata_graph_info.py:170: SyntaxWarning: invalid escape sequence '\c'
+  """
+/usr/local/Ascend/cann-8.5.2/python/site-packages/tbe/dsl/unify_schedule/vector/transdata/common/graph/transdata_graph_info.py:143: SyntaxWarning: invalid escape sequence '\c'
+  """
+/usr/local/Ascend/cann-8.5.2/python/site-packages/tbe/dsl/unify_schedule/vector/transdata/common/graph/transdata_graph_info.py:170: SyntaxWarning: invalid escape sequence '\c'
+  """
+/usr/local/Ascend/cann-8.5.2/python/site-packages/tbe/dsl/unify_schedule/vector/transdata/common/graph/transdata_graph_info.py:143: SyntaxWarning: invalid escape sequence '\c'
+  """
+/usr/local/Ascend/cann-8.5.2/python/site-packages/tbe/dsl/unify_schedule/vector/transdata/common/graph/transdata_graph_info.py:170: SyntaxWarning: invalid escape sequence '\c'
+  """
+/usr/local/Ascend/cann-8.5.2/python/site-packages/tbe/dsl/unify_schedule/vector/transdata/common/graph/transdata_graph_info.py:143: SyntaxWarning: invalid escape sequence '\c'
+  """
+/usr/local/Ascend/cann-8.5.2/python/site-packages/tbe/dsl/unify_schedule/vector/transdata/common/graph/transdata_graph_info.py:170: SyntaxWarning: invalid escape sequence '\c'
+  """
+/usr/local/Ascend/cann-8.5.2/python/site-packages/tbe/dsl/unify_schedule/vector/transdata/common/graph/transdata_graph_info.py:143: SyntaxWarning: invalid escape sequence '\c'
+  """
+/usr/local/Ascend/cann-8.5.2/python/site-packages/tbe/dsl/unify_schedule/vector/transdata/common/graph/transdata_graph_info.py:170: SyntaxWarning: invalid escape sequence '\c'
+  """
+/usr/local/Ascend/cann-8.5.2/python/site-packages/tbe/dsl/classifier/transdata/transdata_classifier.py:222: SyntaxWarning: invalid escape sequence '\B'
+  """
+/usr/local/Ascend/cann-8.5.2/python/site-packages/tbe/dsl/classifier/transdata/transdata_classifier.py:222: SyntaxWarning: invalid escape sequence '\B'
+  """
+/usr/local/Ascend/cann-8.5.2/python/site-packages/tbe/dsl/classifier/transdata/transdata_classifier.py:222: SyntaxWarning: invalid escape sequence '\B'
+  """
+/usr/local/Ascend/cann-8.5.2/python/site-packages/tbe/dsl/classifier/transdata/transdata_classifier.py:222: SyntaxWarning: invalid escape sequence '\B'
+  """
+/usr/local/Ascend/cann-8.5.2/python/site-packages/tbe/dsl/classifier/transdata/transdata_classifier.py:222: SyntaxWarning: invalid escape sequence '\B'
+  """
+/usr/local/Ascend/cann-8.5.2/python/site-packages/tbe/dsl/classifier/transdata/transdata_classifier.py:222: SyntaxWarning: invalid escape sequence '\B'
+  """
+/usr/local/Ascend/cann-8.5.2/python/site-packages/tbe/dsl/classifier/transdata/transdata_classifier.py:222: SyntaxWarning: invalid escape sequence '\B'
+  """
+/usr/local/Ascend/cann-8.5.2/python/site-packages/tbe/dsl/classifier/transdata/transdata_classifier.py:222: SyntaxWarning: invalid escape sequence '\B'
+  """
+/usr/local/Ascend/cann-8.5.2/python/site-packages/tbe/dsl/unify_schedule/vector/transdata/common/graph/transdata_graph_info.py:143: SyntaxWarning: invalid escape sequence '\c'
+  """
+/usr/local/Ascend/cann-8.5.2/python/site-packages/tbe/dsl/unify_schedule/vector/transdata/common/graph/transdata_graph_info.py:170: SyntaxWarning: invalid escape sequence '\c'
+  """
+/usr/local/Ascend/cann-8.5.2/python/site-packages/tbe/dsl/unify_schedule/vector/transdata/common/graph/transdata_graph_info.py:143: SyntaxWarning: invalid escape sequence '\c'
+  """
+/usr/local/Ascend/cann-8.5.2/python/site-packages/tbe/dsl/unify_schedule/vector/transdata/common/graph/transdata_graph_info.py:170: SyntaxWarning: invalid escape sequence '\c'
+  """
+/usr/local/Ascend/cann-8.5.2/python/site-packages/tbe/dsl/unify_schedule/vector/transdata/common/graph/transdata_graph_info.py:143: SyntaxWarning: invalid escape sequence '\c'
+  """
+/usr/local/Ascend/cann-8.5.2/python/site-packages/tbe/dsl/unify_schedule/vector/transdata/common/graph/transdata_graph_info.py:170: SyntaxWarning: invalid escape sequence '\c'
+  """
+/usr/local/Ascend/cann-8.5.2/python/site-packages/tbe/dsl/unify_schedule/vector/transdata/common/graph/transdata_graph_info.py:143: SyntaxWarning: invalid escape sequence '\c'
+  """
+/usr/local/Ascend/cann-8.5.2/python/site-packages/tbe/dsl/unify_schedule/vector/transdata/common/graph/transdata_graph_info.py:170: SyntaxWarning: invalid escape sequence '\c'
+  """
+/usr/local/Ascend/cann-8.5.2/python/site-packages/tbe/dsl/unify_schedule/vector/transdata/common/graph/transdata_graph_info.py:143: SyntaxWarning: invalid escape sequence '\c'
+  """
+/usr/local/Ascend/cann-8.5.2/python/site-packages/tbe/dsl/unify_schedule/vector/transdata/common/graph/transdata_graph_info.py:170: SyntaxWarning: invalid escape sequence '\c'
+  """
+/usr/local/Ascend/cann-8.5.2/python/site-packages/tbe/dsl/unify_schedule/vector/transdata/common/graph/transdata_graph_info.py:143: SyntaxWarning: invalid escape sequence '\c'
+  """
+/usr/local/Ascend/cann-8.5.2/python/site-packages/tbe/dsl/unify_schedule/vector/transdata/common/graph/transdata_graph_info.py:170: SyntaxWarning: invalid escape sequence '\c'
+  """
+/usr/local/Ascend/cann-8.5.2/python/site-packages/tbe/dsl/unify_schedule/vector/transdata/common/graph/transdata_graph_info.py:143: SyntaxWarning: invalid escape sequence '\c'
+  """
+/usr/local/Ascend/cann-8.5.2/python/site-packages/tbe/dsl/unify_schedule/vector/transdata/common/graph/transdata_graph_info.py:170: SyntaxWarning: invalid escape sequence '\c'
+  """
+/usr/local/Ascend/cann-8.5.2/python/site-packages/tbe/dsl/unify_schedule/vector/transdata/common/graph/transdata_graph_info.py:143: SyntaxWarning: invalid escape sequence '\c'
+  """
+/usr/local/Ascend/cann-8.5.2/python/site-packages/tbe/dsl/unify_schedule/vector/transdata/common/graph/transdata_graph_info.py:170: SyntaxWarning: invalid escape sequence '\c'
+  """
+/usr/local/Ascend/cann-8.5.2/opp/built-in/op_impl/ai_core/tbe/impl/ops_legacy/dynamic/gelu_grad_v2.py:96: SyntaxWarning: invalid escape sequence '\h'
+  """
+/usr/local/Ascend/cann-8.5.2/opp/built-in/op_impl/ai_core/tbe/impl/ops_legacy/dynamic/gelu_grad_v2.py:156: SyntaxWarning: invalid escape sequence '\h'
+  """
+/usr/local/Ascend/cann-8.5.2/python/site-packages/asc_op_compile_base/asc_op_compiler/ascendc_compile_gen_code.py:161: SyntaxWarning: invalid escape sequence '\w'
+  match = re.search(f'{option}=(\w+)', ' '.join(compile_options))
+/usr/local/Ascend/cann-8.5.2/python/site-packages/asc_op_compile_base/asc_op_compiler/ascendc_compile_gen_code.py:161: SyntaxWarning: invalid escape sequence '\w'
+  match = re.search(f'{option}=(\w+)', ' '.join(compile_options))
+/usr/local/Ascend/cann-8.5.2/python/site-packages/asc_op_compile_base/asc_op_compiler/ascendc_compile_gen_code.py:161: SyntaxWarning: invalid escape sequence '\w'
+  match = re.search(f'{option}=(\w+)', ' '.join(compile_options))
+/usr/local/Ascend/cann-8.5.2/python/site-packages/asc_op_compile_base/asc_op_compiler/ascendc_compile_gen_code.py:161: SyntaxWarning: invalid escape sequence '\w'
+  match = re.search(f'{option}=(\w+)', ' '.join(compile_options))
+/usr/local/Ascend/cann-8.5.2/python/site-packages/asc_op_compile_base/asc_op_compiler/ascendc_compile_gen_code.py:161: SyntaxWarning: invalid escape sequence '\w'
+  match = re.search(f'{option}=(\w+)', ' '.join(compile_options))
+/usr/local/Ascend/cann-8.5.2/python/site-packages/asc_op_compile_base/asc_op_compiler/ascendc_compile_gen_code.py:161: SyntaxWarning: invalid escape sequence '\w'
+  match = re.search(f'{option}=(\w+)', ' '.join(compile_options))
+/usr/local/Ascend/cann-8.5.2/python/site-packages/asc_op_compile_base/asc_op_compiler/ascendc_compile_gen_code.py:161: SyntaxWarning: invalid escape sequence '\w'
+  match = re.search(f'{option}=(\w+)', ' '.join(compile_options))
+/usr/local/Ascend/cann-8.5.2/python/site-packages/asc_op_compile_base/asc_op_compiler/ascendc_compile_gen_code.py:161: SyntaxWarning: invalid escape sequence '\w'
+  match = re.search(f'{option}=(\w+)', ' '.join(compile_options))
+..Loading pretrained model LPIPS from /home/ma-user/.cache/torch/hub/pyiqa/LPIPS_v0.1_alex-df73285e.pth
+Warning: since the loaded file is not a zipfile, only "torch.device" and "str" type parameters are currently supported for parameter types of map_location. If parameter types of map_location is "Callable[[torch.Tensor, str], torch.Tensor]" or "Dict[str, str]", which is only support for zipfile, all tensors are currently loaded onto the CPU, which may introduce problems.
+    0 SDSD_indoor/pair34_2               PSNR-Y  18.26 (GT-mean  18.15)  LPIPS 0.3884
+/home/ma-user/anaconda3/envs/PyTorch-2.7.1/lib/python3.12/contextlib.py:105: FutureWarning: `torch.backends.cuda.sdp_kernel()` is deprecated. In the future, this context manager will be removed. Please see `torch.nn.attention.sdpa_kernel()` for the new context manager, with updated signature.
+  self.gen = func(*args, **kwds)
+    1 SDSD_indoor/pair3_2                PSNR-Y  24.89 (GT-mean  27.97)  LPIPS 0.2046
+    2 SDSD_indoor/pair4                  PSNR-Y  22.36 (GT-mean  22.98)  LPIPS 0.1931
+    3 SDSD_indoor/pair4_2                PSNR-Y  26.08 (GT-mean  26.92)  LPIPS 0.2833
+    4 SDSD_indoor/pair5                  PSNR-Y  25.07 (GT-mean  27.57)  LPIPS 0.2171
+    5 SDSD_indoor/pair5_2                PSNR-Y  23.20 (GT-mean  22.85)  LPIPS 0.2877
+    6 SDSD_indoor/pair6                  PSNR-Y  21.50 (GT-mean  29.88)  LPIPS 0.3729
+    7 SDSD_indoor/pair6_2                PSNR-Y  18.89 (GT-mean  18.94)  LPIPS 0.2536
+    8 SDSD_indoor/pair7                  PSNR-Y  17.37 (GT-mean  24.55)  LPIPS 0.2317
+    9 SDSD_indoor/pair7_2                PSNR-Y  15.90 (GT-mean  28.00)  LPIPS 0.3403
+   10 SDSD_indoor/pair8                  PSNR-Y  25.79 (GT-mean  27.75)  LPIPS 0.2749
+   11 SDSD_indoor/pair8_2                PSNR-Y  24.14 (GT-mean  24.18)  LPIPS 0.2642
+   12 SDSD_indoor/pair9                  PSNR-Y  19.76 (GT-mean  25.04)  LPIPS 0.2913
+   13 SDSD_indoor/pair9_2                PSNR-Y  27.03 (GT-mean  28.14)  LPIPS 0.1709
+   14 SDSD_outdoor/MVI_1007_2            PSNR-Y  26.18 (GT-mean  26.17)  LPIPS 0.1739
+   15 SDSD_outdoor/MVI_1009              PSNR-Y  28.28 (GT-mean  28.23)  LPIPS 0.1848
+   16 SDSD_outdoor/MVI_1009_2            PSNR-Y  22.12 (GT-mean  26.53)  LPIPS 0.2633
+   17 SDSD_outdoor/MVI_1011              PSNR-Y  31.84 (GT-mean  31.84)  LPIPS 0.1883
+   18 SDSD_outdoor/MVI_1011_2            PSNR-Y  25.43 (GT-mean  26.22)  LPIPS 0.2118
+   19 SDSD_outdoor/MVI_1013              PSNR-Y  28.36 (GT-mean  31.88)  LPIPS 0.1422
+   20 SDSD_outdoor/MVI_1013_2            PSNR-Y  24.43 (GT-mean  24.60)  LPIPS 0.1938
+   21 SDSD_outdoor/MVI_1015              PSNR-Y  30.27 (GT-mean  33.87)  LPIPS 0.1073
+   22 SDSD_outdoor/MVI_1015_2            PSNR-Y  25.22 (GT-mean  25.40)  LPIPS 0.1926
+   23 SDSD_outdoor/MVI_1017              PSNR-Y  30.09 (GT-mean  33.61)  LPIPS 0.1183
+   24 SDSD_outdoor/MVI_1017_2            PSNR-Y  27.19 (GT-mean  34.05)  LPIPS 0.1690
+   25 SDSD_outdoor/MVI_1019              PSNR-Y  12.07 (GT-mean  24.79)  LPIPS 0.2209
+   26 SDSD_outdoor/MVI_1019_2            PSNR-Y  12.54 (GT-mean  21.59)  LPIPS 0.2671
+   27 SDSD_outdoor/MVI_1021              PSNR-Y  24.94 (GT-mean  27.86)  LPIPS 0.2421
+   28 SDSD_outdoor/MVI_1021_2            PSNR-Y  23.39 (GT-mean  28.59)  LPIPS 0.2183
+   29 SDSD_outdoor/MVI_1024              PSNR-Y  29.22 (GT-mean  32.64)  LPIPS 0.1507
+   30 SDSD_outdoor/MVI_1024_2            PSNR-Y  28.39 (GT-mean  28.61)  LPIPS 0.1738
+   31 SDSD_outdoor/MVI_1026              PSNR-Y  30.52 (GT-mean  34.43)  LPIPS 0.1693
+   32 SDSD_outdoor/MVI_1026_2            PSNR-Y  33.48 (GT-mean  34.64)  LPIPS 0.1380
+   33 SDSD_outdoor/MVI_1028              PSNR-Y  18.19 (GT-mean  26.56)  LPIPS 0.2542
+   34 SDSD_outdoor/MVI_1028_2            PSNR-Y  19.33 (GT-mean  22.55)  LPIPS 0.2717
+   35 SDSD_outdoor/MVI_1030              PSNR-Y  31.65 (GT-mean  34.56)  LPIPS 0.1209
+   36 SDSD_outdoor/MVI_1030_2            PSNR-Y  29.25 (GT-mean  34.28)  LPIPS 0.1330
+   37 SDSD_outdoor/MVI_1032              PSNR-Y  34.90 (GT-mean  36.07)  LPIPS 0.1226
+   38 SDSD_outdoor/MVI_1032_2            PSNR-Y  29.37 (GT-mean  32.65)  LPIPS 0.1254
+
+39 sequences | PSNR-Y 24.792 | GT-mean 28.081 | LPIPS 0.2135 | input 11.816
+wrote /cache/zihaohe/seer_takeover_20261111/results/e18_hybrid_s0_saved.json
+CASE hybrid_s1 START 2026-11-11T11:14:00Z
+/home/ma-user/anaconda3/envs/PyTorch-2.7.1/lib/python3.12/site-packages/torch/cuda/__init__.py:61: FutureWarning: The pynvml package is deprecated. Please install nvidia-ml-py instead. If you did not install pynvml directly, please report this to the maintainers of the package that installed pynvml for you.
+  import pynvml  # type: ignore[import]
+/home/ma-user/anaconda3/envs/PyTorch-2.7.1/lib/python3.12/site-packages/torch_npu/utils/collect_env.py:58: UserWarning: Warning: The /usr/local/Ascend/cann-8.5.2 owner does not match the current owner.
+  warnings.warn(f"Warning: The {path} owner does not match the current owner.")
+/home/ma-user/anaconda3/envs/PyTorch-2.7.1/lib/python3.12/site-packages/torch_npu/utils/collect_env.py:58: UserWarning: Warning: The /usr/local/Ascend/cann-8.5.2/aarch64-linux/ascend_toolkit_install.info owner does not match the current owner.
+  warnings.warn(f"Warning: The {path} owner does not match the current owner.")
+/home/ma-user/anaconda3/envs/PyTorch-2.7.1/lib/python3.12/site-packages/torch_npu/utils/collect_env.py:58: UserWarning: Warning: The /usr/local/Ascend/cann-8.5.2 owner does not match the current owner.
+  warnings.warn(f"Warning: The {path} owner does not match the current owner.")
+/home/ma-user/anaconda3/envs/PyTorch-2.7.1/lib/python3.12/site-packages/torch_npu/utils/collect_env.py:58: UserWarning: Warning: The /usr/local/Ascend/cann-8.5.2/aarch64-linux/ascend_toolkit_install.info owner does not match the current owner.
+  warnings.warn(f"Warning: The {path} owner does not match the current owner.")
+[VJepaBackboneLocal21] loaded /temp/zihaohe/seer_cvpr/weights/vjepa2_1_vitl_dist_vitG_384.pt | missing=0 unexpected=2
+  unexpected (first 5): ['patch_embed_img.proj.weight', 'patch_embed_img.proj.bias']
+[reconstruction] {"arch": "v2", "arm": "pretrained", "branch": "small", "clip_len": 16, "kv": "hybrid", "layers": "single", "mode": "saved", "random_encoder_seed": null, "taps": [5, 11, 17, 23], "token_proj": "none", "token_proj_k": 4, "trained_arm": "pretrained", "version": 2, "xattn": "global"}
+[eval_e4] final_cpu.pt arm=pretrained arch=v2 heldout=sdsd split=test trained_heldout=None seed=1
+/home/ma-user/anaconda3/envs/PyTorch-2.7.1/lib/python3.12/contextlib.py:105: FutureWarning: `torch.backends.cuda.sdp_kernel()` is deprecated. In the future, this context manager will be removed. Please see `torch.nn.attention.sdpa_kernel()` for the new context manager, with updated signature.
+  self.gen = func(*args, **kwds)
+/usr/local/Ascend/cann-8.5.2/python/site-packages/tbe/dsl/classifier/transdata/transdata_classifier.py:222: SyntaxWarning: invalid escape sequence '\B'
+  """
+/usr/local/Ascend/cann-8.5.2/python/site-packages/tbe/dsl/unify_schedule/vector/transdata/common/graph/transdata_graph_info.py:143: SyntaxWarning: invalid escape sequence '\c'
+  """
+/usr/local/Ascend/cann-8.5.2/python/site-packages/tbe/dsl/unify_schedule/vector/transdata/common/graph/transdata_graph_info.py:170: SyntaxWarning: invalid escape sequence '\c'
+  """
+/usr/local/Ascend/cann-8.5.2/python/site-packages/asc_op_compile_base/asc_op_compiler/ascendc_compile_gen_code.py:161: SyntaxWarning: invalid escape sequence '\w'
+  match = re.search(f'{option}=(\w+)', ' '.join(compile_options))
+/usr/local/Ascend/cann-8.5.2/python/site-packages/tbe/dsl/classifier/transdata/transdata_classifier.py:222: SyntaxWarning: invalid escape sequence '\B'
+  """
+/usr/local/Ascend/cann-8.5.2/python/site-packages/tbe/dsl/classifier/transdata/transdata_classifier.py:222: SyntaxWarning: invalid escape sequence '\B'
+  """
+/usr/local/Ascend/cann-8.5.2/python/site-packages/tbe/dsl/classifier/transdata/transdata_classifier.py:222: SyntaxWarning: invalid escape sequence '\B'
+  """
+/usr/local/Ascend/cann-8.5.2/python/site-packages/tbe/dsl/classifier/transdata/transdata_classifier.py:222: SyntaxWarning: invalid escape sequence '\B'
+  """
+/usr/local/Ascend/cann-8.5.2/python/site-packages/tbe/dsl/classifier/transdata/transdata_classifier.py:222: SyntaxWarning: invalid escape sequence '\B'
+  """
+/usr/local/Ascend/cann-8.5.2/python/site-packages/tbe/dsl/classifier/transdata/transdata_classifier.py:222: SyntaxWarning: invalid escape sequence '\B'
+  """
+/usr/local/Ascend/cann-8.5.2/python/site-packages/tbe/dsl/classifier/transdata/transdata_classifier.py:222: SyntaxWarning: invalid escape sequence '\B'
+  """
+/usr/local/Ascend/cann-8.5.2/python/site-packages/tbe/dsl/classifier/transdata/transdata_classifier.py:222: SyntaxWarning: invalid escape sequence '\B'
+  """
+/usr/local/Ascend/cann-8.5.2/python/site-packages/tbe/dsl/classifier/transdata/transdata_classifier.py:222: SyntaxWarning: invalid escape sequence '\B'
+  """
+/usr/local/Ascend/cann-8.5.2/python/site-packages/tbe/dsl/unify_schedule/vector/transdata/common/graph/transdata_graph_info.py:143: SyntaxWarning: invalid escape sequence '\c'
+  """
+/usr/local/Ascend/cann-8.5.2/python/site-packages/tbe/dsl/unify_schedule/vector/transdata/common/graph/transdata_graph_info.py:170: SyntaxWarning: invalid escape sequence '\c'
+  """
+/usr/local/Ascend/cann-8.5.2/python/site-packages/tbe/dsl/unify_schedule/vector/transdata/common/graph/transdata_graph_info.py:143: SyntaxWarning: invalid escape sequence '\c'
+  """
+/usr/local/Ascend/cann-8.5.2/python/site-packages/tbe/dsl/unify_schedule/vector/transdata/common/graph/transdata_graph_info.py:170: SyntaxWarning: invalid escape sequence '\c'
+  """
+/usr/local/Ascend/cann-8.5.2/python/site-packages/tbe/dsl/unify_schedule/vector/transdata/common/graph/transdata_graph_info.py:143: SyntaxWarning: invalid escape sequence '\c'
+  """
+/usr/local/Ascend/cann-8.5.2/python/site-packages/tbe/dsl/unify_schedule/vector/transdata/common/graph/transdata_graph_info.py:170: SyntaxWarning: invalid escape sequence '\c'
+  """
+/usr/local/Ascend/cann-8.5.2/python/site-packages/tbe/dsl/unify_schedule/vector/transdata/common/graph/transdata_graph_info.py:143: SyntaxWarning: invalid escape sequence '\c'
+  """
+/usr/local/Ascend/cann-8.5.2/python/site-packages/tbe/dsl/unify_schedule/vector/transdata/common/graph/transdata_graph_info.py:170: SyntaxWarning: invalid escape sequence '\c'
+  """
+/usr/local/Ascend/cann-8.5.2/python/site-packages/tbe/dsl/unify_schedule/vector/transdata/common/graph/transdata_graph_info.py:143: SyntaxWarning: invalid escape sequence '\c'
+  """
+/usr/local/Ascend/cann-8.5.2/python/site-packages/tbe/dsl/unify_schedule/vector/transdata/common/graph/transdata_graph_info.py:170: SyntaxWarning: invalid escape sequence '\c'
+  """
+/usr/local/Ascend/cann-8.5.2/python/site-packages/tbe/dsl/unify_schedule/vector/transdata/common/graph/transdata_graph_info.py:143: SyntaxWarning: invalid escape sequence '\c'
+  """
+/usr/local/Ascend/cann-8.5.2/python/site-packages/tbe/dsl/unify_schedule/vector/transdata/common/graph/transdata_graph_info.py:170: SyntaxWarning: invalid escape sequence '\c'
+  """
+/usr/local/Ascend/cann-8.5.2/python/site-packages/tbe/dsl/unify_schedule/vector/transdata/common/graph/transdata_graph_info.py:143: SyntaxWarning: invalid escape sequence '\c'
+  """
+/usr/local/Ascend/cann-8.5.2/python/site-packages/tbe/dsl/unify_schedule/vector/transdata/common/graph/transdata_graph_info.py:170: SyntaxWarning: invalid escape sequence '\c'
+  """
+/usr/local/Ascend/cann-8.5.2/python/site-packages/tbe/dsl/unify_schedule/vector/transdata/common/graph/transdata_graph_info.py:143: SyntaxWarning: invalid escape sequence '\c'
+  """
+/usr/local/Ascend/cann-8.5.2/python/site-packages/tbe/dsl/unify_schedule/vector/transdata/common/graph/transdata_graph_info.py:170: SyntaxWarning: invalid escape sequence '\c'
+  """
+/usr/local/Ascend/cann-8.5.2/python/site-packages/tbe/dsl/unify_schedule/vector/transdata/common/graph/transdata_graph_info.py:143: SyntaxWarning: invalid escape sequence '\c'
+  """
+/usr/local/Ascend/cann-8.5.2/python/site-packages/tbe/dsl/unify_schedule/vector/transdata/common/graph/transdata_graph_info.py:170: SyntaxWarning: invalid escape sequence '\c'
+  """
+/usr/local/Ascend/cann-8.5.2/python/site-packages/tbe/dsl/classifier/transdata/transdata_classifier.py:222: SyntaxWarning: invalid escape sequence '\B'
+  """
+/usr/local/Ascend/cann-8.5.2/python/site-packages/tbe/dsl/classifier/transdata/transdata_classifier.py:222: SyntaxWarning: invalid escape sequence '\B'
+  """
+/usr/local/Ascend/cann-8.5.2/python/site-packages/tbe/dsl/classifier/transdata/transdata_classifier.py:222: SyntaxWarning: invalid escape sequence '\B'
+  """
+/usr/local/Ascend/cann-8.5.2/python/site-packages/tbe/dsl/classifier/transdata/transdata_classifier.py:222: SyntaxWarning: invalid escape sequence '\B'
+  """
+/usr/local/Ascend/cann-8.5.2/python/site-packages/tbe/dsl/classifier/transdata/transdata_classifier.py:222: SyntaxWarning: invalid escape sequence '\B'
+  """
+/usr/local/Ascend/cann-8.5.2/python/site-packages/tbe/dsl/classifier/transdata/transdata_classifier.py:222: SyntaxWarning: invalid escape sequence '\B'
+  """
+/usr/local/Ascend/cann-8.5.2/python/site-packages/tbe/dsl/classifier/transdata/transdata_classifier.py:222: SyntaxWarning: invalid escape sequence '\B'
+  """
+/usr/local/Ascend/cann-8.5.2/python/site-packages/tbe/dsl/classifier/transdata/transdata_classifier.py:222: SyntaxWarning: invalid escape sequence '\B'
+  """
+/usr/local/Ascend/cann-8.5.2/python/site-packages/tbe/dsl/unify_schedule/vector/transdata/common/graph/transdata_graph_info.py:143: SyntaxWarning: invalid escape sequence '\c'
+  """
+/usr/local/Ascend/cann-8.5.2/python/site-packages/tbe/dsl/unify_schedule/vector/transdata/common/graph/transdata_graph_info.py:170: SyntaxWarning: invalid escape sequence '\c'
+  """
+/usr/local/Ascend/cann-8.5.2/python/site-packages/tbe/dsl/unify_schedule/vector/transdata/common/graph/transdata_graph_info.py:143: SyntaxWarning: invalid escape sequence '\c'
+  """
+/usr/local/Ascend/cann-8.5.2/python/site-packages/tbe/dsl/unify_schedule/vector/transdata/common/graph/transdata_graph_info.py:170: SyntaxWarning: invalid escape sequence '\c'
+  """
+/usr/local/Ascend/cann-8.5.2/python/site-packages/tbe/dsl/unify_schedule/vector/transdata/common/graph/transdata_graph_info.py:143: SyntaxWarning: invalid escape sequence '\c'
+  """
+/usr/local/Ascend/cann-8.5.2/python/site-packages/tbe/dsl/unify_schedule/vector/transdata/common/graph/transdata_graph_info.py:170: SyntaxWarning: invalid escape sequence '\c'
+  """
+/usr/local/Ascend/cann-8.5.2/python/site-packages/tbe/dsl/unify_schedule/vector/transdata/common/graph/transdata_graph_info.py:143: SyntaxWarning: invalid escape sequence '\c'
+  """
+/usr/local/Ascend/cann-8.5.2/python/site-packages/tbe/dsl/unify_schedule/vector/transdata/common/graph/transdata_graph_info.py:170: SyntaxWarning: invalid escape sequence '\c'
+  """
+/usr/local/Ascend/cann-8.5.2/python/site-packages/tbe/dsl/unify_schedule/vector/transdata/common/graph/transdata_graph_info.py:143: SyntaxWarning: invalid escape sequence '\c'
+  """
+/usr/local/Ascend/cann-8.5.2/python/site-packages/tbe/dsl/unify_schedule/vector/transdata/common/graph/transdata_graph_info.py:170: SyntaxWarning: invalid escape sequence '\c'
+  """
+/usr/local/Ascend/cann-8.5.2/python/site-packages/tbe/dsl/unify_schedule/vector/transdata/common/graph/transdata_graph_info.py:143: SyntaxWarning: invalid escape sequence '\c'
+  """
+/usr/local/Ascend/cann-8.5.2/python/site-packages/tbe/dsl/unify_schedule/vector/transdata/common/graph/transdata_graph_info.py:170: SyntaxWarning: invalid escape sequence '\c'
+  """
+/usr/local/Ascend/cann-8.5.2/python/site-packages/tbe/dsl/unify_schedule/vector/transdata/common/graph/transdata_graph_info.py:143: SyntaxWarning: invalid escape sequence '\c'
+  """
+/usr/local/Ascend/cann-8.5.2/python/site-packages/tbe/dsl/unify_schedule/vector/transdata/common/graph/transdata_graph_info.py:170: SyntaxWarning: invalid escape sequence '\c'
+  """
+/usr/local/Ascend/cann-8.5.2/python/site-packages/tbe/dsl/unify_schedule/vector/transdata/common/graph/transdata_graph_info.py:143: SyntaxWarning: invalid escape sequence '\c'
+  """
+/usr/local/Ascend/cann-8.5.2/python/site-packages/tbe/dsl/unify_schedule/vector/transdata/common/graph/transdata_graph_info.py:170: SyntaxWarning: invalid escape sequence '\c'
+  """
+/usr/local/Ascend/cann-8.5.2/opp/built-in/op_impl/ai_core/tbe/impl/ops_legacy/dynamic/gelu_grad_v2.py:96: SyntaxWarning: invalid escape sequence '\h'
+  """
+/usr/local/Ascend/cann-8.5.2/opp/built-in/op_impl/ai_core/tbe/impl/ops_legacy/dynamic/gelu_grad_v2.py:156: SyntaxWarning: invalid escape sequence '\h'
+  """
+/usr/local/Ascend/cann-8.5.2/python/site-packages/asc_op_compile_base/asc_op_compiler/ascendc_compile_gen_code.py:161: SyntaxWarning: invalid escape sequence '\w'
+  match = re.search(f'{option}=(\w+)', ' '.join(compile_options))
+/usr/local/Ascend/cann-8.5.2/python/site-packages/asc_op_compile_base/asc_op_compiler/ascendc_compile_gen_code.py:161: SyntaxWarning: invalid escape sequence '\w'
+  match = re.search(f'{option}=(\w+)', ' '.join(compile_options))
+/usr/local/Ascend/cann-8.5.2/python/site-packages/asc_op_compile_base/asc_op_compiler/ascendc_compile_gen_code.py:161: SyntaxWarning: invalid escape sequence '\w'
+  match = re.search(f'{option}=(\w+)', ' '.join(compile_options))
+/usr/local/Ascend/cann-8.5.2/python/site-packages/asc_op_compile_base/asc_op_compiler/ascendc_compile_gen_code.py:161: SyntaxWarning: invalid escape sequence '\w'
+  match = re.search(f'{option}=(\w+)', ' '.join(compile_options))
+/usr/local/Ascend/cann-8.5.2/python/site-packages/asc_op_compile_base/asc_op_compiler/ascendc_compile_gen_code.py:161: SyntaxWarning: invalid escape sequence '\w'
+  match = re.search(f'{option}=(\w+)', ' '.join(compile_options))
+/usr/local/Ascend/cann-8.5.2/python/site-packages/asc_op_compile_base/asc_op_compiler/ascendc_compile_gen_code.py:161: SyntaxWarning: invalid escape sequence '\w'
+  match = re.search(f'{option}=(\w+)', ' '.join(compile_options))
+/usr/local/Ascend/cann-8.5.2/python/site-packages/asc_op_compile_base/asc_op_compiler/ascendc_compile_gen_code.py:161: SyntaxWarning: invalid escape sequence '\w'
+  match = re.search(f'{option}=(\w+)', ' '.join(compile_options))
+/usr/local/Ascend/cann-8.5.2/python/site-packages/asc_op_compile_base/asc_op_compiler/ascendc_compile_gen_code.py:161: SyntaxWarning: invalid escape sequence '\w'
+  match = re.search(f'{option}=(\w+)', ' '.join(compile_options))
+..Loading pretrained model LPIPS from /home/ma-user/.cache/torch/hub/pyiqa/LPIPS_v0.1_alex-df73285e.pth
+Warning: since the loaded file is not a zipfile, only "torch.device" and "str" type parameters are currently supported for parameter types of map_location. If parameter types of map_location is "Callable[[torch.Tensor, str], torch.Tensor]" or "Dict[str, str]", which is only support for zipfile, all tensors are currently loaded onto the CPU, which may introduce problems.
+    0 SDSD_indoor/pair34_2               PSNR-Y  15.45 (GT-mean  15.00)  LPIPS 0.4432
+/home/ma-user/anaconda3/envs/PyTorch-2.7.1/lib/python3.12/contextlib.py:105: FutureWarning: `torch.backends.cuda.sdp_kernel()` is deprecated. In the future, this context manager will be removed. Please see `torch.nn.attention.sdpa_kernel()` for the new context manager, with updated signature.
+  self.gen = func(*args, **kwds)
+    1 SDSD_indoor/pair3_2                PSNR-Y  25.11 (GT-mean  27.99)  LPIPS 0.2087
+    2 SDSD_indoor/pair4                  PSNR-Y  23.15 (GT-mean  23.21)  LPIPS 0.1862
+    3 SDSD_indoor/pair4_2                PSNR-Y  27.12 (GT-mean  30.23)  LPIPS 0.2710
+    4 SDSD_indoor/pair5                  PSNR-Y  24.54 (GT-mean  26.81)  LPIPS 0.2202
+    5 SDSD_indoor/pair5_2                PSNR-Y  18.24 (GT-mean  23.28)  LPIPS 0.2977
+    6 SDSD_indoor/pair6                  PSNR-Y  22.73 (GT-mean  29.75)  LPIPS 0.3503
+    7 SDSD_indoor/pair6_2                PSNR-Y  23.07 (GT-mean  23.25)  LPIPS 0.2707
+    8 SDSD_indoor/pair7                  PSNR-Y  20.22 (GT-mean  25.68)  LPIPS 0.2317
+    9 SDSD_indoor/pair7_2                PSNR-Y  16.92 (GT-mean  30.16)  LPIPS 0.3303
+   10 SDSD_indoor/pair8                  PSNR-Y  25.74 (GT-mean  25.40)  LPIPS 0.2777
+   11 SDSD_indoor/pair8_2                PSNR-Y  26.78 (GT-mean  26.46)  LPIPS 0.2388
+   12 SDSD_indoor/pair9                  PSNR-Y  34.34 (GT-mean  35.29)  LPIPS 0.2267
+   13 SDSD_indoor/pair9_2                PSNR-Y  28.58 (GT-mean  28.67)  LPIPS 0.1807
+   14 SDSD_outdoor/MVI_1007_2            PSNR-Y  24.46 (GT-mean  26.04)  LPIPS 0.1939
+   15 SDSD_outdoor/MVI_1009              PSNR-Y  22.14 (GT-mean  27.87)  LPIPS 0.2077
+   16 SDSD_outdoor/MVI_1009_2            PSNR-Y  23.06 (GT-mean  25.96)  LPIPS 0.2767
+   17 SDSD_outdoor/MVI_1011              PSNR-Y  25.57 (GT-mean  30.81)  LPIPS 0.1796
+   18 SDSD_outdoor/MVI_1011_2            PSNR-Y  22.90 (GT-mean  25.86)  LPIPS 0.2182
+   19 SDSD_outdoor/MVI_1013              PSNR-Y  24.45 (GT-mean  30.80)  LPIPS 0.1473
+   20 SDSD_outdoor/MVI_1013_2            PSNR-Y  23.62 (GT-mean  24.46)  LPIPS 0.2086
+   21 SDSD_outdoor/MVI_1015              PSNR-Y  23.57 (GT-mean  32.81)  LPIPS 0.1142
+   22 SDSD_outdoor/MVI_1015_2            PSNR-Y  22.83 (GT-mean  25.04)  LPIPS 0.1894
+   23 SDSD_outdoor/MVI_1017              PSNR-Y  25.22 (GT-mean  32.67)  LPIPS 0.1247
+   24 SDSD_outdoor/MVI_1017_2            PSNR-Y  25.81 (GT-mean  33.68)  LPIPS 0.1660
+   25 SDSD_outdoor/MVI_1019              PSNR-Y  14.65 (GT-mean  25.92)  LPIPS 0.2153
+   26 SDSD_outdoor/MVI_1019_2            PSNR-Y  15.15 (GT-mean  21.95)  LPIPS 0.2667
+   27 SDSD_outdoor/MVI_1021              PSNR-Y  26.74 (GT-mean  27.58)  LPIPS 0.2408
+   28 SDSD_outdoor/MVI_1021_2            PSNR-Y  26.07 (GT-mean  28.97)  LPIPS 0.2055
+   29 SDSD_outdoor/MVI_1024              PSNR-Y  25.14 (GT-mean  31.06)  LPIPS 0.1619
+   30 SDSD_outdoor/MVI_1024_2            PSNR-Y  24.98 (GT-mean  27.74)  LPIPS 0.1893
+   31 SDSD_outdoor/MVI_1026              PSNR-Y  25.26 (GT-mean  33.48)  LPIPS 0.1998
+   32 SDSD_outdoor/MVI_1026_2            PSNR-Y  31.62 (GT-mean  34.13)  LPIPS 0.1425
+   33 SDSD_outdoor/MVI_1028              PSNR-Y  17.26 (GT-mean  26.39)  LPIPS 0.2649
+   34 SDSD_outdoor/MVI_1028_2            PSNR-Y  19.46 (GT-mean  22.63)  LPIPS 0.2717
+   35 SDSD_outdoor/MVI_1030              PSNR-Y  32.78 (GT-mean  34.60)  LPIPS 0.1133
+   36 SDSD_outdoor/MVI_1030_2            PSNR-Y  33.37 (GT-mean  34.03)  LPIPS 0.1279
+   37 SDSD_outdoor/MVI_1032              PSNR-Y  29.84 (GT-mean  35.03)  LPIPS 0.1214
+   38 SDSD_outdoor/MVI_1032_2            PSNR-Y  34.04 (GT-mean  34.04)  LPIPS 0.1164
+
+39 sequences | PSNR-Y 24.410 | GT-mean 28.326 | LPIPS 0.2153 | input 11.816
+wrote /cache/zihaohe/seer_takeover_20261111/results/e18_hybrid_s1_saved.json
+CASE layers_all_s2 START 2026-11-11T11:16:15Z
+/home/ma-user/anaconda3/envs/PyTorch-2.7.1/lib/python3.12/site-packages/torch/cuda/__init__.py:61: FutureWarning: The pynvml package is deprecated. Please install nvidia-ml-py instead. If you did not install pynvml directly, please report this to the maintainers of the package that installed pynvml for you.
+  import pynvml  # type: ignore[import]
+/home/ma-user/anaconda3/envs/PyTorch-2.7.1/lib/python3.12/site-packages/torch_npu/utils/collect_env.py:58: UserWarning: Warning: The /usr/local/Ascend/cann-8.5.2 owner does not match the current owner.
+  warnings.warn(f"Warning: The {path} owner does not match the current owner.")
+/home/ma-user/anaconda3/envs/PyTorch-2.7.1/lib/python3.12/site-packages/torch_npu/utils/collect_env.py:58: UserWarning: Warning: The /usr/local/Ascend/cann-8.5.2/aarch64-linux/ascend_toolkit_install.info owner does not match the current owner.
+  warnings.warn(f"Warning: The {path} owner does not match the current owner.")
+/home/ma-user/anaconda3/envs/PyTorch-2.7.1/lib/python3.12/site-packages/torch_npu/utils/collect_env.py:58: UserWarning: Warning: The /usr/local/Ascend/cann-8.5.2 owner does not match the current owner.
+  warnings.warn(f"Warning: The {path} owner does not match the current owner.")
+/home/ma-user/anaconda3/envs/PyTorch-2.7.1/lib/python3.12/site-packages/torch_npu/utils/collect_env.py:58: UserWarning: Warning: The /usr/local/Ascend/cann-8.5.2/aarch64-linux/ascend_toolkit_install.info owner does not match the current owner.
+  warnings.warn(f"Warning: The {path} owner does not match the current owner.")
+[VJepaBackboneLocal21] loaded /temp/zihaohe/seer_cvpr/weights/vjepa2_1_vitl_dist_vitG_384.pt | missing=0 unexpected=2
+  unexpected (first 5): ['patch_embed_img.proj.weight', 'patch_embed_img.proj.bias']
+[reconstruction] {"arch": "v2", "arm": "pretrained", "branch": "small", "clip_len": 16, "kv": "per_tubelet", "layers": "all", "mode": "saved", "random_encoder_seed": null, "taps": [5, 11, 17, 23], "token_proj": "none", "token_proj_k": 4, "trained_arm": "pretrained", "version": 2, "xattn": "global"}
+[eval_e4] final_cpu.pt arm=pretrained arch=v2 heldout=sdsd split=test trained_heldout=None seed=2
+/home/ma-user/anaconda3/envs/PyTorch-2.7.1/lib/python3.12/contextlib.py:105: FutureWarning: `torch.backends.cuda.sdp_kernel()` is deprecated. In the future, this context manager will be removed. Please see `torch.nn.attention.sdpa_kernel()` for the new context manager, with updated signature.
+  self.gen = func(*args, **kwds)
+/usr/local/Ascend/cann-8.5.2/python/site-packages/tbe/dsl/classifier/transdata/transdata_classifier.py:222: SyntaxWarning: invalid escape sequence '\B'
+  """
+/usr/local/Ascend/cann-8.5.2/python/site-packages/tbe/dsl/unify_schedule/vector/transdata/common/graph/transdata_graph_info.py:143: SyntaxWarning: invalid escape sequence '\c'
+  """
+/usr/local/Ascend/cann-8.5.2/python/site-packages/tbe/dsl/unify_schedule/vector/transdata/common/graph/transdata_graph_info.py:170: SyntaxWarning: invalid escape sequence '\c'
+  """
+/usr/local/Ascend/cann-8.5.2/python/site-packages/asc_op_compile_base/asc_op_compiler/ascendc_compile_gen_code.py:161: SyntaxWarning: invalid escape sequence '\w'
+  match = re.search(f'{option}=(\w+)', ' '.join(compile_options))
+/usr/local/Ascend/cann-8.5.2/python/site-packages/tbe/dsl/classifier/transdata/transdata_classifier.py:222: SyntaxWarning: invalid escape sequence '\B'
+  """
+/usr/local/Ascend/cann-8.5.2/python/site-packages/tbe/dsl/classifier/transdata/transdata_classifier.py:222: SyntaxWarning: invalid escape sequence '\B'
+  """
+/usr/local/Ascend/cann-8.5.2/python/site-packages/tbe/dsl/classifier/transdata/transdata_classifier.py:222: SyntaxWarning: invalid escape sequence '\B'
+  """
+/usr/local/Ascend/cann-8.5.2/python/site-packages/tbe/dsl/classifier/transdata/transdata_classifier.py:222: SyntaxWarning: invalid escape sequence '\B'
+  """
+/usr/local/Ascend/cann-8.5.2/python/site-packages/tbe/dsl/classifier/transdata/transdata_classifier.py:222: SyntaxWarning: invalid escape sequence '\B'
+  """
+/usr/local/Ascend/cann-8.5.2/python/site-packages/tbe/dsl/classifier/transdata/transdata_classifier.py:222: SyntaxWarning: invalid escape sequence '\B'
+  """
+/usr/local/Ascend/cann-8.5.2/python/site-packages/tbe/dsl/classifier/transdata/transdata_classifier.py:222: SyntaxWarning: invalid escape sequence '\B'
+  """
+/usr/local/Ascend/cann-8.5.2/python/site-packages/tbe/dsl/classifier/transdata/transdata_classifier.py:222: SyntaxWarning: invalid escape sequence '\B'
+  """
+/usr/local/Ascend/cann-8.5.2/python/site-packages/tbe/dsl/classifier/transdata/transdata_classifier.py:222: SyntaxWarning: invalid escape sequence '\B'
+  """
+/usr/local/Ascend/cann-8.5.2/python/site-packages/tbe/dsl/unify_schedule/vector/transdata/common/graph/transdata_graph_info.py:143: SyntaxWarning: invalid escape sequence '\c'
+  """
+/usr/local/Ascend/cann-8.5.2/python/site-packages/tbe/dsl/unify_schedule/vector/transdata/common/graph/transdata_graph_info.py:170: SyntaxWarning: invalid escape sequence '\c'
+  """
+/usr/local/Ascend/cann-8.5.2/python/site-packages/tbe/dsl/unify_schedule/vector/transdata/common/graph/transdata_graph_info.py:143: SyntaxWarning: invalid escape sequence '\c'
+  """
+/usr/local/Ascend/cann-8.5.2/python/site-packages/tbe/dsl/unify_schedule/vector/transdata/common/graph/transdata_graph_info.py:170: SyntaxWarning: invalid escape sequence '\c'
+  """
+/usr/local/Ascend/cann-8.5.2/python/site-packages/tbe/dsl/unify_schedule/vector/transdata/common/graph/transdata_graph_info.py:143: SyntaxWarning: invalid escape sequence '\c'
+  """
+/usr/local/Ascend/cann-8.5.2/python/site-packages/tbe/dsl/unify_schedule/vector/transdata/common/graph/transdata_graph_info.py:170: SyntaxWarning: invalid escape sequence '\c'
+  """
+/usr/local/Ascend/cann-8.5.2/python/site-packages/tbe/dsl/unify_schedule/vector/transdata/common/graph/transdata_graph_info.py:143: SyntaxWarning: invalid escape sequence '\c'
+  """
+/usr/local/Ascend/cann-8.5.2/python/site-packages/tbe/dsl/unify_schedule/vector/transdata/common/graph/transdata_graph_info.py:170: SyntaxWarning: invalid escape sequence '\c'
+  """
+/usr/local/Ascend/cann-8.5.2/python/site-packages/tbe/dsl/unify_schedule/vector/transdata/common/graph/transdata_graph_info.py:143: SyntaxWarning: invalid escape sequence '\c'
+  """
+/usr/local/Ascend/cann-8.5.2/python/site-packages/tbe/dsl/unify_schedule/vector/transdata/common/graph/transdata_graph_info.py:170: SyntaxWarning: invalid escape sequence '\c'
+  """
+/usr/local/Ascend/cann-8.5.2/python/site-packages/tbe/dsl/unify_schedule/vector/transdata/common/graph/transdata_graph_info.py:143: SyntaxWarning: invalid escape sequence '\c'
+  """
+/usr/local/Ascend/cann-8.5.2/python/site-packages/tbe/dsl/unify_schedule/vector/transdata/common/graph/transdata_graph_info.py:170: SyntaxWarning: invalid escape sequence '\c'
+  """
+/usr/local/Ascend/cann-8.5.2/python/site-packages/tbe/dsl/unify_schedule/vector/transdata/common/graph/transdata_graph_info.py:143: SyntaxWarning: invalid escape sequence '\c'
+  """
+/usr/local/Ascend/cann-8.5.2/python/site-packages/tbe/dsl/unify_schedule/vector/transdata/common/graph/transdata_graph_info.py:170: SyntaxWarning: invalid escape sequence '\c'
+  """
+/usr/local/Ascend/cann-8.5.2/python/site-packages/tbe/dsl/unify_schedule/vector/transdata/common/graph/transdata_graph_info.py:143: SyntaxWarning: invalid escape sequence '\c'
+  """
+/usr/local/Ascend/cann-8.5.2/python/site-packages/tbe/dsl/unify_schedule/vector/transdata/common/graph/transdata_graph_info.py:143: SyntaxWarning: invalid escape sequence '\c'
+  """
+/usr/local/Ascend/cann-8.5.2/python/site-packages/tbe/dsl/unify_schedule/vector/transdata/common/graph/transdata_graph_info.py:170: SyntaxWarning: invalid escape sequence '\c'
+  """
+/usr/local/Ascend/cann-8.5.2/python/site-packages/tbe/dsl/unify_schedule/vector/transdata/common/graph/transdata_graph_info.py:170: SyntaxWarning: invalid escape sequence '\c'
+  """
+/usr/local/Ascend/cann-8.5.2/python/site-packages/tbe/dsl/classifier/transdata/transdata_classifier.py:222: SyntaxWarning: invalid escape sequence '\B'
+  """
+/usr/local/Ascend/cann-8.5.2/python/site-packages/tbe/dsl/classifier/transdata/transdata_classifier.py:222: SyntaxWarning: invalid escape sequence '\B'
+  """
+/usr/local/Ascend/cann-8.5.2/python/site-packages/tbe/dsl/classifier/transdata/transdata_classifier.py:222: SyntaxWarning: invalid escape sequence '\B'
+  """
+/usr/local/Ascend/cann-8.5.2/python/site-packages/tbe/dsl/classifier/transdata/transdata_classifier.py:222: SyntaxWarning: invalid escape sequence '\B'
+  """
+/usr/local/Ascend/cann-8.5.2/python/site-packages/tbe/dsl/classifier/transdata/transdata_classifier.py:222: SyntaxWarning: invalid escape sequence '\B'
+  """
+/usr/local/Ascend/cann-8.5.2/python/site-packages/tbe/dsl/classifier/transdata/transdata_classifier.py:222: SyntaxWarning: invalid escape sequence '\B'
+  """
+/usr/local/Ascend/cann-8.5.2/python/site-packages/tbe/dsl/classifier/transdata/transdata_classifier.py:222: SyntaxWarning: invalid escape sequence '\B'
+  """
+/usr/local/Ascend/cann-8.5.2/python/site-packages/tbe/dsl/classifier/transdata/transdata_classifier.py:222: SyntaxWarning: invalid escape sequence '\B'
+  """
+/usr/local/Ascend/cann-8.5.2/python/site-packages/tbe/dsl/unify_schedule/vector/transdata/common/graph/transdata_graph_info.py:143: SyntaxWarning: invalid escape sequence '\c'
+  """
+/usr/local/Ascend/cann-8.5.2/python/site-packages/tbe/dsl/unify_schedule/vector/transdata/common/graph/transdata_graph_info.py:143: SyntaxWarning: invalid escape sequence '\c'
+  """
+/usr/local/Ascend/cann-8.5.2/python/site-packages/tbe/dsl/unify_schedule/vector/transdata/common/graph/transdata_graph_info.py:170: SyntaxWarning: invalid escape sequence '\c'
+  """
+/usr/local/Ascend/cann-8.5.2/python/site-packages/tbe/dsl/unify_schedule/vector/transdata/common/graph/transdata_graph_info.py:170: SyntaxWarning: invalid escape sequence '\c'
+  """
+/usr/local/Ascend/cann-8.5.2/python/site-packages/tbe/dsl/unify_schedule/vector/transdata/common/graph/transdata_graph_info.py:143: SyntaxWarning: invalid escape sequence '\c'
+  """
+/usr/local/Ascend/cann-8.5.2/python/site-packages/tbe/dsl/unify_schedule/vector/transdata/common/graph/transdata_graph_info.py:170: SyntaxWarning: invalid escape sequence '\c'
+  """
+/usr/local/Ascend/cann-8.5.2/python/site-packages/tbe/dsl/unify_schedule/vector/transdata/common/graph/transdata_graph_info.py:143: SyntaxWarning: invalid escape sequence '\c'
+  """
+/usr/local/Ascend/cann-8.5.2/python/site-packages/tbe/dsl/unify_schedule/vector/transdata/common/graph/transdata_graph_info.py:170: SyntaxWarning: invalid escape sequence '\c'
+  """
+/usr/local/Ascend/cann-8.5.2/python/site-packages/tbe/dsl/unify_schedule/vector/transdata/common/graph/transdata_graph_info.py:143: SyntaxWarning: invalid escape sequence '\c'
+  """
+/usr/local/Ascend/cann-8.5.2/python/site-packages/tbe/dsl/unify_schedule/vector/transdata/common/graph/transdata_graph_info.py:170: SyntaxWarning: invalid escape sequence '\c'
+  """
+/usr/local/Ascend/cann-8.5.2/python/site-packages/tbe/dsl/unify_schedule/vector/transdata/common/graph/transdata_graph_info.py:143: SyntaxWarning: invalid escape sequence '\c'
+  """
+/usr/local/Ascend/cann-8.5.2/python/site-packages/tbe/dsl/unify_schedule/vector/transdata/common/graph/transdata_graph_info.py:170: SyntaxWarning: invalid escape sequence '\c'
+  """
+/usr/local/Ascend/cann-8.5.2/python/site-packages/tbe/dsl/unify_schedule/vector/transdata/common/graph/transdata_graph_info.py:143: SyntaxWarning: invalid escape sequence '\c'
+  """
+/usr/local/Ascend/cann-8.5.2/python/site-packages/tbe/dsl/unify_schedule/vector/transdata/common/graph/transdata_graph_info.py:170: SyntaxWarning: invalid escape sequence '\c'
+  """
+/usr/local/Ascend/cann-8.5.2/python/site-packages/tbe/dsl/unify_schedule/vector/transdata/common/graph/transdata_graph_info.py:143: SyntaxWarning: invalid escape sequence '\c'
+  """
+/usr/local/Ascend/cann-8.5.2/python/site-packages/tbe/dsl/unify_schedule/vector/transdata/common/graph/transdata_graph_info.py:170: SyntaxWarning: invalid escape sequence '\c'
+  """
+/usr/local/Ascend/cann-8.5.2/opp/built-in/op_impl/ai_core/tbe/impl/ops_legacy/dynamic/gelu_grad_v2.py:96: SyntaxWarning: invalid escape sequence '\h'
+  """
+/usr/local/Ascend/cann-8.5.2/opp/built-in/op_impl/ai_core/tbe/impl/ops_legacy/dynamic/gelu_grad_v2.py:156: SyntaxWarning: invalid escape sequence '\h'
+  """
+/usr/local/Ascend/cann-8.5.2/python/site-packages/asc_op_compile_base/asc_op_compiler/ascendc_compile_gen_code.py:161: SyntaxWarning: invalid escape sequence '\w'
+  match = re.search(f'{option}=(\w+)', ' '.join(compile_options))
+/usr/local/Ascend/cann-8.5.2/python/site-packages/asc_op_compile_base/asc_op_compiler/ascendc_compile_gen_code.py:161: SyntaxWarning: invalid escape sequence '\w'
+  match = re.search(f'{option}=(\w+)', ' '.join(compile_options))
+/usr/local/Ascend/cann-8.5.2/python/site-packages/asc_op_compile_base/asc_op_compiler/ascendc_compile_gen_code.py:161: SyntaxWarning: invalid escape sequence '\w'
+  match = re.search(f'{option}=(\w+)', ' '.join(compile_options))
+/usr/local/Ascend/cann-8.5.2/python/site-packages/asc_op_compile_base/asc_op_compiler/ascendc_compile_gen_code.py:161: SyntaxWarning: invalid escape sequence '\w'
+  match = re.search(f'{option}=(\w+)', ' '.join(compile_options))
+/usr/local/Ascend/cann-8.5.2/python/site-packages/asc_op_compile_base/asc_op_compiler/ascendc_compile_gen_code.py:161: SyntaxWarning: invalid escape sequence '\w'
+  match = re.search(f'{option}=(\w+)', ' '.join(compile_options))
+/usr/local/Ascend/cann-8.5.2/python/site-packages/asc_op_compile_base/asc_op_compiler/ascendc_compile_gen_code.py:161: SyntaxWarning: invalid escape sequence '\w'
+  match = re.search(f'{option}=(\w+)', ' '.join(compile_options))
+/usr/local/Ascend/cann-8.5.2/python/site-packages/asc_op_compile_base/asc_op_compiler/ascendc_compile_gen_code.py:161: SyntaxWarning: invalid escape sequence '\w'
+  match = re.search(f'{option}=(\w+)', ' '.join(compile_options))
+/usr/local/Ascend/cann-8.5.2/python/site-packages/asc_op_compile_base/asc_op_compiler/ascendc_compile_gen_code.py:161: SyntaxWarning: invalid escape sequence '\w'
+  match = re.search(f'{option}=(\w+)', ' '.join(compile_options))
+..Loading pretrained model LPIPS from /home/ma-user/.cache/torch/hub/pyiqa/LPIPS_v0.1_alex-df73285e.pth
+Warning: since the loaded file is not a zipfile, only "torch.device" and "str" type parameters are currently supported for parameter types of map_location. If parameter types of map_location is "Callable[[torch.Tensor, str], torch.Tensor]" or "Dict[str, str]", which is only support for zipfile, all tensors are currently loaded onto the CPU, which may introduce problems.
+    0 SDSD_indoor/pair34_2               PSNR-Y  19.28 (GT-mean  20.53)  LPIPS 0.3772
+/home/ma-user/anaconda3/envs/PyTorch-2.7.1/lib/python3.12/contextlib.py:105: FutureWarning: `torch.backends.cuda.sdp_kernel()` is deprecated. In the future, this context manager will be removed. Please see `torch.nn.attention.sdpa_kernel()` for the new context manager, with updated signature.
+  self.gen = func(*args, **kwds)
+    1 SDSD_indoor/pair3_2                PSNR-Y  26.06 (GT-mean  29.06)  LPIPS 0.1919
+    2 SDSD_indoor/pair4                  PSNR-Y  23.35 (GT-mean  23.65)  LPIPS 0.1786
+    3 SDSD_indoor/pair4_2                PSNR-Y  24.01 (GT-mean  31.53)  LPIPS 0.2987
+    4 SDSD_indoor/pair5                  PSNR-Y  23.54 (GT-mean  26.45)  LPIPS 0.2021
+    5 SDSD_indoor/pair5_2                PSNR-Y  23.67 (GT-mean  24.94)  LPIPS 0.2682
+    6 SDSD_indoor/pair6                  PSNR-Y  28.66 (GT-mean  31.24)  LPIPS 0.2934
+    7 SDSD_indoor/pair6_2                PSNR-Y  24.10 (GT-mean  25.83)  LPIPS 0.2306
+    8 SDSD_indoor/pair7                  PSNR-Y  18.10 (GT-mean  25.12)  LPIPS 0.2239
+    9 SDSD_indoor/pair7_2                PSNR-Y  16.92 (GT-mean  29.71)  LPIPS 0.3329
+   10 SDSD_indoor/pair8                  PSNR-Y  26.84 (GT-mean  28.81)  LPIPS 0.2461
+   11 SDSD_indoor/pair8_2                PSNR-Y  27.43 (GT-mean  28.66)  LPIPS 0.2211
+   12 SDSD_indoor/pair9                  PSNR-Y  35.38 (GT-mean  35.37)  LPIPS 0.2439
+   13 SDSD_indoor/pair9_2                PSNR-Y  29.10 (GT-mean  29.16)  LPIPS 0.1564
+   14 SDSD_outdoor/MVI_1007_2            PSNR-Y  24.01 (GT-mean  26.02)  LPIPS 0.2088
+   15 SDSD_outdoor/MVI_1009              PSNR-Y  24.48 (GT-mean  25.86)  LPIPS 0.1939
+   16 SDSD_outdoor/MVI_1009_2            PSNR-Y  23.93 (GT-mean  27.23)  LPIPS 0.2439
+   17 SDSD_outdoor/MVI_1011              PSNR-Y  29.63 (GT-mean  31.77)  LPIPS 0.1870
+   18 SDSD_outdoor/MVI_1011_2            PSNR-Y  26.39 (GT-mean  26.33)  LPIPS 0.2243
+   19 SDSD_outdoor/MVI_1013              PSNR-Y  31.21 (GT-mean  31.64)  LPIPS 0.1376
+   20 SDSD_outdoor/MVI_1013_2            PSNR-Y  22.88 (GT-mean  23.93)  LPIPS 0.2146
+   21 SDSD_outdoor/MVI_1015              PSNR-Y  23.35 (GT-mean  33.31)  LPIPS 0.1242
+   22 SDSD_outdoor/MVI_1015_2            PSNR-Y  22.36 (GT-mean  25.24)  LPIPS 0.1947
+   23 SDSD_outdoor/MVI_1017              PSNR-Y  25.66 (GT-mean  33.14)  LPIPS 0.1240
+   24 SDSD_outdoor/MVI_1017_2            PSNR-Y  21.07 (GT-mean  33.16)  LPIPS 0.1888
+   25 SDSD_outdoor/MVI_1019              PSNR-Y  13.62 (GT-mean  25.88)  LPIPS 0.1912
+   26 SDSD_outdoor/MVI_1019_2            PSNR-Y  13.05 (GT-mean  21.54)  LPIPS 0.2517
+   27 SDSD_outdoor/MVI_1021              PSNR-Y  24.80 (GT-mean  28.18)  LPIPS 0.2235
+   28 SDSD_outdoor/MVI_1021_2            PSNR-Y  22.15 (GT-mean  28.75)  LPIPS 0.2017
+   29 SDSD_outdoor/MVI_1024              PSNR-Y  26.39 (GT-mean  32.14)  LPIPS 0.1496
+   30 SDSD_outdoor/MVI_1024_2            PSNR-Y  26.61 (GT-mean  28.36)  LPIPS 0.1756
+   31 SDSD_outdoor/MVI_1026              PSNR-Y  27.19 (GT-mean  33.85)  LPIPS 0.1977
+   32 SDSD_outdoor/MVI_1026_2            PSNR-Y  31.27 (GT-mean  34.48)  LPIPS 0.1418
+   33 SDSD_outdoor/MVI_1028              PSNR-Y  18.84 (GT-mean  25.92)  LPIPS 0.2371
+   34 SDSD_outdoor/MVI_1028_2            PSNR-Y  20.09 (GT-mean  22.31)  LPIPS 0.2469
+   35 SDSD_outdoor/MVI_1030              PSNR-Y  33.30 (GT-mean  34.20)  LPIPS 0.1204
+   36 SDSD_outdoor/MVI_1030_2            PSNR-Y  31.66 (GT-mean  33.65)  LPIPS 0.1362
+   37 SDSD_outdoor/MVI_1032              PSNR-Y  36.13 (GT-mean  36.58)  LPIPS 0.1119
+   38 SDSD_outdoor/MVI_1032_2            PSNR-Y  33.94 (GT-mean  33.94)  LPIPS 0.1051
+
+39 sequences | PSNR-Y 25.139 | GT-mean 28.909 | LPIPS 0.2051 | input 11.816
+wrote /cache/zihaohe/seer_takeover_20261111/results/e18_layers_all_s2_saved.json
+END 2026-11-11T11:18:39Z

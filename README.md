@@ -1,16 +1,21 @@
 # Seer / V-JEPA-LLVE — ModelArts archive (2026-09-27)
 
 Backup made before the ModelArts hosts (30313, 31279, 31866, 30674, 31511, 30594, 30555, 30138)
-were reclaimed. Private. Nothing here was modified relative to the servers except removing
+were reclaimed. The September snapshot was copied relative to the servers except removing
 `.git`, `__pycache__`, optimizer states and duplicate files.
 
 ## CVPR 2027 round (`cvpr2027/`)
 
-Work after the ModelArts hosts were reclaimed. Start with `cvpr2027/STATUS.md`: it records the
-method change (three of the original paper's four contributions measured as ineffective and
-removed), the new exposure-decoupled component and its probe results, the frozen data splits,
-and what is still running. `cvpr2027/notes/CVPR_PREREG.md` is the pre-registration: hypotheses,
-decision rules and the amendment log, all written before the corresponding numbers existed.
+Start with [`cvpr2027/STATUS.md`](cvpr2027/STATUS.md). The 2026-11-11 takeover
+audited checkpoint reconstruction, corrected random-encoder, fixed-rank and
+attention controls, completed an exploratory mean/basis validation diagnostic,
+and backed up the reachable final weights. The aligned review draft is
+[`main_takeover_20261111.pdf`](cvpr2027/paper/main_takeover_20261111.pdf).
+Historical JSONs remain unchanged; corrected outputs are separate. The current
+code is `cvpr2027/code_full/`; `cvpr2027/code/` is the earlier partial snapshot.
+`cvpr2027/notes/CVPR_PREREG.md` contains the hypotheses, decision rules and
+append-only amendments. Amendment 21 distinguishes the retrospective audit
+from a newly specified validation-only mean/basis diagnostic.
 
 ## Layout
 | path | what | server origin |
@@ -27,8 +32,8 @@ decision rules and the amendment log, all written before the corresponding numbe
 | `env/` | `pip freeze` of the `vjepa2-pip` env (torch 2.3.1+cu121, py3.11, A100 driver 535), `setup_host.sh` | |
 
 ## Large checkpoints (GitHub Releases, split into < 2 GB parts)
-See `CHECKPOINTS.md` for the list, sizes and sha256. Restore with
-`cat NAME.part-* > NAME && sha256sum -c`.
+See [`CHECKPOINTS.md`](CHECKPOINTS.md) for the historical Release and the
+separately verified CVPR recovery archive. Verify hashes before restoring.
 
 ## Not archived (too large / publicly available)
 - Datasets: SDSD indoor/outdoor (70 GB), BVI-RLV (426 GB), LOL (1.3 GB), REDS — public releases.
@@ -45,7 +50,7 @@ See `CHECKPOINTS.md` for the list, sizes and sha256. Restore with
   use `run_fixedpairing_all.iter_sdsd_indoor_stcd_idx` or `seer_eval_unified.iter_sdsd_indoor_seer`.
 - The AAAI-27 manuscript numbers were not measured; the measured values are in `results/`.
 
-## CVPR 2027 round (converged, 2026-11-11)
+## CVPR 2027 round (protocol audit, 2026-11-11)
 
 Start at `cvpr2027/STATUS.md` (current verdicts, what is unfinished, decisions
 pending) and `cvpr2027/EXPERIMENTS.md` (every experiment's flags, seeds, host

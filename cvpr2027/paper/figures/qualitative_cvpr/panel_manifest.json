@@ -1,0 +1,111 @@
+{
+  "source_host": "31051",
+  "source_path": "/cache/zihaohe/seer_takeover_20261111/qualitative_verified",
+  "selection": "test sequences at margin percentiles (10, 35, 60, 85) over the retrained Retinexformer",
+  "metrics": "single middle frame, not clip averages",
+  "checkpoint_identity": {
+    "ours_checkpoint": {
+      "path": "/cache/zihaohe/seer_cvpr/runs_e17/e17_small_pretrained_s0/final_cpu.pt",
+      "bytes": 89737483,
+      "sha256": "5ab6b6d04d7b13743965007d3754bd66f034d170ec7193abc2abb5a8aa6c8740"
+    },
+    "none_checkpoint": {
+      "path": "/cache/zihaohe/seer_cvpr/runs_e17/e17_small_none_s0/final_cpu.pt",
+      "bytes": 89737483,
+      "sha256": "fa3c0c9e720a28b56f01069f7a2cd407bc5b4d752a2a1d4482f1bd63557b5516"
+    },
+    "retinexformer_checkpoint": {
+      "path": "/temp/zihaohe/seer_cvpr/weights_small/checkpoint/runs/retinexformer_seer_protocol/experiments/RetinexFormer_SDSD_union_seer_protocol/models/net_g_160000.pth",
+      "bytes": 6476532,
+      "sha256": "928cfa4f130914aa49268807b1f751095c5d28875051d87e3922af00017e53b6"
+    },
+    "frozen_encoder_checkpoint": {
+      "path": "/temp/zihaohe/seer_cvpr/weights/vjepa2_1_vitl_dist_vitG_384.pt",
+      "bytes": 5151198524,
+      "sha256": "7ea9b7cb4a75d10644a8a8d42cff9e177b10dca8f02173f0eaf2b0bed82838c6"
+    }
+  },
+  "provenance_sha256": "f305b5a628a0555d7edb8681c08759bc63e8b1f26276e143c8e2c5c7a5ff972b",
+  "files": [
+    {
+      "path": "figures/qualitative_cvpr/SDSD_indoor__pair6_2__lq.png",
+      "sha256": "41e0507c288d32b1bff13cefd935b31c106d8030f94990f1c6bc541095ab7b43"
+    },
+    {
+      "path": "figures/qualitative_cvpr/SDSD_indoor__pair6_2__retinexformer.png",
+      "sha256": "df4d4aec3e3268456d91ffcc37ebaf198da22ba78e62ab1fac763c58bcafefae"
+    },
+    {
+      "path": "figures/qualitative_cvpr/SDSD_indoor__pair6_2__none.png",
+      "sha256": "36e3223fa1d4c27c3ac64432fbaf43e7f959d0f1d041637e41d13aa1090ecb34"
+    },
+    {
+      "path": "figures/qualitative_cvpr/SDSD_indoor__pair6_2__ours.png",
+      "sha256": "c9aebd2e449f56e0e987af8910b633005e71d6914d05c96cb0fe7077abd455d5"
+    },
+    {
+      "path": "figures/qualitative_cvpr/SDSD_indoor__pair6_2__gt.png",
+      "sha256": "1995b1b19d035b3b8f44a23d89cdf9031b64546d0f204dd7c6eb9663815573cb"
+    },
+    {
+      "path": "figures/qualitative_cvpr/SDSD_outdoor__MVI_1028_2__lq.png",
+      "sha256": "0eb37908716a0ec0a2494153ca1e2c869249b93cce49e0bd1916dc8a46f6a7df"
+    },
+    {
+      "path": "figures/qualitative_cvpr/SDSD_outdoor__MVI_1028_2__retinexformer.png",
+      "sha256": "759a5a81b013eba0fb03144d6013ba908456af504081201124facc25cdb54923"
+    },
+    {
+      "path": "figures/qualitative_cvpr/SDSD_outdoor__MVI_1028_2__none.png",
+      "sha256": "b3543ccaf08b46a8ba2a5beb06a8a8de2c15cd4216cbf391b3dfb0503e0c6d19"
+    },
+    {
+      "path": "figures/qualitative_cvpr/SDSD_outdoor__MVI_1028_2__ours.png",
+      "sha256": "8a4bfa5f1630993946f403c1e7a9e97f2c0de61d864ff460245a3215875998f3"
+    },
+    {
+      "path": "figures/qualitative_cvpr/SDSD_outdoor__MVI_1028_2__gt.png",
+      "sha256": "2a06b5de9a66267de9dbf9b55a076c26634b4a05efcebb6d8462e192680a2c89"
+    },
+    {
+      "path": "figures/qualitative_cvpr/SDSD_outdoor__MVI_1011_2__lq.png",
+      "sha256": "d8b3a0fab9a4929795aebf725acc2b7e0885d755dc03d3f1a8f62d9c4c3b9291"
+    },
+    {
+      "path": "figures/qualitative_cvpr/SDSD_outdoor__MVI_1011_2__retinexformer.png",
+      "sha256": "1d3cca32919ae71ce96dba2acc3ec7705df0edc70e7ba7fb71ae03df8f7a1faa"
+    },
+    {
+      "path": "figures/qualitative_cvpr/SDSD_outdoor__MVI_1011_2__none.png",
+      "sha256": "0a28d11fd30f9e72d4ea57870e1b2ad60389703173c1ffbbe5b1cac01b99ebbe"
+    },
+    {
+      "path": "figures/qualitative_cvpr/SDSD_outdoor__MVI_1011_2__ours.png",
+      "sha256": "12c750c4300e5ee955057d9e7e6b82f91a1f9e6e8a7114b57c2b5a976435d906"
+    },
+    {
+      "path": "figures/qualitative_cvpr/SDSD_outdoor__MVI_1011_2__gt.png",
+      "sha256": "de080fe7d78659bdf1bb0ae33a56eaf14344647bad3e554658683d7de5cd3216"
+    },
+    {
+      "path": "figures/qualitative_cvpr/SDSD_outdoor__MVI_1026__lq.png",
+      "sha256": "d4904f88b27a5500df5262344db7bcaae287bb6552a8916e25db8f662a436abd"
+    },
+    {
+      "path": "figures/qualitative_cvpr/SDSD_outdoor__MVI_1026__retinexformer.png",
+      "sha256": "8dbccad264727184e75684eda76625e4d0cbc75f25ae5cb83e4b06a27d197926"
+    },
+    {
+      "path": "figures/qualitative_cvpr/SDSD_outdoor__MVI_1026__none.png",
+      "sha256": "afe1d90c178f8a8a24fbd3346439992385da8bd82c4a46c9ed506036cf840978"
+    },
+    {
+      "path": "figures/qualitative_cvpr/SDSD_outdoor__MVI_1026__ours.png",
+      "sha256": "8238c6228d78bd2eb298fce21c94fdd38c733564f74e89ab491bbeddd2403871"
+    },
+    {
+      "path": "figures/qualitative_cvpr/SDSD_outdoor__MVI_1026__gt.png",
+      "sha256": "bdbc43eb7c04bdd035388127d29b21141be6b96a4938fdeb8960baa6eb0badfe"
+    }
+  ]
+}

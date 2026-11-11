@@ -1,57 +1,124 @@
-\section{Seer}\label{sec:method}
+\section{Seer-v2 and the interventions}\label{sec:method}
 
-\paragraph{Notation.} $\X\in[0,1]^{3\times T\times H\times W}$ is a low-light clip with $T{=}16$ frames, $\Y$ its well-lit counterpart and $\Yhat$ the prediction. $\Phi$ is the frozen V-JEPA~2.1 ViT-L encoder~\citep{vjepa2} ($304.7$\,M parameters, 24 blocks). It always receives the clip resized to $256{\times}256$, so every clip is represented by the same grid of $8{\times}16{\times}16{=}2048$ spatio-temporal tokens of width $d{=}1024$ (tubelet $2$, patch $16$), independently of the pixel resolution. We read the normalised outputs $\Phi^{(\ell)}$ of blocks $\ell\in\Lset=\{5,11,17,23\}$ (0-indexed), the hierarchical taps used by V-JEPA~2.1 itself.
+\subsection{A fixed restoration backbone}\label{sec:method:pixel}
 
-\begin{figure*}[t]
+The pixel branch is a five-scale Restormer-style U-Net~\citep{restormer}
+with $22.4$\,M trainable parameters. Its widths are
+$(20,40,80,160,320)$, encoder block counts $(2,4,4,6,8)$, and decoder block
+counts $(6,4,4,2)$. Frame-wise blocks perform most of the reconstruction;
+a residual 3-D convolution and cross-frame attention at the coarsest scale
+provide temporal mixing. Local illumination cues---luma, channel maximum,
+local mean, low-pass luma, and gradient magnitude---are projected into each
+encoder and decoder scale.
+A zero-initialised residual head gives
+$\Yhat=\X+\mathcal P_\theta(\X;Z)$.
+
+\begin{figure}[t]
 \centering
-\resizebox{\textwidth}{!}{\input{figures/fig_arch_tikz}}
-\caption{Seer. A frozen V-JEPA encoder turns the low-light clip into spatio-temporal tokens at four depths; a counterfactual predictor (M1) refines the deepest tap and is supervised to match the tokens of the well-lit clip (M2); a learnable router (M3) mixes the taps for each pixel-branch scale; the pixel branch reads them through zero-initialised residual cross-attention. Chroma preservation (CP) is an optional closed-form post-processor (Sec.~\ref{sec:method:cp}).}
+\resizebox{\columnwidth}{!}{\input{figures/fig_arch_tikz}}
+\caption{The studied Seer-v2 model. A frozen video encoder supplies four token
+fields to a small trainable pixel branch through fixed scale assignments.
+Token interventions change this memory while leaving the trained branch fixed.
+Auxiliary reflectance and illumination heads are used only during training.}
 \label{fig:arch}
-\end{figure*}
+\end{figure}
 
-\subsection{Pixel branch}\label{sec:method:pixel}
-The trainable pixel branch $\mathcal{P}_\theta$ is a frame-wise five-scale Restormer~\citep{restormer} U-Net (widths $64$--$1024$; $4,8,8,12,16$ encoder and $12,8,8,4$ decoder blocks; pixel-(un)shuffle resampling) that predicts a residual, $\Yhat=\X+\mathcal{P}_\theta(\X;\tilde\Phi)$. Two low-level illumination pathways use only pixels: \emph{local illumination cues} (LIC; luma, channel maximum, $3{\times}3$ local mean, Gaussian low-pass luma and gradient magnitude of $\X$) are projected and added at every encoder and decoder stage, and Retinexformer's illumination estimator with illumination-guided attention blocks~\citep[IGAB,][]{retinexformer} follows each decoder stage. Cross-frame interaction inside the pixel branch is limited to the $1/16$-resolution bottleneck (a residual 3-D temporal convolution followed by cross-frame attention, CFIM); all other temporal information reaches the pixel branch through V-JEPA's tokens.
+\paragraph{Frozen memory.}
+We use the released V-JEPA\,2.1 ViT-L checkpoint distilled from ViT-G
+\citep{vjepa2}. The encoder is frozen throughout restoration training.
+It receives $16$ frames resized to $256\times256$, producing
+$8\times16\times16=2048$ tokens of width $1024$ at each of blocks
+$\Lset=\{5,11,17,23\}$ (zero-indexed).
+At spatial scales $1/2,1/4,1/8,1/16$, the pixel branch reads these four
+fields respectively, with the same assignment in the decoder.
+There is no learned mixture across depths.
 
-\paragraph{Reading V-JEPA.} At encoder and decoder stages $s\in\{2,\dots,5\}$ (all but full resolution) the pixel features $\mathbf{F}_s$ of frame $t$ attend to the $256$ tokens of tubelet $\lfloor t/2\rfloor$ of the routed feature $\tilde\Phi_s$,
+For frame $t$, $Z_{s,t}$ contains the $256$ spatial tokens from tubelet
+$\lfloor t/2\rfloor$ at the assigned depth. Encoder and decoder features at
+scale $s$ read this memory through residual multi-head cross-attention,
 \begin{equation}\label{eq:xattn}
-\mathbf{F}_s \leftarrow \mathbf{F}_s + \mathbf{W}^s_{o}\,\operatorname{softmax}\!\Big(\tfrac{(\mathbf{F}_s\mathbf{W}^s_Q)(\tilde\Phi_s\mathbf{W}^s_K)^{\top}}{\sqrt{d_h}}\Big)\,\tilde\Phi_s\mathbf{W}^s_V ,
+F_{s,t}\leftarrow F_{s,t}+W^s_o
+  \operatorname{Attn}(F_{s,t}W^s_Q,Z_{s,t}W^s_K,Z_{s,t}W^s_V).
 \end{equation}
-with multi-head attention over the key axis and $\mathbf{W}^s_o$ initialised to zero, so that training starts from the plain pixel branch and V-JEPA acts as a read-only key/value memory.
+The output projection $W^s_o$ starts at zero. The default attention has no
+added query--key positional correspondence; spatial grounding is a separate
+intervention.
 
-\subsection{Three V-JEPA-centric mechanisms}\label{sec:method:mechanisms}
-
-\paragraph{M1: counterfactual predictor.} V-JEPA's pretrained predictor maps visible context tokens to the latent tokens of unseen content. We reuse it to map the tokens of the low-light clip to those the encoder \emph{would} produce for the well-lit clip, which is what we mean by counterfactual. For the deepest tap $z{=}\Phi^{(23)}(\X)$,
-\begin{equation}\label{eq:m1}
-\Psi(z) = z + g\cdot \mathbf{W}_{\text{new}}\,\mathcal{P}_{\text{LoRA}}(z),
-\end{equation}
-where $\mathcal{P}_{\text{LoRA}}$ is the frozen $12$-block, $384$-wide V-JEPA~2.1 predictor with rank-$16$ LoRA~\citep{lora} on every attention \texttt{qkv} projection, run on all $2048$ tokens without masking, $\mathbf{W}_{\text{new}}\!:\!\mathbb{R}^{384}\!\to\!\mathbb{R}^{1024}$ is a new linear head, and $g$ is a scalar gate initialised to $0$. M1 has $0.69$\,M trainable parameters on top of $22.3$\,M frozen predictor weights.
-
-\paragraph{M2: counterfactual feature loss.} The target that makes $\Psi$ counterfactual is explicit: V-JEPA's own tokens of the ground truth,
-\begin{equation}\label{eq:m2}
-\mathcal{L}_{\text{M2}} = \big\lVert \Psi\big(\Phi^{(23)}(\X)\big) - \Phi^{(23)}(\Y)\big\rVert_1 ,
-\end{equation}
-averaged over tokens and channels. Because $\Phi$ is frozen, M2 trains only M1; it does not back-propagate into $\Yhat$.
-
-\paragraph{M3: cross-layer router.} Each stage mixes the four taps with its own softmax weights,
-$\tilde\Phi_s=\sum_{\ell\in\Lset}\pi_s^{(\ell)}\,\Phi_\star^{(\ell)}$ with $\pi_s=\operatorname{softmax}(\boldsymbol\lambda_s)$, where $\Phi_\star^{(\ell)}{=}\Phi^{(\ell)}(\X)$ for the three shallower taps and $\Phi_\star^{(23)}{=}\Psi(\Phi^{(23)}(\X))$. The logits start at $4$ on the tap used by prior V-JEPA-conditioned variants of this architecture (stages $2$--$5$ read blocks $5,11,17,23$) and $0$ elsewhere, i.e.\ $0.948$ of the mass on that tap.
-
-\paragraph{Objective.} With auxiliary reflectance and illumination heads $(\hat{\mathbf{R}},\hat{\mathbf{L}})$ on the last decoder features and the Charbonnier loss $\rho$ ($\epsilon{=}10^{-3}$),
+\paragraph{Objective.}
+Training-only heads predict reflectance $\hat R$ and illumination $\hat L$.
+The default loss is
 \begin{equation}\label{eq:loss}
-\mathcal{L} = 1.5\,\rho(\Yhat,\Y) + \lambda_R\,\rho(\hat{\mathbf{R}}\odot\hat{\mathbf{L}},\Y) + \lambda_S\,\mathrm{TV}(\hat{\mathbf{L}}) + \lambda_M\,\mathcal{L}_{\text{M2}},
+\mathcal L_0=
+1.5\,\rho(\Yhat,\Y)+
+0.15\,\rho(\hat R\odot\hat L,\Y)+
+0.02\,\mathrm{TV}_{xy}(\hat L),
 \end{equation}
-with $(\lambda_R,\lambda_S,\lambda_M){=}(0.15,0.02,0.05)$ and a spatial total-variation prior. Only $\Yhat$ is used at inference.
+where $\rho$ is the mean Charbonnier loss with $\epsilon=10^{-3}$ and
+$\mathrm{TV}_{xy}$ is spatial total variation. Inference uses the clipped
+residual prediction without exposure or colour calibration.
 
-\subsection{Closed-form chroma preservation}\label{sec:method:cp}
-On unseen domains the raw prediction can recover luminance well yet carry a colour cast. CP fuses $\Yhat$ with a surrogate that keeps the input's chromaticity at the predicted luminance,
-\begin{equation}\label{eq:cp}
-\Yhat_{\text{cp}} = \X\odot \frac{Y(\Yhat)}{Y(\X)+\epsilon},\qquad
-\Yhat^\star_c = \alpha_c\,\Yhat_{\text{cp},c} + (1-\alpha_c)\,\Yhat_c ,
+\subsection{Intervening on the memory}\label{sec:method:interventions}
+
+Spatial averaging replaces each tubelet's tokens with their spatial mean;
+temporal averaging replaces each spatial position with its mean over
+tubelets. Both broadcast the result to the original grid, preserving the
+attention tensor shapes.
+
+For one clip and tap, write $Z\in\mathbb R^{2048\times1024}$ and let
+$\mu_Z$ be its mean token. If $V_{Z,k}$ contains the top $k$ principal
+directions of $Z-\mathbf1\mu_Z$, the per-clip intervention is
+\begin{equation}\label{eq:cliprank}
+\mathcal T^{\mathrm{clip}}_k(Z)=
+\mathbf1\mu_Z+(Z-\mathbf1\mu_Z)V_{Z,k}V_{Z,k}^{\top}.
 \end{equation}
-where $Y(\cdot)$ is BT.601 luma computed on the sRGB values, $\epsilon{=}10^{-3}$, $c$ indexes RGB channels and the output is clipped to $[0,1]$. Writing $\varepsilon_1{=}\Yhat_{\text{cp},c}-\Y_c$, $\varepsilon_2{=}\Yhat_c-\Y_c$ and $m_{ij}{=}\mathbb{E}[\varepsilon_i\varepsilon_j]$ (uncentred, so biases are included), the MSE-optimal weight within this sum-to-one, intercept-free family is
-\begin{equation}\label{eq:alpha}
-\alpha_c^{\star} = \frac{m_{22}-m_{12}}{m_{11}-2m_{12}+m_{22}},
+This preserves a full $1024$-dimensional clip mean; only the centred token
+variation is restricted to rank $k$.
+The fixed intervention uses a mean $\mu_{\rm tr}$ and directions
+$V_{{\rm tr},k}$ estimated separately for each tap from training clips,
+\begin{equation}\label{eq:globalrank}
+\mathcal T^{\mathrm{fixed}}_k(Z)=
+\mathbf1\mu_{\rm tr}+
+(Z-\mathbf1\mu_{\rm tr})V_{{\rm tr},k}V_{{\rm tr},k}^{\top}.
 \end{equation}
-which we clip to $[0,1]$ so the fusion stays convex (and set to $\tfrac12$ if the denominator vanishes). No distributional assumption is needed beyond second moments; this is a closed-form least-squares estimate, not a Bayesian posterior. $\alpha^\star$ must be estimated from paired data, and \emph{where} it is estimated matters (Sec.~\ref{sec:exp:cp}). We report two calibrations: \textbf{CP-src} fits Eq.~\eqref{eq:alpha} on $15$ fixed clips of the SDSD \emph{training} split, so no target data is used; \textbf{CP-tgt} cross-fits it on the target split (two folds by scene, each scored with the $\alpha^\star$ fitted on the other fold), which corresponds to calibrating on a few paired clips of a new deployment domain.
+The comparison changes both the mean and the basis; it does not isolate basis
+adaptivity alone.
+An exploratory validation control crosses the two means and the two bases
+using the same reconstruction formula, alongside identity and broadcast
+clip-mean controls (App.~\ref{app:meanbasis}).
+The adaptive directions always come from clip-centred tokens, including when
+the reconstruction uses the training-set mean.
+
+\subsection{Testing a temporal objective}\label{sec:method:temporal}
+
+Let $\Delta Z_t=Z_{t+1}-Z_t$ be the block-23 token difference along tubelets.
+We add $0.3\mathcal L_{\Delta}$ to Eq.~\eqref{eq:loss}, with gradients through
+the frozen encoder to the predicted pixels.
+The relative form is
+$\mathcal L_{\Delta}^{\mathrm{rel}}=
+\|\Delta\Phi(\Yhat)-\Delta\Phi(\Y)\|_1/
+\max(\|\Delta\Phi(\Y)\|_1,\epsilon)$.
+A temporally constant prediction scores approximately one, so shrinking the
+variation can reduce this objective without reconstructing the dynamics.
+The cosine form instead uses
+\begin{equation}\label{eq:tdcos}
+\begin{aligned}
+\mathcal L_{\Delta}^{\mathrm{cos}}={}&
+1-\overline{\cos(\Delta\Phi(\Yhat),\Delta\Phi(\Y))}\\
+&+\left|\log \frac{\max(\|\Delta\Phi(\Yhat)\|_1,\epsilon)}
+                       {\max(\|\Delta\Phi(\Y)\|_1,\epsilon)}\right|,
+\end{aligned}
+\end{equation}
+where cosine is computed per token over channels and the $\ell_1$ quantities
+are mean absolute magnitudes. We record both directional
+agreement and the magnitude ratio to check what the loss actually changes.
 
 \subsection{Training}\label{sec:method:train}
-Seer is trained on the SDSD-indoor and SDSD-outdoor training sequences with AdamW (lr $2{\times}10^{-5}$, weight decay $10^{-4}$), batch $1$ with $8$-step gradient accumulation, $256{\times}256$ crops of $16$-frame clips, random flips, gradient clipping at $1$ and bf16 autocast. The architecture was grown in warm-started stages on the same split (App.~\ref{app:stages}); every controlled comparison in this paper starts from the same Stage-3 checkpoint and fine-tunes each arm with the same schedule and the same three seeds, so that arms differ only in the manipulated factor.
+
+All reported converged arms use a fixed $20{,}000$-step schedule.
+The pixel branch starts from scratch with AdamW, learning rate
+$2\times10^{-5}$, weight decay $10^{-4}$, betas $(0.9,0.99)$,
+batch one and eight-step gradient accumulation.
+Training uses random $256\times256$ crops of $16$-frame clips, flips,
+gradient clipping at one, bf16 autocast, and gradient checkpointing.
+Validation is monitored without selecting a checkpoint; the final checkpoint
+is scored. The default objective contains no latent temporal term.

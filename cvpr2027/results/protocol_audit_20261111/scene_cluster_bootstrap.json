@@ -1,0 +1,1251 @@
+{
+  "analysis": "post-hoc scene-cluster sensitivity; no new preregistered claim",
+  "bootstrap_samples": 10000,
+  "rng_seed": 0,
+  "numpy_version": "2.5.1",
+  "primary_estimator": "sequence-weighted mean of seed-averaged paired differences",
+  "bootstrap_estimator": "sample whole scenes; total sampled difference / total sampled sequence count",
+  "grouping": "remove __10fps/__20fps, then terminal _2; retain domain prefix",
+  "comparisons": [
+    {
+      "comparison": "indomain_sdsd",
+      "difference": "pretrained minus none",
+      "seeds": [
+        0,
+        1,
+        2
+      ],
+      "n_sequences": 39,
+      "n_scenes": 21,
+      "cluster_size_counts": {
+        "1": 3,
+        "2": 18
+      },
+      "sources": [
+        {
+          "path": "results/cvpr_converged/indomain/e17_small_pretrained_s0.json",
+          "sha256": "6cae86eef2d92d11a69a6a6e58292045a2bee99145e06cccf1867a52e535fef8",
+          "seed": 0,
+          "arm": "pretrained"
+        },
+        {
+          "path": "results/cvpr_converged/indomain/e17_small_pretrained_s1.json",
+          "sha256": "4532364e5e99170bc55c4ad367d56c7655af9288a918de14e694ae5c726351c4",
+          "seed": 1,
+          "arm": "pretrained"
+        },
+        {
+          "path": "results/cvpr_converged/indomain/e19_small_pretrained_s2.json",
+          "sha256": "e2bb7cdfa0ac855cabf272f971fb80dfb4d077aabeadafd6799f28d3cf1b1cdd",
+          "seed": 2,
+          "arm": "pretrained"
+        },
+        {
+          "path": "results/cvpr_converged/indomain/e17_small_none_s0.json",
+          "sha256": "7f35f94463ff1e39ea4374f6b4dbd9365d271c7099a65677939539e9b8d0fd19",
+          "seed": 0,
+          "arm": "none"
+        },
+        {
+          "path": "results/cvpr_converged/indomain/e17_small_none_s1.json",
+          "sha256": "c33f8c600dbeefde873e82e989cc646dfbf3acfc675a2a7ac1e4897a264ca4e4",
+          "seed": 1,
+          "arm": "none"
+        },
+        {
+          "path": "results/cvpr_converged/indomain/e19_small_none_s2.json",
+          "sha256": "836bab45ad4f2f2dd76327060a2e9d3e6a7cbb09d3d375a8f07d7bcb221dad25",
+          "seed": 2,
+          "arm": "none"
+        }
+      ],
+      "metrics": {
+        "psnr_y": {
+          "prior_mean": 24.58907696409226,
+          "none_mean": 23.299528495946596,
+          "effect": 1.2895484681456706,
+          "per_seed_effects": {
+            "0": 1.1612285841608225,
+            "1": 0.04157354713094996,
+            "2": 2.665843273145238
+          },
+          "seed_signs_agree": true,
+          "sequence_bootstrap_ci95": [
+            0.2697797998179566,
+            2.4486789980383827
+          ],
+          "scene_cluster_bootstrap_ci95": [
+            0.3142705068168896,
+            2.345581755751882
+          ],
+          "sequence_verdict": "benefit",
+          "scene_cluster_verdict": "benefit",
+          "conclusion_changed": false,
+          "equal_scene_weighted": {
+            "effect": 1.1236149591873983,
+            "ci95": [
+              0.1657214247730287,
+              2.1621890328070013
+            ],
+            "per_seed_effects": {
+              "0": 1.0022904738370793,
+              "1": -0.1394296153655135,
+              "2": 2.507984019090628
+            },
+            "verdict": "inconclusive"
+          }
+        },
+        "lpips": {
+          "prior_mean": 0.21602429908055526,
+          "none_mean": 0.24001978987302536,
+          "effect": -0.0239954907924701,
+          "per_seed_effects": {
+            "0": -0.023184186181960963,
+            "1": -0.007888169051745,
+            "2": -0.04091411714370434
+          },
+          "seed_signs_agree": true,
+          "sequence_bootstrap_ci95": [
+            -0.032068137824535374,
+            -0.01680171334813548
+          ],
+          "scene_cluster_bootstrap_ci95": [
+            -0.03206185082367403,
+            -0.01638603838004815
+          ],
+          "sequence_verdict": "benefit",
+          "scene_cluster_verdict": "benefit",
+          "conclusion_changed": false,
+          "equal_scene_weighted": {
+            "effect": -0.022247270340957342,
+            "ci95": [
+              -0.030515081958756563,
+              -0.014454017557381172
+            ],
+            "per_seed_effects": {
+              "0": -0.02103917850624947,
+              "1": -0.006538141164041701,
+              "2": -0.03916449135258084
+            },
+            "verdict": "benefit"
+          }
+        }
+      },
+      "scenes": [
+        {
+          "scene": "SDSD_indoor/pair3",
+          "n_sequences": 1,
+          "sequences": [
+            "SDSD_indoor/pair3_2"
+          ],
+          "metrics": {
+            "psnr_y": {
+              "sum_sequence_differences": -2.5876876908155033,
+              "mean_sequence_difference": -2.5876876908155033
+            },
+            "lpips": {
+              "sum_sequence_differences": -0.000529671708742796,
+              "mean_sequence_difference": -0.000529671708742796
+            }
+          }
+        },
+        {
+          "scene": "SDSD_indoor/pair34",
+          "n_sequences": 1,
+          "sequences": [
+            "SDSD_indoor/pair34_2"
+          ],
+          "metrics": {
+            "psnr_y": {
+              "sum_sequence_differences": -0.5186697479702822,
+              "mean_sequence_difference": -0.5186697479702822
+            },
+            "lpips": {
+              "sum_sequence_differences": 0.006787687540054321,
+              "mean_sequence_difference": 0.006787687540054321
+            }
+          }
+        },
+        {
+          "scene": "SDSD_indoor/pair4",
+          "n_sequences": 2,
+          "sequences": [
+            "SDSD_indoor/pair4",
+            "SDSD_indoor/pair4_2"
+          ],
+          "metrics": {
+            "psnr_y": {
+              "sum_sequence_differences": 9.22979142704017,
+              "mean_sequence_difference": 4.614895713520085
+            },
+            "lpips": {
+              "sum_sequence_differences": -0.11809092263380691,
+              "mean_sequence_difference": -0.059045461316903455
+            }
+          }
+        },
+        {
+          "scene": "SDSD_indoor/pair5",
+          "n_sequences": 2,
+          "sequences": [
+            "SDSD_indoor/pair5",
+            "SDSD_indoor/pair5_2"
+          ],
+          "metrics": {
+            "psnr_y": {
+              "sum_sequence_differences": 1.150298570698018,
+              "mean_sequence_difference": 0.575149285349009
+            },
+            "lpips": {
+              "sum_sequence_differences": -0.02820436656475067,
+              "mean_sequence_difference": -0.014102183282375336
+            }
+          }
+        },
+        {
+          "scene": "SDSD_indoor/pair6",
+          "n_sequences": 2,
+          "sequences": [
+            "SDSD_indoor/pair6",
+            "SDSD_indoor/pair6_2"
+          ],
+          "metrics": {
+            "psnr_y": {
+              "sum_sequence_differences": 13.211042505837261,
+              "mean_sequence_difference": 6.6055212529186305
+            },
+            "lpips": {
+              "sum_sequence_differences": -0.1377829561630885,
+              "mean_sequence_difference": -0.06889147808154425
+            }
+          }
+        },
+        {
+          "scene": "SDSD_indoor/pair7",
+          "n_sequences": 2,
+          "sequences": [
+            "SDSD_indoor/pair7",
+            "SDSD_indoor/pair7_2"
+          ],
+          "metrics": {
+            "psnr_y": {
+              "sum_sequence_differences": -0.16150839788617866,
+              "mean_sequence_difference": -0.08075419894308933
+            },
+            "lpips": {
+              "sum_sequence_differences": -0.0334301640590032,
+              "mean_sequence_difference": -0.0167150820295016
+            }
+          }
+        },
+        {
+          "scene": "SDSD_indoor/pair8",
+          "n_sequences": 2,
+          "sequences": [
+            "SDSD_indoor/pair8",
+            "SDSD_indoor/pair8_2"
+          ],
+          "metrics": {
+            "psnr_y": {
+              "sum_sequence_differences": -1.8391453794059238,
+              "mean_sequence_difference": -0.9195726897029619
+            },
+            "lpips": {
+              "sum_sequence_differences": 0.019245848059654264,
+              "mean_sequence_difference": 0.009622924029827132
+            }
+          }
+        },
+        {
+          "scene": "SDSD_indoor/pair9",
+          "n_sequences": 2,
+          "sequences": [
+            "SDSD_indoor/pair9",
+            "SDSD_indoor/pair9_2"
+          ],
+          "metrics": {
+            "psnr_y": {
+              "sum_sequence_differences": -0.1042451284642496,
+              "mean_sequence_difference": -0.0521225642321248
+            },
+            "lpips": {
+              "sum_sequence_differences": -0.03329861164093015,
+              "mean_sequence_difference": -0.016649305820465074
+            }
+          }
+        },
+        {
+          "scene": "SDSD_outdoor/MVI_1007",
+          "n_sequences": 1,
+          "sequences": [
+            "SDSD_outdoor/MVI_1007_2"
+          ],
+          "metrics": {
+            "psnr_y": {
+              "sum_sequence_differences": 0.00579546697536415,
+              "mean_sequence_difference": 0.00579546697536415
+            },
+            "lpips": {
+              "sum_sequence_differences": -0.004819229245185852,
+              "mean_sequence_difference": -0.004819229245185852
+            }
+          }
+        },
+        {
+          "scene": "SDSD_outdoor/MVI_1009",
+          "n_sequences": 2,
+          "sequences": [
+            "SDSD_outdoor/MVI_1009",
+            "SDSD_outdoor/MVI_1009_2"
+          ],
+          "metrics": {
+            "psnr_y": {
+              "sum_sequence_differences": 2.2756457464923585,
+              "mean_sequence_difference": 1.1378228732461793
+            },
+            "lpips": {
+              "sum_sequence_differences": -0.05458935598532361,
+              "mean_sequence_difference": -0.027294677992661803
+            }
+          }
+        },
+        {
+          "scene": "SDSD_outdoor/MVI_1011",
+          "n_sequences": 2,
+          "sequences": [
+            "SDSD_outdoor/MVI_1011",
+            "SDSD_outdoor/MVI_1011_2"
+          ],
+          "metrics": {
+            "psnr_y": {
+              "sum_sequence_differences": 7.412992045042824,
+              "mean_sequence_difference": 3.706496022521412
+            },
+            "lpips": {
+              "sum_sequence_differences": -0.06408198674519855,
+              "mean_sequence_difference": -0.032040993372599275
+            }
+          }
+        },
+        {
+          "scene": "SDSD_outdoor/MVI_1013",
+          "n_sequences": 2,
+          "sequences": [
+            "SDSD_outdoor/MVI_1013",
+            "SDSD_outdoor/MVI_1013_2"
+          ],
+          "metrics": {
+            "psnr_y": {
+              "sum_sequence_differences": 0.3768830287662439,
+              "mean_sequence_difference": 0.18844151438312196
+            },
+            "lpips": {
+              "sum_sequence_differences": -0.03679540753364566,
+              "mean_sequence_difference": -0.01839770376682283
+            }
+          }
+        },
+        {
+          "scene": "SDSD_outdoor/MVI_1015",
+          "n_sequences": 2,
+          "sequences": [
+            "SDSD_outdoor/MVI_1015",
+            "SDSD_outdoor/MVI_1015_2"
+          ],
+          "metrics": {
+            "psnr_y": {
+              "sum_sequence_differences": 1.7561026344579425,
+              "mean_sequence_difference": 0.8780513172289712
+            },
+            "lpips": {
+              "sum_sequence_differences": -0.02227587749560675,
+              "mean_sequence_difference": -0.011137938747803375
+            }
+          }
+        },
+        {
+          "scene": "SDSD_outdoor/MVI_1017",
+          "n_sequences": 2,
+          "sequences": [
+            "SDSD_outdoor/MVI_1017",
+            "SDSD_outdoor/MVI_1017_2"
+          ],
+          "metrics": {
+            "psnr_y": {
+              "sum_sequence_differences": -1.0893663423532942,
+              "mean_sequence_difference": -0.5446831711766471
+            },
+            "lpips": {
+              "sum_sequence_differences": -0.045693136751651764,
+              "mean_sequence_difference": -0.022846568375825882
+            }
+          }
+        },
+        {
+          "scene": "SDSD_outdoor/MVI_1019",
+          "n_sequences": 2,
+          "sequences": [
+            "SDSD_outdoor/MVI_1019",
+            "SDSD_outdoor/MVI_1019_2"
+          ],
+          "metrics": {
+            "psnr_y": {
+              "sum_sequence_differences": 1.6571756664227753,
+              "mean_sequence_difference": 0.8285878332113876
+            },
+            "lpips": {
+              "sum_sequence_differences": -0.06274902323881784,
+              "mean_sequence_difference": -0.03137451161940892
+            }
+          }
+        },
+        {
+          "scene": "SDSD_outdoor/MVI_1021",
+          "n_sequences": 2,
+          "sequences": [
+            "SDSD_outdoor/MVI_1021",
+            "SDSD_outdoor/MVI_1021_2"
+          ],
+          "metrics": {
+            "psnr_y": {
+              "sum_sequence_differences": 3.4730790834690772,
+              "mean_sequence_difference": 1.7365395417345386
+            },
+            "lpips": {
+              "sum_sequence_differences": -0.04767106473445892,
+              "mean_sequence_difference": -0.02383553236722946
+            }
+          }
+        },
+        {
+          "scene": "SDSD_outdoor/MVI_1024",
+          "n_sequences": 2,
+          "sequences": [
+            "SDSD_outdoor/MVI_1024",
+            "SDSD_outdoor/MVI_1024_2"
+          ],
+          "metrics": {
+            "psnr_y": {
+              "sum_sequence_differences": -0.43978359520188803,
+              "mean_sequence_difference": -0.21989179760094402
+            },
+            "lpips": {
+              "sum_sequence_differences": -0.03479231894016266,
+              "mean_sequence_difference": -0.01739615947008133
+            }
+          }
+        },
+        {
+          "scene": "SDSD_outdoor/MVI_1026",
+          "n_sequences": 2,
+          "sequences": [
+            "SDSD_outdoor/MVI_1026",
+            "SDSD_outdoor/MVI_1026_2"
+          ],
+          "metrics": {
+            "psnr_y": {
+              "sum_sequence_differences": 11.867852115179009,
+              "mean_sequence_difference": 5.933926057589504
+            },
+            "lpips": {
+              "sum_sequence_differences": -0.1032789001862208,
+              "mean_sequence_difference": -0.0516394500931104
+            }
+          }
+        },
+        {
+          "scene": "SDSD_outdoor/MVI_1028",
+          "n_sequences": 2,
+          "sequences": [
+            "SDSD_outdoor/MVI_1028",
+            "SDSD_outdoor/MVI_1028_2"
+          ],
+          "metrics": {
+            "psnr_y": {
+              "sum_sequence_differences": -0.3053301856507389,
+              "mean_sequence_difference": -0.15266509282536944
+            },
+            "lpips": {
+              "sum_sequence_differences": -0.038553640246391296,
+              "mean_sequence_difference": -0.019276820123195648
+            }
+          }
+        },
+        {
+          "scene": "SDSD_outdoor/MVI_1030",
+          "n_sequences": 2,
+          "sequences": [
+            "SDSD_outdoor/MVI_1030",
+            "SDSD_outdoor/MVI_1030_2"
+          ],
+          "metrics": {
+            "psnr_y": {
+              "sum_sequence_differences": 7.662205722134541,
+              "mean_sequence_difference": 3.8311028610672704
+            },
+            "lpips": {
+              "sum_sequence_differences": -0.047489933669567094,
+              "mean_sequence_difference": -0.023744966834783547
+            }
+          }
+        },
+        {
+          "scene": "SDSD_outdoor/MVI_1032",
+          "n_sequences": 2,
+          "sequences": [
+            "SDSD_outdoor/MVI_1032",
+            "SDSD_outdoor/MVI_1032_2"
+          ],
+          "metrics": {
+            "psnr_y": {
+              "sum_sequence_differences": -2.740737287086379,
+              "mean_sequence_difference": -1.3703686435431894
+            },
+            "lpips": {
+              "sum_sequence_differences": -0.047731108963489546,
+              "mean_sequence_difference": -0.023865554481744773
+            }
+          }
+        }
+      ]
+    },
+    {
+      "comparison": "h5_sdsd",
+      "difference": "pretrained minus none",
+      "seeds": [
+        0,
+        1
+      ],
+      "n_sequences": 39,
+      "n_scenes": 21,
+      "cluster_size_counts": {
+        "1": 3,
+        "2": 18
+      },
+      "sources": [
+        {
+          "path": "results/cvpr_converged/xdomain/e20_sdsd_pretrained_s0.json",
+          "sha256": "5ace8d12a964b2aa01aab139589bb0f53d74599555524e90d29a5d9291c7077c",
+          "seed": 0,
+          "arm": "pretrained"
+        },
+        {
+          "path": "results/cvpr_converged/xdomain/e20_sdsd_pretrained_s1.json",
+          "sha256": "f0b26585fcf7a25e6ae64eff6ce29f812027f71b860226ba60251d866f1bc16d",
+          "seed": 1,
+          "arm": "pretrained"
+        },
+        {
+          "path": "results/cvpr_converged/xdomain/e20_sdsd_none_s0.json",
+          "sha256": "9f7897256e17f88552186650f40753d7dfda9008a9f2ac8a42ec26c53d2e6ff6",
+          "seed": 0,
+          "arm": "none"
+        },
+        {
+          "path": "results/cvpr_converged/xdomain/e20_sdsd_none_s1.json",
+          "sha256": "0924cd77d2c4793fcd948b794690e613e68fcf4617692cd983dec1ecd64636b9",
+          "seed": 1,
+          "arm": "none"
+        }
+      ],
+      "metrics": {
+        "psnr_y": {
+          "prior_mean": 19.212366807287516,
+          "none_mean": 18.92003732043851,
+          "effect": 0.29232948684900467,
+          "per_seed_effects": {
+            "0": -0.27425318564113726,
+            "1": 0.8589121593391466
+          },
+          "seed_signs_agree": false,
+          "sequence_bootstrap_ci95": [
+            -1.8750053942516505,
+            2.5191953702247774
+          ],
+          "scene_cluster_bootstrap_ci95": [
+            -2.5774321667347087,
+            3.209005986284633
+          ],
+          "sequence_verdict": "inconclusive",
+          "scene_cluster_verdict": "inconclusive",
+          "conclusion_changed": false,
+          "equal_scene_weighted": {
+            "effect": 0.3967867734699858,
+            "ci95": [
+              -2.4022049360721014,
+              3.2667023953165124
+            ],
+            "per_seed_effects": {
+              "0": -0.1324384781507963,
+              "1": 0.9260120250907684
+            },
+            "verdict": "inconclusive"
+          }
+        },
+        "lpips": {
+          "prior_mean": 0.27782213114775145,
+          "none_mean": 0.3035177368766222,
+          "effect": -0.025695605728870783,
+          "per_seed_effects": {
+            "0": -0.027007890053284474,
+            "1": -0.024383321404457092
+          },
+          "seed_signs_agree": true,
+          "sequence_bootstrap_ci95": [
+            -0.047139887693218696,
+            -0.005913144421692089
+          ],
+          "scene_cluster_bootstrap_ci95": [
+            -0.05291772817162287,
+            -0.0007614384895484749
+          ],
+          "sequence_verdict": "benefit",
+          "scene_cluster_verdict": "benefit",
+          "conclusion_changed": false,
+          "equal_scene_weighted": {
+            "effect": -0.027958335798411144,
+            "ci95": [
+              -0.05524260473570654,
+              -0.0024848357907363405
+            ],
+            "per_seed_effects": {
+              "0": -0.0286163588364919,
+              "1": -0.027300312760330382
+            },
+            "verdict": "benefit"
+          }
+        }
+      },
+      "scenes": [
+        {
+          "scene": "SDSD_indoor/pair3",
+          "n_sequences": 1,
+          "sequences": [
+            "SDSD_indoor/pair3_2"
+          ],
+          "metrics": {
+            "psnr_y": {
+              "sum_sequence_differences": -4.8174766029388,
+              "mean_sequence_difference": -4.8174766029388
+            },
+            "lpips": {
+              "sum_sequence_differences": -0.07012671232223511,
+              "mean_sequence_difference": -0.07012671232223511
+            }
+          }
+        },
+        {
+          "scene": "SDSD_indoor/pair34",
+          "n_sequences": 1,
+          "sequences": [
+            "SDSD_indoor/pair34_2"
+          ],
+          "metrics": {
+            "psnr_y": {
+              "sum_sequence_differences": 0.06667351839491076,
+              "mean_sequence_difference": 0.06667351839491076
+            },
+            "lpips": {
+              "sum_sequence_differences": 0.027877092361450195,
+              "mean_sequence_difference": 0.027877092361450195
+            }
+          }
+        },
+        {
+          "scene": "SDSD_indoor/pair4",
+          "n_sequences": 2,
+          "sequences": [
+            "SDSD_indoor/pair4",
+            "SDSD_indoor/pair4_2"
+          ],
+          "metrics": {
+            "psnr_y": {
+              "sum_sequence_differences": 1.994764658054466,
+              "mean_sequence_difference": 0.997382329027233
+            },
+            "lpips": {
+              "sum_sequence_differences": -0.11015552282333374,
+              "mean_sequence_difference": -0.05507776141166687
+            }
+          }
+        },
+        {
+          "scene": "SDSD_indoor/pair5",
+          "n_sequences": 2,
+          "sequences": [
+            "SDSD_indoor/pair5",
+            "SDSD_indoor/pair5_2"
+          ],
+          "metrics": {
+            "psnr_y": {
+              "sum_sequence_differences": -1.3590369166191145,
+              "mean_sequence_difference": -0.6795184583095573
+            },
+            "lpips": {
+              "sum_sequence_differences": -0.03088805079460144,
+              "mean_sequence_difference": -0.01544402539730072
+            }
+          }
+        },
+        {
+          "scene": "SDSD_indoor/pair6",
+          "n_sequences": 2,
+          "sequences": [
+            "SDSD_indoor/pair6",
+            "SDSD_indoor/pair6_2"
+          ],
+          "metrics": {
+            "psnr_y": {
+              "sum_sequence_differences": -5.690226905311167,
+              "mean_sequence_difference": -2.8451134526555837
+            },
+            "lpips": {
+              "sum_sequence_differences": -0.06217770278453827,
+              "mean_sequence_difference": -0.031088851392269135
+            }
+          }
+        },
+        {
+          "scene": "SDSD_indoor/pair7",
+          "n_sequences": 2,
+          "sequences": [
+            "SDSD_indoor/pair7",
+            "SDSD_indoor/pair7_2"
+          ],
+          "metrics": {
+            "psnr_y": {
+              "sum_sequence_differences": -2.910644049219016,
+              "mean_sequence_difference": -1.455322024609508
+            },
+            "lpips": {
+              "sum_sequence_differences": 0.02589324861764908,
+              "mean_sequence_difference": 0.01294662430882454
+            }
+          }
+        },
+        {
+          "scene": "SDSD_indoor/pair8",
+          "n_sequences": 2,
+          "sequences": [
+            "SDSD_indoor/pair8",
+            "SDSD_indoor/pair8_2"
+          ],
+          "metrics": {
+            "psnr_y": {
+              "sum_sequence_differences": -4.820867066471937,
+              "mean_sequence_difference": -2.4104335332359685
+            },
+            "lpips": {
+              "sum_sequence_differences": -0.00508958101272583,
+              "mean_sequence_difference": -0.002544790506362915
+            }
+          }
+        },
+        {
+          "scene": "SDSD_indoor/pair9",
+          "n_sequences": 2,
+          "sequences": [
+            "SDSD_indoor/pair9",
+            "SDSD_indoor/pair9_2"
+          ],
+          "metrics": {
+            "psnr_y": {
+              "sum_sequence_differences": 1.1447864573259743,
+              "mean_sequence_difference": 0.5723932286629871
+            },
+            "lpips": {
+              "sum_sequence_differences": -0.004463359713554382,
+              "mean_sequence_difference": -0.002231679856777191
+            }
+          }
+        },
+        {
+          "scene": "SDSD_outdoor/MVI_1007",
+          "n_sequences": 1,
+          "sequences": [
+            "SDSD_outdoor/MVI_1007_2"
+          ],
+          "metrics": {
+            "psnr_y": {
+              "sum_sequence_differences": 10.014997583172114,
+              "mean_sequence_difference": 10.014997583172114
+            },
+            "lpips": {
+              "sum_sequence_differences": -0.12987186014652252,
+              "mean_sequence_difference": -0.12987186014652252
+            }
+          }
+        },
+        {
+          "scene": "SDSD_outdoor/MVI_1009",
+          "n_sequences": 2,
+          "sequences": [
+            "SDSD_outdoor/MVI_1009",
+            "SDSD_outdoor/MVI_1009_2"
+          ],
+          "metrics": {
+            "psnr_y": {
+              "sum_sequence_differences": -6.651102908442944,
+              "mean_sequence_difference": -3.325551454221472
+            },
+            "lpips": {
+              "sum_sequence_differences": 0.04220057278871536,
+              "mean_sequence_difference": 0.02110028639435768
+            }
+          }
+        },
+        {
+          "scene": "SDSD_outdoor/MVI_1011",
+          "n_sequences": 2,
+          "sequences": [
+            "SDSD_outdoor/MVI_1011",
+            "SDSD_outdoor/MVI_1011_2"
+          ],
+          "metrics": {
+            "psnr_y": {
+              "sum_sequence_differences": 9.07571820631425,
+              "mean_sequence_difference": 4.537859103157125
+            },
+            "lpips": {
+              "sum_sequence_differences": -0.10494115948677063,
+              "mean_sequence_difference": -0.052470579743385315
+            }
+          }
+        },
+        {
+          "scene": "SDSD_outdoor/MVI_1013",
+          "n_sequences": 2,
+          "sequences": [
+            "SDSD_outdoor/MVI_1013",
+            "SDSD_outdoor/MVI_1013_2"
+          ],
+          "metrics": {
+            "psnr_y": {
+              "sum_sequence_differences": -6.9135256489486245,
+              "mean_sequence_difference": -3.4567628244743123
+            },
+            "lpips": {
+              "sum_sequence_differences": -0.019621439278125763,
+              "mean_sequence_difference": -0.009810719639062881
+            }
+          }
+        },
+        {
+          "scene": "SDSD_outdoor/MVI_1015",
+          "n_sequences": 2,
+          "sequences": [
+            "SDSD_outdoor/MVI_1015",
+            "SDSD_outdoor/MVI_1015_2"
+          ],
+          "metrics": {
+            "psnr_y": {
+              "sum_sequence_differences": 25.90075334862041,
+              "mean_sequence_difference": 12.950376674310204
+            },
+            "lpips": {
+              "sum_sequence_differences": -0.1789202094078064,
+              "mean_sequence_difference": -0.0894601047039032
+            }
+          }
+        },
+        {
+          "scene": "SDSD_outdoor/MVI_1017",
+          "n_sequences": 2,
+          "sequences": [
+            "SDSD_outdoor/MVI_1017",
+            "SDSD_outdoor/MVI_1017_2"
+          ],
+          "metrics": {
+            "psnr_y": {
+              "sum_sequence_differences": 12.94029804356786,
+              "mean_sequence_difference": 6.47014902178393
+            },
+            "lpips": {
+              "sum_sequence_differences": -0.07248428463935852,
+              "mean_sequence_difference": -0.03624214231967926
+            }
+          }
+        },
+        {
+          "scene": "SDSD_outdoor/MVI_1019",
+          "n_sequences": 2,
+          "sequences": [
+            "SDSD_outdoor/MVI_1019",
+            "SDSD_outdoor/MVI_1019_2"
+          ],
+          "metrics": {
+            "psnr_y": {
+              "sum_sequence_differences": -8.571416318701438,
+              "mean_sequence_difference": -4.285708159350719
+            },
+            "lpips": {
+              "sum_sequence_differences": 0.12363095581531525,
+              "mean_sequence_difference": 0.06181547790765762
+            }
+          }
+        },
+        {
+          "scene": "SDSD_outdoor/MVI_1021",
+          "n_sequences": 2,
+          "sequences": [
+            "SDSD_outdoor/MVI_1021",
+            "SDSD_outdoor/MVI_1021_2"
+          ],
+          "metrics": {
+            "psnr_y": {
+              "sum_sequence_differences": -25.652851812730823,
+              "mean_sequence_difference": -12.826425906365412
+            },
+            "lpips": {
+              "sum_sequence_differences": 0.12381912022829056,
+              "mean_sequence_difference": 0.06190956011414528
+            }
+          }
+        },
+        {
+          "scene": "SDSD_outdoor/MVI_1024",
+          "n_sequences": 2,
+          "sequences": [
+            "SDSD_outdoor/MVI_1024",
+            "SDSD_outdoor/MVI_1024_2"
+          ],
+          "metrics": {
+            "psnr_y": {
+              "sum_sequence_differences": -10.755289388356744,
+              "mean_sequence_difference": -5.377644694178372
+            },
+            "lpips": {
+              "sum_sequence_differences": 0.012205451726913452,
+              "mean_sequence_difference": 0.006102725863456726
+            }
+          }
+        },
+        {
+          "scene": "SDSD_outdoor/MVI_1026",
+          "n_sequences": 2,
+          "sequences": [
+            "SDSD_outdoor/MVI_1026",
+            "SDSD_outdoor/MVI_1026_2"
+          ],
+          "metrics": {
+            "psnr_y": {
+              "sum_sequence_differences": 22.168832695883346,
+              "mean_sequence_difference": 11.084416347941673
+            },
+            "lpips": {
+              "sum_sequence_differences": -0.2630884647369385,
+              "mean_sequence_difference": -0.13154423236846924
+            }
+          }
+        },
+        {
+          "scene": "SDSD_outdoor/MVI_1028",
+          "n_sequences": 2,
+          "sequences": [
+            "SDSD_outdoor/MVI_1028",
+            "SDSD_outdoor/MVI_1028_2"
+          ],
+          "metrics": {
+            "psnr_y": {
+              "sum_sequence_differences": -19.372873039348622,
+              "mean_sequence_difference": -9.686436519674311
+            },
+            "lpips": {
+              "sum_sequence_differences": 0.09265723824501038,
+              "mean_sequence_difference": 0.04632861912250519
+            }
+          }
+        },
+        {
+          "scene": "SDSD_outdoor/MVI_1030",
+          "n_sequences": 2,
+          "sequences": [
+            "SDSD_outdoor/MVI_1030",
+            "SDSD_outdoor/MVI_1030_2"
+          ],
+          "metrics": {
+            "psnr_y": {
+              "sum_sequence_differences": 19.704737814132784,
+              "mean_sequence_difference": 9.852368907066392
+            },
+            "lpips": {
+              "sum_sequence_differences": -0.3319275304675102,
+              "mean_sequence_difference": -0.1659637652337551
+            }
+          }
+        },
+        {
+          "scene": "SDSD_outdoor/MVI_1032",
+          "n_sequences": 2,
+          "sequences": [
+            "SDSD_outdoor/MVI_1032",
+            "SDSD_outdoor/MVI_1032_2"
+          ],
+          "metrics": {
+            "psnr_y": {
+              "sum_sequence_differences": 5.904598318734296,
+              "mean_sequence_difference": 2.952299159367148
+            },
+            "lpips": {
+              "sum_sequence_differences": -0.06665642559528351,
+              "mean_sequence_difference": -0.033328212797641754
+            }
+          }
+        }
+      ]
+    },
+    {
+      "comparison": "h5_bvi",
+      "difference": "pretrained minus none",
+      "seeds": [
+        0,
+        1
+      ],
+      "n_sequences": 16,
+      "n_scenes": 8,
+      "cluster_size_counts": {
+        "2": 8
+      },
+      "sources": [
+        {
+          "path": "results/cvpr_converged/xdomain/e20_bvi_pretrained_s0.json",
+          "sha256": "20b1e1a3386d1c0a8e23eac4b269b6564af7d33828d8ac37586d54fbe16fde4b",
+          "seed": 0,
+          "arm": "pretrained"
+        },
+        {
+          "path": "results/cvpr_converged/xdomain/e20_bvi_pretrained_s1.json",
+          "sha256": "1368554537271f8fa8c4a550c10f9676ecb371a2742d5ac7bce97c44fb8d7728",
+          "seed": 1,
+          "arm": "pretrained"
+        },
+        {
+          "path": "results/cvpr_converged/xdomain/e20_bvi_none_s0.json",
+          "sha256": "cc909400e58922da27b3bb66167e971ebcf1150f33fb623d9b77c82c2b28e706",
+          "seed": 0,
+          "arm": "none"
+        },
+        {
+          "path": "results/cvpr_converged/xdomain/e20_bvi_none_s1.json",
+          "sha256": "ca3331da3bce273da4506fb5a0e248ee52abe116eae55120d63157aedc9dbf8c",
+          "seed": 1,
+          "arm": "none"
+        }
+      ],
+      "metrics": {
+        "psnr_y": {
+          "prior_mean": 22.081220693627543,
+          "none_mean": 21.783010561414354,
+          "effect": 0.2982101322131909,
+          "per_seed_effects": {
+            "0": 0.5295637935246662,
+            "1": 0.06685647090171531
+          },
+          "seed_signs_agree": true,
+          "sequence_bootstrap_ci95": [
+            -1.5927865286781506,
+            1.9650099274827315
+          ],
+          "scene_cluster_bootstrap_ci95": [
+            -1.0349754149380597,
+            1.7169158746726303
+          ],
+          "sequence_verdict": "inconclusive",
+          "scene_cluster_verdict": "inconclusive",
+          "conclusion_changed": false,
+          "equal_scene_weighted": {
+            "effect": 0.2982101322131909,
+            "ci95": [
+              -1.0349754149380597,
+              1.7169158746726303
+            ],
+            "per_seed_effects": {
+              "0": 0.5295637935246662,
+              "1": 0.06685647090171531
+            },
+            "verdict": "inconclusive"
+          }
+        },
+        "lpips": {
+          "prior_mean": 0.1965162898413837,
+          "none_mean": 0.21942037297412753,
+          "effect": -0.022904083132743835,
+          "per_seed_effects": {
+            "0": -0.03082919307053089,
+            "1": -0.01497897319495678
+          },
+          "seed_signs_agree": true,
+          "sequence_bootstrap_ci95": [
+            -0.04345588854048401,
+            -0.0017142321099527236
+          ],
+          "scene_cluster_bootstrap_ci95": [
+            -0.041467935778200626,
+            -0.007530698087066412
+          ],
+          "sequence_verdict": "benefit",
+          "scene_cluster_verdict": "benefit",
+          "conclusion_changed": false,
+          "equal_scene_weighted": {
+            "effect": -0.022904083132743835,
+            "ci95": [
+              -0.041467935778200626,
+              -0.007530698087066412
+            ],
+            "per_seed_effects": {
+              "0": -0.03082919307053089,
+              "1": -0.01497897319495678
+            },
+            "verdict": "benefit"
+          }
+        }
+      },
+      "scenes": [
+        {
+          "scene": "BVI/S33_mix5",
+          "n_sequences": 2,
+          "sequences": [
+            "BVI/S33_mix5__10fps",
+            "BVI/S33_mix5__20fps"
+          ],
+          "metrics": {
+            "psnr_y": {
+              "sum_sequence_differences": -0.7462558159168893,
+              "mean_sequence_difference": -0.37312790795844464
+            },
+            "lpips": {
+              "sum_sequence_differences": -0.008965156972408295,
+              "mean_sequence_difference": -0.004482578486204147
+            }
+          }
+        },
+        {
+          "scene": "BVI/S34_mix6",
+          "n_sequences": 2,
+          "sequences": [
+            "BVI/S34_mix6__10fps",
+            "BVI/S34_mix6__20fps"
+          ],
+          "metrics": {
+            "psnr_y": {
+              "sum_sequence_differences": 2.616446955563731,
+              "mean_sequence_difference": 1.3082234777818655
+            },
+            "lpips": {
+              "sum_sequence_differences": -0.04019281268119812,
+              "mean_sequence_difference": -0.02009640634059906
+            }
+          }
+        },
+        {
+          "scene": "BVI/S35_Bunny",
+          "n_sequences": 2,
+          "sequences": [
+            "BVI/S35_Bunny__10fps",
+            "BVI/S35_Bunny__20fps"
+          ],
+          "metrics": {
+            "psnr_y": {
+              "sum_sequence_differences": 2.190974046583456,
+              "mean_sequence_difference": 1.095487023291728
+            },
+            "lpips": {
+              "sum_sequence_differences": -0.05505215376615524,
+              "mean_sequence_difference": -0.02752607688307762
+            }
+          }
+        },
+        {
+          "scene": "BVI/S36_Eeyore",
+          "n_sequences": 2,
+          "sequences": [
+            "BVI/S36_Eeyore__10fps",
+            "BVI/S36_Eeyore__20fps"
+          ],
+          "metrics": {
+            "psnr_y": {
+              "sum_sequence_differences": -2.8042987901611767,
+              "mean_sequence_difference": -1.4021493950805883
+            },
+            "lpips": {
+              "sum_sequence_differences": -0.007925964891910553,
+              "mean_sequence_difference": -0.0039629824459552765
+            }
+          }
+        },
+        {
+          "scene": "BVI/S37_Mario3",
+          "n_sequences": 2,
+          "sequences": [
+            "BVI/S37_Mario3__10fps",
+            "BVI/S37_Mario3__20fps"
+          ],
+          "metrics": {
+            "psnr_y": {
+              "sum_sequence_differences": 3.4534640495366453,
+              "mean_sequence_difference": 1.7267320247683227
+            },
+            "lpips": {
+              "sum_sequence_differences": -0.047101497650146484,
+              "mean_sequence_difference": -0.023550748825073242
+            }
+          }
+        },
+        {
+          "scene": "BVI/S38_Mario4",
+          "n_sequences": 2,
+          "sequences": [
+            "BVI/S38_Mario4__10fps",
+            "BVI/S38_Mario4__20fps"
+          ],
+          "metrics": {
+            "psnr_y": {
+              "sum_sequence_differences": 8.155050774968629,
+              "mean_sequence_difference": 4.0775253874843145
+            },
+            "lpips": {
+              "sum_sequence_differences": -0.1576739102602005,
+              "mean_sequence_difference": -0.07883695513010025
+            }
+          }
+        },
+        {
+          "scene": "BVI/S39_Books4",
+          "n_sequences": 2,
+          "sequences": [
+            "BVI/S39_Books4__10fps",
+            "BVI/S39_Books4__20fps"
+          ],
+          "metrics": {
+            "psnr_y": {
+              "sum_sequence_differences": -3.661285490250769,
+              "mean_sequence_difference": -1.8306427451253846
+            },
+            "lpips": {
+              "sum_sequence_differences": -0.06745089590549469,
+              "mean_sequence_difference": -0.033725447952747345
+            }
+          }
+        },
+        {
+          "scene": "BVI/S40_Books5",
+          "n_sequences": 2,
+          "sequences": [
+            "BVI/S40_Books5__10fps",
+            "BVI/S40_Books5__20fps"
+          ],
+          "metrics": {
+            "psnr_y": {
+              "sum_sequence_differences": -4.432733614912571,
+              "mean_sequence_difference": -2.2163668074562857
+            },
+            "lpips": {
+              "sum_sequence_differences": 0.01789706200361252,
+              "mean_sequence_difference": 0.00894853100180626
+            }
+          }
+        }
+      ]
+    }
+  ]
+}
