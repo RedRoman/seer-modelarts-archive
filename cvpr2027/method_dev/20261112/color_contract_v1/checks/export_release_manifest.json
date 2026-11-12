@@ -1,0 +1,30 @@
+{
+  "frozen_utc": "2026-11-12T06:25:39.426561+00:00",
+  "purpose": "Canonical-RGB HVI source TRAIN136 no-GT export",
+  "files": {
+    "cache_hvi_rgb_source.py": "bb9ebb3d3808e4ee263d567bd56a1407c8896a8ce749b3ebcc0ac934ac261aae",
+    "dependencies/cache_hvi_source.py": "26c0c36656ad7b7d3b0ce04275578a45286c27931a476c9dcfb1ce1981e69db2",
+    "dependencies/color_contract.py": "7815887150b2e92ed7c2cf4c30f334a4a0c435d58b4ba017fd1b746a97dcab60",
+    "dependencies/legacy_config.json": "f6a8d1549f9471282f9a84961ee3ee4800956d5a422cb476512977b2db7f018c",
+    "dependencies/legacy_release_manifest.json": "2df36567d068c0ead173c89ebe50611e8c340aa7c6e3e731f502fce1f58ea11b",
+    "dependencies/test_color_contract.py": "9496eaa1520aa5add933fd0a8bfc020c2a7e80d773a656552fdaa1a1e4f6be20",
+    "dependencies/versions.json": "b5f6c221726d8b3a53a7893e23843588c6aee4927b486498dd64a4cb8eecbe6c",
+    "export_run_v1.sh": "a72b9380c04216cf21a0782f274bab55ac4872de7f7995fa71008b7b2fafad1b",
+    "proofs/00_source_input_audit.json": "2bcd5521be473cf8a379b370b389957d12e79a2f5efc5ada60657fddbe60f86d",
+    "proofs/01_retinexformer_data_util.py": "f03a2b4eae55f2ee6c818c011225f5b374edce91e93f543aa101ebb9f524440e",
+    "proofs/02_sdsd_data_util.py": "a2c706fed6f522abe3155e38d33d076ac9dd28af19c7b7110b844d15ccf02021",
+    "proofs/03_sdsd_static_provenance.json": "a20fba6f4ac056af3b918025aed4ac9ba5453f7fcda676b5f18b1639b4b00532",
+    "proofs/04_download_receipt.json": "f0398968bfd76e9ed6a28b063c301d25f81a532bb88500fe6e4c373629a27657",
+    "proofs/source_color_receipt_closed.json": "fcec10f792569e1f1202c7ed4d29e7e774fbc7ea0ba5198cdbd454f9ed174a70",
+    "source_export_protocol.json": "417ea20f4ae15e52664731aed3b5567f68ab4988b026d98fac6a9966254cc8d3",
+    "source_input_manifest.json": "e4f129f63e49ba78e37314590feaea216819bd284431c3bbb3f713ddef03d439",
+    "test_cache_hvi_rgb_source.py": "e4f972bb4a912c83354edc03551a0c81fe83d5f46108bb8b9b1716ca410152e9",
+    "upstream/hvi_cidnet/net/CIDNet.py": "dc9b9232f225f5760417175d25f8efc146f51c0acd1ee014df6b9f0a6b2e8d84",
+    "upstream/hvi_cidnet/net/HVI_transform.py": "8be0fea6e61c51d6290722f0cf81be1f334b1b998dbfd409435343d9d4bd5bb2",
+    "upstream/hvi_cidnet/net/LCA.py": "271f487091bd13ed211a8b0c9cb07036957ba535f5dd3aedc131498500979d26",
+    "upstream/hvi_cidnet/net/transformer_utils.py": "7bfb2659e97289f0e8005935e15edbe0af3ae5ef05c50863a074fd745617b13f",
+    "weights/hvi_cidnet.pt": "6395370762ec1fa0f6fe92a38c62382b1ebe21edc012f597023bfcec8b95cd27"
+  },
+  "native_bgr_evidence_sha256": "fcec10f792569e1f1202c7ed4d29e7e774fbc7ea0ba5198cdbd454f9ed174a70",
+  "device_for_full_export": "physical NPU7 subject to fresh process check"
+}

@@ -1,0 +1,17 @@
+/home/ma-user/anaconda3/envs/PyTorch-2.7.1/lib/python3.12/site-packages/torch/cuda/__init__.py:61: FutureWarning: The pynvml package is deprecated. Please install nvidia-ml-py instead. If you did not install pynvml directly, please report this to the maintainers of the package that installed pynvml for you.
+  import pynvml  # type: ignore[import]
+test_evaluator_filters_excluded_rows_before_calling_loader (test_rgb_fit.RgbFitTests.test_evaluator_filters_excluded_rows_before_calling_loader) ... ok
+test_excluded_scene_is_rejected_before_digest_or_tensor_loading (test_rgb_fit.RgbFitTests.test_excluded_scene_is_rejected_before_digest_or_tensor_loading) ... ok
+test_global_metadata_validation_does_not_open_any_tensor_archives (test_rgb_fit.RgbFitTests.test_global_metadata_validation_does_not_open_any_tensor_archives) ... ok
+test_manifest_rejects_legacy_unswapped_or_incomplete_hvi (test_rgb_fit.RgbFitTests.test_manifest_rejects_legacy_unswapped_or_incomplete_hvi) ... ok
+test_payload_wrong_color_boundary_is_rejected_even_with_updated_archive_hash (test_rgb_fit.RgbFitTests.test_payload_wrong_color_boundary_is_rejected_even_with_updated_archive_hash) ... ok
+test_payload_wrong_native_input_hash_is_rejected (test_rgb_fit.RgbFitTests.test_payload_wrong_native_input_hash_is_rejected) ... ok
+test_prediction_math_receives_no_gt_and_dependency_mutation_fails_before_execution (test_rgb_fit.RgbFitTests.test_prediction_math_receives_no_gt_and_dependency_mutation_fails_before_execution) ... ok
+test_real_serialized_loader_swaps_native_gt_exactly_once_and_preserves_rgb_hvi (test_rgb_fit.RgbFitTests.test_real_serialized_loader_swaps_native_gt_exactly_once_and_preserves_rgb_hvi) ... ok
+test_rgb_mse_is_invariant_under_common_channel_permutation_for_all_fixed_predictions (test_rgb_fit.RgbFitTests.test_rgb_mse_is_invariant_under_common_channel_permutation_for_all_fixed_predictions) ... ok
+test_unclosed_raw_contract_is_rejected_even_if_digest_field_is_claimed (test_rgb_fit.RgbFitTests.test_unclosed_raw_contract_is_rejected_even_if_digest_field_is_claimed) ... ok
+
+----------------------------------------------------------------------
+Ran 10 tests in 1.740s
+
+OK

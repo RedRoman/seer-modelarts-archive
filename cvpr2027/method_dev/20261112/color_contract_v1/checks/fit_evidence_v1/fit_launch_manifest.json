@@ -1,0 +1,36 @@
+{
+  "command": [
+    "/cache/zihaohe/seer_cvpr/venv_npu/bin/python",
+    "/cache/zihaohe/seer_color_contract_20261112/fit_release_v1/color_contract_v1/run_rgb_fit.py",
+    "--source-cache",
+    "/cache/zihaohe/seer_method_dev_20261111/source_transfer_v1/cache_sdsd_p_s0",
+    "--hvi-cache",
+    "/cache/zihaohe/seer_color_contract_20261112/cache_rgb_hvi_v1",
+    "--geometry-manifest",
+    "/cache/zihaohe/seer_observation_geometry_20261112/prepared_v1/manifest.json",
+    "--expected-hvi-manifest-sha256",
+    "5f25fdfcca5bc7d581c1484245fa760ef321da642f5e741077c128376616a94a",
+    "--out",
+    "/cache/zihaohe/seer_color_contract_20261112/fit_results_v1"
+  ],
+  "env": {
+    "TORCH_DEVICE_BACKEND_AUTOLOAD": "0",
+    "OMP_NUM_THREADS": "4",
+    "MKL_NUM_THREADS": "4",
+    "OPENBLAS_NUM_THREADS": "4"
+  },
+  "source_manifest": {
+    "files": {
+      "color_contract_v1/run_rgb_fit.py": "00b039e00a39812d2ae3e0d202c2436e6542ba6b964bf5c47cd78c78285d4fa2",
+      "color_contract_v1/test_rgb_fit.py": "3c66b2405724647b5be05e050d9d3a1f73474bc56d53c8f9c52339c564b6a06b",
+      "color_contract_v1/rgb_fit_protocol.json": "3678d9eadaf9d7749581bfe0da6b467e2e56bd52a6ea41a2921795385cd87f9d",
+      "color_contract_v1/color_contract.py": "7815887150b2e92ed7c2cf4c30f334a4a0c435d58b4ba017fd1b746a97dcab60",
+      "hvi_temporal_fit_feasibility_v1/run_fit_feasibility.py": "c314d9b37f71009af0f4974cf59b3bcc41b0d48698184c9ec01de66a7caecd54"
+    },
+    "release_sha256": "7c52e9b1ba2df792a31dc211eac336b99b063c1d64113c3eb776b4a805103c3b"
+  },
+  "expected_export_verification_sha256": "2f1274c7201af9939273a5a3688f4cda0174b6f637bbbeba099af2823a4cca09",
+  "expected_hvi_manifest_sha256": "5f25fdfcca5bc7d581c1484245fa760ef321da642f5e741077c128376616a94a",
+  "closed_receipt_sha256": "fcec10f792569e1f1202c7ed4d29e7e774fbc7ea0ba5198cdbd454f9ed174a70",
+  "scope": "Source FIT51/102 only, seven fixed rows, no fitting or lambda selection; no internal/target scores"
+}

@@ -1,0 +1,64 @@
+{
+  "passed": true,
+  "result_sha256": "96dee7426235d1378ffae91cac9e7bbe70dca05ff01b0c7097c3455a53dda9a9",
+  "execution_sha256": "00f43663f686025a244ba5db6d3cb1ee4a3263f38d7242ba1fc190b6af49db61",
+  "verifier_sha256": "e6e79c73fa7b4623b921e2c6d0a28f123217e286837933b6b300aaae7087b42f",
+  "scalar_checks": 2170,
+  "max_scalar_abs_error": 3.552713678800501e-15,
+  "fit_clips": 102,
+  "fit_scenes": 51,
+  "methods": [
+    "hvi",
+    "temporal_mean_lambda_0.25",
+    "temporal_mean_lambda_0.5",
+    "temporal_mean_lambda_1",
+    "sameframe_identity_lambda_0.25",
+    "sameframe_identity_lambda_0.5",
+    "sameframe_identity_lambda_1"
+  ],
+  "mean_recomputed": {
+    "hvi": {
+      "mean_rgb_mse": 0.04662547508825407,
+      "mean_clip_psnr_rgb": 15.322980997975712
+    },
+    "temporal_mean_lambda_0.25": {
+      "mean_rgb_mse": 0.045526910273528794,
+      "mean_clip_psnr_rgb": 15.556481987061014
+    },
+    "temporal_mean_lambda_0.5": {
+      "mean_rgb_mse": 0.04493164773872769,
+      "mean_clip_psnr_rgb": 15.695539691942976
+    },
+    "temporal_mean_lambda_1": {
+      "mean_rgb_mse": 0.04525102940554921,
+      "mean_clip_psnr_rgb": 15.599553037544304
+    },
+    "sameframe_identity_lambda_0.25": {
+      "mean_rgb_mse": 0.04662547508825407,
+      "mean_clip_psnr_rgb": 15.322980997975712
+    },
+    "sameframe_identity_lambda_0.5": {
+      "mean_rgb_mse": 0.04662547508825407,
+      "mean_clip_psnr_rgb": 15.322980997975712
+    },
+    "sameframe_identity_lambda_1": {
+      "mean_rgb_mse": 0.04662547508825407,
+      "mean_clip_psnr_rgb": 15.322980997975712
+    }
+  },
+  "scenes_with_lower_mean_rgb_mse": {
+    "hvi": 0,
+    "temporal_mean_lambda_0.25": 51,
+    "temporal_mean_lambda_0.5": 51,
+    "temporal_mean_lambda_1": 51,
+    "sameframe_identity_lambda_0.25": 0,
+    "sameframe_identity_lambda_0.5": 0,
+    "sameframe_identity_lambda_1": 0
+  },
+  "identity_controls_exact": true,
+  "unchanged_geometry_coverage_exact_for_all_fit_clips": true,
+  "two_original_fit_clip_rgb_input_hashes_equal_official_reader": true,
+  "tensor_or_image_pixels_read": 0,
+  "new_quality_scores_computed": 0,
+  "limits": "Arithmetic and provenance only; full payload checks are in the export/FIT runtime receipts. Fixed FIT diagnostics do not establish learned-module innovation or cross-domain performance."
+}

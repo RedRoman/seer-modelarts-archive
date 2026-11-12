@@ -1,0 +1,15 @@
+/home/ma-user/anaconda3/envs/PyTorch-2.7.1/lib/python3.12/site-packages/torch/cuda/__init__.py:61: FutureWarning: The pynvml package is deprecated. Please install nvidia-ml-py instead. If you did not install pynvml directly, please report this to the maintainers of the package that installed pynvml for you.
+  import pynvml  # type: ignore[import]
+test_evidence_gate_and_proof_hash (test_cache_hvi_rgb_source.RGBExportTests.test_evidence_gate_and_proof_hash) ... ok
+test_exact_strided_native_to_rgb_and_no_other_storage (test_cache_hvi_rgb_source.RGBExportTests.test_exact_strided_native_to_rgb_and_no_other_storage) ... ok
+test_invalid_tensors_rejected (test_cache_hvi_rgb_source.RGBExportTests.test_invalid_tensors_rejected) ... ok
+test_legacy_code_hash_enforced (test_cache_hvi_rgb_source.RGBExportTests.test_legacy_code_hash_enforced) ... ok
+test_no_gt_fixture_mock_hvi_stays_rgb_float_and_no_mutation (test_cache_hvi_rgb_source.RGBExportTests.test_no_gt_fixture_mock_hvi_stays_rgb_float_and_no_mutation) ... ok
+test_pickle_allowlist_remains_enforced (test_cache_hvi_rgb_source.RGBExportTests.test_pickle_allowlist_remains_enforced) ... ok
+test_shared_gt_storage_rejected_before_any_pixels (test_cache_hvi_rgb_source.RGBExportTests.test_shared_gt_storage_rejected_before_any_pixels) ... ok
+test_write_new_refuses_overwrite (test_cache_hvi_rgb_source.RGBExportTests.test_write_new_refuses_overwrite) ... ok
+
+----------------------------------------------------------------------
+Ran 8 tests in 0.052s
+
+OK

@@ -1,0 +1,41 @@
+{
+  "schema_version": 1,
+  "purpose": "Canonical-RGB HVI TRAIN136 export only; no GT, scores, or training",
+  "source_cache": "/cache/zihaohe/seer_method_dev_20261111/source_transfer_v1/cache_sdsd_p_s0",
+  "output": "/cache/zihaohe/seer_color_contract_20261112/cache_rgb_hvi_v1",
+  "source_provenance_sha256": "0fe83dc30cd7772eb4aa8326deb8911e5b5538ae63470821c1c5aa21129d19f0",
+  "source_summary_sha256": "63df74b887dc66543137569d58b6fd57c6fbdb931c6f4c6077c53b77585031ae",
+  "legacy_adapter_sha256": "26c0c36656ad7b7d3b0ce04275578a45286c27931a476c9dcfb1ce1981e69db2",
+  "color_contract_sha256": "7815887150b2e92ed7c2cf4c30f334a4a0c435d58b4ba017fd1b746a97dcab60",
+  "color_contract_test_sha256": "9496eaa1520aa5add933fd0a8bfc020c2a7e80d773a656552fdaa1a1e4f6be20",
+  "legacy_release_manifest_sha256": "2df36567d068c0ead173c89ebe50611e8c340aa7c6e3e731f502fce1f58ea11b",
+  "weight_sha256": "6395370762ec1fa0f6fe92a38c62382b1ebe21edc012f597023bfcec8b95cd27",
+  "model_state_sha256": "afa01e29d1314dae7fadc68d7c95e3ddaf3da3a5b469fa83febb2759dc0bc41b",
+  "strict_state_keys": 191,
+  "count": 136,
+  "scenes": 68,
+  "shape": [1, 3, 16, 256, 256],
+  "dtype": "float32",
+  "channel_boundary": {
+    "source_cache": "BGR",
+    "hvi_input": "RGB",
+    "hvi_output": "RGB",
+    "input_permutation": [2, 1, 0],
+    "output_permutation": [0, 1, 2]
+  },
+  "model": {"channels": [36, 36, 72, 144], "heads": [1, 2, 4, 8], "norm": false},
+  "inference": {"batch_frames": 1, "clamp": [0, 1], "round": false, "uint8_reencoding": false},
+  "bgr_evidence_required_before_export": true,
+  "bgr_evidence_schema": {
+    "status": "closed",
+    "native_source_color": "BGR",
+    "source_provenance_sha256": "must equal this protocol",
+    "proof_files": [{"path": "absolute path to primary closure evidence", "sha256": "SHA256 of file"}]
+  },
+  "payload_keys": ["name", "scene", "base", "lineage"],
+  "forbidden_payloads": ["GT", "LQ", "original base", "raw RGB video"],
+  "gt_storage_entries_read": 0,
+  "target_inputs_read": 0,
+  "quality_scores_computed": false,
+  "implementation_note": "Import the exact frozen legacy selective LQ reader/load_hvi/predict_float_base; explicit local index_select at the one BGR-to-RGB boundary. Bind the shared color-contract reference code/test hashes in the frozen release; no change to shared color_contract.py or upstream. Executing export script hash is bound by export_release_manifest and every output lineage."
+}

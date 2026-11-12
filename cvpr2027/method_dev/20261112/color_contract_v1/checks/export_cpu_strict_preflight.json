@@ -1,0 +1,65 @@
+{
+  "status": "passed",
+  "device": "cpu",
+  "strict_state_keys": 191,
+  "weight_sha256": "6395370762ec1fa0f6fe92a38c62382b1ebe21edc012f597023bfcec8b95cd27",
+  "model_state_sha256": "afa01e29d1314dae7fadc68d7c95e3ddaf3da3a5b469fa83febb2759dc0bc41b",
+  "model_state_unchanged": true,
+  "synthetic_input_shape": [
+    1,
+    3,
+    2,
+    64,
+    64
+  ],
+  "native_synthetic_sha256": "4a714a3e4a1d0ed37be8d5787c8912ef4895612e09e97ab73e93d52c94286c9d",
+  "rgb_synthetic_sha256": "b9e27bf6d746d79b022a2a9da1cf5da64cdd2feb471daa735e5a1056dca39e09",
+  "base_synthetic_sha256": "f03beb1a14c004d56334e51ea06753cf9a3b0b7a08ded0d5acd4c7cd4f14ebd2",
+  "source_real_inputs_read": 0,
+  "gt_storage_entries_read": 0,
+  "quality_scores_computed": false,
+  "torch_version": "2.7.1+cpu",
+  "channel_boundary": {
+    "source_cache": "BGR",
+    "hvi_input": "RGB",
+    "hvi_output": "RGB",
+    "input_permutation": [
+      2,
+      1,
+      0
+    ],
+    "output_permutation": [
+      0,
+      1,
+      2
+    ]
+  },
+  "bgr_evidence_required_before_export": true,
+  "receipt": {
+    "bgr_evidence_file": "/cache/zihaohe/seer_source_input_audit_20261112_v2/source_color_receipt_closed.json",
+    "bgr_evidence_sha256": "fcec10f792569e1f1202c7ed4d29e7e774fbc7ea0ba5198cdbd454f9ed174a70",
+    "bgr_evidence_status": "closed",
+    "bgr_proof_files": [
+      {
+        "path": "/cache/zihaohe/seer_source_input_audit_20261112_v2/source_input_audit.json",
+        "sha256": "2bcd5521be473cf8a379b370b389957d12e79a2f5efc5ada60657fddbe60f86d"
+      },
+      {
+        "path": "/cache/zihaohe/seer_source_input_audit_20261112_v2/retinexformer_data_util.py",
+        "sha256": "f03a2b4eae55f2ee6c818c011225f5b374edce91e93f543aa101ebb9f524440e"
+      },
+      {
+        "path": "/cache/zihaohe/seer_source_input_audit_20261112_v2/sdsd_data_util.py",
+        "sha256": "a2c706fed6f522abe3155e38d33d076ac9dd28af19c7b7110b844d15ccf02021"
+      },
+      {
+        "path": "/temp/zihaohe/seer_cvpr/datasets/.sdsd_static_download_20261018/sdsd_static_provenance.json",
+        "sha256": "a20fba6f4ac056af3b918025aed4ac9ba5453f7fcda676b5f18b1639b4b00532"
+      },
+      {
+        "path": "/temp/zihaohe/seer_cvpr/datasets/.sdsd_static_download_20261018/download_receipt.json",
+        "sha256": "f0398968bfd76e9ed6a28b063c301d25f81a532bb88500fe6e4c373629a27657"
+      }
+    ]
+  }
+}

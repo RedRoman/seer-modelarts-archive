@@ -1,0 +1,51 @@
+{
+  "schema_version": 1,
+  "scope": "Canonical RGB correction of the fixed HVI source FIT diagnostic; no learned model or generalization claim",
+  "source_clips": 136,
+  "source_scenes": 68,
+  "fit_clips": 102,
+  "fit_scenes": 51,
+  "excluded_internal_scenes": 17,
+  "scene_split_seed": 20261114,
+  "legacy_gt_color": "BGR",
+  "gt_permutation_to_rgb": [2, 1, 0],
+  "hvi_input_color": "RGB",
+  "hvi_output_color": "RGB",
+  "hvi_output_permutation": [0, 1, 2],
+  "scoring_color": "RGB",
+  "frames": 16,
+  "crop": 256,
+  "fixed_methods": [
+    "hvi",
+    "temporal_mean_lambda_0.25",
+    "temporal_mean_lambda_0.5",
+    "temporal_mean_lambda_1",
+    "sameframe_identity_lambda_0.25",
+    "sameframe_identity_lambda_0.5",
+    "sameframe_identity_lambda_1"
+  ],
+  "fixed_lambdas": [0.25, 0.5, 1.0],
+  "lambda_selection": false,
+  "model_or_parameter_fitting": false,
+  "flow": "Reuse original Seer-native restored-array RAFT +/-2 flow/masks unchanged; no RGB-HVI flow estimation",
+  "prediction": "Pinned legacy helper: mean of valid actual warped HVI neighbors, base fallback if none, fixed convex residual, clamp01; sameframe controls duplicate center without warping",
+  "metric": "Squared float32 canonical RGB residual accumulated in float64, full clip mean; report mean per-clip PSNR and mean MSE, all seven rows",
+  "y_or_lpips_or_temporal_quality_metrics": false,
+  "torch_threads": 4,
+  "tensor_archive_access": "Only the 102 FIT clips after metadata selection; no excluded archive digest/load",
+  "required_before_scoring": [
+    "Closed raw-archive BGR provenance receipt",
+    "Complete RGB HVI136 manifest with frozen expected SHA passed explicitly on CLI",
+    "Strict payload/source/input/output hashes and declared color boundaries",
+    "Meaningful synthetic tests passing without skips",
+    "Immutable runner/test/protocol/color helper/legacy math source hashes in execution manifest"
+  ],
+  "frozen_dependencies": {
+    "run_fit_feasibility.py": "c314d9b37f71009af0f4974cf59b3bcc41b0d48698184c9ec01de66a7caecd54",
+    "color_contract.py": "7815887150b2e92ed7c2cf4c30f334a4a0c435d58b4ba017fd1b746a97dcab60"
+  },
+  "closed_bgr_receipt_sha256": "fcec10f792569e1f1202c7ed4d29e7e774fbc7ea0ba5198cdbd454f9ed174a70",
+  "geometry_manifest_sha256": "d7f90214ab2da0b30da9f3f5b9fba648bb4fcabfee548e34dd7788caa6610805",
+  "no_target_or_internal_holdout_scores": true,
+  "preserve_old_evidence_and_outputs": true
+}

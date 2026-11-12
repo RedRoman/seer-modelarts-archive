@@ -1,0 +1,8 @@
+{
+  "scope": "Clarify evidence-access terminology; no change to frozen inference or score protocols",
+  "opaque_archive_hashing": "Source .pt file SHA verification reads complete opaque archive bytes, including bytes belonging to GT storage. This is not a claim of zero GT-containing byte I/O.",
+  "export_firewall": "The selective metadata/LQ reader opens only LQ tensor storage entries. It neither deserializes GT storage entries into tensors nor interprets GT pixel values. HVI receives canonical RGB LQ only and computes no scores.",
+  "fit_diagnostic": "The separately frozen source FIT diagnostic intentionally reads GT label tensors from its 102 selected FIT archives for final scoring, with explicit BGR-to-RGB conversion. GT is not an input to prediction; the 17 excluded-scene tensor archives are not opened by this diagnostic.",
+  "original_raw_audit": "The original-archive audit extracts only 32 selected FIT LQ members and compares their bytes and pixels; no GT archive member is extracted.",
+  "interpretation": "Fields named gt_storage_entries_read refer to selective tensor-entry deserialization, not opaque whole-file checksum I/O. No source or target label is used to select color order."
+}
