@@ -1,0 +1,40 @@
+{
+  "passed": true,
+  "checks": 188,
+  "max_scalar_mean_error": 0.0,
+  "cross_arm_input_hashes_exact": true,
+  "metric_sources_and_weights_unchanged": true,
+  "result_sha256": {
+    "pretrained": "5ac59351405f0ce278124e224912a2b2e400cc61bfa17b46aa1a656cfaed14c8",
+    "none": "c5d5af0fcc0c33e27dba5fa5c34d709f9a3b0313afeff9f4e9d40ae929241239"
+  },
+  "source_sha256": "4af80174f9563dfd6275233eaaa8c210086f8974ccdeb332484d4903e83d95a9",
+  "no_pixels_read": true,
+  "no_scores_recomputed": true,
+  "means": {
+    "pretrained": {
+      "psnr_y": 19.330873773841773,
+      "psnr_rgb": 18.041200178454417,
+      "lpips": 0.2656401488929987,
+      "tlp": 0.05438751098699868,
+      "gt_tlp": 0.05303222464863211,
+      "tlp_gap": 0.0049698116490617394
+    },
+    "none": {
+      "psnr_y": 18.250729377048877,
+      "psnr_rgb": 17.247471276239715,
+      "lpips": 0.282622579485178,
+      "tlp": 0.054674129001796246,
+      "gt_tlp": 0.05303222464863211,
+      "tlp_gap": 0.006315978593192995
+    }
+  },
+  "baseline_receipt_sha256": {
+    "/cache/zihaohe/seer_baseline_replay_20261112/results_v1/hvi_cidnet_bvi_val16.json": "4e15894b4491369f3bedca74f457f3765389d7ea47ebb77db64ec6d1461ada78",
+    "/cache/zihaohe/seer_baseline_replay_20261112/results_v1/retinexformer_bvi_val16.json": "0a5cdf5c60a369f906fe7fa5979fc6d6d5b2b8f75c26bfa39291c955c492f05f",
+    "/cache/zihaohe/seer_baseline_replay_20261112/results_v1/darkir_bvi_val16.json": "d5ce05b8bee8758eb129f9ca2333b59affdd7a09635dde421972923c9cd3023e"
+  },
+  "baseline_input_hash_checks": 192,
+  "baseline_input_hashes_exact": true,
+  "baseline_gt_tlp_max_abs_difference": 0.0
+}

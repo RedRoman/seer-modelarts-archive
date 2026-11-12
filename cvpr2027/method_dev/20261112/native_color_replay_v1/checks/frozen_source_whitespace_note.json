@@ -1,0 +1,9 @@
+{
+  "scope": "Whitespace exception for byte-frozen executed/archive sources only",
+  "files": {
+    "cvpr2027/method_dev/20261112/native_color_replay_v1/restricted_source_reader.py": "366ebc4dac9f0f5fc8525c4deb30121efcdfa3562c5331e3e5005bc84cece6be",
+    "cvpr2027/method_dev/20261112/native_color_replay_v1/evidence/failed_prepare_v1/restricted_source_reader.py": "366ebc4dac9f0f5fc8525c4deb30121efcdfa3562c5331e3e5005bc84cece6be",
+    "cvpr2027/method_dev/20261112/native_color_replay_v1/evidence/release_v2/phase/restricted_source_reader.py": "366ebc4dac9f0f5fc8525c4deb30121efcdfa3562c5331e3e5005bc84cece6be"
+  },
+  "issue": "Each frozen file contains one blank line at EOF (git diff --check line115). Preserve exact executed bytes, test receipts and release-manifest SHA. No behavior change; exclude only these exact three paths from final whitespace check."
+}

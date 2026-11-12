@@ -1,0 +1,26 @@
+{
+  "authorized_stage": "target_bvi_val16",
+  "protocol_sha256": "3423db39aa7792557320f3836f5dbf31b39069db19294c9485bc040898e29be4",
+  "release_manifest_sha256": "a3e11205edc7fd55497f9f358849ee93ae4ad45f1dbf3ebaf8d55ee07214a676",
+  "source_parity_sha256": {
+    "pretrained": "811c28cf662f6f927e5b818a0fe5879c66ff7c04e2f09e048bc711ae7a7cb934",
+    "none": "729b76a3e7e7dec09b2d5668991e776d4b6378af335f0ec93082d24a7bee982e"
+  },
+  "source_paths": {
+    "pretrained": "/cache/zihaohe/seer_native_color_replay_20261112/source_pretrained_v2.json",
+    "none": "/cache/zihaohe/seer_native_color_replay_20261112/source_none_v2.json"
+  },
+  "source_color_receipt_sha256": "fcec10f792569e1f1202c7ed4d29e7e774fbc7ea0ba5198cdbd454f9ed174a70",
+  "authorization_script_sha256": "3a410496b31c29f9ce19b867b57a1624a0794771a62a7fab11b1a70290cd9ed6",
+  "source_compatibility_checks_passed": 4,
+  "cross_arm_lq_hashes_equal_closed_raw_audit": true,
+  "arms": [
+    "pretrained",
+    "none"
+  ],
+  "target": "BVI VAL16, center16/crop256, same RGB scorer",
+  "fitting_or_color_selection": false,
+  "target_scores_used_to_open_gate": false,
+  "user_scope": "Continue project experiments; root reviewed this exact fixed protocol and both successful source receipts",
+  "limits": "Compatibility repair only; neither module novelty nor an isolated causal estimate of prior pretraining. No TEST or further arms."
+}

@@ -1,0 +1,52 @@
+{
+  "passed": true,
+  "target_result_sha256": {
+    "pretrained": "5ac59351405f0ce278124e224912a2b2e400cc61bfa17b46aa1a656cfaed14c8",
+    "none": "c5d5af0fcc0c33e27dba5fa5c34d709f9a3b0313afeff9f4e9d40ae929241239"
+  },
+  "four_source_compatibility_checks_exact": true,
+  "source_gate_script_and_authorization_bound": true,
+  "metric_means_recomputed": {
+    "pretrained": {
+      "psnr_y": 19.330873773841773,
+      "psnr_rgb": 18.041200178454417,
+      "lpips": 0.2656401488929987,
+      "tlp": 0.05438751098699868,
+      "gt_tlp": 0.05303222464863211,
+      "tlp_gap": 0.0049698116490617394
+    },
+    "none": {
+      "psnr_y": 18.250729377048877,
+      "psnr_rgb": 17.247471276239715,
+      "lpips": 0.282622579485178,
+      "tlp": 0.054674129001796246,
+      "gt_tlp": 0.05303222464863211,
+      "tlp_gap": 0.006315978593192995
+    }
+  },
+  "max_mean_abs_error": 0,
+  "cross_arm_input_hash_fields_equal": 64,
+  "cross_arm_gt_tlp_exact": 16,
+  "P_minus_N": {
+    "psnr_y": 1.080144396792896,
+    "psnr_rgb": 0.7937289022147027,
+    "lpips": -0.0169824305921793,
+    "tlp": -0.0002866180147975683,
+    "gt_tlp": 0.0,
+    "tlp_gap": -0.0013461669441312551
+  },
+  "HVI_reference_psnr_y": 24.241232037953157,
+  "P_minus_HVI_psnr_y": -4.910358264111384,
+  "new_critic_interface_verified": true,
+  "new_critic_synthetic_sha256": "2cfdb83df49c7c60e6d2278d0a950d80c46c9fc01a04ece0a3deabefddc7c315",
+  "new_dataset_pixels_or_quality_scores_by_this_verifier": 0,
+  "initial_verifier_schema_failure": {
+    "assertion": "known_static_position_tensors_omitted expected list; actual is nested per-component dictionaries",
+    "observed": {
+      "encoder": {},
+      "predictor": {}
+    },
+    "resolution": "Require exactly empty encoder/predictor dictionaries; no model/result was changed."
+  },
+  "limits": "Original P/N initialization confounded; color repair is not overall performance gain. New critic has official EMA inference pairing, not validated restoration reliability. Module specification remains unimplemented and unvalidated."
+}

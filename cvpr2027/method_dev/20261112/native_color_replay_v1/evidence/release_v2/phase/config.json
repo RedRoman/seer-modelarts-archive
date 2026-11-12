@@ -1,0 +1,21 @@
+{
+  "schema_version": 1,
+  "seed_selection": "none",
+  "native_source_order": "BGR",
+  "canonical_order": "RGB",
+  "clip_frames": 16,
+  "crop": 256,
+  "dtype": "BF16 autocast; float32 output",
+  "arms": {
+    "pretrained": {
+      "checkpoint": "/temp/zihaohe/seer_cvpr/method_dev_20261111/inputs/e17_small_pretrained_s0_final_cpu.pt",
+      "cache": "/cache/zihaohe/seer_method_dev_20261111/source_transfer_v1/cache_sdsd_p_s0"
+    },
+    "none": {
+      "checkpoint": "/temp/zihaohe/seer_cvpr/method_dev_20261111/inputs/e17_small_none_s0_final_cpu.pt",
+      "cache": "/cache/zihaohe/seer_native_color_replay_20261112/inputs/none_fixed_fit",
+      "original_cache_host": "32193",
+      "original_cache_path": "/cache/zihaohe/seer_method_dev_20261111/source_transfer_v1/cache_sdsd_n_s0"
+    }
+  }
+}

@@ -1,0 +1,20 @@
+{
+  "observed_date": "2026-11-12",
+  "authority": "Official facebook Hugging Face model repository, linked by the official V-JEPA2 README",
+  "official_model_page": "https://huggingface.co/facebook/vjepa2-vitl-fpc64-256",
+  "file_page_read_via_https_web_tool": "https://huggingface.co/facebook/vjepa2-vitl-fpc64-256/blob/main/original/model.pth",
+  "raw_pointer_read_via_https_web_tool": "https://huggingface.co/facebook/vjepa2-vitl-fpc64-256/raw/main/original/model.pth",
+  "raw_pointer_exact_text": "version https://git-lfs.github.com/spec/v1\noid sha256:5346856ec9df69487fe72a25bf2632aaa8112df33fb67708e3f7374edc1f7012\nsize 5127726842\n",
+  "sha256": "5346856ec9df69487fe72a25bf2632aaa8112df33fb67708e3f7374edc1f7012",
+  "bytes": 5127726842,
+  "repository_head_shown_on_official_file_tree": "b3c1679b7c34d3255ef3547f27c7b226aefab26f",
+  "commit_page_read": "https://huggingface.co/facebook/vjepa2-vitl-fpc64-256/commit/b3c1679b7c34d3255ef3547f27c7b226aefab26f",
+  "pinned_raw_pointer_request": "https://huggingface.co/facebook/vjepa2-vitl-fpc64-256/raw/b3c1679b7c34d3255ef3547f27c7b226aefab26f/original/model.pth",
+  "pinned_raw_pointer_web_request_status": "web tool unavailable for this pinned URL; main raw pointer and original file SHA were successfully read independently",
+  "transport_status": {
+    "official_fba_https": "TLS certificate expired on both local and host31051; no TLS bypass",
+    "official_fba_http": "200 HEAD, exact 5127726842 bytes; 206 byte ranges tested",
+    "host31051_hf_https": "network timeout / cannot assign requested address"
+  },
+  "load_gate": "Entire official HTTP asset bytes must match this public HTTPS SHA256 and size before torch.load; otherwise quarantine and do not load. No model code is downloaded/executed through torch.hub."
+}

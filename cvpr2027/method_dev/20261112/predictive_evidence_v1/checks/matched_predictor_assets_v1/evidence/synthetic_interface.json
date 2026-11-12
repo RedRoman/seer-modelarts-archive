@@ -1,0 +1,90 @@
+{
+  "status": "passed",
+  "asset_sha256": "5346856ec9df69487fe72a25bf2632aaa8112df33fb67708e3f7374edc1f7012",
+  "asset_bytes": 5127726842,
+  "device": "cpu",
+  "torch_version": "2.7.1+cpu",
+  "selected_encoder_key": "target_encoder",
+  "context_encoder_checkpoint_key": "target_encoder",
+  "target_encoder_checkpoint_key": "target_encoder",
+  "context_target_share_frozen_ema": true,
+  "official_hub_inference_semantics": true,
+  "online_encoder_separately_loaded": false,
+  "training_pairing_note": "Official hub uses EMA for context too. This verifies that inference interface, not online-context/EMA-target training semantics or risk calibration.",
+  "strict_encoder_keys": 292,
+  "strict_predictor_keys": 160,
+  "encoder_parameters": 303885312,
+  "predictor_parameters": 22086016,
+  "known_static_position_tensors_omitted": {
+    "encoder": {},
+    "predictor": {}
+  },
+  "input_shape": [
+    1,
+    3,
+    4,
+    256,
+    256
+  ],
+  "context_ids_shape": [
+    1,
+    32
+  ],
+  "target_ids_shape": [
+    1,
+    16
+  ],
+  "context_shape": [
+    1,
+    32,
+    1024
+  ],
+  "prediction_shape": [
+    1,
+    16,
+    1024
+  ],
+  "target_observed_shape": [
+    1,
+    16,
+    1024
+  ],
+  "synthetic_residual_shape": [
+    1,
+    16,
+    1024
+  ],
+  "finite_verified": true,
+  "pre_attention_mask_first_block_shapes": [
+    [
+      1,
+      32,
+      1024
+    ],
+    [
+      1,
+      32,
+      1024
+    ]
+  ],
+  "withheld_tubelet_pixel_intervention_exact_context_invariance": true,
+  "withheld_tubelet_pixel_intervention_exact_prediction_invariance": true,
+  "state_before": {
+    "encoder": "c22efaa60d915bcd3567eca1e3611ce8125b4fb3a24614a9bb155636867e7a1d",
+    "predictor": "2e22d798996cf7c8bc52cb877ae30d443324f00f37aa9b77c74218f52356f9a4"
+  },
+  "state_after": {
+    "encoder": "c22efaa60d915bcd3567eca1e3611ce8125b4fb3a24614a9bb155636867e7a1d",
+    "predictor": "2e22d798996cf7c8bc52cb877ae30d443324f00f37aa9b77c74218f52356f9a4"
+  },
+  "states_unchanged": true,
+  "checkpoint_and_upstream_unchanged": true,
+  "model_hub_executed": false,
+  "npu_used": false,
+  "dataset_pixels_read": 0,
+  "gt_pixels_read": 0,
+  "quality_scores_computed": false,
+  "semantic_scope": "NEW V-JEPA2-L matched critic asset, not legacy distilled2.1 restorer conditioning",
+  "elapsed_seconds": 51.69316246174276,
+  "completed_utc": "2026-11-12T06:48:37.794330+00:00"
+}

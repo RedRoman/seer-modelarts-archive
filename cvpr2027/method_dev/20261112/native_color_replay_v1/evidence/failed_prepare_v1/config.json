@@ -1,0 +1,19 @@
+{
+  "schema_version": 1,
+  "seed_selection": "none",
+  "native_source_order": "BGR",
+  "canonical_order": "RGB",
+  "clip_frames": 16,
+  "crop": 256,
+  "dtype": "BF16 autocast; float32 output",
+  "arms": {
+    "pretrained": {
+      "checkpoint": "/temp/zihaohe/seer_cvpr/method_dev_20261111/inputs/e17_small_pretrained_s0_final_cpu.pt",
+      "cache": "/cache/zihaohe/seer_method_dev_20261111/source_transfer_v1/cache_sdsd_p_s0"
+    },
+    "none": {
+      "checkpoint": "/temp/zihaohe/seer_cvpr/method_dev_20261111/inputs/e17_small_none_s0_final_cpu.pt",
+      "cache": "/cache/zihaohe/seer_method_dev_20261111/source_transfer_v1/transfers/none_cache_payload_v1/cache"
+    }
+  }
+}
