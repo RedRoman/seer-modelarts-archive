@@ -1,0 +1,66 @@
+{
+  "jobs": [
+    {
+      "label": "prior",
+      "argv": [
+        "/cache/zihaohe/seer_cvpr/venv_npu/bin/python",
+        "/cache/zihaohe/seer_observation_geometry_20261112/release_v1/code_full/tools/train_observation_geometry.py",
+        "train",
+        "--prepared",
+        "/cache/zihaohe/seer_observation_geometry_20261112/prepared_v1",
+        "--out",
+        "/cache/zihaohe/seer_observation_geometry_20261112/runs_v1/prior_s0",
+        "--mode",
+        "prior",
+        "--seed",
+        "0"
+      ],
+      "returncode": 0,
+      "elapsed_seconds": 753.0846459241584,
+      "log_sha256": "a035cb622b546b17c519694e405b704ef2ffe580391fa16a2037b5a3499559b5"
+    },
+    {
+      "label": "pixel",
+      "argv": [
+        "/cache/zihaohe/seer_cvpr/venv_npu/bin/python",
+        "/cache/zihaohe/seer_observation_geometry_20261112/release_v1/code_full/tools/train_observation_geometry.py",
+        "train",
+        "--prepared",
+        "/cache/zihaohe/seer_observation_geometry_20261112/prepared_v1",
+        "--out",
+        "/cache/zihaohe/seer_observation_geometry_20261112/runs_v1/pixel_s0",
+        "--mode",
+        "pixel",
+        "--seed",
+        "0"
+      ],
+      "returncode": 0,
+      "elapsed_seconds": 699.8169638738036,
+      "log_sha256": "41be51125b0aefb024afc9d0783fed4cfb6af15cc086421be508d59dd5666e8b"
+    },
+    {
+      "label": "shuffled_prior",
+      "argv": [
+        "/cache/zihaohe/seer_cvpr/venv_npu/bin/python",
+        "/cache/zihaohe/seer_observation_geometry_20261112/release_v1/code_full/tools/train_observation_geometry.py",
+        "train",
+        "--prepared",
+        "/cache/zihaohe/seer_observation_geometry_20261112/prepared_v1",
+        "--out",
+        "/cache/zihaohe/seer_observation_geometry_20261112/runs_v1/shuffled_prior_s0",
+        "--mode",
+        "shuffled_prior",
+        "--seed",
+        "0"
+      ],
+      "returncode": 0,
+      "elapsed_seconds": 739.3671069405973,
+      "log_sha256": "4d22ceb6bd0357fdc3ab90eb90f7ccaebcb4647a026d7084ca72f043071dd23e"
+    }
+  ],
+  "source_unchanged": true,
+  "target_inference": false,
+  "raw_sha256": "f5d4aa44f807575db0da91c6f6e96b5b0b982e25a87f1e49220882a112828314",
+  "analysis_sha256": "4eb02906a5351e47fa9d15e3d5d62502f6f677e2faae2b6d9215e5f4119cc708",
+  "time_utc": "2026-11-12T04:11:51Z"
+}

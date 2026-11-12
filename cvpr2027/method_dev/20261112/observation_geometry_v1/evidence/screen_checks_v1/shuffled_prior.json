@@ -1,0 +1,19 @@
+{
+  "label": "shuffled_prior",
+  "argv": [
+    "/cache/zihaohe/seer_cvpr/venv_npu/bin/python",
+    "/cache/zihaohe/seer_observation_geometry_20261112/release_v1/code_full/tools/train_observation_geometry.py",
+    "train",
+    "--prepared",
+    "/cache/zihaohe/seer_observation_geometry_20261112/prepared_v1",
+    "--out",
+    "/cache/zihaohe/seer_observation_geometry_20261112/runs_v1/shuffled_prior_s0",
+    "--mode",
+    "shuffled_prior",
+    "--seed",
+    "0"
+  ],
+  "returncode": 0,
+  "elapsed_seconds": 739.3671069405973,
+  "log_sha256": "4d22ceb6bd0357fdc3ab90eb90f7ccaebcb4647a026d7084ca72f043071dd23e"
+}

@@ -1,0 +1,23 @@
+{
+  "label": "prepare",
+  "argv": [
+    "/cache/zihaohe/seer_cvpr/venv_npu/bin/python",
+    "/cache/zihaohe/seer_observation_geometry_20261112/release_v1/code_full/tools/train_observation_geometry.py",
+    "prepare",
+    "--cache",
+    "/cache/zihaohe/seer_method_dev_20261111/source_transfer_v1/cache_sdsd_p_s0",
+    "--memory",
+    "/cache/zihaohe/seer_observation_memory_20261112/prepared_v1",
+    "--splits",
+    "/temp/zihaohe/seer_cvpr/datasets/splits_cvpr.json",
+    "--reference-prepared",
+    "/cache/zihaohe/seer_observation_dev_20261112/prepared/pretrained",
+    "--reference-head",
+    "/cache/zihaohe/seer_observation_dev_20261112/runs/pretrained/raw_node_s0/final.pt",
+    "--out",
+    "/cache/zihaohe/seer_observation_geometry_20261112/prepared_v1"
+  ],
+  "returncode": 0,
+  "elapsed_seconds": 68.84212850686163,
+  "log_sha256": "9162d9ed5f5ac86db1e7d9eb0291c88576cf9e658eff6076b93aecf0f80e8fcd"
+}

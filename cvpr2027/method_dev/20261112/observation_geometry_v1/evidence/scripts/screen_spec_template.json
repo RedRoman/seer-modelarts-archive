@@ -1,0 +1,95 @@
+{
+  "frozen": false,
+  "source_only": true,
+  "target_inference": false,
+  "steps": 400,
+  "seed": 0,
+  "full_forward_resolution": 256,
+  "loss_crop": 128,
+  "supervised_frames": 8,
+  "focused_cpu_tests": {
+    "tests_run": 0,
+    "failures": 0,
+    "skips": 0
+  },
+  "actual_shape_smoke_passed": false,
+  "protocol_sha256": null,
+  "prepare": [
+    "/cache/zihaohe/seer_observation_geometry_20261112/release_v1/code_full/tools/train_observation_geometry.py",
+    "prepare",
+    "--cache",
+    "/cache/zihaohe/seer_method_dev_20261111/source_transfer_v1/cache_sdsd_p_s0",
+    "--memory",
+    "/cache/zihaohe/seer_observation_memory_20261112/prepared_v1",
+    "--splits",
+    "/temp/zihaohe/seer_cvpr/datasets/splits_cvpr.json",
+    "--reference-prepared",
+    "/cache/zihaohe/seer_observation_dev_20261112/prepared/pretrained",
+    "--reference-head",
+    "/cache/zihaohe/seer_observation_dev_20261112/runs/pretrained/raw_node_s0/final.pt",
+    "--out",
+    "/cache/zihaohe/seer_observation_geometry_20261112/prepared_v1"
+  ],
+  "train": {
+    "prior": [
+      "/cache/zihaohe/seer_observation_geometry_20261112/release_v1/code_full/tools/train_observation_geometry.py",
+      "train",
+      "--prepared",
+      "/cache/zihaohe/seer_observation_geometry_20261112/prepared_v1",
+      "--out",
+      "/cache/zihaohe/seer_observation_geometry_20261112/runs_v1/prior_s0",
+      "--mode",
+      "prior",
+      "--seed",
+      "0"
+    ],
+    "pixel": [
+      "/cache/zihaohe/seer_observation_geometry_20261112/release_v1/code_full/tools/train_observation_geometry.py",
+      "train",
+      "--prepared",
+      "/cache/zihaohe/seer_observation_geometry_20261112/prepared_v1",
+      "--out",
+      "/cache/zihaohe/seer_observation_geometry_20261112/runs_v1/pixel_s0",
+      "--mode",
+      "pixel",
+      "--seed",
+      "0"
+    ],
+    "shuffled_prior": [
+      "/cache/zihaohe/seer_observation_geometry_20261112/release_v1/code_full/tools/train_observation_geometry.py",
+      "train",
+      "--prepared",
+      "/cache/zihaohe/seer_observation_geometry_20261112/prepared_v1",
+      "--out",
+      "/cache/zihaohe/seer_observation_geometry_20261112/runs_v1/shuffled_prior_s0",
+      "--mode",
+      "shuffled_prior",
+      "--seed",
+      "0"
+    ]
+  },
+  "evaluate": [
+    "/cache/zihaohe/seer_observation_geometry_20261112/release_v1/code_full/tools/train_observation_geometry.py",
+    "evaluate",
+    "--prepared",
+    "/cache/zihaohe/seer_observation_geometry_20261112/prepared_v1",
+    "--runs",
+    "/cache/zihaohe/seer_observation_geometry_20261112/runs_v1",
+    "--out",
+    "/cache/zihaohe/seer_observation_geometry_20261112/results_v1/source_internal_raw.json"
+  ],
+  "analyze": [
+    "/cache/zihaohe/seer_observation_geometry_20261112/release_v1/analyze_screen.py",
+    "--input",
+    "/cache/zihaohe/seer_observation_geometry_20261112/results_v1/source_internal_raw.json",
+    "--out",
+    "/cache/zihaohe/seer_observation_geometry_20261112/results_v1/source_internal_analysis.json"
+  ],
+  "training_complete_files": [
+    "/cache/zihaohe/seer_observation_geometry_20261112/runs_v1/prior_s0/complete.json",
+    "/cache/zihaohe/seer_observation_geometry_20261112/runs_v1/pixel_s0/complete.json",
+    "/cache/zihaohe/seer_observation_geometry_20261112/runs_v1/shuffled_prior_s0/complete.json"
+  ],
+  "raw_result": "/cache/zihaohe/seer_observation_geometry_20261112/results_v1/source_internal_raw.json",
+  "analysis_result": "/cache/zihaohe/seer_observation_geometry_20261112/results_v1/source_internal_analysis.json"
+}

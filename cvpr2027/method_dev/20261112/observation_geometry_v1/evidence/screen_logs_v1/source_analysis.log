@@ -1,0 +1,32 @@
+{
+  "advance_to_replication": false,
+  "gate_checks": {
+    "psnr_gain_over_frozen_anchor_at_least_005db": false,
+    "psnr_gain_over_pixel_at_least_002db": true,
+    "mse_ci_better_than_frozen_anchor": false,
+    "mse_ci_better_than_pixel": true,
+    "mean_mse_better_than_shuffled_prior": false
+  },
+  "means": {
+    "base": {
+      "rgb_mse_float": 0.0022909239523180042,
+      "psnr_rgb_from_clip_mse": 28.564868460206853
+    },
+    "prior": {
+      "rgb_mse_float": 0.002252348057919358,
+      "psnr_rgb_from_clip_mse": 28.714550363719603
+    },
+    "pixel": {
+      "rgb_mse_float": 0.0022579570935997682,
+      "psnr_rgb_from_clip_mse": 28.691712863442675
+    },
+    "shuffled_prior": {
+      "rgb_mse_float": 0.0022515836091633505,
+      "psnr_rgb_from_clip_mse": 28.715970210489196
+    },
+    "frozen_raw_node_1000": {
+      "rgb_mse_float": 0.0022520187210834483,
+      "psnr_rgb_from_clip_mse": 28.715433645343385
+    }
+  }
+}
