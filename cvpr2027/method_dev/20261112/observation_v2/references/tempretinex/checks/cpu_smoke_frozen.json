@@ -1,0 +1,79 @@
+{
+  "purpose": "synthetic CPU strict-load/forward/reset test; no BVI access",
+  "shape": [
+    2,
+    3,
+    128,
+    128
+  ],
+  "finite": true,
+  "clip_reset_exact": true,
+  "output_sha256": "41bfdc79b56acb32b2094227ef2574d8c79e33c8fd6aefd5d0f454cd5637ac0a",
+  "provenance": {
+    "label": "TempRetinex author-labelled DID released reference; frozen BVI VAL16",
+    "repo": "https://github.com/liyinibristol/TempRetinex",
+    "commit": "03ca79f57f2ad7b4c6120364de3a8c59afa42eed",
+    "source_root": "/cache/zihaohe/seer_observation_dev_20261112/tempretinex_reference_v1/inputs",
+    "upstream_source_sha256": {
+      "model/model.py": "f1dbd2a7ba1713ee3f09be1d8893683930707432e4e4ac9150594a6d2f61eb82",
+      "utils/utils.py": "9a0d8be54139f72818b06b8dddc363d8094bbef025fd6c3d1b331a9d726d09e8",
+      "model/RAFT/extractor.py": "49ef9555b0d7e1163fd3e9f754e02b99d68ed866cbacff45c3ddec1748b43d79",
+      "model/RAFT/update.py": "7302f91ffc24c85cf739a25feb17d9d1e537f7344a2ddc331daf8ab9db6c3f74",
+      "model/RAFT/corr.py": "c99a4c478d99ae97b3681479debc74b8d8999efa47091afb3836fcc943eb570d",
+      "model/RAFT/raft.py": "76c42b5f37615315414a21be67a4a3f6891585cdb0599e7aaf9b507c0a769099"
+    },
+    "executed_definition_sha256": {
+      "utils/utils.py": "abedce1a287c321c211ecd48a2c1961ef3fc38584682e34ac089f358b30d7154",
+      "model/RAFT/extractor.py": "9a9bc7b3e45436ade93da86888eb3dd13a28217695f67b49b305ee96b02a10ac",
+      "model/RAFT/update.py": "0da11addddb88d6b8a5ef8825d8538a4f629c8fb82c861ec1062229ad61e6474",
+      "model/RAFT/corr.py": "cedc5e4cf4218689509a768fa64633723bb4e69e601f15c86f15ec1f7a6dc8ff",
+      "model/RAFT/raft.py": "358c190928c1829d6ea2b56c91b8e3bc72eee679cabb2fa8836207531ba41cbc",
+      "model/model.py": "8df4bde4e99008467335cf471c3ca64095125a1f4d38c721f45ca90236fd6077"
+    },
+    "weight_sha256": {
+      "weights/DID.pth": "bc0183460105ac3a28205ca13fe211147f64bd8e5bbf564b41a56bfa336f2b5a",
+      "weights/raft-sintel-finetuned.pth": "be03481a61bc67a3b7907e6d2c15aae6514864269195deef933c82ff992551d5"
+    },
+    "weight_urls": {
+      "weights/DID.pth": "https://raw.githubusercontent.com/liyinibristol/TempRetinex/03ca79f57f2ad7b4c6120364de3a8c59afa42eed/weights/DID.pth",
+      "weights/raft-sintel-finetuned.pth": "https://raw.githubusercontent.com/liyinibristol/TempRetinex/03ca79f57f2ad7b4c6120364de3a8c59afa42eed/weights/raft-sintel-finetuned.pth"
+    },
+    "checkpoint_epoch": 4,
+    "checkpoint_training_loss": 77.79269409179688,
+    "training_provenance": "Author filename DID; exact source split, run config and training data not independently documented; no SDSD-only claim",
+    "strict_enhancement_keys": 44,
+    "strict_raft_keys": 179,
+    "embedded_raft_equals_separately_released_raft": false,
+    "embedded_raft_state_sha256": "0e5f3055ac9cc7dadd633144630d6e17ac2710401bc64894c015281882f62cad",
+    "raft_state_sha256": "b0ed9c4e92a843a39c1deb988478698224b93a7c74dda2a68787765df8e989e2",
+    "state_sha256": "006cbe78fe6720b13cf69743c89353fa2e962df16c0b50042437eeca18df4c72",
+    "parameters": 5350156,
+    "inference": {
+      "entrypoint_reference": "official predict.py; its of_scale default is 1 (test.py default is 3)",
+      "of_scale": 1,
+      "raft_iterations": 20,
+      "mixed_precision": false,
+      "precision": "float32",
+      "frame_order": "ascending forward only",
+      "reverse_pass": false,
+      "temporal_ensemble": false,
+      "denoise2_spatial_ensemble": "official four views: identity, vertical, horizontal, rotation90",
+      "recurrent_reset": "first frame of each centre16 clip; no preceding full-video context",
+      "internal_histogram_matching": "current denoised low image to preceding prediction, retained",
+      "gt_histogram_matching": false,
+      "target_optimization": false,
+      "brightness": "official low-input calc_alpha, unchanged coefficients/threshold",
+      "output": "Finetunemodel.forward()[1], H3, RGB"
+    },
+    "adaptation": "Execute named pinned definitions, bypass training/plotting imports; constructor strict-load on CPU then device; all forward methods unchanged"
+  },
+  "verified_frozen_state_sha256": "006cbe78fe6720b13cf69743c89353fa2e962df16c0b50042437eeca18df4c72",
+  "verified_frozen_raft_state_sha256": "b0ed9c4e92a843a39c1deb988478698224b93a7c74dda2a68787765df8e989e2",
+  "runtime": {
+    "torch": "2.7.1+cpu",
+    "device": "cpu",
+    "cpu_threads": 4,
+    "elapsed_seconds": 3.412638958543539
+  },
+  "adapter_sha256": "59c64e2a94838d1dd9c59948791a7c16eb46f51837cb289900b5edc5b2aca907"
+}

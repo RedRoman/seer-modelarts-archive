@@ -1,0 +1,144 @@
+{
+  "schema_version": 1,
+  "checked_session_date": "2026-11-12",
+  "scope": "Read-only official repository/paper feasibility review. No checkpoint bodies downloaded; no author code, training or accelerator execution.",
+  "TempRetinex": {
+    "repo": "https://github.com/liyinibristol/TempRetinex",
+    "commit": "03ca79f57f2ad7b4c6120364de3a8c59afa42eed",
+    "official_link": "https://pui-nantheera.github.io/research/CIC/low_light_video_enhancement.html",
+    "paper": "https://arxiv.org/html/2511.09609v2",
+    "weights": [
+      {
+        "path": "weights/BVI-RLV.pth",
+        "size_bytes": 22244986,
+        "git_blob_sha1": "b1f9da73ad6bd80f261d2fdc7d0a112fcc6af928",
+        "url": "https://raw.githubusercontent.com/liyinibristol/TempRetinex/03ca79f57f2ad7b4c6120364de3a8c59afa42eed/weights/BVI-RLV.pth",
+        "head_status": 200,
+        "head_content_length": 22244986,
+        "body_bytes_read": 0,
+        "weight_sha256": null
+      },
+      {
+        "path": "weights/DID.pth",
+        "size_bytes": 22244986,
+        "git_blob_sha1": "dc7a2d96da22a742c17a64d6ffb0b8b7ec432f21",
+        "url": "https://raw.githubusercontent.com/liyinibristol/TempRetinex/03ca79f57f2ad7b4c6120364de3a8c59afa42eed/weights/DID.pth",
+        "head_status": 200,
+        "head_content_length": 22244986,
+        "body_bytes_read": 0,
+        "weight_sha256": null
+      },
+      {
+        "path": "weights/raft-sintel-finetuned.pth",
+        "size_bytes": 21109305,
+        "git_blob_sha1": "8680990279e81fb13ee18b28a7ee623b1725dc79",
+        "url": "https://raw.githubusercontent.com/liyinibristol/TempRetinex/03ca79f57f2ad7b4c6120364de3a8c59afa42eed/weights/raft-sintel-finetuned.pth",
+        "head_status": 200,
+        "head_content_length": 21109305,
+        "body_bytes_read": 0,
+        "weight_sha256": null
+      }
+    ],
+    "readme": "TBD (3 bytes)",
+    "training_evidence": {
+      "code_defaults": {
+        "dataset": "RLV",
+        "batch_size": 1,
+        "epochs": 5,
+        "lr": 0.0003,
+        "seed": 2,
+        "optimizer": "Adam betas=(0.9,0.999),weight_decay=3e-4",
+        "flow_scale": 1
+      },
+      "paper": {
+        "optimizer": "Adam",
+        "betas": [
+          0.9,
+          0.999
+        ],
+        "weight_decay": 0.0003,
+        "lr": 0.00005,
+        "training_flow_downscale": 3,
+        "inference_flow_downscale": 1
+      },
+      "discrepancy": "CLI defaults differ from paper for learning rate and flow scale; exact released-checkpoint run config not provided.",
+      "splits": "RLV/DID loaders require external train_list.txt/test_list.txt; none are in the pinned Git tree.",
+      "checkpoint_scope": "Only BVI-RLV- and DID-labelled enhancement checkpoints. Exact training split/seed/config unverified; no SDSD-only checkpoint identified."
+    },
+    "target_optimization": "predict.py/test.py set eval/no_grad; no target optimizer/backward. Recurrence and input-statistic brightness normalization are inference operations, not gradient adaptation.",
+    "gt_boundary": "test.py reports ordinary metrics and additionally GT histogram-matched metrics. is_hist_match=True by default. GT-matched outputs are inadmissible in prediction-only BVI comparisons; use original H3 output and common metric implementation.",
+    "portability": [
+      "Finetunemodel hard-codes torch.load(...,map_location='cuda:0').",
+      "Prediction default weights/BVI-RLV.pt does not match published weights/BVI-RLV.pth.",
+      "Dataset loader resizes all images to1920x1080; a dedicated center16/crop256 adapter must bypass that resizing and reset recurrent state per clip.",
+      "Official weight load filters keys then merges initialized values; adapted evaluation must explicitly audit complete required model-key coverage.",
+      "No environment lock/requirements file or checkpoint provenance log in pinned tree.",
+      "Forward/backward reverse-inference protocol must be prespecified; current public predict/test are forward sequential and do not implement the paper's reverse pass."
+    ],
+    "feasibility": "Frozen inference on BVI is technically plausible with explicit adapter and CPU/NPU portability validation, but not yet executed. Released BVI weights cannot establish SDSD-source-only transfer. DID weights would be a separately labelled DID→BVI external-source reference, not SDSD-matched. Strict SDSD-only requires new source-only training with independently fixed config/split and no target tuning.",
+    "sources": [
+      "https://github.com/liyinibristol/TempRetinex/blob/03ca79f57f2ad7b4c6120364de3a8c59afa42eed/README.md",
+      "https://github.com/liyinibristol/TempRetinex/blob/03ca79f57f2ad7b4c6120364de3a8c59afa42eed/train.py",
+      "https://github.com/liyinibristol/TempRetinex/blob/03ca79f57f2ad7b4c6120364de3a8c59afa42eed/predict.py",
+      "https://github.com/liyinibristol/TempRetinex/blob/03ca79f57f2ad7b4c6120364de3a8c59afa42eed/test.py",
+      "https://github.com/liyinibristol/TempRetinex/blob/03ca79f57f2ad7b4c6120364de3a8c59afa42eed/model/model.py",
+      "https://github.com/liyinibristol/TempRetinex/blob/03ca79f57f2ad7b4c6120364de3a8c59afa42eed/dataloader/multi_read_data.py"
+    ]
+  },
+  "DWTA": {
+    "repo": "https://github.com/lrr-rachel/DWTA-Net",
+    "commit": "85b713940afe24e66ebe3d2497a2a8d41f35457d",
+    "official_link": "https://research-information.bris.ac.uk/en/publications/dynamic-weight-based-temporal-aggregation-for-low-light-video-enh/",
+    "paper": "https://arxiv.org/html/2510.09450v2",
+    "weights": [
+      {
+        "path": "gmflow-scale2-regrefine6-mixdata-train320x576-4e7b215d.pth",
+        "size_bytes": 29500177,
+        "git_blob_sha1": "bad4bbcf5befe95c9b69a36bd55a503e2f613917",
+        "kind": "UniMatch optical flow only; not a full DWTA enhancement checkpoint"
+      }
+    ],
+    "release_count": 0,
+    "full_enhancement_checkpoint": "Not found in pinned tree, releases, or README links. README requires full trained checkpoint and explicitly distinguishes Stage-I-only initialization.",
+    "training": {
+      "dataset": "DID",
+      "steps": 300000,
+      "frames": 5,
+      "batch_size": 1,
+      "patch": 512,
+      "lr": 0.0001,
+      "flow": "UniMatch / GMFlow pretrained checkpoint",
+      "target_adaptation": "Test.py is no_grad with recurrent state reset between videos; no target optimizer."
+    },
+    "portability": [
+      "CUDA mamba-ssm selective-scan dependency and custom deformable-convolution CUDA extension.",
+      "Official test only scores complete five-frame neighborhoods; matching all16 centerclip outputs requires declared boundary handling or additional context, not silent omission.",
+      "Config hard-codes DID train/test paths; no source SDSD released model identified."
+    ],
+    "feasibility": "Official implementation now available, but missing full enhancement checkpoint and CUDA-specific dependencies block a ready frozen NPU benchmark. No code/weights execution attempted.",
+    "sources": [
+      "https://github.com/lrr-rachel/DWTA-Net/blob/85b713940afe24e66ebe3d2497a2a8d41f35457d/README.md",
+      "https://github.com/lrr-rachel/DWTA-Net/blob/85b713940afe24e66ebe3d2497a2a8d41f35457d/configs/DWTANet.yml"
+    ]
+  },
+  "VLLVE_plus_plus": {
+    "paper": "https://arxiv.org/html/2602.08699v1",
+    "status": "No official VLLVE++ code/checkpoint confirmed in this targeted check; this is not proof none exists.",
+    "paper_release_statement": "Code and trained models will be released upon publication.",
+    "author_publications": "https://xuxiaogang.com/publications.html",
+    "author_link_found": "Author publication page links IJCAI2025 LLVE_STCD, not a separately identified VLLVE++ release.",
+    "related_repo": "https://github.com/xiaogang00/LLVE_STCD",
+    "related_branches": [
+      {
+        "name": "main",
+        "commit": {
+          "sha": "1ee87d16a207a14df7d8b9db8445aed7678681dd",
+          "url": "https://api.github.com/repos/xiaogang00/LLVE_STCD/commits/1ee87d16a207a14df7d8b9db8445aed7678681dd"
+        },
+        "protected": false
+      }
+    ],
+    "distinction": "Already evaluated STCD/VLLVE predecessor must not be labelled VLLVE++."
+  },
+  "novelty_boundary": "Temporal conditioning, flow-guided recurrent pixel aggregation, correspondence refinement, and graph smoothing each have precedent. This review does not establish novelty or SOTA for observation-v2."
+}

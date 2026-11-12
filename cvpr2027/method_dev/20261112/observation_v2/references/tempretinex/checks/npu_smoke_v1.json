@@ -1,0 +1,18 @@
+{
+  "status": "PASS",
+  "purpose": "Synthetic NPU actual crop256 two-frame forward/reset; no target data",
+  "shape": [
+    2,
+    3,
+    256,
+    256
+  ],
+  "finite": true,
+  "reset_max_abs": 0.0,
+  "state_before": "006cbe78fe6720b13cf69743c89353fa2e962df16c0b50042437eeca18df4c72",
+  "state_after": "006cbe78fe6720b13cf69743c89353fa2e962df16c0b50042437eeca18df4c72",
+  "cpu_state_exact": true,
+  "elapsed_seconds": 31.92044740077108,
+  "physical_npu": 1,
+  "output_sha256": "83a53d25d096515c2ab5e412dcef250b04baed58b9e8fdb3c04cfe3d0f195ccb"
+}

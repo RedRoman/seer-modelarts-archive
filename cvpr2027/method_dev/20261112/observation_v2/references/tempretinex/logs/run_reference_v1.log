@@ -1,0 +1,295 @@
+{"utc": "2026-11-11T16:49:28.002369+00:00", "physical_npu": 1, "source_archive_sha256": "bb6281cfcb71b27c265c8feff833b5b035588cbc377bda6eb12612f43d14e2d4", "reference_protocol_sha256": "88ba65c293cb25253de65bd83c4b1f4b32480f070864ec409a4d2fd382c3d1ec", "wrapper_sha256": "801d4aa5796590b34f3f0b4ff94aad7674f01860cab2efc3128b6b34607b0c39", "environment": {"ASCEND_RT_VISIBLE_DEVICES": "1", "TORCH_DEVICE_BACKEND_AUTOLOAD": "0", "OMP_NUM_THREADS": "4", "MKL_NUM_THREADS": "4", "OPENBLAS_NUM_THREADS": "4", "PYTHONPATH": "/cache/zihaohe/seer_observation_dev_20261112/tempretinex_reference_v1/code_full:/cache/zihaohe/seer_observation_dev_20261112/tempretinex_reference_v1/code_full/tools:/cache/zihaohe/seer_observation_dev_20261112/runtime_overlay_v1/overlay/site-packages:/temp/zihaohe/seer_cvpr/code/baselines:/temp/zihaohe/seer_cvpr/code/baselines/common:/cache/zihaohe/seer_observation_dev_20261112/runtime_overlay_v1/private_cann/cann-8.5.2/python/site-packages:/cache/zihaohe/seer_observation_dev_20261112/runtime_overlay_v1/private_cann/cann-8.5.2/opp/built-in/op_impl/ai_core/tbe:/usr/local/Ascend/cann-8.5.2/python/site-packages:/usr/local/Ascend/cann-8.5.2/opp/built-in/op_impl/ai_core/tbe:/usr/local/Ascend/ascend-toolkit/latest/tools/ms_fmk_transplt/torch_npu_bridge:/usr/local/Ascend/ascend-toolkit/latest/python/site-packages:/usr/local/seccomponent/lib:/home/ma-user/infer/model/1", "ASCEND_HOME_PATH": "/cache/zihaohe/seer_observation_dev_20261112/runtime_overlay_v1/private_cann/cann-8.5.2", "LD_LIBRARY_PATH": "/cache/zihaohe/seer_observation_dev_20261112/runtime_overlay_v1/private_cann/cann-8.5.2/lib64:/cache/zihaohe/seer_observation_dev_20261112/runtime_overlay_v1/private_cann/cann-8.5.2/lib64/plugin/opskernel:/cache/zihaohe/seer_observation_dev_20261112/runtime_overlay_v1/private_cann/cann-8.5.2/lib64/plugin/nnengine:/cache/zihaohe/seer_observation_dev_20261112/runtime_overlay_v1/private_cann/cann-8.5.2/opp/built-in/op_impl/ai_core/tbe/op_tiling/lib/linux/aarch64:/cache/zihaohe/seer_observation_dev_20261112/runtime_overlay_v1/private_cann/cann-8.5.2/tools/aml/lib64:/cache/zihaohe/seer_observation_dev_20261112/runtime_overlay_v1/private_cann/cann-8.5.2/tools/aml/lib64/plugin:/usr/local/Ascend/driver/lib64:/usr/local/Ascend/driver/lib64/common:/usr/local/Ascend/driver/lib64/driver:/usr/local/Ascend/cann-8.5.2/lib64:/usr/local/Ascend/cann-8.5.2/lib64/plugin/opskernel:/usr/local/Ascend/cann-8.5.2/lib64/plugin/nnengine:/usr/local/Ascend/cann-8.5.2/opp/built-in/op_impl/ai_core/tbe/op_tiling/lib/linux/aarch64:/usr/local/Ascend/cann-8.5.2/tools/aml/lib64:/usr/local/Ascend/cann-8.5.2/tools/aml/lib64/plugin:/usr/local/Ascend/driver/lib64:/usr/local/Ascend/driver/lib64/common:/usr/local/Ascend/driver/lib64/driver:/usr/local/Ascend/nnal/atb/latest/atb/cxx_abi_1/lib:/usr/local/Ascend/nnal/atb/latest/atb/cxx_abi_1/examples:/usr/local/Ascend/nnal/atb/latest/atb/cxx_abi_1/tests/atbopstest:/usr/local/Ascend/driver/lib64:/usr/local/Ascend/driver/lib64/common:/usr/local/Ascend/driver/lib64/driver:/usr/local/Ascend/driver/lib64:/usr/local/Ascend/driver/lib64/common:/usr/local/Ascend/driver/lib64/driver:/usr/local/Ascend/driver/lib64:/usr/local/Ascend/driver/lib64/common:/usr/local/Ascend/driver/lib64/driver:/usr/local/Ascend/nnal/atb/latest/atb/cxx_abi_1/lib:/usr/local/Ascend/nnal/atb/latest/atb/cxx_abi_1/examples:/usr/local/Ascend/nnal/atb/latest/atb/cxx_abi_1/tests/atbopstest:/usr/local/Ascend/driver/lib64:/usr/local/Ascend/driver/lib64/common:/usr/local/Ascend/driver/lib64/driver:/usr/local/Ascend/driver/lib64:/usr/local/Ascend/driver/lib64/common:/usr/local/Ascend/driver/lib64/driver:/usr/local/Ascend/nnal/atb/latest/atb/cxx_abi_1/lib:/usr/local/Ascend/nnal/atb/latest/atb/cxx_abi_1/examples:/usr/local/Ascend/nnal/atb/latest/atb/cxx_abi_1/tests/atbopstest:/usr/local/Ascend/driver/lib64:/usr/local/Ascend/driver/lib64/common:/usr/local/Ascend/driver/lib64/driver:/usr/local/Ascend/driver/lib64:/usr/local/Ascend/driver/lib64/common:/usr/local/Ascend/driver/lib64/driver:/usr/local/Ascend/driver/lib64:/usr/local/Ascend/driver/lib64/common:/usr/local/Ascend/driver/lib64/driver:/usr/local/Ascend/nnal/atb/latest/atb/cxx_abi_1/lib:/usr/local/Ascend/nnal/atb/latest/atb/cxx_abi_1/examples:/usr/local/Ascend/nnal/atb/latest/atb/cxx_abi_1/tests/atbopstest:/usr/local/Ascend/driver/lib64:/usr/local/Ascend/driver/lib64/common:/usr/local/Ascend/driver/lib64/driver:/usr/local/Ascend/driver/lib64:/usr/local/Ascend/driver/lib64/common:/usr/local/Ascend/driver/lib64/driver:/usr/local/Ascend/nnal/atb/latest/atb/cxx_abi_1/lib:/usr/local/Ascend/nnal/atb/latest/atb/cxx_abi_1/examples:/usr/local/Ascend/nnal/atb/latest/atb/cxx_abi_1/tests/atbopstest:/usr/local/Ascend/driver/lib64:/usr/local/Ascend/driver/lib64/common:/usr/local/Ascend/driver/lib64/driver:/usr/local/Ascend/driver/lib64/driver:/usr/host-lib:/usr/host-lib64:/usr/lib/aarch64-linux-gnu/hdf5/serial:/usr/local/Ascend/ascend-toolkit/latest/compiler/lib64/plugin/nnengine:/usr/local/Ascend/ascend-toolkit/latest/compiler/lib64/plugin/opskernel:/usr/local/Ascend/ascend-toolkit/latest/lib64:/usr/local/Ascend/ascend-toolkit/latest/opp/built-in/op_impl/ai_core/tbe/op_tiling/lib/:/usr/local/Ascend/driver/lib64:/usr/local/Ascend/driver/lib64/common:/usr/local/Ascend/driver/lib64/driver:/usr/local/Ascend/toolbox/latest/Ascend-DMI/lib64:/usr/local/seccomponent/lib/:/usr/local/seccomponent/lib/openssl/", "TORCH_HOME": "/cache/zihaohe/seer_observation_dev_20261112/runtime_overlay_v1/overlay/torch_home"}}
+/cache/zihaohe/seer_observation_dev_20261112/runtime_overlay_v1/private_cann/cann-8.5.2/python/site-packages/tbe/dsl/classifier/transdata/transdata_classifier.py:222: SyntaxWarning: invalid escape sequence '\B'
+  """
+/cache/zihaohe/seer_observation_dev_20261112/runtime_overlay_v1/private_cann/cann-8.5.2/python/site-packages/tbe/dsl/unify_schedule/vector/transdata/common/graph/transdata_graph_info.py:143: SyntaxWarning: invalid escape sequence '\c'
+  """
+/cache/zihaohe/seer_observation_dev_20261112/runtime_overlay_v1/private_cann/cann-8.5.2/python/site-packages/tbe/dsl/unify_schedule/vector/transdata/common/graph/transdata_graph_info.py:170: SyntaxWarning: invalid escape sequence '\c'
+  """
+/cache/zihaohe/seer_observation_dev_20261112/runtime_overlay_v1/private_cann/cann-8.5.2/python/site-packages/asc_op_compile_base/asc_op_compiler/ascendc_compile_gen_code.py:161: SyntaxWarning: invalid escape sequence '\w'
+  match = re.search(f'{option}=(\w+)', ' '.join(compile_options))
+/cache/zihaohe/seer_observation_dev_20261112/runtime_overlay_v1/private_cann/cann-8.5.2/python/site-packages/tbe/dsl/classifier/transdata/transdata_classifier.py:222: SyntaxWarning: invalid escape sequence '\B'
+  """
+/cache/zihaohe/seer_observation_dev_20261112/runtime_overlay_v1/private_cann/cann-8.5.2/python/site-packages/tbe/dsl/classifier/transdata/transdata_classifier.py:222: SyntaxWarning: invalid escape sequence '\B'
+  """
+/cache/zihaohe/seer_observation_dev_20261112/runtime_overlay_v1/private_cann/cann-8.5.2/python/site-packages/tbe/dsl/classifier/transdata/transdata_classifier.py:222: SyntaxWarning: invalid escape sequence '\B'
+  """
+/cache/zihaohe/seer_observation_dev_20261112/runtime_overlay_v1/private_cann/cann-8.5.2/python/site-packages/tbe/dsl/classifier/transdata/transdata_classifier.py:222: SyntaxWarning: invalid escape sequence '\B'
+  """
+/cache/zihaohe/seer_observation_dev_20261112/runtime_overlay_v1/private_cann/cann-8.5.2/python/site-packages/tbe/dsl/classifier/transdata/transdata_classifier.py:222: SyntaxWarning: invalid escape sequence '\B'
+  """
+/cache/zihaohe/seer_observation_dev_20261112/runtime_overlay_v1/private_cann/cann-8.5.2/python/site-packages/tbe/dsl/classifier/transdata/transdata_classifier.py:222: SyntaxWarning: invalid escape sequence '\B'
+  """
+/cache/zihaohe/seer_observation_dev_20261112/runtime_overlay_v1/private_cann/cann-8.5.2/python/site-packages/tbe/dsl/classifier/transdata/transdata_classifier.py:222: SyntaxWarning: invalid escape sequence '\B'
+  """
+/cache/zihaohe/seer_observation_dev_20261112/runtime_overlay_v1/private_cann/cann-8.5.2/python/site-packages/tbe/dsl/classifier/transdata/transdata_classifier.py:222: SyntaxWarning: invalid escape sequence '\B'
+  """
+/cache/zihaohe/seer_observation_dev_20261112/runtime_overlay_v1/private_cann/cann-8.5.2/python/site-packages/tbe/dsl/classifier/transdata/transdata_classifier.py:222: SyntaxWarning: invalid escape sequence '\B'
+  """
+/cache/zihaohe/seer_observation_dev_20261112/runtime_overlay_v1/private_cann/cann-8.5.2/python/site-packages/tbe/dsl/unify_schedule/vector/transdata/common/graph/transdata_graph_info.py:143: SyntaxWarning: invalid escape sequence '\c'
+  """
+/cache/zihaohe/seer_observation_dev_20261112/runtime_overlay_v1/private_cann/cann-8.5.2/python/site-packages/tbe/dsl/unify_schedule/vector/transdata/common/graph/transdata_graph_info.py:143: SyntaxWarning: invalid escape sequence '\c'
+  """
+/cache/zihaohe/seer_observation_dev_20261112/runtime_overlay_v1/private_cann/cann-8.5.2/python/site-packages/tbe/dsl/unify_schedule/vector/transdata/common/graph/transdata_graph_info.py:170: SyntaxWarning: invalid escape sequence '\c'
+  """
+/cache/zihaohe/seer_observation_dev_20261112/runtime_overlay_v1/private_cann/cann-8.5.2/python/site-packages/tbe/dsl/unify_schedule/vector/transdata/common/graph/transdata_graph_info.py:170: SyntaxWarning: invalid escape sequence '\c'
+  """
+/cache/zihaohe/seer_observation_dev_20261112/runtime_overlay_v1/private_cann/cann-8.5.2/python/site-packages/tbe/dsl/unify_schedule/vector/transdata/common/graph/transdata_graph_info.py:143: SyntaxWarning: invalid escape sequence '\c'
+  """
+/cache/zihaohe/seer_observation_dev_20261112/runtime_overlay_v1/private_cann/cann-8.5.2/python/site-packages/tbe/dsl/unify_schedule/vector/transdata/common/graph/transdata_graph_info.py:170: SyntaxWarning: invalid escape sequence '\c'
+  """
+/cache/zihaohe/seer_observation_dev_20261112/runtime_overlay_v1/private_cann/cann-8.5.2/python/site-packages/tbe/dsl/unify_schedule/vector/transdata/common/graph/transdata_graph_info.py:143: SyntaxWarning: invalid escape sequence '\c'
+  """
+/cache/zihaohe/seer_observation_dev_20261112/runtime_overlay_v1/private_cann/cann-8.5.2/python/site-packages/tbe/dsl/unify_schedule/vector/transdata/common/graph/transdata_graph_info.py:170: SyntaxWarning: invalid escape sequence '\c'
+  """
+/cache/zihaohe/seer_observation_dev_20261112/runtime_overlay_v1/private_cann/cann-8.5.2/python/site-packages/tbe/dsl/unify_schedule/vector/transdata/common/graph/transdata_graph_info.py:143: SyntaxWarning: invalid escape sequence '\c'
+  """
+/cache/zihaohe/seer_observation_dev_20261112/runtime_overlay_v1/private_cann/cann-8.5.2/python/site-packages/tbe/dsl/unify_schedule/vector/transdata/common/graph/transdata_graph_info.py:170: SyntaxWarning: invalid escape sequence '\c'
+  """
+/cache/zihaohe/seer_observation_dev_20261112/runtime_overlay_v1/private_cann/cann-8.5.2/python/site-packages/tbe/dsl/unify_schedule/vector/transdata/common/graph/transdata_graph_info.py:143: SyntaxWarning: invalid escape sequence '\c'
+  """
+/cache/zihaohe/seer_observation_dev_20261112/runtime_overlay_v1/private_cann/cann-8.5.2/python/site-packages/tbe/dsl/unify_schedule/vector/transdata/common/graph/transdata_graph_info.py:170: SyntaxWarning: invalid escape sequence '\c'
+  """
+/cache/zihaohe/seer_observation_dev_20261112/runtime_overlay_v1/private_cann/cann-8.5.2/python/site-packages/tbe/dsl/unify_schedule/vector/transdata/common/graph/transdata_graph_info.py:143: SyntaxWarning: invalid escape sequence '\c'
+  """
+/cache/zihaohe/seer_observation_dev_20261112/runtime_overlay_v1/private_cann/cann-8.5.2/python/site-packages/tbe/dsl/unify_schedule/vector/transdata/common/graph/transdata_graph_info.py:170: SyntaxWarning: invalid escape sequence '\c'
+  """
+/cache/zihaohe/seer_observation_dev_20261112/runtime_overlay_v1/private_cann/cann-8.5.2/python/site-packages/tbe/dsl/unify_schedule/vector/transdata/common/graph/transdata_graph_info.py:143: SyntaxWarning: invalid escape sequence '\c'
+  """
+/cache/zihaohe/seer_observation_dev_20261112/runtime_overlay_v1/private_cann/cann-8.5.2/python/site-packages/tbe/dsl/unify_schedule/vector/transdata/common/graph/transdata_graph_info.py:170: SyntaxWarning: invalid escape sequence '\c'
+  """
+/cache/zihaohe/seer_observation_dev_20261112/runtime_overlay_v1/private_cann/cann-8.5.2/python/site-packages/tbe/dsl/unify_schedule/vector/transdata/common/graph/transdata_graph_info.py:143: SyntaxWarning: invalid escape sequence '\c'
+  """
+/cache/zihaohe/seer_observation_dev_20261112/runtime_overlay_v1/private_cann/cann-8.5.2/python/site-packages/tbe/dsl/unify_schedule/vector/transdata/common/graph/transdata_graph_info.py:170: SyntaxWarning: invalid escape sequence '\c'
+  """
+/cache/zihaohe/seer_observation_dev_20261112/runtime_overlay_v1/private_cann/cann-8.5.2/python/site-packages/tbe/dsl/classifier/transdata/transdata_classifier.py:222: SyntaxWarning: invalid escape sequence '\B'
+  """
+/cache/zihaohe/seer_observation_dev_20261112/runtime_overlay_v1/private_cann/cann-8.5.2/python/site-packages/tbe/dsl/classifier/transdata/transdata_classifier.py:222: SyntaxWarning: invalid escape sequence '\B'
+  """
+/cache/zihaohe/seer_observation_dev_20261112/runtime_overlay_v1/private_cann/cann-8.5.2/python/site-packages/tbe/dsl/classifier/transdata/transdata_classifier.py:222: SyntaxWarning: invalid escape sequence '\B'
+  """
+/cache/zihaohe/seer_observation_dev_20261112/runtime_overlay_v1/private_cann/cann-8.5.2/python/site-packages/tbe/dsl/classifier/transdata/transdata_classifier.py:222: SyntaxWarning: invalid escape sequence '\B'
+  """
+/cache/zihaohe/seer_observation_dev_20261112/runtime_overlay_v1/private_cann/cann-8.5.2/python/site-packages/tbe/dsl/classifier/transdata/transdata_classifier.py:222: SyntaxWarning: invalid escape sequence '\B'
+  """
+/cache/zihaohe/seer_observation_dev_20261112/runtime_overlay_v1/private_cann/cann-8.5.2/python/site-packages/tbe/dsl/classifier/transdata/transdata_classifier.py:222: SyntaxWarning: invalid escape sequence '\B'
+  """
+/cache/zihaohe/seer_observation_dev_20261112/runtime_overlay_v1/private_cann/cann-8.5.2/python/site-packages/tbe/dsl/classifier/transdata/transdata_classifier.py:222: SyntaxWarning: invalid escape sequence '\B'
+  """
+/cache/zihaohe/seer_observation_dev_20261112/runtime_overlay_v1/private_cann/cann-8.5.2/python/site-packages/tbe/dsl/classifier/transdata/transdata_classifier.py:222: SyntaxWarning: invalid escape sequence '\B'
+  """
+/cache/zihaohe/seer_observation_dev_20261112/runtime_overlay_v1/private_cann/cann-8.5.2/python/site-packages/tbe/dsl/unify_schedule/vector/transdata/common/graph/transdata_graph_info.py:143: SyntaxWarning: invalid escape sequence '\c'
+  """
+/cache/zihaohe/seer_observation_dev_20261112/runtime_overlay_v1/private_cann/cann-8.5.2/python/site-packages/tbe/dsl/unify_schedule/vector/transdata/common/graph/transdata_graph_info.py:170: SyntaxWarning: invalid escape sequence '\c'
+  """
+/cache/zihaohe/seer_observation_dev_20261112/runtime_overlay_v1/private_cann/cann-8.5.2/python/site-packages/tbe/dsl/unify_schedule/vector/transdata/common/graph/transdata_graph_info.py:143: SyntaxWarning: invalid escape sequence '\c'
+  """
+/cache/zihaohe/seer_observation_dev_20261112/runtime_overlay_v1/private_cann/cann-8.5.2/python/site-packages/tbe/dsl/unify_schedule/vector/transdata/common/graph/transdata_graph_info.py:170: SyntaxWarning: invalid escape sequence '\c'
+  """
+/cache/zihaohe/seer_observation_dev_20261112/runtime_overlay_v1/private_cann/cann-8.5.2/python/site-packages/tbe/dsl/unify_schedule/vector/transdata/common/graph/transdata_graph_info.py:143: SyntaxWarning: invalid escape sequence '\c'
+  """
+/cache/zihaohe/seer_observation_dev_20261112/runtime_overlay_v1/private_cann/cann-8.5.2/python/site-packages/tbe/dsl/unify_schedule/vector/transdata/common/graph/transdata_graph_info.py:170: SyntaxWarning: invalid escape sequence '\c'
+  """
+/cache/zihaohe/seer_observation_dev_20261112/runtime_overlay_v1/private_cann/cann-8.5.2/python/site-packages/tbe/dsl/unify_schedule/vector/transdata/common/graph/transdata_graph_info.py:143: SyntaxWarning: invalid escape sequence '\c'
+  """
+/cache/zihaohe/seer_observation_dev_20261112/runtime_overlay_v1/private_cann/cann-8.5.2/python/site-packages/tbe/dsl/unify_schedule/vector/transdata/common/graph/transdata_graph_info.py:143: SyntaxWarning: invalid escape sequence '\c'
+  """
+/cache/zihaohe/seer_observation_dev_20261112/runtime_overlay_v1/private_cann/cann-8.5.2/python/site-packages/tbe/dsl/unify_schedule/vector/transdata/common/graph/transdata_graph_info.py:170: SyntaxWarning: invalid escape sequence '\c'
+  """
+/cache/zihaohe/seer_observation_dev_20261112/runtime_overlay_v1/private_cann/cann-8.5.2/python/site-packages/tbe/dsl/unify_schedule/vector/transdata/common/graph/transdata_graph_info.py:170: SyntaxWarning: invalid escape sequence '\c'
+  """
+/cache/zihaohe/seer_observation_dev_20261112/runtime_overlay_v1/private_cann/cann-8.5.2/python/site-packages/tbe/dsl/unify_schedule/vector/transdata/common/graph/transdata_graph_info.py:143: SyntaxWarning: invalid escape sequence '\c'
+  """
+/cache/zihaohe/seer_observation_dev_20261112/runtime_overlay_v1/private_cann/cann-8.5.2/python/site-packages/tbe/dsl/unify_schedule/vector/transdata/common/graph/transdata_graph_info.py:170: SyntaxWarning: invalid escape sequence '\c'
+  """
+/cache/zihaohe/seer_observation_dev_20261112/runtime_overlay_v1/private_cann/cann-8.5.2/python/site-packages/tbe/dsl/unify_schedule/vector/transdata/common/graph/transdata_graph_info.py:143: SyntaxWarning: invalid escape sequence '\c'
+  """
+/cache/zihaohe/seer_observation_dev_20261112/runtime_overlay_v1/private_cann/cann-8.5.2/python/site-packages/tbe/dsl/unify_schedule/vector/transdata/common/graph/transdata_graph_info.py:170: SyntaxWarning: invalid escape sequence '\c'
+  """
+/cache/zihaohe/seer_observation_dev_20261112/runtime_overlay_v1/private_cann/cann-8.5.2/python/site-packages/tbe/dsl/unify_schedule/vector/transdata/common/graph/transdata_graph_info.py:143: SyntaxWarning: invalid escape sequence '\c'
+  """
+/cache/zihaohe/seer_observation_dev_20261112/runtime_overlay_v1/private_cann/cann-8.5.2/python/site-packages/tbe/dsl/unify_schedule/vector/transdata/common/graph/transdata_graph_info.py:170: SyntaxWarning: invalid escape sequence '\c'
+  """
+/cache/zihaohe/seer_observation_dev_20261112/runtime_overlay_v1/private_cann/cann-8.5.2/opp/built-in/op_impl/ai_core/tbe/impl/ops_legacy/dynamic/gelu_grad_v2.py:96: SyntaxWarning: invalid escape sequence '\h'
+  """
+/cache/zihaohe/seer_observation_dev_20261112/runtime_overlay_v1/private_cann/cann-8.5.2/opp/built-in/op_impl/ai_core/tbe/impl/ops_legacy/dynamic/gelu_grad_v2.py:156: SyntaxWarning: invalid escape sequence '\h'
+  """
+/cache/zihaohe/seer_observation_dev_20261112/runtime_overlay_v1/private_cann/cann-8.5.2/python/site-packages/asc_op_compile_base/asc_op_compiler/ascendc_compile_gen_code.py:161: SyntaxWarning: invalid escape sequence '\w'
+  match = re.search(f'{option}=(\w+)', ' '.join(compile_options))
+/cache/zihaohe/seer_observation_dev_20261112/runtime_overlay_v1/private_cann/cann-8.5.2/python/site-packages/asc_op_compile_base/asc_op_compiler/ascendc_compile_gen_code.py:161: SyntaxWarning: invalid escape sequence '\w'
+  match = re.search(f'{option}=(\w+)', ' '.join(compile_options))
+/cache/zihaohe/seer_observation_dev_20261112/runtime_overlay_v1/private_cann/cann-8.5.2/python/site-packages/asc_op_compile_base/asc_op_compiler/ascendc_compile_gen_code.py:161: SyntaxWarning: invalid escape sequence '\w'
+  match = re.search(f'{option}=(\w+)', ' '.join(compile_options))
+/cache/zihaohe/seer_observation_dev_20261112/runtime_overlay_v1/private_cann/cann-8.5.2/python/site-packages/asc_op_compile_base/asc_op_compiler/ascendc_compile_gen_code.py:161: SyntaxWarning: invalid escape sequence '\w'
+  match = re.search(f'{option}=(\w+)', ' '.join(compile_options))
+/cache/zihaohe/seer_observation_dev_20261112/runtime_overlay_v1/private_cann/cann-8.5.2/python/site-packages/asc_op_compile_base/asc_op_compiler/ascendc_compile_gen_code.py:161: SyntaxWarning: invalid escape sequence '\w'
+  match = re.search(f'{option}=(\w+)', ' '.join(compile_options))
+/cache/zihaohe/seer_observation_dev_20261112/runtime_overlay_v1/private_cann/cann-8.5.2/python/site-packages/asc_op_compile_base/asc_op_compiler/ascendc_compile_gen_code.py:161: SyntaxWarning: invalid escape sequence '\w'
+  match = re.search(f'{option}=(\w+)', ' '.join(compile_options))
+/cache/zihaohe/seer_observation_dev_20261112/runtime_overlay_v1/private_cann/cann-8.5.2/python/site-packages/asc_op_compile_base/asc_op_compiler/ascendc_compile_gen_code.py:161: SyntaxWarning: invalid escape sequence '\w'
+  match = re.search(f'{option}=(\w+)', ' '.join(compile_options))
+/cache/zihaohe/seer_observation_dev_20261112/runtime_overlay_v1/private_cann/cann-8.5.2/python/site-packages/asc_op_compile_base/asc_op_compiler/ascendc_compile_gen_code.py:161: SyntaxWarning: invalid escape sequence '\w'
+  match = re.search(f'{option}=(\w+)', ' '.join(compile_options))
+model/RAFT/raft.py:92: FutureWarning: `torch.cuda.amp.autocast(args...)` is deprecated. Please use `torch.amp.autocast('cuda', args...)` instead.
+/home/ma-user/anaconda3/envs/PyTorch-2.7.1/lib/python3.12/site-packages/torch/functional.py:554: UserWarning: torch.meshgrid: in an upcoming release, it will be required to pass the indexing argument. (Triggered internally at /pytorch/aten/src/ATen/native/TensorShape.cpp:4314.)
+  return _VF.meshgrid(tensors, **kwargs)  # type: ignore[attr-defined]
+/home/ma-user/anaconda3/envs/PyTorch-2.7.1/lib/python3.12/site-packages/torch/nn/functional.py:5015: UserWarning: Default grid_sample and affine_grid behavior has changed to align_corners=False since 1.3.0. Please specify align_corners=True if the old behavior is desired. See the documentation of grid_sample for details.
+  warnings.warn(
+{"status": "PASS", "purpose": "Synthetic NPU actual crop256 two-frame forward/reset; no target data", "shape": [2, 3, 256, 256], "finite": true, "reset_max_abs": 0.0, "state_before": "006cbe78fe6720b13cf69743c89353fa2e962df16c0b50042437eeca18df4c72", "state_after": "006cbe78fe6720b13cf69743c89353fa2e962df16c0b50042437eeca18df4c72", "cpu_state_exact": true, "elapsed_seconds": 31.92044740077108, "physical_npu": 1, "output_sha256": "83a53d25d096515c2ab5e412dcef250b04baed58b9e8fdb3c04cfe3d0f195ccb"}
+/cache/zihaohe/seer_observation_dev_20261112/runtime_overlay_v1/private_cann/cann-8.5.2/python/site-packages/tbe/dsl/classifier/transdata/transdata_classifier.py:222: SyntaxWarning: invalid escape sequence '\B'
+  """
+/cache/zihaohe/seer_observation_dev_20261112/runtime_overlay_v1/private_cann/cann-8.5.2/python/site-packages/tbe/dsl/unify_schedule/vector/transdata/common/graph/transdata_graph_info.py:143: SyntaxWarning: invalid escape sequence '\c'
+  """
+/cache/zihaohe/seer_observation_dev_20261112/runtime_overlay_v1/private_cann/cann-8.5.2/python/site-packages/tbe/dsl/unify_schedule/vector/transdata/common/graph/transdata_graph_info.py:170: SyntaxWarning: invalid escape sequence '\c'
+  """
+/cache/zihaohe/seer_observation_dev_20261112/runtime_overlay_v1/private_cann/cann-8.5.2/python/site-packages/asc_op_compile_base/asc_op_compiler/ascendc_compile_gen_code.py:161: SyntaxWarning: invalid escape sequence '\w'
+  match = re.search(f'{option}=(\w+)', ' '.join(compile_options))
+/cache/zihaohe/seer_observation_dev_20261112/runtime_overlay_v1/private_cann/cann-8.5.2/python/site-packages/tbe/dsl/classifier/transdata/transdata_classifier.py:222: SyntaxWarning: invalid escape sequence '\B'
+  """
+/cache/zihaohe/seer_observation_dev_20261112/runtime_overlay_v1/private_cann/cann-8.5.2/python/site-packages/tbe/dsl/classifier/transdata/transdata_classifier.py:222: SyntaxWarning: invalid escape sequence '\B'
+  """
+/cache/zihaohe/seer_observation_dev_20261112/runtime_overlay_v1/private_cann/cann-8.5.2/python/site-packages/tbe/dsl/classifier/transdata/transdata_classifier.py:222: SyntaxWarning: invalid escape sequence '\B'
+  """
+/cache/zihaohe/seer_observation_dev_20261112/runtime_overlay_v1/private_cann/cann-8.5.2/python/site-packages/tbe/dsl/classifier/transdata/transdata_classifier.py:222: SyntaxWarning: invalid escape sequence '\B'
+  """
+/cache/zihaohe/seer_observation_dev_20261112/runtime_overlay_v1/private_cann/cann-8.5.2/python/site-packages/tbe/dsl/classifier/transdata/transdata_classifier.py:222: SyntaxWarning: invalid escape sequence '\B'
+  """
+/cache/zihaohe/seer_observation_dev_20261112/runtime_overlay_v1/private_cann/cann-8.5.2/python/site-packages/tbe/dsl/classifier/transdata/transdata_classifier.py:222: SyntaxWarning: invalid escape sequence '\B'
+  """
+/cache/zihaohe/seer_observation_dev_20261112/runtime_overlay_v1/private_cann/cann-8.5.2/python/site-packages/tbe/dsl/classifier/transdata/transdata_classifier.py:222: SyntaxWarning: invalid escape sequence '\B'
+  """
+/cache/zihaohe/seer_observation_dev_20261112/runtime_overlay_v1/private_cann/cann-8.5.2/python/site-packages/tbe/dsl/classifier/transdata/transdata_classifier.py:222: SyntaxWarning: invalid escape sequence '\B'
+  """
+/cache/zihaohe/seer_observation_dev_20261112/runtime_overlay_v1/private_cann/cann-8.5.2/python/site-packages/tbe/dsl/classifier/transdata/transdata_classifier.py:222: SyntaxWarning: invalid escape sequence '\B'
+  """
+/cache/zihaohe/seer_observation_dev_20261112/runtime_overlay_v1/private_cann/cann-8.5.2/python/site-packages/tbe/dsl/unify_schedule/vector/transdata/common/graph/transdata_graph_info.py:143: SyntaxWarning: invalid escape sequence '\c'
+  """
+/cache/zihaohe/seer_observation_dev_20261112/runtime_overlay_v1/private_cann/cann-8.5.2/python/site-packages/tbe/dsl/unify_schedule/vector/transdata/common/graph/transdata_graph_info.py:170: SyntaxWarning: invalid escape sequence '\c'
+  """
+/cache/zihaohe/seer_observation_dev_20261112/runtime_overlay_v1/private_cann/cann-8.5.2/python/site-packages/tbe/dsl/unify_schedule/vector/transdata/common/graph/transdata_graph_info.py:143: SyntaxWarning: invalid escape sequence '\c'
+  """
+/cache/zihaohe/seer_observation_dev_20261112/runtime_overlay_v1/private_cann/cann-8.5.2/python/site-packages/tbe/dsl/unify_schedule/vector/transdata/common/graph/transdata_graph_info.py:170: SyntaxWarning: invalid escape sequence '\c'
+  """
+/cache/zihaohe/seer_observation_dev_20261112/runtime_overlay_v1/private_cann/cann-8.5.2/python/site-packages/tbe/dsl/unify_schedule/vector/transdata/common/graph/transdata_graph_info.py:143: SyntaxWarning: invalid escape sequence '\c'
+  """
+/cache/zihaohe/seer_observation_dev_20261112/runtime_overlay_v1/private_cann/cann-8.5.2/python/site-packages/tbe/dsl/unify_schedule/vector/transdata/common/graph/transdata_graph_info.py:170: SyntaxWarning: invalid escape sequence '\c'
+  """
+/cache/zihaohe/seer_observation_dev_20261112/runtime_overlay_v1/private_cann/cann-8.5.2/python/site-packages/tbe/dsl/unify_schedule/vector/transdata/common/graph/transdata_graph_info.py:143: SyntaxWarning: invalid escape sequence '\c'
+  """
+/cache/zihaohe/seer_observation_dev_20261112/runtime_overlay_v1/private_cann/cann-8.5.2/python/site-packages/tbe/dsl/unify_schedule/vector/transdata/common/graph/transdata_graph_info.py:170: SyntaxWarning: invalid escape sequence '\c'
+  """
+/cache/zihaohe/seer_observation_dev_20261112/runtime_overlay_v1/private_cann/cann-8.5.2/python/site-packages/tbe/dsl/unify_schedule/vector/transdata/common/graph/transdata_graph_info.py:143: SyntaxWarning: invalid escape sequence '\c'
+  """
+/cache/zihaohe/seer_observation_dev_20261112/runtime_overlay_v1/private_cann/cann-8.5.2/python/site-packages/tbe/dsl/unify_schedule/vector/transdata/common/graph/transdata_graph_info.py:170: SyntaxWarning: invalid escape sequence '\c'
+  """
+/cache/zihaohe/seer_observation_dev_20261112/runtime_overlay_v1/private_cann/cann-8.5.2/python/site-packages/tbe/dsl/unify_schedule/vector/transdata/common/graph/transdata_graph_info.py:143: SyntaxWarning: invalid escape sequence '\c'
+  """
+/cache/zihaohe/seer_observation_dev_20261112/runtime_overlay_v1/private_cann/cann-8.5.2/python/site-packages/tbe/dsl/unify_schedule/vector/transdata/common/graph/transdata_graph_info.py:170: SyntaxWarning: invalid escape sequence '\c'
+  """
+/cache/zihaohe/seer_observation_dev_20261112/runtime_overlay_v1/private_cann/cann-8.5.2/python/site-packages/tbe/dsl/unify_schedule/vector/transdata/common/graph/transdata_graph_info.py:143: SyntaxWarning: invalid escape sequence '\c'
+  """
+/cache/zihaohe/seer_observation_dev_20261112/runtime_overlay_v1/private_cann/cann-8.5.2/python/site-packages/tbe/dsl/unify_schedule/vector/transdata/common/graph/transdata_graph_info.py:143: SyntaxWarning: invalid escape sequence '\c'
+  """
+/cache/zihaohe/seer_observation_dev_20261112/runtime_overlay_v1/private_cann/cann-8.5.2/python/site-packages/tbe/dsl/unify_schedule/vector/transdata/common/graph/transdata_graph_info.py:170: SyntaxWarning: invalid escape sequence '\c'
+  """
+/cache/zihaohe/seer_observation_dev_20261112/runtime_overlay_v1/private_cann/cann-8.5.2/python/site-packages/tbe/dsl/unify_schedule/vector/transdata/common/graph/transdata_graph_info.py:170: SyntaxWarning: invalid escape sequence '\c'
+  """
+/cache/zihaohe/seer_observation_dev_20261112/runtime_overlay_v1/private_cann/cann-8.5.2/python/site-packages/tbe/dsl/unify_schedule/vector/transdata/common/graph/transdata_graph_info.py:143: SyntaxWarning: invalid escape sequence '\c'
+  """
+/cache/zihaohe/seer_observation_dev_20261112/runtime_overlay_v1/private_cann/cann-8.5.2/python/site-packages/tbe/dsl/unify_schedule/vector/transdata/common/graph/transdata_graph_info.py:170: SyntaxWarning: invalid escape sequence '\c'
+  """
+/cache/zihaohe/seer_observation_dev_20261112/runtime_overlay_v1/private_cann/cann-8.5.2/python/site-packages/tbe/dsl/classifier/transdata/transdata_classifier.py:222: SyntaxWarning: invalid escape sequence '\B'
+  """
+/cache/zihaohe/seer_observation_dev_20261112/runtime_overlay_v1/private_cann/cann-8.5.2/python/site-packages/tbe/dsl/classifier/transdata/transdata_classifier.py:222: SyntaxWarning: invalid escape sequence '\B'
+  """
+/cache/zihaohe/seer_observation_dev_20261112/runtime_overlay_v1/private_cann/cann-8.5.2/python/site-packages/tbe/dsl/classifier/transdata/transdata_classifier.py:222: SyntaxWarning: invalid escape sequence '\B'
+  """
+/cache/zihaohe/seer_observation_dev_20261112/runtime_overlay_v1/private_cann/cann-8.5.2/python/site-packages/tbe/dsl/classifier/transdata/transdata_classifier.py:222: SyntaxWarning: invalid escape sequence '\B'
+  """
+/cache/zihaohe/seer_observation_dev_20261112/runtime_overlay_v1/private_cann/cann-8.5.2/python/site-packages/tbe/dsl/classifier/transdata/transdata_classifier.py:222: SyntaxWarning: invalid escape sequence '\B'
+  """
+/cache/zihaohe/seer_observation_dev_20261112/runtime_overlay_v1/private_cann/cann-8.5.2/python/site-packages/tbe/dsl/classifier/transdata/transdata_classifier.py:222: SyntaxWarning: invalid escape sequence '\B'
+  """
+/cache/zihaohe/seer_observation_dev_20261112/runtime_overlay_v1/private_cann/cann-8.5.2/python/site-packages/tbe/dsl/classifier/transdata/transdata_classifier.py:222: SyntaxWarning: invalid escape sequence '\B'
+  """
+/cache/zihaohe/seer_observation_dev_20261112/runtime_overlay_v1/private_cann/cann-8.5.2/python/site-packages/tbe/dsl/classifier/transdata/transdata_classifier.py:222: SyntaxWarning: invalid escape sequence '\B'
+  """
+/cache/zihaohe/seer_observation_dev_20261112/runtime_overlay_v1/private_cann/cann-8.5.2/python/site-packages/tbe/dsl/unify_schedule/vector/transdata/common/graph/transdata_graph_info.py:143: SyntaxWarning: invalid escape sequence '\c'
+  """
+/cache/zihaohe/seer_observation_dev_20261112/runtime_overlay_v1/private_cann/cann-8.5.2/python/site-packages/tbe/dsl/unify_schedule/vector/transdata/common/graph/transdata_graph_info.py:170: SyntaxWarning: invalid escape sequence '\c'
+  """
+/cache/zihaohe/seer_observation_dev_20261112/runtime_overlay_v1/private_cann/cann-8.5.2/python/site-packages/tbe/dsl/unify_schedule/vector/transdata/common/graph/transdata_graph_info.py:143: SyntaxWarning: invalid escape sequence '\c'
+  """
+/cache/zihaohe/seer_observation_dev_20261112/runtime_overlay_v1/private_cann/cann-8.5.2/python/site-packages/tbe/dsl/unify_schedule/vector/transdata/common/graph/transdata_graph_info.py:170: SyntaxWarning: invalid escape sequence '\c'
+  """
+/cache/zihaohe/seer_observation_dev_20261112/runtime_overlay_v1/private_cann/cann-8.5.2/python/site-packages/tbe/dsl/unify_schedule/vector/transdata/common/graph/transdata_graph_info.py:143: SyntaxWarning: invalid escape sequence '\c'
+  """
+/cache/zihaohe/seer_observation_dev_20261112/runtime_overlay_v1/private_cann/cann-8.5.2/python/site-packages/tbe/dsl/unify_schedule/vector/transdata/common/graph/transdata_graph_info.py:170: SyntaxWarning: invalid escape sequence '\c'
+  """
+/cache/zihaohe/seer_observation_dev_20261112/runtime_overlay_v1/private_cann/cann-8.5.2/python/site-packages/tbe/dsl/unify_schedule/vector/transdata/common/graph/transdata_graph_info.py:143: SyntaxWarning: invalid escape sequence '\c'
+  """
+/cache/zihaohe/seer_observation_dev_20261112/runtime_overlay_v1/private_cann/cann-8.5.2/python/site-packages/tbe/dsl/unify_schedule/vector/transdata/common/graph/transdata_graph_info.py:170: SyntaxWarning: invalid escape sequence '\c'
+  """
+/cache/zihaohe/seer_observation_dev_20261112/runtime_overlay_v1/private_cann/cann-8.5.2/python/site-packages/tbe/dsl/unify_schedule/vector/transdata/common/graph/transdata_graph_info.py:143: SyntaxWarning: invalid escape sequence '\c'
+  """
+/cache/zihaohe/seer_observation_dev_20261112/runtime_overlay_v1/private_cann/cann-8.5.2/python/site-packages/tbe/dsl/unify_schedule/vector/transdata/common/graph/transdata_graph_info.py:170: SyntaxWarning: invalid escape sequence '\c'
+  """
+/cache/zihaohe/seer_observation_dev_20261112/runtime_overlay_v1/private_cann/cann-8.5.2/python/site-packages/tbe/dsl/unify_schedule/vector/transdata/common/graph/transdata_graph_info.py:143: SyntaxWarning: invalid escape sequence '\c'
+  """
+/cache/zihaohe/seer_observation_dev_20261112/runtime_overlay_v1/private_cann/cann-8.5.2/python/site-packages/tbe/dsl/unify_schedule/vector/transdata/common/graph/transdata_graph_info.py:170: SyntaxWarning: invalid escape sequence '\c'
+  """
+/cache/zihaohe/seer_observation_dev_20261112/runtime_overlay_v1/private_cann/cann-8.5.2/python/site-packages/tbe/dsl/unify_schedule/vector/transdata/common/graph/transdata_graph_info.py:143: SyntaxWarning: invalid escape sequence '\c'
+  """
+/cache/zihaohe/seer_observation_dev_20261112/runtime_overlay_v1/private_cann/cann-8.5.2/python/site-packages/tbe/dsl/unify_schedule/vector/transdata/common/graph/transdata_graph_info.py:170: SyntaxWarning: invalid escape sequence '\c'
+  """
+/cache/zihaohe/seer_observation_dev_20261112/runtime_overlay_v1/private_cann/cann-8.5.2/python/site-packages/tbe/dsl/unify_schedule/vector/transdata/common/graph/transdata_graph_info.py:143: SyntaxWarning: invalid escape sequence '\c'
+  """
+/cache/zihaohe/seer_observation_dev_20261112/runtime_overlay_v1/private_cann/cann-8.5.2/python/site-packages/tbe/dsl/unify_schedule/vector/transdata/common/graph/transdata_graph_info.py:170: SyntaxWarning: invalid escape sequence '\c'
+  """
+/cache/zihaohe/seer_observation_dev_20261112/runtime_overlay_v1/private_cann/cann-8.5.2/opp/built-in/op_impl/ai_core/tbe/impl/ops_legacy/dynamic/gelu_grad_v2.py:96: SyntaxWarning: invalid escape sequence '\h'
+  """
+/cache/zihaohe/seer_observation_dev_20261112/runtime_overlay_v1/private_cann/cann-8.5.2/opp/built-in/op_impl/ai_core/tbe/impl/ops_legacy/dynamic/gelu_grad_v2.py:156: SyntaxWarning: invalid escape sequence '\h'
+  """
+/cache/zihaohe/seer_observation_dev_20261112/runtime_overlay_v1/private_cann/cann-8.5.2/python/site-packages/asc_op_compile_base/asc_op_compiler/ascendc_compile_gen_code.py:161: SyntaxWarning: invalid escape sequence '\w'
+  match = re.search(f'{option}=(\w+)', ' '.join(compile_options))
+/cache/zihaohe/seer_observation_dev_20261112/runtime_overlay_v1/private_cann/cann-8.5.2/python/site-packages/asc_op_compile_base/asc_op_compiler/ascendc_compile_gen_code.py:161: SyntaxWarning: invalid escape sequence '\w'
+  match = re.search(f'{option}=(\w+)', ' '.join(compile_options))
+/cache/zihaohe/seer_observation_dev_20261112/runtime_overlay_v1/private_cann/cann-8.5.2/python/site-packages/asc_op_compile_base/asc_op_compiler/ascendc_compile_gen_code.py:161: SyntaxWarning: invalid escape sequence '\w'
+  match = re.search(f'{option}=(\w+)', ' '.join(compile_options))
+/cache/zihaohe/seer_observation_dev_20261112/runtime_overlay_v1/private_cann/cann-8.5.2/python/site-packages/asc_op_compile_base/asc_op_compiler/ascendc_compile_gen_code.py:161: SyntaxWarning: invalid escape sequence '\w'
+  match = re.search(f'{option}=(\w+)', ' '.join(compile_options))
+/cache/zihaohe/seer_observation_dev_20261112/runtime_overlay_v1/private_cann/cann-8.5.2/python/site-packages/asc_op_compile_base/asc_op_compiler/ascendc_compile_gen_code.py:161: SyntaxWarning: invalid escape sequence '\w'
+  match = re.search(f'{option}=(\w+)', ' '.join(compile_options))
+/cache/zihaohe/seer_observation_dev_20261112/runtime_overlay_v1/private_cann/cann-8.5.2/python/site-packages/asc_op_compile_base/asc_op_compiler/ascendc_compile_gen_code.py:161: SyntaxWarning: invalid escape sequence '\w'
+  match = re.search(f'{option}=(\w+)', ' '.join(compile_options))
+/cache/zihaohe/seer_observation_dev_20261112/runtime_overlay_v1/private_cann/cann-8.5.2/python/site-packages/asc_op_compile_base/asc_op_compiler/ascendc_compile_gen_code.py:161: SyntaxWarning: invalid escape sequence '\w'
+  match = re.search(f'{option}=(\w+)', ' '.join(compile_options))
+/cache/zihaohe/seer_observation_dev_20261112/runtime_overlay_v1/private_cann/cann-8.5.2/python/site-packages/asc_op_compile_base/asc_op_compiler/ascendc_compile_gen_code.py:161: SyntaxWarning: invalid escape sequence '\w'
+  match = re.search(f'{option}=(\w+)', ' '.join(compile_options))
+model/RAFT/raft.py:92: FutureWarning: `torch.cuda.amp.autocast(args...)` is deprecated. Please use `torch.amp.autocast('cuda', args...)` instead.
+/home/ma-user/anaconda3/envs/PyTorch-2.7.1/lib/python3.12/site-packages/torch/functional.py:554: UserWarning: torch.meshgrid: in an upcoming release, it will be required to pass the indexing argument. (Triggered internally at /pytorch/aten/src/ATen/native/TensorShape.cpp:4314.)
+  return _VF.meshgrid(tensors, **kwargs)  # type: ignore[attr-defined]
+/home/ma-user/anaconda3/envs/PyTorch-2.7.1/lib/python3.12/site-packages/torch/nn/functional.py:5015: UserWarning: Default grid_sample and affine_grid behavior has changed to align_corners=False since 1.3.0. Please specify align_corners=True if the old behavior is desired. See the documentation of grid_sample for details.
+  warnings.warn(
+.Loading pretrained model LPIPS from /cache/zihaohe/seer_observation_dev_20261112/runtime_overlay_v1/overlay/torch_home/hub/pyiqa/LPIPS_v0.1_alex-df73285e.pth
+Warning: since the loaded file is not a zipfile, only "torch.device" and "str" type parameters are currently supported for parameter types of map_location. If parameter types of map_location is "Callable[[torch.Tensor, str], torch.Tensor]" or "Dict[str, str]", which is only support for zipfile, all tensors are currently loaded onto the CPU, which may introduce problems.
+{"name": "BVI/S01_colour_chart__10fps", "psnr_y": 23.5859852736139, "psnr_rgb": 22.514002979971057, "lpips": 0.10244181752204895, "tlp": 0.050716571509838104, "gt_tlp": 0.04031163454055786, "tlp_gap": 0.010404936969280243}
+model/RAFT/raft.py:92: FutureWarning: `torch.cuda.amp.autocast(args...)` is deprecated. Please use `torch.amp.autocast('cuda', args...)` instead.
+/home/ma-user/anaconda3/envs/PyTorch-2.7.1/lib/python3.12/site-packages/torch/nn/functional.py:5015: UserWarning: Default grid_sample and affine_grid behavior has changed to align_corners=False since 1.3.0. Please specify align_corners=True if the old behavior is desired. See the documentation of grid_sample for details.
+  warnings.warn(
+{"name": "BVI/S01_colour_chart__20fps", "psnr_y": 22.435455960444273, "psnr_rgb": 21.503345740530243, "lpips": 0.07860498130321503, "tlp": 0.04623536765575409, "gt_tlp": 0.04031163454055786, "tlp_gap": 0.005923733115196228}
+{"name": "BVI/S05_bunnies__10fps", "psnr_y": 18.48023212044749, "psnr_rgb": 18.199195010501967, "lpips": 0.2908201813697815, "tlp": 0.0832190066576004, "gt_tlp": 0.028570223599672318, "tlp_gap": 0.054648783057928085}
+{"name": "BVI/S05_bunnies__20fps", "psnr_y": 15.316051838112031, "psnr_rgb": 15.310350006364727, "lpips": 0.20040693879127502, "tlp": 0.04482436552643776, "gt_tlp": 0.028438108041882515, "tlp_gap": 0.016386257484555244}
+{"name": "BVI/S09_kitchen__10fps", "psnr_y": 25.950429040729027, "psnr_rgb": 24.342905262777247, "lpips": 0.22806423902511597, "tlp": 0.058077506721019745, "gt_tlp": 0.0331229493021965, "tlp_gap": 0.024954557418823242}
+{"name": "BVI/S09_kitchen__20fps", "psnr_y": 20.26687553236941, "psnr_rgb": 19.629099776743033, "lpips": 0.15605926513671875, "tlp": 0.03857889771461487, "gt_tlp": 0.0331229493021965, "tlp_gap": 0.0054559484124183655}
+{"name": "BVI/S13_wires__10fps", "psnr_y": 16.669309870162326, "psnr_rgb": 15.714292019202894, "lpips": 0.2388916015625, "tlp": 0.04101375490427017, "gt_tlp": 0.021407335996627808, "tlp_gap": 0.019606418907642365}
+{"name": "BVI/S13_wires__20fps", "psnr_y": 15.83854571675033, "psnr_rgb": 15.065473844802113, "lpips": 0.27259591221809387, "tlp": 0.013101756572723389, "gt_tlp": 0.021887127310037613, "tlp_gap": 0.008785370737314224}
+{"name": "BVI/S17_faces2__10fps", "psnr_y": 23.48340237511506, "psnr_rgb": 22.699361684933734, "lpips": 0.11356796324253082, "tlp": 0.07926594465970993, "gt_tlp": 0.0651104599237442, "tlp_gap": 0.014155484735965729}
+{"name": "BVI/S17_faces2__20fps", "psnr_y": 19.26367163608502, "psnr_rgb": 18.6717357595114, "lpips": 0.0757487416267395, "tlp": 0.07120169699192047, "gt_tlp": 0.06576049327850342, "tlp_gap": 0.005441203713417053}
+{"name": "BVI/S21_mario1__10fps", "psnr_y": 17.137701148329946, "psnr_rgb": 16.134512678814826, "lpips": 0.19389669597148895, "tlp": 0.04516453295946121, "gt_tlp": 0.013942968100309372, "tlp_gap": 0.03122156485915184}
+{"name": "BVI/S21_mario1__20fps", "psnr_y": 12.911538804816008, "psnr_rgb": 12.829553753641198, "lpips": 0.16704821586608887, "tlp": 0.027395207434892654, "gt_tlp": 0.015934210270643234, "tlp_gap": 0.01146099716424942}
+{"name": "BVI/S25_figures2__10fps", "psnr_y": 22.953895616097277, "psnr_rgb": 21.557206187492348, "lpips": 0.15603680908679962, "tlp": 0.14578524231910706, "gt_tlp": 0.13238483667373657, "tlp_gap": 0.013400405645370483}
+{"name": "BVI/S25_figures2__20fps", "psnr_y": 16.768947390581452, "psnr_rgb": 16.34868235075985, "lpips": 0.1059877797961235, "tlp": 0.12049946933984756, "gt_tlp": 0.11318860948085785, "tlp_gap": 0.007310859858989716}
+{"name": "BVI/S29_mix1__10fps", "psnr_y": 26.62663048248726, "psnr_rgb": 24.60681907783544, "lpips": 0.11585228145122528, "tlp": 0.10883331298828125, "gt_tlp": 0.09867916256189346, "tlp_gap": 0.010154150426387787}
+{"name": "BVI/S29_mix1__20fps", "psnr_y": 17.79647893879347, "psnr_rgb": 17.233114623621006, "lpips": 0.11647380143404007, "tlp": 0.10572636872529984, "gt_tlp": 0.09634289145469666, "tlp_gap": 0.00938347727060318}
+wrote /cache/zihaohe/seer_observation_dev_20261112/tempretinex_reference_v1/results/bvi_val16_did_reference.json
+END 2026-11-11T16:52:34Z
