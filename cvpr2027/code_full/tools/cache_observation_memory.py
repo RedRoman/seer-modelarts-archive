@@ -86,7 +86,7 @@ def clean_encoder_state(checkpoint, expected):
 def load_lq(path, row, plan):
     import torch
     require(digest(path) == row["cache_sha256"], "Source cache changed after validation")
-    record = torch.load(path, map_location="cpu", weights_only=True, mmap=True)
+    record = torch.load(str(path), map_location="cpu", weights_only=True, mmap=True)
     require(record.get("name") == row["name"] and record.get("scene") == row["scene"]
             and record.get("plan") == plan, "Source cache identity/plan mismatch")
     # Never access GT or any derived target statistic.
@@ -165,7 +165,7 @@ def main():
         backbone = wrapper.VJepaBackboneLocal21(
             local_repo=str(repo), local_ckpt="", feature_layers=(BLOCK,),
             image_size=256, frames_per_clip=16, patch_size=16, tubelet_size=2, freeze=True)
-    checkpoint = torch.load(weights, map_location="cpu", weights_only=False, mmap=True)
+    checkpoint = torch.load(str(weights), map_location="cpu", weights_only=False, mmap=True)
     state, ignored = clean_encoder_state(checkpoint, backbone.model.state_dict())
     backbone.model.load_state_dict(state, strict=True)
     del state, checkpoint

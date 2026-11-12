@@ -4,6 +4,7 @@ from pathlib import Path
 import sys
 import tempfile
 import unittest
+from unittest.mock import patch
 
 import torch
 
@@ -66,7 +67,13 @@ class ExportGuards(unittest.TestCase):
             torch.save({"name": "SDSD_indoor/pair1", "scene": "SDSD_indoor/pair1",
                         "plan": plan, "tensors": {"lq": low, "gt": "forbidden"}}, path)
             row = {"name": "SDSD_indoor/pair1", "scene": "SDSD_indoor/pair1", "cache_sha256": m.digest(path)}
-            self.assertTrue(torch.equal(m.load_lq(path, row, plan), low))
+            real_load = torch.load
+            def npu_mmap_contract(filename, **kwargs):
+                # torch_npu's serialization wrapper rejects Path with mmap=True.
+                self.assertIsInstance(filename, str)
+                return real_load(filename, **kwargs)
+            with patch.object(torch, "load", side_effect=npu_mmap_contract):
+                self.assertTrue(torch.equal(m.load_lq(path, row, plan), low))
             with self.assertRaises(ValueError): m.load_lq(path, row, {"sequence_index": 1})
             row["cache_sha256"] = "0"*64
             with self.assertRaises(ValueError): m.load_lq(path, row, plan)
