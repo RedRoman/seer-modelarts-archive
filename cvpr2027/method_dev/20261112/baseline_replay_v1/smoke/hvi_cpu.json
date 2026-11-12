@@ -1,0 +1,24 @@
+{
+  "purpose": "synthetic strict-load/shape/batch smoke; no data access",
+  "shape": [
+    2,
+    32,
+    32,
+    3
+  ],
+  "maximum_uint8_batch_difference": 0,
+  "prediction_sha256": "f3a3efd1f8d5f6fc38ec1a724f6f8f807abb1f38791afb46370cf5de2ad4ebf2",
+  "provenance": {
+    "strict_load": true,
+    "state_keys": 191,
+    "parameters": 1975569,
+    "checkpoint_sha256": "6395370762ec1fa0f6fe92a38c62382b1ebe21edc012f597023bfcec8b95cd27",
+    "checkpoint": "/cache/zihaohe/seer_baseline_replay_20261112/release_v1/weights/hvi_cidnet.pt"
+  },
+  "state_unchanged": true,
+  "state_sha256": "afa01e29d1314dae7fadc68d7c95e3ddaf3da3a5b469fa83febb2759dc0bc41b",
+  "release_manifest_sha256": "f2294e9a7493f88cee3455b3432b7d52366f9afe43d3da5a3f3a652c0b24164d",
+  "adapter_sha256": "0db79ffef4f1bebdc163250bcb1a290cb9b4d098bfbc1e8895a0a041e2fd3715",
+  "completed_utc": "2026-11-12T05:01:33.603159+00:00",
+  "elapsed_seconds": 3.1180306067690253
+}

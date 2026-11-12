@@ -1,0 +1,24 @@
+{
+  "purpose": "synthetic strict-load/shape/batch smoke; no data access",
+  "shape": [
+    2,
+    32,
+    32,
+    3
+  ],
+  "maximum_uint8_batch_difference": 1,
+  "prediction_sha256": "52153827db78cead1acf7eda86a993793634a69c40e40cfd313606408f1ce22a",
+  "provenance": {
+    "strict_load": true,
+    "state_keys": 122,
+    "parameters": 1605701,
+    "checkpoint_sha256": "928cfa4f130914aa49268807b1f751095c5d28875051d87e3922af00017e53b6",
+    "checkpoint": "/cache/zihaohe/seer_baseline_replay_20261112/release_v1/weights/retinexformer.pt"
+  },
+  "state_unchanged": true,
+  "state_sha256": "7bee11262ebbe33b8fadb0a1fdb9ef0f2ddb73e78edb464cf08f4cb221a897b8",
+  "release_manifest_sha256": "f2294e9a7493f88cee3455b3432b7d52366f9afe43d3da5a3f3a652c0b24164d",
+  "adapter_sha256": "0db79ffef4f1bebdc163250bcb1a290cb9b4d098bfbc1e8895a0a041e2fd3715",
+  "completed_utc": "2026-11-12T05:05:16.860148+00:00",
+  "elapsed_seconds": 24.91921854764223
+}

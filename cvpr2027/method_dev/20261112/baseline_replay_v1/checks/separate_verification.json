@@ -1,0 +1,54 @@
+{
+  "verified": true,
+  "methods": 3,
+  "sequences_per_method": 16,
+  "whole_scenes": 8,
+  "checked_scalars_and_hashes": 210,
+  "maximum_aggregate_error": 0.0,
+  "all_96_actual_input_tensors_match_prior_frozen_audit": true,
+  "all_48_gt_temporal_values_exact": true,
+  "reference_raw_sha256": "9a90aafea8abf40fc91e7c64e6546e6966705649e9c52a6c0936569af54f9cb8",
+  "reference_input_manifest_sha256": "21d6fc48f656d3ba72a6c4c735b30d2de23b5c60d419afabf8866b6b371c4967",
+  "verifier_sha256": "e6bad3d806aa0bd2a69e8e6cc76a0d2b51072eb25ac74e3bbedbf81290b2957a",
+  "summary": {
+    "hvi_cidnet": {
+      "result_sha256": "4e15894b4491369f3bedca74f457f3765389d7ea47ebb77db64ec6d1461ada78",
+      "means": {
+        "psnr_y": 24.241232037953157,
+        "psnr_rgb": 23.383146282739105,
+        "lpips": 0.15314976987428963,
+        "tlp": 0.0869961871067062,
+        "gt_tlp": 0.05303222464863211,
+        "tlp_gap": 0.034284843131899834
+      },
+      "model_device": "npu:0",
+      "elapsed_seconds": 105.36215017549694
+    },
+    "darkir": {
+      "result_sha256": "d5ce05b8bee8758eb129f9ca2333b59affdd7a09635dde421972923c9cd3023e",
+      "means": {
+        "psnr_y": 22.581696581217443,
+        "psnr_rgb": 21.465762591626582,
+        "lpips": 0.15101579809561372,
+        "tlp": 0.06850467366166413,
+        "gt_tlp": 0.05303222464863211,
+        "tlp_gap": 0.017731530242599547
+      },
+      "model_device": "cpu",
+      "elapsed_seconds": 310.782350323163
+    },
+    "retinexformer": {
+      "result_sha256": "0a5cdf5c60a369f906fe7fa5979fc6d6d5b2b8f75c26bfa39291c955c492f05f",
+      "means": {
+        "psnr_y": 19.881678451485474,
+        "psnr_rgb": 19.103253123785542,
+        "lpips": 0.20317575056105852,
+        "tlp": 0.05680454187677242,
+        "gt_tlp": 0.05303222464863211,
+        "tlp_gap": 0.007375633314950392
+      },
+      "model_device": "npu:0",
+      "elapsed_seconds": 89.88997368887067
+    }
+  }
+}

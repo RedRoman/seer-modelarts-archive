@@ -1,0 +1,24 @@
+{
+  "purpose": "synthetic strict-load/shape/batch smoke; no data access",
+  "shape": [
+    2,
+    32,
+    32,
+    3
+  ],
+  "maximum_uint8_batch_difference": 0,
+  "prediction_sha256": "a25a7b7266a96dc31c68bf2b6ace6525037dee760b2715e0870b0c6517d5e705",
+  "provenance": {
+    "strict_load": true,
+    "state_keys": 343,
+    "parameters": 3321638,
+    "checkpoint_sha256": "61eee7d5cfb593d408fba4c716874449b324ed1f49cbff97c2a25ce2fcbe4fde",
+    "checkpoint": "/cache/zihaohe/seer_baseline_replay_20261112/release_v1/weights/darkir.pt"
+  },
+  "state_unchanged": true,
+  "state_sha256": "e38be2d32ff91cde03b3043f51a320da95ca34afe1ff7254ea5830bc95870855",
+  "release_manifest_sha256": "f2294e9a7493f88cee3455b3432b7d52366f9afe43d3da5a3f3a652c0b24164d",
+  "adapter_sha256": "0db79ffef4f1bebdc163250bcb1a290cb9b4d098bfbc1e8895a0a041e2fd3715",
+  "completed_utc": "2026-11-12T05:02:04.138036+00:00",
+  "elapsed_seconds": 0.25588038470596075
+}
