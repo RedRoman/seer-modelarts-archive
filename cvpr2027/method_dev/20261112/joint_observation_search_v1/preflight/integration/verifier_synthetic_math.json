@@ -1,0 +1,29 @@
+{
+  "scope": "Synthetic matrix arithmetic only; no experiment metrics generated",
+  "primary_analyzer_imported": false,
+  "passed": true,
+  "draws": 10000,
+  "scenes": 17,
+  "rng": 0,
+  "checks": [
+    {
+      "synthetic_scale": 0.001,
+      "max_resample_error": 6.505213034913027e-19,
+      "max_ci_endpoint_error": 4.336808689942018e-19,
+      "sample_tolerance": 1e-14
+    },
+    {
+      "synthetic_scale": 1.0,
+      "max_resample_error": 6.661338147750939e-16,
+      "max_ci_endpoint_error": 2.220446049250313e-16,
+      "sample_tolerance": 1e-14
+    },
+    {
+      "synthetic_scale": 30.0,
+      "max_resample_error": 1.4210854715202004e-14,
+      "max_ci_endpoint_error": 7.105427357601002e-15,
+      "sample_tolerance": 1e-12
+    }
+  ],
+  "verifier_sha256": "8bb6948e8badb1395aa6db32d89082f58b4b8a7249ddf6c22d1b3d1b863c6014"
+}

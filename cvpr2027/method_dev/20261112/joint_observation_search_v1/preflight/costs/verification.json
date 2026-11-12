@@ -1,0 +1,16 @@
+{
+  "host_id": "32193",
+  "cpu_only": true,
+  "npu_allocation": false,
+  "torch_device_backend_autoload": "0",
+  "test_count": 13,
+  "failed": 0,
+  "skipped": 0,
+  "test_log": "test_final.log",
+  "source_sha256": {
+    "tools/cache_joint_observation_search.py": "334ca97edc53dd4e83e2bab0776a7c980b9e13f25e16667663838b8b0f3cc39b",
+    "tests/test_cache_joint_observation_search.py": "5818e92ed5b61353e94d35304b197156abcadb04a108b65ed68025da39619e39"
+  },
+  "benchmark_scope": "synthetic complete16x256 with4CPUthreads; no GT or target scores",
+  "benchmark_helper_numeric_logic": "same build_joint_costs numeric helper as final; only metadata/worker preparation changed afterward"
+}
