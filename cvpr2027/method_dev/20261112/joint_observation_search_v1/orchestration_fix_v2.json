@@ -1,0 +1,23 @@
+{
+  "time_utc": "2026-11-12T05:23:43.368646+00:00",
+  "scope": "orchestration filename collision only",
+  "source_holdout_scores_computed": false,
+  "source_training_started": false,
+  "original_fit_prediction_max_abs": {
+    "joint_prior": 0.0,
+    "independent_prior": 0.0,
+    "constant_prior": 0.0,
+    "joint_pixel": 0.0,
+    "joint_shuffled": 0.0
+  },
+  "original_release_unchanged": true,
+  "model_cache_trainer_optimizer_plan_metric_gate_unchanged": true,
+  "v2_runner_sha256": "793b15a905bbf0390ecbdb0ee5d250d9992bc3974dae168f134b1148625c34ae",
+  "original_runner_sha256": "6e310d8477f0b47573e951060f47b99e40728de476951fc00ce307f1268e7d7b",
+  "changes": [
+    "checks_v2 and screen_logs_v2 preserve failed attempt",
+    "require existing runs/results directories empty",
+    "FIT parity job receipt label fit_anchor_parity_job avoids payload path"
+  ],
+  "tests": "repeat all28 real CPU tests and exact FIT parity before any training"
+}
