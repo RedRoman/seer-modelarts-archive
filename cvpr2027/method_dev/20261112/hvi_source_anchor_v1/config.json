@@ -1,0 +1,18 @@
+{
+  "model": "HVI-CIDNet default CIDNet",
+  "channels": [36, 36, 72, 144],
+  "heads": [1, 2, 4, 8],
+  "norm": false,
+  "weight_sha256": "6395370762ec1fa0f6fe92a38c62382b1ebe21edc012f597023bfcec8b95cd27",
+  "strict_state_keys": 191,
+  "model_state_sha256": "afa01e29d1314dae7fadc68d7c95e3ddaf3da3a5b469fa83febb2759dc0bc41b",
+  "source_scope": "Original SDSD TRAIN136 only",
+  "input": "Original source-cache LQ float32, BCTHW, no uint8 reencoding",
+  "output": "Float32 BCTHW HVI prediction clamped to [0,1], no rounding",
+  "batch_frames": 1,
+  "training": false,
+  "gt_pixels": false,
+  "scores": false,
+  "synthetic_cpu_npu_max_abs_tolerance": 0.01,
+  "synthetic_cpu_npu_mean_abs_tolerance": 0.001
+}

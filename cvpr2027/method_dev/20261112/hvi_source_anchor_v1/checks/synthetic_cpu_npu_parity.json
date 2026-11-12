@@ -1,0 +1,22 @@
+{
+  "purpose": "Synthetic CPU/NPU strict191-key float comparison; no real inputs or labels",
+  "passed": true,
+  "maximum_absolute_difference": 0.00033995509147644043,
+  "mean_absolute_difference": 4.539376823231578e-05,
+  "input_sha256": "302d393a5921f0a508825756fa421a763c186ab103623a381e28aab3838f0234",
+  "cpu_prediction_sha256": "510ccb71118861ba4b30a1ca79dc9a5e91f33354fab82a0a49c2931910324cf4",
+  "npu_prediction_sha256": "952abc48da9f10fc7588fcc9d2003d3cb1e14d947993a720a98320c2cf2991df",
+  "shape": [
+    1,
+    3,
+    2,
+    32,
+    32
+  ],
+  "dtype": "float32",
+  "both_model_states_unchanged": true,
+  "model_state_sha256": "afa01e29d1314dae7fadc68d7c95e3ddaf3da3a5b469fa83febb2759dc0bc41b",
+  "config_sha256": "f6a8d1549f9471282f9a84961ee3ee4800956d5a422cb476512977b2db7f018c",
+  "adapter_sha256": "26c0c36656ad7b7d3b0ce04275578a45286c27931a476c9dcfb1ce1981e69db2",
+  "completed_utc": "2026-11-12T05:29:47.581556+00:00"
+}
