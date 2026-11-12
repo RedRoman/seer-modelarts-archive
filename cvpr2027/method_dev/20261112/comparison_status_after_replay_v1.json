@@ -1,0 +1,118 @@
+{
+  "schema_version": 1,
+  "time_utc": "2026-11-12T05:52:06.460621+00:00",
+  "supersedes_status_only": "comparison_registry_v1.json",
+  "frozen_parent_registry_sha256": "639ba921d5e094a65aafdebd4dff40050b9d619f0eb454012961575dde99fc4a",
+  "scope": "Updated completion status; original roster/protocol/scores remain intact",
+  "target_protocol": "previously viewed BVI VAL16 / centre16 / crop256 / raw predictions / common scorer; no native full-video SOTA claim",
+  "core_external_methods": [
+    {
+      "id": "retinexformer_sdsd_retrained",
+      "name": "Retinexformer",
+      "role": "source-matched image baseline",
+      "status": "complete_current_environment_verified",
+      "result": "cvpr2027/method_dev/20261112/baseline_replay_v1/results/retinexformer_bvi_val16.json",
+      "result_sha256": "0a5cdf5c60a369f906fe7fa5979fc6d6d5b2b8f75c26bfa39291c955c492f05f",
+      "metrics": {
+        "psnr_y": 19.881678451485474,
+        "psnr_rgb": 19.103253123785542,
+        "lpips": 0.20317575056105852,
+        "tlp": 0.05680454187677242,
+        "gt_tlp": 0.05303222464863211,
+        "tlp_gap": 0.007375633314950392
+      }
+    },
+    {
+      "id": "hvi_cidnet_generalization",
+      "name": "HVI-CIDNet",
+      "role": "strong image reference",
+      "status": "complete_current_environment_verified",
+      "result": "cvpr2027/method_dev/20261112/baseline_replay_v1/results/hvi_cidnet_bvi_val16.json",
+      "result_sha256": "4e15894b4491369f3bedca74f457f3765389d7ea47ebb77db64ec6d1461ada78",
+      "metrics": {
+        "psnr_y": 24.241232037953157,
+        "psnr_rgb": 23.383146282739105,
+        "lpips": 0.15314976987428963,
+        "tlp": 0.0869961871067062,
+        "gt_tlp": 0.05303222464863211,
+        "tlp_gap": 0.034284843131899834
+      }
+    },
+    {
+      "id": "darkir_384",
+      "name": "DarkIR",
+      "role": "strong image reference",
+      "status": "complete_current_environment_verified",
+      "result": "cvpr2027/method_dev/20261112/baseline_replay_v1/results/darkir_bvi_val16.json",
+      "result_sha256": "d5ce05b8bee8758eb129f9ca2333b59affdd7a09635dde421972923c9cd3023e",
+      "metrics": {
+        "psnr_y": 22.581696581217443,
+        "psnr_rgb": 21.465762591626582,
+        "lpips": 0.15101579809561372,
+        "tlp": 0.06850467366166413,
+        "gt_tlp": 0.05303222464863211,
+        "tlp_gap": 0.017731530242599547
+      }
+    },
+    {
+      "id": "stcd_indoor_release",
+      "name": "STCD",
+      "role": "video enhancement baseline",
+      "status": "complete_current_environment",
+      "evidence": {
+        "path": "cvpr2027/method_dev/20261111/source_transfer_v1/references/stcd/results/stcd_indoor_release_bvi_val16.json",
+        "sha256": "d0e8a51a93d387cec41e4ba0d58b93f523e9b48303d215ba043a16045ca24d6d",
+        "target_protocol": "BVI VAL16 / centre16 / crop256; development protocol, not native full-video benchmark",
+        "scores": {
+          "psnr_y": 16.607015145220217,
+          "psnr_rgb": 16.20243010006068,
+          "lpips": 0.3153048399835825,
+          "tlp": 0.05216285049391445,
+          "gt_tlp": 0.05303222464863211,
+          "tlp_gap": 0.004883863861323334
+        }
+      }
+    },
+    {
+      "id": "tempretinex_did_release",
+      "name": "TempRetinex",
+      "role": "video enhancement reference",
+      "status": "complete_current_environment",
+      "evidence": {
+        "path": "cvpr2027/method_dev/20261112/observation_v2/references/tempretinex/results/bvi_val16_did_reference.json",
+        "sha256": "0e46e5f806786fe96a83f1232555a520384f2cf9047b408b8d90bfea27fe33b5",
+        "target_protocol": "BVI VAL16 / centre16 / crop256; development protocol, not native full-video benchmark",
+        "scores": {
+          "psnr_y": 19.717821984058393,
+          "psnr_rgb": 18.89747817234394,
+          "lpips": 0.1632810765877366,
+          "tlp": 0.06747743766754866,
+          "gt_tlp": 0.05303222464863211,
+          "tlp_gap": 0.015543384361080825
+        }
+      }
+    },
+    {
+      "id": "amnet_rgb",
+      "name": "AnyMod-LLVE / AMNet (RGB input)",
+      "role": "priority new contemporary video baseline",
+      "status": "code_interface_verified_specified_finetuned_checkpoint_not_obtained_no_score",
+      "evidence": "cvpr2027/method_dev/20261112/baseline_replay_v1/AMNET_READINESS.md"
+    }
+  ],
+  "innovation_status": {
+    "validated_new_core_module": "none_yet",
+    "joint_observation_search_v1": "implemented;28 real CPU tests passed;all5x400 completed;source primary gate0/4;no target inference",
+    "record": "cvpr2027/method_dev/20261112/joint_observation_search_v1/RESULTS.md",
+    "hvi_source_preparation": "136 float anchors ready/verified; no GT pixel access during export",
+    "hvi_temporal_fit_only": "fixed lambda .25/.5/1 gains .242699/.388408/.300442dB on FIT; all7 rows preserved; no lambda selection; no heldout or target validation",
+    "hvi_source_boundary": "HVI FIT15.4145 RGBdB; strong BVI image reference does not imply strong SDSD source anchor",
+    "novelty_screen": "CsNet already covers uncentered correlated-error risk/simplex fusion; do not relabel it as a new core operator",
+    "nearest_work_record": "cvpr2027/method_dev/20261112/hvi_temporal_fit_feasibility_v1/checks/second_moment_neighbors.md"
+  },
+  "next_requirements": [
+    "Develop a specific mechanism beyond fixed temporal mean and known conditional risk/kernel fusion",
+    "Use matched strong anchor/fusion/module controls and account for source-domain exposure mismatch",
+    "Freeze the next module protocol before further heldout/target scoring; FIT headroom alone authorizes no cross-domain claim"
+  ]
+}

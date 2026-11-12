@@ -1,0 +1,3908 @@
+{
+  "schema_version": 1,
+  "scope": "source TRAIN module development; historical base saw all scenes; no target",
+  "metric": "float32 RGB squared residual, float64 reduction over all16/full256; PSNR from clip MSE, equal scene means",
+  "selection": "All five final400 scalar searches, one source development evaluation",
+  "prepared_manifest_sha256": "50c45b1ff4e858dc9fc175a6bf1d92cb79b6728fa79957d9c80f41bc2a7b6156",
+  "source_sha256": {
+    "tools/cache_source_corrections.py": "34dad77d6b90e6fa418a2828924f034b3c541091ebb4acae7eceab34fac85683",
+    "tools/cache_correction_oracle.py": "7c989a8873101e6139af4cd2c81d0675e5c440024e177a1ae90c10544359fadd",
+    "tools/eval_e4.py": "3fb906535d76ca11e379d41113424d1d1d47205d56ca5f5de0b557c3adcf0467",
+    "tools/checkpoint_config.py": "1afa4b685b092150a7f178938c80cc31d339d901335b357ce0c3bdcdcd6f4c7b",
+    "models/pixel_branch_v2.py": "f83c1aaa5797e5413a1adb41d49cecc0a093e72159e6d4fdbaf610168b739222",
+    "models/vjepa_backbone.py": "8d8e4ca44cecad797aec05af5f627b50927b9d72860187b76d466794f2d3e4bf",
+    "models/token_projection.py": "8c7b455ecc56cb5d503b016f226be622be3c6fc4ae4be814b270628b4752c7c1",
+    "data/common.py": "6041b43e832ab67def75b9e7285927dddd77d45d0bc25945bb600167b04e4ded",
+    "data/planned_bvi.py": "cb136a5625d39fd3df58a8c96284730f4b19423dcfbc05fceb67a8398290b21d",
+    "tools/train_method_pilot.py": "7c5a2abe65d2ebdfb788cdcc824761f6aac328f4492c81996d3d0d6067dd6b8c",
+    "tools/train_correction_selector.py": "cc7af1ae735f7ea112ca6dec62a668b9eb3e744941d2f44034a58173f7fbcf9c",
+    "models/joint_observation_search.py": "5fba0dd8303881375fbec48f14dbdbb6fd5479c125277841335ab8110fd9d7ff",
+    "tools/cache_joint_observation_search.py": "334ca97edc53dd4e83e2bab0776a7c980b9e13f25e16667663838b8b0f3cc39b",
+    "tools/train_joint_observation_search.py": "8758609e054527436ccee1b85e4c56125a5301694355d8e16f99033d6b3de250",
+    "tools/train_observation_geometry.py": "c8e9527d1eced7234d2830fdfcb2b07d3ba4151e8055a7c09eeba167535f0dbc",
+    "tools/train_observation_memory.py": "def92f03af6ecc289da8b24e8eae0cd79a27a1a836e68d3443658ba7dfed3fb3",
+    "tools/train_source_selector.py": "5329c6991642cb901e6b6697d8ce530fe688d0fe255497bdd01d485953c22d26",
+    "tools/cache_observation_memory.py": "473aa1ed44aeb36ffd509afd3faa742235227a50dc592d6dc26179a3a01a1f6c",
+    "models/observation_geometry.py": "93fc13bf9cc0b39fd70ae18dd01a310b0af0c41bc347e1c65098e3e69ea9d01f",
+    "models/observation_candidates.py": "6c2747de79dcdea95832bd7a221d266f00257078360b9b425cfad5811ff178b8",
+    "models/correction_selector.py": "f81613c275bff26478d8010eb21f15040163e0f955c15b261df136ff0409a93c",
+    "models/observation_memory.py": "064efae9a38ac24c149714ce94c8d19481ce379c59f5cf951a57de94965d1990",
+    "models/trajectory_reconstruction.py": "0b94db04a309b91c83e25a83e1ca9d70f8eaa2983cc08bc952b8fff972dbd716"
+  },
+  "checkpoint_sha256": {
+    "joint_prior": "85b80ab30ec748ff97df1baff225edc9090cb08b59be297ce8b2b3859c24a453",
+    "independent_prior": "2c31aa1c144f77214e97f5a55ad74974865a43a5d87602feaf240a9c994ce1c3",
+    "constant_prior": "6d89fca47b97830280ddae375486e07de33f0c151156e38179493135240df4e1",
+    "joint_pixel": "297849a7bba0c6bd9d9931468bfb56b9e11fa6993d673519f738481069f5f875",
+    "joint_shuffled": "c8f763f1edcf5e66f4c3dfe0f8afcc238c172441a31150dd53d89e8b1835159c"
+  },
+  "provenance": {
+    "joint_prior": {
+      "schema_version": 1,
+      "mode": "joint_prior",
+      "seed": 0,
+      "steps": 400,
+      "model_config": {
+        "normalization": {
+          "feature_mean": [
+            0.07688344269990921,
+            0.08124569058418274,
+            0.0843527615070343,
+            0.2891903519630432,
+            0.302641361951828,
+            0.30598515272140503,
+            5.714988583349623e-05,
+            3.35661243298091e-05,
+            4.348259972175583e-05,
+            6.073676559026353e-05,
+            3.8179663533810526e-05,
+            4.819150490220636e-05,
+            0.0009021488949656487,
+            0.002142298733815551,
+            0.0009092660038731992,
+            0.0003545280487742275,
+            0.0009139141184277833,
+            0.8338102698326111,
+            0.8339365124702454
+          ],
+          "feature_std": [
+            0.09175248444080353,
+            0.0881277397274971,
+            0.08922518789768219,
+            0.25367236137390137,
+            0.2382490485906601,
+            0.2401934117078781,
+            0.005759776569902897,
+            0.00522431218996644,
+            0.005985908210277557,
+            0.005755619145929813,
+            0.005228627938777208,
+            0.0059785740450024605,
+            0.006509376689791679,
+            0.007609592750668526,
+            0.0019579571671783924,
+            0.001531159388832748,
+            0.0019882062915712595,
+            0.35120874643325806,
+            0.3513437509536743
+          ]
+        },
+        "search_mode": "joint",
+        "address_mode": "prior",
+        "uncertainty_mode": "calibrated",
+        "search_patch": 16,
+        "offset": 2,
+        "max_shift": 2.0,
+        "amplitude_rule": "tanh_projected_nonnegative_zero_init",
+        "confidence_rule": "one_minus_marginal_entropy_over_log_valid_support"
+      },
+      "initial_state_sha256": "62f468a8a2a68db6f46fdfa6836fb37744a983436a06e4e8f0086d61cb2376bf",
+      "initial_file_sha256": "87abef2bae15e15ba14ffaf1e4c8c777d85d61a3b4c52b5904f1901e980d2250",
+      "sample_plan_sha256": "8756aa2984cca2107f0cff09fbebbcbc491fe17c8458b7e8c1b6ebd99e246fb7",
+      "prepared_manifest_sha256": "50c45b1ff4e858dc9fc175a6bf1d92cb79b6728fa79957d9c80f41bc2a7b6156",
+      "source_sha256": {
+        "tools/cache_source_corrections.py": "34dad77d6b90e6fa418a2828924f034b3c541091ebb4acae7eceab34fac85683",
+        "tools/cache_correction_oracle.py": "7c989a8873101e6139af4cd2c81d0675e5c440024e177a1ae90c10544359fadd",
+        "tools/eval_e4.py": "3fb906535d76ca11e379d41113424d1d1d47205d56ca5f5de0b557c3adcf0467",
+        "tools/checkpoint_config.py": "1afa4b685b092150a7f178938c80cc31d339d901335b357ce0c3bdcdcd6f4c7b",
+        "models/pixel_branch_v2.py": "f83c1aaa5797e5413a1adb41d49cecc0a093e72159e6d4fdbaf610168b739222",
+        "models/vjepa_backbone.py": "8d8e4ca44cecad797aec05af5f627b50927b9d72860187b76d466794f2d3e4bf",
+        "models/token_projection.py": "8c7b455ecc56cb5d503b016f226be622be3c6fc4ae4be814b270628b4752c7c1",
+        "data/common.py": "6041b43e832ab67def75b9e7285927dddd77d45d0bc25945bb600167b04e4ded",
+        "data/planned_bvi.py": "cb136a5625d39fd3df58a8c96284730f4b19423dcfbc05fceb67a8398290b21d",
+        "tools/train_method_pilot.py": "7c5a2abe65d2ebdfb788cdcc824761f6aac328f4492c81996d3d0d6067dd6b8c",
+        "tools/train_correction_selector.py": "cc7af1ae735f7ea112ca6dec62a668b9eb3e744941d2f44034a58173f7fbcf9c",
+        "models/joint_observation_search.py": "5fba0dd8303881375fbec48f14dbdbb6fd5479c125277841335ab8110fd9d7ff",
+        "tools/cache_joint_observation_search.py": "334ca97edc53dd4e83e2bab0776a7c980b9e13f25e16667663838b8b0f3cc39b",
+        "tools/train_joint_observation_search.py": "8758609e054527436ccee1b85e4c56125a5301694355d8e16f99033d6b3de250",
+        "tools/train_observation_geometry.py": "c8e9527d1eced7234d2830fdfcb2b07d3ba4151e8055a7c09eeba167535f0dbc",
+        "tools/train_observation_memory.py": "def92f03af6ecc289da8b24e8eae0cd79a27a1a836e68d3443658ba7dfed3fb3",
+        "tools/train_source_selector.py": "5329c6991642cb901e6b6697d8ce530fe688d0fe255497bdd01d485953c22d26",
+        "tools/cache_observation_memory.py": "473aa1ed44aeb36ffd509afd3faa742235227a50dc592d6dc26179a3a01a1f6c",
+        "models/observation_geometry.py": "93fc13bf9cc0b39fd70ae18dd01a310b0af0c41bc347e1c65098e3e69ea9d01f",
+        "models/observation_candidates.py": "6c2747de79dcdea95832bd7a221d266f00257078360b9b425cfad5811ff178b8",
+        "models/correction_selector.py": "f81613c275bff26478d8010eb21f15040163e0f955c15b261df136ff0409a93c",
+        "models/observation_memory.py": "064efae9a38ac24c149714ce94c8d19481ce379c59f5cf951a57de94965d1990",
+        "models/trajectory_reconstruction.py": "0b94db04a309b91c83e25a83e1ca9d70f8eaa2983cc08bc952b8fff972dbd716"
+      },
+      "split": {
+        "seed": 20261114,
+        "fit": [
+          "SDSD_outdoor/MVI_0975",
+          "SDSD_indoor/pair29",
+          "SDSD_indoor/pair24",
+          "SDSD_indoor/pair20",
+          "SDSD_outdoor/MVI_0951",
+          "SDSD_outdoor/MVI_0997",
+          "SDSD_outdoor/MVI_0953",
+          "SDSD_outdoor/MVI_0977",
+          "SDSD_outdoor/MVI_0925",
+          "SDSD_outdoor/MVI_0906",
+          "SDSD_indoor/pair14",
+          "SDSD_outdoor/MVI_0904",
+          "SDSD_indoor/pair15",
+          "SDSD_indoor/pair11",
+          "SDSD_outdoor/MVI_0967",
+          "SDSD_indoor/pair33",
+          "SDSD_outdoor/MVI_0983",
+          "SDSD_outdoor/MVI_0981",
+          "SDSD_indoor/pair26",
+          "SDSD_outdoor/MVI_0928",
+          "SDSD_outdoor/MVI_0973",
+          "SDSD_outdoor/MVI_0909",
+          "SDSD_outdoor/MVI_0993",
+          "SDSD_outdoor/MVI_0938",
+          "SDSD_outdoor/MVI_0930",
+          "SDSD_outdoor/MVI_0949",
+          "SDSD_outdoor/MVI_0979",
+          "SDSD_outdoor/MVI_0995",
+          "SDSD_outdoor/MVI_0999",
+          "SDSD_outdoor/MVI_0947",
+          "SDSD_outdoor/MVI_0911",
+          "SDSD_outdoor/MVI_0959",
+          "SDSD_indoor/pair10",
+          "SDSD_outdoor/MVI_0963",
+          "SDSD_indoor/pair31",
+          "SDSD_outdoor/MVI_0932",
+          "SDSD_outdoor/MVI_0916",
+          "SDSD_outdoor/MVI_0961",
+          "SDSD_outdoor/MVI_0969",
+          "SDSD_outdoor/MVI_1001",
+          "SDSD_indoor/pair25",
+          "SDSD_outdoor/MVI_0902",
+          "SDSD_indoor/pair2",
+          "SDSD_outdoor/MVI_0957",
+          "SDSD_indoor/pair21",
+          "SDSD_outdoor/MVI_0918",
+          "SDSD_indoor/pair17",
+          "SDSD_outdoor/MVI_1005",
+          "SDSD_outdoor/MVI_0990",
+          "SDSD_outdoor/MVI_0988",
+          "SDSD_indoor/pair27"
+        ],
+        "internal_holdout": [
+          "SDSD_outdoor/MVI_0900",
+          "SDSD_outdoor/MVI_0943",
+          "SDSD_outdoor/MVI_0941",
+          "SDSD_outdoor/MVI_1003",
+          "SDSD_indoor/pair32",
+          "SDSD_indoor/pair13",
+          "SDSD_outdoor/MVI_0935",
+          "SDSD_indoor/pair23",
+          "SDSD_outdoor/MVI_0971",
+          "SDSD_indoor/pair18",
+          "SDSD_indoor/pair30",
+          "SDSD_outdoor/MVI_0926",
+          "SDSD_indoor/pair22",
+          "SDSD_outdoor/MVI_0955",
+          "SDSD_indoor/pair12",
+          "SDSD_indoor/pair16",
+          "SDSD_outdoor/MVI_0915"
+        ],
+        "scope": "75/25 source TRAIN scenes; internal to base training; no target data or model selection"
+      },
+      "calibration_sha256": "ef834740b82de7d46b470e29e093a267119b2e2c0a686f1836f4c8d9421f758d",
+      "reference_head_sha256": "46c23bc2f85160777310b243266ec88cdbc788868a152f0b1f9382aa9b60725b",
+      "frozen_node_state_sha256": "e14ef09f1b5a1681c0526a9167399638bd7e2f95fafd6d1cdd2ada193ee5ec75",
+      "fit_only_mse_normalizer": 0.0027711779351674896,
+      "args": {
+        "optimizer": "Adam defaults;no weight decay;post-step declared parameter projection",
+        "lr": 0.01,
+        "threads": 4,
+        "device": "cpu float32",
+        "forward_context": 256,
+        "loss_crop": 128,
+        "clip_len": 16,
+        "loss_frames": 8,
+        "clips_per_update": 1
+      },
+      "trainable_parameters": 4,
+      "frozen_parameters": 6626,
+      "selection": "Final400 only; all five modes before one complete source internal evaluation; no target",
+      "runtime": {
+        "torch": "2.7.1+cpu",
+        "numpy": "1.26.4"
+      }
+    },
+    "independent_prior": {
+      "schema_version": 1,
+      "mode": "independent_prior",
+      "seed": 0,
+      "steps": 400,
+      "model_config": {
+        "normalization": {
+          "feature_mean": [
+            0.07688344269990921,
+            0.08124569058418274,
+            0.0843527615070343,
+            0.2891903519630432,
+            0.302641361951828,
+            0.30598515272140503,
+            5.714988583349623e-05,
+            3.35661243298091e-05,
+            4.348259972175583e-05,
+            6.073676559026353e-05,
+            3.8179663533810526e-05,
+            4.819150490220636e-05,
+            0.0009021488949656487,
+            0.002142298733815551,
+            0.0009092660038731992,
+            0.0003545280487742275,
+            0.0009139141184277833,
+            0.8338102698326111,
+            0.8339365124702454
+          ],
+          "feature_std": [
+            0.09175248444080353,
+            0.0881277397274971,
+            0.08922518789768219,
+            0.25367236137390137,
+            0.2382490485906601,
+            0.2401934117078781,
+            0.005759776569902897,
+            0.00522431218996644,
+            0.005985908210277557,
+            0.005755619145929813,
+            0.005228627938777208,
+            0.0059785740450024605,
+            0.006509376689791679,
+            0.007609592750668526,
+            0.0019579571671783924,
+            0.001531159388832748,
+            0.0019882062915712595,
+            0.35120874643325806,
+            0.3513437509536743
+          ]
+        },
+        "search_mode": "independent",
+        "address_mode": "prior",
+        "uncertainty_mode": "calibrated",
+        "search_patch": 16,
+        "offset": 2,
+        "max_shift": 2.0,
+        "amplitude_rule": "tanh_projected_nonnegative_zero_init",
+        "confidence_rule": "one_minus_marginal_entropy_over_log_valid_support"
+      },
+      "initial_state_sha256": "62f468a8a2a68db6f46fdfa6836fb37744a983436a06e4e8f0086d61cb2376bf",
+      "initial_file_sha256": "87abef2bae15e15ba14ffaf1e4c8c777d85d61a3b4c52b5904f1901e980d2250",
+      "sample_plan_sha256": "8756aa2984cca2107f0cff09fbebbcbc491fe17c8458b7e8c1b6ebd99e246fb7",
+      "prepared_manifest_sha256": "50c45b1ff4e858dc9fc175a6bf1d92cb79b6728fa79957d9c80f41bc2a7b6156",
+      "source_sha256": {
+        "tools/cache_source_corrections.py": "34dad77d6b90e6fa418a2828924f034b3c541091ebb4acae7eceab34fac85683",
+        "tools/cache_correction_oracle.py": "7c989a8873101e6139af4cd2c81d0675e5c440024e177a1ae90c10544359fadd",
+        "tools/eval_e4.py": "3fb906535d76ca11e379d41113424d1d1d47205d56ca5f5de0b557c3adcf0467",
+        "tools/checkpoint_config.py": "1afa4b685b092150a7f178938c80cc31d339d901335b357ce0c3bdcdcd6f4c7b",
+        "models/pixel_branch_v2.py": "f83c1aaa5797e5413a1adb41d49cecc0a093e72159e6d4fdbaf610168b739222",
+        "models/vjepa_backbone.py": "8d8e4ca44cecad797aec05af5f627b50927b9d72860187b76d466794f2d3e4bf",
+        "models/token_projection.py": "8c7b455ecc56cb5d503b016f226be622be3c6fc4ae4be814b270628b4752c7c1",
+        "data/common.py": "6041b43e832ab67def75b9e7285927dddd77d45d0bc25945bb600167b04e4ded",
+        "data/planned_bvi.py": "cb136a5625d39fd3df58a8c96284730f4b19423dcfbc05fceb67a8398290b21d",
+        "tools/train_method_pilot.py": "7c5a2abe65d2ebdfb788cdcc824761f6aac328f4492c81996d3d0d6067dd6b8c",
+        "tools/train_correction_selector.py": "cc7af1ae735f7ea112ca6dec62a668b9eb3e744941d2f44034a58173f7fbcf9c",
+        "models/joint_observation_search.py": "5fba0dd8303881375fbec48f14dbdbb6fd5479c125277841335ab8110fd9d7ff",
+        "tools/cache_joint_observation_search.py": "334ca97edc53dd4e83e2bab0776a7c980b9e13f25e16667663838b8b0f3cc39b",
+        "tools/train_joint_observation_search.py": "8758609e054527436ccee1b85e4c56125a5301694355d8e16f99033d6b3de250",
+        "tools/train_observation_geometry.py": "c8e9527d1eced7234d2830fdfcb2b07d3ba4151e8055a7c09eeba167535f0dbc",
+        "tools/train_observation_memory.py": "def92f03af6ecc289da8b24e8eae0cd79a27a1a836e68d3443658ba7dfed3fb3",
+        "tools/train_source_selector.py": "5329c6991642cb901e6b6697d8ce530fe688d0fe255497bdd01d485953c22d26",
+        "tools/cache_observation_memory.py": "473aa1ed44aeb36ffd509afd3faa742235227a50dc592d6dc26179a3a01a1f6c",
+        "models/observation_geometry.py": "93fc13bf9cc0b39fd70ae18dd01a310b0af0c41bc347e1c65098e3e69ea9d01f",
+        "models/observation_candidates.py": "6c2747de79dcdea95832bd7a221d266f00257078360b9b425cfad5811ff178b8",
+        "models/correction_selector.py": "f81613c275bff26478d8010eb21f15040163e0f955c15b261df136ff0409a93c",
+        "models/observation_memory.py": "064efae9a38ac24c149714ce94c8d19481ce379c59f5cf951a57de94965d1990",
+        "models/trajectory_reconstruction.py": "0b94db04a309b91c83e25a83e1ca9d70f8eaa2983cc08bc952b8fff972dbd716"
+      },
+      "split": {
+        "seed": 20261114,
+        "fit": [
+          "SDSD_outdoor/MVI_0975",
+          "SDSD_indoor/pair29",
+          "SDSD_indoor/pair24",
+          "SDSD_indoor/pair20",
+          "SDSD_outdoor/MVI_0951",
+          "SDSD_outdoor/MVI_0997",
+          "SDSD_outdoor/MVI_0953",
+          "SDSD_outdoor/MVI_0977",
+          "SDSD_outdoor/MVI_0925",
+          "SDSD_outdoor/MVI_0906",
+          "SDSD_indoor/pair14",
+          "SDSD_outdoor/MVI_0904",
+          "SDSD_indoor/pair15",
+          "SDSD_indoor/pair11",
+          "SDSD_outdoor/MVI_0967",
+          "SDSD_indoor/pair33",
+          "SDSD_outdoor/MVI_0983",
+          "SDSD_outdoor/MVI_0981",
+          "SDSD_indoor/pair26",
+          "SDSD_outdoor/MVI_0928",
+          "SDSD_outdoor/MVI_0973",
+          "SDSD_outdoor/MVI_0909",
+          "SDSD_outdoor/MVI_0993",
+          "SDSD_outdoor/MVI_0938",
+          "SDSD_outdoor/MVI_0930",
+          "SDSD_outdoor/MVI_0949",
+          "SDSD_outdoor/MVI_0979",
+          "SDSD_outdoor/MVI_0995",
+          "SDSD_outdoor/MVI_0999",
+          "SDSD_outdoor/MVI_0947",
+          "SDSD_outdoor/MVI_0911",
+          "SDSD_outdoor/MVI_0959",
+          "SDSD_indoor/pair10",
+          "SDSD_outdoor/MVI_0963",
+          "SDSD_indoor/pair31",
+          "SDSD_outdoor/MVI_0932",
+          "SDSD_outdoor/MVI_0916",
+          "SDSD_outdoor/MVI_0961",
+          "SDSD_outdoor/MVI_0969",
+          "SDSD_outdoor/MVI_1001",
+          "SDSD_indoor/pair25",
+          "SDSD_outdoor/MVI_0902",
+          "SDSD_indoor/pair2",
+          "SDSD_outdoor/MVI_0957",
+          "SDSD_indoor/pair21",
+          "SDSD_outdoor/MVI_0918",
+          "SDSD_indoor/pair17",
+          "SDSD_outdoor/MVI_1005",
+          "SDSD_outdoor/MVI_0990",
+          "SDSD_outdoor/MVI_0988",
+          "SDSD_indoor/pair27"
+        ],
+        "internal_holdout": [
+          "SDSD_outdoor/MVI_0900",
+          "SDSD_outdoor/MVI_0943",
+          "SDSD_outdoor/MVI_0941",
+          "SDSD_outdoor/MVI_1003",
+          "SDSD_indoor/pair32",
+          "SDSD_indoor/pair13",
+          "SDSD_outdoor/MVI_0935",
+          "SDSD_indoor/pair23",
+          "SDSD_outdoor/MVI_0971",
+          "SDSD_indoor/pair18",
+          "SDSD_indoor/pair30",
+          "SDSD_outdoor/MVI_0926",
+          "SDSD_indoor/pair22",
+          "SDSD_outdoor/MVI_0955",
+          "SDSD_indoor/pair12",
+          "SDSD_indoor/pair16",
+          "SDSD_outdoor/MVI_0915"
+        ],
+        "scope": "75/25 source TRAIN scenes; internal to base training; no target data or model selection"
+      },
+      "calibration_sha256": "ef834740b82de7d46b470e29e093a267119b2e2c0a686f1836f4c8d9421f758d",
+      "reference_head_sha256": "46c23bc2f85160777310b243266ec88cdbc788868a152f0b1f9382aa9b60725b",
+      "frozen_node_state_sha256": "e14ef09f1b5a1681c0526a9167399638bd7e2f95fafd6d1cdd2ada193ee5ec75",
+      "fit_only_mse_normalizer": 0.0027711779351674896,
+      "args": {
+        "optimizer": "Adam defaults;no weight decay;post-step declared parameter projection",
+        "lr": 0.01,
+        "threads": 4,
+        "device": "cpu float32",
+        "forward_context": 256,
+        "loss_crop": 128,
+        "clip_len": 16,
+        "loss_frames": 8,
+        "clips_per_update": 1
+      },
+      "trainable_parameters": 4,
+      "frozen_parameters": 6626,
+      "selection": "Final400 only; all five modes before one complete source internal evaluation; no target",
+      "runtime": {
+        "torch": "2.7.1+cpu",
+        "numpy": "1.26.4"
+      }
+    },
+    "constant_prior": {
+      "schema_version": 1,
+      "mode": "constant_prior",
+      "seed": 0,
+      "steps": 400,
+      "model_config": {
+        "normalization": {
+          "feature_mean": [
+            0.07688344269990921,
+            0.08124569058418274,
+            0.0843527615070343,
+            0.2891903519630432,
+            0.302641361951828,
+            0.30598515272140503,
+            5.714988583349623e-05,
+            3.35661243298091e-05,
+            4.348259972175583e-05,
+            6.073676559026353e-05,
+            3.8179663533810526e-05,
+            4.819150490220636e-05,
+            0.0009021488949656487,
+            0.002142298733815551,
+            0.0009092660038731992,
+            0.0003545280487742275,
+            0.0009139141184277833,
+            0.8338102698326111,
+            0.8339365124702454
+          ],
+          "feature_std": [
+            0.09175248444080353,
+            0.0881277397274971,
+            0.08922518789768219,
+            0.25367236137390137,
+            0.2382490485906601,
+            0.2401934117078781,
+            0.005759776569902897,
+            0.00522431218996644,
+            0.005985908210277557,
+            0.005755619145929813,
+            0.005228627938777208,
+            0.0059785740450024605,
+            0.006509376689791679,
+            0.007609592750668526,
+            0.0019579571671783924,
+            0.001531159388832748,
+            0.0019882062915712595,
+            0.35120874643325806,
+            0.3513437509536743
+          ]
+        },
+        "search_mode": "joint",
+        "address_mode": "prior",
+        "uncertainty_mode": "constant",
+        "search_patch": 16,
+        "offset": 2,
+        "max_shift": 2.0,
+        "amplitude_rule": "tanh_projected_nonnegative_zero_init",
+        "confidence_rule": "one_minus_marginal_entropy_over_log_valid_support"
+      },
+      "initial_state_sha256": "62f468a8a2a68db6f46fdfa6836fb37744a983436a06e4e8f0086d61cb2376bf",
+      "initial_file_sha256": "87abef2bae15e15ba14ffaf1e4c8c777d85d61a3b4c52b5904f1901e980d2250",
+      "sample_plan_sha256": "8756aa2984cca2107f0cff09fbebbcbc491fe17c8458b7e8c1b6ebd99e246fb7",
+      "prepared_manifest_sha256": "50c45b1ff4e858dc9fc175a6bf1d92cb79b6728fa79957d9c80f41bc2a7b6156",
+      "source_sha256": {
+        "tools/cache_source_corrections.py": "34dad77d6b90e6fa418a2828924f034b3c541091ebb4acae7eceab34fac85683",
+        "tools/cache_correction_oracle.py": "7c989a8873101e6139af4cd2c81d0675e5c440024e177a1ae90c10544359fadd",
+        "tools/eval_e4.py": "3fb906535d76ca11e379d41113424d1d1d47205d56ca5f5de0b557c3adcf0467",
+        "tools/checkpoint_config.py": "1afa4b685b092150a7f178938c80cc31d339d901335b357ce0c3bdcdcd6f4c7b",
+        "models/pixel_branch_v2.py": "f83c1aaa5797e5413a1adb41d49cecc0a093e72159e6d4fdbaf610168b739222",
+        "models/vjepa_backbone.py": "8d8e4ca44cecad797aec05af5f627b50927b9d72860187b76d466794f2d3e4bf",
+        "models/token_projection.py": "8c7b455ecc56cb5d503b016f226be622be3c6fc4ae4be814b270628b4752c7c1",
+        "data/common.py": "6041b43e832ab67def75b9e7285927dddd77d45d0bc25945bb600167b04e4ded",
+        "data/planned_bvi.py": "cb136a5625d39fd3df58a8c96284730f4b19423dcfbc05fceb67a8398290b21d",
+        "tools/train_method_pilot.py": "7c5a2abe65d2ebdfb788cdcc824761f6aac328f4492c81996d3d0d6067dd6b8c",
+        "tools/train_correction_selector.py": "cc7af1ae735f7ea112ca6dec62a668b9eb3e744941d2f44034a58173f7fbcf9c",
+        "models/joint_observation_search.py": "5fba0dd8303881375fbec48f14dbdbb6fd5479c125277841335ab8110fd9d7ff",
+        "tools/cache_joint_observation_search.py": "334ca97edc53dd4e83e2bab0776a7c980b9e13f25e16667663838b8b0f3cc39b",
+        "tools/train_joint_observation_search.py": "8758609e054527436ccee1b85e4c56125a5301694355d8e16f99033d6b3de250",
+        "tools/train_observation_geometry.py": "c8e9527d1eced7234d2830fdfcb2b07d3ba4151e8055a7c09eeba167535f0dbc",
+        "tools/train_observation_memory.py": "def92f03af6ecc289da8b24e8eae0cd79a27a1a836e68d3443658ba7dfed3fb3",
+        "tools/train_source_selector.py": "5329c6991642cb901e6b6697d8ce530fe688d0fe255497bdd01d485953c22d26",
+        "tools/cache_observation_memory.py": "473aa1ed44aeb36ffd509afd3faa742235227a50dc592d6dc26179a3a01a1f6c",
+        "models/observation_geometry.py": "93fc13bf9cc0b39fd70ae18dd01a310b0af0c41bc347e1c65098e3e69ea9d01f",
+        "models/observation_candidates.py": "6c2747de79dcdea95832bd7a221d266f00257078360b9b425cfad5811ff178b8",
+        "models/correction_selector.py": "f81613c275bff26478d8010eb21f15040163e0f955c15b261df136ff0409a93c",
+        "models/observation_memory.py": "064efae9a38ac24c149714ce94c8d19481ce379c59f5cf951a57de94965d1990",
+        "models/trajectory_reconstruction.py": "0b94db04a309b91c83e25a83e1ca9d70f8eaa2983cc08bc952b8fff972dbd716"
+      },
+      "split": {
+        "seed": 20261114,
+        "fit": [
+          "SDSD_outdoor/MVI_0975",
+          "SDSD_indoor/pair29",
+          "SDSD_indoor/pair24",
+          "SDSD_indoor/pair20",
+          "SDSD_outdoor/MVI_0951",
+          "SDSD_outdoor/MVI_0997",
+          "SDSD_outdoor/MVI_0953",
+          "SDSD_outdoor/MVI_0977",
+          "SDSD_outdoor/MVI_0925",
+          "SDSD_outdoor/MVI_0906",
+          "SDSD_indoor/pair14",
+          "SDSD_outdoor/MVI_0904",
+          "SDSD_indoor/pair15",
+          "SDSD_indoor/pair11",
+          "SDSD_outdoor/MVI_0967",
+          "SDSD_indoor/pair33",
+          "SDSD_outdoor/MVI_0983",
+          "SDSD_outdoor/MVI_0981",
+          "SDSD_indoor/pair26",
+          "SDSD_outdoor/MVI_0928",
+          "SDSD_outdoor/MVI_0973",
+          "SDSD_outdoor/MVI_0909",
+          "SDSD_outdoor/MVI_0993",
+          "SDSD_outdoor/MVI_0938",
+          "SDSD_outdoor/MVI_0930",
+          "SDSD_outdoor/MVI_0949",
+          "SDSD_outdoor/MVI_0979",
+          "SDSD_outdoor/MVI_0995",
+          "SDSD_outdoor/MVI_0999",
+          "SDSD_outdoor/MVI_0947",
+          "SDSD_outdoor/MVI_0911",
+          "SDSD_outdoor/MVI_0959",
+          "SDSD_indoor/pair10",
+          "SDSD_outdoor/MVI_0963",
+          "SDSD_indoor/pair31",
+          "SDSD_outdoor/MVI_0932",
+          "SDSD_outdoor/MVI_0916",
+          "SDSD_outdoor/MVI_0961",
+          "SDSD_outdoor/MVI_0969",
+          "SDSD_outdoor/MVI_1001",
+          "SDSD_indoor/pair25",
+          "SDSD_outdoor/MVI_0902",
+          "SDSD_indoor/pair2",
+          "SDSD_outdoor/MVI_0957",
+          "SDSD_indoor/pair21",
+          "SDSD_outdoor/MVI_0918",
+          "SDSD_indoor/pair17",
+          "SDSD_outdoor/MVI_1005",
+          "SDSD_outdoor/MVI_0990",
+          "SDSD_outdoor/MVI_0988",
+          "SDSD_indoor/pair27"
+        ],
+        "internal_holdout": [
+          "SDSD_outdoor/MVI_0900",
+          "SDSD_outdoor/MVI_0943",
+          "SDSD_outdoor/MVI_0941",
+          "SDSD_outdoor/MVI_1003",
+          "SDSD_indoor/pair32",
+          "SDSD_indoor/pair13",
+          "SDSD_outdoor/MVI_0935",
+          "SDSD_indoor/pair23",
+          "SDSD_outdoor/MVI_0971",
+          "SDSD_indoor/pair18",
+          "SDSD_indoor/pair30",
+          "SDSD_outdoor/MVI_0926",
+          "SDSD_indoor/pair22",
+          "SDSD_outdoor/MVI_0955",
+          "SDSD_indoor/pair12",
+          "SDSD_indoor/pair16",
+          "SDSD_outdoor/MVI_0915"
+        ],
+        "scope": "75/25 source TRAIN scenes; internal to base training; no target data or model selection"
+      },
+      "calibration_sha256": "ef834740b82de7d46b470e29e093a267119b2e2c0a686f1836f4c8d9421f758d",
+      "reference_head_sha256": "46c23bc2f85160777310b243266ec88cdbc788868a152f0b1f9382aa9b60725b",
+      "frozen_node_state_sha256": "e14ef09f1b5a1681c0526a9167399638bd7e2f95fafd6d1cdd2ada193ee5ec75",
+      "fit_only_mse_normalizer": 0.0027711779351674896,
+      "args": {
+        "optimizer": "Adam defaults;no weight decay;post-step declared parameter projection",
+        "lr": 0.01,
+        "threads": 4,
+        "device": "cpu float32",
+        "forward_context": 256,
+        "loss_crop": 128,
+        "clip_len": 16,
+        "loss_frames": 8,
+        "clips_per_update": 1
+      },
+      "trainable_parameters": 4,
+      "frozen_parameters": 6626,
+      "selection": "Final400 only; all five modes before one complete source internal evaluation; no target",
+      "runtime": {
+        "torch": "2.7.1+cpu",
+        "numpy": "1.26.4"
+      }
+    },
+    "joint_pixel": {
+      "schema_version": 1,
+      "mode": "joint_pixel",
+      "seed": 0,
+      "steps": 400,
+      "model_config": {
+        "normalization": {
+          "feature_mean": [
+            0.07688344269990921,
+            0.08124569058418274,
+            0.0843527615070343,
+            0.2891903519630432,
+            0.302641361951828,
+            0.30598515272140503,
+            5.714988583349623e-05,
+            3.35661243298091e-05,
+            4.348259972175583e-05,
+            6.073676559026353e-05,
+            3.8179663533810526e-05,
+            4.819150490220636e-05,
+            0.0009021488949656487,
+            0.002142298733815551,
+            0.0009092660038731992,
+            0.0003545280487742275,
+            0.0009139141184277833,
+            0.8338102698326111,
+            0.8339365124702454
+          ],
+          "feature_std": [
+            0.09175248444080353,
+            0.0881277397274971,
+            0.08922518789768219,
+            0.25367236137390137,
+            0.2382490485906601,
+            0.2401934117078781,
+            0.005759776569902897,
+            0.00522431218996644,
+            0.005985908210277557,
+            0.005755619145929813,
+            0.005228627938777208,
+            0.0059785740450024605,
+            0.006509376689791679,
+            0.007609592750668526,
+            0.0019579571671783924,
+            0.001531159388832748,
+            0.0019882062915712595,
+            0.35120874643325806,
+            0.3513437509536743
+          ]
+        },
+        "search_mode": "joint",
+        "address_mode": "pixel",
+        "uncertainty_mode": "calibrated",
+        "search_patch": 16,
+        "offset": 2,
+        "max_shift": 2.0,
+        "amplitude_rule": "tanh_projected_nonnegative_zero_init",
+        "confidence_rule": "one_minus_marginal_entropy_over_log_valid_support"
+      },
+      "initial_state_sha256": "62f468a8a2a68db6f46fdfa6836fb37744a983436a06e4e8f0086d61cb2376bf",
+      "initial_file_sha256": "87abef2bae15e15ba14ffaf1e4c8c777d85d61a3b4c52b5904f1901e980d2250",
+      "sample_plan_sha256": "8756aa2984cca2107f0cff09fbebbcbc491fe17c8458b7e8c1b6ebd99e246fb7",
+      "prepared_manifest_sha256": "50c45b1ff4e858dc9fc175a6bf1d92cb79b6728fa79957d9c80f41bc2a7b6156",
+      "source_sha256": {
+        "tools/cache_source_corrections.py": "34dad77d6b90e6fa418a2828924f034b3c541091ebb4acae7eceab34fac85683",
+        "tools/cache_correction_oracle.py": "7c989a8873101e6139af4cd2c81d0675e5c440024e177a1ae90c10544359fadd",
+        "tools/eval_e4.py": "3fb906535d76ca11e379d41113424d1d1d47205d56ca5f5de0b557c3adcf0467",
+        "tools/checkpoint_config.py": "1afa4b685b092150a7f178938c80cc31d339d901335b357ce0c3bdcdcd6f4c7b",
+        "models/pixel_branch_v2.py": "f83c1aaa5797e5413a1adb41d49cecc0a093e72159e6d4fdbaf610168b739222",
+        "models/vjepa_backbone.py": "8d8e4ca44cecad797aec05af5f627b50927b9d72860187b76d466794f2d3e4bf",
+        "models/token_projection.py": "8c7b455ecc56cb5d503b016f226be622be3c6fc4ae4be814b270628b4752c7c1",
+        "data/common.py": "6041b43e832ab67def75b9e7285927dddd77d45d0bc25945bb600167b04e4ded",
+        "data/planned_bvi.py": "cb136a5625d39fd3df58a8c96284730f4b19423dcfbc05fceb67a8398290b21d",
+        "tools/train_method_pilot.py": "7c5a2abe65d2ebdfb788cdcc824761f6aac328f4492c81996d3d0d6067dd6b8c",
+        "tools/train_correction_selector.py": "cc7af1ae735f7ea112ca6dec62a668b9eb3e744941d2f44034a58173f7fbcf9c",
+        "models/joint_observation_search.py": "5fba0dd8303881375fbec48f14dbdbb6fd5479c125277841335ab8110fd9d7ff",
+        "tools/cache_joint_observation_search.py": "334ca97edc53dd4e83e2bab0776a7c980b9e13f25e16667663838b8b0f3cc39b",
+        "tools/train_joint_observation_search.py": "8758609e054527436ccee1b85e4c56125a5301694355d8e16f99033d6b3de250",
+        "tools/train_observation_geometry.py": "c8e9527d1eced7234d2830fdfcb2b07d3ba4151e8055a7c09eeba167535f0dbc",
+        "tools/train_observation_memory.py": "def92f03af6ecc289da8b24e8eae0cd79a27a1a836e68d3443658ba7dfed3fb3",
+        "tools/train_source_selector.py": "5329c6991642cb901e6b6697d8ce530fe688d0fe255497bdd01d485953c22d26",
+        "tools/cache_observation_memory.py": "473aa1ed44aeb36ffd509afd3faa742235227a50dc592d6dc26179a3a01a1f6c",
+        "models/observation_geometry.py": "93fc13bf9cc0b39fd70ae18dd01a310b0af0c41bc347e1c65098e3e69ea9d01f",
+        "models/observation_candidates.py": "6c2747de79dcdea95832bd7a221d266f00257078360b9b425cfad5811ff178b8",
+        "models/correction_selector.py": "f81613c275bff26478d8010eb21f15040163e0f955c15b261df136ff0409a93c",
+        "models/observation_memory.py": "064efae9a38ac24c149714ce94c8d19481ce379c59f5cf951a57de94965d1990",
+        "models/trajectory_reconstruction.py": "0b94db04a309b91c83e25a83e1ca9d70f8eaa2983cc08bc952b8fff972dbd716"
+      },
+      "split": {
+        "seed": 20261114,
+        "fit": [
+          "SDSD_outdoor/MVI_0975",
+          "SDSD_indoor/pair29",
+          "SDSD_indoor/pair24",
+          "SDSD_indoor/pair20",
+          "SDSD_outdoor/MVI_0951",
+          "SDSD_outdoor/MVI_0997",
+          "SDSD_outdoor/MVI_0953",
+          "SDSD_outdoor/MVI_0977",
+          "SDSD_outdoor/MVI_0925",
+          "SDSD_outdoor/MVI_0906",
+          "SDSD_indoor/pair14",
+          "SDSD_outdoor/MVI_0904",
+          "SDSD_indoor/pair15",
+          "SDSD_indoor/pair11",
+          "SDSD_outdoor/MVI_0967",
+          "SDSD_indoor/pair33",
+          "SDSD_outdoor/MVI_0983",
+          "SDSD_outdoor/MVI_0981",
+          "SDSD_indoor/pair26",
+          "SDSD_outdoor/MVI_0928",
+          "SDSD_outdoor/MVI_0973",
+          "SDSD_outdoor/MVI_0909",
+          "SDSD_outdoor/MVI_0993",
+          "SDSD_outdoor/MVI_0938",
+          "SDSD_outdoor/MVI_0930",
+          "SDSD_outdoor/MVI_0949",
+          "SDSD_outdoor/MVI_0979",
+          "SDSD_outdoor/MVI_0995",
+          "SDSD_outdoor/MVI_0999",
+          "SDSD_outdoor/MVI_0947",
+          "SDSD_outdoor/MVI_0911",
+          "SDSD_outdoor/MVI_0959",
+          "SDSD_indoor/pair10",
+          "SDSD_outdoor/MVI_0963",
+          "SDSD_indoor/pair31",
+          "SDSD_outdoor/MVI_0932",
+          "SDSD_outdoor/MVI_0916",
+          "SDSD_outdoor/MVI_0961",
+          "SDSD_outdoor/MVI_0969",
+          "SDSD_outdoor/MVI_1001",
+          "SDSD_indoor/pair25",
+          "SDSD_outdoor/MVI_0902",
+          "SDSD_indoor/pair2",
+          "SDSD_outdoor/MVI_0957",
+          "SDSD_indoor/pair21",
+          "SDSD_outdoor/MVI_0918",
+          "SDSD_indoor/pair17",
+          "SDSD_outdoor/MVI_1005",
+          "SDSD_outdoor/MVI_0990",
+          "SDSD_outdoor/MVI_0988",
+          "SDSD_indoor/pair27"
+        ],
+        "internal_holdout": [
+          "SDSD_outdoor/MVI_0900",
+          "SDSD_outdoor/MVI_0943",
+          "SDSD_outdoor/MVI_0941",
+          "SDSD_outdoor/MVI_1003",
+          "SDSD_indoor/pair32",
+          "SDSD_indoor/pair13",
+          "SDSD_outdoor/MVI_0935",
+          "SDSD_indoor/pair23",
+          "SDSD_outdoor/MVI_0971",
+          "SDSD_indoor/pair18",
+          "SDSD_indoor/pair30",
+          "SDSD_outdoor/MVI_0926",
+          "SDSD_indoor/pair22",
+          "SDSD_outdoor/MVI_0955",
+          "SDSD_indoor/pair12",
+          "SDSD_indoor/pair16",
+          "SDSD_outdoor/MVI_0915"
+        ],
+        "scope": "75/25 source TRAIN scenes; internal to base training; no target data or model selection"
+      },
+      "calibration_sha256": "ef834740b82de7d46b470e29e093a267119b2e2c0a686f1836f4c8d9421f758d",
+      "reference_head_sha256": "46c23bc2f85160777310b243266ec88cdbc788868a152f0b1f9382aa9b60725b",
+      "frozen_node_state_sha256": "e14ef09f1b5a1681c0526a9167399638bd7e2f95fafd6d1cdd2ada193ee5ec75",
+      "fit_only_mse_normalizer": 0.0027711779351674896,
+      "args": {
+        "optimizer": "Adam defaults;no weight decay;post-step declared parameter projection",
+        "lr": 0.01,
+        "threads": 4,
+        "device": "cpu float32",
+        "forward_context": 256,
+        "loss_crop": 128,
+        "clip_len": 16,
+        "loss_frames": 8,
+        "clips_per_update": 1
+      },
+      "trainable_parameters": 4,
+      "frozen_parameters": 6626,
+      "selection": "Final400 only; all five modes before one complete source internal evaluation; no target",
+      "runtime": {
+        "torch": "2.7.1+cpu",
+        "numpy": "1.26.4"
+      }
+    },
+    "joint_shuffled": {
+      "schema_version": 1,
+      "mode": "joint_shuffled",
+      "seed": 0,
+      "steps": 400,
+      "model_config": {
+        "normalization": {
+          "feature_mean": [
+            0.07688344269990921,
+            0.08124569058418274,
+            0.0843527615070343,
+            0.2891903519630432,
+            0.302641361951828,
+            0.30598515272140503,
+            5.714988583349623e-05,
+            3.35661243298091e-05,
+            4.348259972175583e-05,
+            6.073676559026353e-05,
+            3.8179663533810526e-05,
+            4.819150490220636e-05,
+            0.0009021488949656487,
+            0.002142298733815551,
+            0.0009092660038731992,
+            0.0003545280487742275,
+            0.0009139141184277833,
+            0.8338102698326111,
+            0.8339365124702454
+          ],
+          "feature_std": [
+            0.09175248444080353,
+            0.0881277397274971,
+            0.08922518789768219,
+            0.25367236137390137,
+            0.2382490485906601,
+            0.2401934117078781,
+            0.005759776569902897,
+            0.00522431218996644,
+            0.005985908210277557,
+            0.005755619145929813,
+            0.005228627938777208,
+            0.0059785740450024605,
+            0.006509376689791679,
+            0.007609592750668526,
+            0.0019579571671783924,
+            0.001531159388832748,
+            0.0019882062915712595,
+            0.35120874643325806,
+            0.3513437509536743
+          ]
+        },
+        "search_mode": "joint",
+        "address_mode": "shuffled_prior",
+        "uncertainty_mode": "calibrated",
+        "search_patch": 16,
+        "offset": 2,
+        "max_shift": 2.0,
+        "amplitude_rule": "tanh_projected_nonnegative_zero_init",
+        "confidence_rule": "one_minus_marginal_entropy_over_log_valid_support"
+      },
+      "initial_state_sha256": "62f468a8a2a68db6f46fdfa6836fb37744a983436a06e4e8f0086d61cb2376bf",
+      "initial_file_sha256": "87abef2bae15e15ba14ffaf1e4c8c777d85d61a3b4c52b5904f1901e980d2250",
+      "sample_plan_sha256": "8756aa2984cca2107f0cff09fbebbcbc491fe17c8458b7e8c1b6ebd99e246fb7",
+      "prepared_manifest_sha256": "50c45b1ff4e858dc9fc175a6bf1d92cb79b6728fa79957d9c80f41bc2a7b6156",
+      "source_sha256": {
+        "tools/cache_source_corrections.py": "34dad77d6b90e6fa418a2828924f034b3c541091ebb4acae7eceab34fac85683",
+        "tools/cache_correction_oracle.py": "7c989a8873101e6139af4cd2c81d0675e5c440024e177a1ae90c10544359fadd",
+        "tools/eval_e4.py": "3fb906535d76ca11e379d41113424d1d1d47205d56ca5f5de0b557c3adcf0467",
+        "tools/checkpoint_config.py": "1afa4b685b092150a7f178938c80cc31d339d901335b357ce0c3bdcdcd6f4c7b",
+        "models/pixel_branch_v2.py": "f83c1aaa5797e5413a1adb41d49cecc0a093e72159e6d4fdbaf610168b739222",
+        "models/vjepa_backbone.py": "8d8e4ca44cecad797aec05af5f627b50927b9d72860187b76d466794f2d3e4bf",
+        "models/token_projection.py": "8c7b455ecc56cb5d503b016f226be622be3c6fc4ae4be814b270628b4752c7c1",
+        "data/common.py": "6041b43e832ab67def75b9e7285927dddd77d45d0bc25945bb600167b04e4ded",
+        "data/planned_bvi.py": "cb136a5625d39fd3df58a8c96284730f4b19423dcfbc05fceb67a8398290b21d",
+        "tools/train_method_pilot.py": "7c5a2abe65d2ebdfb788cdcc824761f6aac328f4492c81996d3d0d6067dd6b8c",
+        "tools/train_correction_selector.py": "cc7af1ae735f7ea112ca6dec62a668b9eb3e744941d2f44034a58173f7fbcf9c",
+        "models/joint_observation_search.py": "5fba0dd8303881375fbec48f14dbdbb6fd5479c125277841335ab8110fd9d7ff",
+        "tools/cache_joint_observation_search.py": "334ca97edc53dd4e83e2bab0776a7c980b9e13f25e16667663838b8b0f3cc39b",
+        "tools/train_joint_observation_search.py": "8758609e054527436ccee1b85e4c56125a5301694355d8e16f99033d6b3de250",
+        "tools/train_observation_geometry.py": "c8e9527d1eced7234d2830fdfcb2b07d3ba4151e8055a7c09eeba167535f0dbc",
+        "tools/train_observation_memory.py": "def92f03af6ecc289da8b24e8eae0cd79a27a1a836e68d3443658ba7dfed3fb3",
+        "tools/train_source_selector.py": "5329c6991642cb901e6b6697d8ce530fe688d0fe255497bdd01d485953c22d26",
+        "tools/cache_observation_memory.py": "473aa1ed44aeb36ffd509afd3faa742235227a50dc592d6dc26179a3a01a1f6c",
+        "models/observation_geometry.py": "93fc13bf9cc0b39fd70ae18dd01a310b0af0c41bc347e1c65098e3e69ea9d01f",
+        "models/observation_candidates.py": "6c2747de79dcdea95832bd7a221d266f00257078360b9b425cfad5811ff178b8",
+        "models/correction_selector.py": "f81613c275bff26478d8010eb21f15040163e0f955c15b261df136ff0409a93c",
+        "models/observation_memory.py": "064efae9a38ac24c149714ce94c8d19481ce379c59f5cf951a57de94965d1990",
+        "models/trajectory_reconstruction.py": "0b94db04a309b91c83e25a83e1ca9d70f8eaa2983cc08bc952b8fff972dbd716"
+      },
+      "split": {
+        "seed": 20261114,
+        "fit": [
+          "SDSD_outdoor/MVI_0975",
+          "SDSD_indoor/pair29",
+          "SDSD_indoor/pair24",
+          "SDSD_indoor/pair20",
+          "SDSD_outdoor/MVI_0951",
+          "SDSD_outdoor/MVI_0997",
+          "SDSD_outdoor/MVI_0953",
+          "SDSD_outdoor/MVI_0977",
+          "SDSD_outdoor/MVI_0925",
+          "SDSD_outdoor/MVI_0906",
+          "SDSD_indoor/pair14",
+          "SDSD_outdoor/MVI_0904",
+          "SDSD_indoor/pair15",
+          "SDSD_indoor/pair11",
+          "SDSD_outdoor/MVI_0967",
+          "SDSD_indoor/pair33",
+          "SDSD_outdoor/MVI_0983",
+          "SDSD_outdoor/MVI_0981",
+          "SDSD_indoor/pair26",
+          "SDSD_outdoor/MVI_0928",
+          "SDSD_outdoor/MVI_0973",
+          "SDSD_outdoor/MVI_0909",
+          "SDSD_outdoor/MVI_0993",
+          "SDSD_outdoor/MVI_0938",
+          "SDSD_outdoor/MVI_0930",
+          "SDSD_outdoor/MVI_0949",
+          "SDSD_outdoor/MVI_0979",
+          "SDSD_outdoor/MVI_0995",
+          "SDSD_outdoor/MVI_0999",
+          "SDSD_outdoor/MVI_0947",
+          "SDSD_outdoor/MVI_0911",
+          "SDSD_outdoor/MVI_0959",
+          "SDSD_indoor/pair10",
+          "SDSD_outdoor/MVI_0963",
+          "SDSD_indoor/pair31",
+          "SDSD_outdoor/MVI_0932",
+          "SDSD_outdoor/MVI_0916",
+          "SDSD_outdoor/MVI_0961",
+          "SDSD_outdoor/MVI_0969",
+          "SDSD_outdoor/MVI_1001",
+          "SDSD_indoor/pair25",
+          "SDSD_outdoor/MVI_0902",
+          "SDSD_indoor/pair2",
+          "SDSD_outdoor/MVI_0957",
+          "SDSD_indoor/pair21",
+          "SDSD_outdoor/MVI_0918",
+          "SDSD_indoor/pair17",
+          "SDSD_outdoor/MVI_1005",
+          "SDSD_outdoor/MVI_0990",
+          "SDSD_outdoor/MVI_0988",
+          "SDSD_indoor/pair27"
+        ],
+        "internal_holdout": [
+          "SDSD_outdoor/MVI_0900",
+          "SDSD_outdoor/MVI_0943",
+          "SDSD_outdoor/MVI_0941",
+          "SDSD_outdoor/MVI_1003",
+          "SDSD_indoor/pair32",
+          "SDSD_indoor/pair13",
+          "SDSD_outdoor/MVI_0935",
+          "SDSD_indoor/pair23",
+          "SDSD_outdoor/MVI_0971",
+          "SDSD_indoor/pair18",
+          "SDSD_indoor/pair30",
+          "SDSD_outdoor/MVI_0926",
+          "SDSD_indoor/pair22",
+          "SDSD_outdoor/MVI_0955",
+          "SDSD_indoor/pair12",
+          "SDSD_indoor/pair16",
+          "SDSD_outdoor/MVI_0915"
+        ],
+        "scope": "75/25 source TRAIN scenes; internal to base training; no target data or model selection"
+      },
+      "calibration_sha256": "ef834740b82de7d46b470e29e093a267119b2e2c0a686f1836f4c8d9421f758d",
+      "reference_head_sha256": "46c23bc2f85160777310b243266ec88cdbc788868a152f0b1f9382aa9b60725b",
+      "frozen_node_state_sha256": "e14ef09f1b5a1681c0526a9167399638bd7e2f95fafd6d1cdd2ada193ee5ec75",
+      "fit_only_mse_normalizer": 0.0027711779351674896,
+      "args": {
+        "optimizer": "Adam defaults;no weight decay;post-step declared parameter projection",
+        "lr": 0.01,
+        "threads": 4,
+        "device": "cpu float32",
+        "forward_context": 256,
+        "loss_crop": 128,
+        "clip_len": 16,
+        "loss_frames": 8,
+        "clips_per_update": 1
+      },
+      "trainable_parameters": 4,
+      "frozen_parameters": 6626,
+      "selection": "Final400 only; all five modes before one complete source internal evaluation; no target",
+      "runtime": {
+        "torch": "2.7.1+cpu",
+        "numpy": "1.26.4"
+      }
+    }
+  },
+  "calibration_sha256": "ef834740b82de7d46b470e29e093a267119b2e2c0a686f1836f4c8d9421f758d",
+  "reference_checkpoint_sha256": "46c23bc2f85160777310b243266ec88cdbc788868a152f0b1f9382aa9b60725b",
+  "reference_state_sha256": "6966dfd0ce07900bafcf19d11f1099a770889756923859e528bf165bc3a2c07e",
+  "states_unchanged": true,
+  "initial_states_and_plans_identical": true,
+  "target_frames_read": false,
+  "per_sequence": [
+    {
+      "name": "SDSD_indoor/pair12",
+      "scene": "SDSD_indoor/pair12",
+      "methods": {
+        "base": {
+          "rgb_mse_float": 0.002014755686750282,
+          "psnr_rgb_from_clip_mse": 26.957776097358405
+        },
+        "frozen_raw_node_1000": {
+          "rgb_mse_float": 0.0020059972244618235,
+          "psnr_rgb_from_clip_mse": 26.976696722137802
+        },
+        "joint_prior": {
+          "rgb_mse_float": 0.0020059992622627823,
+          "psnr_rgb_from_clip_mse": 26.976692310340763
+        },
+        "independent_prior": {
+          "rgb_mse_float": 0.0020059914647799684,
+          "psnr_rgb_from_clip_mse": 26.976709191754445
+        },
+        "constant_prior": {
+          "rgb_mse_float": 0.0020059972244618235,
+          "psnr_rgb_from_clip_mse": 26.976696722137802
+        },
+        "joint_pixel": {
+          "rgb_mse_float": 0.0020059995197381727,
+          "psnr_rgb_from_clip_mse": 26.97669175291217
+        },
+        "joint_shuffled": {
+          "rgb_mse_float": 0.0020059991997606282,
+          "psnr_rgb_from_clip_mse": 26.976692445656568
+        }
+      },
+      "search": {
+        "joint_prior": {
+          "amplitude": 0.016833804547786713,
+          "mean_abs_offset": 4.479139170143753e-05,
+          "max_abs_offset": 0.004811458755284548,
+          "mean_confidence": 0.032888878136873245,
+          "descriptor_weight": 0.7485849857330322,
+          "regularization_weight": 0.04320922866463661,
+          "temperature": 1.1781201362609863,
+          "refined_valid_fraction": 0.8661866188049316
+        },
+        "independent_prior": {
+          "amplitude": 0.05702879652380943,
+          "mean_abs_offset": 7.28670202079229e-05,
+          "max_abs_offset": 0.006603975780308247,
+          "mean_confidence": 0.017877399921417236,
+          "descriptor_weight": 0.8475463390350342,
+          "regularization_weight": 0.0315215177834034,
+          "temperature": 1.2258496284484863,
+          "refined_valid_fraction": 0.8661861419677734
+        },
+        "constant_prior": {
+          "amplitude": 0.0,
+          "mean_abs_offset": 0.0,
+          "max_abs_offset": 0.0,
+          "mean_confidence": 0.06957592070102692,
+          "descriptor_weight": 0.8089170455932617,
+          "regularization_weight": 0.07455754280090332,
+          "temperature": 0.9233636260032654,
+          "refined_valid_fraction": 0.8661866188049316
+        },
+        "joint_pixel": {
+          "amplitude": 0.018949255347251892,
+          "mean_abs_offset": 4.992232425138354e-05,
+          "max_abs_offset": 0.005546077154576778,
+          "mean_confidence": 0.032729435712099075,
+          "descriptor_weight": 1.2646188735961914,
+          "regularization_weight": 0.042647045105695724,
+          "temperature": 1.1919019222259521,
+          "refined_valid_fraction": 0.8661866188049316
+        },
+        "joint_shuffled": {
+          "amplitude": 0.016944434493780136,
+          "mean_abs_offset": 4.454887312022038e-05,
+          "max_abs_offset": 0.004718509037047625,
+          "mean_confidence": 0.0325605645775795,
+          "descriptor_weight": 0.7443289756774902,
+          "regularization_weight": 0.04283630847930908,
+          "temperature": 1.1901885271072388,
+          "refined_valid_fraction": 0.8661866188049316
+        }
+      }
+    },
+    {
+      "name": "SDSD_indoor/pair12_2",
+      "scene": "SDSD_indoor/pair12",
+      "methods": {
+        "base": {
+          "rgb_mse_float": 0.0010370974019687999,
+          "psnr_rgb_from_clip_mse": 29.84180453687046
+        },
+        "frozen_raw_node_1000": {
+          "rgb_mse_float": 0.0010126868770723438,
+          "psnr_rgb_from_clip_mse": 29.945248177997968
+        },
+        "joint_prior": {
+          "rgb_mse_float": 0.001012686813426835,
+          "psnr_rgb_from_clip_mse": 29.945248450944078
+        },
+        "independent_prior": {
+          "rgb_mse_float": 0.0010126869143103337,
+          "psnr_rgb_from_clip_mse": 29.945248018301488
+        },
+        "constant_prior": {
+          "rgb_mse_float": 0.0010126868770723438,
+          "psnr_rgb_from_clip_mse": 29.945248177997968
+        },
+        "joint_pixel": {
+          "rgb_mse_float": 0.0010126867941936313,
+          "psnr_rgb_from_clip_mse": 29.945248533426387
+        },
+        "joint_shuffled": {
+          "rgb_mse_float": 0.0010126868138974224,
+          "psnr_rgb_from_clip_mse": 29.94524844892595
+        }
+      },
+      "search": {
+        "joint_prior": {
+          "amplitude": 0.016833804547786713,
+          "mean_abs_offset": 3.926535100617912e-06,
+          "max_abs_offset": 0.0012007813202217221,
+          "mean_confidence": 0.0037092051934450865,
+          "descriptor_weight": 0.7485849857330322,
+          "regularization_weight": 0.04320922866463661,
+          "temperature": 1.1781201362609863,
+          "refined_valid_fraction": 0.8678569793701172
+        },
+        "independent_prior": {
+          "amplitude": 0.05702879652380943,
+          "mean_abs_offset": 6.475601821875898e-06,
+          "max_abs_offset": 0.002463272772729397,
+          "mean_confidence": 0.0019608153961598873,
+          "descriptor_weight": 0.8475463390350342,
+          "regularization_weight": 0.0315215177834034,
+          "temperature": 1.2258496284484863,
+          "refined_valid_fraction": 0.8678569793701172
+        },
+        "constant_prior": {
+          "amplitude": 0.0,
+          "mean_abs_offset": 0.0,
+          "max_abs_offset": 0.0,
+          "mean_confidence": 0.014457903802394867,
+          "descriptor_weight": 0.8089170455932617,
+          "regularization_weight": 0.07455754280090332,
+          "temperature": 0.9233636260032654,
+          "refined_valid_fraction": 0.8678569793701172
+        },
+        "joint_pixel": {
+          "amplitude": 0.018949255347251892,
+          "mean_abs_offset": 4.559766694001155e-06,
+          "max_abs_offset": 0.0013285053428262472,
+          "mean_confidence": 0.0036980812437832355,
+          "descriptor_weight": 1.2646188735961914,
+          "regularization_weight": 0.042647045105695724,
+          "temperature": 1.1919019222259521,
+          "refined_valid_fraction": 0.8678569793701172
+        },
+        "joint_shuffled": {
+          "amplitude": 0.016944434493780136,
+          "mean_abs_offset": 4.018683739559492e-06,
+          "max_abs_offset": 0.0011928413296118379,
+          "mean_confidence": 0.0037858360446989536,
+          "descriptor_weight": 0.7443289756774902,
+          "regularization_weight": 0.04283630847930908,
+          "temperature": 1.1901885271072388,
+          "refined_valid_fraction": 0.8678569793701172
+        }
+      }
+    },
+    {
+      "name": "SDSD_indoor/pair13",
+      "scene": "SDSD_indoor/pair13",
+      "methods": {
+        "base": {
+          "rgb_mse_float": 0.0029649040891211544,
+          "psnr_rgb_from_clip_mse": 25.27989350946987
+        },
+        "frozen_raw_node_1000": {
+          "rgb_mse_float": 0.002937314113042371,
+          "psnr_rgb_from_clip_mse": 25.32049608034038
+        },
+        "joint_prior": {
+          "rgb_mse_float": 0.002937378296576937,
+          "psnr_rgb_from_clip_mse": 25.320401183270207
+        },
+        "independent_prior": {
+          "rgb_mse_float": 0.002937444641649257,
+          "psnr_rgb_from_clip_mse": 25.32030309248819
+        },
+        "constant_prior": {
+          "rgb_mse_float": 0.002937314113042371,
+          "psnr_rgb_from_clip_mse": 25.32049608034038
+        },
+        "joint_pixel": {
+          "rgb_mse_float": 0.0029373856825565697,
+          "psnr_rgb_from_clip_mse": 25.32039026303508
+        },
+        "joint_shuffled": {
+          "rgb_mse_float": 0.0029373782354678783,
+          "psnr_rgb_from_clip_mse": 25.320401273620593
+        }
+      },
+      "search": {
+        "joint_prior": {
+          "amplitude": 0.016833804547786713,
+          "mean_abs_offset": 5.694895298802294e-05,
+          "max_abs_offset": 0.017297301441431046,
+          "mean_confidence": 0.013123712502419949,
+          "descriptor_weight": 0.7485849857330322,
+          "regularization_weight": 0.04320922866463661,
+          "temperature": 1.1781201362609863,
+          "refined_valid_fraction": 0.8114404678344727
+        },
+        "independent_prior": {
+          "amplitude": 0.05702879652380943,
+          "mean_abs_offset": 0.00010569002915872261,
+          "max_abs_offset": 0.038511067628860474,
+          "mean_confidence": 0.008144328370690346,
+          "descriptor_weight": 0.8475463390350342,
+          "regularization_weight": 0.0315215177834034,
+          "temperature": 1.2258496284484863,
+          "refined_valid_fraction": 0.8114399909973145
+        },
+        "constant_prior": {
+          "amplitude": 0.0,
+          "mean_abs_offset": 0.0,
+          "max_abs_offset": 0.0,
+          "mean_confidence": 0.027906477451324463,
+          "descriptor_weight": 0.8089170455932617,
+          "regularization_weight": 0.07455754280090332,
+          "temperature": 0.9233636260032654,
+          "refined_valid_fraction": 0.8114404678344727
+        },
+        "joint_pixel": {
+          "amplitude": 0.018949255347251892,
+          "mean_abs_offset": 6.30406429991126e-05,
+          "max_abs_offset": 0.01938631385564804,
+          "mean_confidence": 0.012844580225646496,
+          "descriptor_weight": 1.2646188735961914,
+          "regularization_weight": 0.042647045105695724,
+          "temperature": 1.1919019222259521,
+          "refined_valid_fraction": 0.8114404678344727
+        },
+        "joint_shuffled": {
+          "amplitude": 0.016944434493780136,
+          "mean_abs_offset": 5.702935595763847e-05,
+          "max_abs_offset": 0.017483146861195564,
+          "mean_confidence": 0.013014453463256359,
+          "descriptor_weight": 0.7443289756774902,
+          "regularization_weight": 0.04283630847930908,
+          "temperature": 1.1901885271072388,
+          "refined_valid_fraction": 0.8114404678344727
+        }
+      }
+    },
+    {
+      "name": "SDSD_indoor/pair13_2",
+      "scene": "SDSD_indoor/pair13",
+      "methods": {
+        "base": {
+          "rgb_mse_float": 0.0005329452463173008,
+          "psnr_rgb_from_clip_mse": 32.733174071905616
+        },
+        "frozen_raw_node_1000": {
+          "rgb_mse_float": 0.0005132543105150481,
+          "psnr_rgb_from_clip_mse": 32.89667394563238
+        },
+        "joint_prior": {
+          "rgb_mse_float": 0.0005132543492471642,
+          "psnr_rgb_from_clip_mse": 32.896673617897314
+        },
+        "independent_prior": {
+          "rgb_mse_float": 0.0005132543891550019,
+          "psnr_rgb_from_clip_mse": 32.8966732802138
+        },
+        "constant_prior": {
+          "rgb_mse_float": 0.0005132543105150481,
+          "psnr_rgb_from_clip_mse": 32.89667394563238
+        },
+        "joint_pixel": {
+          "rgb_mse_float": 0.0005132543641620954,
+          "psnr_rgb_from_clip_mse": 32.89667349169336
+        },
+        "joint_shuffled": {
+          "rgb_mse_float": 0.0005132543493511985,
+          "psnr_rgb_from_clip_mse": 32.896673617017015
+        }
+      },
+      "search": {
+        "joint_prior": {
+          "amplitude": 0.016833804547786713,
+          "mean_abs_offset": 4.441625605977606e-06,
+          "max_abs_offset": 0.00047465768875554204,
+          "mean_confidence": 0.0034271134063601494,
+          "descriptor_weight": 0.7485849857330322,
+          "regularization_weight": 0.04320922866463661,
+          "temperature": 1.1781201362609863,
+          "refined_valid_fraction": 0.6848897933959961
+        },
+        "independent_prior": {
+          "amplitude": 0.05702879652380943,
+          "mean_abs_offset": 7.317699783015996e-06,
+          "max_abs_offset": 0.0009674831526353955,
+          "mean_confidence": 0.0019547762349247932,
+          "descriptor_weight": 0.8475463390350342,
+          "regularization_weight": 0.0315215177834034,
+          "temperature": 1.2258496284484863,
+          "refined_valid_fraction": 0.6848897933959961
+        },
+        "constant_prior": {
+          "amplitude": 0.0,
+          "mean_abs_offset": 0.0,
+          "max_abs_offset": 0.0,
+          "mean_confidence": 0.01469963788986206,
+          "descriptor_weight": 0.8089170455932617,
+          "regularization_weight": 0.07455754280090332,
+          "temperature": 0.9233636260032654,
+          "refined_valid_fraction": 0.6848897933959961
+        },
+        "joint_pixel": {
+          "amplitude": 0.018949255347251892,
+          "mean_abs_offset": 7.304968676180579e-06,
+          "max_abs_offset": 0.0009667780250310898,
+          "mean_confidence": 0.003913206048309803,
+          "descriptor_weight": 1.2646188735961914,
+          "regularization_weight": 0.042647045105695724,
+          "temperature": 1.1919019222259521,
+          "refined_valid_fraction": 0.6848897933959961
+        },
+        "joint_shuffled": {
+          "amplitude": 0.016944434493780136,
+          "mean_abs_offset": 4.546497166302288e-06,
+          "max_abs_offset": 0.00043891422683373094,
+          "mean_confidence": 0.003411659272387624,
+          "descriptor_weight": 0.7443289756774902,
+          "regularization_weight": 0.04283630847930908,
+          "temperature": 1.1901885271072388,
+          "refined_valid_fraction": 0.6848897933959961
+        }
+      }
+    },
+    {
+      "name": "SDSD_indoor/pair16",
+      "scene": "SDSD_indoor/pair16",
+      "methods": {
+        "base": {
+          "rgb_mse_float": 0.0006170664144901026,
+          "psnr_rgb_from_clip_mse": 32.096680905951004
+        },
+        "frozen_raw_node_1000": {
+          "rgb_mse_float": 0.0005964527660119231,
+          "psnr_rgb_from_clip_mse": 32.244239430625484
+        },
+        "joint_prior": {
+          "rgb_mse_float": 0.0005964486602296296,
+          "psnr_rgb_from_clip_mse": 32.24426932611483
+        },
+        "independent_prior": {
+          "rgb_mse_float": 0.0005964425094563256,
+          "psnr_rgb_from_clip_mse": 32.24431411221055
+        },
+        "constant_prior": {
+          "rgb_mse_float": 0.0005964527660119231,
+          "psnr_rgb_from_clip_mse": 32.244239430625484
+        },
+        "joint_pixel": {
+          "rgb_mse_float": 0.0005964482259462464,
+          "psnr_rgb_from_clip_mse": 32.244272488280465
+        },
+        "joint_shuffled": {
+          "rgb_mse_float": 0.0005964486118525254,
+          "psnr_rgb_from_clip_mse": 32.24426967836494
+        }
+      },
+      "search": {
+        "joint_prior": {
+          "amplitude": 0.016833804547786713,
+          "mean_abs_offset": 3.1184954423224553e-05,
+          "max_abs_offset": 0.00982835702598095,
+          "mean_confidence": 0.007803875952959061,
+          "descriptor_weight": 0.7485849857330322,
+          "regularization_weight": 0.04320922866463661,
+          "temperature": 1.1781201362609863,
+          "refined_valid_fraction": 0.8673105239868164
+        },
+        "independent_prior": {
+          "amplitude": 0.05702879652380943,
+          "mean_abs_offset": 5.4399795772042125e-05,
+          "max_abs_offset": 0.015959855169057846,
+          "mean_confidence": 0.004575271159410477,
+          "descriptor_weight": 0.8475463390350342,
+          "regularization_weight": 0.0315215177834034,
+          "temperature": 1.2258496284484863,
+          "refined_valid_fraction": 0.8673105239868164
+        },
+        "constant_prior": {
+          "amplitude": 0.0,
+          "mean_abs_offset": 0.0,
+          "max_abs_offset": 0.0,
+          "mean_confidence": 0.020391013473272324,
+          "descriptor_weight": 0.8089170455932617,
+          "regularization_weight": 0.07455754280090332,
+          "temperature": 0.9233636260032654,
+          "refined_valid_fraction": 0.8673105239868164
+        },
+        "joint_pixel": {
+          "amplitude": 0.018949255347251892,
+          "mean_abs_offset": 4.305380571167916e-05,
+          "max_abs_offset": 0.01104219164699316,
+          "mean_confidence": 0.008376353420317173,
+          "descriptor_weight": 1.2646188735961914,
+          "regularization_weight": 0.042647045105695724,
+          "temperature": 1.1919019222259521,
+          "refined_valid_fraction": 0.8673105239868164
+        },
+        "joint_shuffled": {
+          "amplitude": 0.016944434493780136,
+          "mean_abs_offset": 3.078906229347922e-05,
+          "max_abs_offset": 0.009904143400490284,
+          "mean_confidence": 0.007724973373115063,
+          "descriptor_weight": 0.7443289756774902,
+          "regularization_weight": 0.04283630847930908,
+          "temperature": 1.1901885271072388,
+          "refined_valid_fraction": 0.8673105239868164
+        }
+      }
+    },
+    {
+      "name": "SDSD_indoor/pair16_2",
+      "scene": "SDSD_indoor/pair16",
+      "methods": {
+        "base": {
+          "rgb_mse_float": 0.0014348773852372147,
+          "psnr_rgb_from_clip_mse": 28.431852091669512
+        },
+        "frozen_raw_node_1000": {
+          "rgb_mse_float": 0.0012915379018284777,
+          "psnr_rgb_from_clip_mse": 28.888928443776702
+        },
+        "joint_prior": {
+          "rgb_mse_float": 0.001291523995173537,
+          "psnr_rgb_from_clip_mse": 28.888975206756015
+        },
+        "independent_prior": {
+          "rgb_mse_float": 0.0012914930991950247,
+          "psnr_rgb_from_clip_mse": 28.88907910040047
+        },
+        "constant_prior": {
+          "rgb_mse_float": 0.0012915379018284777,
+          "psnr_rgb_from_clip_mse": 28.888928443776702
+        },
+        "joint_pixel": {
+          "rgb_mse_float": 0.0012915223413079602,
+          "psnr_rgb_from_clip_mse": 28.888980768132775
+        },
+        "joint_shuffled": {
+          "rgb_mse_float": 0.001291523960620865,
+          "psnr_rgb_from_clip_mse": 28.888975322944603
+        }
+      },
+      "search": {
+        "joint_prior": {
+          "amplitude": 0.016833804547786713,
+          "mean_abs_offset": 0.0001010416672215797,
+          "max_abs_offset": 0.015416095964610577,
+          "mean_confidence": 0.0719311460852623,
+          "descriptor_weight": 0.7485849857330322,
+          "regularization_weight": 0.04320922866463661,
+          "temperature": 1.1781201362609863,
+          "refined_valid_fraction": 0.8686208724975586
+        },
+        "independent_prior": {
+          "amplitude": 0.05702879652380943,
+          "mean_abs_offset": 0.00020552199566736817,
+          "max_abs_offset": 0.04244831204414368,
+          "mean_confidence": 0.04678565263748169,
+          "descriptor_weight": 0.8475463390350342,
+          "regularization_weight": 0.0315215177834034,
+          "temperature": 1.2258496284484863,
+          "refined_valid_fraction": 0.8686199188232422
+        },
+        "constant_prior": {
+          "amplitude": 0.0,
+          "mean_abs_offset": 0.0,
+          "max_abs_offset": 0.0,
+          "mean_confidence": 0.11211896687746048,
+          "descriptor_weight": 0.8089170455932617,
+          "regularization_weight": 0.07455754280090332,
+          "temperature": 0.9233636260032654,
+          "refined_valid_fraction": 0.8686208724975586
+        },
+        "joint_pixel": {
+          "amplitude": 0.018949255347251892,
+          "mean_abs_offset": 0.00011275818542344496,
+          "max_abs_offset": 0.01712147705256939,
+          "mean_confidence": 0.07150435447692871,
+          "descriptor_weight": 1.2646188735961914,
+          "regularization_weight": 0.042647045105695724,
+          "temperature": 1.1919019222259521,
+          "refined_valid_fraction": 0.8686208724975586
+        },
+        "joint_shuffled": {
+          "amplitude": 0.016944434493780136,
+          "mean_abs_offset": 0.00010042922804132104,
+          "max_abs_offset": 0.01520589366555214,
+          "mean_confidence": 0.07126118242740631,
+          "descriptor_weight": 0.7443289756774902,
+          "regularization_weight": 0.04283630847930908,
+          "temperature": 1.1901885271072388,
+          "refined_valid_fraction": 0.8686208724975586
+        }
+      }
+    },
+    {
+      "name": "SDSD_indoor/pair18",
+      "scene": "SDSD_indoor/pair18",
+      "methods": {
+        "base": {
+          "rgb_mse_float": 0.0008984842221655696,
+          "psnr_rgb_from_clip_mse": 30.464895449173817
+        },
+        "frozen_raw_node_1000": {
+          "rgb_mse_float": 0.0007707942665068756,
+          "psnr_rgb_from_clip_mse": 31.130615244702522
+        },
+        "joint_prior": {
+          "rgb_mse_float": 0.0007707821560127829,
+          "psnr_rgb_from_clip_mse": 31.130683480317455
+        },
+        "independent_prior": {
+          "rgb_mse_float": 0.0007707683755310664,
+          "psnr_rgb_from_clip_mse": 31.130761126648792
+        },
+        "constant_prior": {
+          "rgb_mse_float": 0.0007707942665068756,
+          "psnr_rgb_from_clip_mse": 31.130615244702522
+        },
+        "joint_pixel": {
+          "rgb_mse_float": 0.0007707805868148759,
+          "psnr_rgb_from_clip_mse": 31.130692321916605
+        },
+        "joint_shuffled": {
+          "rgb_mse_float": 0.0007707820360199867,
+          "psnr_rgb_from_clip_mse": 31.130684156412674
+        }
+      },
+      "search": {
+        "joint_prior": {
+          "amplitude": 0.016833804547786713,
+          "mean_abs_offset": 6.240554648684338e-05,
+          "max_abs_offset": 0.014721523970365524,
+          "mean_confidence": 0.04578576236963272,
+          "descriptor_weight": 0.7485849857330322,
+          "regularization_weight": 0.04320922866463661,
+          "temperature": 1.1781201362609863,
+          "refined_valid_fraction": 0.867764949798584
+        },
+        "independent_prior": {
+          "amplitude": 0.05702879652380943,
+          "mean_abs_offset": 0.00012823549332097173,
+          "max_abs_offset": 0.03146384656429291,
+          "mean_confidence": 0.03605451434850693,
+          "descriptor_weight": 0.8475463390350342,
+          "regularization_weight": 0.0315215177834034,
+          "temperature": 1.2258496284484863,
+          "refined_valid_fraction": 0.8677639961242676
+        },
+        "constant_prior": {
+          "amplitude": 0.0,
+          "mean_abs_offset": 0.0,
+          "max_abs_offset": 0.0,
+          "mean_confidence": 0.058009691536426544,
+          "descriptor_weight": 0.8089170455932617,
+          "regularization_weight": 0.07455754280090332,
+          "temperature": 0.9233636260032654,
+          "refined_valid_fraction": 0.867764949798584
+        },
+        "joint_pixel": {
+          "amplitude": 0.018949255347251892,
+          "mean_abs_offset": 6.973750714678317e-05,
+          "max_abs_offset": 0.01646415889263153,
+          "mean_confidence": 0.04561183229088783,
+          "descriptor_weight": 1.2646188735961914,
+          "regularization_weight": 0.042647045105695724,
+          "temperature": 1.1919019222259521,
+          "refined_valid_fraction": 0.867764949798584
+        },
+        "joint_shuffled": {
+          "amplitude": 0.016944434493780136,
+          "mean_abs_offset": 6.229107384569943e-05,
+          "max_abs_offset": 0.014911593869328499,
+          "mean_confidence": 0.04557608440518379,
+          "descriptor_weight": 0.7443289756774902,
+          "regularization_weight": 0.04283630847930908,
+          "temperature": 1.1901885271072388,
+          "refined_valid_fraction": 0.867764949798584
+        }
+      }
+    },
+    {
+      "name": "SDSD_indoor/pair18_2",
+      "scene": "SDSD_indoor/pair18",
+      "methods": {
+        "base": {
+          "rgb_mse_float": 0.0006301040396977611,
+          "psnr_rgb_from_clip_mse": 32.005877360445744
+        },
+        "frozen_raw_node_1000": {
+          "rgb_mse_float": 0.0006210498973159182,
+          "psnr_rgb_from_clip_mse": 32.06873505687486
+        },
+        "joint_prior": {
+          "rgb_mse_float": 0.0006210512380702302,
+          "psnr_rgb_from_clip_mse": 32.06872568111338
+        },
+        "independent_prior": {
+          "rgb_mse_float": 0.0006210519377524782,
+          "psnr_rgb_from_clip_mse": 32.06872078831308
+        },
+        "constant_prior": {
+          "rgb_mse_float": 0.0006210498973159182,
+          "psnr_rgb_from_clip_mse": 32.06873505687486
+        },
+        "joint_pixel": {
+          "rgb_mse_float": 0.0006210513252364693,
+          "psnr_rgb_from_clip_mse": 32.06872507156924
+        },
+        "joint_shuffled": {
+          "rgb_mse_float": 0.0006210511819127741,
+          "psnr_rgb_from_clip_mse": 32.06872607381647
+        }
+      },
+      "search": {
+        "joint_prior": {
+          "amplitude": 0.016833804547786713,
+          "mean_abs_offset": 3.579576514312066e-06,
+          "max_abs_offset": 0.0018692833837121725,
+          "mean_confidence": 0.0033837356604635715,
+          "descriptor_weight": 0.7485849857330322,
+          "regularization_weight": 0.04320922866463661,
+          "temperature": 1.1781201362609863,
+          "refined_valid_fraction": 0.8642401695251465
+        },
+        "independent_prior": {
+          "amplitude": 0.05702879652380943,
+          "mean_abs_offset": 6.077048965380527e-06,
+          "max_abs_offset": 0.0027192733250558376,
+          "mean_confidence": 0.0017799119232222438,
+          "descriptor_weight": 0.8475463390350342,
+          "regularization_weight": 0.0315215177834034,
+          "temperature": 1.2258496284484863,
+          "refined_valid_fraction": 0.8642401695251465
+        },
+        "constant_prior": {
+          "amplitude": 0.0,
+          "mean_abs_offset": 0.0,
+          "max_abs_offset": 0.0,
+          "mean_confidence": 0.012998400256037712,
+          "descriptor_weight": 0.8089170455932617,
+          "regularization_weight": 0.07455754280090332,
+          "temperature": 0.9233636260032654,
+          "refined_valid_fraction": 0.8642401695251465
+        },
+        "joint_pixel": {
+          "amplitude": 0.018949255347251892,
+          "mean_abs_offset": 3.802841092692688e-06,
+          "max_abs_offset": 0.002070376183837652,
+          "mean_confidence": 0.003347386373206973,
+          "descriptor_weight": 1.2646188735961914,
+          "regularization_weight": 0.042647045105695724,
+          "temperature": 1.1919019222259521,
+          "refined_valid_fraction": 0.8642401695251465
+        },
+        "joint_shuffled": {
+          "amplitude": 0.016944434493780136,
+          "mean_abs_offset": 3.6720168736792402e-06,
+          "max_abs_offset": 0.0017969573382288218,
+          "mean_confidence": 0.0034766937606036663,
+          "descriptor_weight": 0.7443289756774902,
+          "regularization_weight": 0.04283630847930908,
+          "temperature": 1.1901885271072388,
+          "refined_valid_fraction": 0.8642401695251465
+        }
+      }
+    },
+    {
+      "name": "SDSD_indoor/pair22",
+      "scene": "SDSD_indoor/pair22",
+      "methods": {
+        "base": {
+          "rgb_mse_float": 0.0013032500345615226,
+          "psnr_rgb_from_clip_mse": 28.849722548836763
+        },
+        "frozen_raw_node_1000": {
+          "rgb_mse_float": 0.001162116584584442,
+          "psnr_rgb_from_clip_mse": 29.34750300945785
+        },
+        "joint_prior": {
+          "rgb_mse_float": 0.001162122469142879,
+          "psnr_rgb_from_clip_mse": 29.34748101833561
+        },
+        "independent_prior": {
+          "rgb_mse_float": 0.0011620303981497255,
+          "psnr_rgb_from_clip_mse": 29.347825108647854
+        },
+        "constant_prior": {
+          "rgb_mse_float": 0.001162116584584442,
+          "psnr_rgb_from_clip_mse": 29.34750300945785
+        },
+        "joint_pixel": {
+          "rgb_mse_float": 0.001162118488879985,
+          "psnr_rgb_from_clip_mse": 29.34749589292256
+        },
+        "joint_shuffled": {
+          "rgb_mse_float": 0.0011621219899447912,
+          "psnr_rgb_from_clip_mse": 29.34748280913764
+        }
+      },
+      "search": {
+        "joint_prior": {
+          "amplitude": 0.016833804547786713,
+          "mean_abs_offset": 9.432443766854703e-05,
+          "max_abs_offset": 0.008603446185588837,
+          "mean_confidence": 0.06950655579566956,
+          "descriptor_weight": 0.7485849857330322,
+          "regularization_weight": 0.04320922866463661,
+          "temperature": 1.1781201362609863,
+          "refined_valid_fraction": 0.8649811744689941
+        },
+        "independent_prior": {
+          "amplitude": 0.05702879652380943,
+          "mean_abs_offset": 0.00019371350936125964,
+          "max_abs_offset": 0.021300429478287697,
+          "mean_confidence": 0.04775603115558624,
+          "descriptor_weight": 0.8475463390350342,
+          "regularization_weight": 0.0315215177834034,
+          "temperature": 1.2258496284484863,
+          "refined_valid_fraction": 0.8649802207946777
+        },
+        "constant_prior": {
+          "amplitude": 0.0,
+          "mean_abs_offset": 0.0,
+          "max_abs_offset": 0.0,
+          "mean_confidence": 0.0979192852973938,
+          "descriptor_weight": 0.8089170455932617,
+          "regularization_weight": 0.07455754280090332,
+          "temperature": 0.9233636260032654,
+          "refined_valid_fraction": 0.864983081817627
+        },
+        "joint_pixel": {
+          "amplitude": 0.018949255347251892,
+          "mean_abs_offset": 0.00010505178943276405,
+          "max_abs_offset": 0.009549739770591259,
+          "mean_confidence": 0.06926675885915756,
+          "descriptor_weight": 1.2646188735961914,
+          "regularization_weight": 0.042647045105695724,
+          "temperature": 1.1919019222259521,
+          "refined_valid_fraction": 0.8649811744689941
+        },
+        "joint_shuffled": {
+          "amplitude": 0.016944434493780136,
+          "mean_abs_offset": 9.423855226486921e-05,
+          "max_abs_offset": 0.008529662154614925,
+          "mean_confidence": 0.06916817277669907,
+          "descriptor_weight": 0.7443289756774902,
+          "regularization_weight": 0.04283630847930908,
+          "temperature": 1.1901885271072388,
+          "refined_valid_fraction": 0.8649811744689941
+        }
+      }
+    },
+    {
+      "name": "SDSD_indoor/pair22_2",
+      "scene": "SDSD_indoor/pair22",
+      "methods": {
+        "base": {
+          "rgb_mse_float": 0.0026241676187859927,
+          "psnr_rgb_from_clip_mse": 25.81008427837212
+        },
+        "frozen_raw_node_1000": {
+          "rgb_mse_float": 0.0026085012589165493,
+          "psnr_rgb_from_clip_mse": 25.836089493420747
+        },
+        "joint_prior": {
+          "rgb_mse_float": 0.0026085012537620787,
+          "psnr_rgb_from_clip_mse": 25.836089502002526
+        },
+        "independent_prior": {
+          "rgb_mse_float": 0.002608501266078365,
+          "psnr_rgb_from_clip_mse": 25.8360894814969
+        },
+        "constant_prior": {
+          "rgb_mse_float": 0.0026085012589165493,
+          "psnr_rgb_from_clip_mse": 25.836089493420747
+        },
+        "joint_pixel": {
+          "rgb_mse_float": 0.002608501253011406,
+          "psnr_rgb_from_clip_mse": 25.836089503252335
+        },
+        "joint_shuffled": {
+          "rgb_mse_float": 0.002608501253400533,
+          "psnr_rgb_from_clip_mse": 25.836089502604473
+        }
+      },
+      "search": {
+        "joint_prior": {
+          "amplitude": 0.016833804547786713,
+          "mean_abs_offset": 1.3440394468489103e-06,
+          "max_abs_offset": 0.00016102005611173809,
+          "mean_confidence": 0.002539462875574827,
+          "descriptor_weight": 0.7485849857330322,
+          "regularization_weight": 0.04320922866463661,
+          "temperature": 1.1781201362609863,
+          "refined_valid_fraction": 0.8702149391174316
+        },
+        "independent_prior": {
+          "amplitude": 0.05702879652380943,
+          "mean_abs_offset": 2.4668343030498363e-06,
+          "max_abs_offset": 0.0004350727831479162,
+          "mean_confidence": 0.0013596892822533846,
+          "descriptor_weight": 0.8475463390350342,
+          "regularization_weight": 0.0315215177834034,
+          "temperature": 1.2258496284484863,
+          "refined_valid_fraction": 0.8702149391174316
+        },
+        "constant_prior": {
+          "amplitude": 0.0,
+          "mean_abs_offset": 0.0,
+          "max_abs_offset": 0.0,
+          "mean_confidence": 0.010778496041893959,
+          "descriptor_weight": 0.8089170455932617,
+          "regularization_weight": 0.07455754280090332,
+          "temperature": 0.9233636260032654,
+          "refined_valid_fraction": 0.8702149391174316
+        },
+        "joint_pixel": {
+          "amplitude": 0.018949255347251892,
+          "mean_abs_offset": 1.3657677300216164e-06,
+          "max_abs_offset": 0.0001767799985827878,
+          "mean_confidence": 0.002555107232183218,
+          "descriptor_weight": 1.2646188735961914,
+          "regularization_weight": 0.042647045105695724,
+          "temperature": 1.1919019222259521,
+          "refined_valid_fraction": 0.8702149391174316
+        },
+        "joint_shuffled": {
+          "amplitude": 0.016944434493780136,
+          "mean_abs_offset": 1.493853915235377e-06,
+          "max_abs_offset": 0.0001524381950730458,
+          "mean_confidence": 0.0026565897278487682,
+          "descriptor_weight": 0.7443289756774902,
+          "regularization_weight": 0.04283630847930908,
+          "temperature": 1.1901885271072388,
+          "refined_valid_fraction": 0.8702149391174316
+        }
+      }
+    },
+    {
+      "name": "SDSD_indoor/pair23",
+      "scene": "SDSD_indoor/pair23",
+      "methods": {
+        "base": {
+          "rgb_mse_float": 0.0017861705392389748,
+          "psnr_rgb_from_clip_mse": 27.480770780820833
+        },
+        "frozen_raw_node_1000": {
+          "rgb_mse_float": 0.0017651183359293084,
+          "psnr_rgb_from_clip_mse": 27.532261736085353
+        },
+        "joint_prior": {
+          "rgb_mse_float": 0.0017651183319083742,
+          "psnr_rgb_from_clip_mse": 27.532261745978566
+        },
+        "independent_prior": {
+          "rgb_mse_float": 0.0017651183265958812,
+          "psnr_rgb_from_clip_mse": 27.532261759049568
+        },
+        "constant_prior": {
+          "rgb_mse_float": 0.0017651183359293084,
+          "psnr_rgb_from_clip_mse": 27.532261736085353
+        },
+        "joint_pixel": {
+          "rgb_mse_float": 0.0017651183309665044,
+          "psnr_rgb_from_clip_mse": 27.532261748295973
+        },
+        "joint_shuffled": {
+          "rgb_mse_float": 0.0017651183307892994,
+          "psnr_rgb_from_clip_mse": 27.53226174873197
+        }
+      },
+      "search": {
+        "joint_prior": {
+          "amplitude": 0.016833804547786713,
+          "mean_abs_offset": 1.2148228734076838e-06,
+          "max_abs_offset": 0.00019724186859093606,
+          "mean_confidence": 0.002087181666865945,
+          "descriptor_weight": 0.7485849857330322,
+          "regularization_weight": 0.04320922866463661,
+          "temperature": 1.1781201362609863,
+          "refined_valid_fraction": 0.8460397720336914
+        },
+        "independent_prior": {
+          "amplitude": 0.05702879652380943,
+          "mean_abs_offset": 2.3766865524521563e-06,
+          "max_abs_offset": 0.0005963664152659476,
+          "mean_confidence": 0.0011289054527878761,
+          "descriptor_weight": 0.8475463390350342,
+          "regularization_weight": 0.0315215177834034,
+          "temperature": 1.2258496284484863,
+          "refined_valid_fraction": 0.8460397720336914
+        },
+        "constant_prior": {
+          "amplitude": 0.0,
+          "mean_abs_offset": 0.0,
+          "max_abs_offset": 0.0,
+          "mean_confidence": 0.009912041015923023,
+          "descriptor_weight": 0.8089170455932617,
+          "regularization_weight": 0.07455754280090332,
+          "temperature": 0.9233636260032654,
+          "refined_valid_fraction": 0.8460397720336914
+        },
+        "joint_pixel": {
+          "amplitude": 0.018949255347251892,
+          "mean_abs_offset": 1.5457261497431318e-06,
+          "max_abs_offset": 0.0002079350088024512,
+          "mean_confidence": 0.0020732106640934944,
+          "descriptor_weight": 1.2646188735961914,
+          "regularization_weight": 0.042647045105695724,
+          "temperature": 1.1919019222259521,
+          "refined_valid_fraction": 0.8460397720336914
+        },
+        "joint_shuffled": {
+          "amplitude": 0.016944434493780136,
+          "mean_abs_offset": 1.4744853160664206e-06,
+          "max_abs_offset": 0.0001876475871540606,
+          "mean_confidence": 0.0021271640434861183,
+          "descriptor_weight": 0.7443289756774902,
+          "regularization_weight": 0.04283630847930908,
+          "temperature": 1.1901885271072388,
+          "refined_valid_fraction": 0.8460397720336914
+        }
+      }
+    },
+    {
+      "name": "SDSD_indoor/pair23_2",
+      "scene": "SDSD_indoor/pair23",
+      "methods": {
+        "base": {
+          "rgb_mse_float": 0.009882170006303407,
+          "psnr_rgb_from_clip_mse": 20.05147679067896
+        },
+        "frozen_raw_node_1000": {
+          "rgb_mse_float": 0.009868482938936688,
+          "psnr_rgb_from_clip_mse": 20.057496053737086
+        },
+        "joint_prior": {
+          "rgb_mse_float": 0.009868502130753356,
+          "psnr_rgb_from_clip_mse": 20.057487607766188
+        },
+        "independent_prior": {
+          "rgb_mse_float": 0.009868492263280973,
+          "psnr_rgb_from_clip_mse": 20.057491950260005
+        },
+        "constant_prior": {
+          "rgb_mse_float": 0.009868482938936688,
+          "psnr_rgb_from_clip_mse": 20.057496053737086
+        },
+        "joint_pixel": {
+          "rgb_mse_float": 0.009868507602879351,
+          "psnr_rgb_from_clip_mse": 20.05748519958566
+        },
+        "joint_shuffled": {
+          "rgb_mse_float": 0.009868502999662795,
+          "psnr_rgb_from_clip_mse": 20.05748722537527
+        }
+      },
+      "search": {
+        "joint_prior": {
+          "amplitude": 0.016833804547786713,
+          "mean_abs_offset": 6.488890358014032e-05,
+          "max_abs_offset": 0.03340773284435272,
+          "mean_confidence": 0.05488463491201401,
+          "descriptor_weight": 0.7485849857330322,
+          "regularization_weight": 0.04320922866463661,
+          "temperature": 1.1781201362609863,
+          "refined_valid_fraction": 0.8683080673217773
+        },
+        "independent_prior": {
+          "amplitude": 0.05702879652380943,
+          "mean_abs_offset": 0.0001381242327624932,
+          "max_abs_offset": 0.09069696068763733,
+          "mean_confidence": 0.03276663273572922,
+          "descriptor_weight": 0.8475463390350342,
+          "regularization_weight": 0.0315215177834034,
+          "temperature": 1.2258496284484863,
+          "refined_valid_fraction": 0.8683056831359863
+        },
+        "constant_prior": {
+          "amplitude": 0.0,
+          "mean_abs_offset": 0.0,
+          "max_abs_offset": 0.0,
+          "mean_confidence": 0.08996729552745819,
+          "descriptor_weight": 0.8089170455932617,
+          "regularization_weight": 0.07455754280090332,
+          "temperature": 0.9233636260032654,
+          "refined_valid_fraction": 0.8683090209960938
+        },
+        "joint_pixel": {
+          "amplitude": 0.018949255347251892,
+          "mean_abs_offset": 7.247769099194556e-05,
+          "max_abs_offset": 0.037581611424684525,
+          "mean_confidence": 0.05450403690338135,
+          "descriptor_weight": 1.2646188735961914,
+          "regularization_weight": 0.042647045105695724,
+          "temperature": 1.1919019222259521,
+          "refined_valid_fraction": 0.8683075904846191
+        },
+        "joint_shuffled": {
+          "amplitude": 0.016944434493780136,
+          "mean_abs_offset": 6.533163832500577e-05,
+          "max_abs_offset": 0.033607784658670425,
+          "mean_confidence": 0.0542805939912796,
+          "descriptor_weight": 0.7443289756774902,
+          "regularization_weight": 0.04283630847930908,
+          "temperature": 1.1901885271072388,
+          "refined_valid_fraction": 0.8683080673217773
+        }
+      }
+    },
+    {
+      "name": "SDSD_indoor/pair30",
+      "scene": "SDSD_indoor/pair30",
+      "methods": {
+        "base": {
+          "rgb_mse_float": 0.006935109761572646,
+          "psnr_rgb_from_clip_mse": 21.589466609831838
+        },
+        "frozen_raw_node_1000": {
+          "rgb_mse_float": 0.0068840910628577305,
+          "psnr_rgb_from_clip_mse": 21.621533934526926
+        },
+        "joint_prior": {
+          "rgb_mse_float": 0.0068840919349198735,
+          "psnr_rgb_from_clip_mse": 21.621533384371865
+        },
+        "independent_prior": {
+          "rgb_mse_float": 0.0068840838956229595,
+          "psnr_rgb_from_clip_mse": 21.621538456100076
+        },
+        "constant_prior": {
+          "rgb_mse_float": 0.0068840910628577305,
+          "psnr_rgb_from_clip_mse": 21.621533934526926
+        },
+        "joint_pixel": {
+          "rgb_mse_float": 0.0068840919454389886,
+          "psnr_rgb_from_clip_mse": 21.62153337773571
+        },
+        "joint_shuffled": {
+          "rgb_mse_float": 0.006884091948866653,
+          "psnr_rgb_from_clip_mse": 21.621533375573307
+        }
+      },
+      "search": {
+        "joint_prior": {
+          "amplitude": 0.016833804547786713,
+          "mean_abs_offset": 1.8953822291223332e-05,
+          "max_abs_offset": 0.0016263206489384174,
+          "mean_confidence": 0.025700680911540985,
+          "descriptor_weight": 0.7485849857330322,
+          "regularization_weight": 0.04320922866463661,
+          "temperature": 1.1781201362609863,
+          "refined_valid_fraction": 0.8678174018859863
+        },
+        "independent_prior": {
+          "amplitude": 0.05702879652380943,
+          "mean_abs_offset": 4.088730929652229e-05,
+          "max_abs_offset": 0.005358788184821606,
+          "mean_confidence": 0.015799609944224358,
+          "descriptor_weight": 0.8475463390350342,
+          "regularization_weight": 0.0315215177834034,
+          "temperature": 1.2258496284484863,
+          "refined_valid_fraction": 0.8678174018859863
+        },
+        "constant_prior": {
+          "amplitude": 0.0,
+          "mean_abs_offset": 0.0,
+          "max_abs_offset": 0.0,
+          "mean_confidence": 0.06514213979244232,
+          "descriptor_weight": 0.8089170455932617,
+          "regularization_weight": 0.07455754280090332,
+          "temperature": 0.9233636260032654,
+          "refined_valid_fraction": 0.8678174018859863
+        },
+        "joint_pixel": {
+          "amplitude": 0.018949255347251892,
+          "mean_abs_offset": 2.1183859644224867e-05,
+          "max_abs_offset": 0.0018690363503992558,
+          "mean_confidence": 0.02562672272324562,
+          "descriptor_weight": 1.2646188735961914,
+          "regularization_weight": 0.042647045105695724,
+          "temperature": 1.1919019222259521,
+          "refined_valid_fraction": 0.8678174018859863
+        },
+        "joint_shuffled": {
+          "amplitude": 0.016944434493780136,
+          "mean_abs_offset": 1.9335118849994615e-05,
+          "max_abs_offset": 0.001776107819750905,
+          "mean_confidence": 0.025614341720938683,
+          "descriptor_weight": 0.7443289756774902,
+          "regularization_weight": 0.04283630847930908,
+          "temperature": 1.1901885271072388,
+          "refined_valid_fraction": 0.8678174018859863
+        }
+      }
+    },
+    {
+      "name": "SDSD_indoor/pair30_2",
+      "scene": "SDSD_indoor/pair30",
+      "methods": {
+        "base": {
+          "rgb_mse_float": 0.016791885966269415,
+          "psnr_rgb_from_clip_mse": 17.749005237103216
+        },
+        "frozen_raw_node_1000": {
+          "rgb_mse_float": 0.016738415777624655,
+          "psnr_rgb_from_clip_mse": 17.762856485885045
+        },
+        "joint_prior": {
+          "rgb_mse_float": 0.016738423098784264,
+          "psnr_rgb_from_clip_mse": 17.762854586339373
+        },
+        "independent_prior": {
+          "rgb_mse_float": 0.016738415069823393,
+          "psnr_rgb_from_clip_mse": 17.762856669530972
+        },
+        "constant_prior": {
+          "rgb_mse_float": 0.016738415777624655,
+          "psnr_rgb_from_clip_mse": 17.762856485885045
+        },
+        "joint_pixel": {
+          "rgb_mse_float": 0.01673842403733143,
+          "psnr_rgb_from_clip_mse": 17.76285434282429
+        },
+        "joint_shuffled": {
+          "rgb_mse_float": 0.0167384233959597,
+          "psnr_rgb_from_clip_mse": 17.762854509234348
+        }
+      },
+      "search": {
+        "joint_prior": {
+          "amplitude": 0.016833804547786713,
+          "mean_abs_offset": 9.181949280900881e-05,
+          "max_abs_offset": 0.010848406702280045,
+          "mean_confidence": 0.09463351964950562,
+          "descriptor_weight": 0.7485849857330322,
+          "regularization_weight": 0.04320922866463661,
+          "temperature": 1.1781201362609863,
+          "refined_valid_fraction": 0.8665390014648438
+        },
+        "independent_prior": {
+          "amplitude": 0.05702879652380943,
+          "mean_abs_offset": 0.00020307365048211068,
+          "max_abs_offset": 0.020869869738817215,
+          "mean_confidence": 0.06481143087148666,
+          "descriptor_weight": 0.8475463390350342,
+          "regularization_weight": 0.0315215177834034,
+          "temperature": 1.2258496284484863,
+          "refined_valid_fraction": 0.8665375709533691
+        },
+        "constant_prior": {
+          "amplitude": 0.0,
+          "mean_abs_offset": 0.0,
+          "max_abs_offset": 0.0,
+          "mean_confidence": 0.14945940673351288,
+          "descriptor_weight": 0.8089170455932617,
+          "regularization_weight": 0.07455754280090332,
+          "temperature": 0.9233636260032654,
+          "refined_valid_fraction": 0.8665390014648438
+        },
+        "joint_pixel": {
+          "amplitude": 0.018949255347251892,
+          "mean_abs_offset": 0.00010243564611300826,
+          "max_abs_offset": 0.01219171192497015,
+          "mean_confidence": 0.09415280818939209,
+          "descriptor_weight": 1.2646188735961914,
+          "regularization_weight": 0.042647045105695724,
+          "temperature": 1.1919019222259521,
+          "refined_valid_fraction": 0.8665390014648438
+        },
+        "joint_shuffled": {
+          "amplitude": 0.016944434493780136,
+          "mean_abs_offset": 9.238861821359023e-05,
+          "max_abs_offset": 0.01081961952149868,
+          "mean_confidence": 0.09404361248016357,
+          "descriptor_weight": 0.7443289756774902,
+          "regularization_weight": 0.04283630847930908,
+          "temperature": 1.1901885271072388,
+          "refined_valid_fraction": 0.8665390014648438
+        }
+      }
+    },
+    {
+      "name": "SDSD_indoor/pair32",
+      "scene": "SDSD_indoor/pair32",
+      "methods": {
+        "base": {
+          "rgb_mse_float": 0.0030253219042793117,
+          "psnr_rgb_from_clip_mse": 25.192284081803443
+        },
+        "frozen_raw_node_1000": {
+          "rgb_mse_float": 0.002949862787934981,
+          "psnr_rgb_from_clip_mse": 25.301981846416957
+        },
+        "joint_prior": {
+          "rgb_mse_float": 0.002949844948344263,
+          "psnr_rgb_from_clip_mse": 25.302008110890235
+        },
+        "independent_prior": {
+          "rgb_mse_float": 0.0029498072585186735,
+          "psnr_rgb_from_clip_mse": 25.302063600545228
+        },
+        "constant_prior": {
+          "rgb_mse_float": 0.002949862787934981,
+          "psnr_rgb_from_clip_mse": 25.301981846416957
+        },
+        "joint_pixel": {
+          "rgb_mse_float": 0.002949842725697904,
+          "psnr_rgb_from_clip_mse": 25.302011383209386
+        },
+        "joint_shuffled": {
+          "rgb_mse_float": 0.002949844859498676,
+          "psnr_rgb_from_clip_mse": 25.302008241694224
+        }
+      },
+      "search": {
+        "joint_prior": {
+          "amplitude": 0.016833804547786713,
+          "mean_abs_offset": 7.413381536025554e-05,
+          "max_abs_offset": 0.009599585086107254,
+          "mean_confidence": 0.04460349306464195,
+          "descriptor_weight": 0.7485849857330322,
+          "regularization_weight": 0.04320922866463661,
+          "temperature": 1.1781201362609863,
+          "refined_valid_fraction": 0.8672909736633301
+        },
+        "independent_prior": {
+          "amplitude": 0.05702879652380943,
+          "mean_abs_offset": 0.0001571929460624233,
+          "max_abs_offset": 0.022721445187926292,
+          "mean_confidence": 0.026236994192004204,
+          "descriptor_weight": 0.8475463390350342,
+          "regularization_weight": 0.0315215177834034,
+          "temperature": 1.2258496284484863,
+          "refined_valid_fraction": 0.8672909736633301
+        },
+        "constant_prior": {
+          "amplitude": 0.0,
+          "mean_abs_offset": 0.0,
+          "max_abs_offset": 0.0,
+          "mean_confidence": 0.09890434145927429,
+          "descriptor_weight": 0.8089170455932617,
+          "regularization_weight": 0.07455754280090332,
+          "temperature": 0.9233636260032654,
+          "refined_valid_fraction": 0.8672909736633301
+        },
+        "joint_pixel": {
+          "amplitude": 0.018949255347251892,
+          "mean_abs_offset": 8.164410974131897e-05,
+          "max_abs_offset": 0.010596327483654022,
+          "mean_confidence": 0.04420045390725136,
+          "descriptor_weight": 1.2646188735961914,
+          "regularization_weight": 0.042647045105695724,
+          "temperature": 1.1919019222259521,
+          "refined_valid_fraction": 0.8672909736633301
+        },
+        "joint_shuffled": {
+          "amplitude": 0.016944434493780136,
+          "mean_abs_offset": 7.393580017378554e-05,
+          "max_abs_offset": 0.00943805929273367,
+          "mean_confidence": 0.04417848214507103,
+          "descriptor_weight": 0.7443289756774902,
+          "regularization_weight": 0.04283630847930908,
+          "temperature": 1.1901885271072388,
+          "refined_valid_fraction": 0.8672909736633301
+        }
+      }
+    },
+    {
+      "name": "SDSD_indoor/pair32_2",
+      "scene": "SDSD_indoor/pair32",
+      "methods": {
+        "base": {
+          "rgb_mse_float": 0.0036617547929444355,
+          "psnr_rgb_from_clip_mse": 24.363107413114008
+        },
+        "frozen_raw_node_1000": {
+          "rgb_mse_float": 0.003577483479308538,
+          "psnr_rgb_from_clip_mse": 24.464223631200255
+        },
+        "joint_prior": {
+          "rgb_mse_float": 0.003577476068532287,
+          "psnr_rgb_from_clip_mse": 24.4642326276431
+        },
+        "independent_prior": {
+          "rgb_mse_float": 0.0035774676688305196,
+          "psnr_rgb_from_clip_mse": 24.464242824632095
+        },
+        "constant_prior": {
+          "rgb_mse_float": 0.003577483479308538,
+          "psnr_rgb_from_clip_mse": 24.464223631200255
+        },
+        "joint_pixel": {
+          "rgb_mse_float": 0.003577475090464781,
+          "psnr_rgb_from_clip_mse": 24.464233814986834
+        },
+        "joint_shuffled": {
+          "rgb_mse_float": 0.0035774760815009145,
+          "psnr_rgb_from_clip_mse": 24.464232611899593
+        }
+      },
+      "search": {
+        "joint_prior": {
+          "amplitude": 0.016833804547786713,
+          "mean_abs_offset": 3.920247399946675e-05,
+          "max_abs_offset": 0.016375577077269554,
+          "mean_confidence": 0.04947660118341446,
+          "descriptor_weight": 0.7485849857330322,
+          "regularization_weight": 0.04320922866463661,
+          "temperature": 1.1781201362609863,
+          "refined_valid_fraction": 0.8629417419433594
+        },
+        "independent_prior": {
+          "amplitude": 0.05702879652380943,
+          "mean_abs_offset": 8.160902507370338e-05,
+          "max_abs_offset": 0.03473188355565071,
+          "mean_confidence": 0.039158232510089874,
+          "descriptor_weight": 0.8475463390350342,
+          "regularization_weight": 0.0315215177834034,
+          "temperature": 1.2258496284484863,
+          "refined_valid_fraction": 0.8629417419433594
+        },
+        "constant_prior": {
+          "amplitude": 0.0,
+          "mean_abs_offset": 0.0,
+          "max_abs_offset": 0.0,
+          "mean_confidence": 0.08320791274309158,
+          "descriptor_weight": 0.8089170455932617,
+          "regularization_weight": 0.07455754280090332,
+          "temperature": 0.9233636260032654,
+          "refined_valid_fraction": 0.8629417419433594
+        },
+        "joint_pixel": {
+          "amplitude": 0.018949255347251892,
+          "mean_abs_offset": 4.299732972867787e-05,
+          "max_abs_offset": 0.01831919513642788,
+          "mean_confidence": 0.04932229965925217,
+          "descriptor_weight": 1.2646188735961914,
+          "regularization_weight": 0.042647045105695724,
+          "temperature": 1.1919019222259521,
+          "refined_valid_fraction": 0.8629417419433594
+        },
+        "joint_shuffled": {
+          "amplitude": 0.016944434493780136,
+          "mean_abs_offset": 3.982997077400796e-05,
+          "max_abs_offset": 0.01637478545308113,
+          "mean_confidence": 0.04938245564699173,
+          "descriptor_weight": 0.7443289756774902,
+          "regularization_weight": 0.04283630847930908,
+          "temperature": 1.1901885271072388,
+          "refined_valid_fraction": 0.8629417419433594
+        }
+      }
+    },
+    {
+      "name": "SDSD_outdoor/MVI_0900",
+      "scene": "SDSD_outdoor/MVI_0900",
+      "methods": {
+        "base": {
+          "rgb_mse_float": 0.0016657361259728618,
+          "psnr_rgb_from_clip_mse": 27.783937953124273
+        },
+        "frozen_raw_node_1000": {
+          "rgb_mse_float": 0.0016682566826340267,
+          "psnr_rgb_from_clip_mse": 27.777371267947277
+        },
+        "joint_prior": {
+          "rgb_mse_float": 0.0016682624390184063,
+          "psnr_rgb_from_clip_mse": 27.77735628247361
+        },
+        "independent_prior": {
+          "rgb_mse_float": 0.0016682650312452379,
+          "psnr_rgb_from_clip_mse": 27.777349534201228
+        },
+        "constant_prior": {
+          "rgb_mse_float": 0.0016682566826340267,
+          "psnr_rgb_from_clip_mse": 27.777371267947277
+        },
+        "joint_pixel": {
+          "rgb_mse_float": 0.0016682629525930626,
+          "psnr_rgb_from_clip_mse": 27.777354945498086
+        },
+        "joint_shuffled": {
+          "rgb_mse_float": 0.001668262464464736,
+          "psnr_rgb_from_clip_mse": 27.777356216229837
+        }
+      },
+      "search": {
+        "joint_prior": {
+          "amplitude": 0.016833804547786713,
+          "mean_abs_offset": 5.242760380497202e-05,
+          "max_abs_offset": 0.002943287370726466,
+          "mean_confidence": 0.0466681607067585,
+          "descriptor_weight": 0.7485849857330322,
+          "regularization_weight": 0.04320922866463661,
+          "temperature": 1.1781201362609863,
+          "refined_valid_fraction": 0.8671665191650391
+        },
+        "independent_prior": {
+          "amplitude": 0.05702879652380943,
+          "mean_abs_offset": 8.172926027327776e-05,
+          "max_abs_offset": 0.004989165812730789,
+          "mean_confidence": 0.02357497625052929,
+          "descriptor_weight": 0.8475463390350342,
+          "regularization_weight": 0.0315215177834034,
+          "temperature": 1.2258496284484863,
+          "refined_valid_fraction": 0.8671665191650391
+        },
+        "constant_prior": {
+          "amplitude": 0.0,
+          "mean_abs_offset": 0.0,
+          "max_abs_offset": 0.0,
+          "mean_confidence": 0.0530686229467392,
+          "descriptor_weight": 0.8089170455932617,
+          "regularization_weight": 0.07455754280090332,
+          "temperature": 0.9233636260032654,
+          "refined_valid_fraction": 0.8671684265136719
+        },
+        "joint_pixel": {
+          "amplitude": 0.018949255347251892,
+          "mean_abs_offset": 5.848551154485904e-05,
+          "max_abs_offset": 0.0031884878408163786,
+          "mean_confidence": 0.04630158841609955,
+          "descriptor_weight": 1.2646188735961914,
+          "regularization_weight": 0.042647045105695724,
+          "temperature": 1.1919019222259521,
+          "refined_valid_fraction": 0.8671665191650391
+        },
+        "joint_shuffled": {
+          "amplitude": 0.016944434493780136,
+          "mean_abs_offset": 5.266365042189136e-05,
+          "max_abs_offset": 0.0027832533232867718,
+          "mean_confidence": 0.04613478481769562,
+          "descriptor_weight": 0.7443289756774902,
+          "regularization_weight": 0.04283630847930908,
+          "temperature": 1.1901885271072388,
+          "refined_valid_fraction": 0.8671665191650391
+        }
+      }
+    },
+    {
+      "name": "SDSD_outdoor/MVI_0900_2",
+      "scene": "SDSD_outdoor/MVI_0900",
+      "methods": {
+        "base": {
+          "rgb_mse_float": 0.0019552772656629054,
+          "psnr_rgb_from_clip_mse": 27.087916493119142
+        },
+        "frozen_raw_node_1000": {
+          "rgb_mse_float": 0.0019425397898848935,
+          "psnr_rgb_from_clip_mse": 27.11630076593735
+        },
+        "joint_prior": {
+          "rgb_mse_float": 0.0019425550579387314,
+          "psnr_rgb_from_clip_mse": 27.11626663121585
+        },
+        "independent_prior": {
+          "rgb_mse_float": 0.001942567106594413,
+          "psnr_rgb_from_clip_mse": 27.116239694278192
+        },
+        "constant_prior": {
+          "rgb_mse_float": 0.0019425397898848935,
+          "psnr_rgb_from_clip_mse": 27.11630076593735
+        },
+        "joint_pixel": {
+          "rgb_mse_float": 0.0019425540060610056,
+          "psnr_rgb_from_clip_mse": 27.116268982885696
+        },
+        "joint_shuffled": {
+          "rgb_mse_float": 0.0019425546843825977,
+          "psnr_rgb_from_clip_mse": 27.116267466370466
+        }
+      },
+      "search": {
+        "joint_prior": {
+          "amplitude": 0.016833804547786713,
+          "mean_abs_offset": 0.0001588564773555845,
+          "max_abs_offset": 0.005149661563336849,
+          "mean_confidence": 0.14927265048027039,
+          "descriptor_weight": 0.7485849857330322,
+          "regularization_weight": 0.04320922866463661,
+          "temperature": 1.1781201362609863,
+          "refined_valid_fraction": 0.8671765327453613
+        },
+        "independent_prior": {
+          "amplitude": 0.05702879652380943,
+          "mean_abs_offset": 0.0003395277599338442,
+          "max_abs_offset": 0.014677352271974087,
+          "mean_confidence": 0.08588214218616486,
+          "descriptor_weight": 0.8475463390350342,
+          "regularization_weight": 0.0315215177834034,
+          "temperature": 1.2258496284484863,
+          "refined_valid_fraction": 0.8671741485595703
+        },
+        "constant_prior": {
+          "amplitude": 0.0,
+          "mean_abs_offset": 0.0,
+          "max_abs_offset": 0.0,
+          "mean_confidence": 0.09886617958545685,
+          "descriptor_weight": 0.8089170455932617,
+          "regularization_weight": 0.07455754280090332,
+          "temperature": 0.9233636260032654,
+          "refined_valid_fraction": 0.8671808242797852
+        },
+        "joint_pixel": {
+          "amplitude": 0.018949255347251892,
+          "mean_abs_offset": 0.00017769582336768508,
+          "max_abs_offset": 0.0057190400548279285,
+          "mean_confidence": 0.14814627170562744,
+          "descriptor_weight": 1.2646188735961914,
+          "regularization_weight": 0.042647045105695724,
+          "temperature": 1.1919019222259521,
+          "refined_valid_fraction": 0.8671751022338867
+        },
+        "joint_shuffled": {
+          "amplitude": 0.016944434493780136,
+          "mean_abs_offset": 0.0001589647145010531,
+          "max_abs_offset": 0.005049497354775667,
+          "mean_confidence": 0.14733025431632996,
+          "descriptor_weight": 0.7443289756774902,
+          "regularization_weight": 0.04283630847930908,
+          "temperature": 1.1901885271072388,
+          "refined_valid_fraction": 0.8671765327453613
+        }
+      }
+    },
+    {
+      "name": "SDSD_outdoor/MVI_0915",
+      "scene": "SDSD_outdoor/MVI_0915",
+      "methods": {
+        "base": {
+          "rgb_mse_float": 0.0005064417245818133,
+          "psnr_rgb_from_clip_mse": 32.95470520982098
+        },
+        "frozen_raw_node_1000": {
+          "rgb_mse_float": 0.000487070740342351,
+          "psnr_rgb_from_clip_mse": 33.124079588895995
+        },
+        "joint_prior": {
+          "rgb_mse_float": 0.00048707917117264796,
+          "psnr_rgb_from_clip_mse": 33.1240044164193
+        },
+        "independent_prior": {
+          "rgb_mse_float": 0.00048708114368272907,
+          "psnr_rgb_from_clip_mse": 33.123986828960014
+        },
+        "constant_prior": {
+          "rgb_mse_float": 0.000487070740342351,
+          "psnr_rgb_from_clip_mse": 33.124079588895995
+        },
+        "joint_pixel": {
+          "rgb_mse_float": 0.00048708075347011527,
+          "psnr_rgb_from_clip_mse": 33.12399030820069
+        },
+        "joint_shuffled": {
+          "rgb_mse_float": 0.0004870791829422727,
+          "psnr_rgb_from_clip_mse": 33.124004311477776
+        }
+      },
+      "search": {
+        "joint_prior": {
+          "amplitude": 0.016833804547786713,
+          "mean_abs_offset": 0.00015191311831586063,
+          "max_abs_offset": 0.0041544777341187,
+          "mean_confidence": 0.1293066442012787,
+          "descriptor_weight": 0.7485849857330322,
+          "regularization_weight": 0.04320922866463661,
+          "temperature": 1.1781201362609863,
+          "refined_valid_fraction": 0.8672037124633789
+        },
+        "independent_prior": {
+          "amplitude": 0.05702879652380943,
+          "mean_abs_offset": 0.0002782875671982765,
+          "max_abs_offset": 0.012255947105586529,
+          "mean_confidence": 0.06841685622930527,
+          "descriptor_weight": 0.8475463390350342,
+          "regularization_weight": 0.0315215177834034,
+          "temperature": 1.2258496284484863,
+          "refined_valid_fraction": 0.8671979904174805
+        },
+        "constant_prior": {
+          "amplitude": 0.0,
+          "mean_abs_offset": 0.0,
+          "max_abs_offset": 0.0,
+          "mean_confidence": 0.02704685740172863,
+          "descriptor_weight": 0.8089170455932617,
+          "regularization_weight": 0.07455754280090332,
+          "temperature": 0.9233636260032654,
+          "refined_valid_fraction": 0.8672084808349609
+        },
+        "joint_pixel": {
+          "amplitude": 0.018949255347251892,
+          "mean_abs_offset": 0.00016937055625021458,
+          "max_abs_offset": 0.004575509112328291,
+          "mean_confidence": 0.12817303836345673,
+          "descriptor_weight": 1.2646188735961914,
+          "regularization_weight": 0.042647045105695724,
+          "temperature": 1.1919019222259521,
+          "refined_valid_fraction": 0.8672027587890625
+        },
+        "joint_shuffled": {
+          "amplitude": 0.016944434493780136,
+          "mean_abs_offset": 0.00015134376008063555,
+          "max_abs_offset": 0.003999347798526287,
+          "mean_confidence": 0.12749506533145905,
+          "descriptor_weight": 0.7443289756774902,
+          "regularization_weight": 0.04283630847930908,
+          "temperature": 1.1901885271072388,
+          "refined_valid_fraction": 0.8672037124633789
+        }
+      }
+    },
+    {
+      "name": "SDSD_outdoor/MVI_0915_2",
+      "scene": "SDSD_outdoor/MVI_0915",
+      "methods": {
+        "base": {
+          "rgb_mse_float": 0.0005538608346703989,
+          "psnr_rgb_from_clip_mse": 32.56599344165295
+        },
+        "frozen_raw_node_1000": {
+          "rgb_mse_float": 0.0005440267573528409,
+          "psnr_rgb_from_clip_mse": 32.64379739483967
+        },
+        "joint_prior": {
+          "rgb_mse_float": 0.0005440293820634526,
+          "psnr_rgb_from_clip_mse": 32.64377644192568
+        },
+        "independent_prior": {
+          "rgb_mse_float": 0.0005440308095414455,
+          "psnr_rgb_from_clip_mse": 32.64376504649333
+        },
+        "constant_prior": {
+          "rgb_mse_float": 0.0005440267573528409,
+          "psnr_rgb_from_clip_mse": 32.64379739483967
+        },
+        "joint_pixel": {
+          "rgb_mse_float": 0.0005440299288432529,
+          "psnr_rgb_from_clip_mse": 32.64377207702668
+        },
+        "joint_shuffled": {
+          "rgb_mse_float": 0.0005440293548326086,
+          "psnr_rgb_from_clip_mse": 32.64377665930743
+        }
+      },
+      "search": {
+        "joint_prior": {
+          "amplitude": 0.016833804547786713,
+          "mean_abs_offset": 6.751993350917473e-05,
+          "max_abs_offset": 0.003972642123699188,
+          "mean_confidence": 0.042912259697914124,
+          "descriptor_weight": 0.7485849857330322,
+          "regularization_weight": 0.04320922866463661,
+          "temperature": 1.1781201362609863,
+          "refined_valid_fraction": 0.8669180870056152
+        },
+        "independent_prior": {
+          "amplitude": 0.05702879652380943,
+          "mean_abs_offset": 9.982970368582755e-05,
+          "max_abs_offset": 0.006984350737184286,
+          "mean_confidence": 0.022858187556266785,
+          "descriptor_weight": 0.8475463390350342,
+          "regularization_weight": 0.0315215177834034,
+          "temperature": 1.2258496284484863,
+          "refined_valid_fraction": 0.8669157028198242
+        },
+        "constant_prior": {
+          "amplitude": 0.0,
+          "mean_abs_offset": 0.0,
+          "max_abs_offset": 0.0,
+          "mean_confidence": 0.01645791530609131,
+          "descriptor_weight": 0.8089170455932617,
+          "regularization_weight": 0.07455754280090332,
+          "temperature": 0.9233636260032654,
+          "refined_valid_fraction": 0.8669195175170898
+        },
+        "joint_pixel": {
+          "amplitude": 0.018949255347251892,
+          "mean_abs_offset": 7.488785195164382e-05,
+          "max_abs_offset": 0.004444624297320843,
+          "mean_confidence": 0.0427757129073143,
+          "descriptor_weight": 1.2646188735961914,
+          "regularization_weight": 0.042647045105695724,
+          "temperature": 1.1919019222259521,
+          "refined_valid_fraction": 0.866917610168457
+        },
+        "joint_shuffled": {
+          "amplitude": 0.016944434493780136,
+          "mean_abs_offset": 6.650332943536341e-05,
+          "max_abs_offset": 0.003950933925807476,
+          "mean_confidence": 0.04209604114294052,
+          "descriptor_weight": 0.7443289756774902,
+          "regularization_weight": 0.04283630847930908,
+          "temperature": 1.1901885271072388,
+          "refined_valid_fraction": 0.8669180870056152
+        }
+      }
+    },
+    {
+      "name": "SDSD_outdoor/MVI_0926",
+      "scene": "SDSD_outdoor/MVI_0926",
+      "methods": {
+        "base": {
+          "rgb_mse_float": 0.00043000627901522225,
+          "psnr_rgb_from_clip_mse": 33.66525202741918
+        },
+        "frozen_raw_node_1000": {
+          "rgb_mse_float": 0.00039655273831447276,
+          "psnr_rgb_from_clip_mse": 34.01699046843547
+        },
+        "joint_prior": {
+          "rgb_mse_float": 0.0003965529317571093,
+          "psnr_rgb_from_clip_mse": 34.016988349901396
+        },
+        "independent_prior": {
+          "rgb_mse_float": 0.0003965531520042996,
+          "psnr_rgb_from_clip_mse": 34.01698593781198
+        },
+        "constant_prior": {
+          "rgb_mse_float": 0.00039655273831447276,
+          "psnr_rgb_from_clip_mse": 34.01699046843547
+        },
+        "joint_pixel": {
+          "rgb_mse_float": 0.00039655296018524153,
+          "psnr_rgb_from_clip_mse": 34.01698803856388
+        },
+        "joint_shuffled": {
+          "rgb_mse_float": 0.0003965529285994374,
+          "psnr_rgb_from_clip_mse": 34.0169883844834
+        }
+      },
+      "search": {
+        "joint_prior": {
+          "amplitude": 0.016833804547786713,
+          "mean_abs_offset": 8.811509178485721e-05,
+          "max_abs_offset": 0.009404681622982025,
+          "mean_confidence": 0.030358223244547844,
+          "descriptor_weight": 0.7485849857330322,
+          "regularization_weight": 0.04320922866463661,
+          "temperature": 1.1781201362609863,
+          "refined_valid_fraction": 0.8691291809082031
+        },
+        "independent_prior": {
+          "amplitude": 0.05702879652380943,
+          "mean_abs_offset": 0.00017220768495462835,
+          "max_abs_offset": 0.016907181590795517,
+          "mean_confidence": 0.019410597160458565,
+          "descriptor_weight": 0.8475463390350342,
+          "regularization_weight": 0.0315215177834034,
+          "temperature": 1.2258496284484863,
+          "refined_valid_fraction": 0.8691296577453613
+        },
+        "constant_prior": {
+          "amplitude": 0.0,
+          "mean_abs_offset": 0.0,
+          "max_abs_offset": 0.0,
+          "mean_confidence": 0.010720903053879738,
+          "descriptor_weight": 0.8089170455932617,
+          "regularization_weight": 0.07455754280090332,
+          "temperature": 0.9233636260032654,
+          "refined_valid_fraction": 0.8691301345825195
+        },
+        "joint_pixel": {
+          "amplitude": 0.018949255347251892,
+          "mean_abs_offset": 9.816860256250948e-05,
+          "max_abs_offset": 0.010259713046252728,
+          "mean_confidence": 0.030059166252613068,
+          "descriptor_weight": 1.2646188735961914,
+          "regularization_weight": 0.042647045105695724,
+          "temperature": 1.1919019222259521,
+          "refined_valid_fraction": 0.8691291809082031
+        },
+        "joint_shuffled": {
+          "amplitude": 0.016944434493780136,
+          "mean_abs_offset": 8.736350719118491e-05,
+          "max_abs_offset": 0.009144816547632217,
+          "mean_confidence": 0.03013252466917038,
+          "descriptor_weight": 0.7443289756774902,
+          "regularization_weight": 0.04283630847930908,
+          "temperature": 1.1901885271072388,
+          "refined_valid_fraction": 0.8691291809082031
+        }
+      }
+    },
+    {
+      "name": "SDSD_outdoor/MVI_0926_2",
+      "scene": "SDSD_outdoor/MVI_0926",
+      "methods": {
+        "base": {
+          "rgb_mse_float": 0.00031526636332575867,
+          "psnr_rgb_from_clip_mse": 35.013223629066516
+        },
+        "frozen_raw_node_1000": {
+          "rgb_mse_float": 0.00028652917760218236,
+          "psnr_rgb_from_clip_mse": 35.428311467282995
+        },
+        "joint_prior": {
+          "rgb_mse_float": 0.000286529509457495,
+          "psnr_rgb_from_clip_mse": 35.42830643732937
+        },
+        "independent_prior": {
+          "rgb_mse_float": 0.0002865292184544749,
+          "psnr_rgb_from_clip_mse": 35.4283108480817
+        },
+        "constant_prior": {
+          "rgb_mse_float": 0.00028652917760218236,
+          "psnr_rgb_from_clip_mse": 35.428311467282995
+        },
+        "joint_pixel": {
+          "rgb_mse_float": 0.0002865295424922144,
+          "psnr_rgb_from_clip_mse": 35.42830593662019
+        },
+        "joint_shuffled": {
+          "rgb_mse_float": 0.0002865294884670773,
+          "psnr_rgb_from_clip_mse": 35.42830675548239
+        }
+      },
+      "search": {
+        "joint_prior": {
+          "amplitude": 0.016833804547786713,
+          "mean_abs_offset": 0.00010418956662761047,
+          "max_abs_offset": 0.012260958552360535,
+          "mean_confidence": 0.03158846125006676,
+          "descriptor_weight": 0.7485849857330322,
+          "regularization_weight": 0.04320922866463661,
+          "temperature": 1.1781201362609863,
+          "refined_valid_fraction": 0.868281364440918
+        },
+        "independent_prior": {
+          "amplitude": 0.05702879652380943,
+          "mean_abs_offset": 0.00019659123790916055,
+          "max_abs_offset": 0.027997218072414398,
+          "mean_confidence": 0.02035881206393242,
+          "descriptor_weight": 0.8475463390350342,
+          "regularization_weight": 0.0315215177834034,
+          "temperature": 1.2258496284484863,
+          "refined_valid_fraction": 0.8682804107666016
+        },
+        "constant_prior": {
+          "amplitude": 0.0,
+          "mean_abs_offset": 0.0,
+          "max_abs_offset": 0.0,
+          "mean_confidence": 0.01057433895766735,
+          "descriptor_weight": 0.8089170455932617,
+          "regularization_weight": 0.07455754280090332,
+          "temperature": 0.9233636260032654,
+          "refined_valid_fraction": 0.868281364440918
+        },
+        "joint_pixel": {
+          "amplitude": 0.018949255347251892,
+          "mean_abs_offset": 0.00011613706010393798,
+          "max_abs_offset": 0.013638755306601524,
+          "mean_confidence": 0.031296636909246445,
+          "descriptor_weight": 1.2646188735961914,
+          "regularization_weight": 0.042647045105695724,
+          "temperature": 1.1919019222259521,
+          "refined_valid_fraction": 0.868281364440918
+        },
+        "joint_shuffled": {
+          "amplitude": 0.016944434493780136,
+          "mean_abs_offset": 0.00010352552635595202,
+          "max_abs_offset": 0.012171026319265366,
+          "mean_confidence": 0.03130859509110451,
+          "descriptor_weight": 0.7443289756774902,
+          "regularization_weight": 0.04283630847930908,
+          "temperature": 1.1901885271072388,
+          "refined_valid_fraction": 0.868281364440918
+        }
+      }
+    },
+    {
+      "name": "SDSD_outdoor/MVI_0935",
+      "scene": "SDSD_outdoor/MVI_0935",
+      "methods": {
+        "base": {
+          "rgb_mse_float": 0.001810400395088428,
+          "psnr_rgb_from_clip_mse": 27.422253642760932
+        },
+        "frozen_raw_node_1000": {
+          "rgb_mse_float": 0.001773859523354757,
+          "psnr_rgb_from_clip_mse": 27.51080776075602
+        },
+        "joint_prior": {
+          "rgb_mse_float": 0.0017738762992008693,
+          "psnr_rgb_from_clip_mse": 27.51076668860319
+        },
+        "independent_prior": {
+          "rgb_mse_float": 0.0017739057160510213,
+          "psnr_rgb_from_clip_mse": 27.51069466853182
+        },
+        "constant_prior": {
+          "rgb_mse_float": 0.001773859523354757,
+          "psnr_rgb_from_clip_mse": 27.51080776075602
+        },
+        "joint_pixel": {
+          "rgb_mse_float": 0.0017738770282236787,
+          "psnr_rgb_from_clip_mse": 27.51076490375202
+        },
+        "joint_shuffled": {
+          "rgb_mse_float": 0.0017738753869154477,
+          "psnr_rgb_from_clip_mse": 27.510768922133376
+        }
+      },
+      "search": {
+        "joint_prior": {
+          "amplitude": 0.016833804547786713,
+          "mean_abs_offset": 0.0002488006721250713,
+          "max_abs_offset": 0.012504665181040764,
+          "mean_confidence": 0.26532405614852905,
+          "descriptor_weight": 0.7485849857330322,
+          "regularization_weight": 0.04320922866463661,
+          "temperature": 1.1781201362609863,
+          "refined_valid_fraction": 0.8674554824829102
+        },
+        "independent_prior": {
+          "amplitude": 0.05702879652380943,
+          "mean_abs_offset": 0.0006749093881808221,
+          "max_abs_offset": 0.04242920130491257,
+          "mean_confidence": 0.2160792350769043,
+          "descriptor_weight": 0.8475463390350342,
+          "regularization_weight": 0.0315215177834034,
+          "temperature": 1.2258496284484863,
+          "refined_valid_fraction": 0.8674449920654297
+        },
+        "constant_prior": {
+          "amplitude": 0.0,
+          "mean_abs_offset": 0.0,
+          "max_abs_offset": 0.0,
+          "mean_confidence": 0.12309731543064117,
+          "descriptor_weight": 0.8089170455932617,
+          "regularization_weight": 0.07455754280090332,
+          "temperature": 0.9233636260032654,
+          "refined_valid_fraction": 0.8674583435058594
+        },
+        "joint_pixel": {
+          "amplitude": 0.018949255347251892,
+          "mean_abs_offset": 0.0002787006669677794,
+          "max_abs_offset": 0.014107468537986279,
+          "mean_confidence": 0.2642885446548462,
+          "descriptor_weight": 1.2646188735961914,
+          "regularization_weight": 0.042647045105695724,
+          "temperature": 1.1919019222259521,
+          "refined_valid_fraction": 0.8674545288085938
+        },
+        "joint_shuffled": {
+          "amplitude": 0.016944434493780136,
+          "mean_abs_offset": 0.0002494152868166566,
+          "max_abs_offset": 0.012934722937643528,
+          "mean_confidence": 0.26427409052848816,
+          "descriptor_weight": 0.7443289756774902,
+          "regularization_weight": 0.04283630847930908,
+          "temperature": 1.1901885271072388,
+          "refined_valid_fraction": 0.867455005645752
+        }
+      }
+    },
+    {
+      "name": "SDSD_outdoor/MVI_0935_2",
+      "scene": "SDSD_outdoor/MVI_0935",
+      "methods": {
+        "base": {
+          "rgb_mse_float": 0.0024656747546088474,
+          "psnr_rgb_from_clip_mse": 26.080642114363435
+        },
+        "frozen_raw_node_1000": {
+          "rgb_mse_float": 0.002464637386728639,
+          "psnr_rgb_from_clip_mse": 26.08246967878456
+        },
+        "joint_prior": {
+          "rgb_mse_float": 0.002464585866342323,
+          "psnr_rgb_from_clip_mse": 26.082560463958345
+        },
+        "independent_prior": {
+          "rgb_mse_float": 0.0024647948678579944,
+          "psnr_rgb_from_clip_mse": 26.08219218968653
+        },
+        "constant_prior": {
+          "rgb_mse_float": 0.002464637386728639,
+          "psnr_rgb_from_clip_mse": 26.08246967878456
+        },
+        "joint_pixel": {
+          "rgb_mse_float": 0.002464586498190528,
+          "psnr_rgb_from_clip_mse": 26.082559350553627
+        },
+        "joint_shuffled": {
+          "rgb_mse_float": 0.0024645860548731875,
+          "psnr_rgb_from_clip_mse": 26.08256013174062
+        }
+      },
+      "search": {
+        "joint_prior": {
+          "amplitude": 0.016833804547786713,
+          "mean_abs_offset": 0.0003081877948716283,
+          "max_abs_offset": 0.02377377636730671,
+          "mean_confidence": 0.46302422881126404,
+          "descriptor_weight": 0.7485849857330322,
+          "regularization_weight": 0.04320922866463661,
+          "temperature": 1.1781201362609863,
+          "refined_valid_fraction": 0.8676819801330566
+        },
+        "independent_prior": {
+          "amplitude": 0.05702879652380943,
+          "mean_abs_offset": 0.0009361858828924596,
+          "max_abs_offset": 0.06373172253370285,
+          "mean_confidence": 0.39802929759025574,
+          "descriptor_weight": 0.8475463390350342,
+          "regularization_weight": 0.0315215177834034,
+          "temperature": 1.2258496284484863,
+          "refined_valid_fraction": 0.8676567077636719
+        },
+        "constant_prior": {
+          "amplitude": 0.0,
+          "mean_abs_offset": 0.0,
+          "max_abs_offset": 0.0,
+          "mean_confidence": 0.179463729262352,
+          "descriptor_weight": 0.8089170455932617,
+          "regularization_weight": 0.07455754280090332,
+          "temperature": 0.9233636260032654,
+          "refined_valid_fraction": 0.8676919937133789
+        },
+        "joint_pixel": {
+          "amplitude": 0.018949255347251892,
+          "mean_abs_offset": 0.00034589978167787194,
+          "max_abs_offset": 0.026414835825562477,
+          "mean_confidence": 0.4615783393383026,
+          "descriptor_weight": 1.2646188735961914,
+          "regularization_weight": 0.042647045105695724,
+          "temperature": 1.1919019222259521,
+          "refined_valid_fraction": 0.8676815032958984
+        },
+        "joint_shuffled": {
+          "amplitude": 0.016944434493780136,
+          "mean_abs_offset": 0.000309360766550526,
+          "max_abs_offset": 0.023502551019191742,
+          "mean_confidence": 0.46169424057006836,
+          "descriptor_weight": 0.7443289756774902,
+          "regularization_weight": 0.04283630847930908,
+          "temperature": 1.1901885271072388,
+          "refined_valid_fraction": 0.8676815032958984
+        }
+      }
+    },
+    {
+      "name": "SDSD_outdoor/MVI_0941",
+      "scene": "SDSD_outdoor/MVI_0941",
+      "methods": {
+        "base": {
+          "rgb_mse_float": 0.0011006552160057023,
+          "psnr_rgb_from_clip_mse": 29.583487039498277
+        },
+        "frozen_raw_node_1000": {
+          "rgb_mse_float": 0.0010479021879850087,
+          "psnr_rgb_from_clip_mse": 29.796792528492716
+        },
+        "joint_prior": {
+          "rgb_mse_float": 0.001047908357017045,
+          "psnr_rgb_from_clip_mse": 29.7967669615198
+        },
+        "independent_prior": {
+          "rgb_mse_float": 0.001047912975008548,
+          "psnr_rgb_from_clip_mse": 29.796747822786966
+        },
+        "constant_prior": {
+          "rgb_mse_float": 0.0010479021879850087,
+          "psnr_rgb_from_clip_mse": 29.796792528492716
+        },
+        "joint_pixel": {
+          "rgb_mse_float": 0.0010479089169651613,
+          "psnr_rgb_from_clip_mse": 29.796764640874965
+        },
+        "joint_shuffled": {
+          "rgb_mse_float": 0.0010479090065914614,
+          "psnr_rgb_from_clip_mse": 29.796764269428504
+        }
+      },
+      "search": {
+        "joint_prior": {
+          "amplitude": 0.016833804547786713,
+          "mean_abs_offset": 0.0001017146569211036,
+          "max_abs_offset": 0.003958119545131922,
+          "mean_confidence": 0.1314811259508133,
+          "descriptor_weight": 0.7485849857330322,
+          "regularization_weight": 0.04320922866463661,
+          "temperature": 1.1781201362609863,
+          "refined_valid_fraction": 0.86578369140625
+        },
+        "independent_prior": {
+          "amplitude": 0.05702879652380943,
+          "mean_abs_offset": 0.00022298374096862972,
+          "max_abs_offset": 0.015241815708577633,
+          "mean_confidence": 0.08023150265216827,
+          "descriptor_weight": 0.8475463390350342,
+          "regularization_weight": 0.0315215177834034,
+          "temperature": 1.2258496284484863,
+          "refined_valid_fraction": 0.8657770156860352
+        },
+        "constant_prior": {
+          "amplitude": 0.0,
+          "mean_abs_offset": 0.0,
+          "max_abs_offset": 0.0,
+          "mean_confidence": 0.1887335181236267,
+          "descriptor_weight": 0.8089170455932617,
+          "regularization_weight": 0.07455754280090332,
+          "temperature": 0.9233636260032654,
+          "refined_valid_fraction": 0.8657879829406738
+        },
+        "joint_pixel": {
+          "amplitude": 0.018949255347251892,
+          "mean_abs_offset": 0.00011308386456221342,
+          "max_abs_offset": 0.004464238882064819,
+          "mean_confidence": 0.13018234074115753,
+          "descriptor_weight": 1.2646188735961914,
+          "regularization_weight": 0.042647045105695724,
+          "temperature": 1.1919019222259521,
+          "refined_valid_fraction": 0.8657822608947754
+        },
+        "joint_shuffled": {
+          "amplitude": 0.016944434493780136,
+          "mean_abs_offset": 0.00010180801473325118,
+          "max_abs_offset": 0.0039853001944720745,
+          "mean_confidence": 0.13001438975334167,
+          "descriptor_weight": 0.7443289756774902,
+          "regularization_weight": 0.04283630847930908,
+          "temperature": 1.1901885271072388,
+          "refined_valid_fraction": 0.8657841682434082
+        }
+      }
+    },
+    {
+      "name": "SDSD_outdoor/MVI_0941_2",
+      "scene": "SDSD_outdoor/MVI_0941",
+      "methods": {
+        "base": {
+          "rgb_mse_float": 0.0026598904235082543,
+          "psnr_rgb_from_clip_mse": 25.751362541380765
+        },
+        "frozen_raw_node_1000": {
+          "rgb_mse_float": 0.002574428311654841,
+          "psnr_rgb_from_clip_mse": 25.893191971698975
+        },
+        "joint_prior": {
+          "rgb_mse_float": 0.002574431797696088,
+          "psnr_rgb_from_clip_mse": 25.8931860909081
+        },
+        "independent_prior": {
+          "rgb_mse_float": 0.0025744311520011017,
+          "psnr_rgb_from_clip_mse": 25.893187180165175
+        },
+        "constant_prior": {
+          "rgb_mse_float": 0.002574428311654841,
+          "psnr_rgb_from_clip_mse": 25.893191971698975
+        },
+        "joint_pixel": {
+          "rgb_mse_float": 0.002574445610647245,
+          "psnr_rgb_from_clip_mse": 25.893162789174575
+        },
+        "joint_shuffled": {
+          "rgb_mse_float": 0.0025744453099671464,
+          "psnr_rgb_from_clip_mse": 25.893163296405003
+        }
+      },
+      "search": {
+        "joint_prior": {
+          "amplitude": 0.016833804547786713,
+          "mean_abs_offset": 6.700694939354435e-05,
+          "max_abs_offset": 0.0049723973497748375,
+          "mean_confidence": 0.0890500620007515,
+          "descriptor_weight": 0.7485849857330322,
+          "regularization_weight": 0.04320922866463661,
+          "temperature": 1.1781201362609863,
+          "refined_valid_fraction": 0.8657445907592773
+        },
+        "independent_prior": {
+          "amplitude": 0.05702879652380943,
+          "mean_abs_offset": 0.00017636099073570222,
+          "max_abs_offset": 0.013229497708380222,
+          "mean_confidence": 0.06426876038312912,
+          "descriptor_weight": 0.8475463390350342,
+          "regularization_weight": 0.0315215177834034,
+          "temperature": 1.2258496284484863,
+          "refined_valid_fraction": 0.8657379150390625
+        },
+        "constant_prior": {
+          "amplitude": 0.0,
+          "mean_abs_offset": 0.0,
+          "max_abs_offset": 0.0,
+          "mean_confidence": 0.1477099508047104,
+          "descriptor_weight": 0.8089170455932617,
+          "regularization_weight": 0.07455754280090332,
+          "temperature": 0.9233636260032654,
+          "refined_valid_fraction": 0.865746021270752
+        },
+        "joint_pixel": {
+          "amplitude": 0.018949255347251892,
+          "mean_abs_offset": 7.505570101784542e-05,
+          "max_abs_offset": 0.005603596102446318,
+          "mean_confidence": 0.0887250304222107,
+          "descriptor_weight": 1.2646188735961914,
+          "regularization_weight": 0.042647045105695724,
+          "temperature": 1.1919019222259521,
+          "refined_valid_fraction": 0.8657436370849609
+        },
+        "joint_shuffled": {
+          "amplitude": 0.016944434493780136,
+          "mean_abs_offset": 6.731034955009818e-05,
+          "max_abs_offset": 0.00499259727075696,
+          "mean_confidence": 0.08855227380990982,
+          "descriptor_weight": 0.7443289756774902,
+          "regularization_weight": 0.04283630847930908,
+          "temperature": 1.1901885271072388,
+          "refined_valid_fraction": 0.8657441139221191
+        }
+      }
+    },
+    {
+      "name": "SDSD_outdoor/MVI_0943",
+      "scene": "SDSD_outdoor/MVI_0943",
+      "methods": {
+        "base": {
+          "rgb_mse_float": 0.0014372401193127361,
+          "psnr_rgb_from_clip_mse": 28.42470668343985
+        },
+        "frozen_raw_node_1000": {
+          "rgb_mse_float": 0.0013475386493902177,
+          "psnr_rgb_from_clip_mse": 28.704587697581545
+        },
+        "joint_prior": {
+          "rgb_mse_float": 0.0013475457134108596,
+          "psnr_rgb_from_clip_mse": 28.70456493120564
+        },
+        "independent_prior": {
+          "rgb_mse_float": 0.0013475827236627616,
+          "psnr_rgb_from_clip_mse": 28.704445654157805
+        },
+        "constant_prior": {
+          "rgb_mse_float": 0.0013475386493902177,
+          "psnr_rgb_from_clip_mse": 28.704587697581545
+        },
+        "joint_pixel": {
+          "rgb_mse_float": 0.0013475461971654715,
+          "psnr_rgb_from_clip_mse": 28.704563372134814
+        },
+        "joint_shuffled": {
+          "rgb_mse_float": 0.0013475458028929597,
+          "psnr_rgb_from_clip_mse": 28.704564642817793
+        }
+      },
+      "search": {
+        "joint_prior": {
+          "amplitude": 0.016833804547786713,
+          "mean_abs_offset": 0.0002718950272537768,
+          "max_abs_offset": 0.0044821579940617085,
+          "mean_confidence": 0.5589059591293335,
+          "descriptor_weight": 0.7485849857330322,
+          "regularization_weight": 0.04320922866463661,
+          "temperature": 1.1781201362609863,
+          "refined_valid_fraction": 0.865990161895752
+        },
+        "independent_prior": {
+          "amplitude": 0.05702879652380943,
+          "mean_abs_offset": 0.0009283408289775252,
+          "max_abs_offset": 0.012853696011006832,
+          "mean_confidence": 0.3441087007522583,
+          "descriptor_weight": 0.8475463390350342,
+          "regularization_weight": 0.0315215177834034,
+          "temperature": 1.2258496284484863,
+          "refined_valid_fraction": 0.8659772872924805
+        },
+        "constant_prior": {
+          "amplitude": 0.0,
+          "mean_abs_offset": 0.0,
+          "max_abs_offset": 0.0,
+          "mean_confidence": 0.14692726731300354,
+          "descriptor_weight": 0.8089170455932617,
+          "regularization_weight": 0.07455754280090332,
+          "temperature": 0.9233636260032654,
+          "refined_valid_fraction": 0.8659958839416504
+        },
+        "joint_pixel": {
+          "amplitude": 0.018949255347251892,
+          "mean_abs_offset": 0.00030678141047246754,
+          "max_abs_offset": 0.0050788382068276405,
+          "mean_confidence": 0.5549733638763428,
+          "descriptor_weight": 1.2646188735961914,
+          "regularization_weight": 0.042647045105695724,
+          "temperature": 1.1919019222259521,
+          "refined_valid_fraction": 0.8659892082214355
+        },
+        "joint_shuffled": {
+          "amplitude": 0.016944434493780136,
+          "mean_abs_offset": 0.0002745448728092015,
+          "max_abs_offset": 0.00471309432759881,
+          "mean_confidence": 0.5537706613540649,
+          "descriptor_weight": 0.7443289756774902,
+          "regularization_weight": 0.04283630847930908,
+          "temperature": 1.1901885271072388,
+          "refined_valid_fraction": 0.865990161895752
+        }
+      }
+    },
+    {
+      "name": "SDSD_outdoor/MVI_0943_2",
+      "scene": "SDSD_outdoor/MVI_0943",
+      "methods": {
+        "base": {
+          "rgb_mse_float": 0.0007302043332918295,
+          "psnr_rgb_from_clip_mse": 31.365555941209585
+        },
+        "frozen_raw_node_1000": {
+          "rgb_mse_float": 0.0007155817965013069,
+          "psnr_rgb_from_clip_mse": 31.45340715868203
+        },
+        "joint_prior": {
+          "rgb_mse_float": 0.0007155862519345707,
+          "psnr_rgb_from_clip_mse": 31.453380118250504
+        },
+        "independent_prior": {
+          "rgb_mse_float": 0.0007155899192252101,
+          "psnr_rgb_from_clip_mse": 31.45335786125489
+        },
+        "constant_prior": {
+          "rgb_mse_float": 0.0007155817965013069,
+          "psnr_rgb_from_clip_mse": 31.45340715868203
+        },
+        "joint_pixel": {
+          "rgb_mse_float": 0.000715586686514717,
+          "psnr_rgb_from_clip_mse": 31.453377480752902
+        },
+        "joint_shuffled": {
+          "rgb_mse_float": 0.0007155862238173639,
+          "psnr_rgb_from_clip_mse": 31.453380288895872
+        }
+      },
+      "search": {
+        "joint_prior": {
+          "amplitude": 0.016833804547786713,
+          "mean_abs_offset": 0.00012127033551223576,
+          "max_abs_offset": 0.004236190114170313,
+          "mean_confidence": 0.10907971858978271,
+          "descriptor_weight": 0.7485849857330322,
+          "regularization_weight": 0.04320922866463661,
+          "temperature": 1.1781201362609863,
+          "refined_valid_fraction": 0.8672895431518555
+        },
+        "independent_prior": {
+          "amplitude": 0.05702879652380943,
+          "mean_abs_offset": 0.00023914029588922858,
+          "max_abs_offset": 0.008797155693173409,
+          "mean_confidence": 0.058760933578014374,
+          "descriptor_weight": 0.8475463390350342,
+          "regularization_weight": 0.0315215177834034,
+          "temperature": 1.2258496284484863,
+          "refined_valid_fraction": 0.8672885894775391
+        },
+        "constant_prior": {
+          "amplitude": 0.0,
+          "mean_abs_offset": 0.0,
+          "max_abs_offset": 0.0,
+          "mean_confidence": 0.03512529656291008,
+          "descriptor_weight": 0.8089170455932617,
+          "regularization_weight": 0.07455754280090332,
+          "temperature": 0.9233636260032654,
+          "refined_valid_fraction": 0.8672914505004883
+        },
+        "joint_pixel": {
+          "amplitude": 0.018949255347251892,
+          "mean_abs_offset": 0.00013488384138327092,
+          "max_abs_offset": 0.004717497155070305,
+          "mean_confidence": 0.10745631158351898,
+          "descriptor_weight": 1.2646188735961914,
+          "regularization_weight": 0.042647045105695724,
+          "temperature": 1.1919019222259521,
+          "refined_valid_fraction": 0.8672895431518555
+        },
+        "joint_shuffled": {
+          "amplitude": 0.016944434493780136,
+          "mean_abs_offset": 0.00012079111183993518,
+          "max_abs_offset": 0.0042157419957220554,
+          "mean_confidence": 0.107564277946949,
+          "descriptor_weight": 0.7443289756774902,
+          "regularization_weight": 0.04283630847930908,
+          "temperature": 1.1901885271072388,
+          "refined_valid_fraction": 0.8672900199890137
+        }
+      }
+    },
+    {
+      "name": "SDSD_outdoor/MVI_0955",
+      "scene": "SDSD_outdoor/MVI_0955",
+      "methods": {
+        "base": {
+          "rgb_mse_float": 0.0004067303511179762,
+          "psnr_rgb_from_clip_mse": 33.90693418371821
+        },
+        "frozen_raw_node_1000": {
+          "rgb_mse_float": 0.00037365888767339287,
+          "psnr_rgb_from_clip_mse": 34.275246833620294
+        },
+        "joint_prior": {
+          "rgb_mse_float": 0.0003736563638865424,
+          "psnr_rgb_from_clip_mse": 34.27527616706961
+        },
+        "independent_prior": {
+          "rgb_mse_float": 0.00037365450918169974,
+          "psnr_rgb_from_clip_mse": 34.2752977240443
+        },
+        "constant_prior": {
+          "rgb_mse_float": 0.00037365888767339287,
+          "psnr_rgb_from_clip_mse": 34.275246833620294
+        },
+        "joint_pixel": {
+          "rgb_mse_float": 0.0003736560936355749,
+          "psnr_rgb_from_clip_mse": 34.27527930815211
+        },
+        "joint_shuffled": {
+          "rgb_mse_float": 0.00037365632577229433,
+          "psnr_rgb_from_clip_mse": 34.275276610065106
+        }
+      },
+      "search": {
+        "joint_prior": {
+          "amplitude": 0.016833804547786713,
+          "mean_abs_offset": 0.00019111836445517838,
+          "max_abs_offset": 0.005504389759153128,
+          "mean_confidence": 0.30343741178512573,
+          "descriptor_weight": 0.7485849857330322,
+          "regularization_weight": 0.04320922866463661,
+          "temperature": 1.1781201362609863,
+          "refined_valid_fraction": 0.8658080101013184
+        },
+        "independent_prior": {
+          "amplitude": 0.05702879652380943,
+          "mean_abs_offset": 0.00056687300093472,
+          "max_abs_offset": 0.020329071208834648,
+          "mean_confidence": 0.25117552280426025,
+          "descriptor_weight": 0.8475463390350342,
+          "regularization_weight": 0.0315215177834034,
+          "temperature": 1.2258496284484863,
+          "refined_valid_fraction": 0.8658037185668945
+        },
+        "constant_prior": {
+          "amplitude": 0.0,
+          "mean_abs_offset": 0.0,
+          "max_abs_offset": 0.0,
+          "mean_confidence": 0.0846569687128067,
+          "descriptor_weight": 0.8089170455932617,
+          "regularization_weight": 0.07455754280090332,
+          "temperature": 0.9233636260032654,
+          "refined_valid_fraction": 0.865809440612793
+        },
+        "joint_pixel": {
+          "amplitude": 0.018949255347251892,
+          "mean_abs_offset": 0.0002142371522495523,
+          "max_abs_offset": 0.0060099088586866856,
+          "mean_confidence": 0.3023858964443207,
+          "descriptor_weight": 1.2646188735961914,
+          "regularization_weight": 0.042647045105695724,
+          "temperature": 1.1919019222259521,
+          "refined_valid_fraction": 0.8658080101013184
+        },
+        "joint_shuffled": {
+          "amplitude": 0.016944434493780136,
+          "mean_abs_offset": 0.00019138387870043516,
+          "max_abs_offset": 0.005439743399620056,
+          "mean_confidence": 0.30231931805610657,
+          "descriptor_weight": 0.7443289756774902,
+          "regularization_weight": 0.04283630847930908,
+          "temperature": 1.1901885271072388,
+          "refined_valid_fraction": 0.8658080101013184
+        }
+      }
+    },
+    {
+      "name": "SDSD_outdoor/MVI_0955_2",
+      "scene": "SDSD_outdoor/MVI_0955",
+      "methods": {
+        "base": {
+          "rgb_mse_float": 0.001538969905447148,
+          "psnr_rgb_from_clip_mse": 28.127698727130497
+        },
+        "frozen_raw_node_1000": {
+          "rgb_mse_float": 0.0015098340611111583,
+          "psnr_rgb_from_clip_mse": 28.210707813848778
+        },
+        "joint_prior": {
+          "rgb_mse_float": 0.0015098401950777059,
+          "psnr_rgb_from_clip_mse": 28.210690169907096
+        },
+        "independent_prior": {
+          "rgb_mse_float": 0.0015098404580297096,
+          "psnr_rgb_from_clip_mse": 28.21068941354497
+        },
+        "constant_prior": {
+          "rgb_mse_float": 0.0015098340611111583,
+          "psnr_rgb_from_clip_mse": 28.210707813848778
+        },
+        "joint_pixel": {
+          "rgb_mse_float": 0.0015098402276909825,
+          "psnr_rgb_from_clip_mse": 28.210690076097396
+        },
+        "joint_shuffled": {
+          "rgb_mse_float": 0.0015098401929053984,
+          "psnr_rgb_from_clip_mse": 28.21069017615558
+        }
+      },
+      "search": {
+        "joint_prior": {
+          "amplitude": 0.016833804547786713,
+          "mean_abs_offset": 1.6779100405983627e-05,
+          "max_abs_offset": 0.0007255118689499795,
+          "mean_confidence": 0.009199937805533409,
+          "descriptor_weight": 0.7485849857330322,
+          "regularization_weight": 0.04320922866463661,
+          "temperature": 1.1781201362609863,
+          "refined_valid_fraction": 0.8582038879394531
+        },
+        "independent_prior": {
+          "amplitude": 0.05702879652380943,
+          "mean_abs_offset": 3.1124145607464015e-05,
+          "max_abs_offset": 0.0020853972528129816,
+          "mean_confidence": 0.005916353315114975,
+          "descriptor_weight": 0.8475463390350342,
+          "regularization_weight": 0.0315215177834034,
+          "temperature": 1.2258496284484863,
+          "refined_valid_fraction": 0.8582038879394531
+        },
+        "constant_prior": {
+          "amplitude": 0.0,
+          "mean_abs_offset": 0.0,
+          "max_abs_offset": 0.0,
+          "mean_confidence": 0.010988181456923485,
+          "descriptor_weight": 0.8089170455932617,
+          "regularization_weight": 0.07455754280090332,
+          "temperature": 0.9233636260032654,
+          "refined_valid_fraction": 0.8582043647766113
+        },
+        "joint_pixel": {
+          "amplitude": 0.018949255347251892,
+          "mean_abs_offset": 1.940189758897759e-05,
+          "max_abs_offset": 0.0009548342786729336,
+          "mean_confidence": 0.009252938441932201,
+          "descriptor_weight": 1.2646188735961914,
+          "regularization_weight": 0.042647045105695724,
+          "temperature": 1.1919019222259521,
+          "refined_valid_fraction": 0.8582038879394531
+        },
+        "joint_shuffled": {
+          "amplitude": 0.016944434493780136,
+          "mean_abs_offset": 1.673743645369541e-05,
+          "max_abs_offset": 0.0007184300920926034,
+          "mean_confidence": 0.009130658581852913,
+          "descriptor_weight": 0.7443289756774902,
+          "regularization_weight": 0.04283630847930908,
+          "temperature": 1.1901885271072388,
+          "refined_valid_fraction": 0.8582038879394531
+        }
+      }
+    },
+    {
+      "name": "SDSD_outdoor/MVI_0971",
+      "scene": "SDSD_outdoor/MVI_0971",
+      "methods": {
+        "base": {
+          "rgb_mse_float": 0.001080974981416072,
+          "psnr_rgb_from_clip_mse": 29.661843574423248
+        },
+        "frozen_raw_node_1000": {
+          "rgb_mse_float": 0.0010540334201383545,
+          "psnr_rgb_from_clip_mse": 29.771456187709397
+        },
+        "joint_prior": {
+          "rgb_mse_float": 0.0010540426119746299,
+          "psnr_rgb_from_clip_mse": 29.771418314656316
+        },
+        "independent_prior": {
+          "rgb_mse_float": 0.00105406030006758,
+          "psnr_rgb_from_clip_mse": 29.77134543547077
+        },
+        "constant_prior": {
+          "rgb_mse_float": 0.0010540334201383545,
+          "psnr_rgb_from_clip_mse": 29.771456187709397
+        },
+        "joint_pixel": {
+          "rgb_mse_float": 0.0010540485674590055,
+          "psnr_rgb_from_clip_mse": 29.771393776495664
+        },
+        "joint_shuffled": {
+          "rgb_mse_float": 0.0010540426392798416,
+          "psnr_rgb_from_clip_mse": 29.771418202151352
+        }
+      },
+      "search": {
+        "joint_prior": {
+          "amplitude": 0.016833804547786713,
+          "mean_abs_offset": 6.550743273692206e-05,
+          "max_abs_offset": 0.006803673226386309,
+          "mean_confidence": 0.09214039891958237,
+          "descriptor_weight": 0.7485849857330322,
+          "regularization_weight": 0.04320922866463661,
+          "temperature": 1.1781201362609863,
+          "refined_valid_fraction": 0.8678421974182129
+        },
+        "independent_prior": {
+          "amplitude": 0.05702879652380943,
+          "mean_abs_offset": 0.00019295616948511451,
+          "max_abs_offset": 0.01765596680343151,
+          "mean_confidence": 0.07366019487380981,
+          "descriptor_weight": 0.8475463390350342,
+          "regularization_weight": 0.0315215177834034,
+          "temperature": 1.2258496284484863,
+          "refined_valid_fraction": 0.8678383827209473
+        },
+        "constant_prior": {
+          "amplitude": 0.0,
+          "mean_abs_offset": 0.0,
+          "max_abs_offset": 0.0,
+          "mean_confidence": 0.130346417427063,
+          "descriptor_weight": 0.8089170455932617,
+          "regularization_weight": 0.07455754280090332,
+          "temperature": 0.9233636260032654,
+          "refined_valid_fraction": 0.8678441047668457
+        },
+        "joint_pixel": {
+          "amplitude": 0.018949255347251892,
+          "mean_abs_offset": 7.381493196589872e-05,
+          "max_abs_offset": 0.007669598329812288,
+          "mean_confidence": 0.09190846234560013,
+          "descriptor_weight": 1.2646188735961914,
+          "regularization_weight": 0.042647045105695724,
+          "temperature": 1.1919019222259521,
+          "refined_valid_fraction": 0.8678412437438965
+        },
+        "joint_shuffled": {
+          "amplitude": 0.016944434493780136,
+          "mean_abs_offset": 6.633096927544102e-05,
+          "max_abs_offset": 0.006812399253249168,
+          "mean_confidence": 0.09188128262758255,
+          "descriptor_weight": 0.7443289756774902,
+          "regularization_weight": 0.04283630847930908,
+          "temperature": 1.1901885271072388,
+          "refined_valid_fraction": 0.8678421974182129
+        }
+      }
+    },
+    {
+      "name": "SDSD_outdoor/MVI_0971_2",
+      "scene": "SDSD_outdoor/MVI_0971",
+      "methods": {
+        "base": {
+          "rgb_mse_float": 0.002001673588637485,
+          "psnr_rgb_from_clip_mse": 26.986067411479986
+        },
+        "frozen_raw_node_1000": {
+          "rgb_mse_float": 0.0020067357482957703,
+          "psnr_rgb_from_clip_mse": 26.975098126708524
+        },
+        "joint_prior": {
+          "rgb_mse_float": 0.0020067340961063204,
+          "psnr_rgb_from_clip_mse": 26.975101702351488
+        },
+        "independent_prior": {
+          "rgb_mse_float": 0.0020067187929735837,
+          "psnr_rgb_from_clip_mse": 26.975134821295637
+        },
+        "constant_prior": {
+          "rgb_mse_float": 0.0020067357482957703,
+          "psnr_rgb_from_clip_mse": 26.975098126708524
+        },
+        "joint_pixel": {
+          "rgb_mse_float": 0.0020067337757744726,
+          "psnr_rgb_from_clip_mse": 26.975102395609085
+        },
+        "joint_shuffled": {
+          "rgb_mse_float": 0.0020067340650111944,
+          "psnr_rgb_from_clip_mse": 26.97510176964711
+        }
+      },
+      "search": {
+        "joint_prior": {
+          "amplitude": 0.016833804547786713,
+          "mean_abs_offset": 8.155404793797061e-05,
+          "max_abs_offset": 0.005320225842297077,
+          "mean_confidence": 0.17570796608924866,
+          "descriptor_weight": 0.7485849857330322,
+          "regularization_weight": 0.04320922866463661,
+          "temperature": 1.1781201362609863,
+          "refined_valid_fraction": 0.8676609992980957
+        },
+        "independent_prior": {
+          "amplitude": 0.05702879652380943,
+          "mean_abs_offset": 0.0002488945610821247,
+          "max_abs_offset": 0.015200364403426647,
+          "mean_confidence": 0.14552360773086548,
+          "descriptor_weight": 0.8475463390350342,
+          "regularization_weight": 0.0315215177834034,
+          "temperature": 1.2258496284484863,
+          "refined_valid_fraction": 0.8676609992980957
+        },
+        "constant_prior": {
+          "amplitude": 0.0,
+          "mean_abs_offset": 0.0,
+          "max_abs_offset": 0.0,
+          "mean_confidence": 0.20805752277374268,
+          "descriptor_weight": 0.8089170455932617,
+          "regularization_weight": 0.07455754280090332,
+          "temperature": 0.9233636260032654,
+          "refined_valid_fraction": 0.8676609992980957
+        },
+        "joint_pixel": {
+          "amplitude": 0.018949255347251892,
+          "mean_abs_offset": 9.148661774815992e-05,
+          "max_abs_offset": 0.0059913937002420425,
+          "mean_confidence": 0.1752471774816513,
+          "descriptor_weight": 1.2646188735961914,
+          "regularization_weight": 0.042647045105695724,
+          "temperature": 1.1919019222259521,
+          "refined_valid_fraction": 0.8676609992980957
+        },
+        "joint_shuffled": {
+          "amplitude": 0.016944434493780136,
+          "mean_abs_offset": 8.202432218240574e-05,
+          "max_abs_offset": 0.005553235299885273,
+          "mean_confidence": 0.17518530786037445,
+          "descriptor_weight": 0.7443289756774902,
+          "regularization_weight": 0.04283630847930908,
+          "temperature": 1.1901885271072388,
+          "refined_valid_fraction": 0.8676609992980957
+        }
+      }
+    },
+    {
+      "name": "SDSD_outdoor/MVI_1003",
+      "scene": "SDSD_outdoor/MVI_1003",
+      "methods": {
+        "base": {
+          "rgb_mse_float": 0.0003392811701931153,
+          "psnr_rgb_from_clip_mse": 34.69440242648275
+        },
+        "frozen_raw_node_1000": {
+          "rgb_mse_float": 0.0003246984266740336,
+          "psnr_rgb_from_clip_mse": 34.88519815742465
+        },
+        "joint_prior": {
+          "rgb_mse_float": 0.00032469935320342345,
+          "psnr_rgb_from_clip_mse": 34.8851857648168
+        },
+        "independent_prior": {
+          "rgb_mse_float": 0.00032469836594816614,
+          "psnr_rgb_from_clip_mse": 34.88519896965253
+        },
+        "constant_prior": {
+          "rgb_mse_float": 0.0003246984266740336,
+          "psnr_rgb_from_clip_mse": 34.88519815742465
+        },
+        "joint_pixel": {
+          "rgb_mse_float": 0.00032469904180027176,
+          "psnr_rgb_from_clip_mse": 34.885189929923186
+        },
+        "joint_shuffled": {
+          "rgb_mse_float": 0.000324698933093803,
+          "psnr_rgb_from_clip_mse": 34.8851913839043
+        }
+      },
+      "search": {
+        "joint_prior": {
+          "amplitude": 0.016833804547786713,
+          "mean_abs_offset": 0.00010178887896472588,
+          "max_abs_offset": 0.00773953041061759,
+          "mean_confidence": 0.0751759335398674,
+          "descriptor_weight": 0.7485849857330322,
+          "regularization_weight": 0.04320922866463661,
+          "temperature": 1.1781201362609863,
+          "refined_valid_fraction": 0.8673257827758789
+        },
+        "independent_prior": {
+          "amplitude": 0.05702879652380943,
+          "mean_abs_offset": 0.00020541620324365795,
+          "max_abs_offset": 0.015541478991508484,
+          "mean_confidence": 0.042858000844717026,
+          "descriptor_weight": 0.8475463390350342,
+          "regularization_weight": 0.0315215177834034,
+          "temperature": 1.2258496284484863,
+          "refined_valid_fraction": 0.8673229217529297
+        },
+        "constant_prior": {
+          "amplitude": 0.0,
+          "mean_abs_offset": 0.0,
+          "max_abs_offset": 0.0,
+          "mean_confidence": 0.017375174909830093,
+          "descriptor_weight": 0.8089170455932617,
+          "regularization_weight": 0.07455754280090332,
+          "temperature": 0.9233636260032654,
+          "refined_valid_fraction": 0.8673286437988281
+        },
+        "joint_pixel": {
+          "amplitude": 0.018949255347251892,
+          "mean_abs_offset": 0.00011349555279593915,
+          "max_abs_offset": 0.008691251277923584,
+          "mean_confidence": 0.07467636466026306,
+          "descriptor_weight": 1.2646188735961914,
+          "regularization_weight": 0.042647045105695724,
+          "temperature": 1.1919019222259521,
+          "refined_valid_fraction": 0.8673253059387207
+        },
+        "joint_shuffled": {
+          "amplitude": 0.016944434493780136,
+          "mean_abs_offset": 0.00010108336573466659,
+          "max_abs_offset": 0.007529493421316147,
+          "mean_confidence": 0.07427208125591278,
+          "descriptor_weight": 0.7443289756774902,
+          "regularization_weight": 0.04283630847930908,
+          "temperature": 1.1901885271072388,
+          "refined_valid_fraction": 0.8673253059387207
+        }
+      }
+    },
+    {
+      "name": "SDSD_outdoor/MVI_1003_2",
+      "scene": "SDSD_outdoor/MVI_1003",
+      "methods": {
+        "base": {
+          "rgb_mse_float": 0.0007530654372516956,
+          "psnr_rgb_from_clip_mse": 31.23167284353672
+        },
+        "frozen_raw_node_1000": {
+          "rgb_mse_float": 0.0007475926483513284,
+          "psnr_rgb_from_clip_mse": 31.26334978021067
+        },
+        "joint_prior": {
+          "rgb_mse_float": 0.0007475929598987383,
+          "psnr_rgb_from_clip_mse": 31.263347970357497
+        },
+        "independent_prior": {
+          "rgb_mse_float": 0.0007475949288344411,
+          "psnr_rgb_from_clip_mse": 31.26333653235807
+        },
+        "constant_prior": {
+          "rgb_mse_float": 0.0007475926483513284,
+          "psnr_rgb_from_clip_mse": 31.26334978021067
+        },
+        "joint_pixel": {
+          "rgb_mse_float": 0.0007475936093184037,
+          "psnr_rgb_from_clip_mse": 31.26334419772627
+        },
+        "joint_shuffled": {
+          "rgb_mse_float": 0.000747592910378897,
+          "psnr_rgb_from_clip_mse": 31.26334825803001
+        }
+      },
+      "search": {
+        "joint_prior": {
+          "amplitude": 0.016833804547786713,
+          "mean_abs_offset": 0.00018750777235254645,
+          "max_abs_offset": 0.006027411203831434,
+          "mean_confidence": 0.17006894946098328,
+          "descriptor_weight": 0.7485849857330322,
+          "regularization_weight": 0.04320922866463661,
+          "temperature": 1.1781201362609863,
+          "refined_valid_fraction": 0.8673973083496094
+        },
+        "independent_prior": {
+          "amplitude": 0.05702879652380943,
+          "mean_abs_offset": 0.00041118188528344035,
+          "max_abs_offset": 0.021195808425545692,
+          "mean_confidence": 0.10331490635871887,
+          "descriptor_weight": 0.8475463390350342,
+          "regularization_weight": 0.0315215177834034,
+          "temperature": 1.2258496284484863,
+          "refined_valid_fraction": 0.8673853874206543
+        },
+        "constant_prior": {
+          "amplitude": 0.0,
+          "mean_abs_offset": 0.0,
+          "max_abs_offset": 0.0,
+          "mean_confidence": 0.04442836716771126,
+          "descriptor_weight": 0.8089170455932617,
+          "regularization_weight": 0.07455754280090332,
+          "temperature": 0.9233636260032654,
+          "refined_valid_fraction": 0.8674015998840332
+        },
+        "joint_pixel": {
+          "amplitude": 0.018949255347251892,
+          "mean_abs_offset": 0.0002089250338030979,
+          "max_abs_offset": 0.006820844952017069,
+          "mean_confidence": 0.1686965823173523,
+          "descriptor_weight": 1.2646188735961914,
+          "regularization_weight": 0.042647045105695724,
+          "temperature": 1.1919019222259521,
+          "refined_valid_fraction": 0.867396354675293
+        },
+        "joint_shuffled": {
+          "amplitude": 0.016944434493780136,
+          "mean_abs_offset": 0.00018731097225099802,
+          "max_abs_offset": 0.006247537210583687,
+          "mean_confidence": 0.16837382316589355,
+          "descriptor_weight": 0.7443289756774902,
+          "regularization_weight": 0.04283630847930908,
+          "temperature": 1.1901885271072388,
+          "refined_valid_fraction": 0.8673968315124512
+        }
+      }
+    }
+  ]
+}

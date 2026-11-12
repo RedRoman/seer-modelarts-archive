@@ -1,0 +1,3909 @@
+{
+  "schema_version": 1,
+  "scope": "source TRAIN module development; historical base saw all scenes; no target",
+  "scene_order": [
+    "SDSD_indoor/pair12",
+    "SDSD_indoor/pair13",
+    "SDSD_indoor/pair16",
+    "SDSD_indoor/pair18",
+    "SDSD_indoor/pair22",
+    "SDSD_indoor/pair23",
+    "SDSD_indoor/pair30",
+    "SDSD_indoor/pair32",
+    "SDSD_outdoor/MVI_0900",
+    "SDSD_outdoor/MVI_0915",
+    "SDSD_outdoor/MVI_0926",
+    "SDSD_outdoor/MVI_0935",
+    "SDSD_outdoor/MVI_0941",
+    "SDSD_outdoor/MVI_0943",
+    "SDSD_outdoor/MVI_0955",
+    "SDSD_outdoor/MVI_0971",
+    "SDSD_outdoor/MVI_1003"
+  ],
+  "metric_definition": "float32 RGB squared residual, float64 reduction over all16/full256; PSNR from clip MSE, equal scene means",
+  "bootstrap": {
+    "unit": "whole source scene/two clips",
+    "draws": 10000,
+    "rng": 0,
+    "ci": "unadjusted exploratory percentile95",
+    "training_replication": "one new head seed and one historical base; no training uncertainty"
+  },
+  "means": {
+    "base": {
+      "rgb_mse_float": 0.0022909239523180042,
+      "psnr_rgb_from_clip_mse": 28.564868460206853
+    },
+    "frozen_raw_node_1000": {
+      "rgb_mse_float": 0.0022520187210834483,
+      "psnr_rgb_from_clip_mse": 28.715433645343385
+    },
+    "joint_prior": {
+      "rgb_mse_float": 0.0022520209813030657,
+      "psnr_rgb_from_clip_mse": 28.715428286557387
+    },
+    "independent_prior": {
+      "rgb_mse_float": 0.0022520253132086577,
+      "psnr_rgb_from_clip_mse": 28.715424844804982
+    },
+    "constant_prior": {
+      "rgb_mse_float": 0.0022520187210834483,
+      "psnr_rgb_from_clip_mse": 28.715433645343385
+    },
+    "joint_pixel": {
+      "rgb_mse_float": 0.002252021785636964,
+      "psnr_rgb_from_clip_mse": 28.715426837171197
+    },
+    "joint_shuffled": {
+      "rgb_mse_float": 0.0022520213589321872,
+      "psnr_rgb_from_clip_mse": 28.715427905462807
+    }
+  },
+  "per_scene": {
+    "SDSD_indoor/pair12": {
+      "base": [
+        0.0015259265443595409,
+        28.39979031711443
+      ],
+      "frozen_raw_node_1000": [
+        0.0015093420507670836,
+        28.460972450067885
+      ],
+      "joint_prior": [
+        0.0015093430378448087,
+        28.460970380642422
+      ],
+      "independent_prior": [
+        0.001509339189545151,
+        28.460978605027968
+      ],
+      "constant_prior": [
+        0.0015093420507670836,
+        28.460972450067885
+      ],
+      "joint_pixel": [
+        0.0015093431569659019,
+        28.460970143169277
+      ],
+      "joint_shuffled": [
+        0.0015093430068290254,
+        28.46097044729126
+      ]
+    },
+    "SDSD_indoor/pair13": {
+      "base": [
+        0.0017489246677192276,
+        29.00653379068774
+      ],
+      "frozen_raw_node_1000": [
+        0.0017252842117787095,
+        29.10858501298638
+      ],
+      "joint_prior": [
+        0.0017253163229120506,
+        29.10853740058376
+      ],
+      "independent_prior": [
+        0.0017253495154021295,
+        29.108488186350993
+      ],
+      "constant_prior": [
+        0.0017252842117787095,
+        29.10858501298638
+      ],
+      "joint_pixel": [
+        0.0017253200233593325,
+        29.10853187736422
+      ],
+      "joint_shuffled": [
+        0.0017253162924095384,
+        29.108537445318802
+      ]
+    },
+    "SDSD_indoor/pair16": {
+      "base": [
+        0.0010259718998636587,
+        30.264266498810258
+      ],
+      "frozen_raw_node_1000": [
+        0.0009439953339202004,
+        30.566583937201095
+      ],
+      "joint_prior": [
+        0.0009439863277015833,
+        30.566622266435424
+      ],
+      "independent_prior": [
+        0.0009439678043256752,
+        30.566696606305513
+      ],
+      "constant_prior": [
+        0.0009439953339202004,
+        30.566583937201095
+      ],
+      "joint_pixel": [
+        0.0009439852836271033,
+        30.56662662820662
+      ],
+      "joint_shuffled": [
+        0.0009439862862366951,
+        30.56662250065477
+      ]
+    },
+    "SDSD_indoor/pair18": {
+      "base": [
+        0.0007642941309316654,
+        31.23538640480978
+      ],
+      "frozen_raw_node_1000": [
+        0.0006959220819113969,
+        31.59967515078869
+      ],
+      "joint_prior": [
+        0.0006959166970415065,
+        31.599704580715418
+      ],
+      "independent_prior": [
+        0.0006959101566417724,
+        31.599740957480936
+      ],
+      "constant_prior": [
+        0.0006959220819113969,
+        31.59967515078869
+      ],
+      "joint_pixel": [
+        0.0006959159560256725,
+        31.599708696742923
+      ],
+      "joint_shuffled": [
+        0.0006959166089663803,
+        31.599705115114574
+      ]
+    },
+    "SDSD_indoor/pair22": {
+      "base": [
+        0.001963708826673758,
+        27.32990341360444
+      ],
+      "frozen_raw_node_1000": [
+        0.0018853089217504956,
+        27.5917962514393
+      ],
+      "joint_prior": [
+        0.001885311861452479,
+        27.59178526016907
+      ],
+      "independent_prior": [
+        0.0018852658321140453,
+        27.591957295072376
+      ],
+      "constant_prior": [
+        0.0018853089217504956,
+        27.5917962514393
+      ],
+      "joint_pixel": [
+        0.0018853098709456957,
+        27.591792698087446
+      ],
+      "joint_shuffled": [
+        0.0018853116216726619,
+        27.591786155871056
+      ]
+    },
+    "SDSD_indoor/pair23": {
+      "base": [
+        0.005834170272771191,
+        23.766123785749897
+      ],
+      "frozen_raw_node_1000": [
+        0.005816800637432998,
+        23.79487889491122
+      ],
+      "joint_prior": [
+        0.005816810231330865,
+        23.794874676872375
+      ],
+      "independent_prior": [
+        0.005816805294938427,
+        23.794876854654788
+      ],
+      "constant_prior": [
+        0.005816800637432998,
+        23.79487889491122
+      ],
+      "joint_pixel": [
+        0.005816812966922927,
+        23.794873473940818
+      ],
+      "joint_shuffled": [
+        0.005816810665226047,
+        23.79487448705362
+      ]
+    },
+    "SDSD_indoor/pair30": {
+      "base": [
+        0.01186349786392103,
+        19.669235923467525
+      ],
+      "frozen_raw_node_1000": [
+        0.011811253420241193,
+        19.692195210205988
+      ],
+      "joint_prior": [
+        0.011811257516852068,
+        19.69219398535562
+      ],
+      "independent_prior": [
+        0.011811249482723177,
+        19.692197562815522
+      ],
+      "constant_prior": [
+        0.011811253420241193,
+        19.692195210205988
+      ],
+      "joint_pixel": [
+        0.01181125799138521,
+        19.69219386028
+      ],
+      "joint_shuffled": [
+        0.011811257672413178,
+        19.692193942403826
+      ]
+    },
+    "SDSD_indoor/pair32": {
+      "base": [
+        0.003343538348611874,
+        24.777695747458726
+      ],
+      "frozen_raw_node_1000": [
+        0.0032636731336217594,
+        24.883102738808606
+      ],
+      "joint_prior": [
+        0.003263660508438275,
+        24.883120369266667
+      ],
+      "independent_prior": [
+        0.0032636374636745968,
+        24.88315321258866
+      ],
+      "constant_prior": [
+        0.0032636731336217594,
+        24.883102738808606
+      ],
+      "joint_pixel": [
+        0.0032636589080813428,
+        24.883122599098108
+      ],
+      "joint_shuffled": [
+        0.003263660470499795,
+        24.883120426796907
+      ]
+    },
+    "SDSD_outdoor/MVI_0900": {
+      "base": [
+        0.0018105066958178837,
+        27.43592722312171
+      ],
+      "frozen_raw_node_1000": [
+        0.00180539823625946,
+        27.446836016942314
+      ],
+      "joint_prior": [
+        0.0018054087484785687,
+        27.44681145684473
+      ],
+      "independent_prior": [
+        0.0018054160689198254,
+        27.44679461423971
+      ],
+      "constant_prior": [
+        0.00180539823625946,
+        27.446836016942314
+      ],
+      "joint_pixel": [
+        0.0018054084793270341,
+        27.44681196419189
+      ],
+      "joint_shuffled": [
+        0.0018054085744236667,
+        27.446811841300153
+      ]
+    },
+    "SDSD_outdoor/MVI_0915": {
+      "base": [
+        0.0005301512796261061,
+        32.76034932573697
+      ],
+      "frozen_raw_node_1000": [
+        0.0005155487488475959,
+        32.88393849186784
+      ],
+      "joint_prior": [
+        0.0005155542766180503,
+        32.88389042917249
+      ],
+      "independent_prior": [
+        0.0005155559766120873,
+        32.88387593772667
+      ],
+      "constant_prior": [
+        0.0005155487488475959,
+        32.88393849186784
+      ],
+      "joint_pixel": [
+        0.0005155553411566841,
+        32.883881192613686
+      ],
+      "joint_shuffled": [
+        0.0005155542688874406,
+        32.8838904853926
+      ]
+    },
+    "SDSD_outdoor/MVI_0926": {
+      "base": [
+        0.00037263632117049046,
+        34.339237828242844
+      ],
+      "frozen_raw_node_1000": [
+        0.00034154095795832756,
+        34.72265096785924
+      ],
+      "joint_prior": [
+        0.0003415412206073022,
+        34.72264739361538
+      ],
+      "independent_prior": [
+        0.0003415411852293873,
+        34.72264839294684
+      ],
+      "constant_prior": [
+        0.00034154095795832756,
+        34.72265096785924
+      ],
+      "joint_pixel": [
+        0.00034154125133872794,
+        34.722646987592036
+      ],
+      "joint_shuffled": [
+        0.0003415412085332574,
+        34.7226475699829
+      ]
+    },
+    "SDSD_outdoor/MVI_0935": {
+      "base": [
+        0.0021380375748486376,
+        26.751447878562182
+      ],
+      "frozen_raw_node_1000": [
+        0.002119248455041698,
+        26.79663871977029
+      ],
+      "joint_prior": [
+        0.002119231082771596,
+        26.796663576280768
+      ],
+      "independent_prior": [
+        0.0021193502919545078,
+        26.796443429109175
+      ],
+      "constant_prior": [
+        0.002119248455041698,
+        26.79663871977029
+      ],
+      "joint_pixel": [
+        0.0021192317632071035,
+        26.79666212715282
+      ],
+      "joint_shuffled": [
+        0.0021192307208943175,
+        26.796664526937
+      ]
+    },
+    "SDSD_outdoor/MVI_0941": {
+      "base": [
+        0.0018802728197569783,
+        27.66742479043952
+      ],
+      "frozen_raw_node_1000": [
+        0.0018111652498199247,
+        27.844992250095846
+      ],
+      "joint_prior": [
+        0.0018111700773565664,
+        27.844976526213948
+      ],
+      "independent_prior": [
+        0.0018111720635048249,
+        27.84496750147607
+      ],
+      "constant_prior": [
+        0.0018111652498199247,
+        27.844992250095846
+      ],
+      "joint_pixel": [
+        0.0018111772638062032,
+        27.844963715024768
+      ],
+      "joint_shuffled": [
+        0.001811177158279304,
+        27.844963782916754
+      ]
+    },
+    "SDSD_outdoor/MVI_0943": {
+      "base": [
+        0.0010837222263022828,
+        29.895131312324718
+      ],
+      "frozen_raw_node_1000": [
+        0.0010315602229457623,
+        30.078997428131785
+      ],
+      "joint_prior": [
+        0.0010315659826727152,
+        30.078972524728073
+      ],
+      "independent_prior": [
+        0.001031586321443986,
+        30.078901757706348
+      ],
+      "constant_prior": [
+        0.0010315602229457623,
+        30.078997428131785
+      ],
+      "joint_pixel": [
+        0.0010315664418400943,
+        30.07897042644386
+      ],
+      "joint_shuffled": [
+        0.0010315660133551618,
+        30.078972465856832
+      ]
+    },
+    "SDSD_outdoor/MVI_0955": {
+      "base": [
+        0.0009728501282825621,
+        31.01731645542435
+      ],
+      "frozen_raw_node_1000": [
+        0.0009417464743922756,
+        31.242977323734536
+      ],
+      "joint_prior": [
+        0.0009417482794821241,
+        31.242983168488355
+      ],
+      "independent_prior": [
+        0.0009417474836057047,
+        31.242993568794635
+      ],
+      "constant_prior": [
+        0.0009417464743922756,
+        31.242977323734536
+      ],
+      "joint_pixel": [
+        0.0009417481606632788,
+        31.24298469212475
+      ],
+      "joint_shuffled": [
+        0.0009417482593388464,
+        31.242983393110343
+      ]
+    },
+    "SDSD_outdoor/MVI_0971": {
+      "base": [
+        0.0015413242850267784,
+        28.32395549295162
+      ],
+      "frozen_raw_node_1000": [
+        0.0015303845842170624,
+        28.37327715720896
+      ],
+      "joint_prior": [
+        0.001530388354040475,
+        28.3732600085039
+      ],
+      "independent_prior": [
+        0.0015303895465205819,
+        28.373240128383202
+      ],
+      "constant_prior": [
+        0.0015303845842170624,
+        28.37327715720896
+      ],
+      "joint_pixel": [
+        0.001530391171616739,
+        28.373248086052374
+      ],
+      "joint_shuffled": [
+        0.001530388352145518,
+        28.37325998589923
+      ]
+    },
+    "SDSD_outdoor/MVI_1003": {
+      "base": [
+        0.0005461733037224055,
+        32.96303763500974
+      ],
+      "frozen_raw_node_1000": [
+        0.000536145537512681,
+        33.07427396881766
+      ],
+      "joint_prior": [
+        0.0005361461565510808,
+        33.07426686758715
+      ],
+      "independent_prior": [
+        0.0005361466473913036,
+        33.0742677510053
+      ],
+      "constant_prior": [
+        0.000536145537512681,
+        33.07427396881766
+      ],
+      "joint_pixel": [
+        0.0005361463255593378,
+        33.07426706382473
+      ],
+      "joint_shuffled": [
+        0.00053614592173635,
+        33.07426982096715
+      ]
+    }
+  },
+  "per_sequence": [
+    {
+      "name": "SDSD_indoor/pair12",
+      "scene": "SDSD_indoor/pair12",
+      "methods": {
+        "base": {
+          "rgb_mse_float": 0.002014755686750282,
+          "psnr_rgb_from_clip_mse": 26.957776097358405
+        },
+        "frozen_raw_node_1000": {
+          "rgb_mse_float": 0.0020059972244618235,
+          "psnr_rgb_from_clip_mse": 26.976696722137802
+        },
+        "joint_prior": {
+          "rgb_mse_float": 0.0020059992622627823,
+          "psnr_rgb_from_clip_mse": 26.976692310340763
+        },
+        "independent_prior": {
+          "rgb_mse_float": 0.0020059914647799684,
+          "psnr_rgb_from_clip_mse": 26.976709191754445
+        },
+        "constant_prior": {
+          "rgb_mse_float": 0.0020059972244618235,
+          "psnr_rgb_from_clip_mse": 26.976696722137802
+        },
+        "joint_pixel": {
+          "rgb_mse_float": 0.0020059995197381727,
+          "psnr_rgb_from_clip_mse": 26.97669175291217
+        },
+        "joint_shuffled": {
+          "rgb_mse_float": 0.0020059991997606282,
+          "psnr_rgb_from_clip_mse": 26.976692445656568
+        }
+      },
+      "search": {
+        "joint_prior": {
+          "amplitude": 0.016833804547786713,
+          "mean_abs_offset": 4.479139170143753e-05,
+          "max_abs_offset": 0.004811458755284548,
+          "mean_confidence": 0.032888878136873245,
+          "descriptor_weight": 0.7485849857330322,
+          "regularization_weight": 0.04320922866463661,
+          "temperature": 1.1781201362609863,
+          "refined_valid_fraction": 0.8661866188049316
+        },
+        "independent_prior": {
+          "amplitude": 0.05702879652380943,
+          "mean_abs_offset": 7.28670202079229e-05,
+          "max_abs_offset": 0.006603975780308247,
+          "mean_confidence": 0.017877399921417236,
+          "descriptor_weight": 0.8475463390350342,
+          "regularization_weight": 0.0315215177834034,
+          "temperature": 1.2258496284484863,
+          "refined_valid_fraction": 0.8661861419677734
+        },
+        "constant_prior": {
+          "amplitude": 0.0,
+          "mean_abs_offset": 0.0,
+          "max_abs_offset": 0.0,
+          "mean_confidence": 0.06957592070102692,
+          "descriptor_weight": 0.8089170455932617,
+          "regularization_weight": 0.07455754280090332,
+          "temperature": 0.9233636260032654,
+          "refined_valid_fraction": 0.8661866188049316
+        },
+        "joint_pixel": {
+          "amplitude": 0.018949255347251892,
+          "mean_abs_offset": 4.992232425138354e-05,
+          "max_abs_offset": 0.005546077154576778,
+          "mean_confidence": 0.032729435712099075,
+          "descriptor_weight": 1.2646188735961914,
+          "regularization_weight": 0.042647045105695724,
+          "temperature": 1.1919019222259521,
+          "refined_valid_fraction": 0.8661866188049316
+        },
+        "joint_shuffled": {
+          "amplitude": 0.016944434493780136,
+          "mean_abs_offset": 4.454887312022038e-05,
+          "max_abs_offset": 0.004718509037047625,
+          "mean_confidence": 0.0325605645775795,
+          "descriptor_weight": 0.7443289756774902,
+          "regularization_weight": 0.04283630847930908,
+          "temperature": 1.1901885271072388,
+          "refined_valid_fraction": 0.8661866188049316
+        }
+      }
+    },
+    {
+      "name": "SDSD_indoor/pair12_2",
+      "scene": "SDSD_indoor/pair12",
+      "methods": {
+        "base": {
+          "rgb_mse_float": 0.0010370974019687999,
+          "psnr_rgb_from_clip_mse": 29.84180453687046
+        },
+        "frozen_raw_node_1000": {
+          "rgb_mse_float": 0.0010126868770723438,
+          "psnr_rgb_from_clip_mse": 29.945248177997968
+        },
+        "joint_prior": {
+          "rgb_mse_float": 0.001012686813426835,
+          "psnr_rgb_from_clip_mse": 29.945248450944078
+        },
+        "independent_prior": {
+          "rgb_mse_float": 0.0010126869143103337,
+          "psnr_rgb_from_clip_mse": 29.945248018301488
+        },
+        "constant_prior": {
+          "rgb_mse_float": 0.0010126868770723438,
+          "psnr_rgb_from_clip_mse": 29.945248177997968
+        },
+        "joint_pixel": {
+          "rgb_mse_float": 0.0010126867941936313,
+          "psnr_rgb_from_clip_mse": 29.945248533426387
+        },
+        "joint_shuffled": {
+          "rgb_mse_float": 0.0010126868138974224,
+          "psnr_rgb_from_clip_mse": 29.94524844892595
+        }
+      },
+      "search": {
+        "joint_prior": {
+          "amplitude": 0.016833804547786713,
+          "mean_abs_offset": 3.926535100617912e-06,
+          "max_abs_offset": 0.0012007813202217221,
+          "mean_confidence": 0.0037092051934450865,
+          "descriptor_weight": 0.7485849857330322,
+          "regularization_weight": 0.04320922866463661,
+          "temperature": 1.1781201362609863,
+          "refined_valid_fraction": 0.8678569793701172
+        },
+        "independent_prior": {
+          "amplitude": 0.05702879652380943,
+          "mean_abs_offset": 6.475601821875898e-06,
+          "max_abs_offset": 0.002463272772729397,
+          "mean_confidence": 0.0019608153961598873,
+          "descriptor_weight": 0.8475463390350342,
+          "regularization_weight": 0.0315215177834034,
+          "temperature": 1.2258496284484863,
+          "refined_valid_fraction": 0.8678569793701172
+        },
+        "constant_prior": {
+          "amplitude": 0.0,
+          "mean_abs_offset": 0.0,
+          "max_abs_offset": 0.0,
+          "mean_confidence": 0.014457903802394867,
+          "descriptor_weight": 0.8089170455932617,
+          "regularization_weight": 0.07455754280090332,
+          "temperature": 0.9233636260032654,
+          "refined_valid_fraction": 0.8678569793701172
+        },
+        "joint_pixel": {
+          "amplitude": 0.018949255347251892,
+          "mean_abs_offset": 4.559766694001155e-06,
+          "max_abs_offset": 0.0013285053428262472,
+          "mean_confidence": 0.0036980812437832355,
+          "descriptor_weight": 1.2646188735961914,
+          "regularization_weight": 0.042647045105695724,
+          "temperature": 1.1919019222259521,
+          "refined_valid_fraction": 0.8678569793701172
+        },
+        "joint_shuffled": {
+          "amplitude": 0.016944434493780136,
+          "mean_abs_offset": 4.018683739559492e-06,
+          "max_abs_offset": 0.0011928413296118379,
+          "mean_confidence": 0.0037858360446989536,
+          "descriptor_weight": 0.7443289756774902,
+          "regularization_weight": 0.04283630847930908,
+          "temperature": 1.1901885271072388,
+          "refined_valid_fraction": 0.8678569793701172
+        }
+      }
+    },
+    {
+      "name": "SDSD_indoor/pair13",
+      "scene": "SDSD_indoor/pair13",
+      "methods": {
+        "base": {
+          "rgb_mse_float": 0.0029649040891211544,
+          "psnr_rgb_from_clip_mse": 25.27989350946987
+        },
+        "frozen_raw_node_1000": {
+          "rgb_mse_float": 0.002937314113042371,
+          "psnr_rgb_from_clip_mse": 25.32049608034038
+        },
+        "joint_prior": {
+          "rgb_mse_float": 0.002937378296576937,
+          "psnr_rgb_from_clip_mse": 25.320401183270207
+        },
+        "independent_prior": {
+          "rgb_mse_float": 0.002937444641649257,
+          "psnr_rgb_from_clip_mse": 25.32030309248819
+        },
+        "constant_prior": {
+          "rgb_mse_float": 0.002937314113042371,
+          "psnr_rgb_from_clip_mse": 25.32049608034038
+        },
+        "joint_pixel": {
+          "rgb_mse_float": 0.0029373856825565697,
+          "psnr_rgb_from_clip_mse": 25.32039026303508
+        },
+        "joint_shuffled": {
+          "rgb_mse_float": 0.0029373782354678783,
+          "psnr_rgb_from_clip_mse": 25.320401273620593
+        }
+      },
+      "search": {
+        "joint_prior": {
+          "amplitude": 0.016833804547786713,
+          "mean_abs_offset": 5.694895298802294e-05,
+          "max_abs_offset": 0.017297301441431046,
+          "mean_confidence": 0.013123712502419949,
+          "descriptor_weight": 0.7485849857330322,
+          "regularization_weight": 0.04320922866463661,
+          "temperature": 1.1781201362609863,
+          "refined_valid_fraction": 0.8114404678344727
+        },
+        "independent_prior": {
+          "amplitude": 0.05702879652380943,
+          "mean_abs_offset": 0.00010569002915872261,
+          "max_abs_offset": 0.038511067628860474,
+          "mean_confidence": 0.008144328370690346,
+          "descriptor_weight": 0.8475463390350342,
+          "regularization_weight": 0.0315215177834034,
+          "temperature": 1.2258496284484863,
+          "refined_valid_fraction": 0.8114399909973145
+        },
+        "constant_prior": {
+          "amplitude": 0.0,
+          "mean_abs_offset": 0.0,
+          "max_abs_offset": 0.0,
+          "mean_confidence": 0.027906477451324463,
+          "descriptor_weight": 0.8089170455932617,
+          "regularization_weight": 0.07455754280090332,
+          "temperature": 0.9233636260032654,
+          "refined_valid_fraction": 0.8114404678344727
+        },
+        "joint_pixel": {
+          "amplitude": 0.018949255347251892,
+          "mean_abs_offset": 6.30406429991126e-05,
+          "max_abs_offset": 0.01938631385564804,
+          "mean_confidence": 0.012844580225646496,
+          "descriptor_weight": 1.2646188735961914,
+          "regularization_weight": 0.042647045105695724,
+          "temperature": 1.1919019222259521,
+          "refined_valid_fraction": 0.8114404678344727
+        },
+        "joint_shuffled": {
+          "amplitude": 0.016944434493780136,
+          "mean_abs_offset": 5.702935595763847e-05,
+          "max_abs_offset": 0.017483146861195564,
+          "mean_confidence": 0.013014453463256359,
+          "descriptor_weight": 0.7443289756774902,
+          "regularization_weight": 0.04283630847930908,
+          "temperature": 1.1901885271072388,
+          "refined_valid_fraction": 0.8114404678344727
+        }
+      }
+    },
+    {
+      "name": "SDSD_indoor/pair13_2",
+      "scene": "SDSD_indoor/pair13",
+      "methods": {
+        "base": {
+          "rgb_mse_float": 0.0005329452463173008,
+          "psnr_rgb_from_clip_mse": 32.733174071905616
+        },
+        "frozen_raw_node_1000": {
+          "rgb_mse_float": 0.0005132543105150481,
+          "psnr_rgb_from_clip_mse": 32.89667394563238
+        },
+        "joint_prior": {
+          "rgb_mse_float": 0.0005132543492471642,
+          "psnr_rgb_from_clip_mse": 32.896673617897314
+        },
+        "independent_prior": {
+          "rgb_mse_float": 0.0005132543891550019,
+          "psnr_rgb_from_clip_mse": 32.8966732802138
+        },
+        "constant_prior": {
+          "rgb_mse_float": 0.0005132543105150481,
+          "psnr_rgb_from_clip_mse": 32.89667394563238
+        },
+        "joint_pixel": {
+          "rgb_mse_float": 0.0005132543641620954,
+          "psnr_rgb_from_clip_mse": 32.89667349169336
+        },
+        "joint_shuffled": {
+          "rgb_mse_float": 0.0005132543493511985,
+          "psnr_rgb_from_clip_mse": 32.896673617017015
+        }
+      },
+      "search": {
+        "joint_prior": {
+          "amplitude": 0.016833804547786713,
+          "mean_abs_offset": 4.441625605977606e-06,
+          "max_abs_offset": 0.00047465768875554204,
+          "mean_confidence": 0.0034271134063601494,
+          "descriptor_weight": 0.7485849857330322,
+          "regularization_weight": 0.04320922866463661,
+          "temperature": 1.1781201362609863,
+          "refined_valid_fraction": 0.6848897933959961
+        },
+        "independent_prior": {
+          "amplitude": 0.05702879652380943,
+          "mean_abs_offset": 7.317699783015996e-06,
+          "max_abs_offset": 0.0009674831526353955,
+          "mean_confidence": 0.0019547762349247932,
+          "descriptor_weight": 0.8475463390350342,
+          "regularization_weight": 0.0315215177834034,
+          "temperature": 1.2258496284484863,
+          "refined_valid_fraction": 0.6848897933959961
+        },
+        "constant_prior": {
+          "amplitude": 0.0,
+          "mean_abs_offset": 0.0,
+          "max_abs_offset": 0.0,
+          "mean_confidence": 0.01469963788986206,
+          "descriptor_weight": 0.8089170455932617,
+          "regularization_weight": 0.07455754280090332,
+          "temperature": 0.9233636260032654,
+          "refined_valid_fraction": 0.6848897933959961
+        },
+        "joint_pixel": {
+          "amplitude": 0.018949255347251892,
+          "mean_abs_offset": 7.304968676180579e-06,
+          "max_abs_offset": 0.0009667780250310898,
+          "mean_confidence": 0.003913206048309803,
+          "descriptor_weight": 1.2646188735961914,
+          "regularization_weight": 0.042647045105695724,
+          "temperature": 1.1919019222259521,
+          "refined_valid_fraction": 0.6848897933959961
+        },
+        "joint_shuffled": {
+          "amplitude": 0.016944434493780136,
+          "mean_abs_offset": 4.546497166302288e-06,
+          "max_abs_offset": 0.00043891422683373094,
+          "mean_confidence": 0.003411659272387624,
+          "descriptor_weight": 0.7443289756774902,
+          "regularization_weight": 0.04283630847930908,
+          "temperature": 1.1901885271072388,
+          "refined_valid_fraction": 0.6848897933959961
+        }
+      }
+    },
+    {
+      "name": "SDSD_indoor/pair16",
+      "scene": "SDSD_indoor/pair16",
+      "methods": {
+        "base": {
+          "rgb_mse_float": 0.0006170664144901026,
+          "psnr_rgb_from_clip_mse": 32.096680905951004
+        },
+        "frozen_raw_node_1000": {
+          "rgb_mse_float": 0.0005964527660119231,
+          "psnr_rgb_from_clip_mse": 32.244239430625484
+        },
+        "joint_prior": {
+          "rgb_mse_float": 0.0005964486602296296,
+          "psnr_rgb_from_clip_mse": 32.24426932611483
+        },
+        "independent_prior": {
+          "rgb_mse_float": 0.0005964425094563256,
+          "psnr_rgb_from_clip_mse": 32.24431411221055
+        },
+        "constant_prior": {
+          "rgb_mse_float": 0.0005964527660119231,
+          "psnr_rgb_from_clip_mse": 32.244239430625484
+        },
+        "joint_pixel": {
+          "rgb_mse_float": 0.0005964482259462464,
+          "psnr_rgb_from_clip_mse": 32.244272488280465
+        },
+        "joint_shuffled": {
+          "rgb_mse_float": 0.0005964486118525254,
+          "psnr_rgb_from_clip_mse": 32.24426967836494
+        }
+      },
+      "search": {
+        "joint_prior": {
+          "amplitude": 0.016833804547786713,
+          "mean_abs_offset": 3.1184954423224553e-05,
+          "max_abs_offset": 0.00982835702598095,
+          "mean_confidence": 0.007803875952959061,
+          "descriptor_weight": 0.7485849857330322,
+          "regularization_weight": 0.04320922866463661,
+          "temperature": 1.1781201362609863,
+          "refined_valid_fraction": 0.8673105239868164
+        },
+        "independent_prior": {
+          "amplitude": 0.05702879652380943,
+          "mean_abs_offset": 5.4399795772042125e-05,
+          "max_abs_offset": 0.015959855169057846,
+          "mean_confidence": 0.004575271159410477,
+          "descriptor_weight": 0.8475463390350342,
+          "regularization_weight": 0.0315215177834034,
+          "temperature": 1.2258496284484863,
+          "refined_valid_fraction": 0.8673105239868164
+        },
+        "constant_prior": {
+          "amplitude": 0.0,
+          "mean_abs_offset": 0.0,
+          "max_abs_offset": 0.0,
+          "mean_confidence": 0.020391013473272324,
+          "descriptor_weight": 0.8089170455932617,
+          "regularization_weight": 0.07455754280090332,
+          "temperature": 0.9233636260032654,
+          "refined_valid_fraction": 0.8673105239868164
+        },
+        "joint_pixel": {
+          "amplitude": 0.018949255347251892,
+          "mean_abs_offset": 4.305380571167916e-05,
+          "max_abs_offset": 0.01104219164699316,
+          "mean_confidence": 0.008376353420317173,
+          "descriptor_weight": 1.2646188735961914,
+          "regularization_weight": 0.042647045105695724,
+          "temperature": 1.1919019222259521,
+          "refined_valid_fraction": 0.8673105239868164
+        },
+        "joint_shuffled": {
+          "amplitude": 0.016944434493780136,
+          "mean_abs_offset": 3.078906229347922e-05,
+          "max_abs_offset": 0.009904143400490284,
+          "mean_confidence": 0.007724973373115063,
+          "descriptor_weight": 0.7443289756774902,
+          "regularization_weight": 0.04283630847930908,
+          "temperature": 1.1901885271072388,
+          "refined_valid_fraction": 0.8673105239868164
+        }
+      }
+    },
+    {
+      "name": "SDSD_indoor/pair16_2",
+      "scene": "SDSD_indoor/pair16",
+      "methods": {
+        "base": {
+          "rgb_mse_float": 0.0014348773852372147,
+          "psnr_rgb_from_clip_mse": 28.431852091669512
+        },
+        "frozen_raw_node_1000": {
+          "rgb_mse_float": 0.0012915379018284777,
+          "psnr_rgb_from_clip_mse": 28.888928443776702
+        },
+        "joint_prior": {
+          "rgb_mse_float": 0.001291523995173537,
+          "psnr_rgb_from_clip_mse": 28.888975206756015
+        },
+        "independent_prior": {
+          "rgb_mse_float": 0.0012914930991950247,
+          "psnr_rgb_from_clip_mse": 28.88907910040047
+        },
+        "constant_prior": {
+          "rgb_mse_float": 0.0012915379018284777,
+          "psnr_rgb_from_clip_mse": 28.888928443776702
+        },
+        "joint_pixel": {
+          "rgb_mse_float": 0.0012915223413079602,
+          "psnr_rgb_from_clip_mse": 28.888980768132775
+        },
+        "joint_shuffled": {
+          "rgb_mse_float": 0.001291523960620865,
+          "psnr_rgb_from_clip_mse": 28.888975322944603
+        }
+      },
+      "search": {
+        "joint_prior": {
+          "amplitude": 0.016833804547786713,
+          "mean_abs_offset": 0.0001010416672215797,
+          "max_abs_offset": 0.015416095964610577,
+          "mean_confidence": 0.0719311460852623,
+          "descriptor_weight": 0.7485849857330322,
+          "regularization_weight": 0.04320922866463661,
+          "temperature": 1.1781201362609863,
+          "refined_valid_fraction": 0.8686208724975586
+        },
+        "independent_prior": {
+          "amplitude": 0.05702879652380943,
+          "mean_abs_offset": 0.00020552199566736817,
+          "max_abs_offset": 0.04244831204414368,
+          "mean_confidence": 0.04678565263748169,
+          "descriptor_weight": 0.8475463390350342,
+          "regularization_weight": 0.0315215177834034,
+          "temperature": 1.2258496284484863,
+          "refined_valid_fraction": 0.8686199188232422
+        },
+        "constant_prior": {
+          "amplitude": 0.0,
+          "mean_abs_offset": 0.0,
+          "max_abs_offset": 0.0,
+          "mean_confidence": 0.11211896687746048,
+          "descriptor_weight": 0.8089170455932617,
+          "regularization_weight": 0.07455754280090332,
+          "temperature": 0.9233636260032654,
+          "refined_valid_fraction": 0.8686208724975586
+        },
+        "joint_pixel": {
+          "amplitude": 0.018949255347251892,
+          "mean_abs_offset": 0.00011275818542344496,
+          "max_abs_offset": 0.01712147705256939,
+          "mean_confidence": 0.07150435447692871,
+          "descriptor_weight": 1.2646188735961914,
+          "regularization_weight": 0.042647045105695724,
+          "temperature": 1.1919019222259521,
+          "refined_valid_fraction": 0.8686208724975586
+        },
+        "joint_shuffled": {
+          "amplitude": 0.016944434493780136,
+          "mean_abs_offset": 0.00010042922804132104,
+          "max_abs_offset": 0.01520589366555214,
+          "mean_confidence": 0.07126118242740631,
+          "descriptor_weight": 0.7443289756774902,
+          "regularization_weight": 0.04283630847930908,
+          "temperature": 1.1901885271072388,
+          "refined_valid_fraction": 0.8686208724975586
+        }
+      }
+    },
+    {
+      "name": "SDSD_indoor/pair18",
+      "scene": "SDSD_indoor/pair18",
+      "methods": {
+        "base": {
+          "rgb_mse_float": 0.0008984842221655696,
+          "psnr_rgb_from_clip_mse": 30.464895449173817
+        },
+        "frozen_raw_node_1000": {
+          "rgb_mse_float": 0.0007707942665068756,
+          "psnr_rgb_from_clip_mse": 31.130615244702522
+        },
+        "joint_prior": {
+          "rgb_mse_float": 0.0007707821560127829,
+          "psnr_rgb_from_clip_mse": 31.130683480317455
+        },
+        "independent_prior": {
+          "rgb_mse_float": 0.0007707683755310664,
+          "psnr_rgb_from_clip_mse": 31.130761126648792
+        },
+        "constant_prior": {
+          "rgb_mse_float": 0.0007707942665068756,
+          "psnr_rgb_from_clip_mse": 31.130615244702522
+        },
+        "joint_pixel": {
+          "rgb_mse_float": 0.0007707805868148759,
+          "psnr_rgb_from_clip_mse": 31.130692321916605
+        },
+        "joint_shuffled": {
+          "rgb_mse_float": 0.0007707820360199867,
+          "psnr_rgb_from_clip_mse": 31.130684156412674
+        }
+      },
+      "search": {
+        "joint_prior": {
+          "amplitude": 0.016833804547786713,
+          "mean_abs_offset": 6.240554648684338e-05,
+          "max_abs_offset": 0.014721523970365524,
+          "mean_confidence": 0.04578576236963272,
+          "descriptor_weight": 0.7485849857330322,
+          "regularization_weight": 0.04320922866463661,
+          "temperature": 1.1781201362609863,
+          "refined_valid_fraction": 0.867764949798584
+        },
+        "independent_prior": {
+          "amplitude": 0.05702879652380943,
+          "mean_abs_offset": 0.00012823549332097173,
+          "max_abs_offset": 0.03146384656429291,
+          "mean_confidence": 0.03605451434850693,
+          "descriptor_weight": 0.8475463390350342,
+          "regularization_weight": 0.0315215177834034,
+          "temperature": 1.2258496284484863,
+          "refined_valid_fraction": 0.8677639961242676
+        },
+        "constant_prior": {
+          "amplitude": 0.0,
+          "mean_abs_offset": 0.0,
+          "max_abs_offset": 0.0,
+          "mean_confidence": 0.058009691536426544,
+          "descriptor_weight": 0.8089170455932617,
+          "regularization_weight": 0.07455754280090332,
+          "temperature": 0.9233636260032654,
+          "refined_valid_fraction": 0.867764949798584
+        },
+        "joint_pixel": {
+          "amplitude": 0.018949255347251892,
+          "mean_abs_offset": 6.973750714678317e-05,
+          "max_abs_offset": 0.01646415889263153,
+          "mean_confidence": 0.04561183229088783,
+          "descriptor_weight": 1.2646188735961914,
+          "regularization_weight": 0.042647045105695724,
+          "temperature": 1.1919019222259521,
+          "refined_valid_fraction": 0.867764949798584
+        },
+        "joint_shuffled": {
+          "amplitude": 0.016944434493780136,
+          "mean_abs_offset": 6.229107384569943e-05,
+          "max_abs_offset": 0.014911593869328499,
+          "mean_confidence": 0.04557608440518379,
+          "descriptor_weight": 0.7443289756774902,
+          "regularization_weight": 0.04283630847930908,
+          "temperature": 1.1901885271072388,
+          "refined_valid_fraction": 0.867764949798584
+        }
+      }
+    },
+    {
+      "name": "SDSD_indoor/pair18_2",
+      "scene": "SDSD_indoor/pair18",
+      "methods": {
+        "base": {
+          "rgb_mse_float": 0.0006301040396977611,
+          "psnr_rgb_from_clip_mse": 32.005877360445744
+        },
+        "frozen_raw_node_1000": {
+          "rgb_mse_float": 0.0006210498973159182,
+          "psnr_rgb_from_clip_mse": 32.06873505687486
+        },
+        "joint_prior": {
+          "rgb_mse_float": 0.0006210512380702302,
+          "psnr_rgb_from_clip_mse": 32.06872568111338
+        },
+        "independent_prior": {
+          "rgb_mse_float": 0.0006210519377524782,
+          "psnr_rgb_from_clip_mse": 32.06872078831308
+        },
+        "constant_prior": {
+          "rgb_mse_float": 0.0006210498973159182,
+          "psnr_rgb_from_clip_mse": 32.06873505687486
+        },
+        "joint_pixel": {
+          "rgb_mse_float": 0.0006210513252364693,
+          "psnr_rgb_from_clip_mse": 32.06872507156924
+        },
+        "joint_shuffled": {
+          "rgb_mse_float": 0.0006210511819127741,
+          "psnr_rgb_from_clip_mse": 32.06872607381647
+        }
+      },
+      "search": {
+        "joint_prior": {
+          "amplitude": 0.016833804547786713,
+          "mean_abs_offset": 3.579576514312066e-06,
+          "max_abs_offset": 0.0018692833837121725,
+          "mean_confidence": 0.0033837356604635715,
+          "descriptor_weight": 0.7485849857330322,
+          "regularization_weight": 0.04320922866463661,
+          "temperature": 1.1781201362609863,
+          "refined_valid_fraction": 0.8642401695251465
+        },
+        "independent_prior": {
+          "amplitude": 0.05702879652380943,
+          "mean_abs_offset": 6.077048965380527e-06,
+          "max_abs_offset": 0.0027192733250558376,
+          "mean_confidence": 0.0017799119232222438,
+          "descriptor_weight": 0.8475463390350342,
+          "regularization_weight": 0.0315215177834034,
+          "temperature": 1.2258496284484863,
+          "refined_valid_fraction": 0.8642401695251465
+        },
+        "constant_prior": {
+          "amplitude": 0.0,
+          "mean_abs_offset": 0.0,
+          "max_abs_offset": 0.0,
+          "mean_confidence": 0.012998400256037712,
+          "descriptor_weight": 0.8089170455932617,
+          "regularization_weight": 0.07455754280090332,
+          "temperature": 0.9233636260032654,
+          "refined_valid_fraction": 0.8642401695251465
+        },
+        "joint_pixel": {
+          "amplitude": 0.018949255347251892,
+          "mean_abs_offset": 3.802841092692688e-06,
+          "max_abs_offset": 0.002070376183837652,
+          "mean_confidence": 0.003347386373206973,
+          "descriptor_weight": 1.2646188735961914,
+          "regularization_weight": 0.042647045105695724,
+          "temperature": 1.1919019222259521,
+          "refined_valid_fraction": 0.8642401695251465
+        },
+        "joint_shuffled": {
+          "amplitude": 0.016944434493780136,
+          "mean_abs_offset": 3.6720168736792402e-06,
+          "max_abs_offset": 0.0017969573382288218,
+          "mean_confidence": 0.0034766937606036663,
+          "descriptor_weight": 0.7443289756774902,
+          "regularization_weight": 0.04283630847930908,
+          "temperature": 1.1901885271072388,
+          "refined_valid_fraction": 0.8642401695251465
+        }
+      }
+    },
+    {
+      "name": "SDSD_indoor/pair22",
+      "scene": "SDSD_indoor/pair22",
+      "methods": {
+        "base": {
+          "rgb_mse_float": 0.0013032500345615226,
+          "psnr_rgb_from_clip_mse": 28.849722548836763
+        },
+        "frozen_raw_node_1000": {
+          "rgb_mse_float": 0.001162116584584442,
+          "psnr_rgb_from_clip_mse": 29.34750300945785
+        },
+        "joint_prior": {
+          "rgb_mse_float": 0.001162122469142879,
+          "psnr_rgb_from_clip_mse": 29.34748101833561
+        },
+        "independent_prior": {
+          "rgb_mse_float": 0.0011620303981497255,
+          "psnr_rgb_from_clip_mse": 29.347825108647854
+        },
+        "constant_prior": {
+          "rgb_mse_float": 0.001162116584584442,
+          "psnr_rgb_from_clip_mse": 29.34750300945785
+        },
+        "joint_pixel": {
+          "rgb_mse_float": 0.001162118488879985,
+          "psnr_rgb_from_clip_mse": 29.34749589292256
+        },
+        "joint_shuffled": {
+          "rgb_mse_float": 0.0011621219899447912,
+          "psnr_rgb_from_clip_mse": 29.34748280913764
+        }
+      },
+      "search": {
+        "joint_prior": {
+          "amplitude": 0.016833804547786713,
+          "mean_abs_offset": 9.432443766854703e-05,
+          "max_abs_offset": 0.008603446185588837,
+          "mean_confidence": 0.06950655579566956,
+          "descriptor_weight": 0.7485849857330322,
+          "regularization_weight": 0.04320922866463661,
+          "temperature": 1.1781201362609863,
+          "refined_valid_fraction": 0.8649811744689941
+        },
+        "independent_prior": {
+          "amplitude": 0.05702879652380943,
+          "mean_abs_offset": 0.00019371350936125964,
+          "max_abs_offset": 0.021300429478287697,
+          "mean_confidence": 0.04775603115558624,
+          "descriptor_weight": 0.8475463390350342,
+          "regularization_weight": 0.0315215177834034,
+          "temperature": 1.2258496284484863,
+          "refined_valid_fraction": 0.8649802207946777
+        },
+        "constant_prior": {
+          "amplitude": 0.0,
+          "mean_abs_offset": 0.0,
+          "max_abs_offset": 0.0,
+          "mean_confidence": 0.0979192852973938,
+          "descriptor_weight": 0.8089170455932617,
+          "regularization_weight": 0.07455754280090332,
+          "temperature": 0.9233636260032654,
+          "refined_valid_fraction": 0.864983081817627
+        },
+        "joint_pixel": {
+          "amplitude": 0.018949255347251892,
+          "mean_abs_offset": 0.00010505178943276405,
+          "max_abs_offset": 0.009549739770591259,
+          "mean_confidence": 0.06926675885915756,
+          "descriptor_weight": 1.2646188735961914,
+          "regularization_weight": 0.042647045105695724,
+          "temperature": 1.1919019222259521,
+          "refined_valid_fraction": 0.8649811744689941
+        },
+        "joint_shuffled": {
+          "amplitude": 0.016944434493780136,
+          "mean_abs_offset": 9.423855226486921e-05,
+          "max_abs_offset": 0.008529662154614925,
+          "mean_confidence": 0.06916817277669907,
+          "descriptor_weight": 0.7443289756774902,
+          "regularization_weight": 0.04283630847930908,
+          "temperature": 1.1901885271072388,
+          "refined_valid_fraction": 0.8649811744689941
+        }
+      }
+    },
+    {
+      "name": "SDSD_indoor/pair22_2",
+      "scene": "SDSD_indoor/pair22",
+      "methods": {
+        "base": {
+          "rgb_mse_float": 0.0026241676187859927,
+          "psnr_rgb_from_clip_mse": 25.81008427837212
+        },
+        "frozen_raw_node_1000": {
+          "rgb_mse_float": 0.0026085012589165493,
+          "psnr_rgb_from_clip_mse": 25.836089493420747
+        },
+        "joint_prior": {
+          "rgb_mse_float": 0.0026085012537620787,
+          "psnr_rgb_from_clip_mse": 25.836089502002526
+        },
+        "independent_prior": {
+          "rgb_mse_float": 0.002608501266078365,
+          "psnr_rgb_from_clip_mse": 25.8360894814969
+        },
+        "constant_prior": {
+          "rgb_mse_float": 0.0026085012589165493,
+          "psnr_rgb_from_clip_mse": 25.836089493420747
+        },
+        "joint_pixel": {
+          "rgb_mse_float": 0.002608501253011406,
+          "psnr_rgb_from_clip_mse": 25.836089503252335
+        },
+        "joint_shuffled": {
+          "rgb_mse_float": 0.002608501253400533,
+          "psnr_rgb_from_clip_mse": 25.836089502604473
+        }
+      },
+      "search": {
+        "joint_prior": {
+          "amplitude": 0.016833804547786713,
+          "mean_abs_offset": 1.3440394468489103e-06,
+          "max_abs_offset": 0.00016102005611173809,
+          "mean_confidence": 0.002539462875574827,
+          "descriptor_weight": 0.7485849857330322,
+          "regularization_weight": 0.04320922866463661,
+          "temperature": 1.1781201362609863,
+          "refined_valid_fraction": 0.8702149391174316
+        },
+        "independent_prior": {
+          "amplitude": 0.05702879652380943,
+          "mean_abs_offset": 2.4668343030498363e-06,
+          "max_abs_offset": 0.0004350727831479162,
+          "mean_confidence": 0.0013596892822533846,
+          "descriptor_weight": 0.8475463390350342,
+          "regularization_weight": 0.0315215177834034,
+          "temperature": 1.2258496284484863,
+          "refined_valid_fraction": 0.8702149391174316
+        },
+        "constant_prior": {
+          "amplitude": 0.0,
+          "mean_abs_offset": 0.0,
+          "max_abs_offset": 0.0,
+          "mean_confidence": 0.010778496041893959,
+          "descriptor_weight": 0.8089170455932617,
+          "regularization_weight": 0.07455754280090332,
+          "temperature": 0.9233636260032654,
+          "refined_valid_fraction": 0.8702149391174316
+        },
+        "joint_pixel": {
+          "amplitude": 0.018949255347251892,
+          "mean_abs_offset": 1.3657677300216164e-06,
+          "max_abs_offset": 0.0001767799985827878,
+          "mean_confidence": 0.002555107232183218,
+          "descriptor_weight": 1.2646188735961914,
+          "regularization_weight": 0.042647045105695724,
+          "temperature": 1.1919019222259521,
+          "refined_valid_fraction": 0.8702149391174316
+        },
+        "joint_shuffled": {
+          "amplitude": 0.016944434493780136,
+          "mean_abs_offset": 1.493853915235377e-06,
+          "max_abs_offset": 0.0001524381950730458,
+          "mean_confidence": 0.0026565897278487682,
+          "descriptor_weight": 0.7443289756774902,
+          "regularization_weight": 0.04283630847930908,
+          "temperature": 1.1901885271072388,
+          "refined_valid_fraction": 0.8702149391174316
+        }
+      }
+    },
+    {
+      "name": "SDSD_indoor/pair23",
+      "scene": "SDSD_indoor/pair23",
+      "methods": {
+        "base": {
+          "rgb_mse_float": 0.0017861705392389748,
+          "psnr_rgb_from_clip_mse": 27.480770780820833
+        },
+        "frozen_raw_node_1000": {
+          "rgb_mse_float": 0.0017651183359293084,
+          "psnr_rgb_from_clip_mse": 27.532261736085353
+        },
+        "joint_prior": {
+          "rgb_mse_float": 0.0017651183319083742,
+          "psnr_rgb_from_clip_mse": 27.532261745978566
+        },
+        "independent_prior": {
+          "rgb_mse_float": 0.0017651183265958812,
+          "psnr_rgb_from_clip_mse": 27.532261759049568
+        },
+        "constant_prior": {
+          "rgb_mse_float": 0.0017651183359293084,
+          "psnr_rgb_from_clip_mse": 27.532261736085353
+        },
+        "joint_pixel": {
+          "rgb_mse_float": 0.0017651183309665044,
+          "psnr_rgb_from_clip_mse": 27.532261748295973
+        },
+        "joint_shuffled": {
+          "rgb_mse_float": 0.0017651183307892994,
+          "psnr_rgb_from_clip_mse": 27.53226174873197
+        }
+      },
+      "search": {
+        "joint_prior": {
+          "amplitude": 0.016833804547786713,
+          "mean_abs_offset": 1.2148228734076838e-06,
+          "max_abs_offset": 0.00019724186859093606,
+          "mean_confidence": 0.002087181666865945,
+          "descriptor_weight": 0.7485849857330322,
+          "regularization_weight": 0.04320922866463661,
+          "temperature": 1.1781201362609863,
+          "refined_valid_fraction": 0.8460397720336914
+        },
+        "independent_prior": {
+          "amplitude": 0.05702879652380943,
+          "mean_abs_offset": 2.3766865524521563e-06,
+          "max_abs_offset": 0.0005963664152659476,
+          "mean_confidence": 0.0011289054527878761,
+          "descriptor_weight": 0.8475463390350342,
+          "regularization_weight": 0.0315215177834034,
+          "temperature": 1.2258496284484863,
+          "refined_valid_fraction": 0.8460397720336914
+        },
+        "constant_prior": {
+          "amplitude": 0.0,
+          "mean_abs_offset": 0.0,
+          "max_abs_offset": 0.0,
+          "mean_confidence": 0.009912041015923023,
+          "descriptor_weight": 0.8089170455932617,
+          "regularization_weight": 0.07455754280090332,
+          "temperature": 0.9233636260032654,
+          "refined_valid_fraction": 0.8460397720336914
+        },
+        "joint_pixel": {
+          "amplitude": 0.018949255347251892,
+          "mean_abs_offset": 1.5457261497431318e-06,
+          "max_abs_offset": 0.0002079350088024512,
+          "mean_confidence": 0.0020732106640934944,
+          "descriptor_weight": 1.2646188735961914,
+          "regularization_weight": 0.042647045105695724,
+          "temperature": 1.1919019222259521,
+          "refined_valid_fraction": 0.8460397720336914
+        },
+        "joint_shuffled": {
+          "amplitude": 0.016944434493780136,
+          "mean_abs_offset": 1.4744853160664206e-06,
+          "max_abs_offset": 0.0001876475871540606,
+          "mean_confidence": 0.0021271640434861183,
+          "descriptor_weight": 0.7443289756774902,
+          "regularization_weight": 0.04283630847930908,
+          "temperature": 1.1901885271072388,
+          "refined_valid_fraction": 0.8460397720336914
+        }
+      }
+    },
+    {
+      "name": "SDSD_indoor/pair23_2",
+      "scene": "SDSD_indoor/pair23",
+      "methods": {
+        "base": {
+          "rgb_mse_float": 0.009882170006303407,
+          "psnr_rgb_from_clip_mse": 20.05147679067896
+        },
+        "frozen_raw_node_1000": {
+          "rgb_mse_float": 0.009868482938936688,
+          "psnr_rgb_from_clip_mse": 20.057496053737086
+        },
+        "joint_prior": {
+          "rgb_mse_float": 0.009868502130753356,
+          "psnr_rgb_from_clip_mse": 20.057487607766188
+        },
+        "independent_prior": {
+          "rgb_mse_float": 0.009868492263280973,
+          "psnr_rgb_from_clip_mse": 20.057491950260005
+        },
+        "constant_prior": {
+          "rgb_mse_float": 0.009868482938936688,
+          "psnr_rgb_from_clip_mse": 20.057496053737086
+        },
+        "joint_pixel": {
+          "rgb_mse_float": 0.009868507602879351,
+          "psnr_rgb_from_clip_mse": 20.05748519958566
+        },
+        "joint_shuffled": {
+          "rgb_mse_float": 0.009868502999662795,
+          "psnr_rgb_from_clip_mse": 20.05748722537527
+        }
+      },
+      "search": {
+        "joint_prior": {
+          "amplitude": 0.016833804547786713,
+          "mean_abs_offset": 6.488890358014032e-05,
+          "max_abs_offset": 0.03340773284435272,
+          "mean_confidence": 0.05488463491201401,
+          "descriptor_weight": 0.7485849857330322,
+          "regularization_weight": 0.04320922866463661,
+          "temperature": 1.1781201362609863,
+          "refined_valid_fraction": 0.8683080673217773
+        },
+        "independent_prior": {
+          "amplitude": 0.05702879652380943,
+          "mean_abs_offset": 0.0001381242327624932,
+          "max_abs_offset": 0.09069696068763733,
+          "mean_confidence": 0.03276663273572922,
+          "descriptor_weight": 0.8475463390350342,
+          "regularization_weight": 0.0315215177834034,
+          "temperature": 1.2258496284484863,
+          "refined_valid_fraction": 0.8683056831359863
+        },
+        "constant_prior": {
+          "amplitude": 0.0,
+          "mean_abs_offset": 0.0,
+          "max_abs_offset": 0.0,
+          "mean_confidence": 0.08996729552745819,
+          "descriptor_weight": 0.8089170455932617,
+          "regularization_weight": 0.07455754280090332,
+          "temperature": 0.9233636260032654,
+          "refined_valid_fraction": 0.8683090209960938
+        },
+        "joint_pixel": {
+          "amplitude": 0.018949255347251892,
+          "mean_abs_offset": 7.247769099194556e-05,
+          "max_abs_offset": 0.037581611424684525,
+          "mean_confidence": 0.05450403690338135,
+          "descriptor_weight": 1.2646188735961914,
+          "regularization_weight": 0.042647045105695724,
+          "temperature": 1.1919019222259521,
+          "refined_valid_fraction": 0.8683075904846191
+        },
+        "joint_shuffled": {
+          "amplitude": 0.016944434493780136,
+          "mean_abs_offset": 6.533163832500577e-05,
+          "max_abs_offset": 0.033607784658670425,
+          "mean_confidence": 0.0542805939912796,
+          "descriptor_weight": 0.7443289756774902,
+          "regularization_weight": 0.04283630847930908,
+          "temperature": 1.1901885271072388,
+          "refined_valid_fraction": 0.8683080673217773
+        }
+      }
+    },
+    {
+      "name": "SDSD_indoor/pair30",
+      "scene": "SDSD_indoor/pair30",
+      "methods": {
+        "base": {
+          "rgb_mse_float": 0.006935109761572646,
+          "psnr_rgb_from_clip_mse": 21.589466609831838
+        },
+        "frozen_raw_node_1000": {
+          "rgb_mse_float": 0.0068840910628577305,
+          "psnr_rgb_from_clip_mse": 21.621533934526926
+        },
+        "joint_prior": {
+          "rgb_mse_float": 0.0068840919349198735,
+          "psnr_rgb_from_clip_mse": 21.621533384371865
+        },
+        "independent_prior": {
+          "rgb_mse_float": 0.0068840838956229595,
+          "psnr_rgb_from_clip_mse": 21.621538456100076
+        },
+        "constant_prior": {
+          "rgb_mse_float": 0.0068840910628577305,
+          "psnr_rgb_from_clip_mse": 21.621533934526926
+        },
+        "joint_pixel": {
+          "rgb_mse_float": 0.0068840919454389886,
+          "psnr_rgb_from_clip_mse": 21.62153337773571
+        },
+        "joint_shuffled": {
+          "rgb_mse_float": 0.006884091948866653,
+          "psnr_rgb_from_clip_mse": 21.621533375573307
+        }
+      },
+      "search": {
+        "joint_prior": {
+          "amplitude": 0.016833804547786713,
+          "mean_abs_offset": 1.8953822291223332e-05,
+          "max_abs_offset": 0.0016263206489384174,
+          "mean_confidence": 0.025700680911540985,
+          "descriptor_weight": 0.7485849857330322,
+          "regularization_weight": 0.04320922866463661,
+          "temperature": 1.1781201362609863,
+          "refined_valid_fraction": 0.8678174018859863
+        },
+        "independent_prior": {
+          "amplitude": 0.05702879652380943,
+          "mean_abs_offset": 4.088730929652229e-05,
+          "max_abs_offset": 0.005358788184821606,
+          "mean_confidence": 0.015799609944224358,
+          "descriptor_weight": 0.8475463390350342,
+          "regularization_weight": 0.0315215177834034,
+          "temperature": 1.2258496284484863,
+          "refined_valid_fraction": 0.8678174018859863
+        },
+        "constant_prior": {
+          "amplitude": 0.0,
+          "mean_abs_offset": 0.0,
+          "max_abs_offset": 0.0,
+          "mean_confidence": 0.06514213979244232,
+          "descriptor_weight": 0.8089170455932617,
+          "regularization_weight": 0.07455754280090332,
+          "temperature": 0.9233636260032654,
+          "refined_valid_fraction": 0.8678174018859863
+        },
+        "joint_pixel": {
+          "amplitude": 0.018949255347251892,
+          "mean_abs_offset": 2.1183859644224867e-05,
+          "max_abs_offset": 0.0018690363503992558,
+          "mean_confidence": 0.02562672272324562,
+          "descriptor_weight": 1.2646188735961914,
+          "regularization_weight": 0.042647045105695724,
+          "temperature": 1.1919019222259521,
+          "refined_valid_fraction": 0.8678174018859863
+        },
+        "joint_shuffled": {
+          "amplitude": 0.016944434493780136,
+          "mean_abs_offset": 1.9335118849994615e-05,
+          "max_abs_offset": 0.001776107819750905,
+          "mean_confidence": 0.025614341720938683,
+          "descriptor_weight": 0.7443289756774902,
+          "regularization_weight": 0.04283630847930908,
+          "temperature": 1.1901885271072388,
+          "refined_valid_fraction": 0.8678174018859863
+        }
+      }
+    },
+    {
+      "name": "SDSD_indoor/pair30_2",
+      "scene": "SDSD_indoor/pair30",
+      "methods": {
+        "base": {
+          "rgb_mse_float": 0.016791885966269415,
+          "psnr_rgb_from_clip_mse": 17.749005237103216
+        },
+        "frozen_raw_node_1000": {
+          "rgb_mse_float": 0.016738415777624655,
+          "psnr_rgb_from_clip_mse": 17.762856485885045
+        },
+        "joint_prior": {
+          "rgb_mse_float": 0.016738423098784264,
+          "psnr_rgb_from_clip_mse": 17.762854586339373
+        },
+        "independent_prior": {
+          "rgb_mse_float": 0.016738415069823393,
+          "psnr_rgb_from_clip_mse": 17.762856669530972
+        },
+        "constant_prior": {
+          "rgb_mse_float": 0.016738415777624655,
+          "psnr_rgb_from_clip_mse": 17.762856485885045
+        },
+        "joint_pixel": {
+          "rgb_mse_float": 0.01673842403733143,
+          "psnr_rgb_from_clip_mse": 17.76285434282429
+        },
+        "joint_shuffled": {
+          "rgb_mse_float": 0.0167384233959597,
+          "psnr_rgb_from_clip_mse": 17.762854509234348
+        }
+      },
+      "search": {
+        "joint_prior": {
+          "amplitude": 0.016833804547786713,
+          "mean_abs_offset": 9.181949280900881e-05,
+          "max_abs_offset": 0.010848406702280045,
+          "mean_confidence": 0.09463351964950562,
+          "descriptor_weight": 0.7485849857330322,
+          "regularization_weight": 0.04320922866463661,
+          "temperature": 1.1781201362609863,
+          "refined_valid_fraction": 0.8665390014648438
+        },
+        "independent_prior": {
+          "amplitude": 0.05702879652380943,
+          "mean_abs_offset": 0.00020307365048211068,
+          "max_abs_offset": 0.020869869738817215,
+          "mean_confidence": 0.06481143087148666,
+          "descriptor_weight": 0.8475463390350342,
+          "regularization_weight": 0.0315215177834034,
+          "temperature": 1.2258496284484863,
+          "refined_valid_fraction": 0.8665375709533691
+        },
+        "constant_prior": {
+          "amplitude": 0.0,
+          "mean_abs_offset": 0.0,
+          "max_abs_offset": 0.0,
+          "mean_confidence": 0.14945940673351288,
+          "descriptor_weight": 0.8089170455932617,
+          "regularization_weight": 0.07455754280090332,
+          "temperature": 0.9233636260032654,
+          "refined_valid_fraction": 0.8665390014648438
+        },
+        "joint_pixel": {
+          "amplitude": 0.018949255347251892,
+          "mean_abs_offset": 0.00010243564611300826,
+          "max_abs_offset": 0.01219171192497015,
+          "mean_confidence": 0.09415280818939209,
+          "descriptor_weight": 1.2646188735961914,
+          "regularization_weight": 0.042647045105695724,
+          "temperature": 1.1919019222259521,
+          "refined_valid_fraction": 0.8665390014648438
+        },
+        "joint_shuffled": {
+          "amplitude": 0.016944434493780136,
+          "mean_abs_offset": 9.238861821359023e-05,
+          "max_abs_offset": 0.01081961952149868,
+          "mean_confidence": 0.09404361248016357,
+          "descriptor_weight": 0.7443289756774902,
+          "regularization_weight": 0.04283630847930908,
+          "temperature": 1.1901885271072388,
+          "refined_valid_fraction": 0.8665390014648438
+        }
+      }
+    },
+    {
+      "name": "SDSD_indoor/pair32",
+      "scene": "SDSD_indoor/pair32",
+      "methods": {
+        "base": {
+          "rgb_mse_float": 0.0030253219042793117,
+          "psnr_rgb_from_clip_mse": 25.192284081803443
+        },
+        "frozen_raw_node_1000": {
+          "rgb_mse_float": 0.002949862787934981,
+          "psnr_rgb_from_clip_mse": 25.301981846416957
+        },
+        "joint_prior": {
+          "rgb_mse_float": 0.002949844948344263,
+          "psnr_rgb_from_clip_mse": 25.302008110890235
+        },
+        "independent_prior": {
+          "rgb_mse_float": 0.0029498072585186735,
+          "psnr_rgb_from_clip_mse": 25.302063600545228
+        },
+        "constant_prior": {
+          "rgb_mse_float": 0.002949862787934981,
+          "psnr_rgb_from_clip_mse": 25.301981846416957
+        },
+        "joint_pixel": {
+          "rgb_mse_float": 0.002949842725697904,
+          "psnr_rgb_from_clip_mse": 25.302011383209386
+        },
+        "joint_shuffled": {
+          "rgb_mse_float": 0.002949844859498676,
+          "psnr_rgb_from_clip_mse": 25.302008241694224
+        }
+      },
+      "search": {
+        "joint_prior": {
+          "amplitude": 0.016833804547786713,
+          "mean_abs_offset": 7.413381536025554e-05,
+          "max_abs_offset": 0.009599585086107254,
+          "mean_confidence": 0.04460349306464195,
+          "descriptor_weight": 0.7485849857330322,
+          "regularization_weight": 0.04320922866463661,
+          "temperature": 1.1781201362609863,
+          "refined_valid_fraction": 0.8672909736633301
+        },
+        "independent_prior": {
+          "amplitude": 0.05702879652380943,
+          "mean_abs_offset": 0.0001571929460624233,
+          "max_abs_offset": 0.022721445187926292,
+          "mean_confidence": 0.026236994192004204,
+          "descriptor_weight": 0.8475463390350342,
+          "regularization_weight": 0.0315215177834034,
+          "temperature": 1.2258496284484863,
+          "refined_valid_fraction": 0.8672909736633301
+        },
+        "constant_prior": {
+          "amplitude": 0.0,
+          "mean_abs_offset": 0.0,
+          "max_abs_offset": 0.0,
+          "mean_confidence": 0.09890434145927429,
+          "descriptor_weight": 0.8089170455932617,
+          "regularization_weight": 0.07455754280090332,
+          "temperature": 0.9233636260032654,
+          "refined_valid_fraction": 0.8672909736633301
+        },
+        "joint_pixel": {
+          "amplitude": 0.018949255347251892,
+          "mean_abs_offset": 8.164410974131897e-05,
+          "max_abs_offset": 0.010596327483654022,
+          "mean_confidence": 0.04420045390725136,
+          "descriptor_weight": 1.2646188735961914,
+          "regularization_weight": 0.042647045105695724,
+          "temperature": 1.1919019222259521,
+          "refined_valid_fraction": 0.8672909736633301
+        },
+        "joint_shuffled": {
+          "amplitude": 0.016944434493780136,
+          "mean_abs_offset": 7.393580017378554e-05,
+          "max_abs_offset": 0.00943805929273367,
+          "mean_confidence": 0.04417848214507103,
+          "descriptor_weight": 0.7443289756774902,
+          "regularization_weight": 0.04283630847930908,
+          "temperature": 1.1901885271072388,
+          "refined_valid_fraction": 0.8672909736633301
+        }
+      }
+    },
+    {
+      "name": "SDSD_indoor/pair32_2",
+      "scene": "SDSD_indoor/pair32",
+      "methods": {
+        "base": {
+          "rgb_mse_float": 0.0036617547929444355,
+          "psnr_rgb_from_clip_mse": 24.363107413114008
+        },
+        "frozen_raw_node_1000": {
+          "rgb_mse_float": 0.003577483479308538,
+          "psnr_rgb_from_clip_mse": 24.464223631200255
+        },
+        "joint_prior": {
+          "rgb_mse_float": 0.003577476068532287,
+          "psnr_rgb_from_clip_mse": 24.4642326276431
+        },
+        "independent_prior": {
+          "rgb_mse_float": 0.0035774676688305196,
+          "psnr_rgb_from_clip_mse": 24.464242824632095
+        },
+        "constant_prior": {
+          "rgb_mse_float": 0.003577483479308538,
+          "psnr_rgb_from_clip_mse": 24.464223631200255
+        },
+        "joint_pixel": {
+          "rgb_mse_float": 0.003577475090464781,
+          "psnr_rgb_from_clip_mse": 24.464233814986834
+        },
+        "joint_shuffled": {
+          "rgb_mse_float": 0.0035774760815009145,
+          "psnr_rgb_from_clip_mse": 24.464232611899593
+        }
+      },
+      "search": {
+        "joint_prior": {
+          "amplitude": 0.016833804547786713,
+          "mean_abs_offset": 3.920247399946675e-05,
+          "max_abs_offset": 0.016375577077269554,
+          "mean_confidence": 0.04947660118341446,
+          "descriptor_weight": 0.7485849857330322,
+          "regularization_weight": 0.04320922866463661,
+          "temperature": 1.1781201362609863,
+          "refined_valid_fraction": 0.8629417419433594
+        },
+        "independent_prior": {
+          "amplitude": 0.05702879652380943,
+          "mean_abs_offset": 8.160902507370338e-05,
+          "max_abs_offset": 0.03473188355565071,
+          "mean_confidence": 0.039158232510089874,
+          "descriptor_weight": 0.8475463390350342,
+          "regularization_weight": 0.0315215177834034,
+          "temperature": 1.2258496284484863,
+          "refined_valid_fraction": 0.8629417419433594
+        },
+        "constant_prior": {
+          "amplitude": 0.0,
+          "mean_abs_offset": 0.0,
+          "max_abs_offset": 0.0,
+          "mean_confidence": 0.08320791274309158,
+          "descriptor_weight": 0.8089170455932617,
+          "regularization_weight": 0.07455754280090332,
+          "temperature": 0.9233636260032654,
+          "refined_valid_fraction": 0.8629417419433594
+        },
+        "joint_pixel": {
+          "amplitude": 0.018949255347251892,
+          "mean_abs_offset": 4.299732972867787e-05,
+          "max_abs_offset": 0.01831919513642788,
+          "mean_confidence": 0.04932229965925217,
+          "descriptor_weight": 1.2646188735961914,
+          "regularization_weight": 0.042647045105695724,
+          "temperature": 1.1919019222259521,
+          "refined_valid_fraction": 0.8629417419433594
+        },
+        "joint_shuffled": {
+          "amplitude": 0.016944434493780136,
+          "mean_abs_offset": 3.982997077400796e-05,
+          "max_abs_offset": 0.01637478545308113,
+          "mean_confidence": 0.04938245564699173,
+          "descriptor_weight": 0.7443289756774902,
+          "regularization_weight": 0.04283630847930908,
+          "temperature": 1.1901885271072388,
+          "refined_valid_fraction": 0.8629417419433594
+        }
+      }
+    },
+    {
+      "name": "SDSD_outdoor/MVI_0900",
+      "scene": "SDSD_outdoor/MVI_0900",
+      "methods": {
+        "base": {
+          "rgb_mse_float": 0.0016657361259728618,
+          "psnr_rgb_from_clip_mse": 27.783937953124273
+        },
+        "frozen_raw_node_1000": {
+          "rgb_mse_float": 0.0016682566826340267,
+          "psnr_rgb_from_clip_mse": 27.777371267947277
+        },
+        "joint_prior": {
+          "rgb_mse_float": 0.0016682624390184063,
+          "psnr_rgb_from_clip_mse": 27.77735628247361
+        },
+        "independent_prior": {
+          "rgb_mse_float": 0.0016682650312452379,
+          "psnr_rgb_from_clip_mse": 27.777349534201228
+        },
+        "constant_prior": {
+          "rgb_mse_float": 0.0016682566826340267,
+          "psnr_rgb_from_clip_mse": 27.777371267947277
+        },
+        "joint_pixel": {
+          "rgb_mse_float": 0.0016682629525930626,
+          "psnr_rgb_from_clip_mse": 27.777354945498086
+        },
+        "joint_shuffled": {
+          "rgb_mse_float": 0.001668262464464736,
+          "psnr_rgb_from_clip_mse": 27.777356216229837
+        }
+      },
+      "search": {
+        "joint_prior": {
+          "amplitude": 0.016833804547786713,
+          "mean_abs_offset": 5.242760380497202e-05,
+          "max_abs_offset": 0.002943287370726466,
+          "mean_confidence": 0.0466681607067585,
+          "descriptor_weight": 0.7485849857330322,
+          "regularization_weight": 0.04320922866463661,
+          "temperature": 1.1781201362609863,
+          "refined_valid_fraction": 0.8671665191650391
+        },
+        "independent_prior": {
+          "amplitude": 0.05702879652380943,
+          "mean_abs_offset": 8.172926027327776e-05,
+          "max_abs_offset": 0.004989165812730789,
+          "mean_confidence": 0.02357497625052929,
+          "descriptor_weight": 0.8475463390350342,
+          "regularization_weight": 0.0315215177834034,
+          "temperature": 1.2258496284484863,
+          "refined_valid_fraction": 0.8671665191650391
+        },
+        "constant_prior": {
+          "amplitude": 0.0,
+          "mean_abs_offset": 0.0,
+          "max_abs_offset": 0.0,
+          "mean_confidence": 0.0530686229467392,
+          "descriptor_weight": 0.8089170455932617,
+          "regularization_weight": 0.07455754280090332,
+          "temperature": 0.9233636260032654,
+          "refined_valid_fraction": 0.8671684265136719
+        },
+        "joint_pixel": {
+          "amplitude": 0.018949255347251892,
+          "mean_abs_offset": 5.848551154485904e-05,
+          "max_abs_offset": 0.0031884878408163786,
+          "mean_confidence": 0.04630158841609955,
+          "descriptor_weight": 1.2646188735961914,
+          "regularization_weight": 0.042647045105695724,
+          "temperature": 1.1919019222259521,
+          "refined_valid_fraction": 0.8671665191650391
+        },
+        "joint_shuffled": {
+          "amplitude": 0.016944434493780136,
+          "mean_abs_offset": 5.266365042189136e-05,
+          "max_abs_offset": 0.0027832533232867718,
+          "mean_confidence": 0.04613478481769562,
+          "descriptor_weight": 0.7443289756774902,
+          "regularization_weight": 0.04283630847930908,
+          "temperature": 1.1901885271072388,
+          "refined_valid_fraction": 0.8671665191650391
+        }
+      }
+    },
+    {
+      "name": "SDSD_outdoor/MVI_0900_2",
+      "scene": "SDSD_outdoor/MVI_0900",
+      "methods": {
+        "base": {
+          "rgb_mse_float": 0.0019552772656629054,
+          "psnr_rgb_from_clip_mse": 27.087916493119142
+        },
+        "frozen_raw_node_1000": {
+          "rgb_mse_float": 0.0019425397898848935,
+          "psnr_rgb_from_clip_mse": 27.11630076593735
+        },
+        "joint_prior": {
+          "rgb_mse_float": 0.0019425550579387314,
+          "psnr_rgb_from_clip_mse": 27.11626663121585
+        },
+        "independent_prior": {
+          "rgb_mse_float": 0.001942567106594413,
+          "psnr_rgb_from_clip_mse": 27.116239694278192
+        },
+        "constant_prior": {
+          "rgb_mse_float": 0.0019425397898848935,
+          "psnr_rgb_from_clip_mse": 27.11630076593735
+        },
+        "joint_pixel": {
+          "rgb_mse_float": 0.0019425540060610056,
+          "psnr_rgb_from_clip_mse": 27.116268982885696
+        },
+        "joint_shuffled": {
+          "rgb_mse_float": 0.0019425546843825977,
+          "psnr_rgb_from_clip_mse": 27.116267466370466
+        }
+      },
+      "search": {
+        "joint_prior": {
+          "amplitude": 0.016833804547786713,
+          "mean_abs_offset": 0.0001588564773555845,
+          "max_abs_offset": 0.005149661563336849,
+          "mean_confidence": 0.14927265048027039,
+          "descriptor_weight": 0.7485849857330322,
+          "regularization_weight": 0.04320922866463661,
+          "temperature": 1.1781201362609863,
+          "refined_valid_fraction": 0.8671765327453613
+        },
+        "independent_prior": {
+          "amplitude": 0.05702879652380943,
+          "mean_abs_offset": 0.0003395277599338442,
+          "max_abs_offset": 0.014677352271974087,
+          "mean_confidence": 0.08588214218616486,
+          "descriptor_weight": 0.8475463390350342,
+          "regularization_weight": 0.0315215177834034,
+          "temperature": 1.2258496284484863,
+          "refined_valid_fraction": 0.8671741485595703
+        },
+        "constant_prior": {
+          "amplitude": 0.0,
+          "mean_abs_offset": 0.0,
+          "max_abs_offset": 0.0,
+          "mean_confidence": 0.09886617958545685,
+          "descriptor_weight": 0.8089170455932617,
+          "regularization_weight": 0.07455754280090332,
+          "temperature": 0.9233636260032654,
+          "refined_valid_fraction": 0.8671808242797852
+        },
+        "joint_pixel": {
+          "amplitude": 0.018949255347251892,
+          "mean_abs_offset": 0.00017769582336768508,
+          "max_abs_offset": 0.0057190400548279285,
+          "mean_confidence": 0.14814627170562744,
+          "descriptor_weight": 1.2646188735961914,
+          "regularization_weight": 0.042647045105695724,
+          "temperature": 1.1919019222259521,
+          "refined_valid_fraction": 0.8671751022338867
+        },
+        "joint_shuffled": {
+          "amplitude": 0.016944434493780136,
+          "mean_abs_offset": 0.0001589647145010531,
+          "max_abs_offset": 0.005049497354775667,
+          "mean_confidence": 0.14733025431632996,
+          "descriptor_weight": 0.7443289756774902,
+          "regularization_weight": 0.04283630847930908,
+          "temperature": 1.1901885271072388,
+          "refined_valid_fraction": 0.8671765327453613
+        }
+      }
+    },
+    {
+      "name": "SDSD_outdoor/MVI_0915",
+      "scene": "SDSD_outdoor/MVI_0915",
+      "methods": {
+        "base": {
+          "rgb_mse_float": 0.0005064417245818133,
+          "psnr_rgb_from_clip_mse": 32.95470520982098
+        },
+        "frozen_raw_node_1000": {
+          "rgb_mse_float": 0.000487070740342351,
+          "psnr_rgb_from_clip_mse": 33.124079588895995
+        },
+        "joint_prior": {
+          "rgb_mse_float": 0.00048707917117264796,
+          "psnr_rgb_from_clip_mse": 33.1240044164193
+        },
+        "independent_prior": {
+          "rgb_mse_float": 0.00048708114368272907,
+          "psnr_rgb_from_clip_mse": 33.123986828960014
+        },
+        "constant_prior": {
+          "rgb_mse_float": 0.000487070740342351,
+          "psnr_rgb_from_clip_mse": 33.124079588895995
+        },
+        "joint_pixel": {
+          "rgb_mse_float": 0.00048708075347011527,
+          "psnr_rgb_from_clip_mse": 33.12399030820069
+        },
+        "joint_shuffled": {
+          "rgb_mse_float": 0.0004870791829422727,
+          "psnr_rgb_from_clip_mse": 33.124004311477776
+        }
+      },
+      "search": {
+        "joint_prior": {
+          "amplitude": 0.016833804547786713,
+          "mean_abs_offset": 0.00015191311831586063,
+          "max_abs_offset": 0.0041544777341187,
+          "mean_confidence": 0.1293066442012787,
+          "descriptor_weight": 0.7485849857330322,
+          "regularization_weight": 0.04320922866463661,
+          "temperature": 1.1781201362609863,
+          "refined_valid_fraction": 0.8672037124633789
+        },
+        "independent_prior": {
+          "amplitude": 0.05702879652380943,
+          "mean_abs_offset": 0.0002782875671982765,
+          "max_abs_offset": 0.012255947105586529,
+          "mean_confidence": 0.06841685622930527,
+          "descriptor_weight": 0.8475463390350342,
+          "regularization_weight": 0.0315215177834034,
+          "temperature": 1.2258496284484863,
+          "refined_valid_fraction": 0.8671979904174805
+        },
+        "constant_prior": {
+          "amplitude": 0.0,
+          "mean_abs_offset": 0.0,
+          "max_abs_offset": 0.0,
+          "mean_confidence": 0.02704685740172863,
+          "descriptor_weight": 0.8089170455932617,
+          "regularization_weight": 0.07455754280090332,
+          "temperature": 0.9233636260032654,
+          "refined_valid_fraction": 0.8672084808349609
+        },
+        "joint_pixel": {
+          "amplitude": 0.018949255347251892,
+          "mean_abs_offset": 0.00016937055625021458,
+          "max_abs_offset": 0.004575509112328291,
+          "mean_confidence": 0.12817303836345673,
+          "descriptor_weight": 1.2646188735961914,
+          "regularization_weight": 0.042647045105695724,
+          "temperature": 1.1919019222259521,
+          "refined_valid_fraction": 0.8672027587890625
+        },
+        "joint_shuffled": {
+          "amplitude": 0.016944434493780136,
+          "mean_abs_offset": 0.00015134376008063555,
+          "max_abs_offset": 0.003999347798526287,
+          "mean_confidence": 0.12749506533145905,
+          "descriptor_weight": 0.7443289756774902,
+          "regularization_weight": 0.04283630847930908,
+          "temperature": 1.1901885271072388,
+          "refined_valid_fraction": 0.8672037124633789
+        }
+      }
+    },
+    {
+      "name": "SDSD_outdoor/MVI_0915_2",
+      "scene": "SDSD_outdoor/MVI_0915",
+      "methods": {
+        "base": {
+          "rgb_mse_float": 0.0005538608346703989,
+          "psnr_rgb_from_clip_mse": 32.56599344165295
+        },
+        "frozen_raw_node_1000": {
+          "rgb_mse_float": 0.0005440267573528409,
+          "psnr_rgb_from_clip_mse": 32.64379739483967
+        },
+        "joint_prior": {
+          "rgb_mse_float": 0.0005440293820634526,
+          "psnr_rgb_from_clip_mse": 32.64377644192568
+        },
+        "independent_prior": {
+          "rgb_mse_float": 0.0005440308095414455,
+          "psnr_rgb_from_clip_mse": 32.64376504649333
+        },
+        "constant_prior": {
+          "rgb_mse_float": 0.0005440267573528409,
+          "psnr_rgb_from_clip_mse": 32.64379739483967
+        },
+        "joint_pixel": {
+          "rgb_mse_float": 0.0005440299288432529,
+          "psnr_rgb_from_clip_mse": 32.64377207702668
+        },
+        "joint_shuffled": {
+          "rgb_mse_float": 0.0005440293548326086,
+          "psnr_rgb_from_clip_mse": 32.64377665930743
+        }
+      },
+      "search": {
+        "joint_prior": {
+          "amplitude": 0.016833804547786713,
+          "mean_abs_offset": 6.751993350917473e-05,
+          "max_abs_offset": 0.003972642123699188,
+          "mean_confidence": 0.042912259697914124,
+          "descriptor_weight": 0.7485849857330322,
+          "regularization_weight": 0.04320922866463661,
+          "temperature": 1.1781201362609863,
+          "refined_valid_fraction": 0.8669180870056152
+        },
+        "independent_prior": {
+          "amplitude": 0.05702879652380943,
+          "mean_abs_offset": 9.982970368582755e-05,
+          "max_abs_offset": 0.006984350737184286,
+          "mean_confidence": 0.022858187556266785,
+          "descriptor_weight": 0.8475463390350342,
+          "regularization_weight": 0.0315215177834034,
+          "temperature": 1.2258496284484863,
+          "refined_valid_fraction": 0.8669157028198242
+        },
+        "constant_prior": {
+          "amplitude": 0.0,
+          "mean_abs_offset": 0.0,
+          "max_abs_offset": 0.0,
+          "mean_confidence": 0.01645791530609131,
+          "descriptor_weight": 0.8089170455932617,
+          "regularization_weight": 0.07455754280090332,
+          "temperature": 0.9233636260032654,
+          "refined_valid_fraction": 0.8669195175170898
+        },
+        "joint_pixel": {
+          "amplitude": 0.018949255347251892,
+          "mean_abs_offset": 7.488785195164382e-05,
+          "max_abs_offset": 0.004444624297320843,
+          "mean_confidence": 0.0427757129073143,
+          "descriptor_weight": 1.2646188735961914,
+          "regularization_weight": 0.042647045105695724,
+          "temperature": 1.1919019222259521,
+          "refined_valid_fraction": 0.866917610168457
+        },
+        "joint_shuffled": {
+          "amplitude": 0.016944434493780136,
+          "mean_abs_offset": 6.650332943536341e-05,
+          "max_abs_offset": 0.003950933925807476,
+          "mean_confidence": 0.04209604114294052,
+          "descriptor_weight": 0.7443289756774902,
+          "regularization_weight": 0.04283630847930908,
+          "temperature": 1.1901885271072388,
+          "refined_valid_fraction": 0.8669180870056152
+        }
+      }
+    },
+    {
+      "name": "SDSD_outdoor/MVI_0926",
+      "scene": "SDSD_outdoor/MVI_0926",
+      "methods": {
+        "base": {
+          "rgb_mse_float": 0.00043000627901522225,
+          "psnr_rgb_from_clip_mse": 33.66525202741918
+        },
+        "frozen_raw_node_1000": {
+          "rgb_mse_float": 0.00039655273831447276,
+          "psnr_rgb_from_clip_mse": 34.01699046843547
+        },
+        "joint_prior": {
+          "rgb_mse_float": 0.0003965529317571093,
+          "psnr_rgb_from_clip_mse": 34.016988349901396
+        },
+        "independent_prior": {
+          "rgb_mse_float": 0.0003965531520042996,
+          "psnr_rgb_from_clip_mse": 34.01698593781198
+        },
+        "constant_prior": {
+          "rgb_mse_float": 0.00039655273831447276,
+          "psnr_rgb_from_clip_mse": 34.01699046843547
+        },
+        "joint_pixel": {
+          "rgb_mse_float": 0.00039655296018524153,
+          "psnr_rgb_from_clip_mse": 34.01698803856388
+        },
+        "joint_shuffled": {
+          "rgb_mse_float": 0.0003965529285994374,
+          "psnr_rgb_from_clip_mse": 34.0169883844834
+        }
+      },
+      "search": {
+        "joint_prior": {
+          "amplitude": 0.016833804547786713,
+          "mean_abs_offset": 8.811509178485721e-05,
+          "max_abs_offset": 0.009404681622982025,
+          "mean_confidence": 0.030358223244547844,
+          "descriptor_weight": 0.7485849857330322,
+          "regularization_weight": 0.04320922866463661,
+          "temperature": 1.1781201362609863,
+          "refined_valid_fraction": 0.8691291809082031
+        },
+        "independent_prior": {
+          "amplitude": 0.05702879652380943,
+          "mean_abs_offset": 0.00017220768495462835,
+          "max_abs_offset": 0.016907181590795517,
+          "mean_confidence": 0.019410597160458565,
+          "descriptor_weight": 0.8475463390350342,
+          "regularization_weight": 0.0315215177834034,
+          "temperature": 1.2258496284484863,
+          "refined_valid_fraction": 0.8691296577453613
+        },
+        "constant_prior": {
+          "amplitude": 0.0,
+          "mean_abs_offset": 0.0,
+          "max_abs_offset": 0.0,
+          "mean_confidence": 0.010720903053879738,
+          "descriptor_weight": 0.8089170455932617,
+          "regularization_weight": 0.07455754280090332,
+          "temperature": 0.9233636260032654,
+          "refined_valid_fraction": 0.8691301345825195
+        },
+        "joint_pixel": {
+          "amplitude": 0.018949255347251892,
+          "mean_abs_offset": 9.816860256250948e-05,
+          "max_abs_offset": 0.010259713046252728,
+          "mean_confidence": 0.030059166252613068,
+          "descriptor_weight": 1.2646188735961914,
+          "regularization_weight": 0.042647045105695724,
+          "temperature": 1.1919019222259521,
+          "refined_valid_fraction": 0.8691291809082031
+        },
+        "joint_shuffled": {
+          "amplitude": 0.016944434493780136,
+          "mean_abs_offset": 8.736350719118491e-05,
+          "max_abs_offset": 0.009144816547632217,
+          "mean_confidence": 0.03013252466917038,
+          "descriptor_weight": 0.7443289756774902,
+          "regularization_weight": 0.04283630847930908,
+          "temperature": 1.1901885271072388,
+          "refined_valid_fraction": 0.8691291809082031
+        }
+      }
+    },
+    {
+      "name": "SDSD_outdoor/MVI_0926_2",
+      "scene": "SDSD_outdoor/MVI_0926",
+      "methods": {
+        "base": {
+          "rgb_mse_float": 0.00031526636332575867,
+          "psnr_rgb_from_clip_mse": 35.013223629066516
+        },
+        "frozen_raw_node_1000": {
+          "rgb_mse_float": 0.00028652917760218236,
+          "psnr_rgb_from_clip_mse": 35.428311467282995
+        },
+        "joint_prior": {
+          "rgb_mse_float": 0.000286529509457495,
+          "psnr_rgb_from_clip_mse": 35.42830643732937
+        },
+        "independent_prior": {
+          "rgb_mse_float": 0.0002865292184544749,
+          "psnr_rgb_from_clip_mse": 35.4283108480817
+        },
+        "constant_prior": {
+          "rgb_mse_float": 0.00028652917760218236,
+          "psnr_rgb_from_clip_mse": 35.428311467282995
+        },
+        "joint_pixel": {
+          "rgb_mse_float": 0.0002865295424922144,
+          "psnr_rgb_from_clip_mse": 35.42830593662019
+        },
+        "joint_shuffled": {
+          "rgb_mse_float": 0.0002865294884670773,
+          "psnr_rgb_from_clip_mse": 35.42830675548239
+        }
+      },
+      "search": {
+        "joint_prior": {
+          "amplitude": 0.016833804547786713,
+          "mean_abs_offset": 0.00010418956662761047,
+          "max_abs_offset": 0.012260958552360535,
+          "mean_confidence": 0.03158846125006676,
+          "descriptor_weight": 0.7485849857330322,
+          "regularization_weight": 0.04320922866463661,
+          "temperature": 1.1781201362609863,
+          "refined_valid_fraction": 0.868281364440918
+        },
+        "independent_prior": {
+          "amplitude": 0.05702879652380943,
+          "mean_abs_offset": 0.00019659123790916055,
+          "max_abs_offset": 0.027997218072414398,
+          "mean_confidence": 0.02035881206393242,
+          "descriptor_weight": 0.8475463390350342,
+          "regularization_weight": 0.0315215177834034,
+          "temperature": 1.2258496284484863,
+          "refined_valid_fraction": 0.8682804107666016
+        },
+        "constant_prior": {
+          "amplitude": 0.0,
+          "mean_abs_offset": 0.0,
+          "max_abs_offset": 0.0,
+          "mean_confidence": 0.01057433895766735,
+          "descriptor_weight": 0.8089170455932617,
+          "regularization_weight": 0.07455754280090332,
+          "temperature": 0.9233636260032654,
+          "refined_valid_fraction": 0.868281364440918
+        },
+        "joint_pixel": {
+          "amplitude": 0.018949255347251892,
+          "mean_abs_offset": 0.00011613706010393798,
+          "max_abs_offset": 0.013638755306601524,
+          "mean_confidence": 0.031296636909246445,
+          "descriptor_weight": 1.2646188735961914,
+          "regularization_weight": 0.042647045105695724,
+          "temperature": 1.1919019222259521,
+          "refined_valid_fraction": 0.868281364440918
+        },
+        "joint_shuffled": {
+          "amplitude": 0.016944434493780136,
+          "mean_abs_offset": 0.00010352552635595202,
+          "max_abs_offset": 0.012171026319265366,
+          "mean_confidence": 0.03130859509110451,
+          "descriptor_weight": 0.7443289756774902,
+          "regularization_weight": 0.04283630847930908,
+          "temperature": 1.1901885271072388,
+          "refined_valid_fraction": 0.868281364440918
+        }
+      }
+    },
+    {
+      "name": "SDSD_outdoor/MVI_0935",
+      "scene": "SDSD_outdoor/MVI_0935",
+      "methods": {
+        "base": {
+          "rgb_mse_float": 0.001810400395088428,
+          "psnr_rgb_from_clip_mse": 27.422253642760932
+        },
+        "frozen_raw_node_1000": {
+          "rgb_mse_float": 0.001773859523354757,
+          "psnr_rgb_from_clip_mse": 27.51080776075602
+        },
+        "joint_prior": {
+          "rgb_mse_float": 0.0017738762992008693,
+          "psnr_rgb_from_clip_mse": 27.51076668860319
+        },
+        "independent_prior": {
+          "rgb_mse_float": 0.0017739057160510213,
+          "psnr_rgb_from_clip_mse": 27.51069466853182
+        },
+        "constant_prior": {
+          "rgb_mse_float": 0.001773859523354757,
+          "psnr_rgb_from_clip_mse": 27.51080776075602
+        },
+        "joint_pixel": {
+          "rgb_mse_float": 0.0017738770282236787,
+          "psnr_rgb_from_clip_mse": 27.51076490375202
+        },
+        "joint_shuffled": {
+          "rgb_mse_float": 0.0017738753869154477,
+          "psnr_rgb_from_clip_mse": 27.510768922133376
+        }
+      },
+      "search": {
+        "joint_prior": {
+          "amplitude": 0.016833804547786713,
+          "mean_abs_offset": 0.0002488006721250713,
+          "max_abs_offset": 0.012504665181040764,
+          "mean_confidence": 0.26532405614852905,
+          "descriptor_weight": 0.7485849857330322,
+          "regularization_weight": 0.04320922866463661,
+          "temperature": 1.1781201362609863,
+          "refined_valid_fraction": 0.8674554824829102
+        },
+        "independent_prior": {
+          "amplitude": 0.05702879652380943,
+          "mean_abs_offset": 0.0006749093881808221,
+          "max_abs_offset": 0.04242920130491257,
+          "mean_confidence": 0.2160792350769043,
+          "descriptor_weight": 0.8475463390350342,
+          "regularization_weight": 0.0315215177834034,
+          "temperature": 1.2258496284484863,
+          "refined_valid_fraction": 0.8674449920654297
+        },
+        "constant_prior": {
+          "amplitude": 0.0,
+          "mean_abs_offset": 0.0,
+          "max_abs_offset": 0.0,
+          "mean_confidence": 0.12309731543064117,
+          "descriptor_weight": 0.8089170455932617,
+          "regularization_weight": 0.07455754280090332,
+          "temperature": 0.9233636260032654,
+          "refined_valid_fraction": 0.8674583435058594
+        },
+        "joint_pixel": {
+          "amplitude": 0.018949255347251892,
+          "mean_abs_offset": 0.0002787006669677794,
+          "max_abs_offset": 0.014107468537986279,
+          "mean_confidence": 0.2642885446548462,
+          "descriptor_weight": 1.2646188735961914,
+          "regularization_weight": 0.042647045105695724,
+          "temperature": 1.1919019222259521,
+          "refined_valid_fraction": 0.8674545288085938
+        },
+        "joint_shuffled": {
+          "amplitude": 0.016944434493780136,
+          "mean_abs_offset": 0.0002494152868166566,
+          "max_abs_offset": 0.012934722937643528,
+          "mean_confidence": 0.26427409052848816,
+          "descriptor_weight": 0.7443289756774902,
+          "regularization_weight": 0.04283630847930908,
+          "temperature": 1.1901885271072388,
+          "refined_valid_fraction": 0.867455005645752
+        }
+      }
+    },
+    {
+      "name": "SDSD_outdoor/MVI_0935_2",
+      "scene": "SDSD_outdoor/MVI_0935",
+      "methods": {
+        "base": {
+          "rgb_mse_float": 0.0024656747546088474,
+          "psnr_rgb_from_clip_mse": 26.080642114363435
+        },
+        "frozen_raw_node_1000": {
+          "rgb_mse_float": 0.002464637386728639,
+          "psnr_rgb_from_clip_mse": 26.08246967878456
+        },
+        "joint_prior": {
+          "rgb_mse_float": 0.002464585866342323,
+          "psnr_rgb_from_clip_mse": 26.082560463958345
+        },
+        "independent_prior": {
+          "rgb_mse_float": 0.0024647948678579944,
+          "psnr_rgb_from_clip_mse": 26.08219218968653
+        },
+        "constant_prior": {
+          "rgb_mse_float": 0.002464637386728639,
+          "psnr_rgb_from_clip_mse": 26.08246967878456
+        },
+        "joint_pixel": {
+          "rgb_mse_float": 0.002464586498190528,
+          "psnr_rgb_from_clip_mse": 26.082559350553627
+        },
+        "joint_shuffled": {
+          "rgb_mse_float": 0.0024645860548731875,
+          "psnr_rgb_from_clip_mse": 26.08256013174062
+        }
+      },
+      "search": {
+        "joint_prior": {
+          "amplitude": 0.016833804547786713,
+          "mean_abs_offset": 0.0003081877948716283,
+          "max_abs_offset": 0.02377377636730671,
+          "mean_confidence": 0.46302422881126404,
+          "descriptor_weight": 0.7485849857330322,
+          "regularization_weight": 0.04320922866463661,
+          "temperature": 1.1781201362609863,
+          "refined_valid_fraction": 0.8676819801330566
+        },
+        "independent_prior": {
+          "amplitude": 0.05702879652380943,
+          "mean_abs_offset": 0.0009361858828924596,
+          "max_abs_offset": 0.06373172253370285,
+          "mean_confidence": 0.39802929759025574,
+          "descriptor_weight": 0.8475463390350342,
+          "regularization_weight": 0.0315215177834034,
+          "temperature": 1.2258496284484863,
+          "refined_valid_fraction": 0.8676567077636719
+        },
+        "constant_prior": {
+          "amplitude": 0.0,
+          "mean_abs_offset": 0.0,
+          "max_abs_offset": 0.0,
+          "mean_confidence": 0.179463729262352,
+          "descriptor_weight": 0.8089170455932617,
+          "regularization_weight": 0.07455754280090332,
+          "temperature": 0.9233636260032654,
+          "refined_valid_fraction": 0.8676919937133789
+        },
+        "joint_pixel": {
+          "amplitude": 0.018949255347251892,
+          "mean_abs_offset": 0.00034589978167787194,
+          "max_abs_offset": 0.026414835825562477,
+          "mean_confidence": 0.4615783393383026,
+          "descriptor_weight": 1.2646188735961914,
+          "regularization_weight": 0.042647045105695724,
+          "temperature": 1.1919019222259521,
+          "refined_valid_fraction": 0.8676815032958984
+        },
+        "joint_shuffled": {
+          "amplitude": 0.016944434493780136,
+          "mean_abs_offset": 0.000309360766550526,
+          "max_abs_offset": 0.023502551019191742,
+          "mean_confidence": 0.46169424057006836,
+          "descriptor_weight": 0.7443289756774902,
+          "regularization_weight": 0.04283630847930908,
+          "temperature": 1.1901885271072388,
+          "refined_valid_fraction": 0.8676815032958984
+        }
+      }
+    },
+    {
+      "name": "SDSD_outdoor/MVI_0941",
+      "scene": "SDSD_outdoor/MVI_0941",
+      "methods": {
+        "base": {
+          "rgb_mse_float": 0.0011006552160057023,
+          "psnr_rgb_from_clip_mse": 29.583487039498277
+        },
+        "frozen_raw_node_1000": {
+          "rgb_mse_float": 0.0010479021879850087,
+          "psnr_rgb_from_clip_mse": 29.796792528492716
+        },
+        "joint_prior": {
+          "rgb_mse_float": 0.001047908357017045,
+          "psnr_rgb_from_clip_mse": 29.7967669615198
+        },
+        "independent_prior": {
+          "rgb_mse_float": 0.001047912975008548,
+          "psnr_rgb_from_clip_mse": 29.796747822786966
+        },
+        "constant_prior": {
+          "rgb_mse_float": 0.0010479021879850087,
+          "psnr_rgb_from_clip_mse": 29.796792528492716
+        },
+        "joint_pixel": {
+          "rgb_mse_float": 0.0010479089169651613,
+          "psnr_rgb_from_clip_mse": 29.796764640874965
+        },
+        "joint_shuffled": {
+          "rgb_mse_float": 0.0010479090065914614,
+          "psnr_rgb_from_clip_mse": 29.796764269428504
+        }
+      },
+      "search": {
+        "joint_prior": {
+          "amplitude": 0.016833804547786713,
+          "mean_abs_offset": 0.0001017146569211036,
+          "max_abs_offset": 0.003958119545131922,
+          "mean_confidence": 0.1314811259508133,
+          "descriptor_weight": 0.7485849857330322,
+          "regularization_weight": 0.04320922866463661,
+          "temperature": 1.1781201362609863,
+          "refined_valid_fraction": 0.86578369140625
+        },
+        "independent_prior": {
+          "amplitude": 0.05702879652380943,
+          "mean_abs_offset": 0.00022298374096862972,
+          "max_abs_offset": 0.015241815708577633,
+          "mean_confidence": 0.08023150265216827,
+          "descriptor_weight": 0.8475463390350342,
+          "regularization_weight": 0.0315215177834034,
+          "temperature": 1.2258496284484863,
+          "refined_valid_fraction": 0.8657770156860352
+        },
+        "constant_prior": {
+          "amplitude": 0.0,
+          "mean_abs_offset": 0.0,
+          "max_abs_offset": 0.0,
+          "mean_confidence": 0.1887335181236267,
+          "descriptor_weight": 0.8089170455932617,
+          "regularization_weight": 0.07455754280090332,
+          "temperature": 0.9233636260032654,
+          "refined_valid_fraction": 0.8657879829406738
+        },
+        "joint_pixel": {
+          "amplitude": 0.018949255347251892,
+          "mean_abs_offset": 0.00011308386456221342,
+          "max_abs_offset": 0.004464238882064819,
+          "mean_confidence": 0.13018234074115753,
+          "descriptor_weight": 1.2646188735961914,
+          "regularization_weight": 0.042647045105695724,
+          "temperature": 1.1919019222259521,
+          "refined_valid_fraction": 0.8657822608947754
+        },
+        "joint_shuffled": {
+          "amplitude": 0.016944434493780136,
+          "mean_abs_offset": 0.00010180801473325118,
+          "max_abs_offset": 0.0039853001944720745,
+          "mean_confidence": 0.13001438975334167,
+          "descriptor_weight": 0.7443289756774902,
+          "regularization_weight": 0.04283630847930908,
+          "temperature": 1.1901885271072388,
+          "refined_valid_fraction": 0.8657841682434082
+        }
+      }
+    },
+    {
+      "name": "SDSD_outdoor/MVI_0941_2",
+      "scene": "SDSD_outdoor/MVI_0941",
+      "methods": {
+        "base": {
+          "rgb_mse_float": 0.0026598904235082543,
+          "psnr_rgb_from_clip_mse": 25.751362541380765
+        },
+        "frozen_raw_node_1000": {
+          "rgb_mse_float": 0.002574428311654841,
+          "psnr_rgb_from_clip_mse": 25.893191971698975
+        },
+        "joint_prior": {
+          "rgb_mse_float": 0.002574431797696088,
+          "psnr_rgb_from_clip_mse": 25.8931860909081
+        },
+        "independent_prior": {
+          "rgb_mse_float": 0.0025744311520011017,
+          "psnr_rgb_from_clip_mse": 25.893187180165175
+        },
+        "constant_prior": {
+          "rgb_mse_float": 0.002574428311654841,
+          "psnr_rgb_from_clip_mse": 25.893191971698975
+        },
+        "joint_pixel": {
+          "rgb_mse_float": 0.002574445610647245,
+          "psnr_rgb_from_clip_mse": 25.893162789174575
+        },
+        "joint_shuffled": {
+          "rgb_mse_float": 0.0025744453099671464,
+          "psnr_rgb_from_clip_mse": 25.893163296405003
+        }
+      },
+      "search": {
+        "joint_prior": {
+          "amplitude": 0.016833804547786713,
+          "mean_abs_offset": 6.700694939354435e-05,
+          "max_abs_offset": 0.0049723973497748375,
+          "mean_confidence": 0.0890500620007515,
+          "descriptor_weight": 0.7485849857330322,
+          "regularization_weight": 0.04320922866463661,
+          "temperature": 1.1781201362609863,
+          "refined_valid_fraction": 0.8657445907592773
+        },
+        "independent_prior": {
+          "amplitude": 0.05702879652380943,
+          "mean_abs_offset": 0.00017636099073570222,
+          "max_abs_offset": 0.013229497708380222,
+          "mean_confidence": 0.06426876038312912,
+          "descriptor_weight": 0.8475463390350342,
+          "regularization_weight": 0.0315215177834034,
+          "temperature": 1.2258496284484863,
+          "refined_valid_fraction": 0.8657379150390625
+        },
+        "constant_prior": {
+          "amplitude": 0.0,
+          "mean_abs_offset": 0.0,
+          "max_abs_offset": 0.0,
+          "mean_confidence": 0.1477099508047104,
+          "descriptor_weight": 0.8089170455932617,
+          "regularization_weight": 0.07455754280090332,
+          "temperature": 0.9233636260032654,
+          "refined_valid_fraction": 0.865746021270752
+        },
+        "joint_pixel": {
+          "amplitude": 0.018949255347251892,
+          "mean_abs_offset": 7.505570101784542e-05,
+          "max_abs_offset": 0.005603596102446318,
+          "mean_confidence": 0.0887250304222107,
+          "descriptor_weight": 1.2646188735961914,
+          "regularization_weight": 0.042647045105695724,
+          "temperature": 1.1919019222259521,
+          "refined_valid_fraction": 0.8657436370849609
+        },
+        "joint_shuffled": {
+          "amplitude": 0.016944434493780136,
+          "mean_abs_offset": 6.731034955009818e-05,
+          "max_abs_offset": 0.00499259727075696,
+          "mean_confidence": 0.08855227380990982,
+          "descriptor_weight": 0.7443289756774902,
+          "regularization_weight": 0.04283630847930908,
+          "temperature": 1.1901885271072388,
+          "refined_valid_fraction": 0.8657441139221191
+        }
+      }
+    },
+    {
+      "name": "SDSD_outdoor/MVI_0943",
+      "scene": "SDSD_outdoor/MVI_0943",
+      "methods": {
+        "base": {
+          "rgb_mse_float": 0.0014372401193127361,
+          "psnr_rgb_from_clip_mse": 28.42470668343985
+        },
+        "frozen_raw_node_1000": {
+          "rgb_mse_float": 0.0013475386493902177,
+          "psnr_rgb_from_clip_mse": 28.704587697581545
+        },
+        "joint_prior": {
+          "rgb_mse_float": 0.0013475457134108596,
+          "psnr_rgb_from_clip_mse": 28.70456493120564
+        },
+        "independent_prior": {
+          "rgb_mse_float": 0.0013475827236627616,
+          "psnr_rgb_from_clip_mse": 28.704445654157805
+        },
+        "constant_prior": {
+          "rgb_mse_float": 0.0013475386493902177,
+          "psnr_rgb_from_clip_mse": 28.704587697581545
+        },
+        "joint_pixel": {
+          "rgb_mse_float": 0.0013475461971654715,
+          "psnr_rgb_from_clip_mse": 28.704563372134814
+        },
+        "joint_shuffled": {
+          "rgb_mse_float": 0.0013475458028929597,
+          "psnr_rgb_from_clip_mse": 28.704564642817793
+        }
+      },
+      "search": {
+        "joint_prior": {
+          "amplitude": 0.016833804547786713,
+          "mean_abs_offset": 0.0002718950272537768,
+          "max_abs_offset": 0.0044821579940617085,
+          "mean_confidence": 0.5589059591293335,
+          "descriptor_weight": 0.7485849857330322,
+          "regularization_weight": 0.04320922866463661,
+          "temperature": 1.1781201362609863,
+          "refined_valid_fraction": 0.865990161895752
+        },
+        "independent_prior": {
+          "amplitude": 0.05702879652380943,
+          "mean_abs_offset": 0.0009283408289775252,
+          "max_abs_offset": 0.012853696011006832,
+          "mean_confidence": 0.3441087007522583,
+          "descriptor_weight": 0.8475463390350342,
+          "regularization_weight": 0.0315215177834034,
+          "temperature": 1.2258496284484863,
+          "refined_valid_fraction": 0.8659772872924805
+        },
+        "constant_prior": {
+          "amplitude": 0.0,
+          "mean_abs_offset": 0.0,
+          "max_abs_offset": 0.0,
+          "mean_confidence": 0.14692726731300354,
+          "descriptor_weight": 0.8089170455932617,
+          "regularization_weight": 0.07455754280090332,
+          "temperature": 0.9233636260032654,
+          "refined_valid_fraction": 0.8659958839416504
+        },
+        "joint_pixel": {
+          "amplitude": 0.018949255347251892,
+          "mean_abs_offset": 0.00030678141047246754,
+          "max_abs_offset": 0.0050788382068276405,
+          "mean_confidence": 0.5549733638763428,
+          "descriptor_weight": 1.2646188735961914,
+          "regularization_weight": 0.042647045105695724,
+          "temperature": 1.1919019222259521,
+          "refined_valid_fraction": 0.8659892082214355
+        },
+        "joint_shuffled": {
+          "amplitude": 0.016944434493780136,
+          "mean_abs_offset": 0.0002745448728092015,
+          "max_abs_offset": 0.00471309432759881,
+          "mean_confidence": 0.5537706613540649,
+          "descriptor_weight": 0.7443289756774902,
+          "regularization_weight": 0.04283630847930908,
+          "temperature": 1.1901885271072388,
+          "refined_valid_fraction": 0.865990161895752
+        }
+      }
+    },
+    {
+      "name": "SDSD_outdoor/MVI_0943_2",
+      "scene": "SDSD_outdoor/MVI_0943",
+      "methods": {
+        "base": {
+          "rgb_mse_float": 0.0007302043332918295,
+          "psnr_rgb_from_clip_mse": 31.365555941209585
+        },
+        "frozen_raw_node_1000": {
+          "rgb_mse_float": 0.0007155817965013069,
+          "psnr_rgb_from_clip_mse": 31.45340715868203
+        },
+        "joint_prior": {
+          "rgb_mse_float": 0.0007155862519345707,
+          "psnr_rgb_from_clip_mse": 31.453380118250504
+        },
+        "independent_prior": {
+          "rgb_mse_float": 0.0007155899192252101,
+          "psnr_rgb_from_clip_mse": 31.45335786125489
+        },
+        "constant_prior": {
+          "rgb_mse_float": 0.0007155817965013069,
+          "psnr_rgb_from_clip_mse": 31.45340715868203
+        },
+        "joint_pixel": {
+          "rgb_mse_float": 0.000715586686514717,
+          "psnr_rgb_from_clip_mse": 31.453377480752902
+        },
+        "joint_shuffled": {
+          "rgb_mse_float": 0.0007155862238173639,
+          "psnr_rgb_from_clip_mse": 31.453380288895872
+        }
+      },
+      "search": {
+        "joint_prior": {
+          "amplitude": 0.016833804547786713,
+          "mean_abs_offset": 0.00012127033551223576,
+          "max_abs_offset": 0.004236190114170313,
+          "mean_confidence": 0.10907971858978271,
+          "descriptor_weight": 0.7485849857330322,
+          "regularization_weight": 0.04320922866463661,
+          "temperature": 1.1781201362609863,
+          "refined_valid_fraction": 0.8672895431518555
+        },
+        "independent_prior": {
+          "amplitude": 0.05702879652380943,
+          "mean_abs_offset": 0.00023914029588922858,
+          "max_abs_offset": 0.008797155693173409,
+          "mean_confidence": 0.058760933578014374,
+          "descriptor_weight": 0.8475463390350342,
+          "regularization_weight": 0.0315215177834034,
+          "temperature": 1.2258496284484863,
+          "refined_valid_fraction": 0.8672885894775391
+        },
+        "constant_prior": {
+          "amplitude": 0.0,
+          "mean_abs_offset": 0.0,
+          "max_abs_offset": 0.0,
+          "mean_confidence": 0.03512529656291008,
+          "descriptor_weight": 0.8089170455932617,
+          "regularization_weight": 0.07455754280090332,
+          "temperature": 0.9233636260032654,
+          "refined_valid_fraction": 0.8672914505004883
+        },
+        "joint_pixel": {
+          "amplitude": 0.018949255347251892,
+          "mean_abs_offset": 0.00013488384138327092,
+          "max_abs_offset": 0.004717497155070305,
+          "mean_confidence": 0.10745631158351898,
+          "descriptor_weight": 1.2646188735961914,
+          "regularization_weight": 0.042647045105695724,
+          "temperature": 1.1919019222259521,
+          "refined_valid_fraction": 0.8672895431518555
+        },
+        "joint_shuffled": {
+          "amplitude": 0.016944434493780136,
+          "mean_abs_offset": 0.00012079111183993518,
+          "max_abs_offset": 0.0042157419957220554,
+          "mean_confidence": 0.107564277946949,
+          "descriptor_weight": 0.7443289756774902,
+          "regularization_weight": 0.04283630847930908,
+          "temperature": 1.1901885271072388,
+          "refined_valid_fraction": 0.8672900199890137
+        }
+      }
+    },
+    {
+      "name": "SDSD_outdoor/MVI_0955",
+      "scene": "SDSD_outdoor/MVI_0955",
+      "methods": {
+        "base": {
+          "rgb_mse_float": 0.0004067303511179762,
+          "psnr_rgb_from_clip_mse": 33.90693418371821
+        },
+        "frozen_raw_node_1000": {
+          "rgb_mse_float": 0.00037365888767339287,
+          "psnr_rgb_from_clip_mse": 34.275246833620294
+        },
+        "joint_prior": {
+          "rgb_mse_float": 0.0003736563638865424,
+          "psnr_rgb_from_clip_mse": 34.27527616706961
+        },
+        "independent_prior": {
+          "rgb_mse_float": 0.00037365450918169974,
+          "psnr_rgb_from_clip_mse": 34.2752977240443
+        },
+        "constant_prior": {
+          "rgb_mse_float": 0.00037365888767339287,
+          "psnr_rgb_from_clip_mse": 34.275246833620294
+        },
+        "joint_pixel": {
+          "rgb_mse_float": 0.0003736560936355749,
+          "psnr_rgb_from_clip_mse": 34.27527930815211
+        },
+        "joint_shuffled": {
+          "rgb_mse_float": 0.00037365632577229433,
+          "psnr_rgb_from_clip_mse": 34.275276610065106
+        }
+      },
+      "search": {
+        "joint_prior": {
+          "amplitude": 0.016833804547786713,
+          "mean_abs_offset": 0.00019111836445517838,
+          "max_abs_offset": 0.005504389759153128,
+          "mean_confidence": 0.30343741178512573,
+          "descriptor_weight": 0.7485849857330322,
+          "regularization_weight": 0.04320922866463661,
+          "temperature": 1.1781201362609863,
+          "refined_valid_fraction": 0.8658080101013184
+        },
+        "independent_prior": {
+          "amplitude": 0.05702879652380943,
+          "mean_abs_offset": 0.00056687300093472,
+          "max_abs_offset": 0.020329071208834648,
+          "mean_confidence": 0.25117552280426025,
+          "descriptor_weight": 0.8475463390350342,
+          "regularization_weight": 0.0315215177834034,
+          "temperature": 1.2258496284484863,
+          "refined_valid_fraction": 0.8658037185668945
+        },
+        "constant_prior": {
+          "amplitude": 0.0,
+          "mean_abs_offset": 0.0,
+          "max_abs_offset": 0.0,
+          "mean_confidence": 0.0846569687128067,
+          "descriptor_weight": 0.8089170455932617,
+          "regularization_weight": 0.07455754280090332,
+          "temperature": 0.9233636260032654,
+          "refined_valid_fraction": 0.865809440612793
+        },
+        "joint_pixel": {
+          "amplitude": 0.018949255347251892,
+          "mean_abs_offset": 0.0002142371522495523,
+          "max_abs_offset": 0.0060099088586866856,
+          "mean_confidence": 0.3023858964443207,
+          "descriptor_weight": 1.2646188735961914,
+          "regularization_weight": 0.042647045105695724,
+          "temperature": 1.1919019222259521,
+          "refined_valid_fraction": 0.8658080101013184
+        },
+        "joint_shuffled": {
+          "amplitude": 0.016944434493780136,
+          "mean_abs_offset": 0.00019138387870043516,
+          "max_abs_offset": 0.005439743399620056,
+          "mean_confidence": 0.30231931805610657,
+          "descriptor_weight": 0.7443289756774902,
+          "regularization_weight": 0.04283630847930908,
+          "temperature": 1.1901885271072388,
+          "refined_valid_fraction": 0.8658080101013184
+        }
+      }
+    },
+    {
+      "name": "SDSD_outdoor/MVI_0955_2",
+      "scene": "SDSD_outdoor/MVI_0955",
+      "methods": {
+        "base": {
+          "rgb_mse_float": 0.001538969905447148,
+          "psnr_rgb_from_clip_mse": 28.127698727130497
+        },
+        "frozen_raw_node_1000": {
+          "rgb_mse_float": 0.0015098340611111583,
+          "psnr_rgb_from_clip_mse": 28.210707813848778
+        },
+        "joint_prior": {
+          "rgb_mse_float": 0.0015098401950777059,
+          "psnr_rgb_from_clip_mse": 28.210690169907096
+        },
+        "independent_prior": {
+          "rgb_mse_float": 0.0015098404580297096,
+          "psnr_rgb_from_clip_mse": 28.21068941354497
+        },
+        "constant_prior": {
+          "rgb_mse_float": 0.0015098340611111583,
+          "psnr_rgb_from_clip_mse": 28.210707813848778
+        },
+        "joint_pixel": {
+          "rgb_mse_float": 0.0015098402276909825,
+          "psnr_rgb_from_clip_mse": 28.210690076097396
+        },
+        "joint_shuffled": {
+          "rgb_mse_float": 0.0015098401929053984,
+          "psnr_rgb_from_clip_mse": 28.21069017615558
+        }
+      },
+      "search": {
+        "joint_prior": {
+          "amplitude": 0.016833804547786713,
+          "mean_abs_offset": 1.6779100405983627e-05,
+          "max_abs_offset": 0.0007255118689499795,
+          "mean_confidence": 0.009199937805533409,
+          "descriptor_weight": 0.7485849857330322,
+          "regularization_weight": 0.04320922866463661,
+          "temperature": 1.1781201362609863,
+          "refined_valid_fraction": 0.8582038879394531
+        },
+        "independent_prior": {
+          "amplitude": 0.05702879652380943,
+          "mean_abs_offset": 3.1124145607464015e-05,
+          "max_abs_offset": 0.0020853972528129816,
+          "mean_confidence": 0.005916353315114975,
+          "descriptor_weight": 0.8475463390350342,
+          "regularization_weight": 0.0315215177834034,
+          "temperature": 1.2258496284484863,
+          "refined_valid_fraction": 0.8582038879394531
+        },
+        "constant_prior": {
+          "amplitude": 0.0,
+          "mean_abs_offset": 0.0,
+          "max_abs_offset": 0.0,
+          "mean_confidence": 0.010988181456923485,
+          "descriptor_weight": 0.8089170455932617,
+          "regularization_weight": 0.07455754280090332,
+          "temperature": 0.9233636260032654,
+          "refined_valid_fraction": 0.8582043647766113
+        },
+        "joint_pixel": {
+          "amplitude": 0.018949255347251892,
+          "mean_abs_offset": 1.940189758897759e-05,
+          "max_abs_offset": 0.0009548342786729336,
+          "mean_confidence": 0.009252938441932201,
+          "descriptor_weight": 1.2646188735961914,
+          "regularization_weight": 0.042647045105695724,
+          "temperature": 1.1919019222259521,
+          "refined_valid_fraction": 0.8582038879394531
+        },
+        "joint_shuffled": {
+          "amplitude": 0.016944434493780136,
+          "mean_abs_offset": 1.673743645369541e-05,
+          "max_abs_offset": 0.0007184300920926034,
+          "mean_confidence": 0.009130658581852913,
+          "descriptor_weight": 0.7443289756774902,
+          "regularization_weight": 0.04283630847930908,
+          "temperature": 1.1901885271072388,
+          "refined_valid_fraction": 0.8582038879394531
+        }
+      }
+    },
+    {
+      "name": "SDSD_outdoor/MVI_0971",
+      "scene": "SDSD_outdoor/MVI_0971",
+      "methods": {
+        "base": {
+          "rgb_mse_float": 0.001080974981416072,
+          "psnr_rgb_from_clip_mse": 29.661843574423248
+        },
+        "frozen_raw_node_1000": {
+          "rgb_mse_float": 0.0010540334201383545,
+          "psnr_rgb_from_clip_mse": 29.771456187709397
+        },
+        "joint_prior": {
+          "rgb_mse_float": 0.0010540426119746299,
+          "psnr_rgb_from_clip_mse": 29.771418314656316
+        },
+        "independent_prior": {
+          "rgb_mse_float": 0.00105406030006758,
+          "psnr_rgb_from_clip_mse": 29.77134543547077
+        },
+        "constant_prior": {
+          "rgb_mse_float": 0.0010540334201383545,
+          "psnr_rgb_from_clip_mse": 29.771456187709397
+        },
+        "joint_pixel": {
+          "rgb_mse_float": 0.0010540485674590055,
+          "psnr_rgb_from_clip_mse": 29.771393776495664
+        },
+        "joint_shuffled": {
+          "rgb_mse_float": 0.0010540426392798416,
+          "psnr_rgb_from_clip_mse": 29.771418202151352
+        }
+      },
+      "search": {
+        "joint_prior": {
+          "amplitude": 0.016833804547786713,
+          "mean_abs_offset": 6.550743273692206e-05,
+          "max_abs_offset": 0.006803673226386309,
+          "mean_confidence": 0.09214039891958237,
+          "descriptor_weight": 0.7485849857330322,
+          "regularization_weight": 0.04320922866463661,
+          "temperature": 1.1781201362609863,
+          "refined_valid_fraction": 0.8678421974182129
+        },
+        "independent_prior": {
+          "amplitude": 0.05702879652380943,
+          "mean_abs_offset": 0.00019295616948511451,
+          "max_abs_offset": 0.01765596680343151,
+          "mean_confidence": 0.07366019487380981,
+          "descriptor_weight": 0.8475463390350342,
+          "regularization_weight": 0.0315215177834034,
+          "temperature": 1.2258496284484863,
+          "refined_valid_fraction": 0.8678383827209473
+        },
+        "constant_prior": {
+          "amplitude": 0.0,
+          "mean_abs_offset": 0.0,
+          "max_abs_offset": 0.0,
+          "mean_confidence": 0.130346417427063,
+          "descriptor_weight": 0.8089170455932617,
+          "regularization_weight": 0.07455754280090332,
+          "temperature": 0.9233636260032654,
+          "refined_valid_fraction": 0.8678441047668457
+        },
+        "joint_pixel": {
+          "amplitude": 0.018949255347251892,
+          "mean_abs_offset": 7.381493196589872e-05,
+          "max_abs_offset": 0.007669598329812288,
+          "mean_confidence": 0.09190846234560013,
+          "descriptor_weight": 1.2646188735961914,
+          "regularization_weight": 0.042647045105695724,
+          "temperature": 1.1919019222259521,
+          "refined_valid_fraction": 0.8678412437438965
+        },
+        "joint_shuffled": {
+          "amplitude": 0.016944434493780136,
+          "mean_abs_offset": 6.633096927544102e-05,
+          "max_abs_offset": 0.006812399253249168,
+          "mean_confidence": 0.09188128262758255,
+          "descriptor_weight": 0.7443289756774902,
+          "regularization_weight": 0.04283630847930908,
+          "temperature": 1.1901885271072388,
+          "refined_valid_fraction": 0.8678421974182129
+        }
+      }
+    },
+    {
+      "name": "SDSD_outdoor/MVI_0971_2",
+      "scene": "SDSD_outdoor/MVI_0971",
+      "methods": {
+        "base": {
+          "rgb_mse_float": 0.002001673588637485,
+          "psnr_rgb_from_clip_mse": 26.986067411479986
+        },
+        "frozen_raw_node_1000": {
+          "rgb_mse_float": 0.0020067357482957703,
+          "psnr_rgb_from_clip_mse": 26.975098126708524
+        },
+        "joint_prior": {
+          "rgb_mse_float": 0.0020067340961063204,
+          "psnr_rgb_from_clip_mse": 26.975101702351488
+        },
+        "independent_prior": {
+          "rgb_mse_float": 0.0020067187929735837,
+          "psnr_rgb_from_clip_mse": 26.975134821295637
+        },
+        "constant_prior": {
+          "rgb_mse_float": 0.0020067357482957703,
+          "psnr_rgb_from_clip_mse": 26.975098126708524
+        },
+        "joint_pixel": {
+          "rgb_mse_float": 0.0020067337757744726,
+          "psnr_rgb_from_clip_mse": 26.975102395609085
+        },
+        "joint_shuffled": {
+          "rgb_mse_float": 0.0020067340650111944,
+          "psnr_rgb_from_clip_mse": 26.97510176964711
+        }
+      },
+      "search": {
+        "joint_prior": {
+          "amplitude": 0.016833804547786713,
+          "mean_abs_offset": 8.155404793797061e-05,
+          "max_abs_offset": 0.005320225842297077,
+          "mean_confidence": 0.17570796608924866,
+          "descriptor_weight": 0.7485849857330322,
+          "regularization_weight": 0.04320922866463661,
+          "temperature": 1.1781201362609863,
+          "refined_valid_fraction": 0.8676609992980957
+        },
+        "independent_prior": {
+          "amplitude": 0.05702879652380943,
+          "mean_abs_offset": 0.0002488945610821247,
+          "max_abs_offset": 0.015200364403426647,
+          "mean_confidence": 0.14552360773086548,
+          "descriptor_weight": 0.8475463390350342,
+          "regularization_weight": 0.0315215177834034,
+          "temperature": 1.2258496284484863,
+          "refined_valid_fraction": 0.8676609992980957
+        },
+        "constant_prior": {
+          "amplitude": 0.0,
+          "mean_abs_offset": 0.0,
+          "max_abs_offset": 0.0,
+          "mean_confidence": 0.20805752277374268,
+          "descriptor_weight": 0.8089170455932617,
+          "regularization_weight": 0.07455754280090332,
+          "temperature": 0.9233636260032654,
+          "refined_valid_fraction": 0.8676609992980957
+        },
+        "joint_pixel": {
+          "amplitude": 0.018949255347251892,
+          "mean_abs_offset": 9.148661774815992e-05,
+          "max_abs_offset": 0.0059913937002420425,
+          "mean_confidence": 0.1752471774816513,
+          "descriptor_weight": 1.2646188735961914,
+          "regularization_weight": 0.042647045105695724,
+          "temperature": 1.1919019222259521,
+          "refined_valid_fraction": 0.8676609992980957
+        },
+        "joint_shuffled": {
+          "amplitude": 0.016944434493780136,
+          "mean_abs_offset": 8.202432218240574e-05,
+          "max_abs_offset": 0.005553235299885273,
+          "mean_confidence": 0.17518530786037445,
+          "descriptor_weight": 0.7443289756774902,
+          "regularization_weight": 0.04283630847930908,
+          "temperature": 1.1901885271072388,
+          "refined_valid_fraction": 0.8676609992980957
+        }
+      }
+    },
+    {
+      "name": "SDSD_outdoor/MVI_1003",
+      "scene": "SDSD_outdoor/MVI_1003",
+      "methods": {
+        "base": {
+          "rgb_mse_float": 0.0003392811701931153,
+          "psnr_rgb_from_clip_mse": 34.69440242648275
+        },
+        "frozen_raw_node_1000": {
+          "rgb_mse_float": 0.0003246984266740336,
+          "psnr_rgb_from_clip_mse": 34.88519815742465
+        },
+        "joint_prior": {
+          "rgb_mse_float": 0.00032469935320342345,
+          "psnr_rgb_from_clip_mse": 34.8851857648168
+        },
+        "independent_prior": {
+          "rgb_mse_float": 0.00032469836594816614,
+          "psnr_rgb_from_clip_mse": 34.88519896965253
+        },
+        "constant_prior": {
+          "rgb_mse_float": 0.0003246984266740336,
+          "psnr_rgb_from_clip_mse": 34.88519815742465
+        },
+        "joint_pixel": {
+          "rgb_mse_float": 0.00032469904180027176,
+          "psnr_rgb_from_clip_mse": 34.885189929923186
+        },
+        "joint_shuffled": {
+          "rgb_mse_float": 0.000324698933093803,
+          "psnr_rgb_from_clip_mse": 34.8851913839043
+        }
+      },
+      "search": {
+        "joint_prior": {
+          "amplitude": 0.016833804547786713,
+          "mean_abs_offset": 0.00010178887896472588,
+          "max_abs_offset": 0.00773953041061759,
+          "mean_confidence": 0.0751759335398674,
+          "descriptor_weight": 0.7485849857330322,
+          "regularization_weight": 0.04320922866463661,
+          "temperature": 1.1781201362609863,
+          "refined_valid_fraction": 0.8673257827758789
+        },
+        "independent_prior": {
+          "amplitude": 0.05702879652380943,
+          "mean_abs_offset": 0.00020541620324365795,
+          "max_abs_offset": 0.015541478991508484,
+          "mean_confidence": 0.042858000844717026,
+          "descriptor_weight": 0.8475463390350342,
+          "regularization_weight": 0.0315215177834034,
+          "temperature": 1.2258496284484863,
+          "refined_valid_fraction": 0.8673229217529297
+        },
+        "constant_prior": {
+          "amplitude": 0.0,
+          "mean_abs_offset": 0.0,
+          "max_abs_offset": 0.0,
+          "mean_confidence": 0.017375174909830093,
+          "descriptor_weight": 0.8089170455932617,
+          "regularization_weight": 0.07455754280090332,
+          "temperature": 0.9233636260032654,
+          "refined_valid_fraction": 0.8673286437988281
+        },
+        "joint_pixel": {
+          "amplitude": 0.018949255347251892,
+          "mean_abs_offset": 0.00011349555279593915,
+          "max_abs_offset": 0.008691251277923584,
+          "mean_confidence": 0.07467636466026306,
+          "descriptor_weight": 1.2646188735961914,
+          "regularization_weight": 0.042647045105695724,
+          "temperature": 1.1919019222259521,
+          "refined_valid_fraction": 0.8673253059387207
+        },
+        "joint_shuffled": {
+          "amplitude": 0.016944434493780136,
+          "mean_abs_offset": 0.00010108336573466659,
+          "max_abs_offset": 0.007529493421316147,
+          "mean_confidence": 0.07427208125591278,
+          "descriptor_weight": 0.7443289756774902,
+          "regularization_weight": 0.04283630847930908,
+          "temperature": 1.1901885271072388,
+          "refined_valid_fraction": 0.8673253059387207
+        }
+      }
+    },
+    {
+      "name": "SDSD_outdoor/MVI_1003_2",
+      "scene": "SDSD_outdoor/MVI_1003",
+      "methods": {
+        "base": {
+          "rgb_mse_float": 0.0007530654372516956,
+          "psnr_rgb_from_clip_mse": 31.23167284353672
+        },
+        "frozen_raw_node_1000": {
+          "rgb_mse_float": 0.0007475926483513284,
+          "psnr_rgb_from_clip_mse": 31.26334978021067
+        },
+        "joint_prior": {
+          "rgb_mse_float": 0.0007475929598987383,
+          "psnr_rgb_from_clip_mse": 31.263347970357497
+        },
+        "independent_prior": {
+          "rgb_mse_float": 0.0007475949288344411,
+          "psnr_rgb_from_clip_mse": 31.26333653235807
+        },
+        "constant_prior": {
+          "rgb_mse_float": 0.0007475926483513284,
+          "psnr_rgb_from_clip_mse": 31.26334978021067
+        },
+        "joint_pixel": {
+          "rgb_mse_float": 0.0007475936093184037,
+          "psnr_rgb_from_clip_mse": 31.26334419772627
+        },
+        "joint_shuffled": {
+          "rgb_mse_float": 0.000747592910378897,
+          "psnr_rgb_from_clip_mse": 31.26334825803001
+        }
+      },
+      "search": {
+        "joint_prior": {
+          "amplitude": 0.016833804547786713,
+          "mean_abs_offset": 0.00018750777235254645,
+          "max_abs_offset": 0.006027411203831434,
+          "mean_confidence": 0.17006894946098328,
+          "descriptor_weight": 0.7485849857330322,
+          "regularization_weight": 0.04320922866463661,
+          "temperature": 1.1781201362609863,
+          "refined_valid_fraction": 0.8673973083496094
+        },
+        "independent_prior": {
+          "amplitude": 0.05702879652380943,
+          "mean_abs_offset": 0.00041118188528344035,
+          "max_abs_offset": 0.021195808425545692,
+          "mean_confidence": 0.10331490635871887,
+          "descriptor_weight": 0.8475463390350342,
+          "regularization_weight": 0.0315215177834034,
+          "temperature": 1.2258496284484863,
+          "refined_valid_fraction": 0.8673853874206543
+        },
+        "constant_prior": {
+          "amplitude": 0.0,
+          "mean_abs_offset": 0.0,
+          "max_abs_offset": 0.0,
+          "mean_confidence": 0.04442836716771126,
+          "descriptor_weight": 0.8089170455932617,
+          "regularization_weight": 0.07455754280090332,
+          "temperature": 0.9233636260032654,
+          "refined_valid_fraction": 0.8674015998840332
+        },
+        "joint_pixel": {
+          "amplitude": 0.018949255347251892,
+          "mean_abs_offset": 0.0002089250338030979,
+          "max_abs_offset": 0.006820844952017069,
+          "mean_confidence": 0.1686965823173523,
+          "descriptor_weight": 1.2646188735961914,
+          "regularization_weight": 0.042647045105695724,
+          "temperature": 1.1919019222259521,
+          "refined_valid_fraction": 0.867396354675293
+        },
+        "joint_shuffled": {
+          "amplitude": 0.016944434493780136,
+          "mean_abs_offset": 0.00018731097225099802,
+          "max_abs_offset": 0.006247537210583687,
+          "mean_confidence": 0.16837382316589355,
+          "descriptor_weight": 0.7443289756774902,
+          "regularization_weight": 0.04283630847930908,
+          "temperature": 1.1901885271072388,
+          "refined_valid_fraction": 0.8673968315124512
+        }
+      }
+    }
+  ],
+  "contrasts": {
+    "joint_prior_minus_base": {
+      "rgb_mse_float": {
+        "mean": -3.890297101493858e-05,
+        "ci95": [
+          -5.1618921690237e-05,
+          -2.649972448943823e-05
+        ],
+        "per_scene": {
+          "SDSD_indoor/pair12": -1.6583506514732203e-05,
+          "SDSD_indoor/pair13": -2.3608344807177e-05,
+          "SDSD_indoor/pair16": -8.198557216207544e-05,
+          "SDSD_indoor/pair18": -6.837743389015883e-05,
+          "SDSD_indoor/pair22": -7.839696522127888e-05,
+          "SDSD_indoor/pair23": -1.7360041440326116e-05,
+          "SDSD_indoor/pair30": -5.2240347068962384e-05,
+          "SDSD_indoor/pair32": -7.9877840173599e-05,
+          "SDSD_outdoor/MVI_0900": -5.097947339314981e-06,
+          "SDSD_outdoor/MVI_0915": -1.459700300805581e-05,
+          "SDSD_outdoor/MVI_0926": -3.109510056318828e-05,
+          "SDSD_outdoor/MVI_0935": -1.8806492077041558e-05,
+          "SDSD_outdoor/MVI_0941": -6.91027424004119e-05,
+          "SDSD_outdoor/MVI_0943": -5.215624362956751e-05,
+          "SDSD_outdoor/MVI_0955": -3.110184880043799e-05,
+          "SDSD_outdoor/MVI_0971": -1.0935930986303351e-05,
+          "SDSD_outdoor/MVI_1003": -1.0027147171324624e-05
+        }
+      },
+      "psnr_rgb_from_clip_mse": {
+        "mean": 0.15055982635053536,
+        "ci95": [
+          0.09849852180804955,
+          0.20736812537168056
+        ],
+        "per_scene": {
+          "SDSD_indoor/pair12": 0.06118006352799199,
+          "SDSD_indoor/pair13": 0.10200360989601975,
+          "SDSD_indoor/pair16": 0.3023557676251656,
+          "SDSD_indoor/pair18": 0.36431817590563753,
+          "SDSD_indoor/pair22": 0.2618818465646271,
+          "SDSD_indoor/pair23": 0.02875089112247764,
+          "SDSD_indoor/pair30": 0.022958061888093795,
+          "SDSD_indoor/pair32": 0.10542462180794132,
+          "SDSD_outdoor/MVI_0900": 0.010884233723022163,
+          "SDSD_outdoor/MVI_0915": 0.12354110343552094,
+          "SDSD_outdoor/MVI_0926": 0.38340956537253845,
+          "SDSD_outdoor/MVI_0935": 0.0452156977185858,
+          "SDSD_outdoor/MVI_0941": 0.17755173577442918,
+          "SDSD_outdoor/MVI_0943": 0.1838412124033546,
+          "SDSD_outdoor/MVI_0955": 0.22566671306400465,
+          "SDSD_outdoor/MVI_0971": 0.04930451555228288,
+          "SDSD_outdoor/MVI_1003": 0.1112292325774078
+        }
+      }
+    },
+    "joint_prior_minus_frozen_raw_node_1000": {
+      "rgb_mse_float": {
+        "mean": 2.260219617070135e-09,
+        "ci95": [
+          -2.4070899322920402e-09,
+          7.359097239962596e-09
+        ],
+        "per_scene": {
+          "SDSD_indoor/pair12": 9.870777251119733e-10,
+          "SDSD_indoor/pair13": 3.211113334109818e-08,
+          "SDSD_indoor/pair16": -9.00621861712591e-09,
+          "SDSD_indoor/pair18": -5.384869890376516e-09,
+          "SDSD_indoor/pair22": 2.9397019833590082e-09,
+          "SDSD_indoor/pair23": 9.593897866248813e-09,
+          "SDSD_indoor/pair30": 4.096610875178874e-09,
+          "SDSD_indoor/pair32": -1.262518348459779e-08,
+          "SDSD_outdoor/MVI_0900": 1.0512219108648607e-08,
+          "SDSD_outdoor/MVI_0915": 5.527770454371271e-09,
+          "SDSD_outdoor/MVI_0926": 2.6264897461797387e-10,
+          "SDSD_outdoor/MVI_0935": -1.7372270102056914e-08,
+          "SDSD_outdoor/MVI_0941": 4.827536641705682e-09,
+          "SDSD_outdoor/MVI_0943": 5.75972695297626e-09,
+          "SDSD_outdoor/MVI_0955": 1.8050898485362857e-09,
+          "SDSD_outdoor/MVI_0971": 3.769823412637374e-09,
+          "SDSD_outdoor/MVI_1003": 6.190383998591273e-10
+        }
+      },
+      "psnr_rgb_from_clip_mse": {
+        "mean": -5.358786004742743e-06,
+        "ci95": [
+          -1.6622442765267712e-05,
+          5.396990776528134e-06
+        ],
+        "per_scene": {
+          "SDSD_indoor/pair12": -2.069425462991603e-06,
+          "SDSD_indoor/pair13": -4.7612402621410865e-05,
+          "SDSD_indoor/pair16": 3.832923432867119e-05,
+          "SDSD_indoor/pair18": 2.9429926726720623e-05,
+          "SDSD_indoor/pair22": -1.0991270229965266e-05,
+          "SDSD_indoor/pair23": -4.218038846204308e-06,
+          "SDSD_indoor/pair30": -1.2248503686862477e-06,
+          "SDSD_indoor/pair32": 1.7630458060580168e-05,
+          "SDSD_outdoor/MVI_0900": -2.4560097582337903e-05,
+          "SDSD_outdoor/MVI_0915": -4.806269534896046e-05,
+          "SDSD_outdoor/MVI_0926": -3.57424385555305e-06,
+          "SDSD_outdoor/MVI_0935": 2.4856510478343807e-05,
+          "SDSD_outdoor/MVI_0941": -1.5723881897855563e-05,
+          "SDSD_outdoor/MVI_0943": -2.4903403712528416e-05,
+          "SDSD_outdoor/MVI_0955": 5.844753818706749e-06,
+          "SDSD_outdoor/MVI_0971": -1.7148705058644964e-05,
+          "SDSD_outdoor/MVI_1003": -7.101230508510525e-06
+        }
+      }
+    },
+    "joint_prior_minus_independent_prior": {
+      "rgb_mse_float": {
+        "mean": -4.3319055922467534e-09,
+        "ci95": [
+          -2.1763250205723026e-08,
+          8.99627244810045e-09
+        ],
+        "per_scene": {
+          "SDSD_indoor/pair12": 3.848299657670945e-09,
+          "SDSD_indoor/pair13": -3.319249007897526e-08,
+          "SDSD_indoor/pair16": 1.8523375908108784e-08,
+          "SDSD_indoor/pair18": 6.540399734170435e-09,
+          "SDSD_indoor/pair22": 4.602933843366602e-08,
+          "SDSD_indoor/pair23": 4.9363924371770285e-09,
+          "SDSD_indoor/pair30": 8.034128891679093e-09,
+          "SDSD_indoor/pair32": 2.3044763678044256e-08,
+          "SDSD_outdoor/MVI_0900": -7.320441256647436e-09,
+          "SDSD_outdoor/MVI_0915": -1.6999940370340805e-09,
+          "SDSD_outdoor/MVI_0926": 3.537791489881953e-11,
+          "SDSD_outdoor/MVI_0935": -1.1920918291169133e-07,
+          "SDSD_outdoor/MVI_0941": -1.9861482584461465e-09,
+          "SDSD_outdoor/MVI_0943": -2.033877127068269e-08,
+          "SDSD_outdoor/MVI_0955": 7.958764194557211e-10,
+          "SDSD_outdoor/MVI_0971": -1.1924801068471935e-09,
+          "SDSD_outdoor/MVI_1003": -4.908402227417688e-10
+        }
+      },
+      "psnr_rgb_from_clip_mse": {
+        "mean": 3.441752402554745e-06,
+        "ci95": [
+          -3.035243454671054e-05,
+          3.980518924741507e-05
+        ],
+        "per_scene": {
+          "SDSD_indoor/pair12": -8.224385545929636e-06,
+          "SDSD_indoor/pair13": 4.921423276726955e-05,
+          "SDSD_indoor/pair16": -7.433987008909071e-05,
+          "SDSD_indoor/pair18": -3.6376765518042475e-05,
+          "SDSD_indoor/pair22": -0.00017203490330786053,
+          "SDSD_indoor/pair23": -2.1777824130708723e-06,
+          "SDSD_indoor/pair30": -3.577459903425506e-06,
+          "SDSD_indoor/pair32": -3.284332199271489e-05,
+          "SDSD_outdoor/MVI_0900": 1.684260502088364e-05,
+          "SDSD_outdoor/MVI_0915": 1.4491445817554904e-05,
+          "SDSD_outdoor/MVI_0926": -9.993314549205934e-07,
+          "SDSD_outdoor/MVI_0935": 0.0002201471715927994,
+          "SDSD_outdoor/MVI_0941": 9.02473787789404e-06,
+          "SDSD_outdoor/MVI_0943": 7.076702172525984e-05,
+          "SDSD_outdoor/MVI_0955": -1.0400306280189398e-05,
+          "SDSD_outdoor/MVI_0971": 1.9880120699866666e-05,
+          "SDSD_outdoor/MVI_1003": -8.834181528527552e-07
+        }
+      }
+    },
+    "joint_prior_minus_constant_prior": {
+      "rgb_mse_float": {
+        "mean": 2.260219617070135e-09,
+        "ci95": [
+          -2.4070899322920402e-09,
+          7.359097239962596e-09
+        ],
+        "per_scene": {
+          "SDSD_indoor/pair12": 9.870777251119733e-10,
+          "SDSD_indoor/pair13": 3.211113334109818e-08,
+          "SDSD_indoor/pair16": -9.00621861712591e-09,
+          "SDSD_indoor/pair18": -5.384869890376516e-09,
+          "SDSD_indoor/pair22": 2.9397019833590082e-09,
+          "SDSD_indoor/pair23": 9.593897866248813e-09,
+          "SDSD_indoor/pair30": 4.096610875178874e-09,
+          "SDSD_indoor/pair32": -1.262518348459779e-08,
+          "SDSD_outdoor/MVI_0900": 1.0512219108648607e-08,
+          "SDSD_outdoor/MVI_0915": 5.527770454371271e-09,
+          "SDSD_outdoor/MVI_0926": 2.6264897461797387e-10,
+          "SDSD_outdoor/MVI_0935": -1.7372270102056914e-08,
+          "SDSD_outdoor/MVI_0941": 4.827536641705682e-09,
+          "SDSD_outdoor/MVI_0943": 5.75972695297626e-09,
+          "SDSD_outdoor/MVI_0955": 1.8050898485362857e-09,
+          "SDSD_outdoor/MVI_0971": 3.769823412637374e-09,
+          "SDSD_outdoor/MVI_1003": 6.190383998591273e-10
+        }
+      },
+      "psnr_rgb_from_clip_mse": {
+        "mean": -5.358786004742743e-06,
+        "ci95": [
+          -1.6622442765267712e-05,
+          5.396990776528134e-06
+        ],
+        "per_scene": {
+          "SDSD_indoor/pair12": -2.069425462991603e-06,
+          "SDSD_indoor/pair13": -4.7612402621410865e-05,
+          "SDSD_indoor/pair16": 3.832923432867119e-05,
+          "SDSD_indoor/pair18": 2.9429926726720623e-05,
+          "SDSD_indoor/pair22": -1.0991270229965266e-05,
+          "SDSD_indoor/pair23": -4.218038846204308e-06,
+          "SDSD_indoor/pair30": -1.2248503686862477e-06,
+          "SDSD_indoor/pair32": 1.7630458060580168e-05,
+          "SDSD_outdoor/MVI_0900": -2.4560097582337903e-05,
+          "SDSD_outdoor/MVI_0915": -4.806269534896046e-05,
+          "SDSD_outdoor/MVI_0926": -3.57424385555305e-06,
+          "SDSD_outdoor/MVI_0935": 2.4856510478343807e-05,
+          "SDSD_outdoor/MVI_0941": -1.5723881897855563e-05,
+          "SDSD_outdoor/MVI_0943": -2.4903403712528416e-05,
+          "SDSD_outdoor/MVI_0955": 5.844753818706749e-06,
+          "SDSD_outdoor/MVI_0971": -1.7148705058644964e-05,
+          "SDSD_outdoor/MVI_1003": -7.101230508510525e-06
+        }
+      }
+    },
+    "joint_prior_minus_joint_pixel": {
+      "rgb_mse_float": {
+        "mean": -8.043338984794136e-10,
+        "ci95": [
+          -1.9249408412323384e-09,
+          1.3352281265794289e-10
+        ],
+        "per_scene": {
+          "SDSD_indoor/pair12": -1.1912109319778263e-10,
+          "SDSD_indoor/pair13": -3.7004472819290868e-09,
+          "SDSD_indoor/pair16": 1.0440744799755305e-09,
+          "SDSD_indoor/pair18": 7.410158339802436e-10,
+          "SDSD_indoor/pair22": 1.9905067832719225e-09,
+          "SDSD_indoor/pair23": -2.7355920627705754e-09,
+          "SDSD_indoor/pair30": -4.74533141947564e-10,
+          "SDSD_indoor/pair32": 1.600356932043856e-09,
+          "SDSD_outdoor/MVI_0900": 2.6915153461017083e-10,
+          "SDSD_outdoor/MVI_0915": -1.0645386337845494e-09,
+          "SDSD_outdoor/MVI_0926": -3.073142575919091e-11,
+          "SDSD_outdoor/MVI_0935": -6.804355074177537e-10,
+          "SDSD_outdoor/MVI_0941": -7.186449636764625e-09,
+          "SDSD_outdoor/MVI_0943": -4.591673790320383e-10,
+          "SDSD_outdoor/MVI_0955": 1.188188453876693e-10,
+          "SDSD_outdoor/MVI_0971": -2.817576263882543e-09,
+          "SDSD_outdoor/MVI_1003": -1.6900825693371563e-10
+        }
+      },
+      "psnr_rgb_from_clip_mse": {
+        "mean": 1.449386189524576e-06,
+        "ci95": [
+          -1.0064085835762506e-06,
+          4.106803388094411e-06
+        ],
+        "per_scene": {
+          "SDSD_indoor/pair12": 2.3747314514821483e-07,
+          "SDSD_indoor/pair13": 5.523219538616786e-06,
+          "SDSD_indoor/pair16": -4.361771196670361e-06,
+          "SDSD_indoor/pair18": -4.116027504608155e-06,
+          "SDSD_indoor/pair22": -7.437918377206643e-06,
+          "SDSD_indoor/pair23": 1.2029315570316612e-06,
+          "SDSD_indoor/pair30": 1.250756191950586e-07,
+          "SDSD_indoor/pair32": -2.2298314412694253e-06,
+          "SDSD_outdoor/MVI_0900": -5.073471598393553e-07,
+          "SDSD_outdoor/MVI_0915": 9.23655880313845e-06,
+          "SDSD_outdoor/MVI_0926": 4.060233464997509e-07,
+          "SDSD_outdoor/MVI_0935": 1.4491279465289608e-06,
+          "SDSD_outdoor/MVI_0941": 1.2811189179728899e-05,
+          "SDSD_outdoor/MVI_0943": 2.0982842130479185e-06,
+          "SDSD_outdoor/MVI_0955": -1.5236363957171761e-06,
+          "SDSD_outdoor/MVI_0971": 1.1922451527368594e-05,
+          "SDSD_outdoor/MVI_1003": -1.9623757907538675e-07
+        }
+      }
+    },
+    "joint_prior_minus_joint_shuffled": {
+      "rgb_mse_float": {
+        "mean": -3.7762912169600277e-10,
+        "ci95": [
+          -1.2485527489724107e-09,
+          9.937899145036403e-11
+        ],
+        "per_scene": {
+          "SDSD_indoor/pair12": 3.101578325767629e-11,
+          "SDSD_indoor/pair13": 3.05025121914021e-11,
+          "SDSD_indoor/pair16": 4.1464888163658675e-11,
+          "SDSD_indoor/pair18": 8.807512618530522e-11,
+          "SDSD_indoor/pair22": 2.3977981709541463e-10,
+          "SDSD_indoor/pair23": -4.338951828039561e-10,
+          "SDSD_indoor/pair30": -1.555611091330622e-10,
+          "SDSD_indoor/pair32": 3.793847961480745e-11,
+          "SDSD_outdoor/MVI_0900": 1.7405490200170237e-10,
+          "SDSD_outdoor/MVI_0915": 7.730609663698929e-12,
+          "SDSD_outdoor/MVI_0926": 1.2074044780478743e-11,
+          "SDSD_outdoor/MVI_0935": 3.618772785769775e-10,
+          "SDSD_outdoor/MVI_0941": -7.080922737479761e-09,
+          "SDSD_outdoor/MVI_0943": -3.068244660078823e-11,
+          "SDSD_outdoor/MVI_0955": 2.014327777927899e-11,
+          "SDSD_outdoor/MVI_0971": 1.8949570645271363e-12,
+          "SDSD_outdoor/MVI_1003": 2.3481473081059245e-10
+        }
+      },
+      "psnr_rgb_from_clip_mse": {
+        "mean": 3.8109457487761947e-07,
+        "ci95": [
+          -6.688064601062853e-07,
+          2.0799288674384496e-06
+        ],
+        "per_scene": {
+          "SDSD_indoor/pair12": -6.664883756002382e-08,
+          "SDSD_indoor/pair13": -4.4735042337151754e-08,
+          "SDSD_indoor/pair16": -2.3421934614020756e-07,
+          "SDSD_indoor/pair18": -5.343991560380346e-07,
+          "SDSD_indoor/pair22": -8.957019872468663e-07,
+          "SDSD_indoor/pair23": 1.898187562687781e-07,
+          "SDSD_indoor/pair30": 4.295179323321463e-08,
+          "SDSD_indoor/pair32": -5.7530240127334764e-08,
+          "SDSD_outdoor/MVI_0900": -3.844554221643648e-07,
+          "SDSD_outdoor/MVI_0915": -5.622010945671718e-08,
+          "SDSD_outdoor/MVI_0926": -1.7636751437066778e-07,
+          "SDSD_outdoor/MVI_0935": -9.506562328454038e-07,
+          "SDSD_outdoor/MVI_0941": 1.2743297194361958e-05,
+          "SDSD_outdoor/MVI_0943": 5.8871240327107444e-08,
+          "SDSD_outdoor/MVI_0955": -2.2462198856487703e-07,
+          "SDSD_outdoor/MVI_0971": 2.260467013570633e-08,
+          "SDSD_outdoor/MVI_1003": -2.9533800045555836e-06
+        }
+      }
+    }
+  },
+  "domain_breakdown": {
+    "SDSD_indoor": {
+      "scenes": 8,
+      "means": {
+        "base": {
+          "rgb_mse_float": 0.0035087540693564934,
+          "psnr_rgb_from_clip_mse": 26.80611698521285
+        },
+        "frozen_raw_node_1000": {
+          "rgb_mse_float": 0.00345644747392798,
+          "psnr_rgb_from_clip_mse": 26.962223705801147
+        },
+        "joint_prior": {
+          "rgb_mse_float": 0.003456450312946705,
+          "psnr_rgb_from_clip_mse": 26.962226115005095
+        },
+        "independent_prior": {
+          "rgb_mse_float": 0.003456440592420622,
+          "psnr_rgb_from_clip_mse": 26.962261160037094
+        },
+        "constant_prior": {
+          "rgb_mse_float": 0.00345644747392798,
+          "psnr_rgb_from_clip_mse": 26.962223705801147
+        },
+        "joint_pixel": {
+          "rgb_mse_float": 0.0034564505196641483,
+          "psnr_rgb_from_clip_mse": 26.96222749711118
+        },
+        "joint_shuffled": {
+          "rgb_mse_float": 0.003456450328031665,
+          "psnr_rgb_from_clip_mse": 26.962226315063102
+        }
+      }
+    },
+    "SDSD_outdoor": {
+      "scenes": 9,
+      "means": {
+        "base": {
+          "rgb_mse_float": 0.001208408292728236,
+          "psnr_rgb_from_clip_mse": 30.12820310464596
+        },
+        "frozen_raw_node_1000": {
+          "rgb_mse_float": 0.0011814153852216431,
+          "psnr_rgb_from_clip_mse": 30.273842480492046
+        },
+        "joint_prior": {
+          "rgb_mse_float": 0.0011814171309531643,
+          "psnr_rgb_from_clip_mse": 30.273830216826088
+        },
+        "independent_prior": {
+          "rgb_mse_float": 0.0011814339539091342,
+          "psnr_rgb_from_clip_mse": 30.27379256459866
+        },
+        "constant_prior": {
+          "rgb_mse_float": 0.0011814153852216431,
+          "psnr_rgb_from_clip_mse": 30.273842480492046
+        },
+        "joint_pixel": {
+          "rgb_mse_float": 0.0011814184665016891,
+          "psnr_rgb_from_clip_mse": 30.27382625055788
+        },
+        "joint_shuffled": {
+          "rgb_mse_float": 0.0011814178308437626,
+          "psnr_rgb_from_clip_mse": 30.27382931915144
+        }
+      }
+    }
+  },
+  "gate_checks": {
+    "psnr_gain_over_frozen_anchor_at_least_005db": false,
+    "psnr_gain_over_unary_only_at_least_002db": false,
+    "mse_ci_better_than_frozen_anchor": false,
+    "mse_ci_better_than_unary_only": false
+  },
+  "secondary_component_checks": {
+    "calibrated_mse_ci_better_than_constant": false,
+    "prior_mse_ci_better_than_pixel": false,
+    "mean_mse_better_than_shuffled_prior": true
+  },
+  "advance_to_replication": false,
+  "target_inference_allowed_by_this_result": false,
+  "boundary": "Passing only prioritizes source replication; no target, cross-domain, novelty or SOTA claim",
+  "raw_sha256": "97c41757059a196968a4d8c94439446cc85d182249a3630ff7ad4b83d51358eb",
+  "analysis_sha256": "253b6cba4027ec919e6bc95f8e2555192e1845c8f8a77d0876dba75172669aec"
+}

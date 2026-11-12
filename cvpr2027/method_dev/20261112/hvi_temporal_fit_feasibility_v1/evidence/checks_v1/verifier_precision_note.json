@@ -1,0 +1,8 @@
+{
+  "first_attempt_passed": false,
+  "exception": "AssertionError at coverage tolerance check",
+  "first_verifier_sha256": "020633885e5384945bfd86637c84f804cd0aa9c907a80012786916078b295681",
+  "corrected_verifier_sha256": "53e8e51ad721c752834a343de43151e8a11f6792fa3da711561bf177fabab7ab",
+  "explanation": "NumPy int64 coordinate arrays plus float32 flow silently promoted to float64. Corrected verifier uses explicit float32 coordinate grids matching the frozen production arithmetic. The original frozen diagnostic and scores were unchanged; no main-score rerun occurred.",
+  "corrected_verification_passed": true
+}

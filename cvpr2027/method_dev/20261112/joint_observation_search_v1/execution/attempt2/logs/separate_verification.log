@@ -1,0 +1,29 @@
+{
+  "numeric_scalars_checked": 522,
+  "max_absolute_error": 7.105427357601002e-15,
+  "max_error_path": "domain_breakdown/SDSD_outdoor/means/frozen_raw_node_1000/psnr_rgb_from_clip_mse",
+  "passed": true,
+  "raw_sha256": "97c41757059a196968a4d8c94439446cc85d182249a3630ff7ad4b83d51358eb",
+  "analysis_result_sha256": "69cc25c8a4d426c1e48034109609b238b08b1209b2dc91595cd0a118897be3d4",
+  "primary_analyzer_sha256": "253b6cba4027ec919e6bc95f8e2555192e1845c8f8a77d0876dba75172669aec",
+  "verifier_sha256": "8bb6948e8badb1395aa6db32d89082f58b4b8a7249ddf6c22d1b3d1b863c6014",
+  "method": "independent source pairing; fsum scene means; 10000x17 bootstrap multiplicity matrix",
+  "rng": 0,
+  "scene_count": 17,
+  "sequence_count": 34,
+  "ci_endpoints_checked": 24,
+  "gate_checks": {
+    "psnr_gain_over_frozen_anchor_at_least_005db": false,
+    "psnr_gain_over_unary_only_at_least_002db": false,
+    "mse_ci_better_than_frozen_anchor": false,
+    "mse_ci_better_than_unary_only": false
+  },
+  "secondary_component_checks": {
+    "calibrated_mse_ci_better_than_constant": false,
+    "prior_mse_ci_better_than_pixel": false,
+    "mean_mse_better_than_shuffled_prior": true
+  },
+  "advance_to_replication": false,
+  "target_inference_allowed": false,
+  "primary_analyzer_imported": false
+}

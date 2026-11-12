@@ -1,0 +1,45 @@
+{
+  "passed": true,
+  "frozen_owner_files_verified": 11,
+  "source_only": true,
+  "target_frames_read": false,
+  "training_updates": 2000,
+  "finite_curves_and_offset_bounds": true,
+  "fit_calibration_clips": 102,
+  "fit_calibration_scenes": 51,
+  "same_plan_and_initial_state": true,
+  "binary_checkpoint_hashes_verified": 10,
+  "mode_summary": {
+    "joint_prior": {
+      "updates": 400,
+      "training_elapsed_seconds": 694.3222626950592,
+      "mean_holdout_abs_offset": 9.059867301175473e-05,
+      "final_amplitude": 0.016833804547786713
+    },
+    "independent_prior": {
+      "updates": 400,
+      "training_elapsed_seconds": 702.5640498325229,
+      "mean_holdout_abs_offset": 0.00021789909370080053,
+      "final_amplitude": 0.05702879652380943
+    },
+    "constant_prior": {
+      "updates": 400,
+      "training_elapsed_seconds": 634.0649099359289,
+      "mean_holdout_abs_offset": 0.0,
+      "final_amplitude": 0.0
+    },
+    "joint_pixel": {
+      "updates": 400,
+      "training_elapsed_seconds": 597.810322846286,
+      "mean_holdout_abs_offset": 0.00010157040645708548,
+      "final_amplitude": 0.018949255347251892
+    },
+    "joint_shuffled": {
+      "updates": 400,
+      "training_elapsed_seconds": 623.2552490737289,
+      "mean_holdout_abs_offset": 9.070054893393663e-05,
+      "final_amplitude": 0.016944434493780136
+    }
+  },
+  "raw_sha256": "97c41757059a196968a4d8c94439446cc85d182249a3630ff7ad4b83d51358eb"
+}

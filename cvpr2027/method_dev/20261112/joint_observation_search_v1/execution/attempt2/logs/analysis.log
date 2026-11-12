@@ -1,0 +1,44 @@
+{
+  "advance_to_replication": false,
+  "gate_checks": {
+    "psnr_gain_over_frozen_anchor_at_least_005db": false,
+    "psnr_gain_over_unary_only_at_least_002db": false,
+    "mse_ci_better_than_frozen_anchor": false,
+    "mse_ci_better_than_unary_only": false
+  },
+  "secondary_component_checks": {
+    "calibrated_mse_ci_better_than_constant": false,
+    "prior_mse_ci_better_than_pixel": false,
+    "mean_mse_better_than_shuffled_prior": true
+  },
+  "means": {
+    "base": {
+      "rgb_mse_float": 0.0022909239523180042,
+      "psnr_rgb_from_clip_mse": 28.564868460206853
+    },
+    "frozen_raw_node_1000": {
+      "rgb_mse_float": 0.0022520187210834483,
+      "psnr_rgb_from_clip_mse": 28.715433645343385
+    },
+    "joint_prior": {
+      "rgb_mse_float": 0.0022520209813030657,
+      "psnr_rgb_from_clip_mse": 28.715428286557387
+    },
+    "independent_prior": {
+      "rgb_mse_float": 0.0022520253132086577,
+      "psnr_rgb_from_clip_mse": 28.715424844804982
+    },
+    "constant_prior": {
+      "rgb_mse_float": 0.0022520187210834483,
+      "psnr_rgb_from_clip_mse": 28.715433645343385
+    },
+    "joint_pixel": {
+      "rgb_mse_float": 0.002252021785636964,
+      "psnr_rgb_from_clip_mse": 28.715426837171197
+    },
+    "joint_shuffled": {
+      "rgb_mse_float": 0.0022520213589321872,
+      "psnr_rgb_from_clip_mse": 28.715427905462807
+    }
+  }
+}
