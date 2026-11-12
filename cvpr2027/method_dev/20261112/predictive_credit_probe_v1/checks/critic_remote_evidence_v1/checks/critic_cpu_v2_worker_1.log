@@ -1,0 +1,9 @@
+/home/ma-user/anaconda3/envs/PyTorch-2.7.1/lib/python3.12/site-packages/torch/cuda/__init__.py:61: FutureWarning: The pynvml package is deprecated. Please install nvidia-ml-py instead. If you did not install pynvml directly, please report this to the maintainers of the package that installed pynvml for you.
+  import pynvml  # type: ignore[import]
+{"stage": "loaded", "device": "cpu", "threads": 4, "elapsed_seconds": 29.931391739286482}
+/home/ma-user/anaconda3/envs/PyTorch-2.7.1/lib/python3.12/contextlib.py:105: FutureWarning: `torch.backends.cuda.sdp_kernel()` is deprecated. In the future, this context manager will be removed. Please see `torch.nn.attention.sdpa_kernel()` for the new context manager, with updated signature.
+  self.gen = func(*args, **kwds)
+{"stage": "cpu16_synthetic_passed", "elapsed_seconds": 261.23259513638914}
+{"stage": "source_clip_complete", "path": "clip_010.json", "sha256": "def4e577a9f111597dc4a4c9832585d291ed5c7b4b57199f00e3fab8857e81dd", "name": "SDSD_indoor/pair15", "scene": "SDSD_indoor/pair15", "rgb_lq_tensor_sha256": "d1529ed432190aae4430c369c9c04986bf93ba44a537dadf464c629b51ddf521", "elapsed_seconds": 228.93610712792724}
+{"stage": "source_clip_complete", "path": "clip_014.json", "sha256": "4075e439e48961046f1feff0b2b6ef5915b925926e95f596e6c2b690dde14a1f", "name": "SDSD_indoor/pair17", "scene": "SDSD_indoor/pair17", "rgb_lq_tensor_sha256": "5e59b61872f6e358d9ad1388a22c4913721e6430ffe6eae7669c1c35b69574cc", "elapsed_seconds": 228.03672008309513}
+{"stage": "source_clip_complete", "path": "clip_018.json", "sha256": "be3eb45a35d80749bdebe9e5dd972c7197de78679b6182954ee8fc6cb70ce712", "name": "SDSD_indoor/pair2", "scene": "SDSD_indoor/pair2", "rgb_lq_tensor_sha256": "f9050d2b6c812353286db6746ec2cc338737634343afb155ba8dac166dd63662", "elapsed_seconds": 237.78048060182482}

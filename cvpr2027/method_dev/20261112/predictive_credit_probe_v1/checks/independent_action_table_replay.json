@@ -1,0 +1,31 @@
+{
+  "status": "passed",
+  "GT_or_tensor_archive_access": false,
+  "method": "For each of six fixed actions and each of twelve scenes: -10*log10(mean(saved patch MSE)); then unweighted mean over scenes.",
+  "scalar_npz_sha256": "4ccd7e9a807f43a3c64d6b102f3775a2aca9fed86d197643a4e1909c8d338a2c",
+  "max_reported_psnr_error": 3.552713678800501e-15,
+  "mean_central_two_frame_rgb_psnr": {
+    "base": 19.008205070182346,
+    "single1": 19.220425529490115,
+    "single2": 19.200359742538314,
+    "pair": 19.26017976762595,
+    "sameframe_zero": 19.008205070182346,
+    "temporal_no_dc": 19.512881376016967
+  },
+  "positive_scene_counts": {
+    "base": 0,
+    "single1": 11,
+    "single2": 12,
+    "pair": 12,
+    "sameframe_zero": 0,
+    "temporal_no_dc": 8
+  },
+  "negative_scene_counts": {
+    "base": 0,
+    "single1": 1,
+    "single2": 0,
+    "pair": 0,
+    "sameframe_zero": 0,
+    "temporal_no_dc": 4
+  }
+}

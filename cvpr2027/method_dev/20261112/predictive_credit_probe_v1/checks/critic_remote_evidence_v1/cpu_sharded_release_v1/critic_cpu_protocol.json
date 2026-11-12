@@ -1,0 +1,51 @@
+{
+  "purpose": "CPU-only exact12 source FIT critic export; NPU parity failures preserved and NPU not used on source data",
+  "parent_protocol": "critic_protocol.json, unchanged model/SDPA/masks/loss definitions",
+  "device": "cpu",
+  "num_threads": 4,
+  "torch_npu_imported": false,
+  "attention": "unchanged official use_sdpa=True; no substitutions",
+  "synthetic_preflight": "Full1x3x16x256x256 synthetic canonical RGB, all12 encoder calls/all trained/random/wrongtime controls plus exact masked H/donors pixel intervention invariance, before any source LQ read",
+  "npu_failures": {
+    "default_loss_abs_max": 0.4473450779914856,
+    "default_loss_abs_mean": 0.13140344619750977,
+    "precision_v3_trained_loss_abs_max": 0.02572154998779297,
+    "precision_v3_trained_loss_abs_mean": 0.005172979086637497,
+    "fixed_tolerance_max": 0.01,
+    "fixed_tolerance_mean": 0.001
+  },
+  "observable_sidecar": "/cache/zihaohe/seer_predictive_credit_probe_20261112/values_observables_v1/observable_sidecar.json",
+  "observable_sidecar_sha256": "580df11ab460f2fb74043f1ae6292de6f0d74a674d86b1c5fb5620ee7f200f23",
+  "observable_sidecar_role": "Only LQ/HVI/flow/valid observables; no GT storage opens or interpreted values; dependency frozen before critic source forward",
+  "gt_storage_entries_read": 0,
+  "internal_inputs_read": 0,
+  "target_inputs_read": 0,
+  "raw_videos_saved": false,
+  "quality_scores_computed": false,
+  "compute_schedule": "4 independent workers on host31051, CPU4 threads each, identical model/seed/SDPA/normalization; fixed disjoint indices before outputs",
+  "shards": [
+    [
+      0,
+      1,
+      2
+    ],
+    [
+      3,
+      4,
+      5
+    ],
+    [
+      6,
+      7,
+      8
+    ],
+    [
+      9,
+      10,
+      11
+    ]
+  ],
+  "per_worker_synthetic_gate": "Each runs unchanged complete16f synthetic and exact masked pixel intervention gate before source LQ",
+  "merge": "Unique12 only after allfour synthetic/status/state/output hash checks pass; same state across all workers; no score-based worker/shard selection",
+  "interrupted_prior": "CPU data_release_v1 stopped during synthetic before gate/no source directory/no dataset read, exactPID proof retained"
+}

@@ -1,0 +1,11 @@
+/home/ma-user/anaconda3/envs/PyTorch-2.7.1/lib/python3.12/site-packages/torch/cuda/__init__.py:61: FutureWarning: The pynvml package is deprecated. Please install nvidia-ml-py instead. If you did not install pynvml directly, please report this to the maintainers of the package that installed pynvml for you.
+  import pynvml  # type: ignore[import]
+{"stage": "loaded", "device": "cpu", "threads": 4, "elapsed_seconds": 27.15912871900946}
+Traceback (most recent call last):
+  File "/cache/zihaohe/seer_predictive_credit_probe_20261112_v1/cpu_sharded_release_v1/critic_cpu_sharded_v1.py", line 117, in <module>
+    main()
+  File "/cache/zihaohe/seer_predictive_credit_probe_20261112_v1/cpu_sharded_release_v1/critic_cpu_sharded_v1.py", line 35, in main
+    checks.mkdir(exist_ok=False)
+  File "/home/ma-user/anaconda3/envs/PyTorch-2.7.1/lib/python3.12/pathlib.py", line 1312, in mkdir
+    os.mkdir(self, mode)
+FileExistsError: [Errno 17] File exists: '/cache/zihaohe/seer_predictive_credit_probe_20261112_v1/checks/critic_worker_3'

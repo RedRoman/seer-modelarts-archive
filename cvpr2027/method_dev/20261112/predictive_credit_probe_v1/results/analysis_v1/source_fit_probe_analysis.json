@@ -1,0 +1,1064 @@
+{
+  "schema": "seer.predictive_credit_probe.analysis.v1",
+  "scope": "fixed_12_source_fit_scenes_no_training_no_tau_or_lambda_selection",
+  "selected_scenes": [
+    "SDSD_indoor/pair10",
+    "SDSD_indoor/pair11",
+    "SDSD_indoor/pair14",
+    "SDSD_indoor/pair15",
+    "SDSD_indoor/pair17",
+    "SDSD_indoor/pair2",
+    "SDSD_outdoor/MVI_0902",
+    "SDSD_outdoor/MVI_0904",
+    "SDSD_outdoor/MVI_0906",
+    "SDSD_outdoor/MVI_0909",
+    "SDSD_outdoor/MVI_0911",
+    "SDSD_outdoor/MVI_0916"
+  ],
+  "patches": 3072,
+  "eligibility": "valid_fraction_donor1>=0.5 AND valid_fraction_donor2>=0.5",
+  "utility_tie_epsilon": 1e-10,
+  "primary_macro_auc": {
+    "trained_conditional": {
+      "mean": 0.4562695394914183,
+      "defined_scenes": 12
+    },
+    "random_conditional": {
+      "mean": 0.4981630128022449,
+      "defined_scenes": 12
+    },
+    "wrong_time_conditional": {
+      "mean": 0.48093484582375634,
+      "defined_scenes": 12
+    },
+    "ema_cosine": {
+      "mean": 0.49452648512292113,
+      "defined_scenes": 12
+    },
+    "negative_lq_mse": {
+      "mean": 0.5622613159554719,
+      "defined_scenes": 12
+    },
+    "negative_hvi_mse": {
+      "mean": 0.5001802817255702,
+      "defined_scenes": 12
+    }
+  },
+  "primary_gate": {
+    "status": "fail",
+    "candidate_macro_auc": 0.4562695394914183,
+    "candidate_defined_scenes": 12,
+    "common_complete_scene_names": [
+      "SDSD_indoor/pair10",
+      "SDSD_indoor/pair11",
+      "SDSD_indoor/pair14",
+      "SDSD_indoor/pair15",
+      "SDSD_indoor/pair17",
+      "SDSD_indoor/pair2",
+      "SDSD_outdoor/MVI_0902",
+      "SDSD_outdoor/MVI_0904",
+      "SDSD_outdoor/MVI_0906",
+      "SDSD_outdoor/MVI_0909",
+      "SDSD_outdoor/MVI_0911",
+      "SDSD_outdoor/MVI_0916"
+    ],
+    "defined_scene_counts_before_common_intersection": {
+      "trained_conditional": 12,
+      "random_conditional": 12,
+      "wrong_time_conditional": 12,
+      "ema_cosine": 12,
+      "negative_lq_mse": 12,
+      "negative_hvi_mse": 12
+    },
+    "minimum_defined_scenes": 8,
+    "candidate_auc_threshold": 0.55,
+    "comparisons": {
+      "random_conditional": {
+        "matched_scene_names": [
+          "SDSD_indoor/pair10",
+          "SDSD_indoor/pair11",
+          "SDSD_indoor/pair14",
+          "SDSD_indoor/pair15",
+          "SDSD_indoor/pair17",
+          "SDSD_indoor/pair2",
+          "SDSD_outdoor/MVI_0902",
+          "SDSD_outdoor/MVI_0904",
+          "SDSD_outdoor/MVI_0906",
+          "SDSD_outdoor/MVI_0909",
+          "SDSD_outdoor/MVI_0911",
+          "SDSD_outdoor/MVI_0916"
+        ],
+        "bootstrap": {
+          "mean": -0.04189347331082657,
+          "ci95": [
+            -0.07914763308304565,
+            0.0024913788866230374
+          ],
+          "scenes": 12,
+          "repeats": 20000,
+          "seed": 20261123,
+          "resampling_unit": "complete_scene",
+          "percentile_method": "linear_(n-1)*q"
+        },
+        "evaluable": true,
+        "passes": false
+      },
+      "wrong_time_conditional": {
+        "matched_scene_names": [
+          "SDSD_indoor/pair10",
+          "SDSD_indoor/pair11",
+          "SDSD_indoor/pair14",
+          "SDSD_indoor/pair15",
+          "SDSD_indoor/pair17",
+          "SDSD_indoor/pair2",
+          "SDSD_outdoor/MVI_0902",
+          "SDSD_outdoor/MVI_0904",
+          "SDSD_outdoor/MVI_0906",
+          "SDSD_outdoor/MVI_0909",
+          "SDSD_outdoor/MVI_0911",
+          "SDSD_outdoor/MVI_0916"
+        ],
+        "bootstrap": {
+          "mean": -0.02466530633233804,
+          "ci95": [
+            -0.053293134664951135,
+            0.0014033969795486363
+          ],
+          "scenes": 12,
+          "repeats": 20000,
+          "seed": 20261123,
+          "resampling_unit": "complete_scene",
+          "percentile_method": "linear_(n-1)*q"
+        },
+        "evaluable": true,
+        "passes": false
+      },
+      "ema_cosine": {
+        "matched_scene_names": [
+          "SDSD_indoor/pair10",
+          "SDSD_indoor/pair11",
+          "SDSD_indoor/pair14",
+          "SDSD_indoor/pair15",
+          "SDSD_indoor/pair17",
+          "SDSD_indoor/pair2",
+          "SDSD_outdoor/MVI_0902",
+          "SDSD_outdoor/MVI_0904",
+          "SDSD_outdoor/MVI_0906",
+          "SDSD_outdoor/MVI_0909",
+          "SDSD_outdoor/MVI_0911",
+          "SDSD_outdoor/MVI_0916"
+        ],
+        "bootstrap": {
+          "mean": -0.038256945631502816,
+          "ci95": [
+            -0.06640029876049403,
+            -0.010296999566343766
+          ],
+          "scenes": 12,
+          "repeats": 20000,
+          "seed": 20261123,
+          "resampling_unit": "complete_scene",
+          "percentile_method": "linear_(n-1)*q"
+        },
+        "evaluable": true,
+        "passes": false
+      },
+      "negative_lq_mse": {
+        "matched_scene_names": [
+          "SDSD_indoor/pair10",
+          "SDSD_indoor/pair11",
+          "SDSD_indoor/pair14",
+          "SDSD_indoor/pair15",
+          "SDSD_indoor/pair17",
+          "SDSD_indoor/pair2",
+          "SDSD_outdoor/MVI_0902",
+          "SDSD_outdoor/MVI_0904",
+          "SDSD_outdoor/MVI_0906",
+          "SDSD_outdoor/MVI_0909",
+          "SDSD_outdoor/MVI_0911",
+          "SDSD_outdoor/MVI_0916"
+        ],
+        "bootstrap": {
+          "mean": -0.10599177646405362,
+          "ci95": [
+            -0.1661330424079171,
+            -0.04440091784827203
+          ],
+          "scenes": 12,
+          "repeats": 20000,
+          "seed": 20261123,
+          "resampling_unit": "complete_scene",
+          "percentile_method": "linear_(n-1)*q"
+        },
+        "evaluable": true,
+        "passes": false
+      },
+      "negative_hvi_mse": {
+        "matched_scene_names": [
+          "SDSD_indoor/pair10",
+          "SDSD_indoor/pair11",
+          "SDSD_indoor/pair14",
+          "SDSD_indoor/pair15",
+          "SDSD_indoor/pair17",
+          "SDSD_indoor/pair2",
+          "SDSD_outdoor/MVI_0902",
+          "SDSD_outdoor/MVI_0904",
+          "SDSD_outdoor/MVI_0906",
+          "SDSD_outdoor/MVI_0909",
+          "SDSD_outdoor/MVI_0911",
+          "SDSD_outdoor/MVI_0916"
+        ],
+        "bootstrap": {
+          "mean": -0.04391074223415193,
+          "ci95": [
+            -0.14782378266476306,
+            0.07090132362727433
+          ],
+          "scenes": 12,
+          "repeats": 20000,
+          "seed": 20261123,
+          "resampling_unit": "complete_scene",
+          "percentile_method": "linear_(n-1)*q"
+        },
+        "evaluable": true,
+        "passes": false
+      }
+    },
+    "passes": false,
+    "interpretation": "Source FIT screening only; no publication, SOTA, or generalization evidence."
+  },
+  "per_scene": [
+    {
+      "scene": "SDSD_indoor/pair10",
+      "patches": 256,
+      "eligible_patches": 256,
+      "ineligible_patches": 0,
+      "donor_labels": 512,
+      "positive_donor_labels": 471,
+      "negative_donor_labels": 41,
+      "excluded_zero_utility_donors": 0,
+      "auc": {
+        "trained_conditional": 0.4407850447931231,
+        "random_conditional": 0.5423592770959557,
+        "wrong_time_conditional": 0.4309978768577495,
+        "ema_cosine": 0.537879964786909,
+        "negative_lq_mse": 0.5903888975195485,
+        "negative_hvi_mse": 0.529749883486096
+      },
+      "spearman_scene_standardized_utility": {
+        "trained_conditional": -0.046653806319451596,
+        "random_conditional": -0.08014963028624357,
+        "wrong_time_conditional": -0.11716756217026585,
+        "ema_cosine": -0.12357082417802497,
+        "negative_lq_mse": 0.425722017658301,
+        "negative_hvi_mse": -0.5720944770602305
+      },
+      "interaction_diagnostic": {
+        "predictive_vs_rgb_action_recipe_spearman": -0.051501344701304644,
+        "definition_note": "RGB contrast is specific to singleton versus averaged-pair actions; it is not physical interaction ground truth."
+      },
+      "budget_diagnostic": {
+        "eligible_patches": 256,
+        "zero_budget_fraction": 0.546875,
+        "v12_ge_one_fraction_tau1": 0.0,
+        "phi_ge_one_fraction_by_donor_tau1": [
+          0.0,
+          0.0
+        ],
+        "allocation_touches_positive_cap_fraction_by_donor_tau1": [
+          0.23046875,
+          0.23046875
+        ],
+        "allocation_touches_any_positive_cap_fraction_tau1": 0.23046875,
+        "single_negative_phi_fraction": 0.41796875,
+        "nonnegative_uncapped_shapley_degeneracy_fraction": 0.23046875,
+        "positive_phi_fraction_by_donor": [
+          0.5078125,
+          0.37109375
+        ],
+        "mean_anchor_weight_tau1": 0.9895404223352671,
+        "v12_quantiles_eligible": {
+          "0.0": -0.4807330369949341,
+          "0.05": -0.05858336389064789,
+          "0.25": -0.02573813498020172,
+          "0.5": -0.003010466694831848,
+          "0.75": 0.01501394808292389,
+          "0.95": 0.04792000353336334,
+          "1.0": 0.1554965376853943
+        },
+        "recipe": "B=min(1,max(v12,0)); caps_i=min(1,max(phi_i,0)); r=softmax(phi); w0=clip(B*r0,max(0,B-caps1),min(caps0,B)); w1=B-w0; anchor=1-B; tau fixed to 1"
+      }
+    },
+    {
+      "scene": "SDSD_indoor/pair11",
+      "patches": 256,
+      "eligible_patches": 256,
+      "ineligible_patches": 0,
+      "donor_labels": 512,
+      "positive_donor_labels": 446,
+      "negative_donor_labels": 66,
+      "excluded_zero_utility_donors": 0,
+      "auc": {
+        "trained_conditional": 0.45801059926620463,
+        "random_conditional": 0.5625764370158989,
+        "wrong_time_conditional": 0.4442179643973366,
+        "ema_cosine": 0.5807174887892377,
+        "negative_lq_mse": 0.7324025003397201,
+        "negative_hvi_mse": 0.6913982878108439
+      },
+      "spearman_scene_standardized_utility": {
+        "trained_conditional": -0.003287864352662478,
+        "random_conditional": 0.23191947816708136,
+        "wrong_time_conditional": 0.014677193125507833,
+        "ema_cosine": 0.10974362633181127,
+        "negative_lq_mse": -0.15419416835467664,
+        "negative_hvi_mse": -0.10864168125793937
+      },
+      "interaction_diagnostic": {
+        "predictive_vs_rgb_action_recipe_spearman": 0.058665455481803616,
+        "definition_note": "RGB contrast is specific to singleton versus averaged-pair actions; it is not physical interaction ground truth."
+      },
+      "budget_diagnostic": {
+        "eligible_patches": 256,
+        "zero_budget_fraction": 0.484375,
+        "v12_ge_one_fraction_tau1": 0.0,
+        "phi_ge_one_fraction_by_donor_tau1": [
+          0.0,
+          0.0
+        ],
+        "allocation_touches_positive_cap_fraction_by_donor_tau1": [
+          0.265625,
+          0.265625
+        ],
+        "allocation_touches_any_positive_cap_fraction_tau1": 0.265625,
+        "single_negative_phi_fraction": 0.49609375,
+        "nonnegative_uncapped_shapley_degeneracy_fraction": 0.265625,
+        "positive_phi_fraction_by_donor": [
+          0.49609375,
+          0.53125
+        ],
+        "mean_anchor_weight_tau1": 0.9845417275791988,
+        "v12_quantiles_eligible": {
+          "0.0": -0.26172196865081787,
+          "0.05": -0.08832064270973206,
+          "0.25": -0.01878027617931366,
+          "0.5": 0.0011536180973052979,
+          "0.75": 0.02642069011926651,
+          "0.95": 0.06403569877147675,
+          "1.0": 0.10658395290374756
+        },
+        "recipe": "B=min(1,max(v12,0)); caps_i=min(1,max(phi_i,0)); r=softmax(phi); w0=clip(B*r0,max(0,B-caps1),min(caps0,B)); w1=B-w0; anchor=1-B; tau fixed to 1"
+      }
+    },
+    {
+      "scene": "SDSD_indoor/pair14",
+      "patches": 256,
+      "eligible_patches": 256,
+      "ineligible_patches": 0,
+      "donor_labels": 512,
+      "positive_donor_labels": 467,
+      "negative_donor_labels": 45,
+      "excluded_zero_utility_donors": 0,
+      "auc": {
+        "trained_conditional": 0.46690459195812517,
+        "random_conditional": 0.5604092315013086,
+        "wrong_time_conditional": 0.523197715917202,
+        "ema_cosine": 0.5526052819414704,
+        "negative_lq_mse": 0.7240066619081609,
+        "negative_hvi_mse": 0.708160837497026
+      },
+      "spearman_scene_standardized_utility": {
+        "trained_conditional": 0.05183102590952267,
+        "random_conditional": 0.2274697657445771,
+        "wrong_time_conditional": 0.006649579141918723,
+        "ema_cosine": 0.1413323906226754,
+        "negative_lq_mse": 0.09617320627481947,
+        "negative_hvi_mse": -0.5666056730009956
+      },
+      "interaction_diagnostic": {
+        "predictive_vs_rgb_action_recipe_spearman": -0.12147445067521172,
+        "definition_note": "RGB contrast is specific to singleton versus averaged-pair actions; it is not physical interaction ground truth."
+      },
+      "budget_diagnostic": {
+        "eligible_patches": 256,
+        "zero_budget_fraction": 0.5703125,
+        "v12_ge_one_fraction_tau1": 0.0,
+        "phi_ge_one_fraction_by_donor_tau1": [
+          0.0,
+          0.0
+        ],
+        "allocation_touches_positive_cap_fraction_by_donor_tau1": [
+          0.21875,
+          0.21875
+        ],
+        "allocation_touches_any_positive_cap_fraction_tau1": 0.21875,
+        "single_negative_phi_fraction": 0.46875,
+        "nonnegative_uncapped_shapley_degeneracy_fraction": 0.21875,
+        "positive_phi_fraction_by_donor": [
+          0.4921875,
+          0.4140625
+        ],
+        "mean_anchor_weight_tau1": 0.9873938218224794,
+        "v12_quantiles_eligible": {
+          "0.0": -0.2347888946533203,
+          "0.05": -0.08319324254989624,
+          "0.25": -0.029499173164367676,
+          "0.5": -0.005324333906173706,
+          "0.75": 0.016354307532310486,
+          "0.95": 0.05621695518493652,
+          "1.0": 0.16201293468475342
+        },
+        "recipe": "B=min(1,max(v12,0)); caps_i=min(1,max(phi_i,0)); r=softmax(phi); w0=clip(B*r0,max(0,B-caps1),min(caps0,B)); w1=B-w0; anchor=1-B; tau fixed to 1"
+      }
+    },
+    {
+      "scene": "SDSD_indoor/pair15",
+      "patches": 256,
+      "eligible_patches": 256,
+      "ineligible_patches": 0,
+      "donor_labels": 512,
+      "positive_donor_labels": 410,
+      "negative_donor_labels": 102,
+      "excluded_zero_utility_donors": 0,
+      "auc": {
+        "trained_conditional": 0.4954567192730751,
+        "random_conditional": 0.5622429459588714,
+        "wrong_time_conditional": 0.4869918699186992,
+        "ema_cosine": 0.470492587278814,
+        "negative_lq_mse": 0.5671209947393592,
+        "negative_hvi_mse": 0.5077235772357723
+      },
+      "spearman_scene_standardized_utility": {
+        "trained_conditional": -0.047423066799418635,
+        "random_conditional": -0.04937885166683833,
+        "wrong_time_conditional": -0.07428969469907645,
+        "ema_cosine": 0.005330553123676772,
+        "negative_lq_mse": -0.00337566232933933,
+        "negative_hvi_mse": -0.15408071048053926
+      },
+      "interaction_diagnostic": {
+        "predictive_vs_rgb_action_recipe_spearman": 0.11078908216983291,
+        "definition_note": "RGB contrast is specific to singleton versus averaged-pair actions; it is not physical interaction ground truth."
+      },
+      "budget_diagnostic": {
+        "eligible_patches": 256,
+        "zero_budget_fraction": 0.58203125,
+        "v12_ge_one_fraction_tau1": 0.0,
+        "phi_ge_one_fraction_by_donor_tau1": [
+          0.0,
+          0.0
+        ],
+        "allocation_touches_positive_cap_fraction_by_donor_tau1": [
+          0.20703125,
+          0.20703125
+        ],
+        "allocation_touches_any_positive_cap_fraction_tau1": 0.20703125,
+        "single_negative_phi_fraction": 0.48828125,
+        "nonnegative_uncapped_shapley_degeneracy_fraction": 0.20703125,
+        "positive_phi_fraction_by_donor": [
+          0.4296875,
+          0.47265625
+        ],
+        "mean_anchor_weight_tau1": 0.9851660672575235,
+        "v12_quantiles_eligible": {
+          "0.0": -0.15152227878570557,
+          "0.05": -0.08840504288673401,
+          "0.25": -0.03425149619579315,
+          "0.5": -0.008647710084915161,
+          "0.75": 0.020342156291007996,
+          "0.95": 0.07696294784545898,
+          "1.0": 0.1647104024887085
+        },
+        "recipe": "B=min(1,max(v12,0)); caps_i=min(1,max(phi_i,0)); r=softmax(phi); w0=clip(B*r0,max(0,B-caps1),min(caps0,B)); w1=B-w0; anchor=1-B; tau fixed to 1"
+      }
+    },
+    {
+      "scene": "SDSD_indoor/pair17",
+      "patches": 256,
+      "eligible_patches": 256,
+      "ineligible_patches": 0,
+      "donor_labels": 512,
+      "positive_donor_labels": 456,
+      "negative_donor_labels": 56,
+      "excluded_zero_utility_donors": 0,
+      "auc": {
+        "trained_conditional": 0.38106986215538846,
+        "random_conditional": 0.4135729949874687,
+        "wrong_time_conditional": 0.46408991228070173,
+        "ema_cosine": 0.43683427318295737,
+        "negative_lq_mse": 0.5236920426065163,
+        "negative_hvi_mse": 0.4911497493734336
+      },
+      "spearman_scene_standardized_utility": {
+        "trained_conditional": -0.06350627925407125,
+        "random_conditional": 0.04416238621689678,
+        "wrong_time_conditional": -0.014467354173103993,
+        "ema_cosine": -0.05349203488172486,
+        "negative_lq_mse": -0.010360965913642554,
+        "negative_hvi_mse": -0.559440928949085
+      },
+      "interaction_diagnostic": {
+        "predictive_vs_rgb_action_recipe_spearman": -0.10636873426413367,
+        "definition_note": "RGB contrast is specific to singleton versus averaged-pair actions; it is not physical interaction ground truth."
+      },
+      "budget_diagnostic": {
+        "eligible_patches": 256,
+        "zero_budget_fraction": 0.49609375,
+        "v12_ge_one_fraction_tau1": 0.0,
+        "phi_ge_one_fraction_by_donor_tau1": [
+          0.0,
+          0.0
+        ],
+        "allocation_touches_positive_cap_fraction_by_donor_tau1": [
+          0.265625,
+          0.265625
+        ],
+        "allocation_touches_any_positive_cap_fraction_tau1": 0.265625,
+        "single_negative_phi_fraction": 0.46875,
+        "nonnegative_uncapped_shapley_degeneracy_fraction": 0.265625,
+        "positive_phi_fraction_by_donor": [
+          0.4296875,
+          0.5703125
+        ],
+        "mean_anchor_weight_tau1": 0.984455977100879,
+        "v12_quantiles_eligible": {
+          "0.0": -0.18305927515029907,
+          "0.05": -0.08463402092456818,
+          "0.25": -0.023593857884407043,
+          "0.5": 0.0004500150680541992,
+          "0.75": 0.020460262894630432,
+          "0.95": 0.06796684861183167,
+          "1.0": 0.1524309515953064
+        },
+        "recipe": "B=min(1,max(v12,0)); caps_i=min(1,max(phi_i,0)); r=softmax(phi); w0=clip(B*r0,max(0,B-caps1),min(caps0,B)); w1=B-w0; anchor=1-B; tau fixed to 1"
+      }
+    },
+    {
+      "scene": "SDSD_indoor/pair2",
+      "patches": 256,
+      "eligible_patches": 256,
+      "ineligible_patches": 0,
+      "donor_labels": 512,
+      "positive_donor_labels": 462,
+      "negative_donor_labels": 50,
+      "excluded_zero_utility_donors": 0,
+      "auc": {
+        "trained_conditional": 0.40554112554112554,
+        "random_conditional": 0.49937229437229436,
+        "wrong_time_conditional": 0.5354978354978355,
+        "ema_cosine": 0.4328138528138528,
+        "negative_lq_mse": 0.6103463203463203,
+        "negative_hvi_mse": 0.6985714285714286
+      },
+      "spearman_scene_standardized_utility": {
+        "trained_conditional": -0.22236160821574485,
+        "random_conditional": 0.11087641940531133,
+        "wrong_time_conditional": 0.03163856416154542,
+        "ema_cosine": -0.10462988593057987,
+        "negative_lq_mse": 0.03900554754466074,
+        "negative_hvi_mse": 0.10558922634783305
+      },
+      "interaction_diagnostic": {
+        "predictive_vs_rgb_action_recipe_spearman": -0.014110780498970016,
+        "definition_note": "RGB contrast is specific to singleton versus averaged-pair actions; it is not physical interaction ground truth."
+      },
+      "budget_diagnostic": {
+        "eligible_patches": 256,
+        "zero_budget_fraction": 0.4375,
+        "v12_ge_one_fraction_tau1": 0.0,
+        "phi_ge_one_fraction_by_donor_tau1": [
+          0.0,
+          0.0
+        ],
+        "allocation_touches_positive_cap_fraction_by_donor_tau1": [
+          0.234375,
+          0.234375
+        ],
+        "allocation_touches_any_positive_cap_fraction_tau1": 0.234375,
+        "single_negative_phi_fraction": 0.6015625,
+        "nonnegative_uncapped_shapley_degeneracy_fraction": 0.234375,
+        "positive_phi_fraction_by_donor": [
+          0.60546875,
+          0.46484375
+        ],
+        "mean_anchor_weight_tau1": 0.9823983600363135,
+        "v12_quantiles_eligible": {
+          "0.0": -0.09134680032730103,
+          "0.05": -0.04984264820814133,
+          "0.25": -0.013553768396377563,
+          "0.5": 0.004984855651855469,
+          "0.75": 0.028577908873558044,
+          "0.95": 0.06737694144248962,
+          "1.0": 0.11679264903068542
+        },
+        "recipe": "B=min(1,max(v12,0)); caps_i=min(1,max(phi_i,0)); r=softmax(phi); w0=clip(B*r0,max(0,B-caps1),min(caps0,B)); w1=B-w0; anchor=1-B; tau fixed to 1"
+      }
+    },
+    {
+      "scene": "SDSD_outdoor/MVI_0902",
+      "patches": 256,
+      "eligible_patches": 256,
+      "ineligible_patches": 0,
+      "donor_labels": 512,
+      "positive_donor_labels": 431,
+      "negative_donor_labels": 81,
+      "excluded_zero_utility_donors": 0,
+      "auc": {
+        "trained_conditional": 0.49898312852682536,
+        "random_conditional": 0.48937297699865373,
+        "wrong_time_conditional": 0.5509438285927072,
+        "ema_cosine": 0.5186617398527684,
+        "negative_lq_mse": 0.551430781129157,
+        "negative_hvi_mse": 0.47326057689553436
+      },
+      "spearman_scene_standardized_utility": {
+        "trained_conditional": 0.010807287196301255,
+        "random_conditional": -0.030723436344934397,
+        "wrong_time_conditional": -0.022090131865050756,
+        "ema_cosine": 0.05614519675329877,
+        "negative_lq_mse": 0.03240004620569689,
+        "negative_hvi_mse": -0.09396681272244538
+      },
+      "interaction_diagnostic": {
+        "predictive_vs_rgb_action_recipe_spearman": -0.11188987754634928,
+        "definition_note": "RGB contrast is specific to singleton versus averaged-pair actions; it is not physical interaction ground truth."
+      },
+      "budget_diagnostic": {
+        "eligible_patches": 256,
+        "zero_budget_fraction": 0.52734375,
+        "v12_ge_one_fraction_tau1": 0.0,
+        "phi_ge_one_fraction_by_donor_tau1": [
+          0.0,
+          0.0
+        ],
+        "allocation_touches_positive_cap_fraction_by_donor_tau1": [
+          0.2734375,
+          0.2734375
+        ],
+        "allocation_touches_any_positive_cap_fraction_tau1": 0.2734375,
+        "single_negative_phi_fraction": 0.453125,
+        "nonnegative_uncapped_shapley_degeneracy_fraction": 0.2734375,
+        "positive_phi_fraction_by_donor": [
+          0.5,
+          0.5
+        ],
+        "mean_anchor_weight_tau1": 0.9857195970835164,
+        "v12_quantiles_eligible": {
+          "0.0": -0.1270955204963684,
+          "0.05": -0.064224973320961,
+          "0.25": -0.025533616542816162,
+          "0.5": -0.0016497969627380371,
+          "0.75": 0.020440809428691864,
+          "0.95": 0.05813726782798767,
+          "1.0": 0.17832741141319275
+        },
+        "recipe": "B=min(1,max(v12,0)); caps_i=min(1,max(phi_i,0)); r=softmax(phi); w0=clip(B*r0,max(0,B-caps1),min(caps0,B)); w1=B-w0; anchor=1-B; tau fixed to 1"
+      }
+    },
+    {
+      "scene": "SDSD_outdoor/MVI_0904",
+      "patches": 256,
+      "eligible_patches": 256,
+      "ineligible_patches": 0,
+      "donor_labels": 512,
+      "positive_donor_labels": 321,
+      "negative_donor_labels": 191,
+      "excluded_zero_utility_donors": 0,
+      "auc": {
+        "trained_conditional": 0.4463799318230008,
+        "random_conditional": 0.5603725269527491,
+        "wrong_time_conditional": 0.39890068666307843,
+        "ema_cosine": 0.5102510153153594,
+        "negative_lq_mse": 0.48805271484725415,
+        "negative_hvi_mse": 0.6582016277666324
+      },
+      "spearman_scene_standardized_utility": {
+        "trained_conditional": -0.08754960317460317,
+        "random_conditional": 0.10757903550520842,
+        "wrong_time_conditional": -0.16959725941566245,
+        "ema_cosine": 0.027245983108456072,
+        "negative_lq_mse": -0.08820093541502157,
+        "negative_hvi_mse": 0.2093666135944885
+      },
+      "interaction_diagnostic": {
+        "predictive_vs_rgb_action_recipe_spearman": 0.02649991416800183,
+        "definition_note": "RGB contrast is specific to singleton versus averaged-pair actions; it is not physical interaction ground truth."
+      },
+      "budget_diagnostic": {
+        "eligible_patches": 256,
+        "zero_budget_fraction": 0.4765625,
+        "v12_ge_one_fraction_tau1": 0.0,
+        "phi_ge_one_fraction_by_donor_tau1": [
+          0.0,
+          0.0
+        ],
+        "allocation_touches_positive_cap_fraction_by_donor_tau1": [
+          0.26953125,
+          0.26953125
+        ],
+        "allocation_touches_any_positive_cap_fraction_tau1": 0.26953125,
+        "single_negative_phi_fraction": 0.453125,
+        "nonnegative_uncapped_shapley_degeneracy_fraction": 0.26953125,
+        "positive_phi_fraction_by_donor": [
+          0.609375,
+          0.3828125
+        ],
+        "mean_anchor_weight_tau1": 0.9746172445593402,
+        "v12_quantiles_eligible": {
+          "0.0": -0.16382074356079102,
+          "0.05": -0.09197703003883362,
+          "0.25": -0.035215213894844055,
+          "0.5": 0.002373307943344116,
+          "0.75": 0.04475638270378113,
+          "0.95": 0.11064386367797852,
+          "1.0": 0.14054179191589355
+        },
+        "recipe": "B=min(1,max(v12,0)); caps_i=min(1,max(phi_i,0)); r=softmax(phi); w0=clip(B*r0,max(0,B-caps1),min(caps0,B)); w1=B-w0; anchor=1-B; tau fixed to 1"
+      }
+    },
+    {
+      "scene": "SDSD_outdoor/MVI_0906",
+      "patches": 256,
+      "eligible_patches": 256,
+      "ineligible_patches": 0,
+      "donor_labels": 512,
+      "positive_donor_labels": 418,
+      "negative_donor_labels": 94,
+      "excluded_zero_utility_donors": 0,
+      "auc": {
+        "trained_conditional": 0.4170314567850962,
+        "random_conditional": 0.4447342970579253,
+        "wrong_time_conditional": 0.4587066069428891,
+        "ema_cosine": 0.48554413112083883,
+        "negative_lq_mse": 0.5465489158098341,
+        "negative_hvi_mse": 0.48394075129797415
+      },
+      "spearman_scene_standardized_utility": {
+        "trained_conditional": -0.0590562093017933,
+        "random_conditional": -0.11827224209784098,
+        "wrong_time_conditional": -0.018553313692036978,
+        "ema_cosine": -0.02772377576360994,
+        "negative_lq_mse": -0.12323636245618755,
+        "negative_hvi_mse": -0.18709865059337843
+      },
+      "interaction_diagnostic": {
+        "predictive_vs_rgb_action_recipe_spearman": -0.030151350423437858,
+        "definition_note": "RGB contrast is specific to singleton versus averaged-pair actions; it is not physical interaction ground truth."
+      },
+      "budget_diagnostic": {
+        "eligible_patches": 256,
+        "zero_budget_fraction": 0.484375,
+        "v12_ge_one_fraction_tau1": 0.0,
+        "phi_ge_one_fraction_by_donor_tau1": [
+          0.0,
+          0.0
+        ],
+        "allocation_touches_positive_cap_fraction_by_donor_tau1": [
+          0.26171875,
+          0.26171875
+        ],
+        "allocation_touches_any_positive_cap_fraction_tau1": 0.26171875,
+        "single_negative_phi_fraction": 0.515625,
+        "nonnegative_uncapped_shapley_degeneracy_fraction": 0.26171875,
+        "positive_phi_fraction_by_donor": [
+          0.546875,
+          0.4921875
+        ],
+        "mean_anchor_weight_tau1": 0.9801942044869065,
+        "v12_quantiles_eligible": {
+          "0.0": -0.1402154564857483,
+          "0.05": -0.08097817748785019,
+          "0.25": -0.027987554669380188,
+          "0.5": 0.004266947507858276,
+          "0.75": 0.030245333909988403,
+          "0.95": 0.07780222594738007,
+          "1.0": 0.1827794313430786
+        },
+        "recipe": "B=min(1,max(v12,0)); caps_i=min(1,max(phi_i,0)); r=softmax(phi); w0=clip(B*r0,max(0,B-caps1),min(caps0,B)); w1=B-w0; anchor=1-B; tau fixed to 1"
+      }
+    },
+    {
+      "scene": "SDSD_outdoor/MVI_0909",
+      "patches": 256,
+      "eligible_patches": 256,
+      "ineligible_patches": 0,
+      "donor_labels": 512,
+      "positive_donor_labels": 419,
+      "negative_donor_labels": 93,
+      "excluded_zero_utility_donors": 0,
+      "auc": {
+        "trained_conditional": 0.5348884953935381,
+        "random_conditional": 0.6024456591474837,
+        "wrong_time_conditional": 0.5634767880514281,
+        "ema_cosine": 0.4879000179639182,
+        "negative_lq_mse": 0.537095491056535,
+        "negative_hvi_mse": 0.2801344727590012
+      },
+      "spearman_scene_standardized_utility": {
+        "trained_conditional": 0.03398380726359277,
+        "random_conditional": 0.1325032161490204,
+        "wrong_time_conditional": 0.03673379724997425,
+        "ema_cosine": 0.03876110796397386,
+        "negative_lq_mse": -0.11568331144642428,
+        "negative_hvi_mse": -0.24442777892219134
+      },
+      "interaction_diagnostic": {
+        "predictive_vs_rgb_action_recipe_spearman": 0.017399576562142367,
+        "definition_note": "RGB contrast is specific to singleton versus averaged-pair actions; it is not physical interaction ground truth."
+      },
+      "budget_diagnostic": {
+        "eligible_patches": 256,
+        "zero_budget_fraction": 0.55859375,
+        "v12_ge_one_fraction_tau1": 0.0,
+        "phi_ge_one_fraction_by_donor_tau1": [
+          0.0,
+          0.0
+        ],
+        "allocation_touches_positive_cap_fraction_by_donor_tau1": [
+          0.20703125,
+          0.20703125
+        ],
+        "allocation_touches_any_positive_cap_fraction_tau1": 0.20703125,
+        "single_negative_phi_fraction": 0.4921875,
+        "nonnegative_uncapped_shapley_degeneracy_fraction": 0.20703125,
+        "positive_phi_fraction_by_donor": [
+          0.4609375,
+          0.4453125
+        ],
+        "mean_anchor_weight_tau1": 0.9797566819470376,
+        "v12_quantiles_eligible": {
+          "0.0": -0.18869781494140625,
+          "0.05": -0.08624473214149475,
+          "0.25": -0.02942749857902527,
+          "0.5": -0.005791321396827698,
+          "0.75": 0.018963806331157684,
+          "0.95": 0.09141289442777634,
+          "1.0": 0.4313695430755615
+        },
+        "recipe": "B=min(1,max(v12,0)); caps_i=min(1,max(phi_i,0)); r=softmax(phi); w0=clip(B*r0,max(0,B-caps1),min(caps0,B)); w1=B-w0; anchor=1-B; tau fixed to 1"
+      }
+    },
+    {
+      "scene": "SDSD_outdoor/MVI_0911",
+      "patches": 256,
+      "eligible_patches": 256,
+      "ineligible_patches": 0,
+      "donor_labels": 512,
+      "positive_donor_labels": 433,
+      "negative_donor_labels": 79,
+      "excluded_zero_utility_donors": 0,
+      "auc": {
+        "trained_conditional": 0.43359546291694684,
+        "random_conditional": 0.3824071096559184,
+        "wrong_time_conditional": 0.4411377788172012,
+        "ema_cosine": 0.43093518870406644,
+        "negative_lq_mse": 0.4985529277633233,
+        "negative_hvi_mse": 0.3514193001432455
+      },
+      "spearman_scene_standardized_utility": {
+        "trained_conditional": -0.02445978316224351,
+        "random_conditional": -0.2076778883567366,
+        "wrong_time_conditional": -0.011068803572859089,
+        "ema_cosine": -0.028311271185955757,
+        "negative_lq_mse": -0.1937226592451448,
+        "negative_hvi_mse": -0.4324860381547476
+      },
+      "interaction_diagnostic": {
+        "predictive_vs_rgb_action_recipe_spearman": -0.021849250400549323,
+        "definition_note": "RGB contrast is specific to singleton versus averaged-pair actions; it is not physical interaction ground truth."
+      },
+      "budget_diagnostic": {
+        "eligible_patches": 256,
+        "zero_budget_fraction": 0.515625,
+        "v12_ge_one_fraction_tau1": 0.0,
+        "phi_ge_one_fraction_by_donor_tau1": [
+          0.0,
+          0.0
+        ],
+        "allocation_touches_positive_cap_fraction_by_donor_tau1": [
+          0.23828125,
+          0.23828125
+        ],
+        "allocation_touches_any_positive_cap_fraction_tau1": 0.23828125,
+        "single_negative_phi_fraction": 0.4765625,
+        "nonnegative_uncapped_shapley_degeneracy_fraction": 0.23828125,
+        "positive_phi_fraction_by_donor": [
+          0.4921875,
+          0.4609375
+        ],
+        "mean_anchor_weight_tau1": 0.9831941513111815,
+        "v12_quantiles_eligible": {
+          "0.0": -0.17381411790847778,
+          "0.05": -0.08102941513061523,
+          "0.25": -0.0276162251830101,
+          "0.5": -0.002331465482711792,
+          "0.75": 0.02478538453578949,
+          "0.95": 0.08120770007371902,
+          "1.0": 0.2342575192451477
+        },
+        "recipe": "B=min(1,max(v12,0)); caps_i=min(1,max(phi_i,0)); r=softmax(phi); w0=clip(B*r0,max(0,B-caps1),min(caps0,B)); w1=B-w0; anchor=1-B; tau fixed to 1"
+      }
+    },
+    {
+      "scene": "SDSD_outdoor/MVI_0916",
+      "patches": 256,
+      "eligible_patches": 256,
+      "ineligible_patches": 0,
+      "donor_labels": 512,
+      "positive_donor_labels": 426,
+      "negative_donor_labels": 86,
+      "excluded_zero_utility_donors": 0,
+      "auc": {
+        "trained_conditional": 0.49658805546457035,
+        "random_conditional": 0.35809040288241073,
+        "wrong_time_conditional": 0.47305928594824764,
+        "ema_cosine": 0.4896822797248608,
+        "negative_lq_mse": 0.37749754339993447,
+        "negative_hvi_mse": 0.1284528878698548
+      },
+      "spearman_scene_standardized_utility": {
+        "trained_conditional": -0.02127464780673144,
+        "random_conditional": -0.09720819396595426,
+        "wrong_time_conditional": -0.023562938453439534,
+        "ema_cosine": -0.003778442252892505,
+        "negative_lq_mse": -0.21978426374154564,
+        "negative_hvi_mse": -0.645451564127213
+      },
+      "interaction_diagnostic": {
+        "predictive_vs_rgb_action_recipe_spearman": 0.0042765793087663085,
+        "definition_note": "RGB contrast is specific to singleton versus averaged-pair actions; it is not physical interaction ground truth."
+      },
+      "budget_diagnostic": {
+        "eligible_patches": 256,
+        "zero_budget_fraction": 0.5078125,
+        "v12_ge_one_fraction_tau1": 0.0,
+        "phi_ge_one_fraction_by_donor_tau1": [
+          0.0,
+          0.0
+        ],
+        "allocation_touches_positive_cap_fraction_by_donor_tau1": [
+          0.2890625,
+          0.2890625
+        ],
+        "allocation_touches_any_positive_cap_fraction_tau1": 0.2890625,
+        "single_negative_phi_fraction": 0.3671875,
+        "nonnegative_uncapped_shapley_degeneracy_fraction": 0.2890625,
+        "positive_phi_fraction_by_donor": [
+          0.484375,
+          0.4609375
+        ],
+        "mean_anchor_weight_tau1": 0.9827482223045081,
+        "v12_quantiles_eligible": {
+          "0.0": -0.24063009023666382,
+          "0.05": -0.09072564542293549,
+          "0.25": -0.029532164335250854,
+          "0.5": -0.000636562705039978,
+          "0.75": 0.023149535059928894,
+          "0.95": 0.08598554134368896,
+          "1.0": 0.16835594177246094
+        },
+        "recipe": "B=min(1,max(v12,0)); caps_i=min(1,max(phi_i,0)); r=softmax(phi); w0=clip(B*r0,max(0,B-caps1),min(caps0,B)); w1=B-w0; anchor=1-B; tau fixed to 1"
+      }
+    }
+  ],
+  "no_pooled_patch_auc": true,
+  "no_patch_bootstrap": true,
+  "limitations": [
+    "Only a mechanism screen on source FIT; no heldout or target inference.",
+    "Gate pass permits a new source-only module pilot; it establishes no module innovation or performance claim.",
+    "Budget and action-recipe interaction are diagnostics, not model selection or physical interaction truth."
+  ],
+  "provenance": {
+    "analysis_freeze": {
+      "path": "/cache/zihaohe/seer_predictive_credit_probe_20261112/analysis_release_v1/checks/analysis_frozen_manifest_v4.json",
+      "sha256": "3151df089d6617772ba4ef069e984a5adbc1ad8c09c62e8fb897a0dac950737b",
+      "verified_bound_files": 18
+    },
+    "critic_sha256": "beb8748f72c7512da68b4f6cbcfe9a910b3bd137a16f6a42757488bc6844070b",
+    "values_sha256": "4ccd7e9a807f43a3c64d6b102f3775a2aca9fed86d197643a4e1909c8d338a2c",
+    "subset_sha256": "35292bbec0bc056481129857436950644448ca669d2261b72de350f841a2a92e",
+    "protocol_sha256": "dd5ca0388495a63f3b3cf8233ab352713df9a2b76ee6acb076979488b732fa55",
+    "critic_input": {
+      "format": "hashed_per_clip_scalar_json",
+      "sha256": "beb8748f72c7512da68b4f6cbcfe9a910b3bd137a16f6a42757488bc6844070b",
+      "clips": [
+        {
+          "path": "/cache/zihaohe/seer_predictive_credit_probe_20261112_v1/critic_cpu_outputs_v2/worker_0/clip_000.json",
+          "sha256": "69b49166b17db384873f4b49b0526adf5051460967d1b8936ed7e1e1cbd164fd",
+          "name": "SDSD_indoor/pair10"
+        },
+        {
+          "path": "/cache/zihaohe/seer_predictive_credit_probe_20261112_v1/critic_cpu_outputs_v2/worker_0/clip_002.json",
+          "sha256": "10c87e8ab4fdfd1c95817c8f56782a0b8d3a77a32271dfe1e1be4e14064974b8",
+          "name": "SDSD_indoor/pair11"
+        },
+        {
+          "path": "/cache/zihaohe/seer_predictive_credit_probe_20261112_v1/critic_cpu_outputs_v2/worker_0/clip_008.json",
+          "sha256": "061739673b9383d3bf5566b6521b6971540c3f2f8bf6a6430e7420f6ed11ae3e",
+          "name": "SDSD_indoor/pair14"
+        },
+        {
+          "path": "/cache/zihaohe/seer_predictive_credit_probe_20261112_v1/critic_cpu_outputs_v2/worker_1/clip_010.json",
+          "sha256": "def4e577a9f111597dc4a4c9832585d291ed5c7b4b57199f00e3fab8857e81dd",
+          "name": "SDSD_indoor/pair15"
+        },
+        {
+          "path": "/cache/zihaohe/seer_predictive_credit_probe_20261112_v1/critic_cpu_outputs_v2/worker_1/clip_014.json",
+          "sha256": "4075e439e48961046f1feff0b2b6ef5915b925926e95f596e6c2b690dde14a1f",
+          "name": "SDSD_indoor/pair17"
+        },
+        {
+          "path": "/cache/zihaohe/seer_predictive_credit_probe_20261112_v1/critic_cpu_outputs_v2/worker_1/clip_018.json",
+          "sha256": "be3eb45a35d80749bdebe9e5dd972c7197de78679b6182954ee8fc6cb70ce712",
+          "name": "SDSD_indoor/pair2"
+        },
+        {
+          "path": "/cache/zihaohe/seer_predictive_credit_probe_20261112_v1/critic_cpu_outputs_v2/worker_2/clip_048.json",
+          "sha256": "4da858302f1f63bcf3d4b140f1cde01d4b68086e9903d45da38a04eae852cb73",
+          "name": "SDSD_outdoor/MVI_0902"
+        },
+        {
+          "path": "/cache/zihaohe/seer_predictive_credit_probe_20261112_v1/critic_cpu_outputs_v2/worker_2/clip_050.json",
+          "sha256": "b3a7fdb95a362e1f51a8088d88740eba686d85685af21a4d1b23c5e42fd2733c",
+          "name": "SDSD_outdoor/MVI_0904"
+        },
+        {
+          "path": "/cache/zihaohe/seer_predictive_credit_probe_20261112_v1/critic_cpu_outputs_v2/worker_2/clip_052.json",
+          "sha256": "993027232fb60fd0ff1bc77fd3a67a067648a1d4030d54653a7a0e9edfd21b21",
+          "name": "SDSD_outdoor/MVI_0906"
+        },
+        {
+          "path": "/cache/zihaohe/seer_predictive_credit_probe_20261112_v1/critic_cpu_outputs_v2/worker_3/clip_054.json",
+          "sha256": "02dcdb36701df92438cbdf00ede5b8e97ad3d71d085b7e0483fe97aba1935bd3",
+          "name": "SDSD_outdoor/MVI_0909"
+        },
+        {
+          "path": "/cache/zihaohe/seer_predictive_credit_probe_20261112_v1/critic_cpu_outputs_v2/worker_3/clip_056.json",
+          "sha256": "0887c732e815a3d454fe33a8e9efeddd507e1fd0f68f7720b4e31caa4af083c0",
+          "name": "SDSD_outdoor/MVI_0911"
+        },
+        {
+          "path": "/cache/zihaohe/seer_predictive_credit_probe_20261112_v1/critic_cpu_outputs_v2/worker_3/clip_060.json",
+          "sha256": "bf2ad60eef0dc6352b9120809a5475953d404e7cc33c1d7f776ed6cc6322d4bf",
+          "name": "SDSD_outdoor/MVI_0916"
+        }
+      ]
+    },
+    "value_input": {
+      "format": "scalar_npz_allow_pickle_false",
+      "sha256": "4ccd7e9a807f43a3c64d6b102f3775a2aca9fed86d197643a4e1909c8d338a2c",
+      "independently_checked_utility_subtractions": 15360,
+      "utility_max_absolute_errors": {
+        "u1": 0.0,
+        "u2": 0.0,
+        "u12": 0.0,
+        "u1_given2": 0.0,
+        "u2_given1": 0.0
+      },
+      "sameframe_zero_exact_equal": true,
+      "gt_free_observable_features_exact_checked": 18432,
+      "no_tensor_or_gt_pixel_access": true
+    },
+    "observable_sidecar_sha256": "580df11ab460f2fb74043f1ae6292de6f0d74a674d86b1c5fb5620ee7f200f23"
+  }
+}

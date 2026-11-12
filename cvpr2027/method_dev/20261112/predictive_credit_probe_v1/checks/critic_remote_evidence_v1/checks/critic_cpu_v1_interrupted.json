@@ -1,0 +1,33 @@
+{
+  "status": "interrupted_for_predeclared_compute_sharding",
+  "owned_pid": 177147,
+  "command": "/cache/zihaohe/seer_cvpr/venv_npu/bin/python critic_cpu_export_v1.py --release /cache/zihaohe/seer_predictive_credit_probe_20261112_v1/cpu_data_release_v1 --output /cache/zihaohe/seer_predictive_credit_probe_20261112_v1/critic_cpu_outputs_v1 ",
+  "cpu16_synthetic_passed": false,
+  "source_output_directory_exists": false,
+  "dataset_pixels_read": 0,
+  "gt_storage_entries_read": 0,
+  "stage_evidence": "CPU driver source reader is only reached after writing critic_cpu16_synthetic.json and creating output directory; neither exists at interruption",
+  "new_shards": [
+    [
+      0,
+      1,
+      2
+    ],
+    [
+      3,
+      4,
+      5
+    ],
+    [
+      6,
+      7,
+      8
+    ],
+    [
+      9,
+      10,
+      11
+    ]
+  ],
+  "timestamp": "2026-11-12T07:23:29.293659+00:00"
+}

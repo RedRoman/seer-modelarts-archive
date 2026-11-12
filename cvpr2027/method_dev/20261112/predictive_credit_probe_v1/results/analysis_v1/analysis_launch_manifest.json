@@ -1,0 +1,74 @@
+{
+  "schema": "seer.predictive_credit_probe.analysis_launch.v1",
+  "launch_utc": "2026-11-12T07:49:08.874422+00:00",
+  "argv": [
+    "/cache/zihaohe/seer_cvpr/venv_npu/bin/python",
+    "/cache/zihaohe/seer_predictive_credit_probe_20261112/analysis_release_v1/analyze_probe.py",
+    "analyze",
+    "--subset",
+    "/cache/zihaohe/seer_predictive_credit_probe_20261112/analysis_release_v1/subsets.json",
+    "--protocol",
+    "/cache/zihaohe/seer_predictive_credit_probe_20261112/analysis_release_v1/PLAN.md",
+    "--output",
+    "/cache/zihaohe/seer_predictive_credit_probe_20261112/analysis_results_v1/source_fit_probe_analysis.json",
+    "--frozen-analysis-manifest",
+    "/cache/zihaohe/seer_predictive_credit_probe_20261112/analysis_release_v1/checks/analysis_frozen_manifest_v4.json",
+    "--critic",
+    "/cache/zihaohe/seer_predictive_credit_probe_20261112_v1/critic_cpu_outputs_v2/manifest.json",
+    "--values",
+    "/cache/zihaohe/seer_predictive_credit_probe_20261112/values_utilities_v1/patch_statistics.npz",
+    "--observable-sidecar",
+    "/cache/zihaohe/seer_predictive_credit_probe_20261112/values_observables_v1/observable_sidecar.json",
+    "--expected-observable-sha256",
+    "580df11ab460f2fb74043f1ae6292de6f0d74a674d86b1c5fb5620ee7f200f23"
+  ],
+  "frozen_before": {
+    "path": "/cache/zihaohe/seer_predictive_credit_probe_20261112/analysis_release_v1/checks/analysis_frozen_manifest_v4.json",
+    "sha256": "3151df089d6617772ba4ef069e984a5adbc1ad8c09c62e8fb897a0dac950737b",
+    "verified_bound_files": 18
+  },
+  "inputs": {
+    "critic_manifest": {
+      "path": "/cache/zihaohe/seer_predictive_credit_probe_20261112_v1/critic_cpu_outputs_v2/manifest.json",
+      "sha256": "beb8748f72c7512da68b4f6cbcfe9a910b3bd137a16f6a42757488bc6844070b"
+    },
+    "critic_merge_complete": {
+      "path": "/cache/zihaohe/seer_predictive_credit_probe_20261112_v1/checks/critic_merge_complete_v2.json",
+      "sha256": "e5e482d480340522ef51075a600a8e0008d1d660de356ce118f44a5088a0a68d"
+    },
+    "values": {
+      "path": "/cache/zihaohe/seer_predictive_credit_probe_20261112/values_utilities_v1/patch_statistics.npz",
+      "sha256": "4ccd7e9a807f43a3c64d6b102f3775a2aca9fed86d197643a4e1909c8d338a2c"
+    },
+    "observables": {
+      "path": "/cache/zihaohe/seer_predictive_credit_probe_20261112/values_observables_v1/observable_sidecar.json",
+      "sha256": "580df11ab460f2fb74043f1ae6292de6f0d74a674d86b1c5fb5620ee7f200f23"
+    }
+  },
+  "critic_merge": {
+    "status": "passed",
+    "device": "cpu",
+    "workers": 4,
+    "threads_each": 4,
+    "dataset_clip_forwards": 12,
+    "npu_source_forwards": 0,
+    "gt_storage_entries_read": 0,
+    "target_inputs_read": 0,
+    "internal_inputs_read": 0,
+    "all_four_synthetic_passed": true,
+    "all_worker_states_identical": true,
+    "states_unchanged": true,
+    "unique_coverage12": true,
+    "finite_loss_checks": 36864,
+    "shared_frozen_state_sha256": {
+      "encoder": "c22efaa60d915bcd3567eca1e3611ce8125b4fb3a24614a9bb155636867e7a1d",
+      "trained": "2e22d798996cf7c8bc52cb877ae30d443324f00f37aa9b77c74218f52356f9a4",
+      "random": "fc9c742a226e00486dca7d79385a4ac8f9702271e9dc688f6033aded696bb0d9"
+    },
+    "manifest_sha256": "beb8748f72c7512da68b4f6cbcfe9a910b3bd137a16f6a42757488bc6844070b",
+    "release_sha256": "86e6bfc77864ce739d793a7d51e9f0f3164ae024876df7286a9f5dea99c4e052",
+    "completed_utc": "2026-11-12T07:47:54.215699+00:00"
+  },
+  "selection_or_training": false,
+  "aggregate_psnr_before_freeze_disclosed": true
+}
