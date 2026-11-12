@@ -1,4 +1,6 @@
 # V-JEPA-LLVE Project Handoff Document
+> **Historical snapshot — May 2026.** The original text below is preserved for provenance; its current-state labels, claims and proposed runs are not the November project status. Use the [2026-11-12 technical handoff](../TECHNICAL_HANDOFF_20261112.md) and [current progress](../STATUS.md).
+>
 > For new reviewer joining mid-project, 2026-05-04.
 > Current state: **v11 JDAP architecture, predicted_delta works strongly but killer test fails. Awaiting next-step decision.**
 

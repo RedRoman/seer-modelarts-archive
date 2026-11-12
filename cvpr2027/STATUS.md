@@ -4,7 +4,24 @@
 > 验证正向收益的方法，目标是 SOTA 方法论文。首轮方法实验见
 > `method_dev/20261111/PLAN.md`；下文保留上一轮评测与材料恢复记录。
 
-当前下一轮 **观测对照与联合时序重建实验** 已完成42个head的源域训练：
+## 最新进度：实验快照截至163122a（2026-11-12）
+
+接手入口为 [技术handoff](TECHNICAL_HANDOFF_20261112.md)，其中包含复现命令、缓存/权重、SHA、SFS恢复与待解决问题。当前分支为 `codex/seer-method-dev-20261111`。
+
+- **正确性修复完成**：SDSD原始NPY为BGR；新HVI输入显式转RGB并重算全部136个source clips。旧Seer全pipeline颜色包装复现完成，历史输出/协议未覆盖。详见 [RGB合同](method_dev/20261112/color_contract_v1/RESULTS.md) 与 [native replay](method_dev/20261112/native_color_replay_v1/RESULTS.md)。修复本身不是创新，也未带来整体质量提升。
+- **固定融合正向结果**：FIT102/51 scenes完整16帧float RGB下，HVI15.322981，预定λ=.5 temporal mean15.695540（+0.372559dB）；全部51 scenes的mean MSE下降。三个预定λ均报告，没有选择最优配置。
+- **最新FIT12筛选已结束**：中央帧8,9的固定DC pair由19.008205提高至19.260180（+0.251975dB，12/12 scenes正向）。同集无DC平均+0.504676dB但4/12 scenes下降。这些是固定动作基线，不能归因新预测模块，也不能与FIT102绝对数混用。
+- **预测信用候选停止**：全12 scenes、3072 patches、6144 donor labels上，candidate macroAUC=.456270，LQ一致性=.562261，五项主比较全部未过；τ=1分配在全部patches上代数唯一，未建立caps/softmax创新。未启动模块训练/目标域扩跑，详见 [完整结果](method_dev/20261112/predictive_credit_probe_v1/RESULTS.md)。
+- **强参考与跨域边界**：BVI VAL16 corrected Seer P为19.330874Y，低于HVI24.241232Y；P/N初值不完全匹配。HVI、DarkIR、Retinexformer已完成同clip协议参考；AMNet指定finetuned权重仍待取得，没有分数。尚无SOTA或隔离JEPA/cross-domain优势结论。
+- **验证与保全闭合**：统计27tests通过，local/remote独立pairwise复核各326项一致；critic/value合同8/10tests、8项merge fixtures、四完整16帧实模型测试通过。全部正式critic数据在CPU执行，NPU parity失败记录保留。23/103/36个value/critic/analysis payload及90个root文本payload分别完成SFS逐文件校验；Git仅保存代码和文本证据。
+
+截至末次实验资源收据2026-11-12 07:57UTC，自有实验进程为0，NPU6/7空闲；该记录不保证接手时仍空闲。当前没有待续训的预测信用job。下一阶段要更换核心模块假设，并保留强固定融合/普通可靠性对照；论文写作继续暂停。
+
+## 前序方法阶段记录
+
+以下保留各阶段当时的协议与结果。旧颜色接口和归因的解释以最新RGB合同/native replay及handoff为准，不把历史正向数直接当成新canonical RGB模块证据。
+
+此前 **观测对照与联合时序重建实验** 已完成42个head的源域训练：
 两种E17基座、七个预定变体、三个head seed，全部跑满1000步。
 同帧细节、错配邻帧、逐帧融合与四种图重建变体使用相同采样计划；
 新增真实±1光流约束，源域crop128，目标域crop256。
@@ -134,7 +151,7 @@ KV、layers、taps、投影和 random seed=1234；`legacy` 仅供诊断。
 CPU 检查在有 Torch 的远端运行，配置/重建 11 项、mean×basis 4 项均通过；
 本地统计回归 5 项通过。
 
-## 主机与材料
+## 2026-11-11接管时的主机与材料（历史）
 
 用户提供的 12 个端口中，10 个可建立 SSH；32141、31514 本轮连接失败。
 旧 32677 仍失败。可识别硬件均为 Ascend 910B3×8，没有找回旧 A100 本地盘。
@@ -151,7 +168,7 @@ CPU 检查在有 Torch 的远端运行，配置/重建 11 项、mean×basis 4 �
 逐文件 SHA 已归档到 `results/protocol_audit_20261111/checkpoint_manifest_31051.json`。
 这批 CVPR 权重尚未发布到 GitHub Release。说明见根目录 `CHECKPOINTS.md`。
 
-## 当前执行与交付
+## 接管审计当时的执行与交付（历史）
 
 - random seed 0、E26 seeds 0/1、hybrid seeds 0/1 与 all-layers seed 2 的
   正确配置重评共六项已完成，原结果保留；本轮 NPU 队列已结束。

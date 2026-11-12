@@ -6,32 +6,35 @@ were reclaimed. The September snapshot was copied relative to the servers except
 
 ## CVPR 2027 round (`cvpr2027/`)
 
-Start with [`cvpr2027/STATUS.md`](cvpr2027/STATUS.md). Current work prioritizes
-method development with positive, reproducible experiments and strong video
-baselines. Manuscript work is paused. The executable development plan and raw
-results are in [`method_dev/20261111/`](cvpr2027/method_dev/20261111/PLAN.md);
-independent BVI validation is in
-[`selector_val_v1/`](cvpr2027/method_dev/20261111/selector_val_v1/RESULTS.md).
-The [next observation/trajectory pilot](cvpr2027/method_dev/20261112/observation_v2/PLAN.md)
-has completed all 42 source-trained heads and all 31 methods per arm on BVI
-VAL16. Correct neighboring observations beat matched same-frame controls;
-trajectory reconstruction improves the temporal tradeoff, while learned edge
-conditioning does not beat fixed edges. Full results and independent checks are
-in its [experiment report](cvpr2027/method_dev/20261112/observation_v2/RESULTS.md).
-The separately specified TempRetinex reference is measured under the same clip
-protocol; a SOTA result is not established.
-The preceding [SDSD-to-BVI source-trained experiment](cvpr2027/method_dev/20261111/source_transfer_v1/RESULTS.md)
-completed all 36 declared heads and a same-protocol STCD reference. Observation
-detail improves spatial quality across datasets, with a temporal tradeoff;
-the fixed-fusion controls and no-prior arm remain fully reported. This is
-method development, not a SOTA or isolated video-pretraining claim.
-The preceding takeover audited checkpoint reconstruction, corrected historical
-controls and backed up the reachable final weights. Historical JSONs remain
-unchanged; corrected outputs are separate. The current code is
-`cvpr2027/code_full/`; `cvpr2027/code/` is the earlier partial snapshot.
-`cvpr2027/notes/CVPR_PREREG.md` contains the hypotheses, decision rules and
-append-only amendments. Amendment 21 distinguishes the retrospective audit
-from a newly specified validation-only mean/basis diagnostic.
+Start with the [current progress](cvpr2027/STATUS.md) and
+[technical handoff, 2026-11-12](cvpr2027/TECHNICAL_HANDOFF_20261112.md).
+Active work is on branch `codex/seer-method-dev-20261111`; the handoff covers
+results through experiment commit `163122a`. The goal remains substantive module
+innovation with positive, reproducible evidence and strong comparisons.
+Manuscript work is paused; SOTA performance is not established.
+
+The [canonical RGB repair](cvpr2027/method_dev/20261112/color_contract_v1/RESULTS.md)
+closed the SDSD BGR input contract and recomputed HVI source anchors. Fixed
+temporal fusion improves source FIT102 RGB PSNR by +0.372559dB at the predefined
+lambda .5. In the separate [FIT12 mechanism probe](cvpr2027/method_dev/20261112/predictive_credit_probe_v1/RESULTS.md),
+fixed DC-preserving transport improves central-two-frame PSNR by +0.251975dB,
+but predictive credit fails its five-control utility gate (AUROC .456270 versus
+LQ consistency .562261). That candidate is stopped before module training;
+the fixed-action gain is retained as baseline evidence.
+
+[Native-color Seer replay](cvpr2027/method_dev/20261112/native_color_replay_v1/RESULTS.md)
+and [strong image references](cvpr2027/method_dev/20261112/baseline_replay_v1/RESULTS.md)
+are complete. Cross-domain or isolated JEPA superiority is not established.
+The handoff includes metric boundaries, executable scalar replays, exact hashes,
+remote cache/SFS locations, pending video comparisons and current stop decisions.
+
+Earlier [observation/trajectory](cvpr2027/method_dev/20261112/observation_v2/RESULTS.md),
+[source transfer](cvpr2027/method_dev/20261111/source_transfer_v1/RESULTS.md) and
+[selector validation](cvpr2027/method_dev/20261111/selector_val_v1/RESULTS.md)
+records remain available under their original protocols. Historical results are
+preserved, with corrected outputs in separate versions. `cvpr2027/code_full/`
+contains the recovered model code; `cvpr2027/code/` is the earlier partial snapshot.
+Its May handoff/progress files are historical; use the November handoff above.
 
 ## Layout
 | path | what | server origin |
@@ -68,8 +71,8 @@ separately verified CVPR recovery archive. Verify hashes before restoring.
 
 ## CVPR 2027 round (protocol audit, 2026-11-11)
 
-Start at `cvpr2027/STATUS.md` (current verdicts, what is unfinished, decisions
-pending) and `cvpr2027/EXPERIMENTS.md` (every experiment's flags, seeds, host
-port, server run and result paths, and archived location). Host 32677 has been
-unreachable since 2026-11-05; what was recovered from it and what was not is
-listed in both files.
+For the November 11 takeover audit, see `cvpr2027/EXPERIMENTS.md` for its flags,
+seeds, host ports and archived paths. The audit recorded host 32677 as unreachable
+since November 5; recovered and missing materials are documented there. Current
+method-development status and recovery instructions are in the November 12
+handoff linked above.

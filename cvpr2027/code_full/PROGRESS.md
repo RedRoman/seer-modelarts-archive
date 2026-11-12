@@ -1,5 +1,7 @@
 # V-JEPA-LLVE Phase 2 — Project Progress
 
+> **Historical snapshot — May 2026.** The original SOTA/TruePAC labels and next steps below are historical records, not current validated conclusions. Use the [2026-11-12 technical handoff](../TECHNICAL_HANDOFF_20261112.md) and [current progress](../STATUS.md).
+
 **Last update:** 2026-05-24 17:30 (v14-v16 mechanism search reviewed, next target re-parameterization)
 **Target:** CVPR 2027 (deadline ~Nov 2026)
 
