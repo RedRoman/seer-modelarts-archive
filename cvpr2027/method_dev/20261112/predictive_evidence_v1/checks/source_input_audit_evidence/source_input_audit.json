@@ -1,0 +1,662 @@
+{
+  "scope": "first fixed FIT scene only; two clips32 distinct original LQ frames; no model/GT/quality score",
+  "selected_scene": "SDSD_outdoor/MVI_0975",
+  "records": [
+    {
+      "name": "SDSD_outdoor/MVI_0975",
+      "scene": "SDSD_outdoor/MVI_0975",
+      "source_index": 108,
+      "augmentation_seed": 6562976749153354658,
+      "frame_indices": [
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17,
+        18,
+        19,
+        20,
+        21,
+        22
+      ],
+      "shape": [
+        1,
+        3,
+        16,
+        256,
+        256
+      ],
+      "dtype": "torch.float32",
+      "producer_vs_cache_bitwise_equal": true,
+      "training_loader_vs_cache_bitwise_equal": true,
+      "hvi_export_input_vs_cache_bitwise_equal": true,
+      "hvi_frame_flatten_vs_unbind_bitwise_equal": true,
+      "canonical_lq_tensor_sha256": "42e6b639cd53327d3f18688b162329cf241761af0f14312bc1d17dec0be92ffb",
+      "official_rgb_tensor_sha256": "7d06165675fade511cb0c1d3c93297aacbf5627d9b0bd7666e2f6d8f971803a9",
+      "official_rgb_equals_cached_channel_reversal": true,
+      "official_rgb_equals_cached_without_swap": false,
+      "channel_reversal_max_abs_difference": 0.10588234663009644,
+      "channel_reversal_mean_abs_difference": 0.008861743845045567,
+      "cached_minimum": 0.0,
+      "cached_maximum": 0.4000000059604645,
+      "cached_channel_means": [
+        0.027726937186636658,
+        0.03586438605056674,
+        0.040713218024718945
+      ],
+      "archive_lq_files_exact_sha256_match": true,
+      "frames": [
+        {
+          "path": "/temp/zihaohe/seer_cvpr/datasets/outdoor_static_np/input/MVI_0975/0008.npy",
+          "sha256": "403ff9e900bcb5643d46a36bcecab3aac28e432612c3af738e18e0c47aefe525",
+          "archive_member": "outdoor_static_np/input/MVI_0975/0008.npy",
+          "archive_extracted_sha256": "403ff9e900bcb5643d46a36bcecab3aac28e432612c3af738e18e0c47aefe525",
+          "archive_bytes": 6220928,
+          "shape": [
+            1080,
+            1920,
+            3
+          ],
+          "dtype": "uint8",
+          "raw_minimum": 0,
+          "raw_maximum": 128
+        },
+        {
+          "path": "/temp/zihaohe/seer_cvpr/datasets/outdoor_static_np/input/MVI_0975/0009.npy",
+          "sha256": "f567e33305128a808046df9951a6215f02f98ce77a54e6a74c007b93d08704c4",
+          "archive_member": "outdoor_static_np/input/MVI_0975/0009.npy",
+          "archive_extracted_sha256": "f567e33305128a808046df9951a6215f02f98ce77a54e6a74c007b93d08704c4",
+          "archive_bytes": 6220928,
+          "shape": [
+            1080,
+            1920,
+            3
+          ],
+          "dtype": "uint8",
+          "raw_minimum": 0,
+          "raw_maximum": 129
+        },
+        {
+          "path": "/temp/zihaohe/seer_cvpr/datasets/outdoor_static_np/input/MVI_0975/0010.npy",
+          "sha256": "86611d3e8194ec408fd055ba9cb4b51f82049536efec9ab241fb27d5b84f3208",
+          "archive_member": "outdoor_static_np/input/MVI_0975/0010.npy",
+          "archive_extracted_sha256": "86611d3e8194ec408fd055ba9cb4b51f82049536efec9ab241fb27d5b84f3208",
+          "archive_bytes": 6220928,
+          "shape": [
+            1080,
+            1920,
+            3
+          ],
+          "dtype": "uint8",
+          "raw_minimum": 0,
+          "raw_maximum": 125
+        },
+        {
+          "path": "/temp/zihaohe/seer_cvpr/datasets/outdoor_static_np/input/MVI_0975/0011.npy",
+          "sha256": "4bae4ce1209d113f2afafe2c1016c500bcd6f40fb07a0c2d14a16145ca4e474c",
+          "archive_member": "outdoor_static_np/input/MVI_0975/0011.npy",
+          "archive_extracted_sha256": "4bae4ce1209d113f2afafe2c1016c500bcd6f40fb07a0c2d14a16145ca4e474c",
+          "archive_bytes": 6220928,
+          "shape": [
+            1080,
+            1920,
+            3
+          ],
+          "dtype": "uint8",
+          "raw_minimum": 0,
+          "raw_maximum": 127
+        },
+        {
+          "path": "/temp/zihaohe/seer_cvpr/datasets/outdoor_static_np/input/MVI_0975/0012.npy",
+          "sha256": "3aae5477cf35ba83d83931faac03642b2b8aa001ec2ef0a1a759c1b4a761fa32",
+          "archive_member": "outdoor_static_np/input/MVI_0975/0012.npy",
+          "archive_extracted_sha256": "3aae5477cf35ba83d83931faac03642b2b8aa001ec2ef0a1a759c1b4a761fa32",
+          "archive_bytes": 6220928,
+          "shape": [
+            1080,
+            1920,
+            3
+          ],
+          "dtype": "uint8",
+          "raw_minimum": 0,
+          "raw_maximum": 126
+        },
+        {
+          "path": "/temp/zihaohe/seer_cvpr/datasets/outdoor_static_np/input/MVI_0975/0013.npy",
+          "sha256": "cbfd62c7bb587e0deb5c57d71d665685d94c4510ac95cb1ebddcca131898cf86",
+          "archive_member": "outdoor_static_np/input/MVI_0975/0013.npy",
+          "archive_extracted_sha256": "cbfd62c7bb587e0deb5c57d71d665685d94c4510ac95cb1ebddcca131898cf86",
+          "archive_bytes": 6220928,
+          "shape": [
+            1080,
+            1920,
+            3
+          ],
+          "dtype": "uint8",
+          "raw_minimum": 0,
+          "raw_maximum": 134
+        },
+        {
+          "path": "/temp/zihaohe/seer_cvpr/datasets/outdoor_static_np/input/MVI_0975/0014.npy",
+          "sha256": "7949ea4f4dde0bc7c488e0852eb4b9d1f09c21721b6fbb47e5ff18e5d1bfc057",
+          "archive_member": "outdoor_static_np/input/MVI_0975/0014.npy",
+          "archive_extracted_sha256": "7949ea4f4dde0bc7c488e0852eb4b9d1f09c21721b6fbb47e5ff18e5d1bfc057",
+          "archive_bytes": 6220928,
+          "shape": [
+            1080,
+            1920,
+            3
+          ],
+          "dtype": "uint8",
+          "raw_minimum": 0,
+          "raw_maximum": 132
+        },
+        {
+          "path": "/temp/zihaohe/seer_cvpr/datasets/outdoor_static_np/input/MVI_0975/0015.npy",
+          "sha256": "e686821a754272b39773045aba1cb7c35e9592e1fe471022e847dc8acf3a81d4",
+          "archive_member": "outdoor_static_np/input/MVI_0975/0015.npy",
+          "archive_extracted_sha256": "e686821a754272b39773045aba1cb7c35e9592e1fe471022e847dc8acf3a81d4",
+          "archive_bytes": 6220928,
+          "shape": [
+            1080,
+            1920,
+            3
+          ],
+          "dtype": "uint8",
+          "raw_minimum": 0,
+          "raw_maximum": 131
+        },
+        {
+          "path": "/temp/zihaohe/seer_cvpr/datasets/outdoor_static_np/input/MVI_0975/0016.npy",
+          "sha256": "488bae7edadf429511cb96eab18e46629aeffb68d52a2b0b903ee770c54e0747",
+          "archive_member": "outdoor_static_np/input/MVI_0975/0016.npy",
+          "archive_extracted_sha256": "488bae7edadf429511cb96eab18e46629aeffb68d52a2b0b903ee770c54e0747",
+          "archive_bytes": 6220928,
+          "shape": [
+            1080,
+            1920,
+            3
+          ],
+          "dtype": "uint8",
+          "raw_minimum": 0,
+          "raw_maximum": 117
+        },
+        {
+          "path": "/temp/zihaohe/seer_cvpr/datasets/outdoor_static_np/input/MVI_0975/0017.npy",
+          "sha256": "b1f270ad02da73b9fb841d69d75fc15c1f903dc8f42ef17eb332757f2e544ecb",
+          "archive_member": "outdoor_static_np/input/MVI_0975/0017.npy",
+          "archive_extracted_sha256": "b1f270ad02da73b9fb841d69d75fc15c1f903dc8f42ef17eb332757f2e544ecb",
+          "archive_bytes": 6220928,
+          "shape": [
+            1080,
+            1920,
+            3
+          ],
+          "dtype": "uint8",
+          "raw_minimum": 0,
+          "raw_maximum": 119
+        },
+        {
+          "path": "/temp/zihaohe/seer_cvpr/datasets/outdoor_static_np/input/MVI_0975/0018.npy",
+          "sha256": "95d6b2f1c2a217d8ec9d695aa2c0124e3d4b97c3e2d5f2c9ba749e954dcd4b33",
+          "archive_member": "outdoor_static_np/input/MVI_0975/0018.npy",
+          "archive_extracted_sha256": "95d6b2f1c2a217d8ec9d695aa2c0124e3d4b97c3e2d5f2c9ba749e954dcd4b33",
+          "archive_bytes": 6220928,
+          "shape": [
+            1080,
+            1920,
+            3
+          ],
+          "dtype": "uint8",
+          "raw_minimum": 0,
+          "raw_maximum": 118
+        },
+        {
+          "path": "/temp/zihaohe/seer_cvpr/datasets/outdoor_static_np/input/MVI_0975/0019.npy",
+          "sha256": "9f72fd72a0b3fba9249c23d7e544daf7e1c62782e78f07dea6ed01879c359570",
+          "archive_member": "outdoor_static_np/input/MVI_0975/0019.npy",
+          "archive_extracted_sha256": "9f72fd72a0b3fba9249c23d7e544daf7e1c62782e78f07dea6ed01879c359570",
+          "archive_bytes": 6220928,
+          "shape": [
+            1080,
+            1920,
+            3
+          ],
+          "dtype": "uint8",
+          "raw_minimum": 0,
+          "raw_maximum": 118
+        },
+        {
+          "path": "/temp/zihaohe/seer_cvpr/datasets/outdoor_static_np/input/MVI_0975/0020.npy",
+          "sha256": "9ed2b6dca5e11182ce9ad3708131a70943c0a40a708e6b3228088cec2bca2435",
+          "archive_member": "outdoor_static_np/input/MVI_0975/0020.npy",
+          "archive_extracted_sha256": "9ed2b6dca5e11182ce9ad3708131a70943c0a40a708e6b3228088cec2bca2435",
+          "archive_bytes": 6220928,
+          "shape": [
+            1080,
+            1920,
+            3
+          ],
+          "dtype": "uint8",
+          "raw_minimum": 0,
+          "raw_maximum": 120
+        },
+        {
+          "path": "/temp/zihaohe/seer_cvpr/datasets/outdoor_static_np/input/MVI_0975/0021.npy",
+          "sha256": "79095e3bee7c5593aa1c518ffa4d82d3ff1371102c7433e6820f803ead614688",
+          "archive_member": "outdoor_static_np/input/MVI_0975/0021.npy",
+          "archive_extracted_sha256": "79095e3bee7c5593aa1c518ffa4d82d3ff1371102c7433e6820f803ead614688",
+          "archive_bytes": 6220928,
+          "shape": [
+            1080,
+            1920,
+            3
+          ],
+          "dtype": "uint8",
+          "raw_minimum": 0,
+          "raw_maximum": 113
+        },
+        {
+          "path": "/temp/zihaohe/seer_cvpr/datasets/outdoor_static_np/input/MVI_0975/0022.npy",
+          "sha256": "e60bfc6743326c372a1bb2b8bcc9c720609df1971ad5755df091c6371059f8b8",
+          "archive_member": "outdoor_static_np/input/MVI_0975/0022.npy",
+          "archive_extracted_sha256": "e60bfc6743326c372a1bb2b8bcc9c720609df1971ad5755df091c6371059f8b8",
+          "archive_bytes": 6220928,
+          "shape": [
+            1080,
+            1920,
+            3
+          ],
+          "dtype": "uint8",
+          "raw_minimum": 0,
+          "raw_maximum": 115
+        },
+        {
+          "path": "/temp/zihaohe/seer_cvpr/datasets/outdoor_static_np/input/MVI_0975/0023.npy",
+          "sha256": "7b7132a0f88cede1846722250498402f2480c0dcb71cd659c79482f7bd845d14",
+          "archive_member": "outdoor_static_np/input/MVI_0975/0023.npy",
+          "archive_extracted_sha256": "7b7132a0f88cede1846722250498402f2480c0dcb71cd659c79482f7bd845d14",
+          "archive_bytes": 6220928,
+          "shape": [
+            1080,
+            1920,
+            3
+          ],
+          "dtype": "uint8",
+          "raw_minimum": 0,
+          "raw_maximum": 114
+        }
+      ]
+    },
+    {
+      "name": "SDSD_outdoor/MVI_0975_2",
+      "scene": "SDSD_outdoor/MVI_0975",
+      "source_index": 109,
+      "augmentation_seed": 7177351203276931590,
+      "frame_indices": [
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17,
+        18
+      ],
+      "shape": [
+        1,
+        3,
+        16,
+        256,
+        256
+      ],
+      "dtype": "torch.float32",
+      "producer_vs_cache_bitwise_equal": true,
+      "training_loader_vs_cache_bitwise_equal": true,
+      "hvi_export_input_vs_cache_bitwise_equal": true,
+      "hvi_frame_flatten_vs_unbind_bitwise_equal": true,
+      "canonical_lq_tensor_sha256": "3a6a4c05e094b5a6b174553495bfdd91459ee3706fc318ce9137fc84f555965f",
+      "official_rgb_tensor_sha256": "39eb3892fccf6ff97eb35733104f1ffae5c943378c5a2e53ddd9dc0ca641f40b",
+      "official_rgb_equals_cached_channel_reversal": true,
+      "official_rgb_equals_cached_without_swap": false,
+      "channel_reversal_max_abs_difference": 0.11764706671237946,
+      "channel_reversal_mean_abs_difference": 0.01009568851441145,
+      "cached_minimum": 0.0,
+      "cached_maximum": 0.16862745583057404,
+      "cached_channel_means": [
+        0.016825713914891516,
+        0.02994792877719421,
+        0.03159185390323804
+      ],
+      "archive_lq_files_exact_sha256_match": true,
+      "frames": [
+        {
+          "path": "/temp/zihaohe/seer_cvpr/datasets/outdoor_static_np/input/MVI_0975_2/0398.npy",
+          "sha256": "4d9bae675b15bc5871209afa4abc56ce8f0c3b1234abb5c7bcd35d4b4dfbc1e2",
+          "archive_member": "outdoor_static_np/input/MVI_0975_2/0398.npy",
+          "archive_extracted_sha256": "4d9bae675b15bc5871209afa4abc56ce8f0c3b1234abb5c7bcd35d4b4dfbc1e2",
+          "archive_bytes": 6220928,
+          "shape": [
+            1080,
+            1920,
+            3
+          ],
+          "dtype": "uint8",
+          "raw_minimum": 0,
+          "raw_maximum": 191
+        },
+        {
+          "path": "/temp/zihaohe/seer_cvpr/datasets/outdoor_static_np/input/MVI_0975_2/0399.npy",
+          "sha256": "a141e2059b6a06e5887ec39d43592f7bbef77bee98482cfe323114072ad8d53e",
+          "archive_member": "outdoor_static_np/input/MVI_0975_2/0399.npy",
+          "archive_extracted_sha256": "a141e2059b6a06e5887ec39d43592f7bbef77bee98482cfe323114072ad8d53e",
+          "archive_bytes": 6220928,
+          "shape": [
+            1080,
+            1920,
+            3
+          ],
+          "dtype": "uint8",
+          "raw_minimum": 0,
+          "raw_maximum": 197
+        },
+        {
+          "path": "/temp/zihaohe/seer_cvpr/datasets/outdoor_static_np/input/MVI_0975_2/0400.npy",
+          "sha256": "2ba106ec08ae001439354fe07cf5ad9c9d7b283d99f45b1e303038ff6d7c96d7",
+          "archive_member": "outdoor_static_np/input/MVI_0975_2/0400.npy",
+          "archive_extracted_sha256": "2ba106ec08ae001439354fe07cf5ad9c9d7b283d99f45b1e303038ff6d7c96d7",
+          "archive_bytes": 6220928,
+          "shape": [
+            1080,
+            1920,
+            3
+          ],
+          "dtype": "uint8",
+          "raw_minimum": 0,
+          "raw_maximum": 196
+        },
+        {
+          "path": "/temp/zihaohe/seer_cvpr/datasets/outdoor_static_np/input/MVI_0975_2/0401.npy",
+          "sha256": "b5923135ff19c1da062d2fbfab470f1ed5f9a31348d8f1ec27d3d9b0ec986ccc",
+          "archive_member": "outdoor_static_np/input/MVI_0975_2/0401.npy",
+          "archive_extracted_sha256": "b5923135ff19c1da062d2fbfab470f1ed5f9a31348d8f1ec27d3d9b0ec986ccc",
+          "archive_bytes": 6220928,
+          "shape": [
+            1080,
+            1920,
+            3
+          ],
+          "dtype": "uint8",
+          "raw_minimum": 0,
+          "raw_maximum": 198
+        },
+        {
+          "path": "/temp/zihaohe/seer_cvpr/datasets/outdoor_static_np/input/MVI_0975_2/0402.npy",
+          "sha256": "d6bf8cde1f4a078d8f22c805bc227985cdbece784e4304a457788b0b275cc408",
+          "archive_member": "outdoor_static_np/input/MVI_0975_2/0402.npy",
+          "archive_extracted_sha256": "d6bf8cde1f4a078d8f22c805bc227985cdbece784e4304a457788b0b275cc408",
+          "archive_bytes": 6220928,
+          "shape": [
+            1080,
+            1920,
+            3
+          ],
+          "dtype": "uint8",
+          "raw_minimum": 0,
+          "raw_maximum": 201
+        },
+        {
+          "path": "/temp/zihaohe/seer_cvpr/datasets/outdoor_static_np/input/MVI_0975_2/0403.npy",
+          "sha256": "1315f0dfe277ccb7c5f18496561f0dca005c8f47a3d02fa98f29cb00d3c41d39",
+          "archive_member": "outdoor_static_np/input/MVI_0975_2/0403.npy",
+          "archive_extracted_sha256": "1315f0dfe277ccb7c5f18496561f0dca005c8f47a3d02fa98f29cb00d3c41d39",
+          "archive_bytes": 6220928,
+          "shape": [
+            1080,
+            1920,
+            3
+          ],
+          "dtype": "uint8",
+          "raw_minimum": 0,
+          "raw_maximum": 200
+        },
+        {
+          "path": "/temp/zihaohe/seer_cvpr/datasets/outdoor_static_np/input/MVI_0975_2/0404.npy",
+          "sha256": "d202c69e6d0192aeea8d3f0cfb9eeeea1baeef7621635cefaed65be6cef32129",
+          "archive_member": "outdoor_static_np/input/MVI_0975_2/0404.npy",
+          "archive_extracted_sha256": "d202c69e6d0192aeea8d3f0cfb9eeeea1baeef7621635cefaed65be6cef32129",
+          "archive_bytes": 6220928,
+          "shape": [
+            1080,
+            1920,
+            3
+          ],
+          "dtype": "uint8",
+          "raw_minimum": 0,
+          "raw_maximum": 203
+        },
+        {
+          "path": "/temp/zihaohe/seer_cvpr/datasets/outdoor_static_np/input/MVI_0975_2/0405.npy",
+          "sha256": "99e4e151cd4bef8d7ab19483d37755af39b1d0b81009685c799d3ab91d922fd2",
+          "archive_member": "outdoor_static_np/input/MVI_0975_2/0405.npy",
+          "archive_extracted_sha256": "99e4e151cd4bef8d7ab19483d37755af39b1d0b81009685c799d3ab91d922fd2",
+          "archive_bytes": 6220928,
+          "shape": [
+            1080,
+            1920,
+            3
+          ],
+          "dtype": "uint8",
+          "raw_minimum": 0,
+          "raw_maximum": 200
+        },
+        {
+          "path": "/temp/zihaohe/seer_cvpr/datasets/outdoor_static_np/input/MVI_0975_2/0406.npy",
+          "sha256": "90d45876017c6e3c8257c7043ae3f9252a51ea40f6d33949fd9f5a536b084d27",
+          "archive_member": "outdoor_static_np/input/MVI_0975_2/0406.npy",
+          "archive_extracted_sha256": "90d45876017c6e3c8257c7043ae3f9252a51ea40f6d33949fd9f5a536b084d27",
+          "archive_bytes": 6220928,
+          "shape": [
+            1080,
+            1920,
+            3
+          ],
+          "dtype": "uint8",
+          "raw_minimum": 0,
+          "raw_maximum": 200
+        },
+        {
+          "path": "/temp/zihaohe/seer_cvpr/datasets/outdoor_static_np/input/MVI_0975_2/0407.npy",
+          "sha256": "cba3c193d355d3dba8e2c5f636fb3f745af1ce38db8ec899cfff7846e8f3abd2",
+          "archive_member": "outdoor_static_np/input/MVI_0975_2/0407.npy",
+          "archive_extracted_sha256": "cba3c193d355d3dba8e2c5f636fb3f745af1ce38db8ec899cfff7846e8f3abd2",
+          "archive_bytes": 6220928,
+          "shape": [
+            1080,
+            1920,
+            3
+          ],
+          "dtype": "uint8",
+          "raw_minimum": 0,
+          "raw_maximum": 204
+        },
+        {
+          "path": "/temp/zihaohe/seer_cvpr/datasets/outdoor_static_np/input/MVI_0975_2/0408.npy",
+          "sha256": "fac70d8cfd2e64536b90e482948fc06f61f0532e468e48a75740630d4953ae84",
+          "archive_member": "outdoor_static_np/input/MVI_0975_2/0408.npy",
+          "archive_extracted_sha256": "fac70d8cfd2e64536b90e482948fc06f61f0532e468e48a75740630d4953ae84",
+          "archive_bytes": 6220928,
+          "shape": [
+            1080,
+            1920,
+            3
+          ],
+          "dtype": "uint8",
+          "raw_minimum": 0,
+          "raw_maximum": 208
+        },
+        {
+          "path": "/temp/zihaohe/seer_cvpr/datasets/outdoor_static_np/input/MVI_0975_2/0409.npy",
+          "sha256": "d05a325f5595b5f45e707f387dd57bc9c44ac170bc65741661cd3d9c5bc9ef35",
+          "archive_member": "outdoor_static_np/input/MVI_0975_2/0409.npy",
+          "archive_extracted_sha256": "d05a325f5595b5f45e707f387dd57bc9c44ac170bc65741661cd3d9c5bc9ef35",
+          "archive_bytes": 6220928,
+          "shape": [
+            1080,
+            1920,
+            3
+          ],
+          "dtype": "uint8",
+          "raw_minimum": 0,
+          "raw_maximum": 200
+        },
+        {
+          "path": "/temp/zihaohe/seer_cvpr/datasets/outdoor_static_np/input/MVI_0975_2/0410.npy",
+          "sha256": "e869bb417ec864f04fc8eb421136d50bfb7afcb5f1bff9fcd793df40e323f714",
+          "archive_member": "outdoor_static_np/input/MVI_0975_2/0410.npy",
+          "archive_extracted_sha256": "e869bb417ec864f04fc8eb421136d50bfb7afcb5f1bff9fcd793df40e323f714",
+          "archive_bytes": 6220928,
+          "shape": [
+            1080,
+            1920,
+            3
+          ],
+          "dtype": "uint8",
+          "raw_minimum": 0,
+          "raw_maximum": 200
+        },
+        {
+          "path": "/temp/zihaohe/seer_cvpr/datasets/outdoor_static_np/input/MVI_0975_2/0411.npy",
+          "sha256": "3a8ea5b23a6d46830f461914f62b83c5a69926f2827fe4390424e06e6c87413c",
+          "archive_member": "outdoor_static_np/input/MVI_0975_2/0411.npy",
+          "archive_extracted_sha256": "3a8ea5b23a6d46830f461914f62b83c5a69926f2827fe4390424e06e6c87413c",
+          "archive_bytes": 6220928,
+          "shape": [
+            1080,
+            1920,
+            3
+          ],
+          "dtype": "uint8",
+          "raw_minimum": 0,
+          "raw_maximum": 198
+        },
+        {
+          "path": "/temp/zihaohe/seer_cvpr/datasets/outdoor_static_np/input/MVI_0975_2/0412.npy",
+          "sha256": "2e32a16f7024f69125af470c9e9e182494b2562584fc49974aba4a3751550eba",
+          "archive_member": "outdoor_static_np/input/MVI_0975_2/0412.npy",
+          "archive_extracted_sha256": "2e32a16f7024f69125af470c9e9e182494b2562584fc49974aba4a3751550eba",
+          "archive_bytes": 6220928,
+          "shape": [
+            1080,
+            1920,
+            3
+          ],
+          "dtype": "uint8",
+          "raw_minimum": 0,
+          "raw_maximum": 201
+        },
+        {
+          "path": "/temp/zihaohe/seer_cvpr/datasets/outdoor_static_np/input/MVI_0975_2/0413.npy",
+          "sha256": "5faf4a0c25024be2f172354754bcbed201eb54dfc23d7cf54e4b632bacc3bdaa",
+          "archive_member": "outdoor_static_np/input/MVI_0975_2/0413.npy",
+          "archive_extracted_sha256": "5faf4a0c25024be2f172354754bcbed201eb54dfc23d7cf54e4b632bacc3bdaa",
+          "archive_bytes": 6220928,
+          "shape": [
+            1080,
+            1920,
+            3
+          ],
+          "dtype": "uint8",
+          "raw_minimum": 0,
+          "raw_maximum": 196
+        }
+      ]
+    }
+  ],
+  "references": {
+    "retinexformer_data_util.py": {
+      "url": "https://raw.githubusercontent.com/caiyuanhao1998/Retinexformer/1e9a0efce4b306b6701b824768370ff26066c32a/basicsr/data/util.py",
+      "sha256": "f03a2b4eae55f2ee6c818c011225f5b374edce91e93f543aa101ebb9f524440e"
+    },
+    "sdsd_data_util.py": {
+      "url": "https://raw.githubusercontent.com/JIA-Lab-research/SDSD/main/data/util.py",
+      "sha256": "a2c706fed6f522abe3155e38d33d076ac9dd28af19c7b7110b844d15ccf02021"
+    }
+  },
+  "gt_pixel_reads": 0,
+  "gt_placeholder_calls": 64,
+  "quality_scores_computed": false,
+  "internal_holdout_pixel_reads": 0,
+  "target_pixel_reads": 0,
+  "new_model_predictions": 0,
+  "archive_byte_identity_checked": true,
+  "original_png_counterpart_checked": false,
+  "data_provenance": {
+    "repository": "https://github.com/caiyuanhao1998/Retinexformer",
+    "repository_commit": "1e9a0efce4b306b6701b824768370ff26066c32a",
+    "google_folder": "https://drive.google.com/drive/folders/14TF0f9YQwZEntry06M93AMd70WH00Mg6",
+    "zip_crc_verified_at_download": true,
+    "source_provenance_sha256": "a20fba6f4ac056af3b918025aed4ac9ba5453f7fcda676b5f18b1639b4b00532",
+    "download_receipt_sha256": "f0398968bfd76e9ed6a28b063c301d25f81a532bb88500fe6e4c373629a27657",
+    "archive_parts": [
+      {
+        "name": "outdoor_static_np.z01",
+        "google_file_id": "11AngSosPjDXg2JYgyvFNKY_KYdNiQ_wU",
+        "size": 4698669056,
+        "sha256": "da5079cba7332694502dbc45d44b48b42a3feeac7e4952af4100c90f86a7bcc8",
+        "sha256_scope": "locally computed; publisher SHA256 unavailable"
+      },
+      {
+        "name": "outdoor_static_np.z02",
+        "google_file_id": "1QyO5KOoMa5qWWFGPRztPCPguTtt_xTgR",
+        "size": 4698669056,
+        "sha256": "e5ba3f47cd4a1d6f0656c859125bbc909951b7fa78f981a5a3e6dcd3a0daf7eb",
+        "sha256_scope": "locally computed; publisher SHA256 unavailable"
+      },
+      {
+        "name": "outdoor_static_np.z03",
+        "google_file_id": "1JVU-_VjEjQT1Px6XRYfh44R3oq5wJH2h",
+        "size": 4698669056,
+        "sha256": "ddc60a48555e0e09a91d2498d55dccf1284a6267b1cfe1adb3897a16e08d963d",
+        "sha256_scope": "locally computed; publisher SHA256 unavailable"
+      },
+      {
+        "name": "outdoor_static_np.zip",
+        "google_file_id": "1yv_n0cH874J3T2dHpIZmbJ3bZBIbPYJo",
+        "size": 4201427255,
+        "sha256": "5965e6b58cfb95f041440302c1bf1d5ab246b7e1bb10a65a557f8ebc1f2a30f7",
+        "sha256_scope": "locally computed; publisher SHA256 unavailable"
+      }
+    ],
+    "sevenzip_path": "/temp/zihaohe/seer_cvpr/datasets/.sdsd_download_20261017/tools/7zz",
+    "sevenzip_sha256": "a01daa025fcf2dbb76ab40f2854f09b3462d1912add61ee2f4431ce11902d0cd",
+    "limitation": "local archive hashes, prior download receipt and exact32 member SHA; publisher cryptographic digest unavailable"
+  },
+  "source_sha256": {
+    "/cache/zihaohe/seer_observation_geometry_20261112/release_v1/code_full/data/common.py": "6041b43e832ab67def75b9e7285927dddd77d45d0bc25945bb600167b04e4ded",
+    "/cache/zihaohe/seer_observation_geometry_20261112/release_v1/code_full/tools/cache_source_corrections.py": "34dad77d6b90e6fa418a2828924f034b3c541091ebb4acae7eceab34fac85683",
+    "/cache/zihaohe/seer_observation_geometry_20261112/release_v1/code_full/tools/seer_train_cvpr.py": "04164d2ababfcd1a9e5a626723b6208a713e703a6ebe77d9a7fb233fb7e78a91"
+  },
+  "hvi_exporter_sha256": "26c0c36656ad7b7d3b0ce04275578a45286c27931a476c9dcfb1ce1981e69db2",
+  "hvi_manifest_sha256": "f70b1d9cb6b334202e4901c6635336c9a2fc694a1f3de7816757834fe8fdb3fb",
+  "geometry_manifest_sha256": "d7f90214ab2da0b30da9f3f5b9fba648bb4fcabfee548e34dd7788caa6610805",
+  "audit_script_sha256": "48ac92070c6f2b679157a9db64d9d59f119b4c2d4fe89fdbf46d4a7da57db74e",
+  "torch": "2.7.1+cpu",
+  "numpy": "1.26.4",
+  "threads": 4,
+  "completed_utc": "2026-11-12T06:19:55.124535+00:00"
+}

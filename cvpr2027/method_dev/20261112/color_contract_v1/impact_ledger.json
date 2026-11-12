@@ -1,0 +1,47 @@
+{
+  "schema": "seer.color_contract.impact.v1",
+  "date": "2026-11-12",
+  "legacy_files_modified": false,
+  "new_target_inference": false,
+  "is_module_innovation": false,
+  "entries": [
+    {
+      "artifact": "SDSD source caches and checkpoints",
+      "verified_code_behavior": "NPY storage order preserved through LQ, GT, pixel branch and encoder",
+      "contract_after_archive_confirmation": "native BGR",
+      "action": "Preserve original bytes; use explicit whole-pipeline native adapter for RGB interfaces",
+      "limits": "Native adapter preserves historical encoder conditioning; it does not make past pretraining input RGB-correct"
+    },
+    {
+      "artifact": "hvi_source_anchor_v1 and hvi_temporal_fit_feasibility_v1",
+      "verified_code_behavior": "RGB-native HVI consumed stored-order source LQ; its output was compared with stored-order source GT",
+      "action": "Recompute HVI from canonical RGB input in a new cache and redo only predeclared FIT diagnostics with RGB GT",
+      "limits": "No scalar correction or output-only channel swap reproduces the corrected inference; old absolute scores and fusion deltas are superseded for canonical-RGB interpretation"
+    },
+    {
+      "artifact": "Legacy source RGB-MSE comparisons with common native-order prediction and GT",
+      "action": "Retain as within-protocol native-order observations",
+      "limits": "A common channel permutation leaves RGB MSE unchanged; the RGB-pretrained encoder's prior conditioning is still affected"
+    },
+    {
+      "artifact": "Legacy source Y, LPIPS, RAFT and temporal measurements",
+      "action": "Keep original channel convention labeled; do not relabel canonical RGB",
+      "limits": "These RGB-sensitive operations are not generally invariant under a common red/blue exchange"
+    },
+    {
+      "artifact": "SDSD-only checkpoints deployed directly on RGB BVI",
+      "action": "Treat as historical unadapted replay until a separately frozen native-adapter replay is executed",
+      "limits": "Cross-domain and channel-contract effects are confounded; direction and magnitude cannot be inferred without new measurements"
+    },
+    {
+      "artifact": "HVI and DarkIR external BVI PNG replays",
+      "action": "Retain existing RGB-input results",
+      "limits": "This source NPY finding does not change their PNG input contract or establish matched-source training"
+    },
+    {
+      "artifact": "BVI-only or mixed-domain checkpoints",
+      "action": "Audit checkpoint lineage individually",
+      "limits": "Do not apply a universal BGR wrapper to RGB-native BVI models or infer a single native convention for mixed-loader training"
+    }
+  ]
+}

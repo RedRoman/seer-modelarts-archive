@@ -1,0 +1,93 @@
+/home/ma-user/anaconda3/envs/PyTorch-2.7.1/lib/python3.12/site-packages/torch/cuda/__init__.py:61: FutureWarning: The pynvml package is deprecated. Please install nvidia-ml-py instead. If you did not install pynvml directly, please report this to the maintainers of the package that installed pynvml for you.
+  import pynvml  # type: ignore[import]
+{
+  "scope": "first fixed FIT scene only; two clips32 distinct original LQ frames; no model/GT/quality score",
+  "selected_scene": "SDSD_outdoor/MVI_0975",
+  "references": {
+    "retinexformer_data_util.py": {
+      "url": "https://raw.githubusercontent.com/caiyuanhao1998/Retinexformer/1e9a0efce4b306b6701b824768370ff26066c32a/basicsr/data/util.py",
+      "sha256": "f03a2b4eae55f2ee6c818c011225f5b374edce91e93f543aa101ebb9f524440e"
+    },
+    "sdsd_data_util.py": {
+      "url": "https://raw.githubusercontent.com/JIA-Lab-research/SDSD/main/data/util.py",
+      "sha256": "a2c706fed6f522abe3155e38d33d076ac9dd28af19c7b7110b844d15ccf02021"
+    }
+  },
+  "gt_pixel_reads": 0,
+  "gt_placeholder_calls": 64,
+  "quality_scores_computed": false,
+  "internal_holdout_pixel_reads": 0,
+  "target_pixel_reads": 0,
+  "new_model_predictions": 0,
+  "archive_byte_identity_checked": true,
+  "original_png_counterpart_checked": false,
+  "source_sha256": {
+    "/cache/zihaohe/seer_observation_geometry_20261112/release_v1/code_full/data/common.py": "6041b43e832ab67def75b9e7285927dddd77d45d0bc25945bb600167b04e4ded",
+    "/cache/zihaohe/seer_observation_geometry_20261112/release_v1/code_full/tools/cache_source_corrections.py": "34dad77d6b90e6fa418a2828924f034b3c541091ebb4acae7eceab34fac85683",
+    "/cache/zihaohe/seer_observation_geometry_20261112/release_v1/code_full/tools/seer_train_cvpr.py": "04164d2ababfcd1a9e5a626723b6208a713e703a6ebe77d9a7fb233fb7e78a91"
+  },
+  "hvi_exporter_sha256": "26c0c36656ad7b7d3b0ce04275578a45286c27931a476c9dcfb1ce1981e69db2",
+  "hvi_manifest_sha256": "f70b1d9cb6b334202e4901c6635336c9a2fc694a1f3de7816757834fe8fdb3fb",
+  "geometry_manifest_sha256": "d7f90214ab2da0b30da9f3f5b9fba648bb4fcabfee548e34dd7788caa6610805",
+  "audit_script_sha256": "48ac92070c6f2b679157a9db64d9d59f119b4c2d4fe89fdbf46d4a7da57db74e",
+  "torch": "2.7.1+cpu",
+  "numpy": "1.26.4",
+  "threads": 4,
+  "completed_utc": "2026-11-12T06:19:55.124535+00:00"
+}
+[
+  {
+    "name": "SDSD_outdoor/MVI_0975",
+    "scene": "SDSD_outdoor/MVI_0975",
+    "source_index": 108,
+    "augmentation_seed": 6562976749153354658,
+    "shape": [
+      1,
+      3,
+      16,
+      256,
+      256
+    ],
+    "dtype": "torch.float32",
+    "producer_vs_cache_bitwise_equal": true,
+    "training_loader_vs_cache_bitwise_equal": true,
+    "hvi_export_input_vs_cache_bitwise_equal": true,
+    "hvi_frame_flatten_vs_unbind_bitwise_equal": true,
+    "canonical_lq_tensor_sha256": "42e6b639cd53327d3f18688b162329cf241761af0f14312bc1d17dec0be92ffb",
+    "official_rgb_tensor_sha256": "7d06165675fade511cb0c1d3c93297aacbf5627d9b0bd7666e2f6d8f971803a9",
+    "official_rgb_equals_cached_channel_reversal": true,
+    "official_rgb_equals_cached_without_swap": false,
+    "channel_reversal_max_abs_difference": 0.10588234663009644,
+    "channel_reversal_mean_abs_difference": 0.008861743845045567,
+    "cached_minimum": 0.0,
+    "cached_maximum": 0.4000000059604645,
+    "archive_lq_files_exact_sha256_match": true
+  },
+  {
+    "name": "SDSD_outdoor/MVI_0975_2",
+    "scene": "SDSD_outdoor/MVI_0975",
+    "source_index": 109,
+    "augmentation_seed": 7177351203276931590,
+    "shape": [
+      1,
+      3,
+      16,
+      256,
+      256
+    ],
+    "dtype": "torch.float32",
+    "producer_vs_cache_bitwise_equal": true,
+    "training_loader_vs_cache_bitwise_equal": true,
+    "hvi_export_input_vs_cache_bitwise_equal": true,
+    "hvi_frame_flatten_vs_unbind_bitwise_equal": true,
+    "canonical_lq_tensor_sha256": "3a6a4c05e094b5a6b174553495bfdd91459ee3706fc318ce9137fc84f555965f",
+    "official_rgb_tensor_sha256": "39eb3892fccf6ff97eb35733104f1ffae5c943378c5a2e53ddd9dc0ca641f40b",
+    "official_rgb_equals_cached_channel_reversal": true,
+    "official_rgb_equals_cached_without_swap": false,
+    "channel_reversal_max_abs_difference": 0.11764706671237946,
+    "channel_reversal_mean_abs_difference": 0.01009568851441145,
+    "cached_minimum": 0.0,
+    "cached_maximum": 0.16862745583057404,
+    "archive_lq_files_exact_sha256_match": true
+  }
+]

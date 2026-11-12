@@ -1,0 +1,45 @@
+/home/ma-user/anaconda3/envs/PyTorch-2.7.1/lib/python3.12/site-packages/torch/cuda/__init__.py:61: FutureWarning: The pynvml package is deprecated. Please install nvidia-ml-py instead. If you did not install pynvml directly, please report this to the maintainers of the package that installed pynvml for you.
+  import pynvml  # type: ignore[import]
+Traceback (most recent call last):
+  File "/cache/zihaohe/seer_source_input_audit_20261112.py", line 171, in <module>
+    if __name__=='__main__':main()
+                            ^^^^^^
+  File "/cache/zihaohe/seer_source_input_audit_20261112.py", line 74, in main
+    data=urllib.request.urlopen(url,timeout=30).read();target=args.out/filename
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ma-user/anaconda3/envs/PyTorch-2.7.1/lib/python3.12/urllib/request.py", line 215, in urlopen
+    return opener.open(url, data, timeout)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ma-user/anaconda3/envs/PyTorch-2.7.1/lib/python3.12/urllib/request.py", line 515, in open
+    response = self._open(req, data)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ma-user/anaconda3/envs/PyTorch-2.7.1/lib/python3.12/urllib/request.py", line 532, in _open
+    result = self._call_chain(self.handle_open, protocol, protocol +
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ma-user/anaconda3/envs/PyTorch-2.7.1/lib/python3.12/urllib/request.py", line 492, in _call_chain
+    result = func(*args)
+             ^^^^^^^^^^^
+  File "/home/ma-user/anaconda3/envs/PyTorch-2.7.1/lib/python3.12/urllib/request.py", line 1392, in https_open
+    return self.do_open(http.client.HTTPSConnection, req,
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ma-user/anaconda3/envs/PyTorch-2.7.1/lib/python3.12/urllib/request.py", line 1348, in do_open
+    r = h.getresponse()
+        ^^^^^^^^^^^^^^^
+  File "/home/ma-user/anaconda3/envs/PyTorch-2.7.1/lib/python3.12/http/client.py", line 1411, in getresponse
+    response.begin()
+  File "/home/ma-user/anaconda3/envs/PyTorch-2.7.1/lib/python3.12/http/client.py", line 324, in begin
+    version, status, reason = self._read_status()
+                              ^^^^^^^^^^^^^^^^^^^
+  File "/home/ma-user/anaconda3/envs/PyTorch-2.7.1/lib/python3.12/http/client.py", line 285, in _read_status
+    line = str(self.fp.readline(_MAXLINE + 1), "iso-8859-1")
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ma-user/anaconda3/envs/PyTorch-2.7.1/lib/python3.12/socket.py", line 707, in readinto
+    return self._sock.recv_into(b)
+           ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ma-user/anaconda3/envs/PyTorch-2.7.1/lib/python3.12/ssl.py", line 1249, in recv_into
+    return self.read(nbytes, buffer)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ma-user/anaconda3/envs/PyTorch-2.7.1/lib/python3.12/ssl.py", line 1105, in read
+    return self._sslobj.read(len, buffer)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+TimeoutError: The read operation timed out
