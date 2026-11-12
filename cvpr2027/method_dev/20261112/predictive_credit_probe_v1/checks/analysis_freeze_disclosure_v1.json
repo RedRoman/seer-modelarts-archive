@@ -1,0 +1,15 @@
+{
+  "schema": "seer.predictive_credit_probe.analysis_freeze_disclosure.v1",
+  "frozen_manifest": "analysis_frozen_manifest.json",
+  "frozen_manifest_sha256": "f2fc4dc39d21a30b1c29badd8b6afee2b7bb2228780fa9d94f139aaa36411fb3",
+  "frozen_bound_files": 11,
+  "synthetic_unit_tests_passed": 27,
+  "actual_critic_loss_files_opened_before_freeze": false,
+  "actual_patch_utility_arrays_opened_before_freeze": false,
+  "aggregate_quality_information_seen_before_analysis_freeze": true,
+  "aggregate_information_disclosure": "The value-export agent sent a completion message containing six fixed-action aggregate central-two-frame RGB PSNR values before the final analysis-source freeze. No actual loss file or patch-utility array had been opened. The primary five-comparator common-scene AUROC gate, thresholds, scene bootstrap recipe, and scene subset had already been declared in PLAN.md. These aggregate PSNR descriptions were not used to select methods, alter the primary gate, or change the subset. Subsequent changes completed strict format tests, GT-free feature hash checks, and the predeclared budget diagnostics, independently of those PSNR values.",
+  "parameters_selected": false,
+  "primary_gate_changed_based_on_results": false,
+  "actual_scalar_file_analysis_at_receipt": "not_yet_started",
+  "no_publication_or_generalization_claim": true
+}

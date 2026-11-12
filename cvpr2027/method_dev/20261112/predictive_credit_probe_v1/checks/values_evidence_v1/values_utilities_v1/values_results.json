@@ -1,0 +1,580 @@
+{
+  "schema_version": 1,
+  "scope": "Source FIT12 fixed utility probe; no trained module or generalization score",
+  "execution_manifest_sha256": "d3c2c98a1fbf4c4111261fa210731cdc0482928fc6b3f35ee4c7004ca7147bf0",
+  "patch_statistics_sha256": "4ccd7e9a807f43a3c64d6b102f3775a2aca9fed86d197643a4e1909c8d338a2c",
+  "rows": 3072,
+  "clips": [
+    {
+      "name": "SDSD_indoor/pair10",
+      "scene": "SDSD_indoor/pair10",
+      "target_tubelet": 4,
+      "target_frames": [
+        8,
+        9
+      ],
+      "patches": 256,
+      "methods": {
+        "base": {
+          "mean_rgb_mse": 0.002982364557805984,
+          "psnr_rgb_from_central_two_frame_mse": 25.254392704181015
+        },
+        "single1": {
+          "mean_rgb_mse": 0.0026514698547775687,
+          "psnr_rgb_from_central_two_frame_mse": 25.7651330611969
+        },
+        "single2": {
+          "mean_rgb_mse": 0.002600796275788896,
+          "psnr_rgb_from_central_two_frame_mse": 25.84893665399614
+        },
+        "pair": {
+          "mean_rgb_mse": 0.002555450834367628,
+          "psnr_rgb_from_central_two_frame_mse": 25.925324702431766
+        },
+        "sameframe_zero": {
+          "mean_rgb_mse": 0.002982364557805984,
+          "psnr_rgb_from_central_two_frame_mse": 25.254392704181015
+        },
+        "temporal_no_dc": {
+          "mean_rgb_mse": 0.002672909589371653,
+          "psnr_rgb_from_central_two_frame_mse": 25.730157309183795
+        }
+      },
+      "constraints": {
+        "max_abs_patch_frame_channel_dc_sum_error": 7.569789886474609e-06,
+        "support_outside_exact_anchor": true,
+        "sameframe_exact_anchor": true,
+        "no_donor_fraction": 0.00276947021484375,
+        "one_donor_fraction": 0.0055084228515625,
+        "two_donor_fraction": 0.9917221069335938
+      }
+    },
+    {
+      "name": "SDSD_indoor/pair11",
+      "scene": "SDSD_indoor/pair11",
+      "target_tubelet": 4,
+      "target_frames": [
+        8,
+        9
+      ],
+      "patches": 256,
+      "methods": {
+        "base": {
+          "mean_rgb_mse": 0.003540963495447162,
+          "psnr_rgb_from_central_two_frame_mse": 24.508785504538576
+        },
+        "single1": {
+          "mean_rgb_mse": 0.0032302500669496633,
+          "psnr_rgb_from_central_two_frame_mse": 24.907638558445797
+        },
+        "single2": {
+          "mean_rgb_mse": 0.003377446340761011,
+          "psnr_rgb_from_central_two_frame_mse": 24.714115421124504
+        },
+        "pair": {
+          "mean_rgb_mse": 0.003230583555649748,
+          "psnr_rgb_from_central_two_frame_mse": 24.90719021908028
+        },
+        "sameframe_zero": {
+          "mean_rgb_mse": 0.003540963495447162,
+          "psnr_rgb_from_central_two_frame_mse": 24.508785504538576
+        },
+        "temporal_no_dc": {
+          "mean_rgb_mse": 0.00221121786254353,
+          "psnr_rgb_from_central_two_frame_mse": 26.553684659969438
+        }
+      },
+      "constraints": {
+        "max_abs_patch_frame_channel_dc_sum_error": 3.635883331298828e-06,
+        "support_outside_exact_anchor": true,
+        "sameframe_exact_anchor": true,
+        "no_donor_fraction": 0.00588226318359375,
+        "one_donor_fraction": 0.006622314453125,
+        "two_donor_fraction": 0.9874954223632812
+      }
+    },
+    {
+      "name": "SDSD_indoor/pair14",
+      "scene": "SDSD_indoor/pair14",
+      "target_tubelet": 4,
+      "target_frames": [
+        8,
+        9
+      ],
+      "patches": 256,
+      "methods": {
+        "base": {
+          "mean_rgb_mse": 0.0041380761164639904,
+          "psnr_rgb_from_central_two_frame_mse": 23.832015251114967
+        },
+        "single1": {
+          "mean_rgb_mse": 0.0036003786708810517,
+          "psnr_rgb_from_central_two_frame_mse": 24.43651819781182
+        },
+        "single2": {
+          "mean_rgb_mse": 0.0037342185462452887,
+          "psnr_rgb_from_central_two_frame_mse": 24.27800268430085
+        },
+        "pair": {
+          "mean_rgb_mse": 0.0035542015922587237,
+          "psnr_rgb_from_central_two_frame_mse": 24.492579429002706
+        },
+        "sameframe_zero": {
+          "mean_rgb_mse": 0.0041380761164639904,
+          "psnr_rgb_from_central_two_frame_mse": 23.832015251114967
+        },
+        "temporal_no_dc": {
+          "mean_rgb_mse": 0.003400713125928381,
+          "psnr_rgb_from_central_two_frame_mse": 24.684300023163477
+        }
+      },
+      "constraints": {
+        "max_abs_patch_frame_channel_dc_sum_error": 7.510185241699219e-06,
+        "support_outside_exact_anchor": true,
+        "sameframe_exact_anchor": true,
+        "no_donor_fraction": 0.00504302978515625,
+        "one_donor_fraction": 0.00859832763671875,
+        "two_donor_fraction": 0.986358642578125
+      }
+    },
+    {
+      "name": "SDSD_indoor/pair15",
+      "scene": "SDSD_indoor/pair15",
+      "target_tubelet": 4,
+      "target_frames": [
+        8,
+        9
+      ],
+      "patches": 256,
+      "methods": {
+        "base": {
+          "mean_rgb_mse": 0.021883426394902313,
+          "psnr_rgb_from_central_two_frame_mse": 16.598846774073426
+        },
+        "single1": {
+          "mean_rgb_mse": 0.021300342027465426,
+          "psnr_rgb_from_central_two_frame_mse": 16.716134228782433
+        },
+        "single2": {
+          "mean_rgb_mse": 0.021406903705125876,
+          "psnr_rgb_from_central_two_frame_mse": 16.694461445235195
+        },
+        "pair": {
+          "mean_rgb_mse": 0.021255339294332293,
+          "psnr_rgb_from_central_two_frame_mse": 16.725319580936986
+        },
+        "sameframe_zero": {
+          "mean_rgb_mse": 0.021883426394902313,
+          "psnr_rgb_from_central_two_frame_mse": 16.598846774073426
+        },
+        "temporal_no_dc": {
+          "mean_rgb_mse": 0.018540863986547175,
+          "psnr_rgb_from_central_two_frame_mse": 17.318700320120616
+        }
+      },
+      "constraints": {
+        "max_abs_patch_frame_channel_dc_sum_error": 7.539987564086914e-06,
+        "support_outside_exact_anchor": true,
+        "sameframe_exact_anchor": true,
+        "no_donor_fraction": 0.00559234619140625,
+        "one_donor_fraction": 0.00814056396484375,
+        "two_donor_fraction": 0.98626708984375
+      }
+    },
+    {
+      "name": "SDSD_indoor/pair17",
+      "scene": "SDSD_indoor/pair17",
+      "target_tubelet": 4,
+      "target_frames": [
+        8,
+        9
+      ],
+      "patches": 256,
+      "methods": {
+        "base": {
+          "mean_rgb_mse": 0.005518494860232448,
+          "psnr_rgb_from_central_two_frame_mse": 22.58179357602405
+        },
+        "single1": {
+          "mean_rgb_mse": 0.005399404677968194,
+          "psnr_rgb_from_central_two_frame_mse": 22.676541215337064
+        },
+        "single2": {
+          "mean_rgb_mse": 0.005368500099093376,
+          "psnr_rgb_from_central_two_frame_mse": 22.701470345379775
+        },
+        "pair": {
+          "mean_rgb_mse": 0.0053474979685555245,
+          "psnr_rgb_from_central_two_frame_mse": 22.718493717391915
+        },
+        "sameframe_zero": {
+          "mean_rgb_mse": 0.005518494860232448,
+          "psnr_rgb_from_central_two_frame_mse": 22.58179357602405
+        },
+        "temporal_no_dc": {
+          "mean_rgb_mse": 0.005900172756787425,
+          "psnr_rgb_from_central_two_frame_mse": 22.291352720491982
+        }
+      },
+      "constraints": {
+        "max_abs_patch_frame_channel_dc_sum_error": 7.450580596923828e-06,
+        "support_outside_exact_anchor": true,
+        "sameframe_exact_anchor": true,
+        "no_donor_fraction": 0.00768280029296875,
+        "one_donor_fraction": 0.0058441162109375,
+        "two_donor_fraction": 0.9864730834960938
+      }
+    },
+    {
+      "name": "SDSD_indoor/pair2",
+      "scene": "SDSD_indoor/pair2",
+      "target_tubelet": 4,
+      "target_frames": [
+        8,
+        9
+      ],
+      "patches": 256,
+      "methods": {
+        "base": {
+          "mean_rgb_mse": 0.036095266071395286,
+          "psnr_rgb_from_central_two_frame_mse": 14.425497524955258
+        },
+        "single1": {
+          "mean_rgb_mse": 0.03476113425793749,
+          "psnr_rgb_from_central_two_frame_mse": 14.589060609366506
+        },
+        "single2": {
+          "mean_rgb_mse": 0.03424977599581355,
+          "psnr_rgb_from_central_two_frame_mse": 14.653422645832412
+        },
+        "pair": {
+          "mean_rgb_mse": 0.03403240469412127,
+          "psnr_rgb_from_central_two_frame_mse": 14.681073630261274
+        },
+        "sameframe_zero": {
+          "mean_rgb_mse": 0.036095266071395286,
+          "psnr_rgb_from_central_two_frame_mse": 14.425497524955258
+        },
+        "temporal_no_dc": {
+          "mean_rgb_mse": 0.03191259682877062,
+          "psnr_rgb_from_central_two_frame_mse": 14.960378544552382
+        }
+      },
+      "constraints": {
+        "max_abs_patch_frame_channel_dc_sum_error": 3.680586814880371e-06,
+        "support_outside_exact_anchor": true,
+        "sameframe_exact_anchor": true,
+        "no_donor_fraction": 0.0013427734375,
+        "one_donor_fraction": 0.0050201416015625,
+        "two_donor_fraction": 0.9936370849609375
+      }
+    },
+    {
+      "name": "SDSD_outdoor/MVI_0902",
+      "scene": "SDSD_outdoor/MVI_0902",
+      "target_tubelet": 4,
+      "target_frames": [
+        8,
+        9
+      ],
+      "patches": 256,
+      "methods": {
+        "base": {
+          "mean_rgb_mse": 0.014522883617209057,
+          "psnr_rgb_from_central_two_frame_mse": 18.379471429538746
+        },
+        "single1": {
+          "mean_rgb_mse": 0.014128110372914188,
+          "psnr_rgb_from_central_two_frame_mse": 18.499159209182377
+        },
+        "single2": {
+          "mean_rgb_mse": 0.014192863096719861,
+          "psnr_rgb_from_central_two_frame_mse": 18.47929986383176
+        },
+        "pair": {
+          "mean_rgb_mse": 0.01405724003325837,
+          "psnr_rgb_from_central_two_frame_mse": 18.520999393437478
+        },
+        "sameframe_zero": {
+          "mean_rgb_mse": 0.014522883617209057,
+          "psnr_rgb_from_central_two_frame_mse": 18.379471429538746
+        },
+        "temporal_no_dc": {
+          "mean_rgb_mse": 0.018554955141105663,
+          "psnr_rgb_from_central_two_frame_mse": 17.31540091274445
+        }
+      },
+      "constraints": {
+        "max_abs_patch_frame_channel_dc_sum_error": 6.973743438720703e-06,
+        "support_outside_exact_anchor": true,
+        "sameframe_exact_anchor": true,
+        "no_donor_fraction": 0.0050506591796875,
+        "one_donor_fraction": 0.00638580322265625,
+        "two_donor_fraction": 0.9885635375976562
+      }
+    },
+    {
+      "name": "SDSD_outdoor/MVI_0904",
+      "scene": "SDSD_outdoor/MVI_0904",
+      "target_tubelet": 4,
+      "target_frames": [
+        8,
+        9
+      ],
+      "patches": 256,
+      "methods": {
+        "base": {
+          "mean_rgb_mse": 0.027778600839001882,
+          "psnr_rgb_from_central_two_frame_mse": 15.562896327238034
+        },
+        "single1": {
+          "mean_rgb_mse": 0.02782168668224256,
+          "psnr_rgb_from_central_two_frame_mse": 15.556165445601513
+        },
+        "single2": {
+          "mean_rgb_mse": 0.02772971841650875,
+          "psnr_rgb_from_central_two_frame_mse": 15.570545404754144
+        },
+        "pair": {
+          "mean_rgb_mse": 0.027741722000875862,
+          "psnr_rgb_from_central_two_frame_mse": 15.568665846373888
+        },
+        "sameframe_zero": {
+          "mean_rgb_mse": 0.027778600839001882,
+          "psnr_rgb_from_central_two_frame_mse": 15.562896327238034
+        },
+        "temporal_no_dc": {
+          "mean_rgb_mse": 0.028579005860989555,
+          "psnr_rgb_from_central_two_frame_mse": 15.439528824938144
+        }
+      },
+      "constraints": {
+        "max_abs_patch_frame_channel_dc_sum_error": 6.645917892456055e-06,
+        "support_outside_exact_anchor": true,
+        "sameframe_exact_anchor": true,
+        "no_donor_fraction": 0.0072021484375,
+        "one_donor_fraction": 0.00485992431640625,
+        "two_donor_fraction": 0.9879379272460938
+      }
+    },
+    {
+      "name": "SDSD_outdoor/MVI_0906",
+      "scene": "SDSD_outdoor/MVI_0906",
+      "target_tubelet": 4,
+      "target_frames": [
+        8,
+        9
+      ],
+      "patches": 256,
+      "methods": {
+        "base": {
+          "mean_rgb_mse": 0.006750931596612382,
+          "psnr_rgb_from_central_two_frame_mse": 21.706362924502685
+        },
+        "single1": {
+          "mean_rgb_mse": 0.0066214310183131085,
+          "psnr_rgb_from_central_two_frame_mse": 21.790481410444684
+        },
+        "single2": {
+          "mean_rgb_mse": 0.006612760689970799,
+          "psnr_rgb_from_central_two_frame_mse": 21.79617193749324
+        },
+        "pair": {
+          "mean_rgb_mse": 0.006580777694739753,
+          "psnr_rgb_from_central_two_frame_mse": 21.817227798546938
+        },
+        "sameframe_zero": {
+          "mean_rgb_mse": 0.006750931596612382,
+          "psnr_rgb_from_central_two_frame_mse": 21.706362924502685
+        },
+        "temporal_no_dc": {
+          "mean_rgb_mse": 0.007077555847803932,
+          "psnr_rgb_from_central_two_frame_mse": 21.501166950045576
+        }
+      },
+      "constraints": {
+        "max_abs_patch_frame_channel_dc_sum_error": 6.973743438720703e-06,
+        "support_outside_exact_anchor": true,
+        "sameframe_exact_anchor": true,
+        "no_donor_fraction": 0.00203704833984375,
+        "one_donor_fraction": 0.0071868896484375,
+        "two_donor_fraction": 0.9907760620117188
+      }
+    },
+    {
+      "name": "SDSD_outdoor/MVI_0909",
+      "scene": "SDSD_outdoor/MVI_0909",
+      "target_tubelet": 4,
+      "target_frames": [
+        8,
+        9
+      ],
+      "patches": 256,
+      "methods": {
+        "base": {
+          "mean_rgb_mse": 0.10946886945547599,
+          "psnr_rgb_from_central_two_frame_mse": 9.607093670877335
+        },
+        "single1": {
+          "mean_rgb_mse": 0.10906386050773301,
+          "psnr_rgb_from_central_two_frame_mse": 9.623191337578316
+        },
+        "single2": {
+          "mean_rgb_mse": 0.10923207976165775,
+          "psnr_rgb_from_central_two_frame_mse": 9.616497973688885
+        },
+        "pair": {
+          "mean_rgb_mse": 0.10910503671192837,
+          "psnr_rgb_from_central_two_frame_mse": 9.621552002301106
+        },
+        "sameframe_zero": {
+          "mean_rgb_mse": 0.10946886945547599,
+          "psnr_rgb_from_central_two_frame_mse": 9.607093670877335
+        },
+        "temporal_no_dc": {
+          "mean_rgb_mse": 0.09404666242350934,
+          "psnr_rgb_from_central_two_frame_mse": 10.266566123068257
+        }
+      },
+      "constraints": {
+        "max_abs_patch_frame_channel_dc_sum_error": 7.510185241699219e-06,
+        "support_outside_exact_anchor": true,
+        "sameframe_exact_anchor": true,
+        "no_donor_fraction": 0.00689697265625,
+        "one_donor_fraction": 0.00560760498046875,
+        "two_donor_fraction": 0.9874954223632812
+      }
+    },
+    {
+      "name": "SDSD_outdoor/MVI_0911",
+      "scene": "SDSD_outdoor/MVI_0911",
+      "target_tubelet": 4,
+      "target_frames": [
+        8,
+        9
+      ],
+      "patches": 256,
+      "methods": {
+        "base": {
+          "mean_rgb_mse": 0.014851802074514028,
+          "psnr_rgb_from_central_two_frame_mse": 18.28220847118862
+        },
+        "single1": {
+          "mean_rgb_mse": 0.013721907601660668,
+          "psnr_rgb_from_central_two_frame_mse": 18.625855093809832
+        },
+        "single2": {
+          "mean_rgb_mse": 0.013924653863390327,
+          "psnr_rgb_from_central_two_frame_mse": 18.56215591636311
+        },
+        "pair": {
+          "mean_rgb_mse": 0.013665183134381472,
+          "psnr_rgb_from_central_two_frame_mse": 18.64384543721165
+        },
+        "sameframe_zero": {
+          "mean_rgb_mse": 0.014851802074514028,
+          "psnr_rgb_from_central_two_frame_mse": 18.28220847118862
+        },
+        "temporal_no_dc": {
+          "mean_rgb_mse": 0.00974677617776785,
+          "psnr_rgb_from_central_two_frame_mse": 20.111390068374206
+        }
+      },
+      "constraints": {
+        "max_abs_patch_frame_channel_dc_sum_error": 7.033348083496094e-06,
+        "support_outside_exact_anchor": true,
+        "sameframe_exact_anchor": true,
+        "no_donor_fraction": 0.00377655029296875,
+        "one_donor_fraction": 0.00681304931640625,
+        "two_donor_fraction": 0.989410400390625
+      }
+    },
+    {
+      "name": "SDSD_outdoor/MVI_0916",
+      "scene": "SDSD_outdoor/MVI_0916",
+      "target_tubelet": 4,
+      "target_frames": [
+        8,
+        9
+      ],
+      "patches": 256,
+      "methods": {
+        "base": {
+          "mean_rgb_mse": 0.018369203760849554,
+          "psnr_rgb_from_central_two_frame_mse": 17.359096683955443
+        },
+        "single1": {
+          "mean_rgb_mse": 0.017950526919185028,
+          "psnr_rgb_from_central_two_frame_mse": 17.45922798632415
+        },
+        "single2": {
+          "mean_rgb_mse": 0.017826920927827162,
+          "psnr_rgb_from_central_two_frame_mse": 17.48923661845975
+        },
+        "pair": {
+          "mean_rgb_mse": 0.017783263128976733,
+          "psnr_rgb_from_central_two_frame_mse": 17.499885454535427
+        },
+        "sameframe_zero": {
+          "mean_rgb_mse": 0.018369203760849554,
+          "psnr_rgb_from_central_two_frame_mse": 17.359096683955443
+        },
+        "temporal_no_dc": {
+          "mean_rgb_mse": 0.01591493958932904,
+          "psnr_rgb_from_central_two_frame_mse": 17.981950055551263
+        }
+      },
+      "constraints": {
+        "max_abs_patch_frame_channel_dc_sum_error": 7.152557373046875e-06,
+        "support_outside_exact_anchor": true,
+        "sameframe_exact_anchor": true,
+        "no_donor_fraction": 0.00583648681640625,
+        "one_donor_fraction": 0.005706787109375,
+        "two_donor_fraction": 0.9884567260742188
+      }
+    }
+  ],
+  "mean_central_two_frame_clip_psnr_rgb": {
+    "base": 19.008205070182346,
+    "single1": 19.220425529490115,
+    "single2": 19.200359742538314,
+    "pair": 19.26017976762595,
+    "sameframe_zero": 19.008205070182346,
+    "temporal_no_dc": 19.512881376016967
+  },
+  "mean_rgb_mse": {
+    "base": 0.02215840690332584,
+    "single1": 0.021687541888168998,
+    "single2": 0.021688053143241886,
+    "pair": 0.021575725053620477,
+    "sameframe_zero": 0.02215840690332584,
+    "temporal_no_dc": 0.019879864099204513
+  },
+  "utility_summary": {
+    "u1": {
+      "mean": 0.00047086501515684263,
+      "positive_fraction": 0.9140625
+    },
+    "u2": {
+      "mean": 0.00047035376008395337,
+      "positive_fraction": 0.9163411458333334
+    },
+    "u12": {
+      "mean": 0.0005826818497053613,
+      "positive_fraction": 0.9410807291666666
+    },
+    "u1_given2": {
+      "mean": 0.00011232808962140798,
+      "positive_fraction": 0.853515625
+    },
+    "u2_given1": {
+      "mean": 0.00011181683454851867,
+      "positive_fraction": 0.826171875
+    }
+  },
+  "target_scores_computed": false,
+  "internal_holdout_scores_computed": false,
+  "parameter_selection": false,
+  "elapsed_seconds": 22.796744219958782,
+  "interpretation": "Fixed source-only utility labels and observable controls; no learned gain or novelty claim"
+}

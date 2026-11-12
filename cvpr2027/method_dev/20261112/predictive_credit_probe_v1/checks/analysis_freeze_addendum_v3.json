@@ -1,0 +1,14 @@
+{
+  "schema": "seer.predictive_credit_probe.analysis_freeze_addendum.v1",
+  "time_utc": "2026-11-12T07:26:36.685487+00:00",
+  "previous_freeze_sha256": "347a7cce6a84be6e37cd13cf99def4e2d82a46d2809192acdd831d49c6a9aa3d",
+  "actual_freeze_sha256": "d96a1fb9335ba1d545e5e77d888bdc41ae1bf9d783af4f6f6151e3acf2a346cf",
+  "changes": "Only bind the new four-worker CPU execution driver, strict merge driver, and CPU sharding protocol; original analysis source, primary gate, tests, subset, and all twelve v2-bound files remain unchanged.",
+  "actual_loss_or_patch_utility_files_opened": false,
+  "aggregate_quality_disclosure": "Before the first freeze, a value-export completion message contained six fixed-action aggregate PSNR descriptions, as preserved in analysis_freeze_disclosure_v1.json. No analysis choice was changed from these aggregates.",
+  "new_bound_files": {
+    "checks/critic_cpu_sharded_v1.py": "fd5ac9803a55ed40d27cd9a7ff73cf4d28d1adfba915e4fbd66fad3cc8f2f5ca",
+    "checks/critic_merge_shards_v1.py": "f43e4681c641b79cb1f9fd715d0956f53c5511e25e1c5a610e9ff341b3f2d18a",
+    "checks/critic_cpu_sharded_protocol_v1.json": "0520d8bae8961488c28c0fe5d8c1585e28d88f7afa2245e0c4fd40cd6ed786e5"
+  }
+}

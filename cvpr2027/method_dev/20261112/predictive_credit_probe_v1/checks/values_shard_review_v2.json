@@ -1,0 +1,66 @@
+{
+  "status": "passed_readonly_review_and_synthetic_merge_contracts",
+  "reviewed_files_sha256": {
+    "checks/critic_cpu_sharded_v2.py": "1758838f35e243456b9a09095e23ecd4c9e8a8b4409655019f375aedf84dd4a6",
+    "checks/critic_merge_shards_v2.py": "5bec2d81d659e6e6fd5d21985fb789bfaa47fc28cad3be1d7ba951fec2c06cfd",
+    "checks/critic_archive_v2.py": "18bb1eb7ab36b94fdf39696c28f3f17baf16cfdb1aef93d02ee6194ee2819e3a"
+  },
+  "review_scope": "Version2 worker/merge/archive orchestration; no frozen critic/analysis code edited",
+  "resolved_v1_blocker": "One checks.mkdir(exist_ok=False) only; original failed v1 evidence preserved",
+  "contracts": {
+    "same_data": "Frozen12 FIT pass1 rows, fixed shards0:3,3:6,6:9,9:12 and exact same RGB/native source SHA",
+    "same_state": "Same immutable strictload helper/checkpoint, fixed random predictor seed, per-worker state before/after, merge compares all four states",
+    "synthetic_gate": "Complete16f allcoalitions/controls plus exact withheld-pixel context/prediction invariance before any selected source LQ access",
+    "paths": "Worker checks critic_worker_v2_i; merge reads critic_cpu_outputs_v2/worker_i; launcher must pass matching output paths; archive reads merged v2completion/output",
+    "coverage": "Merge requires all4worker completion+synthetic receipts, exact3rows each,12unique names/clipindices, same source hashes and payload identities, coalition/patchorder, finite bounded losses",
+    "finish_order": "Worker completion after output/state/release verification; merge waits allworker completions before publishingjoint manifest; merge_complete follows manifest; archive requires merge_complete_v2"
+  },
+  "synthetic_merge_fixture": {
+    "status": "passed",
+    "fixtures": 8,
+    "results": [
+      {
+        "case": "complete_unique12_hash_and_relative_paths",
+        "status": "passed"
+      },
+      {
+        "case": "reject_missing_worker_completion",
+        "status": "passed"
+      },
+      {
+        "case": "reject_mixed_worker_state",
+        "status": "passed"
+      },
+      {
+        "case": "reject_wrong_payload_name",
+        "status": "passed"
+      },
+      {
+        "case": "reject_wrong_sidecar",
+        "status": "passed"
+      },
+      {
+        "case": "reject_bad_source_lineage",
+        "status": "passed"
+      },
+      {
+        "case": "reject_bad_patch_order",
+        "status": "passed"
+      },
+      {
+        "case": "reject_nonfinite_loss",
+        "status": "passed"
+      }
+    ],
+    "merge_sha256": "5bec2d81d659e6e6fd5d21985fb789bfaa47fc28cad3be1d7ba951fec2c06cfd",
+    "dataset_inputs_read": 0,
+    "model_or_gt_assets_read": 0,
+    "limitations": "check_release stubbed to isolate actual merge program guards; this is not a model/encoder or runtime data test"
+  },
+  "fixture_source_sha256": "3f126b2fec63b7dbdc3bcc6a90a46fa12c771140f0ff1f91c42afead00d3b3df",
+  "fixture_log_sha256": "8f052e638b238643de8548620c339ea1c8b63625e76560046ae20a2746c00a57",
+  "limits": "Model strictload and real16f forwards reviewed statically, not rerun by this review. Merge fixture stubs release checker only; does not replace actual model/runtime gates.",
+  "new_dataset_or_gt_inputs_read": 0,
+  "critic_files_modified": false,
+  "reviewed_utc": "2026-11-12T07:30:25.578953+00:00"
+}

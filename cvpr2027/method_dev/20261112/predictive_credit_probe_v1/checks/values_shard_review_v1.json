@@ -1,0 +1,40 @@
+{
+  "status": "changes_required_before_real_data",
+  "review_scope": "Read-only independent source and release/merge contract review; no critic or analysis files edited",
+  "files_sha256": {
+    "checks/critic_cpu_sharded_v1.py": "fd5ac9803a55ed40d27cd9a7ff73cf4d28d1adfba915e4fbd66fad3cc8f2f5ca",
+    "checks/critic_merge_shards_v1.py": "f43e4681c641b79cb1f9fd715d0956f53c5511e25e1c5a610e9ff341b3f2d18a",
+    "checks/critic_cpu_sharded_protocol_v1.json": "0520d8bae8961488c28c0fe5d8c1585e28d88f7afa2245e0c4fd40cd6ed786e5",
+    "checks/critic_cpu_sharded_release_manifest.json": "ac6573d171a348c8366bf23e087625dd51416119dea5e235b76cefe1f2f0187d",
+    "critic_export.py": "72c8040d21a4928c8a1f2bfc703acc65bf2e660cddad58bb0a08159545665e11",
+    "subsets.json": "35292bbec0bc056481129857436950644448ca669d2261b72de350f841a2a92e",
+    "checks/critic_archive_v1.py": "8b47a9eec4ce7336285cd7d44673921044aca8262e5945da5970e8393dd3e52b"
+  },
+  "blocking_findings": [
+    {
+      "file": "checks/critic_cpu_sharded_v1.py",
+      "issue": "Same critic_worker_<shard> checks directory is created twice using exist_ok=False, once before load_models and once before synthetic evaluation; second creation deterministically raises FileExistsError",
+      "effect": "Stops before16-frame synthetic gate and source LQ access",
+      "required_resolution": "New frozen driver/release version preserving original v1 and failed/unused state"
+    }
+  ],
+  "followup_integration": [
+    {
+      "file": "checks/critic_archive_v1.py",
+      "issue": "Archive v1 expects single-worker critic_cpu_export_complete.json while merged shard path produces critic_merge_complete.json",
+      "resolution": "Use separately frozen sharded archive driver; original archive remains immutable"
+    }
+  ],
+  "reviewed_contracts": {
+    "shards": "Four fixed, disjoint3-clip subsets, exactindices0..11; metadata fit/pass1 guards precede source opens",
+    "strict_state": "Every worker calls same strictload helper and random seed20261122; state_before/after checked and merge requires identical states across4workers",
+    "synthetic_before_data": "16-frame allcoalitions/controls and exact withheld context/prediction invariance gate is structurally before source access, after duplicate-directory issue is fixed",
+    "partial_outputs": "Workers may write partial clip manifests before final state checks; merge requires completion record first and validates payload SHA, so no partial worker acceptance",
+    "merge_identity": "Each row matches predefined subset/order, unique12 manifest names; worker-relative paths rewrite to workerN/basename, payload RGB/native source SHA and clip_index checked",
+    "merge_finishing": "Joint manifest written only after all4worker completion/state/output validations; merge_complete follows successful joint manifest hash"
+  },
+  "advisory": "Add explicit merged payload name/scene and sidecarSHA equality checks to improve self-contained evidence; existing frozen producer already writes these correctly and release pins sidecar absolute dependency",
+  "new_tensor_or_gt_inputs_read": 0,
+  "critic_files_changed": false,
+  "reviewed_utc": "2026-11-12T07:27:22.441463+00:00"
+}

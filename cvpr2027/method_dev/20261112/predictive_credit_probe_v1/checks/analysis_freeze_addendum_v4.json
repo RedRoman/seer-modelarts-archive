@@ -1,0 +1,14 @@
+{
+  "schema": "seer.predictive_credit_probe.analysis_freeze_addendum.v1",
+  "time_utc": "2026-11-12T07:30:36.243298+00:00",
+  "previous_freeze_sha256": "d96a1fb9335ba1d545e5e77d888bdc41ae1bf9d783af4f6f6151e3acf2a346cf",
+  "actual_freeze_sha256": "3151df089d6617772ba4ef069e984a5adbc1ad8c09c62e8fb897a0dac950737b",
+  "changes": "Only add the independently reviewed v2 CPU sharding/merge execution code after v1 failed before synthetic or source inference on duplicate directory creation. All prior freeze files and failures remain preserved. No analysis source, tests, primary gate, subset, or parameters changed.",
+  "actual_loss_or_patch_utility_files_opened": false,
+  "aggregate_quality_disclosure": "Six fixed-action aggregate PSNR descriptions were received before the initial freeze, as preserved in analysis_freeze_disclosure_v1.json; these were not used to change the gate or choose methods.",
+  "new_bound_files": {
+    "checks/critic_cpu_sharded_v2.py": "1758838f35e243456b9a09095e23ecd4c9e8a8b4409655019f375aedf84dd4a6",
+    "checks/critic_merge_shards_v2.py": "5bec2d81d659e6e6fd5d21985fb789bfaa47fc28cad3be1d7ba951fec2c06cfd",
+    "checks/critic_cpu_sharded_protocol_v2.json": "9d4de2fbf60c17e344f34151bacce8f9f8efa11714d5cd75606c0377f4e118b6"
+  }
+}

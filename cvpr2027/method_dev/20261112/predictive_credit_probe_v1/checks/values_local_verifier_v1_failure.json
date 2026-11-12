@@ -1,0 +1,7 @@
+{
+  "status": "failed_text_copy_stage",
+  "all_archive_payload_hash_checks_before_failure_passed": true,
+  "reason": "Four163-byte macOS AppleDouble sidecars have .py/.json suffix but are binary; strict UTF8 assertion rejected them before copying",
+  "remediation": "Preserve immutable23-file archive/SFS; verifier_v2 verifies all hashes but copies only actual UTF8 text, excludes AppleDouble fromGit",
+  "real_data_or_results_changed": false
+}
