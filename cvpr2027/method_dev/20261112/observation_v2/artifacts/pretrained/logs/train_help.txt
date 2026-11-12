@@ -1,0 +1,11 @@
+usage: train_observation_v2.py [-h] {prepare,train} ...
+
+Source-only observation controls and two-step trajectory reconstruction.
+Prepare immutable observable tensors once. Train every final head at a fixed
+budget, without intermediate validation or target-dependent selection.
+
+positional arguments:
+  {prepare,train}
+
+options:
+  -h, --help       show this help message and exit

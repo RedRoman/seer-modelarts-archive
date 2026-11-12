@@ -1,0 +1,169 @@
+test_full_data_pooling_and_temporal_absolute_order_are_unchanged (test_aggregate.AggregationTests.test_full_data_pooling_and_temporal_absolute_order_are_unchanged) ... ok
+test_main_does_not_compare_different_missing_sequences (test_aggregate.AggregationTests.test_main_does_not_compare_different_missing_sequences) ... ok
+test_missing_scores_are_filtered_jointly (test_aggregate.AggregationTests.test_missing_scores_are_filtered_jointly) ... ok
+test_temporal_seed_sign_measures_distance_from_gt (test_aggregate.AggregationTests.test_temporal_seed_sign_measures_distance_from_gt) ... ok
+test_temporal_seed_sign_requires_gt_on_both_arms (test_aggregate.AggregationTests.test_temporal_seed_sign_requires_gt_on_both_arms) ... ok
+test_full_136_manifest_requires_every_original_sha_and_order (test_cache_adjacent_flows.ManifestTests.test_full_136_manifest_requires_every_original_sha_and_order) ... ok
+test_helper_signature_and_pinned_function_source (test_cache_adjacent_flows.ManifestTests.test_helper_signature_and_pinned_function_source) ... ok
+test_missing_file_or_incomplete_state_fails_before_export (test_cache_adjacent_flows.ManifestTests.test_missing_file_or_incomplete_state_fails_before_export) ... ok
+test_output_path_is_exclusive_and_resolved_under_cache (test_cache_adjacent_flows.ManifestTests.test_output_path_is_exclusive_and_resolved_under_cache) ... ok
+test_adjacent_direction_batching_mask_and_four_frame_boundary (test_cache_adjacent_flows.TensorTests.test_adjacent_direction_batching_mask_and_four_frame_boundary) ... ok
+test_base_shape_range_dtype_and_train_mode_are_rejected (test_cache_adjacent_flows.TensorTests.test_base_shape_range_dtype_and_train_mode_are_rejected) ... ok
+test_export_is_base_only_self_contained_and_gt_agnostic (test_cache_adjacent_flows.TensorTests.test_export_is_base_only_self_contained_and_gt_agnostic) ... {"event": "exported_base", "index": 0, "name": "SDSD_indoor/a"}
+{"event": "exported_base", "index": 1, "name": "SDSD_indoor/a_2"}
+{"event": "exported_base", "index": 2, "name": "SDSD_outdoor/a"}
+{"event": "exported_base", "index": 3, "name": "SDSD_outdoor/a_2"}
+ok
+test_flow_cache_full_and_slim_are_equal_and_preserve_lineage (test_cache_adjacent_flows.TensorTests.test_flow_cache_full_and_slim_are_equal_and_preserve_lineage) ... {"event": "exported_base", "index": 0, "name": "SDSD_indoor/a"}
+{"event": "exported_base", "index": 1, "name": "SDSD_indoor/a_2"}
+{"event": "exported_base", "index": 2, "name": "SDSD_outdoor/a"}
+{"event": "exported_base", "index": 3, "name": "SDSD_outdoor/a_2"}
+{"event": "cached_adjacent", "index": 0, "name": "SDSD_indoor/a", "elapsed_seconds": 0.005}
+{"event": "cached_adjacent", "index": 1, "name": "SDSD_indoor/a_2", "elapsed_seconds": 0.01}
+{"event": "cached_adjacent", "index": 2, "name": "SDSD_outdoor/a", "elapsed_seconds": 0.014}
+{"event": "cached_adjacent", "index": 3, "name": "SDSD_outdoor/a_2", "elapsed_seconds": 0.019}
+{"event": "cached_adjacent", "index": 0, "name": "SDSD_indoor/a", "elapsed_seconds": 0.004}
+{"event": "cached_adjacent", "index": 1, "name": "SDSD_indoor/a_2", "elapsed_seconds": 0.009}
+{"event": "cached_adjacent", "index": 2, "name": "SDSD_outdoor/a", "elapsed_seconds": 0.013}
+{"event": "cached_adjacent", "index": 3, "name": "SDSD_outdoor/a_2", "elapsed_seconds": 0.018}
+ok
+test_original_loader_accesses_no_other_tensor_key (test_cache_adjacent_flows.TensorTests.test_original_loader_accesses_no_other_tensor_key) ... ok
+test_slim_detects_file_and_tensor_lineage_tampering (test_cache_adjacent_flows.TensorTests.test_slim_detects_file_and_tensor_lineage_tampering) ... {"event": "exported_base", "index": 0, "name": "SDSD_indoor/a"}
+{"event": "exported_base", "index": 1, "name": "SDSD_indoor/a_2"}
+{"event": "exported_base", "index": 2, "name": "SDSD_outdoor/a"}
+{"event": "exported_base", "index": 3, "name": "SDSD_outdoor/a_2"}
+ok
+test_wrong_weights_or_mutated_raft_state_fail_without_complete_summary (test_cache_adjacent_flows.TensorTests.test_wrong_weights_or_mutated_raft_state_fail_without_complete_summary) ... {"event": "cached_adjacent", "index": 0, "name": "SDSD_indoor/a", "elapsed_seconds": 0.005}
+{"event": "cached_adjacent", "index": 1, "name": "SDSD_indoor/a_2", "elapsed_seconds": 0.01}
+{"event": "cached_adjacent", "index": 2, "name": "SDSD_outdoor/a", "elapsed_seconds": 0.015}
+{"event": "cached_adjacent", "index": 3, "name": "SDSD_outdoor/a_2", "elapsed_seconds": 0.019}
+ok
+test_baseline_defaults_have_same_conditioning (test_checkpoint_reconstruction.ConfigTests.test_baseline_defaults_have_same_conditioning) ... ok
+test_basis_relocation_requires_the_saved_file_or_explicit_override (test_checkpoint_reconstruction.ConfigTests.test_basis_relocation_requires_the_saved_file_or_explicit_override) ... ok
+test_invalid_configuration_is_rejected_before_loading (test_checkpoint_reconstruction.ConfigTests.test_invalid_configuration_is_rejected_before_loading) ... ok
+test_random_seed_does_not_change_pretrained_arm (test_checkpoint_reconstruction.ConfigTests.test_random_seed_does_not_change_pretrained_arm) ... ok
+test_saved_variants_and_explicit_legacy (test_checkpoint_reconstruction.ConfigTests.test_saved_variants_and_explicit_legacy) ... ok
+test_cpu_encoder_seed_matches_training_and_restores_rng (test_checkpoint_reconstruction.TensorTests.test_cpu_encoder_seed_matches_training_and_restores_rng) ... ok
+test_evaluator_rejects_basis_tap_mismatch (test_checkpoint_reconstruction.TensorTests.test_evaluator_rejects_basis_tap_mismatch) ... ok
+test_evaluator_rejects_checkpoint_keys_that_do_not_match (test_checkpoint_reconstruction.TensorTests.test_evaluator_rejects_checkpoint_keys_that_do_not_match) ... ok
+test_evaluator_restores_configuration_and_random_weights (test_checkpoint_reconstruction.TensorTests.test_evaluator_restores_configuration_and_random_weights) ... ok
+test_gated_branch_constructs_and_preserves_initial_residual_identity (test_checkpoint_reconstruction.TensorTests.test_gated_branch_constructs_and_preserves_initial_residual_identity) ... ok
+test_projection_math_and_float32_autocast_boundary (test_checkpoint_reconstruction.TensorTests.test_projection_math_and_float32_autocast_boundary) ... ok
+test_batched_kernel_and_noncontiguous_inputs (test_correction_risk.NumpyKernelTests.test_batched_kernel_and_noncontiguous_inputs) ... ok
+test_float32_extreme_scales_and_singular_ratios_do_not_overflow (test_correction_risk.NumpyKernelTests.test_float32_extreme_scales_and_singular_ratios_do_not_overflow) ... ok
+test_interior_simplex_edge_and_complementary_directions (test_correction_risk.NumpyKernelTests.test_interior_simplex_edge_and_complementary_directions) ... ok
+test_random_psd_matrices_match_independent_dense_grid (test_correction_risk.NumpyKernelTests.test_random_psd_matrices_match_independent_dense_grid) ... ok
+test_singular_correlated_opposite_and_linear_cases (test_correction_risk.NumpyKernelTests.test_singular_correlated_opposite_and_linear_cases) ... ok
+test_zero_negative_gain_and_one_candidate (test_correction_risk.NumpyKernelTests.test_zero_negative_gain_and_one_candidate) ... ok
+test_autograd_is_finite_away_from_active_set_ties (test_correction_risk.TorchSolverTests.test_autograd_is_finite_away_from_active_set_ties) ... ok
+test_empty_batch_and_noncontiguous_inputs (test_correction_risk.TorchSolverTests.test_empty_batch_and_noncontiguous_inputs) ... ok
+test_gt_helper_is_detached_and_risk_equals_actual_mse_change (test_correction_risk.TorchSolverTests.test_gt_helper_is_detached_and_risk_equals_actual_mse_change) ... ok
+test_helper_rejects_invalid_contract_and_nonfinite (test_correction_risk.TorchSolverTests.test_helper_rejects_invalid_contract_and_nonfinite) ... ok
+test_shape_dtype_nonfinite_and_non_psd_rejection (test_correction_risk.TorchSolverTests.test_shape_dtype_nonfinite_and_non_psd_rejection) ... ok
+test_solver_matches_numpy_and_grid_for_float32_and_float64 (test_correction_risk.TorchSolverTests.test_solver_matches_numpy_and_grid_for_float32_and_float64) ... ok
+test_torch_degenerate_cases_and_no_linalg_dependency (test_correction_risk.TorchSolverTests.test_torch_degenerate_cases_and_no_linalg_dependency) ... ok
+test_video_patch_moments_match_explicit_rgb_spatial_slices (test_correction_risk.TorchSolverTests.test_video_patch_moments_match_explicit_rgb_spatial_slices) ... ok
+test_video_patch_moments_reject_shape_or_partial_patches (test_correction_risk.TorchSolverTests.test_video_patch_moments_reject_shape_or_partial_patches) ... ok
+test_fit_normalization_handles_zero_energy_and_rejects_bad_indices (test_correction_selector.ProtocolTests.test_fit_normalization_handles_zero_energy_and_rejects_bad_indices) ... ok
+test_manifest_rejects_incomplete_or_modified_cache_without_loading_tensors (test_correction_selector.ProtocolTests.test_manifest_rejects_incomplete_or_modified_cache_without_loading_tensors) ... ok
+test_normalization_uses_fit_only_and_preserves_zero_target_origin (test_correction_selector.ProtocolTests.test_normalization_uses_fit_only_and_preserves_zero_target_origin) ... ok
+test_sample_plan_never_uses_holdout_and_is_model_independent (test_correction_selector.ProtocolTests.test_sample_plan_never_uses_holdout_and_is_model_independent) ... ok
+test_scene_split_is_fixed_disjoint_and_input_order_independent (test_correction_selector.ProtocolTests.test_scene_split_is_fixed_disjoint_and_input_order_independent) ... ok
+test_3_by_3_context_has_no_more_distant_input_dependency (test_correction_selector.TorchSelectorTests.test_3_by_3_context_has_no_more_distant_input_dependency) ... ok
+test_all_zero_heads_give_exact_thirds_including_singular_gram (test_correction_selector.TorchSelectorTests.test_all_zero_heads_give_exact_thirds_including_singular_gram) ... ok
+test_complete_synthetic_cache_fixed_budget_and_end_only_holdout (test_correction_selector.TorchSelectorTests.test_complete_synthetic_cache_fixed_budget_and_end_only_holdout) ... {"mode": "risk_full", "step": 1, "loss": 0.9974443912506104, "batch_rgb_mse": 0.0013687359169125557, "batch_base_mse": 0.004001181107014418, "prediction_timing": "Before optimizer update"}
+{"mode": "risk_full", "step": 24, "loss": 0.0437462143599987, "batch_rgb_mse": 7.647197344340384e-05, "batch_base_mse": 0.003994854167103767, "prediction_timing": "Before optimizer update"}
+{"mode": "direct_mse", "step": 1, "loss": 0.0013687359169125557, "batch_rgb_mse": 0.0013687359169125557, "batch_base_mse": 0.004001181107014418, "prediction_timing": "Before optimizer update"}
+{"mode": "direct_mse", "step": 24, "loss": 6.187547114677727e-05, "batch_rgb_mse": 6.187547114677727e-05, "batch_base_mse": 0.003994854167103767, "prediction_timing": "Before optimizer update"}
+{"mode": "direct_mse_normalized", "step": 1, "loss": 0.3408626317977905, "batch_rgb_mse": 0.0013687359169125557, "batch_base_mse": 0.004001181107014418, "prediction_timing": "Before optimizer update"}
+{"mode": "direct_mse_normalized", "step": 24, "loss": 0.015385699458420277, "batch_rgb_mse": 6.178136391099542e-05, "batch_base_mse": 0.003994854167103767, "prediction_timing": "Before optimizer update"}
+{"internal_holdout_rgb_mse": {"base": 0.004026921424762501, "past": 0.0018428614906345804, "future": 0.012681365168342987, "fixed_average": 0.0018621127140553047, "initial_thirds": 0.0013837153140533094, "risk_full": 5.52399093673254e-05, "direct_mse": 6.529428355861455e-05, "direct_mse_normalized": 6.501170961807172e-05, "gt_oracle": 1.685399911366403e-05}}
+ok
+test_direct_objective_and_gradient_equal_actual_pixel_reconstruction (test_correction_selector.TorchSelectorTests.test_direct_objective_and_gradient_equal_actual_pixel_reconstruction) ... ok
+test_observable_features_match_independent_pixels_and_have_no_gt_input (test_correction_selector.TorchSelectorTests.test_observable_features_match_independent_pixels_and_have_no_gt_input) ... ok
+test_perfect_moment_head_recovers_oracle_and_zero_energy_is_finite (test_correction_selector.TorchSelectorTests.test_perfect_moment_head_recovers_oracle_and_zero_energy_is_finite) ... ok
+test_all_21_heads_load_with_matching_seed_plan_and_cpu_frozen_states (test_eval_observation_v2.EvaluationProvenanceTests.test_all_21_heads_load_with_matching_seed_plan_and_cpu_frozen_states) ... ok
+test_candidate_mode_scope_and_fixed_budget_are_checked (test_eval_observation_v2.EvaluationProvenanceTests.test_candidate_mode_scope_and_fixed_budget_are_checked) ... ok
+test_checkpoint_file_and_tensor_fingerprints_are_both_checked (test_eval_observation_v2.EvaluationProvenanceTests.test_checkpoint_file_and_tensor_fingerprints_are_both_checked) ... ok
+test_common_forged_initialization_cannot_pass_cross_variant_matching (test_eval_observation_v2.EvaluationProvenanceTests.test_common_forged_initialization_cannot_pass_cross_variant_matching) ... ok
+test_common_forged_sample_plan_cannot_pass_cross_variant_matching (test_eval_observation_v2.EvaluationProvenanceTests.test_common_forged_sample_plan_cannot_pass_cross_variant_matching) ... ok
+test_hash_formats_are_distinct_and_base_raft_call_sites_use_torch_format (test_eval_observation_v2.EvaluationProvenanceTests.test_hash_formats_are_distinct_and_base_raft_call_sites_use_torch_format) ... ok
+test_head_source_manifest_must_equal_preparation (test_eval_observation_v2.EvaluationProvenanceTests.test_head_source_manifest_must_equal_preparation) ... ok
+test_missing_duplicate_and_unexpected_seed_rejected (test_eval_observation_v2.EvaluationProvenanceTests.test_missing_duplicate_and_unexpected_seed_rejected) ... ok
+test_source_hash_manifest_missing_changed_or_escaping_fails_closed (test_eval_observation_v2.EvaluationProvenanceTests.test_source_hash_manifest_missing_changed_or_escaping_fails_closed) ... ok
+test_source_manifest_complete_and_51_17_scene_split (test_eval_observation_v2.EvaluationProvenanceTests.test_source_manifest_complete_and_51_17_scene_split) ... ok
+test_target_or_oracle_markers_and_source_names_split_are_rejected (test_eval_observation_v2.EvaluationProvenanceTests.test_target_or_oracle_markers_and_source_names_split_are_rejected) ... ok
+test_inventory_checks_complete_pairs_scene_split_and_centre_indices (test_eval_stcd_transfer.ProtocolTests.test_inventory_checks_complete_pairs_scene_split_and_centre_indices) ... ok
+test_inventory_rejects_missing_frames_or_duplicate_validation_names (test_eval_stcd_transfer.ProtocolTests.test_inventory_rejects_missing_frames_or_duplicate_validation_names) ... ok
+test_only_two_forced_moves_and_isolated_import_are_adapted (test_eval_stcd_transfer.ProtocolTests.test_only_two_forced_moves_and_isolated_import_are_adapted) ... ok
+test_pinned_source_verification_precedes_execution (test_eval_stcd_transfer.ProtocolTests.test_pinned_source_verification_precedes_execution) ... ok
+test_prediction_receives_only_low_and_scoring_is_later (test_eval_stcd_transfer.ProtocolTests.test_prediction_receives_only_low_and_scoring_is_later) ... ok
+test_loader_is_strict_and_never_requires_cuda_or_training_wrapper (test_eval_stcd_transfer.TensorTests.test_loader_is_strict_and_never_requires_cuda_or_training_wrapper) ... ok
+test_metrics_use_quantized_pixels_and_absolute_temporal_gap (test_eval_stcd_transfer.TensorTests.test_metrics_use_quantized_pixels_and_absolute_temporal_gap) ... ok
+test_prediction_rounds_uint8_and_rejects_bad_input_or_output (test_eval_stcd_transfer.TensorTests.test_prediction_rounds_uint8_and_rejects_bad_input_or_output) ... ok
+test_two_frame_context_channel_swap_output_index_and_last_duplication (test_eval_stcd_transfer.TensorTests.test_two_frame_context_channel_swap_output_index_and_last_duplication) ... ok
+test_backbone_and_svd_are_cached_per_clip_across_conditions (test_mean_basis_control.MeanBasisTests.test_backbone_and_svd_are_cached_per_clip_across_conditions) ... ok
+test_identity_mean_only_and_all_four_crossed_conditions (test_mean_basis_control.MeanBasisTests.test_identity_mean_only_and_all_four_crossed_conditions) ... ok
+test_invalid_selection_and_projection_dimensions_fail (test_mean_basis_control.MeanBasisTests.test_invalid_selection_and_projection_dimensions_fail) ... ok
+test_svd_runs_once_and_is_clip_centered_float32 (test_mean_basis_control.MeanBasisTests.test_svd_runs_once_and_is_clip_centered_float32) ... ok
+test_both_detail_controls_share_eroded_mask_and_outputs_are_bounded (test_observation_candidates.ObservationTests.test_both_detail_controls_share_eroded_mask_and_outputs_are_bounded) ... ok
+test_invalid_shapes_flow_mask_and_values_fail_closed (test_observation_candidates.ObservationTests.test_invalid_shapes_flow_mask_and_values_fail_closed) ... ok
+test_lowpass_removes_flat_donor_brightness_changes (test_observation_candidates.ObservationTests.test_lowpass_removes_flat_donor_brightness_changes) ... ok
+test_no_gt_argument_or_autograd_path (test_observation_candidates.ObservationTests.test_no_gt_argument_or_autograd_path) ... ok
+test_pixel_translation_uses_target_to_source_gather (test_observation_candidates.ObservationTests.test_pixel_translation_uses_target_to_source_gather) ... ok
+test_raw_detail_uses_exact_source_low_frame_not_target_low_frame (test_observation_candidates.ObservationTests.test_raw_detail_uses_exact_source_low_frame_not_target_low_frame) ... ok
+test_restored_zero_flow_samples_correct_temporal_source (test_observation_candidates.ObservationTests.test_restored_zero_flow_samples_correct_temporal_source) ... ok
+test_all_modes_have_exact_same_eroded_mask_and_zero_invalid_corrections (test_observation_controls.ObservationControlTests.test_all_modes_have_exact_same_eroded_mask_and_zero_invalid_corrections) ... ok
+test_all_modes_reject_invalid_original_temporal_or_geometric_masks (test_observation_controls.ObservationControlTests.test_all_modes_reject_invalid_original_temporal_or_geometric_masks) ... ok
+test_constant_frames_are_identity_even_with_distinct_exposures (test_observation_controls.ObservationControlTests.test_constant_frames_are_identity_even_with_distinct_exposures) ... ok
+test_fail_closed_for_shape_dtype_nonfinite_range_and_invalid_config (test_observation_controls.ObservationControlTests.test_fail_closed_for_shape_dtype_nonfinite_range_and_invalid_config) ... ok
+test_mismatch_edges_use_recorded_legal_clamps_without_wrap_or_validity_relaxation (test_observation_controls.ObservationControlTests.test_mismatch_edges_use_recorded_legal_clamps_without_wrap_or_validity_relaxation) ... ok
+test_mismatch_low_perturbation_changes_the_swapped_direction_only (test_observation_controls.ObservationControlTests.test_mismatch_low_perturbation_changes_the_swapped_direction_only) ... ok
+test_mismatch_samples_opposite_values_but_original_direction_flow (test_observation_controls.ObservationControlTests.test_mismatch_samples_opposite_values_but_original_direction_flow) ... ok
+test_no_gt_keyword_no_gradient_and_inputs_not_mutated (test_observation_controls.ObservationControlTests.test_no_gt_keyword_no_gradient_and_inputs_not_mutated) ... ok
+test_raw_wrapper_is_elementwise_exact_with_frozen_recipe (test_observation_controls.ObservationControlTests.test_raw_wrapper_is_elementwise_exact_with_frozen_recipe) ... ok
+test_same_frame_matches_formula_on_both_direction_supports (test_observation_controls.ObservationControlTests.test_same_frame_matches_formula_on_both_direction_supports) ... ok
+test_same_frame_value_is_isolated_from_every_neighbour_low_and_base (test_observation_controls.ObservationControlTests.test_same_frame_value_is_isolated_from_every_neighbour_low_and_base) ... ok
+test_same_frame_values_do_not_use_flow_coordinates (test_observation_controls.ObservationControlTests.test_same_frame_values_do_not_use_flow_coordinates) ... ok
+test_public_builder_accepts_only_observables_and_fixed_recipe (test_observation_controls.StaticContractTests.test_public_builder_accepts_only_observables_and_fixed_recipe) ... ok
+test_counts_scene_leakage_alias_duplicates_and_bad_identifiers_reject_before_io (test_planned_bvi.PlannedBVITests.test_counts_scene_leakage_alias_duplicates_and_bad_identifiers_reject_before_io) ... ok
+test_empty_and_unequal_png_frame_counts_are_not_silently_truncated (test_planned_bvi.PlannedBVITests.test_empty_and_unequal_png_frame_counts_are_not_silently_truncated) ... ok
+test_equal_counts_with_shifted_frame_names_are_rejected (test_planned_bvi.PlannedBVITests.test_equal_counts_with_shifted_frame_names_are_rejected) ... ok
+test_finite_range_and_rgb_shape_guards (test_planned_bvi.PlannedBVITests.test_finite_range_and_rgb_shape_guards) ... ok
+test_legacy_identifier_selects_condition_without_temporal_resampling (test_planned_bvi.PlannedBVITests.test_legacy_identifier_selects_condition_without_temporal_resampling) ... ok
+test_pair_and_within_clip_shapes_are_validated_before_augmentation (test_planned_bvi.PlannedBVITests.test_pair_and_within_clip_shapes_are_validated_before_augmentation) ... ok
+test_plan_and_paired_augmentation_are_order_and_global_rng_independent (test_planned_bvi.PlannedBVITests.test_plan_and_paired_augmentation_are_order_and_global_rng_independent) ... ok
+test_sorted_index_pairing_short_clip_padding_and_tensor_contract (test_planned_bvi.PlannedBVITests.test_sorted_index_pairing_short_clip_padding_and_tensor_contract) ... ok
+test_cache_integrity_and_completeness (test_source_selector.SourceProtocolTests.test_cache_integrity_and_completeness) ... ok
+test_entrypoints_do_not_reference_undefined_globals (test_source_selector.SourceProtocolTests.test_entrypoints_do_not_reference_undefined_globals) ... ok
+test_expected_base_identity_and_no_target_trained_base (test_source_selector.SourceProtocolTests.test_expected_base_identity_and_no_target_trained_base) ... ok
+test_fixed_budget_source_partition_and_fit_only_normalization (test_source_selector.SourceProtocolTests.test_fixed_budget_source_partition_and_fit_only_normalization) ... ok
+test_pass_leakage_and_duplicate_names_fail (test_source_selector.SourceProtocolTests.test_pass_leakage_and_duplicate_names_fail) ... ok
+test_scene_grouping_preserves_domain_and_pass_pairs (test_source_selector.SourceProtocolTests.test_scene_grouping_preserves_domain_and_pass_pairs) ... ok
+test_scene_split_does_not_depend_on_order_or_pass_duplication (test_source_selector.SourceProtocolTests.test_scene_split_does_not_depend_on_order_or_pass_duplication) ... ok
+test_none_arm_supplies_four_zero_token_fields (test_source_selector.SourceTensorTests.test_none_arm_supplies_four_zero_token_fields) ... ok
+test_centered_semantics_ignore_clip_dc_and_teacher_is_loss_only (test_temporal_detail_fusion.TemporalDetailFusionTests.test_centered_semantics_ignore_clip_dc_and_teacher_is_loss_only) ... ok
+test_no_valid_temporal_neighbour_is_finite_identity (test_temporal_detail_fusion.TemporalDetailFusionTests.test_no_valid_temporal_neighbour_is_finite_identity) ... ok
+test_subclass_loads_base_and_local_prior_have_identical_state (test_temporal_detail_fusion.TemporalDetailFusionTests.test_subclass_loads_base_and_local_prior_have_identical_state) ... ok
+test_values_really_come_from_neighbour_frames_and_bypass_restores_input (test_temporal_detail_fusion.TemporalDetailFusionTests.test_values_really_come_from_neighbour_frames_and_bypass_restores_input) ... ok
+test_zero_initialization_is_identity_and_output_projection_can_learn (test_temporal_detail_fusion.TemporalDetailFusionTests.test_zero_initialization_is_identity_and_output_projection_can_learn) ... ok
+test_crop_masks_reject_donors_outside_available_state (test_train_observation_v2.SourceCropTests.test_crop_masks_reject_donors_outside_available_state) ... ok
+test_fit_only_clip_plan_and_valid_frame_crop_budget (test_train_observation_v2.SourcePlanTests.test_fit_only_clip_plan_and_valid_frame_crop_budget) ... ok
+test_scene_prefixes_prevent_accidental_source_mix (test_train_observation_v2.SourcePlanTests.test_scene_prefixes_prevent_accidental_source_mix) ... ok
+test_constant_state_preserved (test_trajectory_reconstruction.TrajectoryTests.test_constant_state_preserved) ... ok
+test_cross_scramble_changes_only_edge_conditioning (test_trajectory_reconstruction.TrajectoryTests.test_cross_scramble_changes_only_edge_conditioning) ... ok
+test_gather_adjoint_inner_product (test_trajectory_reconstruction.TrajectoryTests.test_gather_adjoint_inner_product) ... ok
+test_gather_translation_and_time_boundaries (test_trajectory_reconstruction.TrajectoryTests.test_gather_translation_and_time_boundaries) ... ok
+test_invalid_mask_and_precision_rejected (test_trajectory_reconstruction.TrajectoryTests.test_invalid_mask_and_precision_rejected) ... ok
+test_node_only_matches_equal_thirds_and_modes_share_state_shapes (test_trajectory_reconstruction.TrajectoryTests.test_node_only_matches_equal_thirds_and_modes_share_state_shapes) ... ok
+test_pair_laplacian_is_symmetric_psd_and_unit_anchor_spd (test_trajectory_reconstruction.TrajectoryTests.test_pair_laplacian_is_symmetric_psd_and_unit_anchor_spd) ... ok
+test_precision_gradient_matches_finite_difference (test_trajectory_reconstruction.TrajectoryTests.test_precision_gradient_matches_finite_difference) ... ok
+test_single_pair_updates_both_endpoints_not_unrelated_nodes (test_trajectory_reconstruction.TrajectoryTests.test_single_pair_updates_both_endpoints_not_unrelated_nodes) ... ok
+test_source_loss_reaches_node_and_edge_parameters_without_gt_input (test_trajectory_reconstruction.TrajectoryTests.test_source_loss_reaches_node_and_edge_parameters_without_gt_input) ... ok
+test_two_steps_match_dense_jacobi (test_trajectory_reconstruction.TrajectoryTests.test_two_steps_match_dense_jacobi) ... ok
+test_zero_edges_are_exact_anchor (test_trajectory_reconstruction.TrajectoryTests.test_zero_edges_are_exact_anchor) ... ok
+
+----------------------------------------------------------------------
+Ran 133 tests in 12.933s
+
+OK

@@ -1,0 +1,33 @@
+{
+  "arm": "none",
+  "utc": "2026-11-12T02:04:57.170521+00:00",
+  "host": "31051",
+  "physical_npu": 7,
+  "source_archive_sha256": "6483532a2423d8427b07157e5eca463c378d43c6c51a5b70838f423a3692e996",
+  "source_manifest_sha256": "420f3cdb99c2c109d253f4354794941f95a0865cd860a7e28cc723bad67bfb5e",
+  "heads_archive_sha256": "13520e74602ce5827cfacc5d1a2d104919e831006bce0b3398241e260c17edc7",
+  "metric_file": "/temp/zihaohe/seer_cvpr/code/baselines/common/eval_lib.py",
+  "metric_sha256": "a26ff0c81f0e6fa380ca26ac87dc2197c66248d3b6945e0da1c99e5b3d3f451d",
+  "versions": {
+    "torch": "2.7.1",
+    "torch-npu": "2.7.1.post2",
+    "pyiqa": "0.1.13",
+    "numpy": "1.26.4",
+    "torchvision": "0.22.1"
+  },
+  "python": "/cache/zihaohe/seer_cvpr/venv_npu/bin/python",
+  "wrapper_sha256": "7e87950ff46473675285d6d0adf6b34b43914959594821fff326e9f699e3aa1b",
+  "runtime_env_sha256": "230496fcde730e843737352e80a2feb6b6cf1e939439f02bb655b070c33f3592",
+  "source_protocol_sha256": "a57534fa7cd37fb2a81175de89f929830044ae7dcb9f52e71f6c6cb83590a9f2",
+  "scope": "All31 fixed methods; VAL16 only; final1000; no tuning/selection",
+  "environment": {
+    "ASCEND_RT_VISIBLE_DEVICES": "7",
+    "TORCH_DEVICE_BACKEND_AUTOLOAD": "0",
+    "OMP_NUM_THREADS": "4",
+    "MKL_NUM_THREADS": "4",
+    "OPENBLAS_NUM_THREADS": "4",
+    "PYTHONPATH": "/cache/zihaohe/seer_observation_dev_20261112/method_release_v1/release/code_full:/cache/zihaohe/seer_observation_dev_20261112/method_release_v1/release/code_full/tools:/temp/zihaohe/seer_cvpr/method_dev_20261111/baseline_code_full:/temp/zihaohe/seer_cvpr/code/baselines:/temp/zihaohe/seer_cvpr/code/baselines/common:/usr/local/Ascend/cann-8.5.2/python/site-packages:/usr/local/Ascend/cann-8.5.2/opp/built-in/op_impl/ai_core/tbe:/usr/local/Ascend/ascend-toolkit/latest/tools/ms_fmk_transplt/torch_npu_bridge:/usr/local/Ascend/ascend-toolkit/latest/python/site-packages:/usr/local/seccomponent/lib:/home/ma-user/infer/model/1",
+    "ASCEND_HOME_PATH": "/usr/local/Ascend/cann-8.5.2",
+    "LD_LIBRARY_PATH": "/usr/local/Ascend/cann-8.5.2/lib64:/usr/local/Ascend/cann-8.5.2/lib64/plugin/opskernel:/usr/local/Ascend/cann-8.5.2/lib64/plugin/nnengine:/usr/local/Ascend/cann-8.5.2/opp/built-in/op_impl/ai_core/tbe/op_tiling/lib/linux/aarch64:/usr/local/Ascend/cann-8.5.2/tools/aml/lib64:/usr/local/Ascend/cann-8.5.2/tools/aml/lib64/plugin:/usr/local/Ascend/driver/lib64:/usr/local/Ascend/driver/lib64/common:/usr/local/Ascend/driver/lib64/driver:/cache/songhua/tools/libevent-2.1.12/lib:/usr/local/Ascend/driver/lib64:/usr/local/Ascend/driver/lib64/common:/usr/local/Ascend/driver/lib64/driver:/usr/local/Ascend/nnal/atb/latest/atb/cxx_abi_1/lib:/usr/local/Ascend/nnal/atb/latest/atb/cxx_abi_1/examples:/usr/local/Ascend/nnal/atb/latest/atb/cxx_abi_1/tests/atbopstest:/usr/local/Ascend/driver/lib64:/usr/local/Ascend/driver/lib64/common:/usr/local/Ascend/driver/lib64/driver:/usr/local/Ascend/driver/lib64/driver:/usr/host-lib:/usr/host-lib64:/usr/lib/aarch64-linux-gnu/hdf5/serial:/usr/local/Ascend/ascend-toolkit/latest/compiler/lib64/plugin/nnengine:/usr/local/Ascend/ascend-toolkit/latest/compiler/lib64/plugin/opskernel:/usr/local/Ascend/ascend-toolkit/latest/lib64:/usr/local/Ascend/ascend-toolkit/latest/opp/built-in/op_impl/ai_core/tbe/op_tiling/lib/:/usr/local/Ascend/driver/lib64:/usr/local/Ascend/driver/lib64/common:/usr/local/Ascend/driver/lib64/driver:/usr/local/Ascend/toolbox/latest/Ascend-DMI/lib64:/usr/local/seccomponent/lib/:/usr/local/seccomponent/lib/openssl/"
+  }
+}

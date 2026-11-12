@@ -1,0 +1,21 @@
+usage: eval_observation_v2.py [-h] --init INIT --raft-weights RAFT_WEIGHTS
+                              --prepared-manifest PREPARED_MANIFEST --heads
+                              HEADS [HEADS ...] --v1-references V1_REFERENCES
+                              [V1_REFERENCES ...] [--seer-root SEER_ROOT]
+                              [--device {npu,cuda}] --out OUT
+
+Evaluate every declared source-trained observation/trajectory head on BVI VAL.
+All methods share one base, +/-2 donor flow and +/-1 graph flow per clip.
+Candidates, graph heads and reconstruction use CPU float32; only frozen base,
+RAFT and common uint8 metrics run on NPU. Target GT is used only for scoring.
+
+options:
+  -h, --help            show this help message and exit
+  --init INIT
+  --raft-weights RAFT_WEIGHTS
+  --prepared-manifest PREPARED_MANIFEST
+  --heads HEADS [HEADS ...]
+  --v1-references V1_REFERENCES [V1_REFERENCES ...]
+  --seer-root SEER_ROOT
+  --device {npu,cuda}
+  --out OUT

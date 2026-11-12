@@ -12,7 +12,15 @@ baselines. Manuscript work is paused. The executable development plan and raw
 results are in [`method_dev/20261111/`](cvpr2027/method_dev/20261111/PLAN.md);
 independent BVI validation is in
 [`selector_val_v1/`](cvpr2027/method_dev/20261111/selector_val_v1/RESULTS.md).
-The latest [SDSD-to-BVI source-trained experiment](cvpr2027/method_dev/20261111/source_transfer_v1/RESULTS.md)
+The [next observation/trajectory pilot](cvpr2027/method_dev/20261112/observation_v2/PLAN.md)
+has completed all 42 source-trained heads and all 31 methods per arm on BVI
+VAL16. Correct neighboring observations beat matched same-frame controls;
+trajectory reconstruction improves the temporal tradeoff, while learned edge
+conditioning does not beat fixed edges. Full results and independent checks are
+in its [experiment report](cvpr2027/method_dev/20261112/observation_v2/RESULTS.md).
+The separately specified TempRetinex reference is measured under the same clip
+protocol; a SOTA result is not established.
+The preceding [SDSD-to-BVI source-trained experiment](cvpr2027/method_dev/20261111/source_transfer_v1/RESULTS.md)
 completed all 36 declared heads and a same-protocol STCD reference. Observation
 detail improves spatial quality across datasets, with a temporal tradeoff;
 the fixed-fusion controls and no-prior arm remain fully reported. This is

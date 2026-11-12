@@ -1,0 +1,415 @@
+{
+  "arm": "pretrained",
+  "head_count": 21,
+  "source_archive_sha256": "6483532a2423d8427b07157e5eca463c378d43c6c51a5b70838f423a3692e996",
+  "launcher_sha256": "bea5c12ef45ffeb5c9abdac5d6a8293dc4f891c84d5f1b408afa98c3ce54bed6",
+  "prepared_manifest_sha256": "b45b407d934d0c87a745544cc4c948083b1ee7abc3bc759b2c71a85f5d5b7816",
+  "children": [
+    {
+      "name": "raw_node_s0",
+      "pid": 3995470,
+      "command": [
+        "/cache/zihaohe/seer_cvpr/venv_npu/bin/python",
+        "-B",
+        "/cache/zihaohe/seer_observation_dev_20261112/method_release_v1/release/code_full/tools/train_observation_v2.py",
+        "train",
+        "--prepared",
+        "/cache/zihaohe/seer_observation_dev_20261112/prepared/pretrained",
+        "--variant",
+        "raw_node",
+        "--seed",
+        "0",
+        "--out",
+        "/cache/zihaohe/seer_observation_dev_20261112/runs/pretrained/raw_node_s0"
+      ],
+      "utc": "2026-11-11T16:52:31.596157+00:00"
+    },
+    {
+      "name": "trajectory_s0",
+      "pid": 3995471,
+      "command": [
+        "/cache/zihaohe/seer_cvpr/venv_npu/bin/python",
+        "-B",
+        "/cache/zihaohe/seer_observation_dev_20261112/method_release_v1/release/code_full/tools/train_observation_v2.py",
+        "train",
+        "--prepared",
+        "/cache/zihaohe/seer_observation_dev_20261112/prepared/pretrained",
+        "--variant",
+        "trajectory",
+        "--seed",
+        "0",
+        "--out",
+        "/cache/zihaohe/seer_observation_dev_20261112/runs/pretrained/trajectory_s0"
+      ],
+      "utc": "2026-11-11T16:52:31.626110+00:00"
+    },
+    {
+      "name": "same_frame_node_s0",
+      "pid": 3995599,
+      "command": [
+        "/cache/zihaohe/seer_cvpr/venv_npu/bin/python",
+        "-B",
+        "/cache/zihaohe/seer_observation_dev_20261112/method_release_v1/release/code_full/tools/train_observation_v2.py",
+        "train",
+        "--prepared",
+        "/cache/zihaohe/seer_observation_dev_20261112/prepared/pretrained",
+        "--variant",
+        "same_frame_node",
+        "--seed",
+        "0",
+        "--out",
+        "/cache/zihaohe/seer_observation_dev_20261112/runs/pretrained/same_frame_node_s0"
+      ],
+      "utc": "2026-11-11T16:53:19.657620+00:00"
+    },
+    {
+      "name": "mismatched_node_s0",
+      "pid": 3995603,
+      "command": [
+        "/cache/zihaohe/seer_cvpr/venv_npu/bin/python",
+        "-B",
+        "/cache/zihaohe/seer_observation_dev_20261112/method_release_v1/release/code_full/tools/train_observation_v2.py",
+        "train",
+        "--prepared",
+        "/cache/zihaohe/seer_observation_dev_20261112/prepared/pretrained",
+        "--variant",
+        "mismatched_node",
+        "--seed",
+        "0",
+        "--out",
+        "/cache/zihaohe/seer_observation_dev_20261112/runs/pretrained/mismatched_node_s0"
+      ],
+      "utc": "2026-11-11T16:53:21.692253+00:00"
+    },
+    {
+      "name": "trajectory_fixed_edge_s0",
+      "pid": 3995610,
+      "command": [
+        "/cache/zihaohe/seer_cvpr/venv_npu/bin/python",
+        "-B",
+        "/cache/zihaohe/seer_observation_dev_20261112/method_release_v1/release/code_full/tools/train_observation_v2.py",
+        "train",
+        "--prepared",
+        "/cache/zihaohe/seer_observation_dev_20261112/prepared/pretrained",
+        "--variant",
+        "trajectory_fixed_edge",
+        "--seed",
+        "0",
+        "--out",
+        "/cache/zihaohe/seer_observation_dev_20261112/runs/pretrained/trajectory_fixed_edge_s0"
+      ],
+      "utc": "2026-11-11T16:53:23.717045+00:00"
+    },
+    {
+      "name": "trajectory_no_cross_s0",
+      "pid": 3995617,
+      "command": [
+        "/cache/zihaohe/seer_cvpr/venv_npu/bin/python",
+        "-B",
+        "/cache/zihaohe/seer_observation_dev_20261112/method_release_v1/release/code_full/tools/train_observation_v2.py",
+        "train",
+        "--prepared",
+        "/cache/zihaohe/seer_observation_dev_20261112/prepared/pretrained",
+        "--variant",
+        "trajectory_no_cross",
+        "--seed",
+        "0",
+        "--out",
+        "/cache/zihaohe/seer_observation_dev_20261112/runs/pretrained/trajectory_no_cross_s0"
+      ],
+      "utc": "2026-11-11T16:53:25.741596+00:00"
+    },
+    {
+      "name": "trajectory_scrambled_cross_s0",
+      "pid": 3995625,
+      "command": [
+        "/cache/zihaohe/seer_cvpr/venv_npu/bin/python",
+        "-B",
+        "/cache/zihaohe/seer_observation_dev_20261112/method_release_v1/release/code_full/tools/train_observation_v2.py",
+        "train",
+        "--prepared",
+        "/cache/zihaohe/seer_observation_dev_20261112/prepared/pretrained",
+        "--variant",
+        "trajectory_scrambled_cross",
+        "--seed",
+        "0",
+        "--out",
+        "/cache/zihaohe/seer_observation_dev_20261112/runs/pretrained/trajectory_scrambled_cross_s0"
+      ],
+      "utc": "2026-11-11T16:53:27.763652+00:00"
+    },
+    {
+      "name": "raw_node_s1",
+      "pid": 3995632,
+      "command": [
+        "/cache/zihaohe/seer_cvpr/venv_npu/bin/python",
+        "-B",
+        "/cache/zihaohe/seer_observation_dev_20261112/method_release_v1/release/code_full/tools/train_observation_v2.py",
+        "train",
+        "--prepared",
+        "/cache/zihaohe/seer_observation_dev_20261112/prepared/pretrained",
+        "--variant",
+        "raw_node",
+        "--seed",
+        "1",
+        "--out",
+        "/cache/zihaohe/seer_observation_dev_20261112/runs/pretrained/raw_node_s1"
+      ],
+      "utc": "2026-11-11T16:53:29.799076+00:00"
+    },
+    {
+      "name": "same_frame_node_s1",
+      "pid": 3995639,
+      "command": [
+        "/cache/zihaohe/seer_cvpr/venv_npu/bin/python",
+        "-B",
+        "/cache/zihaohe/seer_observation_dev_20261112/method_release_v1/release/code_full/tools/train_observation_v2.py",
+        "train",
+        "--prepared",
+        "/cache/zihaohe/seer_observation_dev_20261112/prepared/pretrained",
+        "--variant",
+        "same_frame_node",
+        "--seed",
+        "1",
+        "--out",
+        "/cache/zihaohe/seer_observation_dev_20261112/runs/pretrained/same_frame_node_s1"
+      ],
+      "utc": "2026-11-11T16:53:31.831479+00:00"
+    },
+    {
+      "name": "mismatched_node_s1",
+      "pid": 3995646,
+      "command": [
+        "/cache/zihaohe/seer_cvpr/venv_npu/bin/python",
+        "-B",
+        "/cache/zihaohe/seer_observation_dev_20261112/method_release_v1/release/code_full/tools/train_observation_v2.py",
+        "train",
+        "--prepared",
+        "/cache/zihaohe/seer_observation_dev_20261112/prepared/pretrained",
+        "--variant",
+        "mismatched_node",
+        "--seed",
+        "1",
+        "--out",
+        "/cache/zihaohe/seer_observation_dev_20261112/runs/pretrained/mismatched_node_s1"
+      ],
+      "utc": "2026-11-11T16:53:33.853969+00:00"
+    },
+    {
+      "name": "trajectory_s1",
+      "pid": 3995653,
+      "command": [
+        "/cache/zihaohe/seer_cvpr/venv_npu/bin/python",
+        "-B",
+        "/cache/zihaohe/seer_observation_dev_20261112/method_release_v1/release/code_full/tools/train_observation_v2.py",
+        "train",
+        "--prepared",
+        "/cache/zihaohe/seer_observation_dev_20261112/prepared/pretrained",
+        "--variant",
+        "trajectory",
+        "--seed",
+        "1",
+        "--out",
+        "/cache/zihaohe/seer_observation_dev_20261112/runs/pretrained/trajectory_s1"
+      ],
+      "utc": "2026-11-11T16:53:35.879139+00:00"
+    },
+    {
+      "name": "trajectory_fixed_edge_s1",
+      "pid": 3995668,
+      "command": [
+        "/cache/zihaohe/seer_cvpr/venv_npu/bin/python",
+        "-B",
+        "/cache/zihaohe/seer_observation_dev_20261112/method_release_v1/release/code_full/tools/train_observation_v2.py",
+        "train",
+        "--prepared",
+        "/cache/zihaohe/seer_observation_dev_20261112/prepared/pretrained",
+        "--variant",
+        "trajectory_fixed_edge",
+        "--seed",
+        "1",
+        "--out",
+        "/cache/zihaohe/seer_observation_dev_20261112/runs/pretrained/trajectory_fixed_edge_s1"
+      ],
+      "utc": "2026-11-11T16:53:37.903300+00:00"
+    },
+    {
+      "name": "trajectory_no_cross_s1",
+      "pid": 3995675,
+      "command": [
+        "/cache/zihaohe/seer_cvpr/venv_npu/bin/python",
+        "-B",
+        "/cache/zihaohe/seer_observation_dev_20261112/method_release_v1/release/code_full/tools/train_observation_v2.py",
+        "train",
+        "--prepared",
+        "/cache/zihaohe/seer_observation_dev_20261112/prepared/pretrained",
+        "--variant",
+        "trajectory_no_cross",
+        "--seed",
+        "1",
+        "--out",
+        "/cache/zihaohe/seer_observation_dev_20261112/runs/pretrained/trajectory_no_cross_s1"
+      ],
+      "utc": "2026-11-11T16:53:39.936227+00:00"
+    },
+    {
+      "name": "trajectory_scrambled_cross_s1",
+      "pid": 3995682,
+      "command": [
+        "/cache/zihaohe/seer_cvpr/venv_npu/bin/python",
+        "-B",
+        "/cache/zihaohe/seer_observation_dev_20261112/method_release_v1/release/code_full/tools/train_observation_v2.py",
+        "train",
+        "--prepared",
+        "/cache/zihaohe/seer_observation_dev_20261112/prepared/pretrained",
+        "--variant",
+        "trajectory_scrambled_cross",
+        "--seed",
+        "1",
+        "--out",
+        "/cache/zihaohe/seer_observation_dev_20261112/runs/pretrained/trajectory_scrambled_cross_s1"
+      ],
+      "utc": "2026-11-11T16:53:41.954246+00:00"
+    },
+    {
+      "name": "raw_node_s2",
+      "pid": 3995689,
+      "command": [
+        "/cache/zihaohe/seer_cvpr/venv_npu/bin/python",
+        "-B",
+        "/cache/zihaohe/seer_observation_dev_20261112/method_release_v1/release/code_full/tools/train_observation_v2.py",
+        "train",
+        "--prepared",
+        "/cache/zihaohe/seer_observation_dev_20261112/prepared/pretrained",
+        "--variant",
+        "raw_node",
+        "--seed",
+        "2",
+        "--out",
+        "/cache/zihaohe/seer_observation_dev_20261112/runs/pretrained/raw_node_s2"
+      ],
+      "utc": "2026-11-11T16:53:43.974050+00:00"
+    },
+    {
+      "name": "same_frame_node_s2",
+      "pid": 3995696,
+      "command": [
+        "/cache/zihaohe/seer_cvpr/venv_npu/bin/python",
+        "-B",
+        "/cache/zihaohe/seer_observation_dev_20261112/method_release_v1/release/code_full/tools/train_observation_v2.py",
+        "train",
+        "--prepared",
+        "/cache/zihaohe/seer_observation_dev_20261112/prepared/pretrained",
+        "--variant",
+        "same_frame_node",
+        "--seed",
+        "2",
+        "--out",
+        "/cache/zihaohe/seer_observation_dev_20261112/runs/pretrained/same_frame_node_s2"
+      ],
+      "utc": "2026-11-11T16:53:45.994915+00:00"
+    },
+    {
+      "name": "mismatched_node_s2",
+      "pid": 3995704,
+      "command": [
+        "/cache/zihaohe/seer_cvpr/venv_npu/bin/python",
+        "-B",
+        "/cache/zihaohe/seer_observation_dev_20261112/method_release_v1/release/code_full/tools/train_observation_v2.py",
+        "train",
+        "--prepared",
+        "/cache/zihaohe/seer_observation_dev_20261112/prepared/pretrained",
+        "--variant",
+        "mismatched_node",
+        "--seed",
+        "2",
+        "--out",
+        "/cache/zihaohe/seer_observation_dev_20261112/runs/pretrained/mismatched_node_s2"
+      ],
+      "utc": "2026-11-11T16:53:48.020460+00:00"
+    },
+    {
+      "name": "trajectory_s2",
+      "pid": 3995711,
+      "command": [
+        "/cache/zihaohe/seer_cvpr/venv_npu/bin/python",
+        "-B",
+        "/cache/zihaohe/seer_observation_dev_20261112/method_release_v1/release/code_full/tools/train_observation_v2.py",
+        "train",
+        "--prepared",
+        "/cache/zihaohe/seer_observation_dev_20261112/prepared/pretrained",
+        "--variant",
+        "trajectory",
+        "--seed",
+        "2",
+        "--out",
+        "/cache/zihaohe/seer_observation_dev_20261112/runs/pretrained/trajectory_s2"
+      ],
+      "utc": "2026-11-11T16:53:50.044903+00:00"
+    },
+    {
+      "name": "trajectory_fixed_edge_s2",
+      "pid": 3995718,
+      "command": [
+        "/cache/zihaohe/seer_cvpr/venv_npu/bin/python",
+        "-B",
+        "/cache/zihaohe/seer_observation_dev_20261112/method_release_v1/release/code_full/tools/train_observation_v2.py",
+        "train",
+        "--prepared",
+        "/cache/zihaohe/seer_observation_dev_20261112/prepared/pretrained",
+        "--variant",
+        "trajectory_fixed_edge",
+        "--seed",
+        "2",
+        "--out",
+        "/cache/zihaohe/seer_observation_dev_20261112/runs/pretrained/trajectory_fixed_edge_s2"
+      ],
+      "utc": "2026-11-11T16:53:52.074058+00:00"
+    },
+    {
+      "name": "trajectory_no_cross_s2",
+      "pid": 3995761,
+      "command": [
+        "/cache/zihaohe/seer_cvpr/venv_npu/bin/python",
+        "-B",
+        "/cache/zihaohe/seer_observation_dev_20261112/method_release_v1/release/code_full/tools/train_observation_v2.py",
+        "train",
+        "--prepared",
+        "/cache/zihaohe/seer_observation_dev_20261112/prepared/pretrained",
+        "--variant",
+        "trajectory_no_cross",
+        "--seed",
+        "2",
+        "--out",
+        "/cache/zihaohe/seer_observation_dev_20261112/runs/pretrained/trajectory_no_cross_s2"
+      ],
+      "utc": "2026-11-11T16:53:54.104267+00:00"
+    },
+    {
+      "name": "trajectory_scrambled_cross_s2",
+      "pid": 3995801,
+      "command": [
+        "/cache/zihaohe/seer_cvpr/venv_npu/bin/python",
+        "-B",
+        "/cache/zihaohe/seer_observation_dev_20261112/method_release_v1/release/code_full/tools/train_observation_v2.py",
+        "train",
+        "--prepared",
+        "/cache/zihaohe/seer_observation_dev_20261112/prepared/pretrained",
+        "--variant",
+        "trajectory_scrambled_cross",
+        "--seed",
+        "2",
+        "--out",
+        "/cache/zihaohe/seer_observation_dev_20261112/runs/pretrained/trajectory_scrambled_cross_s2"
+      ],
+      "utc": "2026-11-11T16:53:56.132230+00:00"
+    }
+  ],
+  "environment": {
+    "TORCH_DEVICE_BACKEND_AUTOLOAD": "0",
+    "OMP_NUM_THREADS": "4",
+    "MKL_NUM_THREADS": "4",
+    "OPENBLAS_NUM_THREADS": "4",
+    "PYTHONPATH": "/cache/zihaohe/seer_observation_dev_20261112/method_release_v1/release/code_full:/cache/zihaohe/seer_observation_dev_20261112/method_release_v1/release/code_full/tools:/temp/zihaohe/seer_cvpr/code/baselines:/usr/local/Ascend/cann-8.5.2/python/site-packages:/usr/local/Ascend/cann-8.5.2/opp/built-in/op_impl/ai_core/tbe:/usr/local/Ascend/ascend-toolkit/latest/tools/ms_fmk_transplt/torch_npu_bridge:/usr/local/Ascend/ascend-toolkit/latest/python/site-packages:/usr/local/seccomponent/lib:/home/ma-user/infer/model/1"
+  }
+}

@@ -1,0 +1,415 @@
+{
+  "arm": "none",
+  "head_count": 21,
+  "source_archive_sha256": "6483532a2423d8427b07157e5eca463c378d43c6c51a5b70838f423a3692e996",
+  "launcher_sha256": "bea5c12ef45ffeb5c9abdac5d6a8293dc4f891c84d5f1b408afa98c3ce54bed6",
+  "prepared_manifest_sha256": "b4f81cb87323f6247478eca7a3c70027f327a8e352b681b503587607bc5c59fd",
+  "children": [
+    {
+      "name": "raw_node_s0",
+      "pid": 4079624,
+      "command": [
+        "/home/ma-user/anaconda3/envs/PyTorch-2.7.1/bin/python",
+        "-B",
+        "/cache/zihaohe/seer_observation_dev_20261112/method_release_v1/release/code_full/tools/train_observation_v2.py",
+        "train",
+        "--prepared",
+        "/cache/zihaohe/seer_observation_dev_20261112/prepared/none",
+        "--variant",
+        "raw_node",
+        "--seed",
+        "0",
+        "--out",
+        "/cache/zihaohe/seer_observation_dev_20261112/runs/none/raw_node_s0"
+      ],
+      "utc": "2026-11-11T16:51:44.120933+00:00"
+    },
+    {
+      "name": "trajectory_s0",
+      "pid": 4079625,
+      "command": [
+        "/home/ma-user/anaconda3/envs/PyTorch-2.7.1/bin/python",
+        "-B",
+        "/cache/zihaohe/seer_observation_dev_20261112/method_release_v1/release/code_full/tools/train_observation_v2.py",
+        "train",
+        "--prepared",
+        "/cache/zihaohe/seer_observation_dev_20261112/prepared/none",
+        "--variant",
+        "trajectory",
+        "--seed",
+        "0",
+        "--out",
+        "/cache/zihaohe/seer_observation_dev_20261112/runs/none/trajectory_s0"
+      ],
+      "utc": "2026-11-11T16:51:44.143709+00:00"
+    },
+    {
+      "name": "same_frame_node_s0",
+      "pid": 4080695,
+      "command": [
+        "/home/ma-user/anaconda3/envs/PyTorch-2.7.1/bin/python",
+        "-B",
+        "/cache/zihaohe/seer_observation_dev_20261112/method_release_v1/release/code_full/tools/train_observation_v2.py",
+        "train",
+        "--prepared",
+        "/cache/zihaohe/seer_observation_dev_20261112/prepared/none",
+        "--variant",
+        "same_frame_node",
+        "--seed",
+        "0",
+        "--out",
+        "/cache/zihaohe/seer_observation_dev_20261112/runs/none/same_frame_node_s0"
+      ],
+      "utc": "2026-11-11T16:52:23.174418+00:00"
+    },
+    {
+      "name": "mismatched_node_s0",
+      "pid": 4080699,
+      "command": [
+        "/home/ma-user/anaconda3/envs/PyTorch-2.7.1/bin/python",
+        "-B",
+        "/cache/zihaohe/seer_observation_dev_20261112/method_release_v1/release/code_full/tools/train_observation_v2.py",
+        "train",
+        "--prepared",
+        "/cache/zihaohe/seer_observation_dev_20261112/prepared/none",
+        "--variant",
+        "mismatched_node",
+        "--seed",
+        "0",
+        "--out",
+        "/cache/zihaohe/seer_observation_dev_20261112/runs/none/mismatched_node_s0"
+      ],
+      "utc": "2026-11-11T16:52:25.211936+00:00"
+    },
+    {
+      "name": "trajectory_fixed_edge_s0",
+      "pid": 4080707,
+      "command": [
+        "/home/ma-user/anaconda3/envs/PyTorch-2.7.1/bin/python",
+        "-B",
+        "/cache/zihaohe/seer_observation_dev_20261112/method_release_v1/release/code_full/tools/train_observation_v2.py",
+        "train",
+        "--prepared",
+        "/cache/zihaohe/seer_observation_dev_20261112/prepared/none",
+        "--variant",
+        "trajectory_fixed_edge",
+        "--seed",
+        "0",
+        "--out",
+        "/cache/zihaohe/seer_observation_dev_20261112/runs/none/trajectory_fixed_edge_s0"
+      ],
+      "utc": "2026-11-11T16:52:27.249083+00:00"
+    },
+    {
+      "name": "trajectory_no_cross_s0",
+      "pid": 4080714,
+      "command": [
+        "/home/ma-user/anaconda3/envs/PyTorch-2.7.1/bin/python",
+        "-B",
+        "/cache/zihaohe/seer_observation_dev_20261112/method_release_v1/release/code_full/tools/train_observation_v2.py",
+        "train",
+        "--prepared",
+        "/cache/zihaohe/seer_observation_dev_20261112/prepared/none",
+        "--variant",
+        "trajectory_no_cross",
+        "--seed",
+        "0",
+        "--out",
+        "/cache/zihaohe/seer_observation_dev_20261112/runs/none/trajectory_no_cross_s0"
+      ],
+      "utc": "2026-11-11T16:52:29.286027+00:00"
+    },
+    {
+      "name": "trajectory_scrambled_cross_s0",
+      "pid": 4080721,
+      "command": [
+        "/home/ma-user/anaconda3/envs/PyTorch-2.7.1/bin/python",
+        "-B",
+        "/cache/zihaohe/seer_observation_dev_20261112/method_release_v1/release/code_full/tools/train_observation_v2.py",
+        "train",
+        "--prepared",
+        "/cache/zihaohe/seer_observation_dev_20261112/prepared/none",
+        "--variant",
+        "trajectory_scrambled_cross",
+        "--seed",
+        "0",
+        "--out",
+        "/cache/zihaohe/seer_observation_dev_20261112/runs/none/trajectory_scrambled_cross_s0"
+      ],
+      "utc": "2026-11-11T16:52:31.308499+00:00"
+    },
+    {
+      "name": "raw_node_s1",
+      "pid": 4080728,
+      "command": [
+        "/home/ma-user/anaconda3/envs/PyTorch-2.7.1/bin/python",
+        "-B",
+        "/cache/zihaohe/seer_observation_dev_20261112/method_release_v1/release/code_full/tools/train_observation_v2.py",
+        "train",
+        "--prepared",
+        "/cache/zihaohe/seer_observation_dev_20261112/prepared/none",
+        "--variant",
+        "raw_node",
+        "--seed",
+        "1",
+        "--out",
+        "/cache/zihaohe/seer_observation_dev_20261112/runs/none/raw_node_s1"
+      ],
+      "utc": "2026-11-11T16:52:33.338078+00:00"
+    },
+    {
+      "name": "same_frame_node_s1",
+      "pid": 4080735,
+      "command": [
+        "/home/ma-user/anaconda3/envs/PyTorch-2.7.1/bin/python",
+        "-B",
+        "/cache/zihaohe/seer_observation_dev_20261112/method_release_v1/release/code_full/tools/train_observation_v2.py",
+        "train",
+        "--prepared",
+        "/cache/zihaohe/seer_observation_dev_20261112/prepared/none",
+        "--variant",
+        "same_frame_node",
+        "--seed",
+        "1",
+        "--out",
+        "/cache/zihaohe/seer_observation_dev_20261112/runs/none/same_frame_node_s1"
+      ],
+      "utc": "2026-11-11T16:52:35.379976+00:00"
+    },
+    {
+      "name": "mismatched_node_s1",
+      "pid": 4080743,
+      "command": [
+        "/home/ma-user/anaconda3/envs/PyTorch-2.7.1/bin/python",
+        "-B",
+        "/cache/zihaohe/seer_observation_dev_20261112/method_release_v1/release/code_full/tools/train_observation_v2.py",
+        "train",
+        "--prepared",
+        "/cache/zihaohe/seer_observation_dev_20261112/prepared/none",
+        "--variant",
+        "mismatched_node",
+        "--seed",
+        "1",
+        "--out",
+        "/cache/zihaohe/seer_observation_dev_20261112/runs/none/mismatched_node_s1"
+      ],
+      "utc": "2026-11-11T16:52:37.418287+00:00"
+    },
+    {
+      "name": "trajectory_s1",
+      "pid": 4080750,
+      "command": [
+        "/home/ma-user/anaconda3/envs/PyTorch-2.7.1/bin/python",
+        "-B",
+        "/cache/zihaohe/seer_observation_dev_20261112/method_release_v1/release/code_full/tools/train_observation_v2.py",
+        "train",
+        "--prepared",
+        "/cache/zihaohe/seer_observation_dev_20261112/prepared/none",
+        "--variant",
+        "trajectory",
+        "--seed",
+        "1",
+        "--out",
+        "/cache/zihaohe/seer_observation_dev_20261112/runs/none/trajectory_s1"
+      ],
+      "utc": "2026-11-11T16:52:39.442536+00:00"
+    },
+    {
+      "name": "trajectory_fixed_edge_s1",
+      "pid": 4080757,
+      "command": [
+        "/home/ma-user/anaconda3/envs/PyTorch-2.7.1/bin/python",
+        "-B",
+        "/cache/zihaohe/seer_observation_dev_20261112/method_release_v1/release/code_full/tools/train_observation_v2.py",
+        "train",
+        "--prepared",
+        "/cache/zihaohe/seer_observation_dev_20261112/prepared/none",
+        "--variant",
+        "trajectory_fixed_edge",
+        "--seed",
+        "1",
+        "--out",
+        "/cache/zihaohe/seer_observation_dev_20261112/runs/none/trajectory_fixed_edge_s1"
+      ],
+      "utc": "2026-11-11T16:52:41.480708+00:00"
+    },
+    {
+      "name": "trajectory_no_cross_s1",
+      "pid": 4080765,
+      "command": [
+        "/home/ma-user/anaconda3/envs/PyTorch-2.7.1/bin/python",
+        "-B",
+        "/cache/zihaohe/seer_observation_dev_20261112/method_release_v1/release/code_full/tools/train_observation_v2.py",
+        "train",
+        "--prepared",
+        "/cache/zihaohe/seer_observation_dev_20261112/prepared/none",
+        "--variant",
+        "trajectory_no_cross",
+        "--seed",
+        "1",
+        "--out",
+        "/cache/zihaohe/seer_observation_dev_20261112/runs/none/trajectory_no_cross_s1"
+      ],
+      "utc": "2026-11-11T16:52:43.503224+00:00"
+    },
+    {
+      "name": "trajectory_scrambled_cross_s1",
+      "pid": 4080778,
+      "command": [
+        "/home/ma-user/anaconda3/envs/PyTorch-2.7.1/bin/python",
+        "-B",
+        "/cache/zihaohe/seer_observation_dev_20261112/method_release_v1/release/code_full/tools/train_observation_v2.py",
+        "train",
+        "--prepared",
+        "/cache/zihaohe/seer_observation_dev_20261112/prepared/none",
+        "--variant",
+        "trajectory_scrambled_cross",
+        "--seed",
+        "1",
+        "--out",
+        "/cache/zihaohe/seer_observation_dev_20261112/runs/none/trajectory_scrambled_cross_s1"
+      ],
+      "utc": "2026-11-11T16:52:45.539579+00:00"
+    },
+    {
+      "name": "raw_node_s2",
+      "pid": 4080819,
+      "command": [
+        "/home/ma-user/anaconda3/envs/PyTorch-2.7.1/bin/python",
+        "-B",
+        "/cache/zihaohe/seer_observation_dev_20261112/method_release_v1/release/code_full/tools/train_observation_v2.py",
+        "train",
+        "--prepared",
+        "/cache/zihaohe/seer_observation_dev_20261112/prepared/none",
+        "--variant",
+        "raw_node",
+        "--seed",
+        "2",
+        "--out",
+        "/cache/zihaohe/seer_observation_dev_20261112/runs/none/raw_node_s2"
+      ],
+      "utc": "2026-11-11T16:52:47.576786+00:00"
+    },
+    {
+      "name": "same_frame_node_s2",
+      "pid": 4081095,
+      "command": [
+        "/home/ma-user/anaconda3/envs/PyTorch-2.7.1/bin/python",
+        "-B",
+        "/cache/zihaohe/seer_observation_dev_20261112/method_release_v1/release/code_full/tools/train_observation_v2.py",
+        "train",
+        "--prepared",
+        "/cache/zihaohe/seer_observation_dev_20261112/prepared/none",
+        "--variant",
+        "same_frame_node",
+        "--seed",
+        "2",
+        "--out",
+        "/cache/zihaohe/seer_observation_dev_20261112/runs/none/same_frame_node_s2"
+      ],
+      "utc": "2026-11-11T16:52:49.613956+00:00"
+    },
+    {
+      "name": "mismatched_node_s2",
+      "pid": 4081243,
+      "command": [
+        "/home/ma-user/anaconda3/envs/PyTorch-2.7.1/bin/python",
+        "-B",
+        "/cache/zihaohe/seer_observation_dev_20261112/method_release_v1/release/code_full/tools/train_observation_v2.py",
+        "train",
+        "--prepared",
+        "/cache/zihaohe/seer_observation_dev_20261112/prepared/none",
+        "--variant",
+        "mismatched_node",
+        "--seed",
+        "2",
+        "--out",
+        "/cache/zihaohe/seer_observation_dev_20261112/runs/none/mismatched_node_s2"
+      ],
+      "utc": "2026-11-11T16:52:51.646261+00:00"
+    },
+    {
+      "name": "trajectory_s2",
+      "pid": 4081253,
+      "command": [
+        "/home/ma-user/anaconda3/envs/PyTorch-2.7.1/bin/python",
+        "-B",
+        "/cache/zihaohe/seer_observation_dev_20261112/method_release_v1/release/code_full/tools/train_observation_v2.py",
+        "train",
+        "--prepared",
+        "/cache/zihaohe/seer_observation_dev_20261112/prepared/none",
+        "--variant",
+        "trajectory",
+        "--seed",
+        "2",
+        "--out",
+        "/cache/zihaohe/seer_observation_dev_20261112/runs/none/trajectory_s2"
+      ],
+      "utc": "2026-11-11T16:52:53.681912+00:00"
+    },
+    {
+      "name": "trajectory_fixed_edge_s2",
+      "pid": 4081375,
+      "command": [
+        "/home/ma-user/anaconda3/envs/PyTorch-2.7.1/bin/python",
+        "-B",
+        "/cache/zihaohe/seer_observation_dev_20261112/method_release_v1/release/code_full/tools/train_observation_v2.py",
+        "train",
+        "--prepared",
+        "/cache/zihaohe/seer_observation_dev_20261112/prepared/none",
+        "--variant",
+        "trajectory_fixed_edge",
+        "--seed",
+        "2",
+        "--out",
+        "/cache/zihaohe/seer_observation_dev_20261112/runs/none/trajectory_fixed_edge_s2"
+      ],
+      "utc": "2026-11-11T16:52:55.720701+00:00"
+    },
+    {
+      "name": "trajectory_no_cross_s2",
+      "pid": 4081383,
+      "command": [
+        "/home/ma-user/anaconda3/envs/PyTorch-2.7.1/bin/python",
+        "-B",
+        "/cache/zihaohe/seer_observation_dev_20261112/method_release_v1/release/code_full/tools/train_observation_v2.py",
+        "train",
+        "--prepared",
+        "/cache/zihaohe/seer_observation_dev_20261112/prepared/none",
+        "--variant",
+        "trajectory_no_cross",
+        "--seed",
+        "2",
+        "--out",
+        "/cache/zihaohe/seer_observation_dev_20261112/runs/none/trajectory_no_cross_s2"
+      ],
+      "utc": "2026-11-11T16:52:57.744857+00:00"
+    },
+    {
+      "name": "trajectory_scrambled_cross_s2",
+      "pid": 4081390,
+      "command": [
+        "/home/ma-user/anaconda3/envs/PyTorch-2.7.1/bin/python",
+        "-B",
+        "/cache/zihaohe/seer_observation_dev_20261112/method_release_v1/release/code_full/tools/train_observation_v2.py",
+        "train",
+        "--prepared",
+        "/cache/zihaohe/seer_observation_dev_20261112/prepared/none",
+        "--variant",
+        "trajectory_scrambled_cross",
+        "--seed",
+        "2",
+        "--out",
+        "/cache/zihaohe/seer_observation_dev_20261112/runs/none/trajectory_scrambled_cross_s2"
+      ],
+      "utc": "2026-11-11T16:52:59.774604+00:00"
+    }
+  ],
+  "environment": {
+    "TORCH_DEVICE_BACKEND_AUTOLOAD": "0",
+    "OMP_NUM_THREADS": "4",
+    "MKL_NUM_THREADS": "4",
+    "OPENBLAS_NUM_THREADS": "4",
+    "PYTHONPATH": "/cache/zihaohe/seer_observation_dev_20261112/method_release_v1/release/code_full:/cache/zihaohe/seer_observation_dev_20261112/method_release_v1/release/code_full/tools:/temp/zihaohe/seer_cvpr/code/baselines:/usr/local/Ascend/cann-8.5.2/python/site-packages:/usr/local/Ascend/cann-8.5.2/opp/built-in/op_impl/ai_core/tbe:/usr/local/Ascend/ascend-toolkit/latest/tools/ms_fmk_transplt/torch_npu_bridge:/usr/local/Ascend/ascend-toolkit/latest/python/site-packages:/usr/local/seccomponent/lib:/home/ma-user/infer/model/1"
+  }
+}

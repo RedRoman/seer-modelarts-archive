@@ -1,0 +1,35 @@
+{
+  "status": "PASS",
+  "rows": {
+    "raw_node_s0": {
+      "step": 1,
+      "loss": 1.609907865524292,
+      "rgb_mse": 0.004461341071873903,
+      "base_mse": 0.004507815930992365,
+      "clip_index": 118,
+      "elapsed_seconds": 0.11930736433714628,
+      "prediction_timing": "Before optimizer update",
+      "mean_edge_precision": 0.0,
+      "mean_degree": 0.0,
+      "mean_abs_state_update": 0.0,
+      "steps": 0
+    },
+    "trajectory_s0": {
+      "step": 1,
+      "loss": 1.5640429258346558,
+      "rgb_mse": 0.004334241151809692,
+      "base_mse": 0.004507815930992365,
+      "clip_index": 118,
+      "elapsed_seconds": 1.1627631159499288,
+      "prediction_timing": "Before optimizer update",
+      "mean_edge_precision": 0.5,
+      "mean_degree": 1.8485107421875,
+      "mean_abs_state_update": 0.004724977072328329,
+      "steps": 2
+    }
+  },
+  "matching_plan_sha256": "0d967d7e63f36f7fd372e98331f874c48b882806116baa7944234869916407f3",
+  "matching_initial_state_sha256": "766606b40b980a78c805dd75cf923476cc1f05c9b0b3fd920d743482ca5a565a",
+  "source_only": true,
+  "steps_per_head_unchanged": 1000
+}
