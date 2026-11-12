@@ -1,0 +1,207 @@
+{
+  "schema_version": 1,
+  "checked_date": "2026-11-12",
+  "scope": "Comparison roster and innovation status; no new scoring or manuscript changes in this audit",
+  "core_external_methods": [
+    {
+      "id": "retinexformer_sdsd_retrained",
+      "name": "Retinexformer",
+      "role": "source-matched image baseline",
+      "status": "historical_complete_requires_current_environment_replay",
+      "training": "Historical 160k retraining on Seer SDSD split; budget differs from Seer",
+      "evidence": {
+        "path": "cvpr2027/results/xdomain_matched/retinexformer_bvi.json",
+        "sha256": "2840cfd5ffce852a5dea109bf560323d610de1810824234b7dc386de1eefd909",
+        "target_protocol": "BVI VAL16 / centre16 / crop256; development protocol, not native full-video benchmark",
+        "scores": {
+          "psnr_rgb": 19.101547291534374,
+          "psnr_y": 19.87917010434663,
+          "psnr_y_gtmean": 24.592020941493587,
+          "lpips": 0.20310705108568072,
+          "input_psnr_y": 11.922838968611604,
+          "tlp": 0.05681416576941653,
+          "mabd": 0.003276966059274855,
+          "flicker": 0.0839046249166131,
+          "warp_err": 0.013110673375194892,
+          "gt_tlp": 0.05303644960513339,
+          "gt_mabd": 0.0016067053466031211,
+          "gt_flicker": 0.07691859616898,
+          "gt_warp_err": 0.006767909013433382
+        }
+      }
+    },
+    {
+      "id": "hvi_cidnet_generalization",
+      "name": "HVI-CIDNet",
+      "role": "strong image reference",
+      "status": "historical_complete_requires_current_environment_replay",
+      "training": "Released generalization.pth; exact training membership not yet verified; not certified SDSD-only",
+      "evidence": {
+        "path": "cvpr2027/results/baselines_val_c256/hvi_cidnet_bvi.json",
+        "sha256": "0237fcf5beb0b0fcc9b0f6475862537c718d82c6ba3f235f6015af0e97fb0466",
+        "target_protocol": "BVI VAL16 / centre16 / crop256; development protocol, not native full-video benchmark",
+        "scores": {
+          "psnr_rgb": 23.379931901986712,
+          "psnr_y": 24.235391437290772,
+          "psnr_y_gtmean": 26.99431111790846,
+          "lpips": 0.15317045454867184,
+          "input_psnr_y": 11.922838968611604,
+          "tlp": 0.08700681102151672,
+          "mabd": 0.018931985963718034,
+          "flicker": 0.07858770689927042,
+          "warp_err": 0.025893562997225672,
+          "gt_tlp": 0.05303644960513339,
+          "gt_mabd": 0.0016067053466031211,
+          "gt_flicker": 0.07691859616898,
+          "gt_warp_err": 0.006767909013433382
+        }
+      }
+    },
+    {
+      "id": "darkir_384",
+      "name": "DarkIR",
+      "role": "strong image reference",
+      "status": "historical_complete_requires_current_environment_replay",
+      "training": "Released DarkIR_384.pt; not a matched SDSD training run",
+      "evidence": {
+        "path": "cvpr2027/results/baselines_val_c256/darkir_bvi.json",
+        "sha256": "d1216e6de0c7cb83a0a201093fb1290b2ba5dafa6c25b0ef6ba5628062c14b88",
+        "target_protocol": "BVI VAL16 / centre16 / crop256; development protocol, not native full-video benchmark",
+        "scores": {
+          "psnr_rgb": 21.464595312207337,
+          "psnr_y": 22.579983798471165,
+          "psnr_y_gtmean": 28.48881244183965,
+          "lpips": 0.1510023723822087,
+          "input_psnr_y": 11.922838968611604,
+          "tlp": 0.06849341529499119,
+          "mabd": 0.004324475798057392,
+          "flicker": 0.07147521304432303,
+          "warp_err": 0.011664532910799608,
+          "gt_tlp": 0.05303644960513339,
+          "gt_mabd": 0.0016067053466031211,
+          "gt_flicker": 0.07691859616898,
+          "gt_warp_err": 0.006767909013433382
+        }
+      }
+    },
+    {
+      "id": "stcd_indoor_release",
+      "name": "STCD",
+      "role": "video enhancement baseline",
+      "status": "complete_current_environment",
+      "training": "Official SDSD-indoor release; Seer base uses indoor+outdoor, so source sets are unmatched",
+      "official_source": "https://github.com/xiaogang00/LLVE_STCD",
+      "evidence": {
+        "path": "cvpr2027/method_dev/20261111/source_transfer_v1/references/stcd/results/stcd_indoor_release_bvi_val16.json",
+        "sha256": "d0e8a51a93d387cec41e4ba0d58b93f523e9b48303d215ba043a16045ca24d6d",
+        "target_protocol": "BVI VAL16 / centre16 / crop256; development protocol, not native full-video benchmark",
+        "scores": {
+          "psnr_y": 16.607015145220217,
+          "psnr_rgb": 16.20243010006068,
+          "lpips": 0.3153048399835825,
+          "tlp": 0.05216285049391445,
+          "gt_tlp": 0.05303222464863211,
+          "tlp_gap": 0.004883863861323334
+        }
+      }
+    },
+    {
+      "id": "tempretinex_did_release",
+      "name": "TempRetinex",
+      "role": "video enhancement reference",
+      "status": "complete_current_environment",
+      "training": "Author-labelled DID checkpoint; exact training split/config not independently verified; unmatched source reference",
+      "official_source": "https://github.com/liyinibristol/TempRetinex",
+      "evidence": {
+        "path": "cvpr2027/method_dev/20261112/observation_v2/references/tempretinex/results/bvi_val16_did_reference.json",
+        "sha256": "0e46e5f806786fe96a83f1232555a520384f2cf9047b408b8d90bfea27fe33b5",
+        "target_protocol": "BVI VAL16 / centre16 / crop256; development protocol, not native full-video benchmark",
+        "scores": {
+          "psnr_y": 19.717821984058393,
+          "psnr_rgb": 18.89747817234394,
+          "lpips": 0.1632810765877366,
+          "tlp": 0.06747743766754866,
+          "gt_tlp": 0.05303222464863211,
+          "tlp_gap": 0.015543384361080825
+        }
+      }
+    },
+    {
+      "id": "amnet_rgb",
+      "name": "AnyMod-LLVE / AMNet (RGB input)",
+      "role": "priority new contemporary video baseline",
+      "status": "not_evaluated_official_code_and_weight_links_available",
+      "training": "Audit common multimodal/synthetic-modality pretraining and source membership; RGB inference alone does not imply identical training information",
+      "official_source": "https://github.com/lhfgghc/LLVE-AMNet"
+    }
+  ],
+  "required_recent_neighbors": [
+    {
+      "name": "DWTA-Net",
+      "role": "modern recurrent temporal aggregation candidate",
+      "status": "official_training_testing_code_found_complete_enhancement_checkpoint_not_found",
+      "source": "https://github.com/lrr-rachel/DWTA-Net",
+      "paper": "https://arxiv.org/abs/2510.09450",
+      "boundary": "Bundled GMFlow weights are correspondence weights, not the complete enhancement model"
+    },
+    {
+      "name": "CRISP",
+      "role": "closest frozen-semantic-prior LLVE work",
+      "status": "paper_verified_official_code_and_weights_not_found_in_this_search",
+      "source": "https://arxiv.org/abs/2610.24299",
+      "boundary": "Already uses frozen DINOv3 with AdaLN modulation; frozen semantic conditioning alone is not our novelty"
+    },
+    {
+      "name": "VLLVE++",
+      "role": "closest enhancement-correspondence refinement work",
+      "status": "paper_verified_extended_model_code_and_weights_not_verified",
+      "source": "https://arxiv.org/abs/2602.08699",
+      "boundary": "Original STCD implementation must not be relabelled as VLLVE++; enhancement/correspondence refinement alone is not our novelty"
+    }
+  ],
+  "priority_order": [
+    "Replay HVI-CIDNet, DarkIR and the source-matched Retinexformer in the fixed current scoring environment",
+    "Implement/audit AMNet RGB reference; record pretraining provenance",
+    "Preserve complete current STCD/TempRetinex references",
+    "Resolve recent-neighbor model availability; add measurements only for actual complete reproducible models"
+  ],
+  "comparison_rules": [
+    "Core6 is the working comparison roster, not a claim that six models are already verified under one environment",
+    "Do not remove strong references based on unfavorable scores",
+    "Separate matched-source training from released models with different or unknown training data",
+    "For SDSD-to-BVI transfer claims, exclude target-domain optimization and verify training membership; previously seen BVI VAL is development, not a globally blind target",
+    "Keep native full-video benchmark claims separate from the centre16/crop256 development protocol",
+    "Do not mix source float-RGB 28.71dB pilot scores with target uint8 PSNR-Y scores",
+    "No GT-derived brightness/histogram adjustment in primary output metrics",
+    "Internal raw_node/trajectory/memory/geometry controls are ablations, not external SOTA methods",
+    "BVI-RLV and BVI-lowlight names must be resolved by dataset provenance rather than assumed identical",
+    "Historical image-reference GT-tLP drift is a replay reason, not evidence that their multi-dB advantage is an evaluation artifact"
+  ],
+  "innovation_status": {
+    "validated_new_core_module": "none_yet",
+    "positive_existing_evidence": "Aligned actual-observation values help relative to matched same-frame/mismatched controls; this does not establish a new operator or SOTA",
+    "implemented_candidates": [
+      {
+        "name": "observation_memory_v1",
+        "status": "source_gate_failed",
+        "record": "cvpr2027/method_dev/20261112/observation_memory_v1/RESULTS.md"
+      },
+      {
+        "name": "observation_geometry_v1",
+        "status": "source_gate_failed_no_gain_over_strong_anchor_or_shuffled_address",
+        "record": "cvpr2027/method_dev/20261112/observation_geometry_v1/RESULTS.md"
+      }
+    ],
+    "next_module_hypothesis": {
+      "name": "Source-calibrated joint observation correspondence",
+      "status": "proposed_not_implemented_not_validated",
+      "mechanism": "Jointly score correspondence candidates from multiple donor frames with descriptor cost, observable consistency and calibrated effective observation-error scales; transport actual observed detail; fall back when ambiguous",
+      "novelty_boundary": "Joint inference, uncertainty weighting, prior conditioning and observation transport all have precedents; a defensible specific contribution requires nearest-work differentiation and positive mechanism controls",
+      "required_controls": [
+        "joint versus independent correspondence with matched candidate/input/optimization budget",
+        "calibrated versus constant effective uncertainty",
+        "video-prior versus matched pixel descriptors and correspondence-destroying control"
+      ]
+    }
+  }
+}
