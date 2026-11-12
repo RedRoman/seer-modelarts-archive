@@ -1,0 +1,41 @@
+{
+  "advance_to_replication": false,
+  "gate_checks": {
+    "psnr_gain_over_pixel_at_least_005db": false,
+    "psnr_gain_over_base_at_least_005db": false,
+    "mse_ci_better_than_pixel": false,
+    "mean_mse_better_than_frozen_raw_reference": false,
+    "mean_mse_better_than_same_frame": true,
+    "mean_mse_better_than_shuffled_address": true
+  },
+  "means": {
+    "base": {
+      "rgb_mse_float": 0.0022909239523180042,
+      "psnr_rgb_from_clip_mse": 28.564868460206853
+    },
+    "prior_cross": {
+      "rgb_mse_float": 0.002297622062400364,
+      "psnr_rgb_from_clip_mse": 28.499222561425174
+    },
+    "pixel_cross": {
+      "rgb_mse_float": 0.002298203903910955,
+      "psnr_rgb_from_clip_mse": 28.496304518191373
+    },
+    "shuffled_cross": {
+      "rgb_mse_float": 0.00229932595156653,
+      "psnr_rgb_from_clip_mse": 28.496741706844233
+    },
+    "prior_same": {
+      "rgb_mse_float": 0.002299055358737849,
+      "psnr_rgb_from_clip_mse": 28.495483996564477
+    },
+    "pixel_local": {
+      "rgb_mse_float": 0.0022976232812086874,
+      "psnr_rgb_from_clip_mse": 28.50702087665812
+    },
+    "frozen_raw_node_1000": {
+      "rgb_mse_float": 0.0022520187210834483,
+      "psnr_rgb_from_clip_mse": 28.715433645343385
+    }
+  }
+}

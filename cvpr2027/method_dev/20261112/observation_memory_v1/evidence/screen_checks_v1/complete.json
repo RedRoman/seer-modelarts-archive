@@ -1,0 +1,104 @@
+{
+  "source_unchanged": true,
+  "target_inference": false,
+  "jobs": [
+    {
+      "label": "prior_cross",
+      "argv": [
+        "/cache/zihaohe/seer_cvpr/venv_npu/bin/python",
+        "/cache/zihaohe/seer_observation_memory_20261112/release_v2/code_full/tools/train_observation_memory.py",
+        "train",
+        "--prepared",
+        "/cache/zihaohe/seer_observation_memory_20261112/prepared_v1",
+        "--mode",
+        "prior_cross",
+        "--seed",
+        "0",
+        "--out",
+        "/cache/zihaohe/seer_observation_memory_20261112/runs_v1/prior_cross_s0"
+      ],
+      "returncode": 0,
+      "elapsed_seconds": 224.34646213892847,
+      "log_sha256": "e4756233b913c7afeee033ccd153923cd99c32cdf7cef6018024afe4550cad2f"
+    },
+    {
+      "label": "pixel_cross",
+      "argv": [
+        "/cache/zihaohe/seer_cvpr/venv_npu/bin/python",
+        "/cache/zihaohe/seer_observation_memory_20261112/release_v2/code_full/tools/train_observation_memory.py",
+        "train",
+        "--prepared",
+        "/cache/zihaohe/seer_observation_memory_20261112/prepared_v1",
+        "--mode",
+        "pixel_cross",
+        "--seed",
+        "0",
+        "--out",
+        "/cache/zihaohe/seer_observation_memory_20261112/runs_v1/pixel_cross_s0"
+      ],
+      "returncode": 0,
+      "elapsed_seconds": 210.73614746611565,
+      "log_sha256": "4e04fe34682a2ce5f5940cf12de65cd7f9d001995488a47c028c7ca1a1812cb5"
+    },
+    {
+      "label": "shuffled_cross",
+      "argv": [
+        "/cache/zihaohe/seer_cvpr/venv_npu/bin/python",
+        "/cache/zihaohe/seer_observation_memory_20261112/release_v2/code_full/tools/train_observation_memory.py",
+        "train",
+        "--prepared",
+        "/cache/zihaohe/seer_observation_memory_20261112/prepared_v1",
+        "--mode",
+        "shuffled_cross",
+        "--seed",
+        "0",
+        "--out",
+        "/cache/zihaohe/seer_observation_memory_20261112/runs_v1/shuffled_cross_s0"
+      ],
+      "returncode": 0,
+      "elapsed_seconds": 216.12352961394936,
+      "log_sha256": "1227e3307d8b4faa022d3051454f6d0c1e23a19d758cb2a7bf59c290e91b8c28"
+    },
+    {
+      "label": "prior_same",
+      "argv": [
+        "/cache/zihaohe/seer_cvpr/venv_npu/bin/python",
+        "/cache/zihaohe/seer_observation_memory_20261112/release_v2/code_full/tools/train_observation_memory.py",
+        "train",
+        "--prepared",
+        "/cache/zihaohe/seer_observation_memory_20261112/prepared_v1",
+        "--mode",
+        "prior_same",
+        "--seed",
+        "0",
+        "--out",
+        "/cache/zihaohe/seer_observation_memory_20261112/runs_v1/prior_same_s0"
+      ],
+      "returncode": 0,
+      "elapsed_seconds": 238.25218110438436,
+      "log_sha256": "6f6e5df58b81b6b042924315d71cc211c3b0be0f5854fa6a0c496c9f2fdc7ace"
+    },
+    {
+      "label": "pixel_local",
+      "argv": [
+        "/cache/zihaohe/seer_cvpr/venv_npu/bin/python",
+        "/cache/zihaohe/seer_observation_memory_20261112/release_v2/code_full/tools/train_observation_memory.py",
+        "train",
+        "--prepared",
+        "/cache/zihaohe/seer_observation_memory_20261112/prepared_v1",
+        "--mode",
+        "pixel_local",
+        "--seed",
+        "0",
+        "--out",
+        "/cache/zihaohe/seer_observation_memory_20261112/runs_v1/pixel_local_s0"
+      ],
+      "returncode": 0,
+      "elapsed_seconds": 217.4560695104301,
+      "log_sha256": "87dcc280b27f7221e2b3eeb96e7f0107bb728f6254f25aebae38149e2210ba07"
+    }
+  ],
+  "raw_sha256": "ba32b3c24fc9a7d36f6c13a3adc3ddb2b55128aba33a2015d6e7a7d3b82e2c05",
+  "analysis_sha256": "0ae6b99e50aaddee9968fd8e49df32fd276e354252476866a368bd9c46398675",
+  "time_utc": "2026-11-12T03:17:03Z"
+}

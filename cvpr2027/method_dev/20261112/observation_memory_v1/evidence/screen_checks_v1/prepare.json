@@ -1,0 +1,19 @@
+{
+  "label": "prepare",
+  "argv": [
+    "/cache/zihaohe/seer_cvpr/venv_npu/bin/python",
+    "/cache/zihaohe/seer_observation_memory_20261112/release_v2/code_full/tools/train_observation_memory.py",
+    "prepare",
+    "--cache",
+    "/cache/zihaohe/seer_method_dev_20261111/source_transfer_v1/cache_sdsd_p_s0",
+    "--tokens",
+    "/cache/zihaohe/seer_observation_memory_20261112/tokens_source_v1",
+    "--splits",
+    "/temp/zihaohe/seer_cvpr/datasets/splits_cvpr.json",
+    "--out",
+    "/cache/zihaohe/seer_observation_memory_20261112/prepared_v1"
+  ],
+  "returncode": 0,
+  "elapsed_seconds": 124.62700240500271,
+  "log_sha256": "8abca280107adc6eae911bc29bdcb916b939c09aa429a127d1faa645cb002f04"
+}

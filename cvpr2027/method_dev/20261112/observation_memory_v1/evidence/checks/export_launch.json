@@ -1,0 +1,22 @@
+{
+  "utc": "2026-11-12T03:00:42Z",
+  "device_physical": 6,
+  "device_logical": 0,
+  "source_manifest_sha256": "972b09fd79a381d1c86dffc297d500095e920762aa089d7585a65f20703ffa22",
+  "exporter_sha256": "18b7d361ffd7857d022e481692879c0852cf149573e65eaa52fc1478e33470ea",
+  "environment": {
+    "TORCH_DEVICE_BACKEND_AUTOLOAD": "0",
+    "ASCEND_RT_VISIBLE_DEVICES": "6",
+    "PYTHONPATH": "/cache/zihaohe/seer_observation_memory_20261112/release_v1/code_full:/cache/zihaohe/seer_observation_memory_20261112/release_v1/code_full/tools:/temp/zihaohe/seer_cvpr/method_dev_20261111/baseline_code_full:/temp/zihaohe/seer_cvpr/code/baselines:/temp/zihaohe/seer_cvpr/code/baselines/common:/usr/local/Ascend/cann-8.5.2/python/site-packages:/usr/local/Ascend/cann-8.5.2/opp/built-in/op_impl/ai_core/tbe:/usr/local/Ascend/ascend-toolkit/latest/tools/ms_fmk_transplt/torch_npu_bridge:/usr/local/Ascend/ascend-toolkit/latest/python/site-packages:/usr/local/seccomponent/lib:/home/ma-user/infer/model/1",
+    "LD_LIBRARY_PATH": "/usr/local/Ascend/cann-8.5.2/lib64:/usr/local/Ascend/cann-8.5.2/lib64/plugin/opskernel:/usr/local/Ascend/cann-8.5.2/lib64/plugin/nnengine:/usr/local/Ascend/cann-8.5.2/opp/built-in/op_impl/ai_core/tbe/op_tiling/lib/linux/aarch64:/usr/local/Ascend/cann-8.5.2/tools/aml/lib64:/usr/local/Ascend/cann-8.5.2/tools/aml/lib64/plugin:/usr/local/Ascend/driver/lib64:/usr/local/Ascend/driver/lib64/common:/usr/local/Ascend/driver/lib64/driver:/cache/songhua/tools/libevent-2.1.12/lib:/usr/local/Ascend/driver/lib64:/usr/local/Ascend/driver/lib64/common:/usr/local/Ascend/driver/lib64/driver:/usr/local/Ascend/nnal/atb/latest/atb/cxx_abi_1/lib:/usr/local/Ascend/nnal/atb/latest/atb/cxx_abi_1/examples:/usr/local/Ascend/nnal/atb/latest/atb/cxx_abi_1/tests/atbopstest:/usr/local/Ascend/driver/lib64:/usr/local/Ascend/driver/lib64/common:/usr/local/Ascend/driver/lib64/driver:/usr/local/Ascend/driver/lib64/driver:/usr/host-lib:/usr/host-lib64:/usr/lib/aarch64-linux-gnu/hdf5/serial:/usr/local/Ascend/ascend-toolkit/latest/compiler/lib64/plugin/nnengine:/usr/local/Ascend/ascend-toolkit/latest/compiler/lib64/plugin/opskernel:/usr/local/Ascend/ascend-toolkit/latest/lib64:/usr/local/Ascend/ascend-toolkit/latest/opp/built-in/op_impl/ai_core/tbe/op_tiling/lib/:/usr/local/Ascend/driver/lib64:/usr/local/Ascend/driver/lib64/common:/usr/local/Ascend/driver/lib64/driver:/usr/local/Ascend/toolbox/latest/Ascend-DMI/lib64:/usr/local/seccomponent/lib/:/usr/local/seccomponent/lib/openssl/",
+    "ASCEND_HOME_PATH": "/usr/local/Ascend/cann-8.5.2",
+    "SEER_ROOT": "/temp/zihaohe/seer_cvpr",
+    "OMP_NUM_THREADS": "4"
+  },
+  "versions": {
+    "torch": "2.7.1",
+    "torch-npu": "2.7.1.post2",
+    "numpy": "1.26.4"
+  },
+  "target_inference": false
+}

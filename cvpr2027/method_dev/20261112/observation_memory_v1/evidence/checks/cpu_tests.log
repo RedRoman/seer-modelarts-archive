@@ -1,0 +1,31 @@
+/home/ma-user/anaconda3/envs/PyTorch-2.7.1/lib/python3.12/site-packages/torch/cuda/__init__.py:61: FutureWarning: The pynvml package is deprecated. Please install nvidia-ml-py instead. If you did not install pynvml directly, please report this to the maintainers of the package that installed pynvml for you.
+  import pynvml  # type: ignore[import]
+test_json_outputs_are_exclusive (test_cache_observation_memory.ExportGuards.test_json_outputs_are_exclusive) ... ok
+test_only_exact_unused_image_keys_are_dropped (test_cache_observation_memory.ExportGuards.test_only_exact_unused_image_keys_are_dropped) ... ok
+test_origin_rejects_wrong_arm_tap_and_encoder (test_cache_observation_memory.ExportGuards.test_origin_rejects_wrong_arm_tap_and_encoder) ... ok
+test_project_real_helper_is_cpu_deterministic_and_rng_preserving (test_cache_observation_memory.ExportGuards.test_project_real_helper_is_cpu_deterministic_and_rng_preserving) ... ok
+test_source_lq_loaded_without_using_gt_values (test_cache_observation_memory.ExportGuards.test_source_lq_loaded_without_using_gt_values) ... ok
+test_state_hash_covers_parameter_and_buffer_changes (test_cache_observation_memory.ExportGuards.test_state_hash_covers_parameter_and_buffer_changes) ... ok
+test_all_modes_identical_initial_state_identity_and_reload (test_observation_memory.ObservationMemoryTests.test_all_modes_identical_initial_state_identity_and_reload) ... ok
+test_calibration_values_and_patch_phase_are_preserved (test_observation_memory.ObservationMemoryTests.test_calibration_values_and_patch_phase_are_preserved) ... ok
+test_crop_fields_without_recentring (test_observation_memory.ObservationMemoryTests.test_crop_fields_without_recentring) ... ok
+test_invalid_shapes_values_and_configs_fail_closed (test_observation_memory.ObservationMemoryTests.test_invalid_shapes_values_and_configs_fail_closed) ... ok
+test_local_read_time_edges_no_wrap_and_no_far_values (test_observation_memory.ObservationMemoryTests.test_local_read_time_edges_no_wrap_and_no_far_values) ... ok
+test_observable_preprocessing_detached_and_signatures_gt_free (test_observation_memory.ObservationMemoryTests.test_observable_preprocessing_detached_and_signatures_gt_free) ... ok
+test_projected_cache_parity_and_tubelet_repeat (test_observation_memory.ObservationMemoryTests.test_projected_cache_parity_and_tubelet_repeat) ... ok
+test_projection_exact_recipe_rng_and_constant_offset (test_observation_memory.ObservationMemoryTests.test_projection_exact_recipe_rng_and_constant_offset) ... ok
+test_real_optimizer_step_unblocks_address_and_slot_gradients (test_observation_memory.ObservationMemoryTests.test_real_optimizer_step_unblocks_address_and_slot_gradients) ... ok
+test_same_frame_memory_excludes_other_frame_values (test_observation_memory.ObservationMemoryTests.test_same_frame_memory_excludes_other_frame_values) ... ok
+test_shared_memory_matches_explicit_leave_one_out_sum (test_observation_memory.ObservationMemoryTests.test_shared_memory_matches_explicit_leave_one_out_sum) ... ok
+test_shuffle_is_deterministic_address_only_and_rng_isolated (test_observation_memory.ObservationMemoryTests.test_shuffle_is_deterministic_address_only_and_rng_isolated) ... ok
+test_target_values_have_exactly_zero_memory_derivative (test_observation_memory.ObservationMemoryTests.test_target_values_have_exactly_zero_memory_derivative) ... ok
+test_uniform_patch_pattern_is_not_spatially_averaged (test_observation_memory.ObservationMemoryTests.test_uniform_patch_pattern_is_not_spatially_averaged) ... ok
+test_packed_fields_and_rgb_crop_have_identical_positions (test_train_observation_memory.PatchCropTests.test_packed_fields_and_rgb_crop_have_identical_positions) ... ok
+test_partial_patch_crop_rejected (test_train_observation_memory.PatchCropTests.test_partial_patch_crop_rejected) ... ok
+test_fit_only_plan_and_repeatability (test_train_observation_memory.SourcePlanTests.test_fit_only_plan_and_repeatability) ... ok
+test_split_tampering_rejected (test_train_observation_memory.SourcePlanTests.test_split_tampering_rejected) ... ok
+
+----------------------------------------------------------------------
+Ran 24 tests in 2.731s
+
+OK

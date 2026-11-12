@@ -1,0 +1,411 @@
+{
+  "text_only": true,
+  "tensor_files_copied": 0,
+  "files": {
+    "results/source_internal_raw.json": {
+      "sha256": "ba32b3c24fc9a7d36f6c13a3adc3ddb2b55128aba33a2015d6e7a7d3b82e2c05",
+      "bytes": 67805,
+      "source": "/Users/hezihao/Documents/New project/seer_memory_dev_20261112/results_v1/source_internal_raw.json"
+    },
+    "results/source_internal_analysis.json": {
+      "sha256": "0ae6b99e50aaddee9968fd8e49df32fd276e354252476866a368bd9c46398675",
+      "bytes": 67814,
+      "source": "/Users/hezihao/Documents/New project/seer_memory_dev_20261112/results_v1/source_internal_analysis.json"
+    },
+    "results/posthoc_diagnosis.json": {
+      "sha256": "3c28fef95eda69a6f038e439929205361a297db6472450841cb6bb29fb04cc70",
+      "bytes": 21425,
+      "source": "/Users/hezihao/Documents/New project/seer_memory_dev_20261112/results_v1/posthoc_diagnosis.json"
+    },
+    "evidence/checks/cpu_real_load.json": {
+      "sha256": "9f2ddcb5ade34ddaff8bd0d9e34e559a94c3c04dab56d5ae70a91e98ddd49cae",
+      "bytes": 1007,
+      "source": "/Users/hezihao/Documents/New project/seer_memory_dev_20261112/artifacts/source_screen_v1/checks/cpu_real_load.json"
+    },
+    "evidence/checks/cpu_real_load.log": {
+      "sha256": "0c6db8443fe3b18f3194209179aad594ce2a352d3c516404c21daa4ba781e9c7",
+      "bytes": 1288,
+      "source": "/Users/hezihao/Documents/New project/seer_memory_dev_20261112/artifacts/source_screen_v1/checks/cpu_real_load.log"
+    },
+    "evidence/checks/cpu_real_npu_load_v2.json": {
+      "sha256": "40e5d2feced403419bad2cb0e5cd165d839eb0c3e40cae682b82f8c2f78fb57f",
+      "bytes": 1007,
+      "source": "/Users/hezihao/Documents/New project/seer_memory_dev_20261112/artifacts/source_screen_v1/checks/cpu_real_npu_load_v2.json"
+    },
+    "evidence/checks/cpu_real_npu_load_v2.log": {
+      "sha256": "40da79c32f7baed46daed452a5fbd612bcd0e68cd97849fca9cb698d8d2b1c18",
+      "bytes": 2565,
+      "source": "/Users/hezihao/Documents/New project/seer_memory_dev_20261112/artifacts/source_screen_v1/checks/cpu_real_npu_load_v2.log"
+    },
+    "evidence/checks/cpu_tests.log": {
+      "sha256": "d75aab73d807e9de5ba7789317447aa3cbfaabda272c6c1d851a555bba17a5a4",
+      "bytes": 4148,
+      "source": "/Users/hezihao/Documents/New project/seer_memory_dev_20261112/artifacts/source_screen_v1/checks/cpu_tests.log"
+    },
+    "evidence/checks/export_cpu_tests_v2.log": {
+      "sha256": "01be9643410f896f264bd362b2f1afed1069a1b479776e4eb617cb102921dd5c",
+      "bytes": 1333,
+      "source": "/Users/hezihao/Documents/New project/seer_memory_dev_20261112/artifacts/source_screen_v1/checks/export_cpu_tests_v2.log"
+    },
+    "evidence/checks/export_exit_code.txt": {
+      "sha256": "4355a46b19d348dc2f57c046f8ef63d4538ebb936000f3c9ee954a27460dd865",
+      "bytes": 2,
+      "source": "/Users/hezihao/Documents/New project/seer_memory_dev_20261112/artifacts/source_screen_v1/checks/export_exit_code.txt"
+    },
+    "evidence/checks/export_launch.json": {
+      "sha256": "221b485199377c6d6ad2e8085ab59570d2b3044ff15b5ad62263e4611e6c05f4",
+      "bytes": 2739,
+      "source": "/Users/hezihao/Documents/New project/seer_memory_dev_20261112/artifacts/source_screen_v1/checks/export_launch.json"
+    },
+    "evidence/checks/export_npu_after.txt": {
+      "sha256": "860120062e6677f2bc4c27b09b36293044736a510d2f7de5705100e620c584bc",
+      "bytes": 4851,
+      "source": "/Users/hezihao/Documents/New project/seer_memory_dev_20261112/artifacts/source_screen_v1/checks/export_npu_after.txt"
+    },
+    "evidence/checks/export_npu_before.txt": {
+      "sha256": "2411d95ea1161ae59ae3650df2427d3e396466323ad0adc81b40e5aa326514da",
+      "bytes": 4851,
+      "source": "/Users/hezihao/Documents/New project/seer_memory_dev_20261112/artifacts/source_screen_v1/checks/export_npu_before.txt"
+    },
+    "evidence/checks/export_v2_exit_code.txt": {
+      "sha256": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa",
+      "bytes": 2,
+      "source": "/Users/hezihao/Documents/New project/seer_memory_dev_20261112/artifacts/source_screen_v1/checks/export_v2_exit_code.txt"
+    },
+    "evidence/checks/export_v2_launch.json": {
+      "sha256": "826edead6615d90809d868c74e10173389caeaee527d7b24e5ded45459db7a6d",
+      "bytes": 2994,
+      "source": "/Users/hezihao/Documents/New project/seer_memory_dev_20261112/artifacts/source_screen_v1/checks/export_v2_launch.json"
+    },
+    "evidence/checks/export_v2_npu_after.txt": {
+      "sha256": "6e24d9b763858567ba50b6aeb5b6ab3b59e4dc6a1f1a764b93a40e0442b0cec4",
+      "bytes": 4851,
+      "source": "/Users/hezihao/Documents/New project/seer_memory_dev_20261112/artifacts/source_screen_v1/checks/export_v2_npu_after.txt"
+    },
+    "evidence/checks/export_v2_npu_before.txt": {
+      "sha256": "c82c832edceed0c9cabfbfd314a1d594c6be299af24737509c71744f24efc787",
+      "bytes": 4851,
+      "source": "/Users/hezihao/Documents/New project/seer_memory_dev_20261112/artifacts/source_screen_v1/checks/export_v2_npu_before.txt"
+    },
+    "evidence/logs/export_tokens_v1.log": {
+      "sha256": "b381afc09a8e02e992d1d4d601c61eb4aa4d7ef7eb2f3012f4821be5a707fe4f",
+      "bytes": 2423,
+      "source": "/Users/hezihao/Documents/New project/seer_memory_dev_20261112/artifacts/source_screen_v1/logs/export_tokens_v1.log"
+    },
+    "evidence/logs/export_tokens_v2.log": {
+      "sha256": "dcba41814984d83c5ea8aba2c0da8a11c72277671db6e98761986015e223b69f",
+      "bytes": 12986,
+      "source": "/Users/hezihao/Documents/New project/seer_memory_dev_20261112/artifacts/source_screen_v1/logs/export_tokens_v2.log"
+    },
+    "evidence/logs/preflight_export_v2.log": {
+      "sha256": "53c41730f4187288ceb926407151168588f4ca97ffb34dda247c68b2c281edfd",
+      "bytes": 15,
+      "source": "/Users/hezihao/Documents/New project/seer_memory_dev_20261112/artifacts/source_screen_v1/logs/preflight_export_v2.log"
+    },
+    "evidence/logs/source_screen_runner_v1.log": {
+      "sha256": "9af40b63ebe9458ae5906a769009f3da3e2641c12ac79c920c462532404be82a",
+      "bytes": 390,
+      "source": "/Users/hezihao/Documents/New project/seer_memory_dev_20261112/artifacts/source_screen_v1/logs/source_screen_runner_v1.log"
+    },
+    "evidence/logs/source_screen_runner_v2.log": {
+      "sha256": "29ad0ea59324ab9eab7aa42f66370b92406dec4487017511e641e324a137e84a",
+      "bytes": 4771,
+      "source": "/Users/hezihao/Documents/New project/seer_memory_dev_20261112/artifacts/source_screen_v1/logs/source_screen_runner_v2.log"
+    },
+    "evidence/scripts/archive_screen_v1.py": {
+      "sha256": "68b0f16656d60f08389e3fe378e0b419b8903704d5b03047b91bf89db8b16cfb",
+      "bytes": 3096,
+      "source": "/Users/hezihao/Documents/New project/seer_memory_dev_20261112/artifacts/source_screen_v1/scripts/archive_screen_v1.py"
+    },
+    "evidence/scripts/cpu_real_npu_load_v2.py": {
+      "sha256": "cd4620c6e7781dfc219764da96d051fe87c97705a99e634c4354a69975f28d65",
+      "bytes": 2163,
+      "source": "/Users/hezihao/Documents/New project/seer_memory_dev_20261112/artifacts/source_screen_v1/scripts/cpu_real_npu_load_v2.py"
+    },
+    "evidence/scripts/run_export_v1.sh": {
+      "sha256": "a54d75aba91897d29c781d4b198fb2acec3d01551bdaa71a4f4572f102404637",
+      "bytes": 2092,
+      "source": "/Users/hezihao/Documents/New project/seer_memory_dev_20261112/artifacts/source_screen_v1/scripts/run_export_v1.sh"
+    },
+    "evidence/scripts/run_export_v2.sh": {
+      "sha256": "616ea89d071c1e14a1ea2abf28eac4351e16e7be56e3e24b207ff136cbfb0e27",
+      "bytes": 2104,
+      "source": "/Users/hezihao/Documents/New project/seer_memory_dev_20261112/artifacts/source_screen_v1/scripts/run_export_v2.sh"
+    },
+    "evidence/scripts/run_screen_v1.py": {
+      "sha256": "c37a09ffb61e948fd607285bd47b784224cde9b8a60025b83e06506d65362c01",
+      "bytes": 4328,
+      "source": "/Users/hezihao/Documents/New project/seer_memory_dev_20261112/artifacts/source_screen_v1/scripts/run_screen_v1.py"
+    },
+    "evidence/scripts/run_screen_v2.py": {
+      "sha256": "245df2b5f137bb75fa8afa767f25778ccc73295e4317b3d7febe2c872a97a78d",
+      "bytes": 4384,
+      "source": "/Users/hezihao/Documents/New project/seer_memory_dev_20261112/artifacts/source_screen_v1/scripts/run_screen_v2.py"
+    },
+    "evidence/scripts/run_validated_export_v2.sh": {
+      "sha256": "6ea5fe15b64d37f96cf778bb3de9c284e0eec8ac9ecb3dfb81088efd6192d880",
+      "bytes": 669,
+      "source": "/Users/hezihao/Documents/New project/seer_memory_dev_20261112/artifacts/source_screen_v1/scripts/run_validated_export_v2.sh"
+    },
+    "evidence/scripts/wait_and_run_screen_v1.py": {
+      "sha256": "cd201ba07732141446aa6114f58a0d5a422c87880bb494e025abe6172264e0c0",
+      "bytes": 1143,
+      "source": "/Users/hezihao/Documents/New project/seer_memory_dev_20261112/artifacts/source_screen_v1/scripts/wait_and_run_screen_v1.py"
+    },
+    "evidence/scripts/wait_and_run_screen_v2.py": {
+      "sha256": "a376a105d211de394e9dd1f7d355754ad91ef80ba3607370520df31b3360cbe5",
+      "bytes": 1181,
+      "source": "/Users/hezihao/Documents/New project/seer_memory_dev_20261112/artifacts/source_screen_v1/scripts/wait_and_run_screen_v2.py"
+    },
+    "evidence/screen_logs_v1/pixel_cross.log": {
+      "sha256": "4e04fe34682a2ce5f5940cf12de65cd7f9d001995488a47c028c7ca1a1812cb5",
+      "bytes": 2283,
+      "source": "/Users/hezihao/Documents/New project/seer_memory_dev_20261112/artifacts/source_screen_v1/screen_logs_v1/pixel_cross.log"
+    },
+    "evidence/screen_logs_v1/pixel_local.log": {
+      "sha256": "87dcc280b27f7221e2b3eeb96e7f0107bb728f6254f25aebae38149e2210ba07",
+      "bytes": 2285,
+      "source": "/Users/hezihao/Documents/New project/seer_memory_dev_20261112/artifacts/source_screen_v1/screen_logs_v1/pixel_local.log"
+    },
+    "evidence/screen_logs_v1/prepare.log": {
+      "sha256": "8abca280107adc6eae911bc29bdcb916b939c09aa429a127d1faa645cb002f04",
+      "bytes": 7173,
+      "source": "/Users/hezihao/Documents/New project/seer_memory_dev_20261112/artifacts/source_screen_v1/screen_logs_v1/prepare.log"
+    },
+    "evidence/screen_logs_v1/prior_cross.log": {
+      "sha256": "e4756233b913c7afeee033ccd153923cd99c32cdf7cef6018024afe4550cad2f",
+      "bytes": 2286,
+      "source": "/Users/hezihao/Documents/New project/seer_memory_dev_20261112/artifacts/source_screen_v1/screen_logs_v1/prior_cross.log"
+    },
+    "evidence/screen_logs_v1/prior_same.log": {
+      "sha256": "6f6e5df58b81b6b042924315d71cc211c3b0be0f5854fa6a0c496c9f2fdc7ace",
+      "bytes": 2284,
+      "source": "/Users/hezihao/Documents/New project/seer_memory_dev_20261112/artifacts/source_screen_v1/screen_logs_v1/prior_same.log"
+    },
+    "evidence/screen_logs_v1/shuffled_cross.log": {
+      "sha256": "1227e3307d8b4faa022d3051454f6d0c1e23a19d758cb2a7bf59c290e91b8c28",
+      "bytes": 2285,
+      "source": "/Users/hezihao/Documents/New project/seer_memory_dev_20261112/artifacts/source_screen_v1/screen_logs_v1/shuffled_cross.log"
+    },
+    "evidence/screen_logs_v1/source_analysis.log": {
+      "sha256": "9649ee6091addf07f30cb2a376502f9eb82f7c59d47f8cba8acccba0e900091f",
+      "bytes": 1241,
+      "source": "/Users/hezihao/Documents/New project/seer_memory_dev_20261112/artifacts/source_screen_v1/screen_logs_v1/source_analysis.log"
+    },
+    "evidence/screen_logs_v1/source_internal_evaluation.log": {
+      "sha256": "e11ab16372d20c219c75847c11a09a281b13a16a76760da451bbd69aa675c4a0",
+      "bytes": 2570,
+      "source": "/Users/hezihao/Documents/New project/seer_memory_dev_20261112/artifacts/source_screen_v1/screen_logs_v1/source_internal_evaluation.log"
+    },
+    "evidence/screen_checks_v1/complete.json": {
+      "sha256": "fb194b795e42da6ac60e553655ec42f86540aa5ebb023dd6740de732b3f75830",
+      "bytes": 3657,
+      "source": "/Users/hezihao/Documents/New project/seer_memory_dev_20261112/artifacts/source_screen_v1/screen_checks_v1/complete.json"
+    },
+    "evidence/screen_checks_v1/launch.json": {
+      "sha256": "6bf681573d1bc8679dfc9004909578fdd068f2b5933d9ea540d0839fb470923a",
+      "bytes": 25617,
+      "source": "/Users/hezihao/Documents/New project/seer_memory_dev_20261112/artifacts/source_screen_v1/screen_checks_v1/launch.json"
+    },
+    "evidence/screen_checks_v1/pixel_cross.json": {
+      "sha256": "825ff4e98304d83ac79b870ea2a54422ac5997bf705b5b41a195089efc6e746e",
+      "bytes": 596,
+      "source": "/Users/hezihao/Documents/New project/seer_memory_dev_20261112/artifacts/source_screen_v1/screen_checks_v1/pixel_cross.json"
+    },
+    "evidence/screen_checks_v1/pixel_local.json": {
+      "sha256": "3ce298577e30dc88effc2dea89a242bc8310d9d5cdb00b819f3a75372819a515",
+      "bytes": 595,
+      "source": "/Users/hezihao/Documents/New project/seer_memory_dev_20261112/artifacts/source_screen_v1/screen_checks_v1/pixel_local.json"
+    },
+    "evidence/screen_checks_v1/prepare.json": {
+      "sha256": "898bbccec603f9bbd11c570dded1eedcc8d023510656199edd695e5ea689b951",
+      "bytes": 700,
+      "source": "/Users/hezihao/Documents/New project/seer_memory_dev_20261112/artifacts/source_screen_v1/screen_checks_v1/prepare.json"
+    },
+    "evidence/screen_checks_v1/prior_cross.json": {
+      "sha256": "9f450f9332a1cca20a593f392e4e7bcb5516520dedaaed2c1bc719f9c87d3fc4",
+      "bytes": 596,
+      "source": "/Users/hezihao/Documents/New project/seer_memory_dev_20261112/artifacts/source_screen_v1/screen_checks_v1/prior_cross.json"
+    },
+    "evidence/screen_checks_v1/prior_same.json": {
+      "sha256": "7d651255e7d55f1f8e8e90023854fb01872a4d6d1059deb04f99cea0fc6e2d34",
+      "bytes": 593,
+      "source": "/Users/hezihao/Documents/New project/seer_memory_dev_20261112/artifacts/source_screen_v1/screen_checks_v1/prior_same.json"
+    },
+    "evidence/screen_checks_v1/shuffled_cross.json": {
+      "sha256": "8ceeb72f2ced44832b357f440c1fcdd36a797cff27ec41ef3e67db17360ee806",
+      "bytes": 605,
+      "source": "/Users/hezihao/Documents/New project/seer_memory_dev_20261112/artifacts/source_screen_v1/screen_checks_v1/shuffled_cross.json"
+    },
+    "evidence/screen_checks_v1/source_analysis.json": {
+      "sha256": "bc6805c8cd1d8cb39bab9756d3e480bed9435772639a9d87f20edb18f80d3fc9",
+      "bytes": 544,
+      "source": "/Users/hezihao/Documents/New project/seer_memory_dev_20261112/artifacts/source_screen_v1/screen_checks_v1/source_analysis.json"
+    },
+    "evidence/screen_checks_v1/source_internal_evaluation.json": {
+      "sha256": "bdb41db3b458960707a552693c67791e490510ff9fc353f76cc6f96f9c437f49",
+      "bytes": 860,
+      "source": "/Users/hezihao/Documents/New project/seer_memory_dev_20261112/artifacts/source_screen_v1/screen_checks_v1/source_internal_evaluation.json"
+    },
+    "evidence/runs_v1/pixel_cross_s0/complete.json": {
+      "sha256": "50c1ab6f892ad06d42800885f0340dd8b83e6d8b07622eea8c2c533e22889b24",
+      "bytes": 429,
+      "source": "/Users/hezihao/Documents/New project/seer_memory_dev_20261112/artifacts/source_screen_v1/runs_v1/pixel_cross_s0/complete.json"
+    },
+    "evidence/runs_v1/pixel_cross_s0/curve.jsonl": {
+      "sha256": "1b433514f08a2b2a187bba6295c493ca69e26d1ce809a43c7608d3097aca60e6",
+      "bytes": 86023,
+      "source": "/Users/hezihao/Documents/New project/seer_memory_dev_20261112/artifacts/source_screen_v1/runs_v1/pixel_cross_s0/curve.jsonl"
+    },
+    "evidence/runs_v1/pixel_cross_s0/provenance.json": {
+      "sha256": "542c6da4e7c6444267736515026943ffa520b5ddc594f709a6c6bf7902edb8f4",
+      "bytes": 4956,
+      "source": "/Users/hezihao/Documents/New project/seer_memory_dev_20261112/artifacts/source_screen_v1/runs_v1/pixel_cross_s0/provenance.json"
+    },
+    "evidence/runs_v1/pixel_cross_s0/sample_plan.json": {
+      "sha256": "8756aa2984cca2107f0cff09fbebbcbc491fe17c8458b7e8c1b6ebd99e246fb7",
+      "bytes": 79452,
+      "source": "/Users/hezihao/Documents/New project/seer_memory_dev_20261112/artifacts/source_screen_v1/runs_v1/pixel_cross_s0/sample_plan.json"
+    },
+    "evidence/runs_v1/pixel_local_s0/complete.json": {
+      "sha256": "c57e0dd8d602d9e93a20355f781e5851d706faf68e4970b3cd8ed9b88de66fd6",
+      "bytes": 429,
+      "source": "/Users/hezihao/Documents/New project/seer_memory_dev_20261112/artifacts/source_screen_v1/runs_v1/pixel_local_s0/complete.json"
+    },
+    "evidence/runs_v1/pixel_local_s0/curve.jsonl": {
+      "sha256": "76c7d174d0af935bf7776086b19a4d83943a79da42d6b1d8cf8c1ccb0339c2bd",
+      "bytes": 86077,
+      "source": "/Users/hezihao/Documents/New project/seer_memory_dev_20261112/artifacts/source_screen_v1/runs_v1/pixel_local_s0/curve.jsonl"
+    },
+    "evidence/runs_v1/pixel_local_s0/provenance.json": {
+      "sha256": "eb0f7ae23727bf7533f8063af21a91947febfd576c95f65cf41e282d1af54bf4",
+      "bytes": 4950,
+      "source": "/Users/hezihao/Documents/New project/seer_memory_dev_20261112/artifacts/source_screen_v1/runs_v1/pixel_local_s0/provenance.json"
+    },
+    "evidence/runs_v1/pixel_local_s0/sample_plan.json": {
+      "sha256": "8756aa2984cca2107f0cff09fbebbcbc491fe17c8458b7e8c1b6ebd99e246fb7",
+      "bytes": 79452,
+      "source": "/Users/hezihao/Documents/New project/seer_memory_dev_20261112/artifacts/source_screen_v1/runs_v1/pixel_local_s0/sample_plan.json"
+    },
+    "evidence/runs_v1/prior_cross_s0/complete.json": {
+      "sha256": "b5150b2f2899fa15ca1ffc30ddbf540ad28ef7b5c929b8590202bd453a21efce",
+      "bytes": 429,
+      "source": "/Users/hezihao/Documents/New project/seer_memory_dev_20261112/artifacts/source_screen_v1/runs_v1/prior_cross_s0/complete.json"
+    },
+    "evidence/runs_v1/prior_cross_s0/curve.jsonl": {
+      "sha256": "b527674bcea0326af7ff909c89d7c66f5c5421ca683cfa5f1c992b6650ec05ba",
+      "bytes": 86023,
+      "source": "/Users/hezihao/Documents/New project/seer_memory_dev_20261112/artifacts/source_screen_v1/runs_v1/prior_cross_s0/curve.jsonl"
+    },
+    "evidence/runs_v1/prior_cross_s0/provenance.json": {
+      "sha256": "d33cd4c662fd675f79125d6c1272a7815e5a5487a11c6506c63c17bef07dbf6c",
+      "bytes": 4956,
+      "source": "/Users/hezihao/Documents/New project/seer_memory_dev_20261112/artifacts/source_screen_v1/runs_v1/prior_cross_s0/provenance.json"
+    },
+    "evidence/runs_v1/prior_cross_s0/sample_plan.json": {
+      "sha256": "8756aa2984cca2107f0cff09fbebbcbc491fe17c8458b7e8c1b6ebd99e246fb7",
+      "bytes": 79452,
+      "source": "/Users/hezihao/Documents/New project/seer_memory_dev_20261112/artifacts/source_screen_v1/runs_v1/prior_cross_s0/sample_plan.json"
+    },
+    "evidence/runs_v1/prior_same_s0/complete.json": {
+      "sha256": "463e6b839224a534b6c81d243c3908cb56b78c7783f0f51aa94506ae7f14bd06",
+      "bytes": 429,
+      "source": "/Users/hezihao/Documents/New project/seer_memory_dev_20261112/artifacts/source_screen_v1/runs_v1/prior_same_s0/complete.json"
+    },
+    "evidence/runs_v1/prior_same_s0/curve.jsonl": {
+      "sha256": "c98f8519e32fe882174ee0d0ccf579130fe32af97d46954819ccf86a82744329",
+      "bytes": 86049,
+      "source": "/Users/hezihao/Documents/New project/seer_memory_dev_20261112/artifacts/source_screen_v1/runs_v1/prior_same_s0/curve.jsonl"
+    },
+    "evidence/runs_v1/prior_same_s0/provenance.json": {
+      "sha256": "c89c0ac2d88b1501bb1c8c563977b506de7cfab88344aa96c2a6b690707dae0c",
+      "bytes": 4954,
+      "source": "/Users/hezihao/Documents/New project/seer_memory_dev_20261112/artifacts/source_screen_v1/runs_v1/prior_same_s0/provenance.json"
+    },
+    "evidence/runs_v1/prior_same_s0/sample_plan.json": {
+      "sha256": "8756aa2984cca2107f0cff09fbebbcbc491fe17c8458b7e8c1b6ebd99e246fb7",
+      "bytes": 79452,
+      "source": "/Users/hezihao/Documents/New project/seer_memory_dev_20261112/artifacts/source_screen_v1/runs_v1/prior_same_s0/sample_plan.json"
+    },
+    "evidence/runs_v1/shuffled_cross_s0/complete.json": {
+      "sha256": "278ea1cbed6945e8b3181f531ae0a1cd0e8643f1bea413df5ce798ee707c5bc5",
+      "bytes": 429,
+      "source": "/Users/hezihao/Documents/New project/seer_memory_dev_20261112/artifacts/source_screen_v1/runs_v1/shuffled_cross_s0/complete.json"
+    },
+    "evidence/runs_v1/shuffled_cross_s0/curve.jsonl": {
+      "sha256": "c36844b27dec32b7fe5f81ca2d933025b072e93f6516cc68ee8e178150c62efd",
+      "bytes": 86048,
+      "source": "/Users/hezihao/Documents/New project/seer_memory_dev_20261112/artifacts/source_screen_v1/runs_v1/shuffled_cross_s0/curve.jsonl"
+    },
+    "evidence/runs_v1/shuffled_cross_s0/provenance.json": {
+      "sha256": "f3c19dd931b781c40171cd13c15ac286d4179d8a7a5d38266de7fb522bc9ffc1",
+      "bytes": 4968,
+      "source": "/Users/hezihao/Documents/New project/seer_memory_dev_20261112/artifacts/source_screen_v1/runs_v1/shuffled_cross_s0/provenance.json"
+    },
+    "evidence/runs_v1/shuffled_cross_s0/sample_plan.json": {
+      "sha256": "8756aa2984cca2107f0cff09fbebbcbc491fe17c8458b7e8c1b6ebd99e246fb7",
+      "bytes": 79452,
+      "source": "/Users/hezihao/Documents/New project/seer_memory_dev_20261112/artifacts/source_screen_v1/runs_v1/shuffled_cross_s0/sample_plan.json"
+    },
+    "evidence/release_v1/source_manifest.json": {
+      "sha256": "972b09fd79a381d1c86dffc297d500095e920762aa089d7585a65f20703ffa22",
+      "bytes": 24639,
+      "source": "/Users/hezihao/Documents/New project/seer_memory_dev_20261112/artifacts/source_screen_v1/release_v1/source_manifest.json"
+    },
+    "evidence/release_v2/source_manifest.json": {
+      "sha256": "11c792c7746220b9d991ae494617bf4749b9f1018437844caf8ebe045fd8a982",
+      "bytes": 24639,
+      "source": "/Users/hezihao/Documents/New project/seer_memory_dev_20261112/artifacts/source_screen_v1/release_v2/source_manifest.json"
+    },
+    "evidence/prepared_manifest.json": {
+      "sha256": "48297dbd952e8e0d8cacc7e52e6edd1a467fc4fcf4acc7017a4ff62a56eda9ca",
+      "bytes": 493800,
+      "source": "/Users/hezihao/Documents/New project/seer_memory_dev_20261112/results_v1/prepared_manifest.json"
+    },
+    "evidence/tokens_manifest.json": {
+      "sha256": "11695e05b71c637092bdce3ef03d6ab4f1e4f775e6dbdf6006ef1a9b746fcab8",
+      "bytes": 77330,
+      "source": "/Users/hezihao/Documents/New project/seer_memory_dev_20261112/results_v1/tokens_manifest.json"
+    },
+    "evidence/separate_verification.json": {
+      "sha256": "953c63451bb6e153e7ab9bd02c86a8d1ca847b2244d4d43072815f41c7126b5a",
+      "bytes": 1056,
+      "source": "/Users/hezihao/Documents/New project/seer_memory_dev_20261112/results_v1/separate_verification.json"
+    },
+    "evidence/backup_receipt.json": {
+      "sha256": "43325b60ce0d8e9a5ea488b292ffe0093e1e5a428c27d6b479180e6469a03e1d",
+      "bytes": 282,
+      "source": "/Users/hezihao/Documents/New project/seer_memory_dev_20261112/artifacts/backup_receipt.json"
+    },
+    "evidence/local_verification.json": {
+      "sha256": "341bbee9f9c650c53d64a38d64bc4c8f73e8d7f80963b1367fa7e363040bf289",
+      "bytes": 376,
+      "source": "/Users/hezihao/Documents/New project/seer_memory_dev_20261112/artifacts/local_verification.json"
+    },
+    "evidence/final_process_check_v2.json": {
+      "sha256": "91499a0750f9a2a4acc01363450670743c9f7a2ae6e28ea33f18c10ccafa6e90",
+      "bytes": 327,
+      "source": "/Users/hezihao/Documents/New project/seer_memory_dev_20261112/artifacts/final_process_check_v2.json"
+    },
+    "evidence/backup_manifest.json": {
+      "sha256": "b3d2549eacb54d16f2e83ab9e7ec105389d6742a962529bb162e0a9d768a6fe9",
+      "bytes": 118131,
+      "source": "/Users/hezihao/Documents/New project/seer_memory_dev_20261112/artifacts/source_screen_v1/backup_manifest.json"
+    },
+    "evidence/posthoc/backup_manifest.json": {
+      "sha256": "2f9648988f17ffa5fae5f56b7850b2dbb3cec276040fcbde5db15fb9a5487080",
+      "bytes": 664,
+      "source": "/Users/hezihao/Documents/New project/seer_memory_dev_20261112/artifacts/posthoc_v1/backup_manifest.json"
+    },
+    "evidence/posthoc/diagnose_memory_v1.py": {
+      "sha256": "b47c03c2231f10cc21224d7d3678f8c4c612872e875315f0b79ef024c10e1ff0",
+      "bytes": 2886,
+      "source": "/Users/hezihao/Documents/New project/seer_memory_dev_20261112/artifacts/posthoc_v1/diagnose_memory_v1.py"
+    },
+    "evidence/posthoc/posthoc_diagnosis_v1.log": {
+      "sha256": "5c20ea4244da46b263c6af3389dcb683a774b1f330ac0bb9618b881b36f76a93",
+      "bytes": 17837,
+      "source": "/Users/hezihao/Documents/New project/seer_memory_dev_20261112/artifacts/posthoc_v1/posthoc_diagnosis_v1.log"
+    }
+  }
+}

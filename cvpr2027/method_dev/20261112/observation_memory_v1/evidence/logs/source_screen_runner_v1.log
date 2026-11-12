@@ -1,0 +1,5 @@
+Waiting for successful complete136 export; no target or NPU work in this waiter
+Traceback (most recent call last):
+  File "/cache/zihaohe/seer_observation_memory_20261112/scripts/wait_and_run_screen_v1.py", line 11, in <module>
+    assert (r/'checks/export_exit_code.txt').read_text().strip()=='0','Export failed; no dependent training'
+AssertionError: Export failed; no dependent training

@@ -1,0 +1,20 @@
+{
+  "passed": true,
+  "implementation": "separate raw parsing and scene multiplicity matrix bootstrap; no main analyzer import",
+  "source_name_scene_plan_and_provenance_checks": true,
+  "scalar_statistic_checks": 492,
+  "max_abs_error": 1.3552527156068805e-20,
+  "gate_checks": {
+    "psnr_gain_over_pixel_at_least_005db": false,
+    "psnr_gain_over_base_at_least_005db": false,
+    "mse_ci_better_than_pixel": false,
+    "mean_mse_better_than_frozen_raw_reference": false,
+    "mean_mse_better_than_same_frame": true,
+    "mean_mse_better_than_shuffled_address": true
+  },
+  "raw_sha256": "ba32b3c24fc9a7d36f6c13a3adc3ddb2b55128aba33a2015d6e7a7d3b82e2c05",
+  "analysis_file_sha256": "0ae6b99e50aaddee9968fd8e49df32fd276e354252476866a368bd9c46398675",
+  "reference_manifest_sha256": "b45b407d934d0c87a745544cc4c948083b1ee7abc3bc759b2c71a85f5d5b7816",
+  "verifier_sha256": "ac8bba87a2ee270505ed2dc825abc1ed71c342b88214fa57ab78b30256221261",
+  "scope": "Statistics and recorded provenance only; actual tensor-state invariance checked by remote evaluator"
+}

@@ -1,0 +1,1447 @@
+{
+  "schema_version": 1,
+  "kind": "source_observation_memory_tokens",
+  "n": 136,
+  "domain": "sdsd_train",
+  "token_grid": [
+    8,
+    16,
+    16
+  ],
+  "descriptor_dim": 64,
+  "tubelet_repeat": 2,
+  "feature_layer": 17,
+  "feature_layer_indexing": "zero-based block17, norms_block[2] output",
+  "projection": {
+    "schema_version": 1,
+    "patch": 16,
+    "descriptor_dim": 64,
+    "backend": "CPU torch.float32",
+    "prior_block": 17,
+    "prior_input_dim": 1024,
+    "prior_projection_seed": 1729,
+    "pixel_projection_seed": 1730,
+    "projection": "CPU torch.randn(input_dim,descriptor_dim), private Generator(seed), /sqrt(descriptor_dim)",
+    "prior_centering": "subtract full-clip mean over all tubelet-spatial tokens BEFORE projection",
+    "pixel_descriptor": "low RGB then base RGB; each patch adaptive-average-pooled to 4x4; channel,y,x",
+    "pixel_centering": "subtract full-clip mean over all frame-spatial patches BEFORE projection",
+    "normalization": "F.normalize projected descriptors, dim=-1, eps=1e-6",
+    "temporal_expansion": "repeat_interleave each tubelet descriptor to its consecutive frames",
+    "crop_policy": "prepare full clip once; crop row-major patch grids; NEVER recenter cropped descriptors",
+    "values": "q=clamp(LP9(base)+clamp(LP9(base)/(LP9(low)+1e-4),.25,16)*(low-LP9(low)),0,1); q-LP9(q)",
+    "value_layout": "[B,T,P,3*patch*patch]; spatial patches row-major; channels then patch y,x",
+    "lowpass": "spatial box9, reflect padding; no time filtering",
+    "gt_input": false,
+    "target_fit": false,
+    "alignment": "none; patch-relative positions retained; no subpixel-motion compensation"
+  },
+  "tensor_layout": "B,N,D; N is tubelet,row,column with grid8x16x16",
+  "expanded_layout": "reshape(B,8,16,16,64).repeat_interleave(2,dim=1)",
+  "source_cache": "/cache/zihaohe/seer_method_dev_20261111/source_transfer_v1/cache_sdsd_p_s0",
+  "source_cache_provenance_sha256": "0fe83dc30cd7772eb4aa8326deb8911e5b5538ae63470821c1c5aa21129d19f0",
+  "source_cache_summary_sha256": "63df74b887dc66543137569d58b6fd57c6fbdb931c6f4c6077c53b77585031ae",
+  "split_sha256": "fb6be5ea78ef73f5cc9db90bca75813bf597275f7609fe39d82f5b2f883e9ad0",
+  "source_names": [
+    "SDSD_indoor/pair10",
+    "SDSD_indoor/pair10_2",
+    "SDSD_indoor/pair11",
+    "SDSD_indoor/pair11_2",
+    "SDSD_indoor/pair12",
+    "SDSD_indoor/pair12_2",
+    "SDSD_indoor/pair13",
+    "SDSD_indoor/pair13_2",
+    "SDSD_indoor/pair14",
+    "SDSD_indoor/pair14_2",
+    "SDSD_indoor/pair15",
+    "SDSD_indoor/pair15_2",
+    "SDSD_indoor/pair16",
+    "SDSD_indoor/pair16_2",
+    "SDSD_indoor/pair17",
+    "SDSD_indoor/pair17_2",
+    "SDSD_indoor/pair18",
+    "SDSD_indoor/pair18_2",
+    "SDSD_indoor/pair2",
+    "SDSD_indoor/pair20",
+    "SDSD_indoor/pair20_2",
+    "SDSD_indoor/pair21",
+    "SDSD_indoor/pair21_2",
+    "SDSD_indoor/pair22",
+    "SDSD_indoor/pair22_2",
+    "SDSD_indoor/pair23",
+    "SDSD_indoor/pair23_2",
+    "SDSD_indoor/pair24",
+    "SDSD_indoor/pair24_2",
+    "SDSD_indoor/pair25",
+    "SDSD_indoor/pair25_2",
+    "SDSD_indoor/pair26",
+    "SDSD_indoor/pair26_2",
+    "SDSD_indoor/pair27",
+    "SDSD_indoor/pair27_2",
+    "SDSD_indoor/pair29",
+    "SDSD_indoor/pair29_2",
+    "SDSD_indoor/pair2_2",
+    "SDSD_indoor/pair30",
+    "SDSD_indoor/pair30_2",
+    "SDSD_indoor/pair31",
+    "SDSD_indoor/pair31_2",
+    "SDSD_indoor/pair32",
+    "SDSD_indoor/pair32_2",
+    "SDSD_indoor/pair33",
+    "SDSD_indoor/pair33_2",
+    "SDSD_outdoor/MVI_0900",
+    "SDSD_outdoor/MVI_0900_2",
+    "SDSD_outdoor/MVI_0902",
+    "SDSD_outdoor/MVI_0902_2",
+    "SDSD_outdoor/MVI_0904",
+    "SDSD_outdoor/MVI_0904_2",
+    "SDSD_outdoor/MVI_0906",
+    "SDSD_outdoor/MVI_0906_2",
+    "SDSD_outdoor/MVI_0909",
+    "SDSD_outdoor/MVI_0909_2",
+    "SDSD_outdoor/MVI_0911",
+    "SDSD_outdoor/MVI_0911_2",
+    "SDSD_outdoor/MVI_0915",
+    "SDSD_outdoor/MVI_0915_2",
+    "SDSD_outdoor/MVI_0916",
+    "SDSD_outdoor/MVI_0916_2",
+    "SDSD_outdoor/MVI_0918",
+    "SDSD_outdoor/MVI_0918_2",
+    "SDSD_outdoor/MVI_0925",
+    "SDSD_outdoor/MVI_0925_2",
+    "SDSD_outdoor/MVI_0926",
+    "SDSD_outdoor/MVI_0926_2",
+    "SDSD_outdoor/MVI_0928",
+    "SDSD_outdoor/MVI_0928_2",
+    "SDSD_outdoor/MVI_0930",
+    "SDSD_outdoor/MVI_0930_2",
+    "SDSD_outdoor/MVI_0932",
+    "SDSD_outdoor/MVI_0932_2",
+    "SDSD_outdoor/MVI_0935",
+    "SDSD_outdoor/MVI_0935_2",
+    "SDSD_outdoor/MVI_0938",
+    "SDSD_outdoor/MVI_0938_2",
+    "SDSD_outdoor/MVI_0941",
+    "SDSD_outdoor/MVI_0941_2",
+    "SDSD_outdoor/MVI_0943",
+    "SDSD_outdoor/MVI_0943_2",
+    "SDSD_outdoor/MVI_0947",
+    "SDSD_outdoor/MVI_0947_2",
+    "SDSD_outdoor/MVI_0949",
+    "SDSD_outdoor/MVI_0949_2",
+    "SDSD_outdoor/MVI_0951",
+    "SDSD_outdoor/MVI_0951_2",
+    "SDSD_outdoor/MVI_0953",
+    "SDSD_outdoor/MVI_0953_2",
+    "SDSD_outdoor/MVI_0955",
+    "SDSD_outdoor/MVI_0955_2",
+    "SDSD_outdoor/MVI_0957",
+    "SDSD_outdoor/MVI_0957_2",
+    "SDSD_outdoor/MVI_0959",
+    "SDSD_outdoor/MVI_0959_2",
+    "SDSD_outdoor/MVI_0961",
+    "SDSD_outdoor/MVI_0961_2",
+    "SDSD_outdoor/MVI_0963",
+    "SDSD_outdoor/MVI_0963_2",
+    "SDSD_outdoor/MVI_0967",
+    "SDSD_outdoor/MVI_0967_2",
+    "SDSD_outdoor/MVI_0969",
+    "SDSD_outdoor/MVI_0969_2",
+    "SDSD_outdoor/MVI_0971",
+    "SDSD_outdoor/MVI_0971_2",
+    "SDSD_outdoor/MVI_0973",
+    "SDSD_outdoor/MVI_0973_2",
+    "SDSD_outdoor/MVI_0975",
+    "SDSD_outdoor/MVI_0975_2",
+    "SDSD_outdoor/MVI_0977",
+    "SDSD_outdoor/MVI_0977_2",
+    "SDSD_outdoor/MVI_0979",
+    "SDSD_outdoor/MVI_0979_2",
+    "SDSD_outdoor/MVI_0981",
+    "SDSD_outdoor/MVI_0981_2",
+    "SDSD_outdoor/MVI_0983",
+    "SDSD_outdoor/MVI_0983_2",
+    "SDSD_outdoor/MVI_0988",
+    "SDSD_outdoor/MVI_0988_2",
+    "SDSD_outdoor/MVI_0990",
+    "SDSD_outdoor/MVI_0990_2",
+    "SDSD_outdoor/MVI_0993",
+    "SDSD_outdoor/MVI_0993_2",
+    "SDSD_outdoor/MVI_0995",
+    "SDSD_outdoor/MVI_0995_2",
+    "SDSD_outdoor/MVI_0997",
+    "SDSD_outdoor/MVI_0997_2",
+    "SDSD_outdoor/MVI_0999",
+    "SDSD_outdoor/MVI_0999_2",
+    "SDSD_outdoor/MVI_1001",
+    "SDSD_outdoor/MVI_1001_2",
+    "SDSD_outdoor/MVI_1003",
+    "SDSD_outdoor/MVI_1003_2",
+    "SDSD_outdoor/MVI_1005",
+    "SDSD_outdoor/MVI_1005_2"
+  ],
+  "encoder_checkpoint": "/temp/zihaohe/seer_cvpr/weights/vjepa2_1_vitl_dist_vitG_384.pt",
+  "encoder_weights_sha256": "7ea9b7cb4a75d10644a8a8d42cff9e177b10dca8f02173f0eaf2b0bed82838c6",
+  "encoder_state_before": "0c5f0472f877dfdfeb5e5c5d07c1f77bc622f1961891dac958c72e96882aee50",
+  "encoder_eval": true,
+  "encoder_requires_grad": false,
+  "video_state_load_strict": true,
+  "ignored_unused_image_only_keys": [
+    "patch_embed_img.proj.bias",
+    "patch_embed_img.proj.weight"
+  ],
+  "source_sha256": {
+    "tools/cache_observation_memory.py": "473aa1ed44aeb36ffd509afd3faa742235227a50dc592d6dc26179a3a01a1f6c",
+    "models/observation_memory.py": "064efae9a38ac24c149714ce94c8d19481ce379c59f5cf951a57de94965d1990",
+    "models/vjepa_backbone.py": "8d8e4ca44cecad797aec05af5f627b50927b9d72860187b76d466794f2d3e4bf",
+    "tools/train_source_selector.py": "5329c6991642cb901e6b6697d8ce530fe688d0fe255497bdd01d485953c22d26",
+    "tools/train_correction_selector.py": "cc7af1ae735f7ea112ca6dec62a668b9eb3e744941d2f44034a58173f7fbcf9c",
+    "tools/cache_source_corrections.py": "34dad77d6b90e6fa418a2828924f034b3c541091ebb4acae7eceab34fac85683"
+  },
+  "upstream_repo": "/temp/zihaohe/seer_cvpr/modelzoo/vjepa2-main",
+  "upstream_source_sha256": {
+    "app/vjepa_2_1/models/utils/modules.py": "64be6a87bd9f18d385f4e44186db3347d1665e18a1f0511d51d3b305531562e2",
+    "app/vjepa_2_1/models/utils/patch_embed.py": "29e11ab97ab3ccdef107d6a7d0d7b374b58e712076cc3561f07b7e603c9b5165",
+    "app/vjepa_2_1/models/vision_transformer.py": "d2932eabeba684d8f558302a13cfd4be70a0170ee5112f5a794652d0a29089b9",
+    "src/masks/utils.py": "833f111a0fa5ffdbd3a6412e2dace2517c3c178f49c14f8bb631d9f6a070dfd0",
+    "src/utils/tensors.py": "782b58bd2af456e184750e5318ab773105108383f61b280fe4c7a90f46add2c8"
+  },
+  "encoder_autocast": "bfloat16",
+  "projection_backend": "cpu_float32",
+  "encoder_input": "cached original LQ only, fixed crop/flip/temporal plan",
+  "gt_input": false,
+  "target_input": false,
+  "metric_computed": false,
+  "oracle_computed": false,
+  "optimization_performed": false,
+  "per_sequence": [
+    {
+      "name": "SDSD_indoor/pair10",
+      "scene": "SDSD_indoor/pair10",
+      "cache_path": "tokens_000.pt",
+      "cache_sha256": "5068b2461de84d4a28ac3e976cf8a11671b33e559eee21b13f4da478f7b82501",
+      "source_cache_sha256": "c458c01a90399b340916168170a688aa31b5bd658e1752b04ef894417108c14c",
+      "lq_tensor_sha256": "7c4e524c8d4bdb9fa230fe75ee827df23da279c65c6bd42d043da5c2da4c846e",
+      "tokens_tensor_sha256": "c7ee1f29fb0ceb1398ec5161728b9f363408a617a903decb26dcedcb1582fe21"
+    },
+    {
+      "name": "SDSD_indoor/pair10_2",
+      "scene": "SDSD_indoor/pair10",
+      "cache_path": "tokens_001.pt",
+      "cache_sha256": "06d9a23878b5f11e954bf5729a31da33221e5b19945adf07fdef60a83719cb77",
+      "source_cache_sha256": "83ad625c0549cf50ae32f1e9568f2c8dd6af6389e1d6563c525b32b298a8cc31",
+      "lq_tensor_sha256": "8867a220492c7b97cfb964f2e32d5a05cbb7cea61fc1aa0e90e3855ff7a84f73",
+      "tokens_tensor_sha256": "e3fdc1648ce25df9a4b4caca844fa641b65fc379c3b286637d56744ed906843e"
+    },
+    {
+      "name": "SDSD_indoor/pair11",
+      "scene": "SDSD_indoor/pair11",
+      "cache_path": "tokens_002.pt",
+      "cache_sha256": "4f91d6a743f7e510979cbb72074a32480e375974692afa98959b0293b54924a2",
+      "source_cache_sha256": "d7322e9b59728675587845f6620aec2ec472f02862d1590718c11d0cddd14321",
+      "lq_tensor_sha256": "fad9270c35f88601985f2bc7b7f477b07aa440124218058df94a9576e8808fab",
+      "tokens_tensor_sha256": "8e65838e9e3101d9e736b920fd5c731122e830a24012eb99e4602b775ca045dc"
+    },
+    {
+      "name": "SDSD_indoor/pair11_2",
+      "scene": "SDSD_indoor/pair11",
+      "cache_path": "tokens_003.pt",
+      "cache_sha256": "768be5bc5d87ec7a5f7544320d083d571b28a96b5d962efe1b27d078f4f0bb3d",
+      "source_cache_sha256": "a8629a9fd21b30df152fed58f08e4e9f41a2b07fb5f0dc36b3fb7447942ac995",
+      "lq_tensor_sha256": "33834be3a49446c417f293f520f0c6258079f6a0513324a1589b4c0bac55d1fb",
+      "tokens_tensor_sha256": "3a8fe9bc0b06278ff0a6a365e5750ad320a4d8ba9faafb225f8918e88f5539b0"
+    },
+    {
+      "name": "SDSD_indoor/pair12",
+      "scene": "SDSD_indoor/pair12",
+      "cache_path": "tokens_004.pt",
+      "cache_sha256": "bd927c65903251c9808361e1a2805886201a54ec9f368857aa141a0bc469eb94",
+      "source_cache_sha256": "b3b33017d9ac86135eb0b6662fef13dfed65dd0c5143f4657060afe2d8a35103",
+      "lq_tensor_sha256": "fa5d5f487b5d31ae956ac301b66e85b61a7fe19e67653e76294d9e730d8bd893",
+      "tokens_tensor_sha256": "cae0f77b89f839a2d5e3f85bd06ac0d2274bc3f0b892d654cbc638fe3c206101"
+    },
+    {
+      "name": "SDSD_indoor/pair12_2",
+      "scene": "SDSD_indoor/pair12",
+      "cache_path": "tokens_005.pt",
+      "cache_sha256": "c67facfed6d55bbe244451fac500ccedffbc04a4182cd7512ebe3b52417d3dc8",
+      "source_cache_sha256": "dbc8dd276891ee0d2926d11768462578a40eb8c2ad10b1ce2ccbedbcbe0e460f",
+      "lq_tensor_sha256": "bcb606c9d1ea3ecec45d1522c6f6659b238e9a0994adc1763b8c80448cad5e5d",
+      "tokens_tensor_sha256": "5f145737cca7ee389f60417c59f91f62c68a2165ca831df98c65928d3fd2fbe3"
+    },
+    {
+      "name": "SDSD_indoor/pair13",
+      "scene": "SDSD_indoor/pair13",
+      "cache_path": "tokens_006.pt",
+      "cache_sha256": "b289c9be6e9327ff5fd7d1771a240af3a8946ffd52b0fa1fdf7ded23fd748bbc",
+      "source_cache_sha256": "1a8417d2c233cb2c2aa169a199780149c7961de44fd6f8d8a4823f34a5d0569d",
+      "lq_tensor_sha256": "aed023a7d10626df2b6cdad603404a8bdeae5980ed4b36e4e17ff8c377a36e7b",
+      "tokens_tensor_sha256": "646c1387c08a6f04f95a10192a192928d47cda85c6e91d6c4cd48070551cc7f4"
+    },
+    {
+      "name": "SDSD_indoor/pair13_2",
+      "scene": "SDSD_indoor/pair13",
+      "cache_path": "tokens_007.pt",
+      "cache_sha256": "efda0e495c82d23841574970ea8c00016b7e5e28f3e0a8a1f3539fefde8741de",
+      "source_cache_sha256": "92f5e81a7e7f758bbc9af350de2577fedd818096223312e15e3a41da4704622c",
+      "lq_tensor_sha256": "788892d6cb0c89556b400650d9be45fdeb20ffdcdc91484559da498c737c08c0",
+      "tokens_tensor_sha256": "a71f901f9331c45ac88089b744b4d51c77448efaaad0e3e586ccb19229f37727"
+    },
+    {
+      "name": "SDSD_indoor/pair14",
+      "scene": "SDSD_indoor/pair14",
+      "cache_path": "tokens_008.pt",
+      "cache_sha256": "55330e5dd5e5105d076e7d9e3389592b32c0206220aeb6ce1c4d782e5f782b79",
+      "source_cache_sha256": "6355e0d02b32f725b537ab5aa7b755ce5da2e566e78bb7ad639d8d2b995cfa94",
+      "lq_tensor_sha256": "9875d79dddd205922be847ddfd5053c8e929bd40651f9e3fad0e622a07536bf6",
+      "tokens_tensor_sha256": "ba0e34898a2042221880ece00e2c884b0ea8138d49c6c68e6b321de8d9292c5c"
+    },
+    {
+      "name": "SDSD_indoor/pair14_2",
+      "scene": "SDSD_indoor/pair14",
+      "cache_path": "tokens_009.pt",
+      "cache_sha256": "6af1ad180090b52fa53e89f4e2779a81f0c3b4f6e139411f2d1fe41fc9126cc5",
+      "source_cache_sha256": "c41c38e04bae8f9dc3724b638a10ab9b90958a33281966fa35905e8392c00509",
+      "lq_tensor_sha256": "7b2d38991da326c10c6a20f9c63cbbbdffa1b932ae4e998bcbf5f65cb9a6014c",
+      "tokens_tensor_sha256": "1fe23f78093efbd880a821f43b0db2aa5496883a83612bfbc30f2d6341ac494c"
+    },
+    {
+      "name": "SDSD_indoor/pair15",
+      "scene": "SDSD_indoor/pair15",
+      "cache_path": "tokens_010.pt",
+      "cache_sha256": "503faea326de7e2da9c06636b75c0ef95530858a1020c09baa7709a5a068c705",
+      "source_cache_sha256": "60d8475e89f89e86bc5e030546472c15a9ee7f9238c8d371ff54116a07fbb728",
+      "lq_tensor_sha256": "fbba68b34729afac63f66d446c00ecf5ec3bd7c92d7a62d1ae20ca54acb66ad2",
+      "tokens_tensor_sha256": "026b3ec60feb68b68df313f7161decacf2cbff654c02f0f722942558c6c70237"
+    },
+    {
+      "name": "SDSD_indoor/pair15_2",
+      "scene": "SDSD_indoor/pair15",
+      "cache_path": "tokens_011.pt",
+      "cache_sha256": "53dd3372331831f2b8b9586a231693212c70492c11f2b21cfde19aa72f997c94",
+      "source_cache_sha256": "fda538a3e20736a264fbf51dc1e00342d6959a1e539f18dab01a3bfeb457c287",
+      "lq_tensor_sha256": "cf6df6a708abaad9c9e967c5dac9768ad7a02d75a117bbe3ec13c76d52a50593",
+      "tokens_tensor_sha256": "07dd3c889315af56f9b39328cfbb72adedfe9e4e9dac888035b4c558bf1215ea"
+    },
+    {
+      "name": "SDSD_indoor/pair16",
+      "scene": "SDSD_indoor/pair16",
+      "cache_path": "tokens_012.pt",
+      "cache_sha256": "b7ec6175239419b710f181861784dadd9e41a8ce70726621abefdccaf6849bb3",
+      "source_cache_sha256": "32e661d05da07ce62f1852c3835d1bff39147decd4aa827f088fc05bbfa72d97",
+      "lq_tensor_sha256": "9e0bacedf5e518e4e00d18acffa43c7985348adc4a9649028953253181a10b73",
+      "tokens_tensor_sha256": "16c0ae0193b5d9a7ffc42c3822dcdfd6997e23a6050e1076693f7f9380d2ce26"
+    },
+    {
+      "name": "SDSD_indoor/pair16_2",
+      "scene": "SDSD_indoor/pair16",
+      "cache_path": "tokens_013.pt",
+      "cache_sha256": "a54adf302f6e1d7892819c93b10504f48fba82c2ee89981e013811048f4e2715",
+      "source_cache_sha256": "5071892f6609c2e4797a1eb8bb6809493c5b9f91fdd74b6ce7e46f30f78b8153",
+      "lq_tensor_sha256": "f66c3c32ed13329595c2f514b9146eabdfcd5643ffe018219653f467e6e8ae5e",
+      "tokens_tensor_sha256": "15c5514853afc41f1577ba419ff972cfcaaa6b1b6542e80c334d7f6014b845b6"
+    },
+    {
+      "name": "SDSD_indoor/pair17",
+      "scene": "SDSD_indoor/pair17",
+      "cache_path": "tokens_014.pt",
+      "cache_sha256": "38c4f614d108a661048a67e9714d4311c3e1bc1907b9f69b2e1dada635b10bf1",
+      "source_cache_sha256": "d5cf82b25eabcb8a3b5f6090e5ecc13f15713a0ff852d7c63acd70ba7639cec0",
+      "lq_tensor_sha256": "2cdc05afbe81cd43696dec58f1d6907e68b12b22cf8eaf89b8df990d069e8acd",
+      "tokens_tensor_sha256": "4f430d26f81374d130d8cfef06a2405d9eebd3625dc7d85f16fca726a2dcc587"
+    },
+    {
+      "name": "SDSD_indoor/pair17_2",
+      "scene": "SDSD_indoor/pair17",
+      "cache_path": "tokens_015.pt",
+      "cache_sha256": "34282e7f46a04dd0af47d0886efde0f12193b3cc8d5653bc984f56e32236aec9",
+      "source_cache_sha256": "7af60dcac04c83e94c51749f85f9d1f25da168d35354fdab3e5909d1945764f5",
+      "lq_tensor_sha256": "2ee752f1a5ff9a6c29e57a2fca4d2da02b655a43f5da33992f65e0b973bf3353",
+      "tokens_tensor_sha256": "8bec164ea5aae0549ecd9ae10fe905a5d0dd833f227094908a4950844b3c1558"
+    },
+    {
+      "name": "SDSD_indoor/pair18",
+      "scene": "SDSD_indoor/pair18",
+      "cache_path": "tokens_016.pt",
+      "cache_sha256": "e6b791c148ccc5bb4075c391a06eb9cc5edd84a48215c7cf67992b2e218377e7",
+      "source_cache_sha256": "5050b624ad377f835ae93c3236427a374b40444211532d8c6b2e06eec0b90213",
+      "lq_tensor_sha256": "cf40692704c99c79cf5588b0414f675fe72e749b90c46866c28d1714b4e9aa4d",
+      "tokens_tensor_sha256": "e4a8b525f40ac4b723ee0d0b51bd2a468057ff013328c7aea2040c17385de8d1"
+    },
+    {
+      "name": "SDSD_indoor/pair18_2",
+      "scene": "SDSD_indoor/pair18",
+      "cache_path": "tokens_017.pt",
+      "cache_sha256": "57643a6ca672eeb173fa9aa37c7717d62e864cf0a6bfb26ebfcb8717bb57f78b",
+      "source_cache_sha256": "20f3419d6ad1a2b148d72b97938a2a745435e2e0df276ebf4c2f273db4ae6408",
+      "lq_tensor_sha256": "50aa9434d5bd483a78899fb12827dbeebf56809bc98c74230bc71c66b6418f61",
+      "tokens_tensor_sha256": "f607477cfc3ec194fe7a765128bd5f48572f46d6289100cd04ff2285a3a604c6"
+    },
+    {
+      "name": "SDSD_indoor/pair2",
+      "scene": "SDSD_indoor/pair2",
+      "cache_path": "tokens_018.pt",
+      "cache_sha256": "36a92c36a4eed57c5538e85e7674788a0e8b14debe300f5942f505c8c6a7cd4b",
+      "source_cache_sha256": "ea9cc457ca7f99b41481784a3ae2b45d4ec6b811214901078709bfcf56ef965f",
+      "lq_tensor_sha256": "a08fff04acdce46fdf6836cd218072a39af63e0aaaa30341c4ae84632f539ef1",
+      "tokens_tensor_sha256": "8458de91eb2bb0e0101c1c584578c9d8446d654e5a4ff8e09d06477c5828599d"
+    },
+    {
+      "name": "SDSD_indoor/pair20",
+      "scene": "SDSD_indoor/pair20",
+      "cache_path": "tokens_019.pt",
+      "cache_sha256": "815a87e95c3c9638db903625136b87614f542c571a0762811f69795fa49d83bd",
+      "source_cache_sha256": "aeba4e92e9029ebbcbee8035b6da6fbbd6b2733d59bf6954f0dc1d9c3dcc3ef7",
+      "lq_tensor_sha256": "7d50f3f55e9f3e3c2597716a2e6e92027e0ac2b0f86b5a7cab8efeaa2f0fc2bf",
+      "tokens_tensor_sha256": "295144a002a4799a7348334e64282b5dae26993a32e9410bd09fe52b88c91f1f"
+    },
+    {
+      "name": "SDSD_indoor/pair20_2",
+      "scene": "SDSD_indoor/pair20",
+      "cache_path": "tokens_020.pt",
+      "cache_sha256": "23b6f082f9346b2fa6b4b5bc3b74b95a30360e52d01efa5bdd450e736909d3e9",
+      "source_cache_sha256": "c7388df668c99680fafa48bde0116c55efad4ff358131b8c786e3e3cc9e292b4",
+      "lq_tensor_sha256": "a895173c5917ddb92469e6399b4e11db6cddf7078b2995644b501d8dc5ff2d78",
+      "tokens_tensor_sha256": "a7a78cc8c17bfa645b0e376dd4d396f3a339dbfcdd97cdd28e393c36c36c239b"
+    },
+    {
+      "name": "SDSD_indoor/pair21",
+      "scene": "SDSD_indoor/pair21",
+      "cache_path": "tokens_021.pt",
+      "cache_sha256": "901907b3062b837b06afcfac69fb05a70569d16b52d86eb1bddd71c4cb09663b",
+      "source_cache_sha256": "783fa017736de90054cda45283711a904ef3b9e85e5a35cf1694bfb7b85472ed",
+      "lq_tensor_sha256": "a4a214a671a9774db831d5a9d6a829eb748546635f1b88b9ca8aabf35fb0bd2b",
+      "tokens_tensor_sha256": "5508a71afaa35fdf17b0c61915bab04dc9c36cfa3f20bd581b9a5da7ba549551"
+    },
+    {
+      "name": "SDSD_indoor/pair21_2",
+      "scene": "SDSD_indoor/pair21",
+      "cache_path": "tokens_022.pt",
+      "cache_sha256": "97eedcad3b2bb477aacccc917c415b150f0a1ad9fa2140851d48914e307d3563",
+      "source_cache_sha256": "40b0d74b2fdb9c9863fd863a668b4e25cb2a86d1ea32d5c6e93d3b347ca9c42b",
+      "lq_tensor_sha256": "6870e15e2f246871556eefb19aca7abf8bd30de0adfa1d3eff1d731ff3c843c0",
+      "tokens_tensor_sha256": "8920c22a8a20cd02cdf5dec682b7a4ea322009ffaa5195475f575995d91dd5b4"
+    },
+    {
+      "name": "SDSD_indoor/pair22",
+      "scene": "SDSD_indoor/pair22",
+      "cache_path": "tokens_023.pt",
+      "cache_sha256": "fbb6bc883c15e57ef2b68e55bf6deebdef7281ecd503ff9698916bcf818871bd",
+      "source_cache_sha256": "b77b3f7e3c2518cd13d08b1c5fe4003769df5e8ff6aececa16aafb92c487a90c",
+      "lq_tensor_sha256": "d0eecb84dbb8228c007b975f67d22f69a33df38c5a5ef49476a9b2886dcd7933",
+      "tokens_tensor_sha256": "584e5e538d2b50c7a766353931fe53cff512487580237c4ae5b9381727a34b03"
+    },
+    {
+      "name": "SDSD_indoor/pair22_2",
+      "scene": "SDSD_indoor/pair22",
+      "cache_path": "tokens_024.pt",
+      "cache_sha256": "2ca3417ab96cbadeed52aeefe85a1dc4103eb15f615e301a2ee0c29324132d93",
+      "source_cache_sha256": "ac1b5df664b01325afb10930c72ef3ae1c38d4914477b2a89b6a8d8c03aec38d",
+      "lq_tensor_sha256": "273a7b367020a5350e74e52ad85f043ebe1dc345a75ee8c50c4f8fa5a015de01",
+      "tokens_tensor_sha256": "f47dfbe4c2bdb1ac35e72b98c04adfee33b9047d6495e05a5855c2846eebbdb5"
+    },
+    {
+      "name": "SDSD_indoor/pair23",
+      "scene": "SDSD_indoor/pair23",
+      "cache_path": "tokens_025.pt",
+      "cache_sha256": "dab967a61b084b48b0f4b141160fd938a5d60a81f88d11b46c30d940b90c967c",
+      "source_cache_sha256": "810ce73f544a3945981dddc31cb30d5c44c977b6c681de53a70bf93337d842ab",
+      "lq_tensor_sha256": "14a7eddad712095899c3aaf932ebeb6803f22af660489075bbfa91bf436724eb",
+      "tokens_tensor_sha256": "4ac01058de739736d29347564cf0b64cc31d323cfeceb6c73d271ab71bba25eb"
+    },
+    {
+      "name": "SDSD_indoor/pair23_2",
+      "scene": "SDSD_indoor/pair23",
+      "cache_path": "tokens_026.pt",
+      "cache_sha256": "efc87fad1bb5f01ff61dc0d1065dc08c225f9635a5b3afae50ad5b07d599a524",
+      "source_cache_sha256": "dab2f8cc67736ff2d18855915fa6bd8b702b16b4700f2129f7ab67d1fa0ec3d6",
+      "lq_tensor_sha256": "b5b0841a47e2cbc4a11caddcc17873a1a3d08b074f6b6b0be0c17a952a49afb8",
+      "tokens_tensor_sha256": "db50688ab35431c2dfc0e26ba11411eaeb6ad223b5818e7ef7c0640dbec2a39b"
+    },
+    {
+      "name": "SDSD_indoor/pair24",
+      "scene": "SDSD_indoor/pair24",
+      "cache_path": "tokens_027.pt",
+      "cache_sha256": "4700d0de7db0f10895cbe19177cc79d43d0f34a494bd1009a4e4f5f84ab45bf4",
+      "source_cache_sha256": "00df05f3ef1bd8034e29c01d21b5ac19ace0443fbd7220af2792e4df5563d722",
+      "lq_tensor_sha256": "94a6a92969d8c0c5a2a0fed1949fae5ae1833b2ef9e9db5330b75313bd4ea90c",
+      "tokens_tensor_sha256": "bacc5f5e875f5404d58c084685df2c01c97e48b6681da42d334c77f178950a3d"
+    },
+    {
+      "name": "SDSD_indoor/pair24_2",
+      "scene": "SDSD_indoor/pair24",
+      "cache_path": "tokens_028.pt",
+      "cache_sha256": "6013f5326a3f352252e6331db9401edbef12e8d6623d13a47add76080b964032",
+      "source_cache_sha256": "b7fb02262ab90e2c9154096a051ca27e362bc6892b2b3be9b91b393f54568fc9",
+      "lq_tensor_sha256": "8f5d582263543dcb58a1505791dfb15a5a64e0b49c4dee743f03b6cfcaffeb8b",
+      "tokens_tensor_sha256": "a54f949d0d7be1bceafec8015df6a7d6bd982dd7082fa713a9705b255e6bdd66"
+    },
+    {
+      "name": "SDSD_indoor/pair25",
+      "scene": "SDSD_indoor/pair25",
+      "cache_path": "tokens_029.pt",
+      "cache_sha256": "9e3f7f4e7452c9b1fbfc055790ab0e9d74af42776c1b050f1c9bd1dab63e8b83",
+      "source_cache_sha256": "e7be75cf9f6a0e867917de06ea590384f97113258eb600f161ad647aa2f39435",
+      "lq_tensor_sha256": "f8b084b01c750497a79f321dc561e37f5386389b6c7367176a1211bd91d31398",
+      "tokens_tensor_sha256": "640f971abac9faa4078fb9f77b7b1387dd2f18cdffccb39ea1c28c3d1952f3e8"
+    },
+    {
+      "name": "SDSD_indoor/pair25_2",
+      "scene": "SDSD_indoor/pair25",
+      "cache_path": "tokens_030.pt",
+      "cache_sha256": "e84c35fd8f16e1334cf23590a0b8a43836b274bb186a17fae50e8a554a3cecc1",
+      "source_cache_sha256": "83e38ec27c17bc67531a06fec8dd1050483a72daebb760274bc0ff3d160869ac",
+      "lq_tensor_sha256": "3e3bd646fb0ca2780f586177b75b1e9170ae73515c7deb0b0a0b78156937b7d6",
+      "tokens_tensor_sha256": "a1ee54fcce12419c7b74ae7d07de6cd8bbbc3ca40a12ae48b8a080ef592b4566"
+    },
+    {
+      "name": "SDSD_indoor/pair26",
+      "scene": "SDSD_indoor/pair26",
+      "cache_path": "tokens_031.pt",
+      "cache_sha256": "f70c55e4fdb5c08d7ba8a260ff4a7e7c5187b4d26f4d9b6d048fc4025a992d40",
+      "source_cache_sha256": "dda0117fa7abf8fa8ecfb5fe0c26fc5a9455d048bc344ec7c97e6cc2e66f6655",
+      "lq_tensor_sha256": "cad6fe3e6d1d3f3a0073227f58b0becfffdf0bdc780d54642f7d81f2a6fbaa15",
+      "tokens_tensor_sha256": "4705826357684bbd5277a8b4cdae2e36e335b47cdc65924e84549fd1eb118b35"
+    },
+    {
+      "name": "SDSD_indoor/pair26_2",
+      "scene": "SDSD_indoor/pair26",
+      "cache_path": "tokens_032.pt",
+      "cache_sha256": "3f09319059535d1a37d28d482e6ec7df0123326bfc8553a28275c1986970b381",
+      "source_cache_sha256": "7f1e2cc7e29f7517fb41c90daf30ab250ddd4c57d7d1f6d3d7f548159e841a38",
+      "lq_tensor_sha256": "c8b13ec674b9cb344a24dc866a96bc2f6b45654d3f39fab04416d42a36c8dd42",
+      "tokens_tensor_sha256": "a5bbc05687ebe313c3b571927c63c6e9fe6d1727b9ace7c26f4d789256bf55ba"
+    },
+    {
+      "name": "SDSD_indoor/pair27",
+      "scene": "SDSD_indoor/pair27",
+      "cache_path": "tokens_033.pt",
+      "cache_sha256": "0529a16fb381e1ef47c51c84d41a0d9ebe47d5881278ce11e96f3157e7191c94",
+      "source_cache_sha256": "cd4216368f72f097d854eb2356bcc0165b8f58ecaebf06306e07997ae069d09e",
+      "lq_tensor_sha256": "54ef5f237340ea8600596b4d67cc28360cecd5c5ad36da77eb7ce598f2c603a1",
+      "tokens_tensor_sha256": "d881b565318f09a4b042fbc667bd4ff1321bb4a46f1bc8ce10e52206258b6d47"
+    },
+    {
+      "name": "SDSD_indoor/pair27_2",
+      "scene": "SDSD_indoor/pair27",
+      "cache_path": "tokens_034.pt",
+      "cache_sha256": "14b3741a57337b8fd4a5771d0a3e725aa45c0f52a7386fe6b5a8d4fc776469df",
+      "source_cache_sha256": "bcb76ea0a8f722263cc5cfac97a00b0a68a36320d4c799b5cd7802f156c9f204",
+      "lq_tensor_sha256": "ebf7d415cab785f55dd7cffd867aea6309f0e19fd70daef85c8843e4821a66d4",
+      "tokens_tensor_sha256": "71a6351b490798559a084f30d0a662c2c8cc94a9736b00d75797ff34ec134e61"
+    },
+    {
+      "name": "SDSD_indoor/pair29",
+      "scene": "SDSD_indoor/pair29",
+      "cache_path": "tokens_035.pt",
+      "cache_sha256": "14874342538a30180ed9daeb31c333a1c756c02844f9ee335ebc2a3ae95142f8",
+      "source_cache_sha256": "0af20a09cbc3da7c6e2c2b7279c2fdfc06e50f6b2c37bb08f6d46cf671579eac",
+      "lq_tensor_sha256": "842672d13eb2e9011fa22a6c46fc37d53c260245ba6138425abb33ac528ba279",
+      "tokens_tensor_sha256": "48808760898022469c30319fb8e3b011cd53195a7cdd7ca19bcb99063194b7d1"
+    },
+    {
+      "name": "SDSD_indoor/pair29_2",
+      "scene": "SDSD_indoor/pair29",
+      "cache_path": "tokens_036.pt",
+      "cache_sha256": "47bc16863aef5b2b6e07aa9ecec1a0f9cb421f5c5641f436bd096659b7fff145",
+      "source_cache_sha256": "1e2e4b76f3f544d61ff76af11db733e6dbe6bd0ebfcfb7ed56827b9f24421b18",
+      "lq_tensor_sha256": "a2cb5701736d9ec5baf48197e425144189135058b01e1dea11e23a654d0ca6b9",
+      "tokens_tensor_sha256": "9ce78066cd1a61b916a0ad1172b9129c84223240089f6167347716b9f870223d"
+    },
+    {
+      "name": "SDSD_indoor/pair2_2",
+      "scene": "SDSD_indoor/pair2",
+      "cache_path": "tokens_037.pt",
+      "cache_sha256": "77d6c431618c8c19a842c535096f34befdd59216aaf522c6617da61cf467d4b5",
+      "source_cache_sha256": "a107423d3d4aa8d35372f9ce693292e2f00131510a4eaad1589484a0d0bdbf7c",
+      "lq_tensor_sha256": "d898dab23c24127fa9f2afee0f6dd1c8c1f5bf5c9e43bd6cb9ad3bf0bcf06d10",
+      "tokens_tensor_sha256": "52c98212ee5a66d00219b9fd018fb907f758572218188e8b2f438e706130d265"
+    },
+    {
+      "name": "SDSD_indoor/pair30",
+      "scene": "SDSD_indoor/pair30",
+      "cache_path": "tokens_038.pt",
+      "cache_sha256": "c48129474db51c790ad76a48ce085fb7b76e86576d71c48d9575a2ecb7b2f5c5",
+      "source_cache_sha256": "29d48f8feed73c8df19dcb9f5cb199ef196f4bfc67f765079110c18e4f8d7aff",
+      "lq_tensor_sha256": "9ce2c6a3f2a547408f00949132eea8d774b4c3405698e556973b7887897c58c8",
+      "tokens_tensor_sha256": "b84388dce0c86bebe19434e43923551192a67a04a9a5f562182b82a87ac61199"
+    },
+    {
+      "name": "SDSD_indoor/pair30_2",
+      "scene": "SDSD_indoor/pair30",
+      "cache_path": "tokens_039.pt",
+      "cache_sha256": "73542b3896d0f48c8ada7ef571bdab6706b8042fda0c7f09b4a338b0efef8504",
+      "source_cache_sha256": "8b4802826c76867bfa606ab243369615b3f88b4af04a838d233df6140de71583",
+      "lq_tensor_sha256": "31c7f8418b74310d0148ed9bf5517bd789433b2b0e1ee0d89b29e629432ca591",
+      "tokens_tensor_sha256": "7a38e70975538dd5def9581d338d1715b696468f2a6ebf7e2f70ebf75a1552fe"
+    },
+    {
+      "name": "SDSD_indoor/pair31",
+      "scene": "SDSD_indoor/pair31",
+      "cache_path": "tokens_040.pt",
+      "cache_sha256": "61b976b063b54e32f6f86206e74043fe243925ca22aa52dfc3228350cdcb7e9e",
+      "source_cache_sha256": "b7793c48a07312a9530069adabb0bcb8193e04fcee8047045922a088b9c4524e",
+      "lq_tensor_sha256": "811b19f8038e23c4b30ec582080a009f95fed0577b62dfd7cb5ca179e3e43ed7",
+      "tokens_tensor_sha256": "bc27d7a86dfcacdbe729da2082f6d851f8b87f52f5ed9c0b9d78a2a741d949d8"
+    },
+    {
+      "name": "SDSD_indoor/pair31_2",
+      "scene": "SDSD_indoor/pair31",
+      "cache_path": "tokens_041.pt",
+      "cache_sha256": "9b2cf75300d81042ab590883c012344752e81f9c5592b8d166a0270ba7ef0cd5",
+      "source_cache_sha256": "8eaf174e2c4b12e8a068438c19e824baa232a5cb8e0ab0cdd5ffcd457fc24ea3",
+      "lq_tensor_sha256": "3d7c18e1c04e650bf3b7e3db7162e4122bc2c5345f6b3ec99da154a8a83c66fe",
+      "tokens_tensor_sha256": "4d20a3a5fc7cb8b87f1d28629e63eb3fadfebae23c84584f06a1600bde1fa441"
+    },
+    {
+      "name": "SDSD_indoor/pair32",
+      "scene": "SDSD_indoor/pair32",
+      "cache_path": "tokens_042.pt",
+      "cache_sha256": "ba1b6c65c71aadaaca8d4559f146735b87b18987df79e9864e07d6daa7d67813",
+      "source_cache_sha256": "031ede336848930e8ee07067e5b1bab4c2506f15ff6c0acaf1a438b6231af76a",
+      "lq_tensor_sha256": "9303969c57f0461d0941144d1eb320d5153b24bb8d196fda440a5313f708f883",
+      "tokens_tensor_sha256": "a0c1280c574c4dd40730b4d5dcd8928e5f1c40c80201cb3e304372fd98b074c5"
+    },
+    {
+      "name": "SDSD_indoor/pair32_2",
+      "scene": "SDSD_indoor/pair32",
+      "cache_path": "tokens_043.pt",
+      "cache_sha256": "d6eefffbeccc3739b7691058950d9865ff87fe8d5b9f69d6f62fdc3a7a8bb741",
+      "source_cache_sha256": "fe50d9f1a91fcb700bf6803e407fa7812940b6b821b5e95527167db0cb7802ed",
+      "lq_tensor_sha256": "2fcec8dc6a2330a3a882f8a095fbcda502804a5c5b9a5f83bb44f7d9ca0109ec",
+      "tokens_tensor_sha256": "f3e3afe2b9c3c83af8fa0e58b8d80c35d44d27f78aabf523d0ce1ce4013592e2"
+    },
+    {
+      "name": "SDSD_indoor/pair33",
+      "scene": "SDSD_indoor/pair33",
+      "cache_path": "tokens_044.pt",
+      "cache_sha256": "312dde07ec07be39b8ec9322e00c862496585a2f0830e4bd37035401204cab0a",
+      "source_cache_sha256": "ba044d44dc8520804b9582259faadacf14bd08d45a30241e92c51b903243ab3a",
+      "lq_tensor_sha256": "ceacf3c919f4274ef6ce5f3585c97d8eebfc7dd65560a920f39cc1ca97b59a90",
+      "tokens_tensor_sha256": "ce16d242264db88bb0d2c2c7824a5a03cd805cac8855e2c00c3990d2927b1f7f"
+    },
+    {
+      "name": "SDSD_indoor/pair33_2",
+      "scene": "SDSD_indoor/pair33",
+      "cache_path": "tokens_045.pt",
+      "cache_sha256": "e7fa10c89ea9dc559acd35aea1bacfda5a9967041a8ddba5eb3951167126323c",
+      "source_cache_sha256": "a7af649d0375986dd43bb14642e38bca29649b7e1b695c4d093f3f668697c0a4",
+      "lq_tensor_sha256": "6421a0d3d62bbd6c00086387670e1281bb1c56216d31d2589a94335ce76a920d",
+      "tokens_tensor_sha256": "1663d8f16ca99c54bb1a6f2c365211fc930c8b01757f1dd13214ea47bd439f8f"
+    },
+    {
+      "name": "SDSD_outdoor/MVI_0900",
+      "scene": "SDSD_outdoor/MVI_0900",
+      "cache_path": "tokens_046.pt",
+      "cache_sha256": "33b08f28f8b7ff4a7787d53b22bf53d47b39843882c343817cf7898369d0c123",
+      "source_cache_sha256": "7abfb848ddc02eef5aae5e442e0f3a4251b880092398a989165894a767985e50",
+      "lq_tensor_sha256": "eff54c8f4260592d5e3c89b03e3cc97176038522277e38a2b1c45fa7fe97d7ac",
+      "tokens_tensor_sha256": "6bb82193c378f354c706724eaec7bdc7ab53ad6dd5185d79810d32ce37fdf007"
+    },
+    {
+      "name": "SDSD_outdoor/MVI_0900_2",
+      "scene": "SDSD_outdoor/MVI_0900",
+      "cache_path": "tokens_047.pt",
+      "cache_sha256": "49b49a0d920a8b1610c5dfe3f13223593f101ce364420843dad412f7c47aea00",
+      "source_cache_sha256": "b2a1c5936a663f2088451fc9e865a34003fe4a0ed1b4fc82c664c0d5bc3aec70",
+      "lq_tensor_sha256": "b04f832c0a164c021a78fd099a247d395bb25a085fa2c93f815c52dfb61941a5",
+      "tokens_tensor_sha256": "a05d2fa24e51d674a7918ce219419e8cac32fc863e66905a77c394037c1e75ef"
+    },
+    {
+      "name": "SDSD_outdoor/MVI_0902",
+      "scene": "SDSD_outdoor/MVI_0902",
+      "cache_path": "tokens_048.pt",
+      "cache_sha256": "bee79b9a03d4bbe831e37e8e3fffeeba1637fcefda2d830d6b3ee1b75f0a5ece",
+      "source_cache_sha256": "e3d94d232879621cc81300f485c3f3b3efff0252276b7f1f00d12e2740636e54",
+      "lq_tensor_sha256": "18511d2410dfbccd29ce484bcfa43d1d67f616ace82f23523efa06cc2c07b765",
+      "tokens_tensor_sha256": "9a99612ae19eb358082c056c01a4fb7133ce4a7d7f71a9fa1cd80f30812dc39c"
+    },
+    {
+      "name": "SDSD_outdoor/MVI_0902_2",
+      "scene": "SDSD_outdoor/MVI_0902",
+      "cache_path": "tokens_049.pt",
+      "cache_sha256": "c40f0822cacadce8f9a8c5a92fe98e4170d9c083c355f58eade7bc7c2091dbeb",
+      "source_cache_sha256": "d1b8bf04d77dc46f9f78c243f7a21a5e7336ff599eb06def49c31ac8123c197f",
+      "lq_tensor_sha256": "52302947078f6998a180ca237c7423606c165da2df3dd1decd4f303373c95361",
+      "tokens_tensor_sha256": "e8ce47cbc24a18e6c9f211b9ebff3046c081c8d7f7db612249273eb4edef9d2d"
+    },
+    {
+      "name": "SDSD_outdoor/MVI_0904",
+      "scene": "SDSD_outdoor/MVI_0904",
+      "cache_path": "tokens_050.pt",
+      "cache_sha256": "61006feb2cd7166325c1295acd60b8e008d639c1c6e8761da34d678ecbcd6268",
+      "source_cache_sha256": "d608af4d95cbc2165716d85adc700924202c230b0bb21e62eccf387551701939",
+      "lq_tensor_sha256": "3fd4799a09f933553bc744a4576106ea2360945f837bb9872aa930aad11204ea",
+      "tokens_tensor_sha256": "3d0b6be5434a3c205fe91ca2e36fbfb96f513a9a3b15ab383499d689e51bae96"
+    },
+    {
+      "name": "SDSD_outdoor/MVI_0904_2",
+      "scene": "SDSD_outdoor/MVI_0904",
+      "cache_path": "tokens_051.pt",
+      "cache_sha256": "1bf87eb261325b1509a5c1d9fc9fb0063e890f34f911c67427a472c5fbeda000",
+      "source_cache_sha256": "1da09b092ef0d37e17547fa5ea880168b1757fd9cf1d8a3de3b59d230dcc9181",
+      "lq_tensor_sha256": "7c7eca54a28170f9299b00c9432dae4a08d09a29910e63695cd6f79cf9a66beb",
+      "tokens_tensor_sha256": "fc4af51e18f6c53b994b668e72b8558812cde2cf4c1700bc484aa3c27a79714f"
+    },
+    {
+      "name": "SDSD_outdoor/MVI_0906",
+      "scene": "SDSD_outdoor/MVI_0906",
+      "cache_path": "tokens_052.pt",
+      "cache_sha256": "f384d5362bfe716e6cb2601aedb7e5abb8f5a63a45d2f6367dc9c0bc8b9b01b7",
+      "source_cache_sha256": "b4276710d24df924e9ae9c65e2f86018f939e706e3e6586f403d42a13cfd40e1",
+      "lq_tensor_sha256": "3f7f0cc21309ae43ccafc32041cdfea397b0e93b174d9a57f09ba76f438f5f92",
+      "tokens_tensor_sha256": "b7713f1d16e12875ed4a2c712e8107defbde6a1ff2b12fc2aff675a43af15a09"
+    },
+    {
+      "name": "SDSD_outdoor/MVI_0906_2",
+      "scene": "SDSD_outdoor/MVI_0906",
+      "cache_path": "tokens_053.pt",
+      "cache_sha256": "63a7c2ae36f4d614675d0963f2cd9beb6fc80ded68d0ac8d8e4251f6f8bf1188",
+      "source_cache_sha256": "e8adf06b5f6f97618abc8addff886c676bddf1b684a74c2a357bd5ae3247685e",
+      "lq_tensor_sha256": "285d504004f8f3ad83345f2f688449c6810b48450d4ced440c7c267e0442e811",
+      "tokens_tensor_sha256": "86e4025f4d5ef4072c2ba3579b6b3217fd8845a4165e141cfc9bb5abbb8251ae"
+    },
+    {
+      "name": "SDSD_outdoor/MVI_0909",
+      "scene": "SDSD_outdoor/MVI_0909",
+      "cache_path": "tokens_054.pt",
+      "cache_sha256": "9552b868fc4b444cd1693f14413a514588a1212629b3cc22f1caad8ba191e186",
+      "source_cache_sha256": "b5a2a6c0405d27e4d96ef97a35a75ba13c9d688735f79af4f3a38ba0f4805686",
+      "lq_tensor_sha256": "05a5cb023c58c04533684cec65abc857258c19deccbb846005d0c4a5212897f7",
+      "tokens_tensor_sha256": "21eb5f0219367b178a98d5a34e96ce258ac3f6824039447091201b762e0e8485"
+    },
+    {
+      "name": "SDSD_outdoor/MVI_0909_2",
+      "scene": "SDSD_outdoor/MVI_0909",
+      "cache_path": "tokens_055.pt",
+      "cache_sha256": "6a098f59a03fcd22d42aad0b7c56c3f41cc86ea0e4b2a43985eb8cabe8360b2c",
+      "source_cache_sha256": "8f308a0dfbb67620d3fce9b8924c84f9514b122035d018658921f8d7a0fb83fb",
+      "lq_tensor_sha256": "53cc68c5880dbb88f56a76e69e4bd62ba09101c1ca74bf91bc00d6b7010d6fa0",
+      "tokens_tensor_sha256": "89ce731befa5e588e8b033ffc0d9bcfd27d209a4d4701b4753fac002ae2eefa7"
+    },
+    {
+      "name": "SDSD_outdoor/MVI_0911",
+      "scene": "SDSD_outdoor/MVI_0911",
+      "cache_path": "tokens_056.pt",
+      "cache_sha256": "16b919bce2f36f930d9440222a886dd390a0c5068b04b4c15b93e6578e6e5c7d",
+      "source_cache_sha256": "4bd73ee16d19501fc78feba702f52cebe9f27293f4e29d434b9078e1ac44cdc3",
+      "lq_tensor_sha256": "a4e6a13ff619d4fa644644b7f613ff14b8814b1b18b6526bcbfccf2aa3d556cb",
+      "tokens_tensor_sha256": "b8ec99f5c548139f124f1586396419db9e78af57220d66d9150986a23f01914c"
+    },
+    {
+      "name": "SDSD_outdoor/MVI_0911_2",
+      "scene": "SDSD_outdoor/MVI_0911",
+      "cache_path": "tokens_057.pt",
+      "cache_sha256": "0b56d92e5713e9ac9c60c8e7afe2cc21d6594791b539e69de9888960327a9574",
+      "source_cache_sha256": "6f8ce514f25832190b640bcdd2efbaef8614a3999e6ba4e28a9ae28f1ce6fe61",
+      "lq_tensor_sha256": "f937f18eac3a5c25f2d860a3f35e0b6f59e4e6145bca0d5504fc904436b79a99",
+      "tokens_tensor_sha256": "b34a2eae7c835ad70331a9b0f7571fd36e499245dd70e7de19e736f357fb1de6"
+    },
+    {
+      "name": "SDSD_outdoor/MVI_0915",
+      "scene": "SDSD_outdoor/MVI_0915",
+      "cache_path": "tokens_058.pt",
+      "cache_sha256": "58eeb60bac8fec077dff3ab946490cac880d7d7d132a585fcc61919e8677d609",
+      "source_cache_sha256": "c13064092250b7ee24ead8e7632f612e2d032bf56bd72bcd4030ea5d0f98ab49",
+      "lq_tensor_sha256": "ede2a6050ec1f189f5e924d3446ecc2d6aead7e4ed30969d8c8f9ae8642bc581",
+      "tokens_tensor_sha256": "2ee3bddfd4e00967db84ac3fbc7d842b6562ff2d39088bdd5aaf985f1e5fee82"
+    },
+    {
+      "name": "SDSD_outdoor/MVI_0915_2",
+      "scene": "SDSD_outdoor/MVI_0915",
+      "cache_path": "tokens_059.pt",
+      "cache_sha256": "da9ac90dc586c042d4b2e1dd1c1197d2a1d4c7acb28e3f42f010031c2c0c6708",
+      "source_cache_sha256": "05f97c02c2dcc1908bf2c3abb919177c68a0d4aef1877b2076584a8e4dc901d5",
+      "lq_tensor_sha256": "614975fa115009eed17acb434d652bb2a65d806ef7761d10a61c1e365b4ac4f5",
+      "tokens_tensor_sha256": "efa8a7a66520bf06f133a844b8fa3a9b6f8c8046aa86816a958bddfc9c0b6842"
+    },
+    {
+      "name": "SDSD_outdoor/MVI_0916",
+      "scene": "SDSD_outdoor/MVI_0916",
+      "cache_path": "tokens_060.pt",
+      "cache_sha256": "54b7ab19cd473705510b1de64530e9871e3c01802d184a2bf96bad3d659af3bc",
+      "source_cache_sha256": "1418b3e999163cd35d708ef2a297c2c02fde4c4457e71a78fee4c7a5bbc2d88f",
+      "lq_tensor_sha256": "45816fc42bfb00d5a15ee0b3813873a456b988c69a0a833f9fa5fb8ab8188d1a",
+      "tokens_tensor_sha256": "b81ff5ee58d5ba71cdd7559651803493dcbf40b3e0cf411c05859ef28cd2048d"
+    },
+    {
+      "name": "SDSD_outdoor/MVI_0916_2",
+      "scene": "SDSD_outdoor/MVI_0916",
+      "cache_path": "tokens_061.pt",
+      "cache_sha256": "fd374d3ddb0c4e3ede1d4b58eb306e0493fea783f83093f1dba713bb150d060e",
+      "source_cache_sha256": "ee90de67f3158e276239ae2646161909b3a7c64340e3f6a32f2ad83624c86cc4",
+      "lq_tensor_sha256": "d73e8bf4d6d57ce196ad7a2eba844bfb17159ac97f79ddd556506edbe38e3fef",
+      "tokens_tensor_sha256": "e1c583b4071f59079a443e05e1be31148f54e497719ed4b3e482cf6ae62dd636"
+    },
+    {
+      "name": "SDSD_outdoor/MVI_0918",
+      "scene": "SDSD_outdoor/MVI_0918",
+      "cache_path": "tokens_062.pt",
+      "cache_sha256": "b2fe465b4322d8e6cfd6b1c2196def92f90a99b1986dc507160716e8171d1367",
+      "source_cache_sha256": "f81597b09a28869c9a04f3d11225c82789ecbdac7d84a70f818b59e2b9c993a0",
+      "lq_tensor_sha256": "fb8d9f2fd87e92709059e529fc3942ddf978197882a9fece92e96378b3e01f6c",
+      "tokens_tensor_sha256": "e9827c4e6cfdf27011d1b2e015eae46ed2ad0e2e6451cbe628a0b58af6c5eff9"
+    },
+    {
+      "name": "SDSD_outdoor/MVI_0918_2",
+      "scene": "SDSD_outdoor/MVI_0918",
+      "cache_path": "tokens_063.pt",
+      "cache_sha256": "5e7a036524de2abba2b01a126b408ecc37beae35d6ea3cc99312b281ffbea184",
+      "source_cache_sha256": "121cb56805e33725bc20e955e37664c5fe4c8ff019c39625e2cd464829215df0",
+      "lq_tensor_sha256": "2ac9c62561830eb020cd4b8c87c79838fd8581d1778688680964f51e50f80ee0",
+      "tokens_tensor_sha256": "b97f7512c238ba78d60c5e7f4522c846ce9e283f7db58bd20538b1307d0688f0"
+    },
+    {
+      "name": "SDSD_outdoor/MVI_0925",
+      "scene": "SDSD_outdoor/MVI_0925",
+      "cache_path": "tokens_064.pt",
+      "cache_sha256": "38942ea179136d12b46f28c0d4bce108f1a5740c744d93dba52b10f341a92122",
+      "source_cache_sha256": "7ec6b44c0d2b68a160771060d22281dd3cef987f4bff525b7c79b5ee95c0570c",
+      "lq_tensor_sha256": "15e5877be97bc6b02ec24dad29eef3013794d20d6dcdf997f7c0cea856717307",
+      "tokens_tensor_sha256": "551a947af220102f813ee21daee6c70139643ff03ee9db4ee6f0dab151ee8adc"
+    },
+    {
+      "name": "SDSD_outdoor/MVI_0925_2",
+      "scene": "SDSD_outdoor/MVI_0925",
+      "cache_path": "tokens_065.pt",
+      "cache_sha256": "04b86100dda78e4e27dd6ea537385154dc5962b10c615f7c659c87a972431b46",
+      "source_cache_sha256": "2fdbfcf68eee6244f4be7bee347f0dfa82169e833382c614504b0550b82dc618",
+      "lq_tensor_sha256": "2e6d7f01e4e433bc13da469d03a874f99988574f8049baf0906926402a7efde1",
+      "tokens_tensor_sha256": "cfaa25b8d6b1d25eff0f7ccde9a9d891213ea86afeea40f8a72dec62bf556c52"
+    },
+    {
+      "name": "SDSD_outdoor/MVI_0926",
+      "scene": "SDSD_outdoor/MVI_0926",
+      "cache_path": "tokens_066.pt",
+      "cache_sha256": "895c4e6f3f7bd60b54ff0b6017e4f14dab63e0193ab556c40b3a08bc1b07d62e",
+      "source_cache_sha256": "331b18e8c2d0ab56185babe5dbfa35e0c4f024b3ec126ce494641f3076f0e221",
+      "lq_tensor_sha256": "51e63b595169bc575d20298089d506fd6715858083f1317d41e03c547297a0c6",
+      "tokens_tensor_sha256": "7ffb78161cb5dd053f61d404e3f74737cc78880fbe48cafafae46471ff3f0001"
+    },
+    {
+      "name": "SDSD_outdoor/MVI_0926_2",
+      "scene": "SDSD_outdoor/MVI_0926",
+      "cache_path": "tokens_067.pt",
+      "cache_sha256": "34cc0369487d1c6d970285ada1cef8a3e9de1e3bd538e06701193729000a012a",
+      "source_cache_sha256": "a7728a6d571def95e58323b4b4c73886adc20afd1a21ae3d8606a0b9842d48fa",
+      "lq_tensor_sha256": "a6b0ef8fdffa6e762ead9a2b6f238043f5612952c6196bd1e58f0b6422ffbd2f",
+      "tokens_tensor_sha256": "71588ab173fc0d2bc9d285eb566bc9e2ef91859fd4d6524b4bb6ee91a5615a58"
+    },
+    {
+      "name": "SDSD_outdoor/MVI_0928",
+      "scene": "SDSD_outdoor/MVI_0928",
+      "cache_path": "tokens_068.pt",
+      "cache_sha256": "c3aa1df8ffa0a57109b70f398541ecd2dcdd49e9275e202e9ceda102c81bc4d0",
+      "source_cache_sha256": "d1b75759728d0f4824e4876a8386349f61f6a264d025fe7911f00e03eb5c16fe",
+      "lq_tensor_sha256": "eec61b5acc75b0b2caed3434ac6c6631a609d7bce71277017e8c127c16acd1d5",
+      "tokens_tensor_sha256": "29e0e0ef4ccd7f21d2ea2c14736b6f6a3561b75640c4ee53bfcff2826e5fdac1"
+    },
+    {
+      "name": "SDSD_outdoor/MVI_0928_2",
+      "scene": "SDSD_outdoor/MVI_0928",
+      "cache_path": "tokens_069.pt",
+      "cache_sha256": "29249f08fb4e868e57da8bac5a33d0a16e6572501b1dac42cd91063672c49911",
+      "source_cache_sha256": "00ba5beffe972b3b45e67d96b9e1aa81f775fc2bcf995bd781e4a7f7a2468678",
+      "lq_tensor_sha256": "fdf8924b13ad24670ea0680860d698c1cc0ed9ff9137a3e309939f1528014f2d",
+      "tokens_tensor_sha256": "4f9ef2ef9f7a0a88ba6916fb32255e652a47710e719b8376e371219b7b70ba60"
+    },
+    {
+      "name": "SDSD_outdoor/MVI_0930",
+      "scene": "SDSD_outdoor/MVI_0930",
+      "cache_path": "tokens_070.pt",
+      "cache_sha256": "606403f6745c6e4315bedc5da5ddbe35c6f4706ea8b54717c2a8ae05210c9fd4",
+      "source_cache_sha256": "2371477356586c3e4aa87eefc7dd10fc082b0ad731860ab237f178605620e99c",
+      "lq_tensor_sha256": "9a92b913b0044465cd207d564efc99f943819a4791d04ee33c6610c88437f231",
+      "tokens_tensor_sha256": "9594fb2a562059c98fee54a255f433f1ba69f614f531e57e07b06ce7f8cc1837"
+    },
+    {
+      "name": "SDSD_outdoor/MVI_0930_2",
+      "scene": "SDSD_outdoor/MVI_0930",
+      "cache_path": "tokens_071.pt",
+      "cache_sha256": "f38977241090547edc486ade85726bbfacbf238032ea8ad40323f633c34148d1",
+      "source_cache_sha256": "be25fa228847c07f2a7d67fcdf2ed006653376f41ad19ae2c99cfbb0a12f114c",
+      "lq_tensor_sha256": "503feefa90348f1df7f5e1d53ef8f27d0ece472870437b3c84d758fdaebca0ee",
+      "tokens_tensor_sha256": "e0a9ca17acd608fccfe318729e804a39a8b36112c54aa253a0052fc9fdd5b3e3"
+    },
+    {
+      "name": "SDSD_outdoor/MVI_0932",
+      "scene": "SDSD_outdoor/MVI_0932",
+      "cache_path": "tokens_072.pt",
+      "cache_sha256": "aa495556a2a418c2bc6c574684406e7b16ed37e5a50a981451226a1ffb39a251",
+      "source_cache_sha256": "3a54522fdb63c02cffdf765e770a711586c9ace41dc7d84e08c8e341f13efe7a",
+      "lq_tensor_sha256": "393d98d42408aaf11c4e7a3947ec6267d14f42f4fb8f8eba7b6d125f475a9dea",
+      "tokens_tensor_sha256": "66db8f94c667d30dd66f1752a139cb19684900186e2e55ff5f317d11e4dddbaa"
+    },
+    {
+      "name": "SDSD_outdoor/MVI_0932_2",
+      "scene": "SDSD_outdoor/MVI_0932",
+      "cache_path": "tokens_073.pt",
+      "cache_sha256": "26afd531f1d1f6a9f9b27327bdc449e16070417ae641102d9045a7794a974d31",
+      "source_cache_sha256": "90659b751f848a688a4a137bc3c11f4fcfcaa494a7ae23ed36632443b0f553c6",
+      "lq_tensor_sha256": "e742ee12a0f5fcef3e49d84e9a53867c1d9a7501e71c2c06fc39ce7c7f98d503",
+      "tokens_tensor_sha256": "7ad0ad4388334629069dec05edfddd925b1fd7d5e14d1923a10632a20e51e2c0"
+    },
+    {
+      "name": "SDSD_outdoor/MVI_0935",
+      "scene": "SDSD_outdoor/MVI_0935",
+      "cache_path": "tokens_074.pt",
+      "cache_sha256": "b23258f44723dea3631f5da979a861348691d2a25d34db8cea6a948b61242aa1",
+      "source_cache_sha256": "8c879403cf6dd85ec473c0b789de4552c0ef7030281191f619aa5c4332f8052e",
+      "lq_tensor_sha256": "471398b5ce41054ea051b4640950e4852eecbc2674d6e66aa1931e20538c36f3",
+      "tokens_tensor_sha256": "3669f9e1ac46698a73a53bda1691db2e3b48ce099f9862d344b3bbcd77cb80fa"
+    },
+    {
+      "name": "SDSD_outdoor/MVI_0935_2",
+      "scene": "SDSD_outdoor/MVI_0935",
+      "cache_path": "tokens_075.pt",
+      "cache_sha256": "27abce699b38735c4243c55d3fb142afb9b3cf41645f865c3e6eae5d768ef798",
+      "source_cache_sha256": "0043fbc166371a39818afad43e285739bbe7dd0fc6d73a4fd1454d9601c60d50",
+      "lq_tensor_sha256": "d08154240bee3ab470f06a1c20bf745add7a9092e61760bc13540710be2996b3",
+      "tokens_tensor_sha256": "90ef7a56844c98c011b2b901d9f66afb62fdf5d6c3e6f1f94298e6a013f87aaf"
+    },
+    {
+      "name": "SDSD_outdoor/MVI_0938",
+      "scene": "SDSD_outdoor/MVI_0938",
+      "cache_path": "tokens_076.pt",
+      "cache_sha256": "95d8b4b7fd78e7d1b84f1a8dc31e023d82e1ae54dbe5e5bf5d98f92cdfeed0a0",
+      "source_cache_sha256": "2f272f91cf5df9a61741cdadcb13b0449926ca8000094ffe625460fa3c8219d2",
+      "lq_tensor_sha256": "78530598d93e2bd1b9e8eb3241c4f4c0c39408ea6e54712ea260171ee5e1bb9e",
+      "tokens_tensor_sha256": "6c08804558f192f82eb07d11ed40005b10c29eb12d8adf56e69a78c9a271ac98"
+    },
+    {
+      "name": "SDSD_outdoor/MVI_0938_2",
+      "scene": "SDSD_outdoor/MVI_0938",
+      "cache_path": "tokens_077.pt",
+      "cache_sha256": "4558b156a221b1b3a186da66028c7f5812b06b353f33db76ae1b8602930f0e45",
+      "source_cache_sha256": "76edae22f1a748275e3f8a21683cd9687efc5206a953c648e28f75a160be3b85",
+      "lq_tensor_sha256": "5950359c480f11e09a6eb9e597c27ad1d649518e56fe441df41bd41a95f0fbb7",
+      "tokens_tensor_sha256": "9e22481363843d115b38b85cf9a4a238622611bbc38b121ed933a7afc1bb4766"
+    },
+    {
+      "name": "SDSD_outdoor/MVI_0941",
+      "scene": "SDSD_outdoor/MVI_0941",
+      "cache_path": "tokens_078.pt",
+      "cache_sha256": "d31a9db5955a9b40a969ef2b61567e6ae035602654d1e77759b2797a56b5f41c",
+      "source_cache_sha256": "7930a8c8707b5dc969808e9c754994ba071a5476ddb8213e80bdff3c3ef4cff4",
+      "lq_tensor_sha256": "62b56edde804c78400e0ed5bc110c1fe073c2114a17a48e71fc6c789850d9671",
+      "tokens_tensor_sha256": "de184a3744a0713241e3ca07ab96fedb00d5e9304e38434ff76e7a757a72b82d"
+    },
+    {
+      "name": "SDSD_outdoor/MVI_0941_2",
+      "scene": "SDSD_outdoor/MVI_0941",
+      "cache_path": "tokens_079.pt",
+      "cache_sha256": "8a0c34c6f86263717924da0766baf92dc653110790d2a423bebde6f851b218e5",
+      "source_cache_sha256": "e5110fbc3e74f45e843fc970eaa61fb1957ff1fb6532e65a22792b0e52bc74a1",
+      "lq_tensor_sha256": "8774af696d12ee245fb7b9a1659d6728dcd9b07d7bda9df56ff33eca4e4258da",
+      "tokens_tensor_sha256": "bfa3cc79885351c2d244bffcea2d291e5009651ce55a2e0fd563cb4d7dc1af16"
+    },
+    {
+      "name": "SDSD_outdoor/MVI_0943",
+      "scene": "SDSD_outdoor/MVI_0943",
+      "cache_path": "tokens_080.pt",
+      "cache_sha256": "6be278d9cd4e033733e2b73cfb67dcb02147ad27b96fe78dbb00fb145b3bb155",
+      "source_cache_sha256": "50457998c273fc60a838b8e547a82bbbf902ab3173050ac9923b3471bdab1d74",
+      "lq_tensor_sha256": "088805213e473ee774394a0d81256ef2d1d9f0f38b34b1544bc6eaed14ef0f99",
+      "tokens_tensor_sha256": "1f0335d1a790e73dfb1ba9f095264dd7ae5fd5f57a163d00fbc0edc77d05565e"
+    },
+    {
+      "name": "SDSD_outdoor/MVI_0943_2",
+      "scene": "SDSD_outdoor/MVI_0943",
+      "cache_path": "tokens_081.pt",
+      "cache_sha256": "f6a4d83ee91e7f4a7ffab182928ec0f4b96dcee5c7acf081295af9e020bd8abc",
+      "source_cache_sha256": "1b37ac5835ff8b1e3847f23e87719710612928a8129c32773c859c47150f150f",
+      "lq_tensor_sha256": "6a545f3c633b30689e99e482f4812bac48d35eb31dff044d58c2349c65ff3dff",
+      "tokens_tensor_sha256": "4fd4d24383a7954f969fb0e9310b0d4b4e1a252df71162c093c307b9fd0b9879"
+    },
+    {
+      "name": "SDSD_outdoor/MVI_0947",
+      "scene": "SDSD_outdoor/MVI_0947",
+      "cache_path": "tokens_082.pt",
+      "cache_sha256": "dd20a423c3d9eda1768b49b4ed12cb8615912c50d770ce637a3043db762103a4",
+      "source_cache_sha256": "365d415ee048c65fe2edc46e51c0dce214a5d68266ea1ac8e0ea95e39999bff1",
+      "lq_tensor_sha256": "070a88c94d31a7bba459e83d59f7471ccdd40dfc34ff25d3ddc9f214d78a6873",
+      "tokens_tensor_sha256": "2492cc857c7ec15ef0603db378617278673c9e4176b6a280f3cc935395dd4741"
+    },
+    {
+      "name": "SDSD_outdoor/MVI_0947_2",
+      "scene": "SDSD_outdoor/MVI_0947",
+      "cache_path": "tokens_083.pt",
+      "cache_sha256": "9cb2cfeb4d45e7f29a6a5a2f2915117135d54e9703bc4cdcf8e398e7534977fa",
+      "source_cache_sha256": "a6331d05add6ba345d6ab6edb3ffcca3b547661ff5b2368e954a150f0456bab7",
+      "lq_tensor_sha256": "86256effb970908b37d77f48c11b94104901fc5a8b36981475191c7a88955f26",
+      "tokens_tensor_sha256": "469a8aee7d72edb707478f5e1e4e10273cdffa12ce3fdab3d2b394d5e3d57fbb"
+    },
+    {
+      "name": "SDSD_outdoor/MVI_0949",
+      "scene": "SDSD_outdoor/MVI_0949",
+      "cache_path": "tokens_084.pt",
+      "cache_sha256": "f9ed3035a8ce79efd3b2bcd1cae0e09e8db1dc828c13a40275f16861ed0b3707",
+      "source_cache_sha256": "7c1de5ee3cce6001c39a98914c966553cda5ecd5e4ee871e91ebf223f9df4365",
+      "lq_tensor_sha256": "0d6652fbb8ee19ce08690b7e0815f110ef9bc7fed7f67b6ee61309c6dd5c3d18",
+      "tokens_tensor_sha256": "2bdaacbc77283854a9d6b9f8c3d6cfb5fc21028763cb220051af23c3a01865fa"
+    },
+    {
+      "name": "SDSD_outdoor/MVI_0949_2",
+      "scene": "SDSD_outdoor/MVI_0949",
+      "cache_path": "tokens_085.pt",
+      "cache_sha256": "58bb9b2363f62d6816a5c4d6e4d555488c01c2eedab73fad1b46fb09fc9132bb",
+      "source_cache_sha256": "809a4244e5f0ff93cceb17ee3a97b6dd7a9ac8d87fb6b55fe53793868499d738",
+      "lq_tensor_sha256": "1be0608f896bfdba9dadb1b486f6741dd76129f7b0241489d31bddb6d97f0f05",
+      "tokens_tensor_sha256": "26fd9c37a884575cd801bf040729199767d9606a08e87164019fc6db26cc10c3"
+    },
+    {
+      "name": "SDSD_outdoor/MVI_0951",
+      "scene": "SDSD_outdoor/MVI_0951",
+      "cache_path": "tokens_086.pt",
+      "cache_sha256": "57ab55bb73a59554438112c9b3daaf82800d11202a796f4740380b64d02b2d31",
+      "source_cache_sha256": "93e1e1d0484118da73789a65428339be0ae88f0a738ef43003903b0d598f8528",
+      "lq_tensor_sha256": "0197b5a02dcbb363c13ff20e766504fa1f94b3fd32ce1c4146eee9a1cda09662",
+      "tokens_tensor_sha256": "82534f6009fd446a7d28df45b9694092a218856267664993f4a9ab14bc8157f9"
+    },
+    {
+      "name": "SDSD_outdoor/MVI_0951_2",
+      "scene": "SDSD_outdoor/MVI_0951",
+      "cache_path": "tokens_087.pt",
+      "cache_sha256": "d56a0a0c131eeeeb840d7d32cbfe9e6255b3d9195f132f223299d18a4c228c1c",
+      "source_cache_sha256": "251b0e15a8e7736034fdf15d1e1783140b8ca8fc6d4f5f04c33c51f0faddddc9",
+      "lq_tensor_sha256": "ab44d059c9236bcebfc2ed01441f94f38a9a09621b39bc4d131401cf32f746a2",
+      "tokens_tensor_sha256": "3dfa9e6fef25373b9e8cb51ff8e47de56c40a476f90ff28366596483757b78a2"
+    },
+    {
+      "name": "SDSD_outdoor/MVI_0953",
+      "scene": "SDSD_outdoor/MVI_0953",
+      "cache_path": "tokens_088.pt",
+      "cache_sha256": "b594f2c3823ab033d3fed03cadd31b30711afad6834d948fef86535830946d8a",
+      "source_cache_sha256": "e709614c66c1d92db654c77824b682c6593f337bcbb4b2038e6f43f73b1c4221",
+      "lq_tensor_sha256": "be37817c38bc2942b9afcc26a7b853b76c8086e433ad53efbe71baf82da74cb5",
+      "tokens_tensor_sha256": "68547211ba71680120d564539d9a164d1bafa1c82f9ed85e0375e91333a6585e"
+    },
+    {
+      "name": "SDSD_outdoor/MVI_0953_2",
+      "scene": "SDSD_outdoor/MVI_0953",
+      "cache_path": "tokens_089.pt",
+      "cache_sha256": "9a1a3f1d40093992a1098cc46ad4d9b70fb542403e1502341367e643c2f459c9",
+      "source_cache_sha256": "c035d8ae3af1c83050316609cc252699b4ffd3dde640b9fd43d320c0273298dd",
+      "lq_tensor_sha256": "d73dbe91870d6169bbbb5cd2c074ead6ff3f73c449bf7abd4f269a390c3c1ee6",
+      "tokens_tensor_sha256": "5f14789dd98437e9275b7117a401293e5161c0a9f8b60e6375dea81a59fdcc31"
+    },
+    {
+      "name": "SDSD_outdoor/MVI_0955",
+      "scene": "SDSD_outdoor/MVI_0955",
+      "cache_path": "tokens_090.pt",
+      "cache_sha256": "7bb1caf19d5db3e5fea28b4851f7f11a28d74248c9627e1feb73e3ca72daba05",
+      "source_cache_sha256": "11c9b73ad8434f138523f450b3b937520294473a0aefdf9eaa17ae2354696f6c",
+      "lq_tensor_sha256": "f379c42b23d1f502beb9c12e70e828b99465f25ad8db32b593b71395e47a9ad9",
+      "tokens_tensor_sha256": "4f4841a17b47c7d0f1a75eba6e33e9d0d8071e303c8173f2f43f1f5b97cbe601"
+    },
+    {
+      "name": "SDSD_outdoor/MVI_0955_2",
+      "scene": "SDSD_outdoor/MVI_0955",
+      "cache_path": "tokens_091.pt",
+      "cache_sha256": "c44a99c875aaa105af0b7e9eda90f72eac8594e2102a56b9a2810267397fb4ff",
+      "source_cache_sha256": "c67e87f2cdd252f47733f4224ce1d34269667e8c8a0f6aa6229813ebd00568ce",
+      "lq_tensor_sha256": "84024f6ef1625360cb780adf905b6b93a99f29ea9504c05dc2e59eb72a7c4e9e",
+      "tokens_tensor_sha256": "63d1cea497d1a0049c807e1d3866a86bfb7663c5418e731581ca187d68141fc7"
+    },
+    {
+      "name": "SDSD_outdoor/MVI_0957",
+      "scene": "SDSD_outdoor/MVI_0957",
+      "cache_path": "tokens_092.pt",
+      "cache_sha256": "fcb549db76accabb9fb728ae0509faeaa8fa76af36ef2e4a90c09641fd1453df",
+      "source_cache_sha256": "2050fe161682f321208b07a17f4f435e911c7e2c2d1608bc10b7e23617a3b076",
+      "lq_tensor_sha256": "ec14545b69ff11d8e2cafeb521b5a91f2e4cfdf8c44eace66a02373198b95fa4",
+      "tokens_tensor_sha256": "d45e099abe4839521d4739d3b859cebb06220c473ce2fb3bf47fee150003e89a"
+    },
+    {
+      "name": "SDSD_outdoor/MVI_0957_2",
+      "scene": "SDSD_outdoor/MVI_0957",
+      "cache_path": "tokens_093.pt",
+      "cache_sha256": "d91de0dd0fb495b5c1014d6a274b153f74e3cc347c83b33dcc8b91042f2aad49",
+      "source_cache_sha256": "bd81d22e569d3a91166c7cbc1f14165c6b1079bb32bf5e9078582f4ae903f942",
+      "lq_tensor_sha256": "a91f34195b328a208e200bdc8c9973a97563ab995a092a0e8de7f3dd4b73758f",
+      "tokens_tensor_sha256": "12dd5db86b4ece08df2f7bbdeb54866c0826df06041baaf94e3265db7c37b47a"
+    },
+    {
+      "name": "SDSD_outdoor/MVI_0959",
+      "scene": "SDSD_outdoor/MVI_0959",
+      "cache_path": "tokens_094.pt",
+      "cache_sha256": "c47fe5e2aa2481a2e5816b1fc47e5c632c136e686b8008d1589d21fc92087d5d",
+      "source_cache_sha256": "beb0bb26170bdc2bbac093dbdb8a96e54bd360b0d20f11b7eb59827c0e227d45",
+      "lq_tensor_sha256": "919e61f95cd97326eeff3b64ab4cd0aed44bbeae80c5f4453680c22849a4c644",
+      "tokens_tensor_sha256": "db5c874d1b47c7f5643f8090d6a63d91797869bc895bc20a36b54ba9a2bd21a7"
+    },
+    {
+      "name": "SDSD_outdoor/MVI_0959_2",
+      "scene": "SDSD_outdoor/MVI_0959",
+      "cache_path": "tokens_095.pt",
+      "cache_sha256": "6729b409f8b86f8eb4cde6bf209d0ea255b397f6092c940a759525b000d34b63",
+      "source_cache_sha256": "91b295f6da72a8a219035633c5e5ed738cd60e7ef626ba254a06db2391df6ec5",
+      "lq_tensor_sha256": "84e625fcefb468db0b76c6a41ff6e77aeb91606b2b8d2546518605d137be4649",
+      "tokens_tensor_sha256": "0947d0a67d21bcede38b91da3a9fd7740fcddb390763e9e177fac43b14caf3ea"
+    },
+    {
+      "name": "SDSD_outdoor/MVI_0961",
+      "scene": "SDSD_outdoor/MVI_0961",
+      "cache_path": "tokens_096.pt",
+      "cache_sha256": "6d91d09930a9f352548da9f906f0f1e675a9b0151d7775c7108f9f2e18fbaa50",
+      "source_cache_sha256": "ba47f7041a8d06e160c802347c5740e7e3d37beeee8c067fff4f0f8d747045ff",
+      "lq_tensor_sha256": "651d96ca3fd56732cab50b4dcb05cfd0c4b406117d68d494febf8d5883b0ee86",
+      "tokens_tensor_sha256": "f819621a84caf9c03202136c4efac3925bbba51fa072845caa6f44d5dc140ac2"
+    },
+    {
+      "name": "SDSD_outdoor/MVI_0961_2",
+      "scene": "SDSD_outdoor/MVI_0961",
+      "cache_path": "tokens_097.pt",
+      "cache_sha256": "034378bd252001290b2210f3c2901d5fa224290a2380e3cbcfeebb546a2180c3",
+      "source_cache_sha256": "4e921c84a002753151e1117cfa327f50e0f0e44370f9fdc45323a7b79f6e4f9d",
+      "lq_tensor_sha256": "956d77e8f7faf281c8812251e1e91c973e46cff6c5e08111d68d697ada1b1e3c",
+      "tokens_tensor_sha256": "22853ed89fe4cde2c382c2aaf0e5e697610a3af9718f4febe6ddee06aed74d24"
+    },
+    {
+      "name": "SDSD_outdoor/MVI_0963",
+      "scene": "SDSD_outdoor/MVI_0963",
+      "cache_path": "tokens_098.pt",
+      "cache_sha256": "0de6f6c399620fd1dc4e8018d82e11841493de80c1146003134d97bd4890926e",
+      "source_cache_sha256": "ee3967ff95e66daa773a298bebebe70ea85a7926d13e51c39d56d137fc821482",
+      "lq_tensor_sha256": "3db6f202deebd9d7f8765d072528c151f820825b8d3f9ea5bdf3cf080cc16627",
+      "tokens_tensor_sha256": "24531ec468243f263dd88324729110e1cda8e25ac8dc632c4c4a5b63b9963f2f"
+    },
+    {
+      "name": "SDSD_outdoor/MVI_0963_2",
+      "scene": "SDSD_outdoor/MVI_0963",
+      "cache_path": "tokens_099.pt",
+      "cache_sha256": "0a437382b955dcc4a408dd3aeab90a3e8bb76eeeaebc6366972511b530fb1ed7",
+      "source_cache_sha256": "2b9040ecb07765513ac844c7bf6a5101d54bd63143fb436beb01a33ce3650ef2",
+      "lq_tensor_sha256": "c7e17b249ee9615a5d9def7366ee72f7c34ba3d56d1ac47b68b18b5106ebd14f",
+      "tokens_tensor_sha256": "3548ef6bbe3111e28699b368b98c4945cefc36387ed676fd44641197120cbcc5"
+    },
+    {
+      "name": "SDSD_outdoor/MVI_0967",
+      "scene": "SDSD_outdoor/MVI_0967",
+      "cache_path": "tokens_100.pt",
+      "cache_sha256": "12ceeedb2d98133dae36d32a182f33cb57a68bd4d4b884bde6b4173c789da285",
+      "source_cache_sha256": "4ee5676f2bd02436915f487e56774a4bd7d5ad645d53403cb9f2d08cc6f50176",
+      "lq_tensor_sha256": "2c61166ff9db47dc13cacb86e39f31293ab0071db1552186f8007249a3fe8147",
+      "tokens_tensor_sha256": "42e31a9804f27519dd516e3bc536e462a0e70a2062dc9b3feef035e07d7cf1ab"
+    },
+    {
+      "name": "SDSD_outdoor/MVI_0967_2",
+      "scene": "SDSD_outdoor/MVI_0967",
+      "cache_path": "tokens_101.pt",
+      "cache_sha256": "955958836320c800ee65f203f65c0f281c3b2c239045a8b3f9aac6378d1112d8",
+      "source_cache_sha256": "7dd2aed7348bebc4bf0c5153b56ac4feb5e9550fd538a84f3b82c9a7fde6a302",
+      "lq_tensor_sha256": "e061ad73b8806a28c377285b266e428ec47ccbf3be1f1577dc42711688e1f351",
+      "tokens_tensor_sha256": "e32dc5e1f07eeccfac90eb430cf17a5b6fc47f493e8bc4e66341fb74842e7968"
+    },
+    {
+      "name": "SDSD_outdoor/MVI_0969",
+      "scene": "SDSD_outdoor/MVI_0969",
+      "cache_path": "tokens_102.pt",
+      "cache_sha256": "cdc95016e9e1ffeeb5355ddefb09d4138034684ed71335b483f95d9d7881fbd0",
+      "source_cache_sha256": "81aacbd3dd5d5a0d9ca28faea89d0d9f3d9603fb130f01b7223ddf79ea04f1d3",
+      "lq_tensor_sha256": "13cf568a1c4eb960d68bfce751a836a4dd56c89e20d03ed5b24708a555d18b97",
+      "tokens_tensor_sha256": "5665b6c1648b90c5a61b2bc2017d1eedf36606d57ac0fa805220d488f213b653"
+    },
+    {
+      "name": "SDSD_outdoor/MVI_0969_2",
+      "scene": "SDSD_outdoor/MVI_0969",
+      "cache_path": "tokens_103.pt",
+      "cache_sha256": "424894fcccc5517065b6c575022305478df78d358675808d90f6b595fe7cfc97",
+      "source_cache_sha256": "3ff9a9e86e9591858925da141d8be41f9e06f7427be09cd2ace130b0aad151c8",
+      "lq_tensor_sha256": "3ab97f0b8a100c2dcfb3c35cba230282135524dd3f4f5947edf3c17153c011a1",
+      "tokens_tensor_sha256": "d57b439438d2bfa90c0e3ca64e08f1908214450af7cf43a15af253a736fdafea"
+    },
+    {
+      "name": "SDSD_outdoor/MVI_0971",
+      "scene": "SDSD_outdoor/MVI_0971",
+      "cache_path": "tokens_104.pt",
+      "cache_sha256": "cdb0c12b931a19fe9bf24dd2e2615003fb2e2b917e78af78d63e5ba21fd6f52e",
+      "source_cache_sha256": "54c9977a0d8b04fbb43f7b65055e4ee17b96e5426ea5c86b2beb09ac90afdbf7",
+      "lq_tensor_sha256": "1513dab1ea8a153bfa578a53d573b413b1e23563d947f98114265a8863f3ab72",
+      "tokens_tensor_sha256": "cf7009bbbf7495f2c344e92e1e33740297d3d356d7ea33751afd4575f9e7347e"
+    },
+    {
+      "name": "SDSD_outdoor/MVI_0971_2",
+      "scene": "SDSD_outdoor/MVI_0971",
+      "cache_path": "tokens_105.pt",
+      "cache_sha256": "f80910a0fab06be069aac55a96f3757116e8441da683b4bc71e728c29f5ba85f",
+      "source_cache_sha256": "a9c530edf8a3d701951927cea4953964f98fb66bf5bb18f638ef1ce72bb7814d",
+      "lq_tensor_sha256": "a0bbe000daf177b48c87562be78ff131c3fc90db45c6555e501b73cc18c86e9b",
+      "tokens_tensor_sha256": "8d75f64bc270a6ef0b2a1b513d980f5c3d6f99e65ebca2109004a5d2adb1eac0"
+    },
+    {
+      "name": "SDSD_outdoor/MVI_0973",
+      "scene": "SDSD_outdoor/MVI_0973",
+      "cache_path": "tokens_106.pt",
+      "cache_sha256": "2838658a5a563f45afc6844501dd30a61bc8eab48ec748a92ade9fd0e9a1a012",
+      "source_cache_sha256": "5d88a633bd0012f685d09955d1d508872409963d29522ea947b196028494fd2d",
+      "lq_tensor_sha256": "dd98df58d9f46cf9df354193aa0c25d2f30cde5e1477c4aecfca2d41603bfbbf",
+      "tokens_tensor_sha256": "df41c291e985c59162776f5b8b97774fed951a474677be170645b1705b5228bd"
+    },
+    {
+      "name": "SDSD_outdoor/MVI_0973_2",
+      "scene": "SDSD_outdoor/MVI_0973",
+      "cache_path": "tokens_107.pt",
+      "cache_sha256": "24e0b42cb7bcb7cab172d7f53b280b53d61c653cbed4b3c1f911481144aa7e3d",
+      "source_cache_sha256": "8065443b4811ab6c2a31c533b5a2b57d7c7e8a373da466dea289accb17dfeef7",
+      "lq_tensor_sha256": "fec6685a4abb658fbd51859d8b3763867cfa1a8f079836db8b6aed6e618b64b3",
+      "tokens_tensor_sha256": "3265bbab35cd1b657e3e7bac3052550a7cc561c8bafd66bf70dcd40de06fa352"
+    },
+    {
+      "name": "SDSD_outdoor/MVI_0975",
+      "scene": "SDSD_outdoor/MVI_0975",
+      "cache_path": "tokens_108.pt",
+      "cache_sha256": "5fc38de29406057815bc4c6bf105392466e2cef505153b037d009af967f84c06",
+      "source_cache_sha256": "471709ca94e6f3c6185d188b1d42a75059c52a76349398f7721c10174b7b2a0a",
+      "lq_tensor_sha256": "42e6b639cd53327d3f18688b162329cf241761af0f14312bc1d17dec0be92ffb",
+      "tokens_tensor_sha256": "4fbca768ce9222ebce92f8a45a6c3d528f7203a336269888d92be0f6236d31ba"
+    },
+    {
+      "name": "SDSD_outdoor/MVI_0975_2",
+      "scene": "SDSD_outdoor/MVI_0975",
+      "cache_path": "tokens_109.pt",
+      "cache_sha256": "6e4e83010c32e1c8c513678428da1ddd5a096d8e16ea2ee9fb35e72fe32d3f5e",
+      "source_cache_sha256": "751c1d6872fdea6803852a3430fbb525b21a25d4d14c29f59f55858f47184e20",
+      "lq_tensor_sha256": "3a6a4c05e094b5a6b174553495bfdd91459ee3706fc318ce9137fc84f555965f",
+      "tokens_tensor_sha256": "375d6203b11ee7976a402e4e10ce99bdb653d6bce093d32b2a89dd816dbd6496"
+    },
+    {
+      "name": "SDSD_outdoor/MVI_0977",
+      "scene": "SDSD_outdoor/MVI_0977",
+      "cache_path": "tokens_110.pt",
+      "cache_sha256": "e7641c747f875213984b051032f7b80d8426f5f194544288f4245cd95571f6ef",
+      "source_cache_sha256": "7600bf59dd98192d5986a183e0c1a7e4620800ad9ab5f367f21ba2ad701d253a",
+      "lq_tensor_sha256": "9c544086baf31643e6bf05eeabf97f42470c1086934cb247b47a7cc7fe3ff9cb",
+      "tokens_tensor_sha256": "3f03924034bf59ca0026d5f7756f811ca45f9d2ea8f0bcc618ec9ae5f598f7f3"
+    },
+    {
+      "name": "SDSD_outdoor/MVI_0977_2",
+      "scene": "SDSD_outdoor/MVI_0977",
+      "cache_path": "tokens_111.pt",
+      "cache_sha256": "c10d8d25d89518b782e369141e45de18ba39fc4f064e2262ff04c8469bc63428",
+      "source_cache_sha256": "4c0414f949ee37826731551a9bbf75bc203198fcf1987857a6d7d3df4ca6dee3",
+      "lq_tensor_sha256": "ebdf496fc2e622fbb5a746ad6e6b6cdd6836ed05c2184137a523693391e780b0",
+      "tokens_tensor_sha256": "1e4eb83d094ce8f373a7ac77dffc14ece586df1329b4d0176d813b20a7560ba4"
+    },
+    {
+      "name": "SDSD_outdoor/MVI_0979",
+      "scene": "SDSD_outdoor/MVI_0979",
+      "cache_path": "tokens_112.pt",
+      "cache_sha256": "6e5039d315a8ecdee5058821413770b10c0e13e3fbb1e23295ae61523e8b8ec8",
+      "source_cache_sha256": "a568c3e635880cb6f846418944acc853a76d93d79a90afdade6e4b82c8b0e92b",
+      "lq_tensor_sha256": "aadb33e5cb9ade86763d3deb3991dd6b6080c685715f0e50179b45bbfe9251cb",
+      "tokens_tensor_sha256": "9d9955494480d72f5eef16c63cc1278d67d4cc3ce6d0277ae6a6b27dc4bfc8a9"
+    },
+    {
+      "name": "SDSD_outdoor/MVI_0979_2",
+      "scene": "SDSD_outdoor/MVI_0979",
+      "cache_path": "tokens_113.pt",
+      "cache_sha256": "e5e8399a2501fe2d2b525db17fd487349f6043533db12d4aeb7bd6d7c248f3e5",
+      "source_cache_sha256": "b851ddfcb2798a6c4499c04eb11492142e68317fd8db0d050efef07623b3663c",
+      "lq_tensor_sha256": "dfaacc2ee38538621d25f39416a628d629a815597be650021bf09ec106e884e9",
+      "tokens_tensor_sha256": "2ed94c56849e73d091a8fb3dd0d4b602a28de7f6be62a1d6724021ab571cf33d"
+    },
+    {
+      "name": "SDSD_outdoor/MVI_0981",
+      "scene": "SDSD_outdoor/MVI_0981",
+      "cache_path": "tokens_114.pt",
+      "cache_sha256": "427aa9304f18d0e17db2fc3da9d4e7e3196f94e5b5db616fdf90b73055fc70c9",
+      "source_cache_sha256": "da30e31ddda5dd19bf94c52a762e183b2034d1c5a752bbe15af9cadb1510e76b",
+      "lq_tensor_sha256": "eb9503145968f7fe293fd5396ebb8662e42a7d25e057e06e06f2267b2aadaaa9",
+      "tokens_tensor_sha256": "7f2a9723b8e082b2b2e1710e61a84f20ad42c96dc79876bc06a8e0362b2c2f40"
+    },
+    {
+      "name": "SDSD_outdoor/MVI_0981_2",
+      "scene": "SDSD_outdoor/MVI_0981",
+      "cache_path": "tokens_115.pt",
+      "cache_sha256": "62af78b37bd85298edf71006192e7a0df91f53d54eb056a2abdaf71e031ec1e6",
+      "source_cache_sha256": "d448e0ee947b0918d1ab12096800fcd834698e1bf3a4e723eae689981c689d3a",
+      "lq_tensor_sha256": "3082b37c2af6fb03307f63bd002a3fa64e52adda779c98aafee3dd21bfa4d2f6",
+      "tokens_tensor_sha256": "5619a44d41294e79bae5e635e1096d89157bc78adf0d317710229ec9a6653447"
+    },
+    {
+      "name": "SDSD_outdoor/MVI_0983",
+      "scene": "SDSD_outdoor/MVI_0983",
+      "cache_path": "tokens_116.pt",
+      "cache_sha256": "7514e94ff2f640967f74692b40e75324eee59a3434f9c95e3b119155573066aa",
+      "source_cache_sha256": "987be49148e35e36646ec97aab99d315062ef301ad701806f2932c8465884f08",
+      "lq_tensor_sha256": "0cdd3341c74e63cc071c9da218e0f8ef3a4f5049849a96512ec1a2617fa022c9",
+      "tokens_tensor_sha256": "cc8ce700fd8931a1abaf40b07d20a499cb6501edd3dc44272445e6b72c45d8c5"
+    },
+    {
+      "name": "SDSD_outdoor/MVI_0983_2",
+      "scene": "SDSD_outdoor/MVI_0983",
+      "cache_path": "tokens_117.pt",
+      "cache_sha256": "d02d007e6c06401d24706d4f25afe6ee9fd67663fe4a71cd25489354b633ca5c",
+      "source_cache_sha256": "a229425407988d131fdef97ef8c12b23bd3d5865cd9f6803e8594cf9d23b1b36",
+      "lq_tensor_sha256": "5f0d625d4709642df8ed42093fc2b756b5172bfbd372772224181e53042ddc1d",
+      "tokens_tensor_sha256": "f77c5b3b297b1086d7e50439d0288ba45797557f57d22590193200c4eec62eac"
+    },
+    {
+      "name": "SDSD_outdoor/MVI_0988",
+      "scene": "SDSD_outdoor/MVI_0988",
+      "cache_path": "tokens_118.pt",
+      "cache_sha256": "24c4460289c9945fa5d2d934181d1d3748bcae8b684a55f27cd268f307be943d",
+      "source_cache_sha256": "d07188789d668165b61fac00f5a993352c5117d0d8334a7da68d5c52c3409595",
+      "lq_tensor_sha256": "24cd271dce03777652098692f5d156eec4769ac34cd626af2f0b3a205055fced",
+      "tokens_tensor_sha256": "ca2b974ee2edf75d23035d047793de5d2b9dffed1ed58629454c8e5a5f3a9156"
+    },
+    {
+      "name": "SDSD_outdoor/MVI_0988_2",
+      "scene": "SDSD_outdoor/MVI_0988",
+      "cache_path": "tokens_119.pt",
+      "cache_sha256": "ecc236c3c0f7835e094f2963fee2de2d6381ad1bd34f04516ad9643c25b540c0",
+      "source_cache_sha256": "4256c3801a3183c5c5047a83752cb6118e33cdcabdb37a4d1f23158eea5b66cf",
+      "lq_tensor_sha256": "ed414973905e84f6d70cbe90273dcbe03acd3f9aafea903c4d4284affe89d611",
+      "tokens_tensor_sha256": "9c9e66b7f96e6b17e0277c3ec1ecac92e344762691e36333c8f0e7f5cb74f95f"
+    },
+    {
+      "name": "SDSD_outdoor/MVI_0990",
+      "scene": "SDSD_outdoor/MVI_0990",
+      "cache_path": "tokens_120.pt",
+      "cache_sha256": "80feb91a27e00672b02437d24f0e78518f3ad46d7d6c35ade4bd483c4fca76ec",
+      "source_cache_sha256": "2cbedb3a37ea4ee8e5909d5b6b12d93c8455bb68613c564f234587e90cddb61b",
+      "lq_tensor_sha256": "6871eb8563b7d90929a578f152b56edc7e2b798ba5694b0bce662455d5818849",
+      "tokens_tensor_sha256": "37032d15652b187f551e32e6ce7ff51d1901c3c233cb08cbb9843fc7ac6a593a"
+    },
+    {
+      "name": "SDSD_outdoor/MVI_0990_2",
+      "scene": "SDSD_outdoor/MVI_0990",
+      "cache_path": "tokens_121.pt",
+      "cache_sha256": "23fc1bb78c944bc365f5a6f8102eb1bbe442f49ce22609f2872a17e52e00634b",
+      "source_cache_sha256": "671ddb9a32fb00e55261b24aa22ac4d3a055675d7ca594d3225f33557fb30d46",
+      "lq_tensor_sha256": "f45a90d83868beb4f203a29e66015ad4de77e95dac3f6d3dbad2ee3d4ce47209",
+      "tokens_tensor_sha256": "623b7ddcd5e4d77c77b5ecff5817852801d12cd2881565015f3f3b8f78dd6ee8"
+    },
+    {
+      "name": "SDSD_outdoor/MVI_0993",
+      "scene": "SDSD_outdoor/MVI_0993",
+      "cache_path": "tokens_122.pt",
+      "cache_sha256": "5e99871666c24d4acd85f229eaa78bc3900dbdd9153d570ddd010ab95dd88f17",
+      "source_cache_sha256": "fec39b43c35f88be875e12c03f0d24f77b8968784ad26b143a329fa3c5cf6f57",
+      "lq_tensor_sha256": "5f9445d15d167e675e6017c37340696db15cdf74d71afc75202e8b5a0b0ba1e2",
+      "tokens_tensor_sha256": "1dbf0714a66f6152e7cb4e50e10493dd2dc96efb8f1c893a7913c1d47f50ae0b"
+    },
+    {
+      "name": "SDSD_outdoor/MVI_0993_2",
+      "scene": "SDSD_outdoor/MVI_0993",
+      "cache_path": "tokens_123.pt",
+      "cache_sha256": "fad00bab3905addafd18c77fa3986e36735f9c3accd0a71c0ad221d522d714e9",
+      "source_cache_sha256": "25d5eef4724dc6ea297139233b6e2a2114912c8c4ccc301825d69ccb2c212fea",
+      "lq_tensor_sha256": "2488ac3961f22147ec4f6449e3fcc6cf6befa216edae78261149059c66cea686",
+      "tokens_tensor_sha256": "3d8ce76faf50d51f4dd6dad2d838deb9334b4fc7b0ecd4b80d79bb282ca02870"
+    },
+    {
+      "name": "SDSD_outdoor/MVI_0995",
+      "scene": "SDSD_outdoor/MVI_0995",
+      "cache_path": "tokens_124.pt",
+      "cache_sha256": "75695cfa58a1f1e86819c9fe17c6ea5af88ed2254dd12476babd7b79996d88ad",
+      "source_cache_sha256": "4bcbf317a3217f9e754e57df2c87382a8ed59054a7f715810b5c6ee666e16d83",
+      "lq_tensor_sha256": "5c2e2f88cb9f4ba6bcaaeea475fbf20f22491d83c7519cb587ae2b6fd546048d",
+      "tokens_tensor_sha256": "7eb356c05bfa4b9c998ba813f49560f99c9d3599011018e60759877d3326454a"
+    },
+    {
+      "name": "SDSD_outdoor/MVI_0995_2",
+      "scene": "SDSD_outdoor/MVI_0995",
+      "cache_path": "tokens_125.pt",
+      "cache_sha256": "229dbcec050995fbdc1934b078b3136923b9e4a0e7c3d2efd09d455e23778f4e",
+      "source_cache_sha256": "cd2109f618b78f4eb0f7206df02dbff8d5e7c70deb260147033ffd6f0bed4ac0",
+      "lq_tensor_sha256": "dd1226cd5933894cac9dddacb581f153c089b0407a4e505a9262dab8c00560fd",
+      "tokens_tensor_sha256": "16b5c487d30b44268046a8608adfe29f6dc60e8c789b4d161867ee64b9741534"
+    },
+    {
+      "name": "SDSD_outdoor/MVI_0997",
+      "scene": "SDSD_outdoor/MVI_0997",
+      "cache_path": "tokens_126.pt",
+      "cache_sha256": "a1d09d642d941beacdaa6ab3da81c524fcbc1f426a9e2cd45b6fb4b3c2dddab4",
+      "source_cache_sha256": "88a1a62f11e932ed3e7a3fe23228f4936e6095fda11b6cb4a3d1d978e0792aa3",
+      "lq_tensor_sha256": "827f2de25698c7c07b106cfd9ec214631d40181b5a13dd964999fa9201ed7b75",
+      "tokens_tensor_sha256": "6a9a5253da764ba1e29b6faa57f2b8bf77e4ce5b19cc0a06ebce869fc96055a9"
+    },
+    {
+      "name": "SDSD_outdoor/MVI_0997_2",
+      "scene": "SDSD_outdoor/MVI_0997",
+      "cache_path": "tokens_127.pt",
+      "cache_sha256": "5cf451e7cb30cd372f1d21de4dd2c40eb56a1fbbd526c12c8d1e0c6ce9b79aa4",
+      "source_cache_sha256": "495a0b058188de8cb6883a3c50898737949b9a9448ae373b8bfc18870699cd52",
+      "lq_tensor_sha256": "4a42bf4d35b70b99b762052faef621e616ab61d2e06dadd74e48e58f0299484b",
+      "tokens_tensor_sha256": "22513c391229c01c9b1aa5c4d5e229d511d12f52cc9c72e313f98ccbf4f84445"
+    },
+    {
+      "name": "SDSD_outdoor/MVI_0999",
+      "scene": "SDSD_outdoor/MVI_0999",
+      "cache_path": "tokens_128.pt",
+      "cache_sha256": "e5bcf80cc51b9bd238a4cf46774bd5fb6f07c79092da7855d12cb58f4c2112f8",
+      "source_cache_sha256": "f085fd3ab2e7c549dea9fd619ca70109568508aaa97bd39ae9c4f4b54f1a57b4",
+      "lq_tensor_sha256": "fb41e5eebb68092a2efc59bd5e9f0c4dc03687f11b8f3fabf8435f6ca3a3f288",
+      "tokens_tensor_sha256": "9243a4a38a11c4f851f9349d1e95e558a451678aec6d9a85879e69404c0ea04a"
+    },
+    {
+      "name": "SDSD_outdoor/MVI_0999_2",
+      "scene": "SDSD_outdoor/MVI_0999",
+      "cache_path": "tokens_129.pt",
+      "cache_sha256": "202e20ec8165f2852e6c2a1163959b7da0c593681cd1d9c4b1d0e6eb564f2191",
+      "source_cache_sha256": "61aadf7a75a9091c8e7b3484c832649a9d53ba43feba6a9b18476e50c4df87b0",
+      "lq_tensor_sha256": "c04bf8eab1d750adb0a045f4fe9015dfc2e31f19d7394306ec187be953e8b93b",
+      "tokens_tensor_sha256": "c211f5552172f2ea27790ed5a43674e296b46f1c8ed2e7f2e7261812db0e0324"
+    },
+    {
+      "name": "SDSD_outdoor/MVI_1001",
+      "scene": "SDSD_outdoor/MVI_1001",
+      "cache_path": "tokens_130.pt",
+      "cache_sha256": "5c5006884f52eccd2a4a2e1d91888f0d8038a5b703c39c74cf4ac050e709677b",
+      "source_cache_sha256": "a73c2288a21d3f103f6b3e2fef9207da4efcb3e41ce6566f0f8b0e34984c3ce2",
+      "lq_tensor_sha256": "8e66e8cccc4f1c328afcb02a5684463e3c6366b29615bed8752f8174d6a2d3dd",
+      "tokens_tensor_sha256": "2e13d5de843ed2728431476acd978c90892924ba1ec108b0354ef9a4e10f81e9"
+    },
+    {
+      "name": "SDSD_outdoor/MVI_1001_2",
+      "scene": "SDSD_outdoor/MVI_1001",
+      "cache_path": "tokens_131.pt",
+      "cache_sha256": "c3eed391a6d76ea8b9b8bc4e57a62244512cbe1b886fe734692b9efdc0210c81",
+      "source_cache_sha256": "ce8559eddb51d420e83bf2061d5982f13f61199fdbf7e8a2dd3548676fbe9d38",
+      "lq_tensor_sha256": "e5d84aaa3be822a2575d6904268619ffdeb5dda4d48a631b4226a0f27fb904f2",
+      "tokens_tensor_sha256": "7dc8f89fcb35987b1f5ded74dd34d2ff9b47dc74d3588fe635aa8ded40d90527"
+    },
+    {
+      "name": "SDSD_outdoor/MVI_1003",
+      "scene": "SDSD_outdoor/MVI_1003",
+      "cache_path": "tokens_132.pt",
+      "cache_sha256": "9fdaedbe873059a0694d91b4e29167d28641c0f8fdb062e47da0a5d09646a0af",
+      "source_cache_sha256": "1299802400bcf2ca8aeeb4b2d2f6adfb7d6cb42f08b6fc1865cf2277bc296216",
+      "lq_tensor_sha256": "a01d4d8ea1cdfea69fef91d33c258b81ef2b52d89e25252f2bb399fafb9a01ca",
+      "tokens_tensor_sha256": "c28d717f00fadf82b627027b80a5e476c4fb11374bc93c4664545acf33d7b761"
+    },
+    {
+      "name": "SDSD_outdoor/MVI_1003_2",
+      "scene": "SDSD_outdoor/MVI_1003",
+      "cache_path": "tokens_133.pt",
+      "cache_sha256": "360a011377b8c3b6114370444067e4d7c58d3c7668c5f97ef12386c553004341",
+      "source_cache_sha256": "b69d70e559387c0a2838c0f7a5b045dc66dfd4f012038094c40efaa586f8d1d7",
+      "lq_tensor_sha256": "6adfff301e72346ac256fb48a2ed45da30eef57fa8da6541126335bca4e4f80b",
+      "tokens_tensor_sha256": "36fb3f0a7a92929af81b5dcb46c8202e70407a63ba356c9ebc1790c56f2a81bd"
+    },
+    {
+      "name": "SDSD_outdoor/MVI_1005",
+      "scene": "SDSD_outdoor/MVI_1005",
+      "cache_path": "tokens_134.pt",
+      "cache_sha256": "352dbe4c3152866d93c08ddd7ce4ab0841e79ca702041425df0d6d295142936f",
+      "source_cache_sha256": "c2dbe8a2ddd17456c37769d75857f024e0db4a468918a80a85deaa4b6da65d58",
+      "lq_tensor_sha256": "12856d318be12200bb20943ef649edf22fa7c5bc5438b139c8c217c892553456",
+      "tokens_tensor_sha256": "01fab2597dbf0d119397a538e9a61aa18e259ccb9f648f20a03c0559501e2a67"
+    },
+    {
+      "name": "SDSD_outdoor/MVI_1005_2",
+      "scene": "SDSD_outdoor/MVI_1005",
+      "cache_path": "tokens_135.pt",
+      "cache_sha256": "217e4c3105f40def8abf328ce4ec6b74b8a94da620eba4d163463e6fac7ebd6a",
+      "source_cache_sha256": "a8f1f80bd39c28d7350d0d34710ccc4957148922ecb8bbab65a1ab8b264fb56a",
+      "lq_tensor_sha256": "e799b129ef606c88e3abbe605cd4940843c3bf15ac74cc52f3b76421f74d5529",
+      "tokens_tensor_sha256": "20a37f2a0860c95225d95953149f69a9d3fdd247c0165d2d7924c1529ed98a47"
+    }
+  ],
+  "encoder_state_after": "0c5f0472f877dfdfeb5e5c5d07c1f77bc622f1961891dac958c72e96882aee50",
+  "encoder_state_unchanged": true,
+  "complete": true,
+  "elapsed_seconds": 47.13763850647956,
+  "provenance_sha256": "2b1fc9d146414bfde9dd0f1cf77d856e1a5118ccaaa689c6c5ea7030fdb9cad3"
+}

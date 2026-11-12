@@ -1,0 +1,24 @@
+{
+  "strict_video_keys": 300,
+  "ignored_unused_image_keys": [
+    "patch_embed_img.proj.bias",
+    "patch_embed_img.proj.weight"
+  ],
+  "parameters": 303893504,
+  "all_parameters_cpu": true,
+  "eval": true,
+  "all_parameters_frozen": true,
+  "feature_layers": [
+    17
+  ],
+  "elapsed_seconds": 20.168210190720856,
+  "encoder_state_sha256": "0c5f0472f877dfdfeb5e5c5d07c1f77bc622f1961891dac958c72e96882aee50",
+  "upstream_source_sha256": {
+    "app/vjepa_2_1/models/utils/modules.py": "64be6a87bd9f18d385f4e44186db3347d1665e18a1f0511d51d3b305531562e2",
+    "app/vjepa_2_1/models/utils/patch_embed.py": "29e11ab97ab3ccdef107d6a7d0d7b374b58e712076cc3561f07b7e603c9b5165",
+    "app/vjepa_2_1/models/vision_transformer.py": "d2932eabeba684d8f558302a13cfd4be70a0170ee5112f5a794652d0a29089b9",
+    "src/masks/utils.py": "833f111a0fa5ffdbd3a6412e2dace2517c3c178f49c14f8bb631d9f6a070dfd0",
+    "src/utils/tensors.py": "782b58bd2af456e184750e5318ab773105108383f61b280fe4c7a90f46add2c8"
+  },
+  "torch": "2.7.1+cpu"
+}
