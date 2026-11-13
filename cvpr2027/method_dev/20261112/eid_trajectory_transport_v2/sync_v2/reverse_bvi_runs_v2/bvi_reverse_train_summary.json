@@ -1,0 +1,49 @@
+{
+  "schema_version": 2,
+  "scope": "BVI TRAIN48 only (24 scenes x 2 conditions); zero BVI VAL/TEST or SDSD access",
+  "n_train_clips": 48,
+  "prep_elapsed_seconds": 247.73021282814443,
+  "backbone_provenance": {
+    "backbone": "hvi_cidnet",
+    "checkpoint": "/cache/zihaohe/seer_baseline_replay_20261112/release_v1/weights/hvi_cidnet.pt",
+    "checkpoint_sha256": "6395370762ec1fa0f6fe92a38c62382b1ebe21edc012f597023bfcec8b95cd27",
+    "state_sha256": "afa01e29d1314dae7fadc68d7c95e3ddaf3da3a5b469fa83febb2759dc0bc41b",
+    "parameters": 1975569,
+    "model_device": "npu:0"
+  },
+  "raft_weights_sha256": "01064c6dba73b0fc9fc8edf772248560a00a3acfd62ac6677e9eeebad9680e27",
+  "split_sha256": "fb6be5ea78ef73f5cc9db90bca75813bf597275f7609fe39d82f5b2f883e9ad0",
+  "runs": [
+    {
+      "tag": "eid_full_s0",
+      "seed": 0,
+      "steps": 288,
+      "elapsed_seconds": 384.28400633949786,
+      "final_loss": 0.05775490139300624,
+      "checkpoint": "/cache/zihaohe/seer_eidtt_v2_20261112/reverse_bvi_runs_v2/checkpoints/eid_full_s0.pt",
+      "checkpoint_sha256": "815ebe85a241052a68caa9eb5f7f2f1550ecedf9dc78e61527093d2aa395b29b",
+      "state_sha256": "b0757daeb6e7370ac46d4baffad00f171ab378792b74c06c9db98917712783c9"
+    },
+    {
+      "tag": "eid_full_s1",
+      "seed": 1,
+      "steps": 288,
+      "elapsed_seconds": 379.4500530678779,
+      "final_loss": 0.05773891299031675,
+      "checkpoint": "/cache/zihaohe/seer_eidtt_v2_20261112/reverse_bvi_runs_v2/checkpoints/eid_full_s1.pt",
+      "checkpoint_sha256": "1ee0635359e7b4b633c9456d7202e22cc762560a104c7184ce12c793526cc056",
+      "state_sha256": "0072322834d7329d6d6718d5ebca0cec6db7bfa3dfaee0d584b75a71107f26ff"
+    },
+    {
+      "tag": "eid_full_s2",
+      "seed": 2,
+      "steps": 288,
+      "elapsed_seconds": 379.2706716954708,
+      "final_loss": 0.05773056182079017,
+      "checkpoint": "/cache/zihaohe/seer_eidtt_v2_20261112/reverse_bvi_runs_v2/checkpoints/eid_full_s2.pt",
+      "checkpoint_sha256": "8d20ebe27d9c9cfe18e2408329816745e0f7518c88e6c9c7991f8516b2053cb5",
+      "state_sha256": "e3cc50a143cd22314c0753d592ea2aebe8af3d5b8c372e2dc7232416cc21f82e"
+    }
+  ],
+  "completed_utc": "2026-11-12T16:39:26.807703+00:00"
+}

@@ -1,0 +1,42 @@
+{
+  "smoke": true,
+  "internal_holdout_opened": false,
+  "target_inputs_opened": false,
+  "runs": [
+    {
+      "tag": "eid_full_s0",
+      "variant": "eid_full",
+      "arch_mode": "eid_full",
+      "loss_mode": "decoupled",
+      "seed": 0,
+      "steps": 2,
+      "elapsed_seconds": 6.8159453785046935,
+      "sec_per_step": 3.407973289024085,
+      "checkpoint": "/cache/zihaohe/seer_eidtt_v2_20261112/smoke_v2/checkpoints/eid_full_s0.pt",
+      "checkpoint_sha256": "65b512e066f37241ddcbc0cbae22f6979d4dd1850913d229c3bf71c33ef9ec76",
+      "state_sha256": "42a450a3d3857dd66e60206e19f6b554e7355158d03788a84fda2a98e7c47355",
+      "final_epoch": {
+        "epoch": 1,
+        "elapsed_sec": 6.811571955680847,
+        "lr": 1e-05,
+        "total": 0.060118744149804115,
+        "spatial": 0.031871555373072624,
+        "grad": 0.03013603761792183,
+        "temp_diff": 0.026999392546713352,
+        "traj_diff": 0.02787597570568323
+      },
+      "epoch_history": [
+        {
+          "epoch": 1,
+          "elapsed_sec": 6.811571955680847,
+          "lr": 1e-05,
+          "total": 0.060118744149804115,
+          "spatial": 0.031871555373072624,
+          "grad": 0.03013603761792183,
+          "temp_diff": 0.026999392546713352,
+          "traj_diff": 0.02787597570568323
+        }
+      ]
+    }
+  ]
+}

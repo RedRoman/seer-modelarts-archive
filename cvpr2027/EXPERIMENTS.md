@@ -111,7 +111,14 @@ On 31051 the equivalent runners are `e17_runner.sh`, `e18_npu.sh`, `e20.sh`, `e2
 | fixed vs per-clip projection | both projections in one pass | `tools/global_sufficiency.py` | 31051 `results/global_sufficiency_s{0,1}.json` | `sufficiency/` (s2 version only on 32677) |
 | qualitative figure | 4 sequences at margin percentiles 10/35/60/85 vs retrained Retinexformer | `tools/dump_qual_cvpr.py` | 32677 `results/qualitative_cvpr/` (20 PNG) | **not archived**; reproducible on 31051 from E17 checkpoints, rule unchanged |
 
-## 5. What is not in this repository
+## 5. EID-TT v1 / v2 Cross-Domain & Cross-Backbone Trajectory Transport (2026-11-12 .. 2026-11-13)
+
+| stage | scope & hypothesis | seeds | host | server `/cache` dir | SFS persistent backup (`/temp/zihaohe/seer_cvpr/method_dev_20261112/`) | repo archive |
+|---|---|---|---|---|---|---|
+| `EID-TT v1` | Dual-manifold log-radiometric + phase-deattenuated sensor transport (`14,861` params); `SDSD FIT51` (`5` variants) + `BVI TRAIN48` reverse; `SDSD internal17` & 4-backbone `BVI VAL16` only (`0` TEST access) | 0,1,2 | 31051 (NPU 6,7) | `/cache/zihaohe/seer_eidtt_dev_20261112/` | `eid_trajectory_transport_v1_final_20261113/` (`41` files, manifest `0f7b4e84...`) | `method_dev/20261112/eid_trajectory_transport_v1/` |
+| `EID-TT v2` | Unbiased lag-1 de-attenuated Bipolar Trajectory Innovation Envelope ($\Omega^{\text{bip}}$) + cycle-gated dual-manifold transport (`15,509` params); `SDSD FIT51` (`6` variants) + `BVI TRAIN48` reverse; `SDSD internal17`, 4-backbone `BVI VAL16`, single-pass locked 4-backbone `BVI TEST16` + bidirectional `SDSD TEST39` | 0,1,2 | 31051 (NPU 6,7) | `/cache/zihaohe/seer_eidtt_v2_20261112/` | `eid_trajectory_transport_v2_final_20261113/` (`78` files, manifest `7634de7e...`) | `method_dev/20261112/eid_trajectory_transport_v2/` |
+
+## 6. What is not in this repository
 
 - Checkpoints (90 MB each for the 22.4M branch): on the hosts only. The 31051
   ones are intact; the 32677 ones (E19, E21, E22, E24, E25, E2c, E28, edc s0-1,

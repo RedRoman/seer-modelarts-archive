@@ -1,0 +1,312 @@
+{
+  "schema_version": 2,
+  "verified": true,
+  "files_verified": 11,
+  "total_scalar_and_hash_checks": 11673,
+  "source_internal17_verification": {
+    "file": "source_train_and_internal17_summary.json",
+    "sha256": "9e99c4e569fa31da204b3d72ffd59ffc2adb5ade31f0952b92f88477e5582f3a",
+    "n_clips": 34,
+    "n_scenes": 17,
+    "checks_passed": 2625,
+    "anchor_means": {
+      "psnr_y": 15.28230644372298,
+      "psnr_rgb": 15.136419496028918,
+      "decoupled_psnr_rgb": 22.32688046673499,
+      "lpips": 0.45999421573737087,
+      "tlp": 0.1809858253554386,
+      "gt_tlp": 0.03400136740631698,
+      "tlp_gap": 0.14698445794912166
+    },
+    "eid_full_mean3": {
+      "psnr_y": 15.419839601005458,
+      "psnr_rgb": 15.301695245968581,
+      "decoupled_psnr_rgb": 23.22282700245633,
+      "lpips": 0.4071557791355778,
+      "tlp": 0.11004870914507145,
+      "gt_tlp": 0.03400136740631698,
+      "tlp_gap": 0.0791462037287762
+    }
+  },
+  "reports": [
+    {
+      "file": "eval_bvi_test16_darkir.json",
+      "sha256": "5b1d48255c7076da82e26ffe21783379fb0abb1aa44e704cc5bfd0371eef54e6",
+      "domain": "bvi",
+      "split": "test",
+      "backbone": "darkir",
+      "n_sequences": 16,
+      "n_scenes": 8,
+      "checks_passed": 482,
+      "anchor_parity": null,
+      "anchor_means": {
+        "psnr_y": 20.18148414157098,
+        "psnr_rgb": 19.877570671163056,
+        "lpips": 0.1515404935926199,
+        "tlp": 0.07893155893543735,
+        "gt_tlp": 0.06844700430519879,
+        "tlp_gap": 0.010778046969790012
+      },
+      "eid_full_mean3": {
+        "psnr_y": 20.192632022204783,
+        "psnr_rgb": 19.893888874284585,
+        "lpips": 0.14886951888911426,
+        "tlp": 0.0738984556713452,
+        "gt_tlp": 0.06844700430519879,
+        "tlp_gap": 0.006326719031979641
+      }
+    },
+    {
+      "file": "eval_bvi_test16_hvi_cidnet_all_variants.json",
+      "sha256": "f4241d337f52ac03f3aa1965fa1e6ce08598e71f7c4890340f72b70ae3fcbf23",
+      "domain": "bvi",
+      "split": "test",
+      "backbone": "hvi_cidnet",
+      "n_sequences": 16,
+      "n_scenes": 8,
+      "checks_passed": 1314,
+      "anchor_parity": null,
+      "anchor_means": {
+        "psnr_y": 20.599400044153867,
+        "psnr_rgb": 20.53683323011176,
+        "lpips": 0.17905130120925605,
+        "tlp": 0.09822533396072686,
+        "gt_tlp": 0.06844700430519879,
+        "tlp_gap": 0.02977832965552807
+      },
+      "eid_full_mean3": {
+        "psnr_y": 20.688404462649466,
+        "psnr_rgb": 20.6673436344103,
+        "lpips": 0.14994346334909398,
+        "tlp": 0.08265627656752865,
+        "gt_tlp": 0.06844700430519879,
+        "tlp_gap": 0.014209272262329858
+      }
+    },
+    {
+      "file": "eval_bvi_test16_retinexformer.json",
+      "sha256": "857ac892a2b0e99d4505bf90c085584e4294080c0585d06c216af92f3acaadd9",
+      "domain": "bvi",
+      "split": "test",
+      "backbone": "retinexformer",
+      "n_sequences": 16,
+      "n_scenes": 8,
+      "checks_passed": 482,
+      "anchor_parity": null,
+      "anchor_means": {
+        "psnr_y": 18.808355651783852,
+        "psnr_rgb": 18.29517787050977,
+        "lpips": 0.23821094166487455,
+        "tlp": 0.0737992672220571,
+        "gt_tlp": 0.06844700430519879,
+        "tlp_gap": 0.010351628137868829
+      },
+      "eid_full_mean3": {
+        "psnr_y": 18.827635022150613,
+        "psnr_rgb": 18.321699067011608,
+        "lpips": 0.23621124060203633,
+        "tlp": 0.06956716851345845,
+        "gt_tlp": 0.06844700430519879,
+        "tlp_gap": 0.007147150159047063
+      }
+    },
+    {
+      "file": "eval_bvi_test16_seer_v2.json",
+      "sha256": "d56517b0c0e8cc0ae0d499db4e9973878aef6ced1616d973eba54d711dc49349",
+      "domain": "bvi",
+      "split": "test",
+      "backbone": "seer_v2",
+      "n_sequences": 16,
+      "n_scenes": 8,
+      "checks_passed": 482,
+      "anchor_parity": null,
+      "anchor_means": {
+        "psnr_y": 19.653183020955137,
+        "psnr_rgb": 18.699383059691606,
+        "lpips": 0.25427665933966637,
+        "tlp": 0.07246309699257836,
+        "gt_tlp": 0.06844700430519879,
+        "tlp_gap": 0.005534368276130408
+      },
+      "eid_full_mean3": {
+        "psnr_y": 19.672621069735836,
+        "psnr_rgb": 18.712263212925947,
+        "lpips": 0.2513289572671056,
+        "tlp": 0.06984848752229786,
+        "gt_tlp": 0.06844700430519879,
+        "tlp_gap": 0.005600409873295575
+      }
+    },
+    {
+      "file": "eval_bvi_val16_darkir.json",
+      "sha256": "0775a52c27a651c20dbd79658518c3e7daaca5bd55ae4381e3f4c80ee38d150e",
+      "domain": "bvi",
+      "split": "val",
+      "backbone": "darkir",
+      "n_sequences": 16,
+      "n_scenes": 8,
+      "checks_passed": 546,
+      "anchor_parity": {
+        "verified_against": "/cache/zihaohe/seer_baseline_replay_20261112/results_v1/darkir_bvi_val16.json",
+        "max_metric_abs_diff": 0.0
+      },
+      "anchor_means": {
+        "psnr_y": 22.581696581217443,
+        "psnr_rgb": 21.465762591626582,
+        "lpips": 0.15101579809561372,
+        "tlp": 0.06850467366166413,
+        "gt_tlp": 0.05303222464863211,
+        "tlp_gap": 0.017731530242599547
+      },
+      "eid_full_mean3": {
+        "psnr_y": 22.590753701634647,
+        "psnr_rgb": 21.48689706029019,
+        "lpips": 0.14712950897713503,
+        "tlp": 0.059867327353761844,
+        "gt_tlp": 0.05303222464863211,
+        "tlp_gap": 0.01073837123112753
+      }
+    },
+    {
+      "file": "eval_bvi_val16_hvi_cidnet_all_variants.json",
+      "sha256": "9c3fec57fd92658dde57b635e9550e100b95200546c65f5cbb718ffb25a3e047",
+      "domain": "bvi",
+      "split": "val",
+      "backbone": "hvi_cidnet",
+      "n_sequences": 16,
+      "n_scenes": 8,
+      "checks_passed": 1378,
+      "anchor_parity": {
+        "verified_against": "/cache/zihaohe/seer_baseline_replay_20261112/results_v1/hvi_cidnet_bvi_val16.json",
+        "max_metric_abs_diff": 0.0
+      },
+      "anchor_means": {
+        "psnr_y": 24.241232037953157,
+        "psnr_rgb": 23.383146282739105,
+        "lpips": 0.15314976987428963,
+        "tlp": 0.0869961871067062,
+        "gt_tlp": 0.05303222464863211,
+        "tlp_gap": 0.034284843131899834
+      },
+      "eid_full_mean3": {
+        "psnr_y": 24.447612245340643,
+        "psnr_rgb": 23.61500969738324,
+        "lpips": 0.11909183603711426,
+        "tlp": 0.06671734002884477,
+        "gt_tlp": 0.05303222464863211,
+        "tlp_gap": 0.01519811254305144
+      }
+    },
+    {
+      "file": "eval_bvi_val16_retinexformer.json",
+      "sha256": "6364a0e11e3ee8df4a77919d0d1ebff90f092492b29f98104c6cebda0977065a",
+      "domain": "bvi",
+      "split": "val",
+      "backbone": "retinexformer",
+      "n_sequences": 16,
+      "n_scenes": 8,
+      "checks_passed": 546,
+      "anchor_parity": {
+        "verified_against": "/cache/zihaohe/seer_baseline_replay_20261112/results_v1/retinexformer_bvi_val16.json",
+        "max_metric_abs_diff": 0.0
+      },
+      "anchor_means": {
+        "psnr_y": 19.881678451485474,
+        "psnr_rgb": 19.103253123785542,
+        "lpips": 0.20317575056105852,
+        "tlp": 0.05680454187677242,
+        "gt_tlp": 0.05303222464863211,
+        "tlp_gap": 0.007375633314950392
+      },
+      "eid_full_mean3": {
+        "psnr_y": 19.907306972573487,
+        "psnr_rgb": 19.134328681901707,
+        "lpips": 0.20113110030069947,
+        "tlp": 0.05066914770577569,
+        "gt_tlp": 0.05303222464863211,
+        "tlp_gap": 0.004714628492365591
+      }
+    },
+    {
+      "file": "eval_bvi_val16_seer_v2.json",
+      "sha256": "c7a4488604e83ad6c6d50b8448aec476ed6a1a1618fd77c6e2170a63668fa1be",
+      "domain": "bvi",
+      "split": "val",
+      "backbone": "seer_v2",
+      "n_sequences": 16,
+      "n_scenes": 8,
+      "checks_passed": 482,
+      "anchor_parity": null,
+      "anchor_means": {
+        "psnr_y": 19.330873773841773,
+        "psnr_rgb": 18.041200178454417,
+        "lpips": 0.2656401488929987,
+        "tlp": 0.05438751098699868,
+        "gt_tlp": 0.05303222464863211,
+        "tlp_gap": 0.0049698116490617394
+      },
+      "eid_full_mean3": {
+        "psnr_y": 19.349952255895236,
+        "psnr_rgb": 18.051509291932554,
+        "lpips": 0.2595716482028365,
+        "tlp": 0.050168875139206655,
+        "gt_tlp": 0.05303222464863211,
+        "tlp_gap": 0.005772794713266194
+      }
+    },
+    {
+      "file": "eval_sdsd_test39_hvi_cidnet_from_bvi.json",
+      "sha256": "bdd25bfc198532b2981ff35c353961a3c3d929726e93b30e75f0d47937660fd6",
+      "domain": "sdsd",
+      "split": "test",
+      "backbone": "hvi_cidnet",
+      "n_sequences": 39,
+      "n_scenes": 21,
+      "checks_passed": 573,
+      "anchor_parity": null,
+      "anchor_means": {
+        "psnr_y": 17.659944320976937,
+        "psnr_rgb": 17.25438283102337,
+        "lpips": 0.332771204220943,
+        "tlp": 0.13551149498193693,
+        "gt_tlp": 0.025074181779741477,
+        "tlp_gap": 0.11043731320219544
+      },
+      "eid_full_mean3": {
+        "psnr_y": 17.829552127884636,
+        "psnr_rgb": 17.472984631202582,
+        "lpips": 0.2747062287396854,
+        "tlp": 0.06479490877121179,
+        "gt_tlp": 0.025074181779741477,
+        "tlp_gap": 0.04085816171131709
+      }
+    },
+    {
+      "file": "eval_sdsd_test39_hvi_cidnet_indomain.json",
+      "sha256": "45d5ed92c1b6b4b75470769f1e5a7eccd4e37af8096cfae2955bba5b5d60605e",
+      "domain": "sdsd",
+      "split": "test",
+      "backbone": "hvi_cidnet",
+      "n_sequences": 39,
+      "n_scenes": 21,
+      "checks_passed": 2763,
+      "anchor_parity": null,
+      "anchor_means": {
+        "psnr_y": 17.659944320976937,
+        "psnr_rgb": 17.25438283102337,
+        "lpips": 0.332771204220943,
+        "tlp": 0.13551149498193693,
+        "gt_tlp": 0.025074181779741477,
+        "tlp_gap": 0.11043731320219544
+      },
+      "eid_full_mean3": {
+        "psnr_y": 17.845572545527396,
+        "psnr_rgb": 17.488602119789252,
+        "lpips": 0.27385469481476343,
+        "tlp": 0.06242153035779283,
+        "gt_tlp": 0.025074181779741477,
+        "tlp_gap": 0.03887146696623446
+      }
+    }
+  ]
+}
